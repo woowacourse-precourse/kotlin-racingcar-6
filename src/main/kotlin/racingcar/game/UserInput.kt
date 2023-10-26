@@ -13,7 +13,7 @@ object UserInput {
     fun getRacingCars(): List<Car> {
         val racingCars = Console.readLine().split(", ").map {_name ->
             if (_name.length in NAME_LENGTH_RANGE) {
-                Car(_name)
+                Car(_name.replace(" ", ""))
             }
             else {
                 throw IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE_NAME_LENGTH)
