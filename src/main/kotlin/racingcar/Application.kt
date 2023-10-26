@@ -5,7 +5,17 @@ import camp.nextstep.edu.missionutils.Console
 fun main() {
 
     val carList = getCars()
+    val times = getTimes()
+}
 
+private fun getTimes(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+    val inputTimes = Console.readLine()
+    try {
+        return inputTimes.toInt()
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException()
+    }
 }
 
 private fun getCars(): MutableList<Car> {
