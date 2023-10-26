@@ -41,6 +41,23 @@ class ApplicationTest : NsTest() {
         assertThat(validation).isEqualTo(result)
     }
 
+    @Test
+    fun `숫자 입력인지 검증`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>("사용자의 입력이 숫자가 아닙니다.") {
+                validateNumber("abc")
+            }
+
+            assertThrows<IllegalArgumentException>("사용자의 입력이 숫자가 아닙니다.") {
+                validateNumber("1a")
+            }
+
+            assertThrows<IllegalArgumentException>("사용자의 입력이 숫자가 아닙니다.") {
+                validateNumber("_@#!1")
+            }
+        }
+    }
+
     public override fun runMain() {
         main()
     }
