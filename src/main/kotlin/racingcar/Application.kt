@@ -24,3 +24,7 @@ fun validateNameLength(carList: List<String>) {
         if (it.length > 5) throw IllegalArgumentException("차 이름의 길이가 5보다 큽니다.")
     }
 }
+
+fun inputRaceCount(): Int {
+    return Console.readLine().toInt()
+}
