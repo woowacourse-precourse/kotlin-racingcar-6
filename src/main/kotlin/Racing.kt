@@ -26,5 +26,13 @@ object Racing {
         carList.forEach {
             if (it.lengthPlus() == maxLength + 1) winnerList.add(it.getName())
         }
+        printResult(winnerList)
+    }
+    private fun printResult(result: List<String>) {
+        print("최종 우승자 : ")
+        result.forEachIndexed { index, s ->
+            print(s)
+            if (index != result.lastIndex) print(",")
+        }
     }
 }

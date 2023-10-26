@@ -1,5 +1,7 @@
 package racingcar
 
+import RacingManger
+
 fun main() {
-    // TODO: 프로그램 구현
+    RacingManger().racingInfoInput()
 }
