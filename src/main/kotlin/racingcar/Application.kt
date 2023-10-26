@@ -13,3 +13,7 @@ fun printGameStartMessage() {
 fun inputCarNames(): String {
     return Console.readLine()
 }
+
+fun separateCarNames(carNames: String): List<String> {
+    return carNames.split(" ")
+}

@@ -34,7 +34,7 @@
 - 게임 시작 전
 - [x]  게임 시작 문구를 출력한다. `printGameStartMessage`
 - [x]  자동차 경주 이름을 입력받는다. `inputCarNames`
-- [ ]  자동차 이름들을 구분한다.
+- [x]  자동차 이름들을 구분한다. `separateCarNames`
 - [ ]  자동차 이름의 유효성을 검사한다.
 - [ ]  게임 횟수를 입력받는다.
 
