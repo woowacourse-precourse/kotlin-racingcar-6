@@ -16,4 +16,10 @@ object Validator {
             }
         }
     }
+
+    fun inputRacingRoundContentCheck(input: String) {
+        input.forEach {
+            if(it !in '0' .. '9') throw IllegalArgumentException()
+        }
+    }
 }
