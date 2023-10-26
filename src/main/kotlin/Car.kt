@@ -1,7 +1,7 @@
 import util.CarValue.CAR_INIT_LENGTH_VALUE
 import util.CarValue.DISTANCE_SYMBOL
 
-class Car(name: String) {
+class Car(name: String) : Acceleration {
     private var carName = name
     private var length = CAR_INIT_LENGTH_VALUE
 
