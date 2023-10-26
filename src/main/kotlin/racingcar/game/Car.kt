@@ -11,7 +11,7 @@ class Car (private val name: String) {
     fun getDistance() = distance
 
     fun startEngine() {
-        val engineLevel = Randoms.pickNumberInRange(0, 9)
+        val engineLevel = Randoms.pickNumberInRange(ENGINE_LEVEL_ZERO, ENGINE_LEVEL_MAX)
         if(checkEngineAvailable(engineLevel)) {
             move()
         }
@@ -31,5 +31,7 @@ class Car (private val name: String) {
     companion object {
         private const val STARTING_POINT = 0
         private const val MINIMUM_AVAILABLE_ENGINE_LEVEL = 3
+        private const val ENGINE_LEVEL_ZERO = 0
+        private const val ENGINE_LEVEL_MAX = 9
     }
 }
