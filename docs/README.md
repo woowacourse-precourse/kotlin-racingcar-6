@@ -53,12 +53,12 @@
       (완료) printWinner 메서드를 구현해, startAwardCeremony에서 호출해, 우승자를 출력한다.
       (완료) printWinner 메서드를, 여러 명의 우승자를 쉼표로 구분하는 로직을 구현한다.
 
-- [ ] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
+- [x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
   🧐 생각한 방법 : 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException` 발생시키고 통일성 있게 관리하기 위해, `UserInputChecker`이라는 클래스를 구현한다!
 
       (완료) UserInput Class를 생성한다.
-      () UserInput Class를 구현해, 각 입력 메서드에서 입력 값을 받고 check하는 로직을 구성한다.
+      (완료) UserInput Class를 구현해, 각 입력 메서드에서 입력 값을 받고 check하는 로직을 구성한다.
 <hr />
 
 ### 추가된 요구 사항
