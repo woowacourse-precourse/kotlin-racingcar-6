@@ -9,7 +9,7 @@ fun main() {
     val numofcars = cars?.size
     if (numofcars != null)
     {
-        var moveCar = Array(size = numofcars) {0}
+        val moveCar = Array(size = numofcars) {0}
         println("시도할 횟수는 몇 회인가요?")
         val numoftry = readlnOrNull()?.toInt()
         if (numoftry != null) {
@@ -24,6 +24,7 @@ fun main() {
                 val total = moveCar[j]
                 println("$name : $total")
             }
+            printWinner(cars, moveCar)
         }
     }
 }
@@ -40,4 +41,18 @@ fun generateRandomNumberAndCheckMove(cars : List<String>, carmove : Array<Int>)
         val carname = cars[i]
         println("$carname : $dash")
     }
+}
+
+fun printWinner(cars : List<String>, carmove : Array<Int>) {
+    val maxnumber = carmove.max()
+    val winners = mutableListOf<String>()
+    for (i in carmove.indices)
+    {
+        if(carmove[i] == maxnumber)
+        {
+            winners.add(cars[i])
+        }
+    }
+    val winnersString = winners.joinToString(", ")
+    println("최종 우승자 : $winnersString")
 }
