@@ -10,9 +10,14 @@ class RacingGame {
         printStartMessage()
         inviteRacer()
         printAskAttempts()
+        processRacingGame()
     }
 
     private fun inviteRacer() {
         racingCars = UserInput.getRacingCars()
+    }
+
+    private fun processRacingGame() {
+        val attempts = UserInput.getAttempts()
     }
 }

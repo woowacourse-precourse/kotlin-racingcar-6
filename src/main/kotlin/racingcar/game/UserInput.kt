@@ -7,4 +7,6 @@ object UserInput {
         Console.readLine().split(", ").map {_name ->
             Car(_name)
         }
+
+    fun getAttempts(): Int = Console.readLine()!!.toInt()
 }
