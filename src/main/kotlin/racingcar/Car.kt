@@ -2,7 +2,7 @@ package racingcar
 
 class Car(
     val name: String,
-    var cntForwards: Int = 4
+    var cntForwards: Int = 0
 ) {
     override fun toString(): String {
         val dashes = "-".repeat(cntForwards)
