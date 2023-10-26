@@ -27,7 +27,8 @@ fun main() {
         for (j in carNames) {
             val num = Randoms.pickNumberInRange(0, 9)
             //print(num)
-
+            if (num >= 4)
+                carNamesAndResults[j] += "-"
         }
         //println(carNamesAndResults)
     }
