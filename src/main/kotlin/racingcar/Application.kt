@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import java.lang.IllegalArgumentException
 
 fun main() {
     printGameStartMessage()
@@ -16,4 +17,10 @@ fun inputCarNames(): String {
 
 fun separateCarNames(carNames: String): List<String> {
     return carNames.split(" ")
+}
+
+fun validateNameLength(carList: List<String>) {
+    carList.forEach {
+        if (it.length > 5) throw IllegalArgumentException("차 이름의 길이가 5보다 큽니다.")
+    }
 }
