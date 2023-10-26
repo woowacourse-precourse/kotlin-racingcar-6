@@ -25,8 +25,7 @@ class InputManager() {
     }
 
     private fun isLengthFive(carName: String): Boolean {
-        val carNameList = carName.toCarNamesList()
-        carNameList.forEach { if (it.length >= CAR_NAME_SIZE) throw IllegalArgumentException() }
+        carName.toCarNamesList().forEach { if (it.length >= CAR_NAME_SIZE) throw IllegalArgumentException() }
         return true
     }
 
