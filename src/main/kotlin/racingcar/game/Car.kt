@@ -10,6 +10,8 @@ class Car (private val name: String) {
     }
     fun getDistance() = distance
 
+    fun getName() = name
+
     fun startEngine() {
         val engineLevel = Randoms.pickNumberInRange(ENGINE_LEVEL_ZERO, ENGINE_LEVEL_MAX)
         if(checkEngineAvailable(engineLevel)) {

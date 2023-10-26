@@ -4,6 +4,7 @@ import racingcar.game.PrintUtil.printAskAttempts
 import racingcar.game.PrintUtil.printExecutionResult
 import racingcar.game.PrintUtil.printStartMessage
 import racingcar.game.PrintUtil.printRacingCars
+import racingcar.game.PrintUtil.printWinnerList
 
 class RacingGame {
     private lateinit var racingCars: List<Car>
@@ -13,6 +14,7 @@ class RacingGame {
         inviteRacer()
         printAskAttempts()
         processRacingGame()
+        startAwardCeremony()
     }
 
     private fun inviteRacer() {
@@ -26,6 +28,7 @@ class RacingGame {
             processRacingCars()
             printRacingCars(racingCars)
         }
+
     }
 
     private fun processRacingCars() {
@@ -35,5 +38,14 @@ class RacingGame {
                 this
             }
         }
+    }
+
+    private fun startAwardCeremony() {
+        val winnerList = rateAllRacers()
+    }
+
+    private fun rateAllRacers(): MutableList<Car> {
+        val winners = mutableListOf<Car>()
+        return winners
     }
 }
