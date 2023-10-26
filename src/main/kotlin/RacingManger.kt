@@ -1,4 +1,5 @@
 import CarFactory.makeCar
+import Racing.racingSetting
 import camp.nextstep.edu.missionutils.Console
 import util.Validator.inputRacingRoundContentCheck
 
@@ -8,5 +9,6 @@ class RacingManger {
         val racingCarList = makeCar(Console.readLine())
         println("시도할 횟수는 몇 회인가요?")
         val raceRound = inputRacingRoundContentCheck(Console.readLine())
+        racingSetting(racingCarList, raceRound)
     }
 }
