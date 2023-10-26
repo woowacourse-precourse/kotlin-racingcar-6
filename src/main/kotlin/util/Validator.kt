@@ -1,6 +1,7 @@
 package util
 
 import util.CarValue.CAR_NAME_MAX_LENGTH
+import java.math.BigInteger
 
 object Validator {
     fun inputCarContentCheck(input: String): List<String> {
@@ -17,9 +18,10 @@ object Validator {
         }
     }
 
-    fun inputRacingRoundContentCheck(input: String) {
+    fun inputRacingRoundContentCheck(input: String): BigInteger {
         input.forEach {
-            if(it !in '0' .. '9') throw IllegalArgumentException()
+            if (it !in '0'..'9') throw IllegalArgumentException()
         }
+        return input.toBigInteger()
     }
 }
