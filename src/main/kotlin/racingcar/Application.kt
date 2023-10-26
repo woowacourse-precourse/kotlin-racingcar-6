@@ -9,6 +9,27 @@ fun main() {
     val times = getTimes()
 
     startRacing(times, carList)
+    printWinner(carList)
+}
+
+private fun printWinner(carList: MutableList<Car>) {
+    val winnerList = findWinner(carList)
+    val result = winnerList.joinToString(", ")
+    print("최종 우승자 : $result")
+}
+
+private fun findWinner(carList: MutableList<Car>): MutableList<String> {
+    carList.sort()
+    val maxForwards = carList[0].cntForwards
+    val winnerList = mutableListOf<String>()
+    for (car in carList) {
+        if (car.cntForwards < maxForwards) {
+            break
+        }
+        winnerList.add(car.name)
+    }
+
+    return winnerList
 }
 
 private fun startRacing(times: Int, carList: MutableList<Car>) {
