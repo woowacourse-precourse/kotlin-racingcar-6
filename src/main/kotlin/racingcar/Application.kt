@@ -75,7 +75,7 @@ private fun getCars(): MutableList<Car> {
     val inputNames = Console.readLine().split(",")
     val carList = mutableListOf<Car>()
     for (carName in inputNames) {
-        if (carName.isEmpty() || carName.length > 5) {
+        if (carName.isBlank() || carName.isEmpty() || carName.length > 5) {
             throw IllegalArgumentException()
         }
         carList.add(Car(name = carName))
