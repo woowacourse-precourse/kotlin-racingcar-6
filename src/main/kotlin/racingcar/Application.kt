@@ -1,11 +1,28 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
 
     val carList = getCars()
     val times = getTimes()
+    for (index in 0 until times) {
+        moveForwardForAllCars(carList)
+    }
+}
+
+private fun moveForwardForAllCars(carList: MutableList<Car>) {
+    for (car in carList) {
+        val randomNum = Randoms.pickNumberInRange(0, 9)
+        moveForward(car, randomNum)
+    }
+}
+
+private fun moveForward(car: Car, randomNum: Int) {
+    if (randomNum >= 4) {
+        car.cntForwards++
+    }
 }
 
 private fun getTimes(): Int {
