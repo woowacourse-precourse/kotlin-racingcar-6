@@ -1,15 +1,13 @@
 package racingcar.game
 
 class RacingGame {
-    private lateinit var racingCars: MutableList<Car>
+    private lateinit var racingCars: List<Car>
+
     fun start() {
-        // TODO : startGame 메서드 구현
+        inviteRacer()
     }
 
-    private fun inviteRacer(n: Int) {
-        racingCars = mutableListOf()
-        repeat(n) {
-            racingCars.add(Car())
-        }
+    private fun inviteRacer() {
+        racingCars = UserInput.getRacingCars()
     }
 }

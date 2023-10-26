@@ -22,7 +22,7 @@
 
   🧐 생각한 방법 : 쉼표(,)를 기준으로 구분하는 메서드와, 이름을 5자 이하만 가능하도록 하는 메서드를 구현한다.
 
-      () RacingGame class 내부에 inviteRacer()를 쉼표를 기준으로 입력받는 메서드로 구현한다.
+      (완료) inviteRacer 메서드에 UserInput 클래스 내부에 자동차 이름을 받는 메서드인 getRacingCars를 동작한다.  
       () RacingGame class 내부에 이름을 5자 이하만 가능하도록 하는 checkName 메서드를 구현한다.
 
 - [ ] 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.

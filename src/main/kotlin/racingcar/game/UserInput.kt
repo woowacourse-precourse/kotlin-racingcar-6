@@ -1,5 +1,10 @@
 package racingcar.game
 
-object UserInput {
+import camp.nextstep.edu.missionutils.Console
 
+object UserInput {
+    fun getRacingCars(): List<Car> =
+        Console.readLine().split(", ").map {_name ->
+            Car(_name)
+        }
 }
