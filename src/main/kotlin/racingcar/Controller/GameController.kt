@@ -6,11 +6,10 @@ class GameController {
 
     fun gameStarter(){
 
-        var carNameInputs=UserInput().inputCarName()
-
-        var userRoundInput=UserInput().inputRoundNumber().toInt()
-
+        val carNameInputs=UserInput().inputCarName()
         var carNames=ErrorController().carNameErrorController(carNameInputs)
+
+        val userRoundInput=UserInput().inputRoundNumber()
         var roundInput=ErrorController().roundNumberErrorController(userRoundInput)
 
     }
