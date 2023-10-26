@@ -26,6 +26,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차 이름 예외 처리`() {
+        assertThrows<IllegalArgumentException>("차 이름의 길이가 5보다 큽니다.") {
+            validateNameLength(listOf("pobi, javaji"))
+        }
+    }
+
     public override fun runMain() {
         main()
     }
