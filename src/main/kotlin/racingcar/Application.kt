@@ -23,8 +23,13 @@ fun main() {
     if (time < 1)
         throw IllegalArgumentException("0보다 큰 숫자를 입력하세요.")
 
-    //print(time is Char)
-//    for (i in carNamesAndResults)
-//        println(i)
-    //print(carNamesAndResults)
+    for (i in 0 until time) {
+        for (j in carNames) {
+            val num = Randoms.pickNumberInRange(0, 9)
+            //print(num)
+
+        }
+        //println(carNamesAndResults)
+    }
+
 }
