@@ -1,5 +1,6 @@
 package racingcar.game
 
+import racingcar.game.PrintUtil.printAskAttempts
 import racingcar.game.PrintUtil.printStartMessage
 
 class RacingGame {
@@ -8,6 +9,7 @@ class RacingGame {
     fun start() {
         printStartMessage()
         inviteRacer()
+        printAskAttempts()
     }
 
     private fun inviteRacer() {
