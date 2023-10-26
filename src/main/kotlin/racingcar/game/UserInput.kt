@@ -11,7 +11,7 @@ object UserInput {
     private val NAME_LENGTH_RANGE = 1..5
 
     fun getRacingCars(): List<Car> {
-        val racingCars = Console.readLine().split(", ").map {_name ->
+        val racingCars = Console.readLine().split(",").map {_name ->
             if (_name.length in NAME_LENGTH_RANGE) {
                 Car(_name.replace(" ", ""))
             }
