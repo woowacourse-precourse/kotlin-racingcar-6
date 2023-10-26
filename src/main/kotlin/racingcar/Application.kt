@@ -15,31 +15,31 @@ fun main() {
         if (numoftry != null) {
             println("실행 결과")
             for (i in 0 until numoftry){
-                generateRandomNumberAndCheckMove(cars, moveCar)
+                generateRandomNumber(cars, moveCar)
                 println("")
             }
-            for (j in 0 until numofcars)
-            {
-                val name = cars[j]
-                val total = moveCar[j]
-                println("$name : $total")
-            }
+
             printWinner(cars, moveCar)
         }
     }
 }
 
-fun generateRandomNumberAndCheckMove(cars : List<String>, carmove : Array<Int>)
+fun generateRandomNumber(cars : List<String>, carmove : Array<Int>)
 {
     for (i in cars.indices)
     {
         val randomNumber = Randoms.pickNumberInRange(0, 9)
-        if (randomNumber >= 4) {
-            carmove[i] += randomNumber
-        }
+        checkMove(randomNumber, i, carmove)
         val dash = "-".repeat(randomNumber)
         val carname = cars[i]
         println("$carname : $dash")
+    }
+}
+
+fun checkMove(randomnum : Int, index : Int, carmove : Array<Int>)
+{
+    if (randomnum >= 4) {
+        carmove[index] += randomnum
     }
 }
 
