@@ -16,7 +16,7 @@ fun inputCarNames(): String {
 }
 
 fun separateCarNames(carNames: String): List<String> {
-    return carNames.split(" ")
+    return carNames.split(",")
 }
 
 fun validateNameLength(carList: List<String>) {
