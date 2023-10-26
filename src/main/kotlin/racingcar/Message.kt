@@ -1,7 +1,7 @@
 package racingcar
 
-class Message{
-    companion object{
+class Message {
+    companion object {
         const val MIN_NUMBER = 0
         const val MAX_NUMBER = 9
         const val FORWARD_CONDITION = 4
