@@ -7,6 +7,9 @@ fun main() {
     println("경주할 자동차 이름을 입력하세요.")
     val carNames = readLine().split(',')
     val carNamesAndResults = mutableMapOf<String, String>()
+    val winners = mutableListOf<String>()
+    var longDistance = ""
+
     for (i in carNames) {
         if (i == "" || i.length > 5)
             throw IllegalArgumentException("모든 자동차 이름은 1글자 이상, 5글자 이하여야 합니다.")
@@ -35,4 +38,11 @@ fun main() {
         println()
     }
 
+    longDistance = carNamesAndResults.maxBy { it.value }.value
+
+    for (i in carNamesAndResults) {
+        if (i.value == longDistance)
+            winners.add(i.key)
+    }
+    println("최종 우승자 : " + winners.joinToString(", "))
 }
