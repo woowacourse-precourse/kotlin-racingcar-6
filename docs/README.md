@@ -31,13 +31,13 @@
   
       (완료) UserInput.getAttempts 메서드를 사용해 사용자는 몇 번의 이동을 할 것인지 입력받는다.
 
-- [ ] 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
+- [x] 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
 
   🧐 생각한 방법 : 0 ~ 9 사이의 무작위 값 중, 4 이상인 경우 전진하는 메서드를 구현한다.
 
-      () Car 클래스 내부에, 0 ~ 9 사이의 무작위 수를 생성하는 startEngine 메서드를 구현한다.
-      () checkEngineLevelAvaliable 메서드를 생성해, 4 이상인 경우 true를 리턴한다.
-      () startEngine 내부에서, checkEngineLevelAvaliable가 true 리턴한 경우 전진한다.
+      (완료) Car 클래스 내부에, 0 ~ 9 사이의 무작위 수를 생성하는 startEngine 메서드를 구현한다.
+      (완료) checkEngineLevelAvaliable 메서드를 생성해, 4 이상인 경우 true를 리턴한다.
+      (완료) startEngine 내부에서, checkEngineLevelAvaliable가 true 리턴한 경우 전진한다.
 
 - [ ] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
 

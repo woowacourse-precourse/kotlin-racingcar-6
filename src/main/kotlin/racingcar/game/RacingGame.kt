@@ -23,7 +23,17 @@ class RacingGame {
         val attempts = UserInput.getAttempts()
         printExecutionResult()
         repeat(attempts) {
+            processRacingCars()
             printRacingCars(racingCars)
+        }
+    }
+
+    private fun processRacingCars() {
+        racingCars.map { _car ->
+            with(_car) {
+                startEngine()
+                this
+            }
         }
     }
 }
