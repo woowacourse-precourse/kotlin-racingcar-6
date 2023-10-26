@@ -18,11 +18,11 @@ class RacingGame {
     }
 
     private fun inviteRacer() {
-        racingCars = UserInput.getRacingCars()
+        racingCars = UserInputUtil.getRacingCars()
     }
 
     private fun processRacingGame() {
-        val attempts = UserInput.getAttempts()
+        val attempts = UserInputUtil.getAttempts()
         printExecutionResult()
         repeat(attempts) {
             processRacingCars()
