@@ -33,6 +33,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `이름 문자열 배열로 변환`() {
+        val input = "pobi,javaji"
+        val validation = separateCarNames(input)
+        val result = listOf("pobi", "javaji")
+        assertThat(validation).isEqualTo(result)
+    }
+
     public override fun runMain() {
         main()
     }
