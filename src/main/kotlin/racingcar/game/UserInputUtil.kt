@@ -12,15 +12,20 @@ object UserInputUtil {
 
     fun getRacingCars(): List<Car> {
         val racingCars = Console.readLine().split(",").map {_name ->
-            if (_name.length in NAME_LENGTH_RANGE) {
-                Car(_name.replace(" ", ""))
-            }
-            else {
-                throw IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE_NAME_LENGTH)
-            }
+            checkRacingCarNameAvailable(_name)
         }
         checkRacingCarsAvailable(racingCars)
         return racingCars
+    }
+
+    private fun checkRacingCarNameAvailable(carName: String): Car {
+        val removeSpaceName = carName.replace(" ", "")
+        if (removeSpaceName.length in NAME_LENGTH_RANGE) {
+            return Car(removeSpaceName)
+        }
+        else {
+            throw IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE_NAME_LENGTH)
+        }
     }
 
     private fun checkRacingCarsAvailable(racingCars: List<Car>) {
