@@ -57,8 +57,8 @@
 
   🧐 생각한 방법 : 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException` 발생시키고 통일성 있게 관리하기 위해, `UserInputChecker`이라는 클래스를 구현한다!
 
-      () UserInputChecker Class를 생성한다.
-      () UserInputChecker Class를 구현해, 각 입력 메서드에서 입력 값을 check하는 로직을 구성한다.
+      () UserInput Class를 생성한다.
+      () UserInput Class를 구현해, 각 입력 메서드에서 입력 값을 받고 check하는 로직을 구성한다.
 <hr />
 
 ### 추가된 요구 사항
