@@ -5,16 +5,20 @@ class Car(name: String) : Acceleration {
     private var carName = name
     private var length = CAR_INIT_LENGTH_VALUE
 
-    fun printName() {
-        print("$carName : ")
+    fun getName(): String {
+        return carName
     }
 
-    fun printLength() {
+    fun printCarInfo() {
+        print("$carName : ")
         repeat(length) {
             print(DISTANCE_SYMBOL)
         }
         println()
     }
 
-    fun lengthPlus() = length++
+    fun lengthPlus(): Int {
+        length++
+        return length
+    }
 }
