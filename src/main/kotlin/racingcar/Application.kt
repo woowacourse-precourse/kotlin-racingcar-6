@@ -44,6 +44,7 @@ private fun printSubResult(carList: MutableList<Car>) {
     for (car in carList) {
         println(car)
     }
+    println()
 }
 
 private fun moveForwardForAllCars(carList: MutableList<Car>) {
