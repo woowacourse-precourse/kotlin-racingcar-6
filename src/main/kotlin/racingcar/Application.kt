@@ -44,7 +44,6 @@ private fun printSubResult(carList: MutableList<Car>) {
     for (car in carList) {
         println(car)
     }
-    println()
 }
 
 private fun moveForwardForAllCars(carList: MutableList<Car>) {
@@ -64,7 +63,10 @@ private fun getTimes(): Int {
     println("시도할 횟수는 몇 회인가요?")
     val inputTimes = Console.readLine()
     val throwIAE = ThrowIAE()
-    return throwIAE.checkToInt(inputTimes)
+    val times = throwIAE.checkToInt(inputTimes)
+    throwIAE.checkPositiveNum(times)
+
+    return times
 }
 
 private fun getCars(): MutableList<Car> {

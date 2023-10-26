@@ -24,4 +24,10 @@ class ThrowIAE {
             throw IllegalArgumentException()
         }
     }
+
+    fun checkPositiveNum(number: Int) {
+        if (number <= 0) {
+            throw IllegalArgumentException()
+        }
+    }
 }
