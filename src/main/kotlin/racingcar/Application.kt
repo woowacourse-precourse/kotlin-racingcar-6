@@ -7,9 +7,23 @@ fun main() {
 
     val carList = getCars()
     val times = getTimes()
+
+    startRacing(times, carList)
+}
+
+private fun startRacing(times: Int, carList: MutableList<Car>) {
+    print("\n실행 결과")
     for (index in 0 until times) {
         moveForwardForAllCars(carList)
+        printSubResult(carList)
     }
+}
+
+private fun printSubResult(carList: MutableList<Car>) {
+    for (car in carList) {
+        println(car)
+    }
+    println()
 }
 
 private fun moveForwardForAllCars(carList: MutableList<Car>) {
