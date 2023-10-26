@@ -33,5 +33,5 @@ fun inputRaceCount(): Int {
 }
 
 fun validateNumber(count: String) {
-    count.toIntOrNull() ?: throw IllegalArgumentException("차 이름의 길이가 5보다 큽니다.")
+    count.toIntOrNull() ?: throw IllegalArgumentException("사용자의 입력이 숫자가 아닙니다.")
 }
