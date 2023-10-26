@@ -6,28 +6,22 @@ fun main() {
     println("경주할 자동차 이름을 입력하세요.")
     val inputString = readlnOrNull() // 자동차 이름을 입력받음
     val carname = if (inputString.isNullOrBlank()) throw IllegalArgumentException("잘못된 값을 입력하였습니다.") else inputString
-    val cars = carname?.split(",") // ,를 기준으로 나눔
-    val numofcars = cars?.size
-    if (numofcars != null && cars.isNotEmpty())
-    {
-        val moveCar = Array(size = numofcars) {0}
-        println("시도할 횟수는 몇 회인가요?")
-        val inputnum = readlnOrNull()
-        val numoftry = try {
-            if (inputnum.isNullOrBlank()) {
-                throw IllegalArgumentException("잘못된 값을 입력하였습니다.")
-            } else {
-                inputnum.toInt()
-            }
-        } catch (e: IllegalArgumentException) {
-            // 숫자로 변환할 수 없는 경우 예외 처리
+    val cars = carname.split(",") // ,를 기준으로 나눔
+    val numofcars = cars.size
+    val moveCar = Array(size = numofcars) {0}
+    println("시도할 횟수는 몇 회인가요?")
+    val inputnum = readlnOrNull()
+    val numoftry = try {
+        if (inputnum.isNullOrBlank()) {
             throw IllegalArgumentException("잘못된 값을 입력하였습니다.")
+        } else {
+            inputnum.toInt()
         }
-        resultRace(numoftry, cars, moveCar)
-    } else {
+    } catch (e: IllegalArgumentException) {
+        // 숫자로 변환할 수 없는 경우 예외 처리
         throw IllegalArgumentException("잘못된 값을 입력하였습니다.")
-
     }
+    resultRace(numoftry, cars, moveCar)
 }
 
 fun generateRandomNumber(cars : List<String>, carmove : Array<Int>)
