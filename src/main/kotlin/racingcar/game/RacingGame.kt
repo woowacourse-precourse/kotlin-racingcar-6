@@ -1,7 +1,9 @@
 package racingcar.game
 
 import racingcar.game.PrintUtil.printAskAttempts
+import racingcar.game.PrintUtil.printExecutionResult
 import racingcar.game.PrintUtil.printStartMessage
+import racingcar.game.PrintUtil.printRacingCars
 
 class RacingGame {
     private lateinit var racingCars: List<Car>
@@ -19,5 +21,9 @@ class RacingGame {
 
     private fun processRacingGame() {
         val attempts = UserInput.getAttempts()
+        printExecutionResult()
+        repeat(attempts) {
+            printRacingCars(racingCars)
+        }
     }
 }
