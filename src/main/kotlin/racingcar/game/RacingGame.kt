@@ -48,10 +48,11 @@ class RacingGame {
 
     private fun rateAllRacers(): MutableList<Car> {
         val winners = mutableListOf<Car>()
-        val maxDistance = -1
+        var maxDistance = -1
         racingCars.sortedBy { _car -> _car.getDistance() }.forEach { _car ->
             if (_car.getDistance() >= maxDistance) {
                 winners.add(_car)
+                maxDistance = _car.getDistance()
             }
         }
         return winners
