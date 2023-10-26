@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 import racingcar.Message.Companion.INPUT_PROMPT_MESSAGE
 
 class CarGameManager {
@@ -13,7 +14,12 @@ class CarGameManager {
         return Console.readLine()
     }
 
+
+
     // 0 - 9 사이의 무작위 값을 부여하는 기능
+    private fun generateRandomNumber(): Int {
+        return Randoms.pickNumberInRange(0, 9)
+    }
 
     // 전진하는 자동차 이름과 함께 출력하는 기능
 
