@@ -14,4 +14,6 @@ class Car(name: String) {
             print(DISTANCE_SYMBOL)
         }
     }
+
+    private fun lengthPlus() = length++
 }
