@@ -4,12 +4,14 @@ import camp.nextstep.edu.missionutils.Console
 import racingcar.constant.ErrorMessage
 import racingcar.domain.RacingCars
 import racingcar.util.AttemptCountValidator
+import racingcar.util.CarNameValidator
 
 class ReadUserInputView {
-    private val validator = AttemptCountValidator()
+    private val attemptNumberValidator = AttemptCountValidator()
+    private val carNamesValidator = CarNameValidator()
     fun readCarNames(): RacingCars {
         val carNames = Console.readLine().split(",")
-        require(validateNameLength(carNames)) { ErrorMessage.NAME_LENGTH_GREATER_THAN_FIVE }
+        validateNameLength(carNames)
         return RacingCars(carNames)
     }
 
@@ -19,11 +21,12 @@ class ReadUserInputView {
         return attemptNumberInput.toInt()
     }
 
-    private fun validateNameLength(carNames: List<String>): Boolean {
-        return carNames.none{ it.length > 5}
+    private fun validateNameLength(carNames: List<String>) {
+        carNamesValidator.validateCarNamesLength(carNames)
     }
 
     private fun validateAttemptNumber(attemptNumberInput: String) {
-        validator.isNumberFormat(attemptNumberInput)
+        attemptNumberValidator.validateNumberFormat(attemptNumberInput)
     }
+    
 }
