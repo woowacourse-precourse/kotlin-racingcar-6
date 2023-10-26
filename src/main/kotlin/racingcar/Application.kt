@@ -15,6 +15,7 @@ fun main() {
 
     println("시도할 횟수는 몇 회인가요?")
     val timeInput = readLine()
+    println("\n실행 결과")
     val time: Int = try {
         timeInput?.toInt() ?: throw IllegalArgumentException("유효한 숫자를 입력하세요.")
     } catch (e: NumberFormatException) {
@@ -29,8 +30,9 @@ fun main() {
             //print(num)
             if (num >= 4)
                 carNamesAndResults[j] += "-"
+            println(j + " : " + carNamesAndResults[j])
         }
-        //println(carNamesAndResults)
+        println()
     }
 
 }
