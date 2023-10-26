@@ -26,5 +26,12 @@ fun validateNameLength(carList: List<String>) {
 }
 
 fun inputRaceCount(): Int {
-    return Console.readLine().toInt()
+    val input = Console.readLine()
+    validateNumber(input)
+
+    return input.toInt()
+}
+
+fun validateNumber(count: String) {
+    count.toIntOrNull() ?: throw IllegalArgumentException("차 이름의 길이가 5보다 큽니다.")
 }
