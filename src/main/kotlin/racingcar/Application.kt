@@ -1,5 +1,9 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
+import racingcar.iomanager.InputManager
+
 fun main() {
-    // TODO: 프로그램 구현
+    val inputManager = InputManager()
+    inputManager.carNames()
 }
