@@ -46,12 +46,12 @@
       (완료) rateAllRacers 메서드를 구현해, 우승 여부를 체크한다.
       (완료) startAwardCeremony 메서드를 구현해, 우승 여부를 알려 주는 메서드를 구현한다.
 
-- [ ] 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
+- [x] 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
 
   🧐 생각한 방법 : 우승자를 출력하는 printWinner를 구현한다.
 
-      () printWinner 메서드를 구현해, startAwardCeremony에서 호출해, 우승자를 출력한다.
-      () printWinner 메서드를, 여러 명의 우승자를 쉼표로 구분하는 로직을 구현한다.
+      (완료) printWinner 메서드를 구현해, startAwardCeremony에서 호출해, 우승자를 출력한다.
+      (완료) printWinner 메서드를, 여러 명의 우승자를 쉼표로 구분하는 로직을 구현한다.
 
 - [ ] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
