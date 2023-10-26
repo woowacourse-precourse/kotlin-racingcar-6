@@ -39,12 +39,12 @@
       (완료) checkEngineLevelAvaliable 메서드를 생성해, 4 이상인 경우 true를 리턴한다.
       (완료) startEngine 내부에서, checkEngineLevelAvaliable가 true 리턴한 경우 전진한다.
 
-- [ ] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
+- [x] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
 
   🧐 생각한 방법 : 우승 여부를 알려주는 메서드 `startAwardCeremony`를 구현한다!
 
-      () rateAllRacers 메서드를 구현해, 우승 여부를 체크한다.
-      () startAwardCeremony 메서드를 구현해, 우승 여부를 알려 주는 메서드를 구현한다.
+      (완료) rateAllRacers 메서드를 구현해, 우승 여부를 체크한다.
+      (완료) startAwardCeremony 메서드를 구현해, 우승 여부를 알려 주는 메서드를 구현한다.
 
 - [ ] 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
 
