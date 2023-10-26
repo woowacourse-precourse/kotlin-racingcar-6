@@ -11,20 +11,25 @@ object Racing {
             racingStart(carList)
             count++
         }
+        racingResult(carList)
     }
 
     private fun racingStart(carList: List<Car>) {
         for (car in carList) {
-            if (car.isGo()) maxLength = Math.max(car.lengthPlus(), maxLength)
+            if (car.isGo()) {
+                maxLength = Math.max(car.lengthPlus(), maxLength)
+            }
             car.printCarInfo()
         }
         println()
     }
 
-    fun racingResult(carList: List<Car>) {
+    private fun racingResult(carList: List<Car>) {
         val winnerList = mutableListOf<String>()
         carList.forEach {
-            if (it.lengthPlus() == maxLength + 1) winnerList.add(it.getName())
+            if (it.lengthPlus() == maxLength + 1) {
+                winnerList.add(it.getName())
+            }
         }
         printResult(winnerList)
     }
@@ -32,7 +37,7 @@ object Racing {
         print("최종 우승자 : ")
         result.forEachIndexed { index, s ->
             print(s)
-            if (index != result.lastIndex) print(",")
+            if (index != result.lastIndex) print(", ")
         }
     }
 }
