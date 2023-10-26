@@ -23,4 +23,8 @@ object PrintUtil {
         }
         println()
     }
+
+    fun printWinnerList(winnerList: MutableList<Car>) {
+
+    }
 }
