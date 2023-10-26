@@ -5,9 +5,7 @@ class Car(name: String) : Acceleration {
     private var carName = name
     private var length = CAR_INIT_LENGTH_VALUE
 
-    fun getName(): String {
-        return carName
-    }
+    fun getName() = carName
 
     fun printCarInfo() {
         print("$carName : ")
