@@ -11,8 +11,8 @@ object Racing {
     }
 
     private fun racingStart(carList: List<Car>) {
-        for(car in carList){
-            if(car.isGo()){
+        for (car in carList) {
+            if (car.isGo()) {
                 car.lengthPlus()
             }
             car.printName()
