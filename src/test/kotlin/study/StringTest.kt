@@ -9,33 +9,49 @@ import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 import race.Race
 class CarTest {
-    val input = "pobi,woni, 1 ,jun"
-    val expectedGarage = mapOf(
-        "pobi" to 0,
-        "woni" to 0,
-        "jun" to 0
-    )
-
-    val outputStream = ByteArrayOutputStream()
-    val printStream = PrintStream(outputStream)
-
-    @BeforeEach
-    fun setUp() {
-        System.setIn(ByteArrayInputStream(input.toByteArray()))
-        System.setOut(printStream)
-        val race = Race()
-        race.garage.clear()
-    }
     @Test
     fun testInputCar() {
+        val input = "pobi,woni,jun"
+        val expectedGarage = mapOf(
+            "pobi" to 0,
+            "woni" to 0,
+            "jun" to 0
+        )
+
+        val outputStream = ByteArrayOutputStream()
+        val printStream = PrintStream(outputStream)
+
+        System.setIn(ByteArrayInputStream(input.toByteArray()))
+        System.setOut(printStream)
+
         val race = Race()
         race.inputCar()
+
         assertThat(race.garage).isEqualTo(expectedGarage)
         val output = outputStream.toString().trim()
         assertThat(output).contains("경주할 자동차 이름을 입력하세요.")
     }
 }
+class InputNumTest {
+    @Test
+    fun testInputMoveNum() {
+        val input = "5"
+        val expectedNum = 5
 
+        val outputStream = ByteArrayOutputStream()
+        val printStream = PrintStream(outputStream)
+
+        System.setIn(ByteArrayInputStream(input.toByteArray()))
+        System.setOut(printStream)
+
+        val race = Race()
+        val result = race.inputMoveNum()
+
+        assertThat(result).isEqualTo(expectedNum)
+        val output = outputStream.toString().trim()
+        assertThat(output).contains("시도할 횟수")
+    }
+}
 class StringTest {
     @Test
     fun `split 메서드로 주어진 값을 구분`() {
