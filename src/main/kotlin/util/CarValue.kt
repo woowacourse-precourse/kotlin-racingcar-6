@@ -5,6 +5,7 @@ object CarValue {
     const val MAX_RANDOM_VALUE = 9
     const val MIN_FORWARD_VALUE = 4
     const val DISTANCE_SYMBOL = "-"
+    const val CAR_NAME_MIN_LENGTH = 1
     const val CAR_NAME_MAX_LENGTH = 5
     const val CAR_INIT_DISTANCE_VALUE = 0
 }

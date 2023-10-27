@@ -1,6 +1,7 @@
 package util
 
 import util.CarValue.CAR_NAME_MAX_LENGTH
+import util.CarValue.CAR_NAME_MIN_LENGTH
 import java.math.BigInteger
 
 object Validator {
@@ -21,7 +22,7 @@ object Validator {
 
     private fun carNameLengthCheck(carList: List<String>) {
         carList.forEach {
-            if (it.length > CAR_NAME_MAX_LENGTH) {
+            if (it.length in CAR_NAME_MIN_LENGTH..CAR_NAME_MAX_LENGTH) {
                 throw IllegalArgumentException()
             }
         }
