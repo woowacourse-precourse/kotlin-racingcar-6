@@ -7,6 +7,7 @@ import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.constants.*
+import racingcar.io.printCarListResult
 import racingcar.model.Car
 import racingcar.util.toCarNameList
 import racingcar.model.Try
@@ -275,6 +276,32 @@ class ApplicationTest : NsTest() {
         assertThat(result.size).isEqualTo(2)
         assertThat(result[0].name).isEqualTo("woni")
         assertThat(result[1].name).isEqualTo("jun")
+    }
+
+    @Test
+    fun `차수별 실행 결과를 형식에 맞게 출력한다`() {
+        //given
+        val case = listOf(
+            Car.of("pobi"),
+            Car.of("woni").apply {
+                moveForward()
+                moveForward()
+            },
+            Car.of("jun").apply {
+                moveForward()
+            }
+        )
+
+        // when
+        printCarListResult(case)
+
+        // then
+        assertThat(output())
+            .isEqualTo(
+                "pobi : \r\n" +
+                        "woni : --\r\n" +
+                        "jun : -"
+            )
     }
 
     public override fun runMain() {
