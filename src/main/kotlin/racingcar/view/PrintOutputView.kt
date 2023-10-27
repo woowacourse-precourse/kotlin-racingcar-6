@@ -2,6 +2,7 @@ package racingcar.view
 
 import racingcar.constant.PrintText
 import racingcar.domain.RacingCars
+import racingcar.domain.RacingGameWinners
 
 class PrintOutputView {
 
@@ -22,6 +23,10 @@ class PrintOutputView {
             println()
         }
         println()
+    }
+
+    fun printSoleWinner(gameWinner: RacingGameWinners) {
+        println(PrintText.PRINT_WINNER.text + gameWinner.getWinners().first().toString())
     }
 
 }
