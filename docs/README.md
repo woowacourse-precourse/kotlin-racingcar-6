@@ -11,7 +11,7 @@
 - [x] 게임 실행 기능 - `playGame()`#RacingCarGameController
 - [x] 레이싱 카 이름 입력 기능 - `getRacingCarNames()`#RacingCarGameController
 - [x] 시도 횟수 입력 기능 - `getAttemptsNum()`#RacingCarGameController
-- [ ] 레이싱 카 레이스 진행 기능 - `race()`#RacingCarGameController
+- [x] 레이싱 카 레이스 진행 기능 - `race()`#RacingCarGameController
 - [x] 레이싱 카 생성 기능 - `createRacingCars() `#RacingCarGameImpl
 - [x] 레이싱 카 이동 가능 여부 확인 기능 - `canRacingCarMove()`#RacingCarGameImpl
 - [x] 레이싱 카 이동 기능 - `moveRacingCars() `#RacingCarGameImpl
