@@ -1,7 +1,10 @@
 package racingcar
 
-import racingcar.domain.Car
+import racingcar.car.CarRacingGame
 
 fun main() {
-    Car().race()
+    CarRacingGame()
+        .setUp()
+        .race()
 }
+
