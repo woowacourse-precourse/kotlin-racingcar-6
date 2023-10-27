@@ -16,7 +16,7 @@
 - [ ] 경주할 자동차의 이름은 공백으로 시작할 수 없도록 한다.
     * 예) "kmkim, , kkm" ➡️ 불가능(IllegalArgumentException)
 - [ ] 경주할 자동차의 이름은 5자 이하가 되도록 한다. 아울러 0자도 허용하지 않는다.
-    * 예) "kmkim,,kkm" ➡️ 불가능(IllegalArgumentException)
+    * 예) "kmkim,,kkm" ➡️ 불가능(IllegalArgumentException). 두 번째 원소가 ""로, 0자이기 때문
 - [ ] 문자열을 쉼표로 구분하여 List로 변환 후 반환한다.
     * 예) "kmkim,kkm" ➡️ ["kmkim", "kkm"]
 
