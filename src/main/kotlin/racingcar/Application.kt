@@ -22,7 +22,7 @@ fun main() {
         cars[name] = ""
     }
 
-    println("실행 결과")
+    println("\n실행 결과")
     repeat(trialCount) {
         for (name in cars.keys) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
