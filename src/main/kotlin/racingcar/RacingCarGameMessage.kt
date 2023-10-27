@@ -20,6 +20,6 @@ class RacingCarGameMessage {
     }
 
     fun printWinnerMessage(winners: MutableList<String>) {
-        println("최종 우승자 : ${winners.joinToString(", ")}")
+        print("최종 우승자 : ${winners.joinToString(", ")}")
     }
 }
