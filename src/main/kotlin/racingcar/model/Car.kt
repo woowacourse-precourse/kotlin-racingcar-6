@@ -6,7 +6,7 @@ import racingcar.constants.FORWARD_CHARACTER
 
 class Car private constructor(val name: String) : Comparable<Car> {
     val racingResult = StringBuilder()
-    private var forwardCount = 0
+    var forwardCount = 0
 
     fun moveForward() {
         racingResult.append(FORWARD_CHARACTER)
@@ -14,7 +14,7 @@ class Car private constructor(val name: String) : Comparable<Car> {
     }
 
     override fun compareTo(other: Car): Int {
-        return this.forwardCount.compareTo(other.forwardCount)
+        return other.forwardCount.compareTo(this.forwardCount)
     }
 
     companion object {
