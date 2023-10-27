@@ -6,4 +6,6 @@ object Exception {
 
     fun String.requireValidCarNames() = require(this.trim().split(",").all { it.length in 1..5 }) { GAME_OVER_MESSAGE }
 
+    fun String.requireValidPositiveInt() = requireNotNull(this.toIntOrNull()) { GAME_OVER_MESSAGE }
+
 }
