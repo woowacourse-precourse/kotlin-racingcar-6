@@ -168,6 +168,22 @@ class ApplicationTest : NsTest() {
         assertThat(result3).isEqualTo(false)
     }
 
+    @Test
+    fun `자동차 이름이 중복될 경우 예외가 발생한다`() {
+        // given
+        val racingGame = RacingGame()
+        val case1 = listOf("pobi", "woni")
+        val case2 = listOf("pobi", "pobi")
+
+        // when, then
+        assertThatCode { racingGame.validateCarNameDuplication(case1) }
+            .doesNotThrowAnyException()
+
+        assertThatThrownBy { racingGame.validateCarNameDuplication(case2) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage(EXCEPTION_DUPLICATION)
+    }
+
     public override fun runMain() {
         main()
     }
