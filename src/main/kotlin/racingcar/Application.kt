@@ -1,5 +1,7 @@
 package racingcar
 
+import racingcar.validation.CheckValidation
+
 fun main() {
-    println("jinuemong start game")
+    val discriminator = CheckValidation()
 }
