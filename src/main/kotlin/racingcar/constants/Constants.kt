@@ -6,4 +6,6 @@ const val EXCEPTION_DIGIT = "시도할 횟수는 숫자만 입력할 수 있습�
 const val EXCEPTION_INT_MAX = "시도할 횟수가 너무 큽니다."
 const val EXCEPTION_POSITIVE = "시도할 횟수가 너무 작습니다. 0 이상의 수를 입력해주세요."
 
+const val RANDOM_START_NUMBER = 0
+const val RANDOM_END_NUMBER = 9
 const val MOVING_MORE_NUMBER = 4
