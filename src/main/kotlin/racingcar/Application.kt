@@ -21,7 +21,7 @@ fun getCarName(): List<String> {
 }
 
 // 기능 2. 자동차 이름 입력 값 유효성 검사하기
-fun checkNameValidation(checkList: List<String>) {
+fun checkCarNameValidation(checkList: List<String>) {
     val checkDuplicateList = mutableListOf<String>()
 
     for (check in checkList) {
