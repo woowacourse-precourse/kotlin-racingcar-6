@@ -2,6 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import java.lang.IllegalArgumentException
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     printGameStartMessage()
@@ -34,4 +35,8 @@ fun inputRaceCount(): Int {
 
 fun validateNumber(count: String) {
     count.toIntOrNull() ?: throw IllegalArgumentException("사용자의 입력이 숫자가 아닙니다.")
+}
+
+fun getRandomNumber(): Int {
+    return Randoms.pickNumberInRange(0, 9)
 }
