@@ -3,5 +3,5 @@ object MessageManager {
     const val INPUT_RACING_ROUND_MESSAGE = "시도할 횟수는 몇 회인가요?"
     const val RACING_RESULT_MESSAGE = "실행 결과"
     const val RACING_FINAL_WINNER_MESSAGE = "최종 우승자 : "
-    const val SEPARATOR = ", "
+    const val WINNER_SEPARATOR = ", "
 }

@@ -1,6 +1,6 @@
 import MessageManager.RACING_FINAL_WINNER_MESSAGE
 import MessageManager.RACING_RESULT_MESSAGE
-import MessageManager.SEPARATOR
+import MessageManager.WINNER_SEPARATOR
 import java.math.BigInteger
 
 object Racing {
@@ -8,11 +8,11 @@ object Racing {
     private var winnerLength = BigInteger.ZERO
 
     fun racingSetting(carList: List<Car>, round: BigInteger) {
-        var count = BigInteger.ZERO
+        var roundCount = BigInteger.ZERO
         println(RACING_RESULT_MESSAGE)
-        while (count < round) {
+        while (roundCount < round) {
             racingStart(carList)
-            count++
+            roundCount++
         }
         racingResult(carList)
     }
@@ -48,7 +48,7 @@ object Racing {
         print(RACING_FINAL_WINNER_MESSAGE)
         result.forEachIndexed { index, s ->
             print(s)
-            if (index != result.lastIndex) print(SEPARATOR)
+            if (index != result.lastIndex) print(WINNER_SEPARATOR)
         }
     }
 }

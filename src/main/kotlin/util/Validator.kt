@@ -12,7 +12,7 @@ object Validator {
         return input.toBigInteger()
     }
 
-    fun inputCarContentCheck(input: String): List<String> {
+    fun inputCarNameCheck(input: String): List<String> {
         val carList = input.split(",")
         carNameLengthCheck(carList)
         return carList
