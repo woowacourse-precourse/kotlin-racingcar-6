@@ -149,6 +149,25 @@ class ApplicationTest : NsTest() {
             .hasMessage(EXCEPTION_POSITIVE)
     }
 
+    @Test
+    fun `무작위 값이 4 이상인 경우 자동차를 전진시킬 조건을 충족시킨다`() {
+        // given
+        val racingGame = RacingGame()
+        val case1 = 4
+        val case2 = 8
+        val case3 = 2
+
+        // when
+        val result1 = racingGame.isMovingForward(case1)
+        val result2 = racingGame.isMovingForward(case2)
+        val result3 = racingGame.isMovingForward(case3)
+
+        // then
+        assertThat(result1).isEqualTo(true)
+        assertThat(result2).isEqualTo(true)
+        assertThat(result3).isEqualTo(false)
+    }
+
     public override fun runMain() {
         main()
     }
