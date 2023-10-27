@@ -19,4 +19,5 @@ class OutputView {
 
     fun printGameWinner(winners: String) = println(GAME_WINNER_MESSAGE.format(winners))
     fun printEmptyLine() = println()
+    fun printGameResult() = println(GAME_RESULT_MESSAGE)
 }
