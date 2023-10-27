@@ -2,6 +2,20 @@ package racingcar
 
 class RacingCarGame {
     private val cars = mutableListOf<Car>()
+    private val racingCarGameMessage = RacingCarGameMessage()
+    private val userInputManager = UserInputManager()
+    private val racingCarGameResultEvaluator = RacingCarGameResultEvaluator()
+    fun gamePlay() {
+        racingCarGameMessage.printCarNameInputMessage()
+        val names = userInputManager.userNameInput()
+        createCars(names)
+        racingCarGameMessage.printTryCountMessage()
+        val tryCount = userInputManager.userTryCountInput()
+        racingCarGameMessage.printResultMessage()
+        moveAllStep(tryCount)
+        val winners = racingCarGameResultEvaluator.racingCarGameJudge(cars)
+        racingCarGameMessage.printWinnerMessage(winners)
+    }
 
     fun moveAllCarsOneStep() {
         for(car in cars) {
@@ -9,7 +23,7 @@ class RacingCarGame {
         }
     }
 
-    fun carFactory(names: MutableList<String>) {
+    fun createCars(names: MutableList<String>) {
         for(name in names) {
             cars.add(Car(name, 0))
         }
