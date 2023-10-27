@@ -10,6 +10,7 @@ import racingcar.constants.*
 import racingcar.model.Car
 import racingcar.util.toCarNameList
 import racingcar.model.Try
+import racingcar.util.toCarList
 
 class ApplicationTest : NsTest() {
     @Test
@@ -43,7 +44,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `쉼표가 없는 문자열을 쉼표 기준으로 분리하는 경우 기존 문자열을 반환`() {
+    fun `쉼표가 없는 문자열을 쉼표 기준으로 분리하는 경우 기존 문자열을 반환한다`() {
         // given
         val case = "pobi"
 
@@ -136,9 +137,9 @@ class ApplicationTest : NsTest() {
         val case2 = 0
         val case3 = -1
 
-            // when, then
-            assertThatCode { Try.validateTryPositive(case1) }
-                .doesNotThrowAnyException()
+        // when, then
+        assertThatCode { Try.validateTryPositive(case1) }
+            .doesNotThrowAnyException()
 
         assertThatThrownBy { Try.validateTryPositive(case2) }
             .isInstanceOf(IllegalArgumentException::class.java)
@@ -195,6 +196,21 @@ class ApplicationTest : NsTest() {
 
         // then
         assertThat(car.racingResult.toString()).isEqualTo("--")
+    }
+
+    @Test
+    fun `자동차 이름으로 이루어진 리스트를 Car 객체가 담긴 리스트로 변환한다`() {
+        // given
+        val case = listOf("pobi", "woni", "jun")
+
+        // when
+        val result = case.toCarList()
+
+        // then
+        result.forEachIndexed { idx, car ->
+            assertThat(car).isInstanceOf(Car::class.java)
+            assertThat(car.name).isEqualTo(case[idx])
+        }
     }
 
     public override fun runMain() {
