@@ -12,7 +12,7 @@
 - [ ] 레이싱 카 이름 입력 기능 - `getRacingCarNames()`#RacingCarGameController
 - [ ] 시도 횟수 입력 기능 - `getAttemptsNum()`#RacingCarGameController
 - [ ] 레이싱 카 레이스 진행 기능 - `race()`#RacingCarGameController
-- [ ] 레이싱 카 생성 기능 - `createRacingCars() `#RacingCarGameImpl
+- [x] 레이싱 카 생성 기능 - `createRacingCars() `#RacingCarGameImpl
 - [ ] 레이싱 카 이동 가능 여부 확인 기능 - `canRacingCarMove()`#RacingCarGameImpl
 - [ ] 레이싱 카 이동 기능 - `moveRacingCars() `#RacingCarGameImpl
 - [ ] 우승자 결정 기능 - `getWinners()`#RacingCarGameImpl
