@@ -6,8 +6,6 @@ class Car(name: String) : Acceleration {
     private var carName = name
     private var distanceTraveled = CAR_INIT_DISTANCE_VALUE.toBigInteger()
 
-    fun getCarName() = carName
-
     fun printCarInfo() {
         print("$carName : ")
         var length = BigInteger.ZERO
@@ -17,6 +15,8 @@ class Car(name: String) : Acceleration {
         }
         println()
     }
+
+    fun getCarName() = carName
 
     fun lengthPlus() = ++distanceTraveled
 }
