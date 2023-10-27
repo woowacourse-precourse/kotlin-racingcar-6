@@ -40,3 +40,8 @@ fun validateNumber(count: String) {
 fun getRandomNumber(): Int {
     return Randoms.pickNumberInRange(0, 9)
 }
+
+fun moveOrStop(): Boolean {
+    val getNumber = getRandomNumber()
+    return getNumber >= 4
+}
