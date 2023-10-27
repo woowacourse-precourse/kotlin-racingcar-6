@@ -5,7 +5,7 @@
 
 ### 입력
 - [x] 경주할 자동차 이름, 시도 횟수 입력 받기
-- [ ] IllegalArgumentException 처리
+- [x] IllegalArgumentException 처리
 
 ### 경주 진행
 - [ ] 각 자동차에 이름 부여

@@ -10,7 +10,11 @@ fun main() {
         trialCount = Console.readLine().toInt()
     }
     catch (e: NumberFormatException) {
-
+        throw IllegalArgumentException()
     }
+    for (name in getNames) {
+        if (name.length > 5) throw IllegalArgumentException()
+    }
+
 
 }
