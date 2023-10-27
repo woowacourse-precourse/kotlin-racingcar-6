@@ -64,22 +64,22 @@ fun makeCarList(carNameList: List<String>): List<Car> {
 fun getTryNumber(): Int {
     println("시도할 횟수는 몇 회인가요?")
 
-    val input = Console.readLine()
+    val inputTryNumber = Console.readLine()
 
-    checkTryNumberValidation(input)
+    checkTryNumberValidation(inputTryNumber)
 
-    val inputTryNumber = input.toInt()
-
-    return inputTryNumber
+    return inputTryNumber.toInt()
 }
 
 // 기능 5. 시도할 횟수 입력값 유효성 검사하기
-fun checkTryNumberValidation(check: String): Int {
+fun checkTryNumberValidation(check: String) {
     try {
         val checkNumber = check.toInt()
-        if(checkNumber !in 1..Int.MAX_VALUE) {
-            throw IllegalArgumentException
+
+        if (checkNumber < 1) {
+            throw IllegalArgumentException("시도할 횟수는 1보다 커야한다.")
         }
+
     } catch (exception: NumberFormatException) {
         throw IllegalArgumentException("시도할 횟수는 숫자여야 한다.")
     }
