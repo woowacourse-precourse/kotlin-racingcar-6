@@ -1,7 +1,6 @@
 package race
 
 import camp.nextstep.edu.missionutils.Console
-import camp.nextstep.edu.missionutils.Randoms
 import kotlin.IllegalArgumentException
 
 class Race {
@@ -11,12 +10,14 @@ class Race {
         fun run() {
             val race = Race()
             race.inputCar()
+            race.inputMoveNum()
         }
     }
     fun inputCar() {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분")
         val carString = Console.readLine()
         checkCar(carString)
+
     }
 
     private fun checkCar(carString:String) {
@@ -34,6 +35,26 @@ class Race {
             } else {
                 garage[car] = 0
             }
+        }
+    }
+    fun inputMoveNum() : Int {
+        println("시도할 횟수는 몇 회인가요?")
+        val moveNumber = Console.readLine()
+        if (isInteger(moveNumber)) {
+            return moveNumber.toInt()
+        }
+        else {
+            throw IllegalArgumentException("정수를 입력하세요.")
+        }
+    }
+
+    private fun isInteger(checkString:String) : Boolean {
+        return try {
+            checkString.toInt()
+            true
+        } catch (e:NumberFormatException) {
+            println("정수를 입력하세요.")
+            false
         }
     }
 }
