@@ -213,6 +213,24 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `Car 객체의 대소비교는 forwardCount 변수의 값을 비교한다`() {
+        // given
+        val case1 = listOf(Car.of("pobi"), Car.of("woni"))
+        val case2 = listOf(Car.of("pobi").apply { moveForward() }, Car.of("woni"))
+        val case3 = listOf(Car.of("pobi"), Car.of("woni").apply { moveForward() })
+
+        // when
+        val result1 = case1[0].compareTo(case1[1])
+        val result2 = case2[0].compareTo(case2[1])
+        val result3 = case3[0].compareTo(case3[1])
+
+        // then
+        assertThat(result1).isEqualTo(0)
+        assertThat(result2).isEqualTo(1)
+        assertThat(result3).isEqualTo(-1)
+    }
+
     public override fun runMain() {
         main()
     }
