@@ -8,4 +8,11 @@ class RacingCarGame {
             car.move()
         }
     }
+
+    fun printAllCarsState() {
+        for(car in cars) {
+            car.printState()
+        }
+        println()
+    }
 }
