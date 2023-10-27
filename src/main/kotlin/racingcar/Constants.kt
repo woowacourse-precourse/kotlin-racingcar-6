@@ -5,7 +5,7 @@ object Constants {
     const val INPUT_TRIAL_NUM = "시도할 횟수는 몇 회인가요?"
 
     const val TRIAL_RESULT = "실행 결과"
-    const val WINNER = "최종 우승자 : "
+    const val WINNERS = "최종 우승자"
 
     const val MOVE_SIGN = "-"
 

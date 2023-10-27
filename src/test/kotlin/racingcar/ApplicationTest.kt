@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.Constants.EXCEPTION_CAR_NAME_LENGTH
@@ -12,6 +13,21 @@ import racingcar.Constants.EXCEPTION_CAR_NUM
 import racingcar.Constants.EXCEPTION_TRIAL_NUM
 
 class ApplicationTest : NsTest() {
+
+    private lateinit var resultManager: ResultManager
+
+    @BeforeEach
+    fun setUp() {
+        val input = listOf(
+                RacingCar("kmkim", 3),
+                RacingCar("kmk", 2),
+                RacingCar("kkm", 1),
+                RacingCar("km", 2),
+                RacingCar("kkk", 3),
+        )
+
+        resultManager = ResultManager(input)
+    }
 
     //=================================== 자동차 이름 입력 및 실행 횟수 입력 =============================================
     @Test
@@ -107,6 +123,12 @@ class ApplicationTest : NsTest() {
 
     //============================================ 자동차 경주 1회 실행 ===================================================
 
+    //============================================== 최종 결과 산출 ======================================================
+    @Test
+    fun `RacingCar의 리스트 형태 투입에 대한 우승자 반환`() {
+        val actualOutput = resultManager.determineWinners()
+        assertThat(actualOutput).isEqualTo(listOf("kmkim", "kkk"))
+    }
 
     @Test
     fun `전진 정지`() {
