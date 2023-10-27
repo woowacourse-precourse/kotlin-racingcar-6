@@ -11,27 +11,30 @@ const val STOP_STRING = ""
 
 class Racing {
     init {
-        startRacing()
+        startRacing(Input())
     }
 
-    private fun startRacing() {
+    private fun startRacing(input: Input) {
         val playerList = choicePlayer()
-        val cycle = Input().inputCycle()
+        val cycle = input.inputCycle()
         val distanceList = MutableList(playerList.size) { "" }
 
         print("\n실행결과\n")
 
         while (COUNT < cycle) {
-            repeat(playerList.size) {
-                saveDistance(decideMove(playerList[it]), distanceList, it)
+            repeat(playerList.size) { index ->
+                saveDistance(decideMove(playerList[index]), distanceList, index)
             }
             printDistance(playerList, distanceList)
             COUNT++
         }
+        val winner = decideWinner(playerList, distanceList)
+        printWinner(winner)
     }
 
     private fun choicePlayer(): List<Car> {
         val nameList: List<String> = Input().inputName()
+
         return nameList.map { name -> Car(name) }
     }
 
@@ -51,9 +54,30 @@ class Racing {
     }
 
     private fun printDistance(playerList: List<Car>, distanceList: List<String>) {
-        repeat(playerList.size) {
-            println("${playerList[it].name} : ${distanceList[it]}")
+        repeat(playerList.size) {index ->
+            println("${playerList[index].name} : ${distanceList[index]}")
         }
         println()
+    }
+
+    private fun decideWinner(playerList: List<Car>, distanceList: List<String>): List<String> {
+        val playerMap = changeListToMap(playerList, distanceList)
+        val longDistance = distanceList.sorted().reversed()[0]
+
+        return playerMap.filterValues { it == longDistance }.keys.toList()
+    }
+
+    private fun changeListToMap(playerList: List<Car>, distanceList: List<String>) : Map<String, String> {
+        val playerMap = mutableMapOf<String, String>()
+        repeat(playerList.size) {
+            playerMap[playerList[it].name] = distanceList[it]
+        }
+        return playerMap
+    }
+
+    private fun printWinner(winnerList: List<String>) {
+        print("최종 우승자 : ")
+        val winner = winnerList.joinToString(", ")
+        println(winner)
     }
 }
