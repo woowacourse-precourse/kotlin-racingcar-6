@@ -17,6 +17,6 @@
 - [ ] 레이싱 카 이동 기능 - `moveRacingCars() `#RacingCarGameImpl
 - [ ] 우승자 결정 기능 - `getWinners()`#RacingCarGameImpl
 - [x] 유효한 레이싱 카 이름을 검증하는 기능 - `requireValidCarNames()`#Exception
-- [ ] 유효한 정수인지 검증하는 기능 - `requireValidPositiveInt()`#Exception
+- [x] 유효한 정수인지 검증하는 기능 - `requireValidPositiveInt()`#Exception
 - [ ] 양의 정수를 검증하는 기능 - `requirePositiveInt()`#Exception
 - [x] 상수 값 #Constant
