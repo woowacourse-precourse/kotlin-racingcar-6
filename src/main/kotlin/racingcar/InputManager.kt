@@ -15,6 +15,12 @@ object InputManager {
         println(INPUT_NAMES)
         val cars = Console.readLine()
         val carList = getCarList(cars)
+
+        println(INPUT_TRIAL_NUM)
+        val num = Console.readLine()
+        val trialNum = getTrialNum(num)
+
+        return GameSetting(carList = carList, trialNum = trialNum)
     }
 
     fun getCarList(names: String): List<RacingCar> {
@@ -29,5 +35,11 @@ object InputManager {
             RacingCar(name = carName, moves = 0)
         }
         return carList
+    }
+
+    fun getTrialNum(num: String): Long = try {
+        num.toLong()
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException(EXCEPTION_TRIAL_NUM)
     }
 }

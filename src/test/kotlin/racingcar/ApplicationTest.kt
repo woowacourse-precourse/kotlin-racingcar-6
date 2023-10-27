@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.Constants.EXCEPTION_CAR_NAME_LENGTH
@@ -56,6 +55,53 @@ class ApplicationTest : NsTest() {
         val input = "kmkim2689,,kkm"
         assertThrows<IllegalArgumentException>(EXCEPTION_CAR_NAME_LENGTH) {
             InputManager.getCarList(input)
+        }
+    }
+
+    @Test
+    fun `문자열 형태의 숫자를 실행 횟수로 입력함에 대한 Long 형태의 실행 횟수 반환`() {
+        val input = "12"
+        val expectedOutput = InputManager.getTrialNum(input)
+        assertThat(expectedOutput).isEqualTo(12L)
+    }
+
+    @Test
+    fun `공백을 실행 횟수로 입력함에 대한 예외 처리`() {
+        val input = " "
+        assertThrows<IllegalArgumentException>(EXCEPTION_TRIAL_NUM) {
+            InputManager.getTrialNum(input)
+        }
+    }
+
+    @Test
+    fun `빈 문자열을 실행 횟수로 입력함에 대한 예외 처리`() {
+        val input = ""
+        assertThrows<IllegalArgumentException>(EXCEPTION_TRIAL_NUM) {
+            InputManager.getTrialNum(input)
+        }
+    }
+
+    @Test
+    fun `한글을 실행 횟수로 입력함에 대한 예외 처리`() {
+        val input = "횟수"
+        assertThrows<IllegalArgumentException>(EXCEPTION_TRIAL_NUM) {
+            InputManager.getTrialNum(input)
+        }
+    }
+
+    @Test
+    fun `특수문자를 실행 횟수로 입력함에 대한 예외 처리`() {
+        val input = "^"
+        assertThrows<IllegalArgumentException>(EXCEPTION_TRIAL_NUM) {
+            InputManager.getTrialNum(input)
+        }
+    }
+
+    @Test
+    fun `영문자 실행 횟수로 입력함에 대한 예외 처리`() {
+        val input = "k"
+        assertThrows<IllegalArgumentException>(EXCEPTION_TRIAL_NUM) {
+            InputManager.getTrialNum(input)
         }
     }
 
