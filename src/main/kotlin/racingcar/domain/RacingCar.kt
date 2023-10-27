@@ -7,7 +7,7 @@ class RacingCar(private val name: String) {
         forwardCount++
     }
 
-    fun countForwardCount(): Int = forwardCount
+    fun receiveForwardCount(): Int = forwardCount
 
     fun readRacingCarName(): String = name
 
