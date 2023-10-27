@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     val carList = makeCarList(getCarName())
+
+    val tryNumber = getTryNumber()
 }
 
 // 기능 1. 자동차 이름 입력받기
@@ -55,4 +57,14 @@ fun makeCarList(carNameList: List<String>): List<Car> {
     }
 
     return carList
+}
+
+// 기능 4. 시도할 횟수 정하기
+fun getTryNumber():Int {
+    println("시도할 횟수는 몇 회인가요?")
+
+    val input = Console.readLine()
+    val inputNumber = input.toInt()
+
+    return inputNumber
 }
