@@ -227,8 +227,54 @@ class ApplicationTest : NsTest() {
 
         // then
         assertThat(result1).isEqualTo(0)
-        assertThat(result2).isEqualTo(1)
-        assertThat(result3).isEqualTo(-1)
+        assertThat(result2).isEqualTo(-1)
+        assertThat(result3).isEqualTo(1)
+    }
+
+    @Test
+    fun `Car 객체가 전진한 횟수에 따라 우승자를 가려낸다`() {
+        // given
+        val racingGame = RacingGame()
+        val case = listOf(
+            Car.of("pobi"),
+            Car.of("woni").apply {
+                moveForward()
+                moveForward()
+            },
+            Car.of("jun").apply {
+                moveForward()
+            }
+        )
+
+        // when
+        val result = racingGame.pickWinner(case)
+
+        // then
+        assertThat(result.size).isEqualTo(1)
+        assertThat(result[0].name).isEqualTo("woni")
+    }
+
+    @Test
+    fun `우승자가 여러명인 경우 입력된 순서대로 우승자를 출력한다`() {
+        // given
+        val racingGame = RacingGame()
+        val case = listOf(
+            Car.of("pobi"),
+            Car.of("woni").apply {
+                moveForward()
+            },
+            Car.of("jun").apply {
+                moveForward()
+            }
+        )
+
+        // when
+        val result = racingGame.pickWinner(case)
+
+        // then
+        assertThat(result.size).isEqualTo(2)
+        assertThat(result[0].name).isEqualTo("woni")
+        assertThat(result[1].name).isEqualTo("jun")
     }
 
     public override fun runMain() {
