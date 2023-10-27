@@ -2,6 +2,7 @@ package racingcar.manager
 
 import racingcar.model.Car
 
+// 게임의 출력을 담당하는 매니저입니다.
 class MessageManager {
 
     fun printGameStart() = println(GAME_START)
