@@ -34,5 +34,15 @@ class ValidatorTest {
         val firstInput = "일번,삼번,사번,오번,789번"
         assertThat(inputCarNameCheck(firstInput))
             .containsAll(listOf("일번", "삼번", "사번", "오번", "789번"))
+
+        val secondInput = "6549,45612,가나다라마사"
+        assertThatIllegalArgumentException().isThrownBy {
+            inputCarNameCheck(secondInput)
+        }
+
+        val thirdInput = "asd,123,,"
+        assertThatIllegalArgumentException().isThrownBy {
+            inputCarNameCheck(thirdInput)
+        }
     }
 }
