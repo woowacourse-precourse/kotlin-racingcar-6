@@ -1,8 +1,40 @@
 package study
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import java.io.PrintStream
+import race.Race
+class CarTest {
+    val input = "pobi,woni, 1 ,jun"
+    val expectedGarage = mapOf(
+        "pobi" to 0,
+        "woni" to 0,
+        "jun" to 0
+    )
+
+    val outputStream = ByteArrayOutputStream()
+    val printStream = PrintStream(outputStream)
+
+    @BeforeEach
+    fun setUp() {
+        System.setIn(ByteArrayInputStream(input.toByteArray()))
+        System.setOut(printStream)
+        val race = Race()
+        race.garage.clear()
+    }
+    @Test
+    fun testInputCar() {
+        val race = Race()
+        race.inputCar()
+        assertThat(race.garage).isEqualTo(expectedGarage)
+        val output = outputStream.toString().trim()
+        assertThat(output).contains("경주할 자동차 이름을 입력하세요.")
+    }
+}
 
 class StringTest {
     @Test
