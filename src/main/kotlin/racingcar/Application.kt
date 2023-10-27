@@ -14,6 +14,8 @@ fun main() {
         i.trim()
         if (i == "" || i.length > 5)
             throw IllegalArgumentException("모든 자동차 이름은 1글자 이상, 5글자 이하여야 합니다.")
+        if (i in carNamesAndResults.keys)
+            throw IllegalArgumentException("자동차 이름은 중복될 수 없습니다.")
         carNamesAndResults[i] = ""
     }
 
