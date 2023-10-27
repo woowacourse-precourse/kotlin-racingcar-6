@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Console
 fun checkAvailableCarName(carName: List<String>) {
     for(name in carName) {
         if(name.length > 5)
-            throw IllegalArgumentException("Car name must at most 5 letters")
+            throw IllegalArgumentException("Car name must be at most 5 letters")
     }
 }
 
@@ -25,6 +25,14 @@ fun enterCarName(): List<String> {
     return carName
 }
 
+fun enterTryCount(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+
+    val tryCount = Console.readLine().toInt()
+
+    return tryCount
+}
 fun main() {
     enterCarName()
+    enterTryCount()
 }
