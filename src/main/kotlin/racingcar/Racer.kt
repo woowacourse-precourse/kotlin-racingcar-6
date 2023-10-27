@@ -1,14 +1,14 @@
 package racingcar
 
-class Racer() {
-    fun verifyRacerName(racerNames: String): MutableList<String> {
-        val getVerifyRacerNames: MutableList<String> = blendRacerName(racerNames)
+class Racer(private val racerNames: String = "") {
+    fun verifyRacerName(): MutableList<String> {
+        val getVerifyRacerNames: MutableList<String> = blendRacerName()
         exceptionRacerName(getVerifyRacerNames)
         return getVerifyRacerNames
     }
 
-    private fun blendRacerName(unverifiedRacer: String): MutableList<String>{
-        val personalRacerName = unverifiedRacer.split(",").map { it.trim() }
+    private fun blendRacerName(): MutableList<String>{
+        val personalRacerName = racerNames.split(",").map { it.trim() }
         return personalRacerName.toMutableList()
     }
 
@@ -17,7 +17,6 @@ class Racer() {
         checkRacerNameBlank(racerNames)
         checkRacerTotalRange(racerNames)
     }
-
 
     private fun checkRacerNameLength(getVerifyRacerNames: MutableList<String>): Boolean {
         for (name in getVerifyRacerNames) {
@@ -37,5 +36,4 @@ class Racer() {
         if(getVerifyRacerNames.size !in 1..10) throw IllegalArgumentException("자동차 이름은 1개부터 10개까지 입력할 수 있습니다.")
         return true
     }
-
 }
