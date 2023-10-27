@@ -3,12 +3,6 @@ package racingcar.service
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.domain.Car
 
-var COUNT = 0
-const val GO = 1
-const val STOP = 0
-const val GO_STRING = "-"
-const val STOP_STRING = ""
-
 class Racing {
     init {
         startRacing(Input())
@@ -79,5 +73,13 @@ class Racing {
         print("최종 우승자 : ")
         val winner = winnerList.joinToString(", ")
         println(winner)
+    }
+
+    companion object {
+        var COUNT = 0
+        private const val GO = 1
+        private const val STOP = 0
+        private const val GO_STRING = "-"
+        private const val STOP_STRING = ""
     }
 }
