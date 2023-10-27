@@ -1,22 +1,28 @@
 package racingcar.model
 
-import racingcar.constants.EXCEPTION_INT
-import racingcar.constants.EXCEPTION_RANGE
+import racingcar.constants.*
 
 class Try private constructor(val count: Int) {
 
     private fun validateTry(countString: String) {
-        validateTryInt(countString)
-        validateTryRange(countString.toInt())
+        validateTryDigit(countString)
+        validateTryIntMax(countString)
+        validateTryPositive(countString.toInt())
     }
 
     companion object {
-        fun validateTryInt(countString: String) {
-            require(countString.all { it.isDigit() }) { EXCEPTION_INT }
+        fun validateTryDigit(countString: String) {
+            require(countString.all { it.isDigit() }) { EXCEPTION_DIGIT }
         }
 
-        fun validateTryRange(count: Int) {
-            require(count in 0..Int.MAX_VALUE) { EXCEPTION_RANGE }
+        fun validateTryIntMax(countString: String) {
+            with(Int.MAX_VALUE.toString()) {
+                require(this.length > countString.length || this >= countString) { EXCEPTION_INT_MAX }
+            }
+        }
+
+        fun validateTryPositive(count: Int) {
+            require(count > 0) { EXCEPTION_POSITIVE }
         }
     }
 }
