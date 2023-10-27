@@ -2,8 +2,8 @@ package racingcar.controller
 
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.RacingCar
-import racingcar.utils.Constant.MAX_VALUE
-import racingcar.utils.Constant.MIN_VALUE
+import racingcar.utils.Constant.MAX_RANGE_VALUE
+import racingcar.utils.Constant.MIN_RANGE_VALUE
 import racingcar.utils.Constant.MOVE_THRESHOLD
 
 class RacingCarGameImpl : RacingCarGame {
@@ -11,7 +11,8 @@ class RacingCarGameImpl : RacingCarGame {
     override fun createRacingCars(racingCars: List<String>): List<RacingCar> =
         racingCars.map { RacingCar(name = it.trim()) }
 
-    override fun canRacingCarMove(): Boolean = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE) >= MOVE_THRESHOLD
+    override fun canRacingCarMove(): Boolean =
+        Randoms.pickNumberInRange(MIN_RANGE_VALUE, MAX_RANGE_VALUE) >= MOVE_THRESHOLD
 
     override fun moveRacingCars(racingCars: List<RacingCar>): List<RacingCar> {
         return racingCars.map { racingCar ->

@@ -9,6 +9,6 @@ object Constant {
     const val GAME_RESULT_MESSAGE = "실행 결과"
 
     const val MOVE_THRESHOLD = 4
-    const val MIN_VALUE = 0
-    const val MAX_VALUE = 9
+    const val MIN_RANGE_VALUE = 0
+    const val MAX_RANGE_VALUE = 9
 }
