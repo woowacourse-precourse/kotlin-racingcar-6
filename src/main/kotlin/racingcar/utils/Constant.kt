@@ -11,4 +11,7 @@ object Constant {
     const val MOVE_THRESHOLD = 4
     const val MIN_RANGE_VALUE = 0
     const val MAX_RANGE_VALUE = 9
+    
+    const val MIN_LENGTH_VALUE = 1
+    const val MAX_LENGTH_VALUE = 5
 }
