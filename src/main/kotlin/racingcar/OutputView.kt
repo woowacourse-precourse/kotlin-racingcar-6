@@ -19,6 +19,10 @@ class OutputView {
             return curPosition
         }
 
+        fun printWinners(nameList : List<String>) {
+            println("최종 우승자 : ${nameList.joinToString(", ")}")
+        }
+
 
     }
 }
