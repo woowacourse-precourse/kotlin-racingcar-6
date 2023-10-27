@@ -1,8 +1,8 @@
 package study
 
-import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.assertThatIllegalArgumentException
+import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
+import util.Validator.inputCarNameCheck
 import util.Validator.inputRacingRoundContentCheck
 import java.math.BigInteger
 
@@ -23,9 +23,16 @@ class ValidatorTest {
             inputRacingRoundContentCheck(thirdInput)
         }
 
-        val fourthInput = "12345"
-        assertThatIllegalArgumentException().isThrownBy {
+        val fourthInput = "32198765498352168431984351984351"
+        assertThatNoException().isThrownBy {
             inputRacingRoundContentCheck(fourthInput)
         }
+    }
+
+    @Test
+    fun `carNameCheck 입력 받은 자동차들의 이름 유효성 검사`() {
+        val firstInput = "일번,삼번,사번,오번,789번"
+        assertThat(inputCarNameCheck(firstInput))
+            .containsAll(listOf("일번", "삼번", "사번", "오번", "789번"))
     }
 }
