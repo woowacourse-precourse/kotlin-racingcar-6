@@ -9,6 +9,12 @@ class RacingCarGame {
         }
     }
 
+    fun carFactory(names: MutableList<String>) {
+        for(name in names) {
+            cars.add(Car(name, 0))
+        }
+    }
+
     fun printAllCarsState() {
         for(car in cars) {
             car.printState()
