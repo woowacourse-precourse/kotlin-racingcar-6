@@ -25,9 +25,9 @@
 - GuideView
   - inputCarsName
   - inputRoundCount
-- UserInput
-  - inputCarsName
-  - inputRoundCount
+- UserInputView
+  - getCarsName
+  - getRoundCount
 - RaceResultView
   - printRoundResult
   - printWinners
