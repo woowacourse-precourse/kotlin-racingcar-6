@@ -16,4 +16,10 @@ class RacingCarGameImpl : RacingCarGame {
             else racingCar
         }
     }
+
+    override fun getWinners(racingCars: List<RacingCar>): String {
+        val maxRaceRecordPosition = racingCars.maxOf { it.position }
+        val winners = racingCars.filter { it.position == maxRaceRecordPosition }
+        return winners.joinToString(", ") { it.name }
+    }
 }
