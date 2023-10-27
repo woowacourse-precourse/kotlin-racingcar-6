@@ -1,7 +1,7 @@
 ## 기능 목록
 
 - [x] 사용자에게 레이싱 카 이름 입력을 요청하는 기능 - `printCarNamePrompt()`#OutputView
-- [ ] 사용자에게 시도 횟수 입력을 요청하는 기능 - `printAttemptsPrompt()`#OutputView
+- [x] 사용자에게 시도 횟수 입력을 요청하는 기능 - `printAttemptsPrompt()`#OutputView
 - [ ] 레이싱 카 경주 결과를 출력하는 기능 - `printCarRaceResults()`#OutputView
 - [ ] 최종 게임 우승자를 출력하는 기능 - `printGameWinner()`#OutputView
 - [ ] 빈 줄 출력 기능 - `printEmptyLine()`#OutputView
