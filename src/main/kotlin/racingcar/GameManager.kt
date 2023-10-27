@@ -1,0 +1,5 @@
+package racingcar
+
+object GameManager {
+
+}
