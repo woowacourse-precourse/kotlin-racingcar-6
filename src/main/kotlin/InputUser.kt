@@ -23,7 +23,7 @@ class InputUser {
         val input=scanner.nextLine()
         return input.toInt()
     }
-    //처음에는 input을 pair로 관리하였으나, 게임횟수와 이름 사이의 유기성이 적다고 판단하여 이름만 따로 관리하는 리스트로 변경
+    //처음에는 input을 pair로 관리하였으나, 게임횟수와 이름 사이의 유기성이 적다고 판단하여 이름만 리스트에 넣음
     fun createMap(){
     }
 }
