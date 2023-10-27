@@ -6,7 +6,7 @@ class RacingCarMover {
 
     fun moveRacingCars(racingCars: RacingCars): RacingCars {
         racingCars.loadRacingCars().forEach {
-            if (generateRandomNumber() > BOUNDARY_NUMBER) {
+            if (generateRandomNumber() >= BOUNDARY_NUMBER) {
                 it.addForwardCount()
             }
         }
