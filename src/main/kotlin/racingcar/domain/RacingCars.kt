@@ -6,9 +6,8 @@ class RacingCars(nameList: List<String>) {
     private val racingCars = mutableListOf<RacingCar>()
 
     init {
-        val removeBLank = nameList.map { it.trim() }
-        validateNameLength(removeBLank)
-        removeBLank.forEach {
+        validateNameLength(nameList)
+        nameList.forEach {
             racingCars.add(RacingCar(it))
         }
     }
