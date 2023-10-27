@@ -18,6 +18,7 @@ class UserInputManager {
 
     fun userTryCountInput() : Int{
         val input = Console.readLine()
+        userInputValidator.userTryCountInputValidator(input)
         return input.toInt()
     }
 }
