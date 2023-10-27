@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val getNames = Console.readLine().split(",")
@@ -19,5 +20,10 @@ fun main() {
         cars[name] = 0
     }
 
+    repeat(trialCount) {
+        for (name in cars.keys) {
+
+        }
+    }
 
 }
