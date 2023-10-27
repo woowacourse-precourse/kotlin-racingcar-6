@@ -184,6 +184,19 @@ class ApplicationTest : NsTest() {
             .hasMessage(EXCEPTION_DUPLICATION)
     }
 
+    @Test
+    fun `자동차를 전진시킨다`() {
+        // given
+        val car = Car.of("pobi")
+
+        // when
+        car.moveForward()
+        car.moveForward()
+
+        // then
+        assertThat(car.racingResult.toString()).isEqualTo("--")
+    }
+
     public override fun runMain() {
         main()
     }
