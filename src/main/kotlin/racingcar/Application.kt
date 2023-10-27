@@ -28,7 +28,9 @@ fun main() {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
                 cars[name] = cars[name]!! + "-"
             }
+            println("$name : ${cars[name]}")
         }
+        println()
     }
 
     var winner = mutableListOf<String>()
