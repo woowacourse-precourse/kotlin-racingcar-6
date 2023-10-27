@@ -2,11 +2,15 @@ package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
 import racingcar.domain.RacingCars
-import racingcar.util.AttemptCountValidator
+import racingcar.util.UserInputValidator
 
 class ReadUserInputView {
-    private val attemptNumberValidator = AttemptCountValidator()
-    fun readCarNames(): RacingCars = RacingCars(Console.readLine().split(","))
+    private val validator = UserInputValidator()
+    fun readCarNames(): RacingCars {
+        val carNames = Console.readLine().split(",")
+        validateCarNames(carNames)
+        return RacingCars(carNames)
+    }
 
     fun readAttemptNumber(): Int {
         val attemptNumberInput = Console.readLine()
@@ -14,8 +18,12 @@ class ReadUserInputView {
         return attemptNumberInput.toInt()
     }
 
+    private fun validateCarNames(carNames: List<String>) {
+        validator.validateCarNames(carNames)
+    }
+
     private fun validateAttemptNumber(attemptNumberInput: String) {
-        attemptNumberValidator.validateNumberFormat(attemptNumberInput)
+        validator.validateNumberFormat(attemptNumberInput)
     }
 
 }
