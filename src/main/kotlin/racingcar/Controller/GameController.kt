@@ -12,5 +12,15 @@ class GameController {
         val userRoundInput=UserInput().inputRoundNumber()
         var roundInput=ErrorController().roundNumberErrorController(userRoundInput)
 
+        gameProgress(carNames,roundInput)
+    }
+    private fun gameProgress(carNames:List<String>, roundInput:Int) {
+
+        var raceStatus = mutableMapOf<String, List<Boolean>>()
+
+        for (i in 1..roundInput) {
+            var oneRoundResults = RoundStateController().oneRoundResult(carNames)
+            raceStatus= RoundStateController().placementOfScores(carNames,oneRoundResults,raceStatus)
+        }
     }
 }
