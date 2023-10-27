@@ -7,7 +7,7 @@
 - [ ] 빈 줄 출력 기능 - `printEmptyLine()`#OutputView
 - [ ] 게임 결과 메시지 출력 기능 - `printGameResult()`#OutputView
 - [x] 사용자에게 레이싱 카 이름을 입력받는 기능 - `inputRacingCarNames()`#InputView
-- [ ] 사용자에게 시도 횟수를 입력받는 기능 - `inputAttemptsNum()`#InputView
+- [x] 사용자에게 시도 횟수를 입력받는 기능 - `inputAttemptsNum()`#InputView
 - [ ] 게임 실행 기능 - `playGame()`#RacingCarGameController
 - [ ] 레이싱 카 이름 입력 기능 - `getRacingCarNames()`#RacingCarGameController
 - [ ] 시도 횟수 입력 기능 - `getAttemptsNum()`#RacingCarGameController
