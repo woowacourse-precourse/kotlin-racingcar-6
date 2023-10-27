@@ -1,6 +1,7 @@
 package race
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 import kotlin.IllegalArgumentException
 
 class Race {
@@ -62,24 +63,34 @@ class Race {
     fun carMove(moveNum:Int) {
         println("실행 결과")
         for (i in 0..<moveNum) {
-            for ((car,moveCount) in garage.entries) {
-                if (checkMove()) {
-                    garage[car] = moveCount + 1
-                    printMove(car,moveCount + 1)
-                }
-                else {
-                    printMove(car,moveCount)
-                }
-            }
-            println()
+            carMoveOnce()
         }
     }
-
-    fun checkMove() :Boolean {
-        TODO()
+    private fun carMoveOnce() {
+        for ((car,moveCount) in garage.entries) {
+            if (checkMove()) {
+                garage[car] = moveCount + 1
+                printMove(car,moveCount + 1)
+            }
+            else {
+                printMove(car,moveCount)
+            }
+        }
+        println()
+    }
+    private fun checkMove() :Boolean {
+        val randomNumber = generateRandomNum()
+        return randomNumber >= 4
     }
 
-    fun printMove(car:String,count:Int) {
-        TODO()
+    private fun generateRandomNum() :Int {
+        val ranNum = Randoms.pickNumberInRange(0,9)
+        print(ranNum)
+        return ranNum
+    }
+
+    private fun printMove(car:String, count:Int) {
+        val repeatMinus = "-".repeat(count)
+        println("$car : $repeatMinus")
     }
 }
