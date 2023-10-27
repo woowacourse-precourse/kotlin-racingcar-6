@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.constants.*
 import racingcar.io.printCarListResult
+import racingcar.io.printWinner
 import racingcar.model.Car
 import racingcar.util.toCarNameList
 import racingcar.model.Try
@@ -256,7 +257,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `우승자가 여러명인 경우 입력된 순서대로 우승자를 출력한다`() {
+    fun `우승자가 여러명인 경우 입력된 순서대로 우승자의 순서가 정해진다`() {
         // given
         val racingGame = RacingGame()
         val case = listOf(
@@ -302,6 +303,30 @@ class ApplicationTest : NsTest() {
                         "woni : --\r\n" +
                         "jun : -"
             )
+    }
+
+    @Test
+    fun `최종 우승자를 출력한다`() {
+        //given
+        val case = listOf(Car.of("pobi"))
+
+        // when
+        printWinner(case)
+
+        // then
+        assertThat(output()).isEqualTo("최종 우승자 : pobi")
+    }
+
+    @Test
+    fun `최종 우승자가 여러명인 경우 이름를 쉼표로 구분하여 출력한다`() {
+        //given
+        val case = listOf(Car.of("pobi"), Car.of("woni"))
+
+        // when
+        printWinner(case)
+
+        // then
+        assertThat(output()).isEqualTo("최종 우승자 : pobi, woni")
     }
 
     public override fun runMain() {
