@@ -12,8 +12,11 @@ fun main() {
     catch (e: NumberFormatException) {
         throw IllegalArgumentException()
     }
+
+    val cars = HashMap<String, Int>()
     for (name in getNames) {
         if (name.length > 5) throw IllegalArgumentException()
+        cars[name] = 0
     }
 
 
