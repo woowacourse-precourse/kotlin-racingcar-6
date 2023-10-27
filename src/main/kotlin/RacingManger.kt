@@ -4,7 +4,7 @@ import MessageManager.INPUT_RACING_ROUND_MESSAGE
 import camp.nextstep.edu.missionutils.Console
 import util.Validator.inputRacingRoundContentCheck
 
-class RacingManger {
+object RacingManger {
     fun racingInfoInput() {
         println(INPUT_CAR_NAME_MESSAGE)
         val racingCarList = makeCar(Console.readLine())
