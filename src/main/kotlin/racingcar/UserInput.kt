@@ -3,6 +3,19 @@ package racingcar
 class UserInput {
     private val restPointRegex = Regex("[^,]+")
     private val underFiveCharRegex = Regex("^.{1,5}\$")
+    private val numberRegex = Regex("\\d+\$")
+
+    fun inputCountMove(): Int {
+        val input = readln().trim()
+        checkIsNumber(input)
+        return input.toInt()
+    }
+    private fun checkIsNumber(input: String) {
+        if(!numberRegex.matches(input)){
+            throw IllegalArgumentException("잘못된 입력")
+        }
+    }
+
     fun inputCarNames(): List<Car> {
         val input = readln().trim()
         checkRestPoint(input)
@@ -23,11 +36,13 @@ class UserInput {
         }
     }
 
-    fun checkRestPoint(input: String) {
-        if (!restPointRegex.matches(input)) {
+    private fun checkRestPoint(input: String) {
+        if ("," !in input) {
             throw IllegalArgumentException("잘못된 입력")
         }
     }
+
+
 
 
 }
