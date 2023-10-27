@@ -8,7 +8,11 @@ class Game {
         makeCars()
         val times = input.enterNumberTimes()
         numberTimesErrorCheck(times)
-        for (i in 1..times.toInt()) {
+        playGame(times.toInt())
+    }
+
+    private fun playGame(times:Int){
+        for (i in 1..times) {
             moveCars()
             input.printPosition(cars)
         }
@@ -16,9 +20,9 @@ class Game {
     }
 
     private fun moveCars() {
-        for (i in cars) {
-            val num = i.generateRandomNumber()
-            i.updatePosition(i.judgeNumber(num))
+        for (car in cars) {
+            val num = car.generateRandomNumber()
+            car.updatePosition(car.judgeNumber(num))
         }
     }
 
@@ -53,5 +57,4 @@ class Game {
         }
         return winnerList
     }
-
 }
