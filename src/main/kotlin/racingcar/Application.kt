@@ -55,6 +55,23 @@ fun randomNumEachGame(carForwardCount: MutableList<Int>) {
     }
 }
 
+fun printProgress(carName: List<String>, carForwardCount: MutableList<Int>) {
+    for( i in carName.indices ) {
+
+        print("${carName[i]} : ")
+
+        printProgressCount(carForwardCount[i])
+    }
+}
+
+fun printProgressCount(forwardCount: Int) {
+
+    for(i in 1..forwardCount) {
+        print("-")
+    }
+    println("")
+}
+
 fun startGame(carName: List<String>, tryCount: Int) {
     //자동차 별 전진 횟수 저장
     val carForwardCount = mutableListOf<Int>()
@@ -63,6 +80,7 @@ fun startGame(carName: List<String>, tryCount: Int) {
 
     for(gameCount in 0..(tryCount-1)) {
         randomNumEachGame(carForwardCount)
+        printProgress(carName, carForwardCount)
     }
     println(carForwardCount)
 }
