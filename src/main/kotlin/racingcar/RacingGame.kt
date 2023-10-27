@@ -7,7 +7,7 @@ import racingcar.constants.RANDOM_START_NUMBER
 
 class RacingGame {
 
-    fun isMovingForward(): Boolean {
-        return Randoms.pickNumberInRange(RANDOM_START_NUMBER, RANDOM_END_NUMBER) >= MOVING_MORE_NUMBER
+    fun isMovingForward(number: Int): Boolean {
+        return number >= MOVING_MORE_NUMBER
     }
 }
