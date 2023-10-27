@@ -47,5 +47,6 @@ fun main() {
     }
 
     println("최종 우승자 : ${winner.joinToString(", ")}")
+    Console.close()
 
 }
