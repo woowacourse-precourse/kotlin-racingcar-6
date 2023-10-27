@@ -1,6 +1,6 @@
 package racingcar
 
-class UserInput {
+class UserClient {
     private val restPointRegex = Regex("[^,]+")
     private val underFiveCharRegex = Regex("^.{1,5}\$")
     private val numberRegex = Regex("\\d+\$")
@@ -20,6 +20,7 @@ class UserInput {
         val input = readln().trim()
         checkRestPoint(input)
         checkUnderFiveCharRegex(input)
+
         return convertInputToCarList(input)
     }
 
