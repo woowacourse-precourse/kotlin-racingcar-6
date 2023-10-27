@@ -7,3 +7,7 @@ fun inputRacingCars(): List<String> {
     val racingCars = Console.readLine()
     return racingCars.toCarNameList()
 }
+
+fun inputTryCount(): Int {
+    return Console.readLine().toInt()
+}
