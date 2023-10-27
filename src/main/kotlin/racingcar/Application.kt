@@ -28,4 +28,9 @@ fun main() {
         }
     }
 
+    var winner: String = cars.keys.first()
+    for (name in cars.keys) {
+        if (cars[name]!! > cars[winner]!!) winner = name
+    }
+
 }
