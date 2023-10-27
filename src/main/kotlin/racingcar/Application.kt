@@ -1,5 +1,9 @@
 package racingcar
 
+import racingcar.controller.RacingCarController
+import racingcar.view.PrintOutputView
+import racingcar.view.ReadUserInputView
+
 fun main() {
-    // TODO: 프로그램 구현
+    RacingCarController(ReadUserInputView(), PrintOutputView()).play()
 }

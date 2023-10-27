@@ -29,4 +29,11 @@ class PrintOutputView {
         println(PrintText.PRINT_WINNER.text + gameWinner.getWinners().first().toString())
     }
 
+    fun printJointWinner(gameWinner: RacingGameWinners) {
+        print(PrintText.PRINT_WINNER.text)
+        for (i in 0 until gameWinner.getWinners().size - 1) {
+            print(gameWinner.getWinners()[i] + PrintText.SEPARATE_WINNER.text)
+        }
+        println(gameWinner.getWinners().last())
+    }
 }
