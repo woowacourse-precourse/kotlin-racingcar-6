@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.Constants.MOVE_SIGN
 
 object RacingGame {
 
@@ -13,11 +14,23 @@ object RacingGame {
             }
         }
 
+        logResult(racingCars)
+
         return racingCars
     }
 
-    fun pickNumbers(players: Int): List<Int> {
+    private fun logResult(racingCars: List<RacingCar>) {
+        racingCars.onEach {
+            val moves = MOVE_SIGN.repeat(it.moves)
+            println("${it.name} : $moves")
+        }
+
+        println()
+    }
+
+    private fun pickNumbers(players: Int): List<Int> {
         val numbers = mutableListOf<Int>()
+
         repeat(players) {
             val randomNumber = Randoms.pickNumberInRange(0, 9)
             numbers.add(randomNumber)

@@ -20,6 +20,8 @@ object InputManager {
         val num = Console.readLine()
         val trialNum = getTrialNum(num)
 
+        println()
+
         return GameSetting(carList = carList, trialNum = trialNum)
     }
 

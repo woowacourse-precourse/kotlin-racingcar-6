@@ -7,6 +7,8 @@ object Constants {
     const val TRIAL_RESULT = "실행 결과"
     const val WINNER = "최종 우승자 : "
 
+    const val MOVE_SIGN = "-"
+
     const val EXCEPTION_TRIAL_NUM = "시도 횟수는 숫자 형태로만 입력할 수 있습니다."
     const val EXCEPTION_CAR_NUM = "자동차는 2대 이상만 가능합니다."
     const val EXCEPTION_CAR_NAME_LENGTH = "자동차 이름의 길이는 1자 이상 5자 이하만 가능합니다."
