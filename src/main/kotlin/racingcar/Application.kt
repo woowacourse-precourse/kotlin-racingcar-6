@@ -81,7 +81,7 @@ fun startGame(carName: List<String>, tryCount: Int) {
 
     println("")
     println("실행 결과")
-
+    
     for(gameCount in 0..(tryCount-1)) {
         randomNumEachGame(carForwardCount)
         printProgress(carName, carForwardCount)
@@ -89,9 +89,19 @@ fun startGame(carName: List<String>, tryCount: Int) {
 
     val finalVictoryCar = mutableListOf<String>()
 
-    val finalVictoryCarForwardCount = carForwardCount.max()
+    for(i in carForwardCount.indices) {
+        if(carForwardCount.max() == carForwardCount[i]) {
+            finalVictoryCar.add(carName[i])
+        }
+    }
+    printFinalVictoryCar(finalVictoryCar)
 }
 
+fun printFinalVictoryCar(finalVictoryCar: MutableList<String>) {
+    print("최종 우승자 : ")
+    print(finalVictoryCar.joinToString(separator = ", "))
+
+}
 fun main() {
     startGame(enterCarName(),enterTryCount())
 }
