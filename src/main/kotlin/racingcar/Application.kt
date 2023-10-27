@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import java.lang.NumberFormatException
 
 fun main() {
     val carList = makeCarList(getCarName())
@@ -15,7 +16,7 @@ fun getCarName(): List<String> {
     val carNameInputList = Console.readLine()
     val carNameList = carNameInputList.split(",")
 
-    checkNameValidation(carNameList)
+    checkCarNameValidation(carNameList)
 
     return carNameList
 }
@@ -60,11 +61,26 @@ fun makeCarList(carNameList: List<String>): List<Car> {
 }
 
 // 기능 4. 시도할 횟수 정하기
-fun getTryNumber():Int {
+fun getTryNumber(): Int {
     println("시도할 횟수는 몇 회인가요?")
 
     val input = Console.readLine()
-    val inputNumber = input.toInt()
 
-    return inputNumber
+    checkTryNumberValidation(input)
+
+    val inputTryNumber = input.toInt()
+
+    return inputTryNumber
+}
+
+// 기능 5. 시도할 횟수 입력값 유효성 검사하기
+fun checkTryNumberValidation(check: String): Int {
+    try {
+        val checkNumber = check.toInt()
+        if(checkNumber !in 1..Int.MAX_VALUE) {
+            throw IllegalArgumentException
+        }
+    } catch (exception: NumberFormatException) {
+        throw IllegalArgumentException("시도할 횟수는 숫자여야 한다.")
+    }
 }
