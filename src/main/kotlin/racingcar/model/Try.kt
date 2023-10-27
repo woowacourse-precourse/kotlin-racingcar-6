@@ -3,19 +3,18 @@ package racingcar.model
 import racingcar.constants.*
 
 class Try private constructor(val count: Int) {
-
-    fun of(countString: String): Try {
-        validateTry(countString)
-        return Try(countString.toInt())
-    }
-
-    private fun validateTry(countString: String) {
-        validateTryDigit(countString)
-        validateTryIntMax(countString)
-        validateTryPositive(countString.toInt())
-    }
-
     companion object {
+        fun of(countString: String): Try {
+            validateTry(countString)
+            return Try(countString.toInt())
+        }
+
+        private fun validateTry(countString: String) {
+            validateTryDigit(countString)
+            validateTryIntMax(countString)
+            validateTryPositive(countString.toInt())
+        }
+
         fun validateTryDigit(countString: String) {
             require(countString.all { it.isDigit() }) { EXCEPTION_DIGIT }
         }
