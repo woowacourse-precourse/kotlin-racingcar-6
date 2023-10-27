@@ -4,19 +4,9 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    /*
-    경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
-pobi,woni,jun
-시도할 횟수는 몇 회인가요?
-5
-
-실행 결과
-pobi : -
-woni :
-jun : -
-
-     */
+    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val getNames = Console.readLine().split(",")
+    println("시도할 횟수는 몇 회인가요?")
     val peopleNum = getNames.size
     var trialCount = 0
     try {
@@ -32,6 +22,7 @@ jun : -
         cars[name] = 0
     }
 
+    println("실행 결과")
     repeat(trialCount) {
         for (name in cars.keys) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
