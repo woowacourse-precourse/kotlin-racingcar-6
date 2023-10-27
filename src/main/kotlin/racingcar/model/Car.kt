@@ -14,7 +14,7 @@ class Car private constructor(val name: String) : Comparable<Car> {
     }
 
     override fun compareTo(other: Car): Int {
-        return other.forwardCount.compareTo(this.forwardCount)
+        return this.forwardCount.compareTo(other.forwardCount)
     }
 
     companion object {
