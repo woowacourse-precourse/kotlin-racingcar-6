@@ -39,8 +39,20 @@ fun initCarForwardCount(carForwardCount: MutableList<Int>, tryCount: Int) {
         carForwardCount.add(0)
 }
 
-fun randomNumEachCar(carForwardCount: MutableList<Int>, gameCount: Int) {
-    val randomNum = Randoms.pickNumberInRange(0,9)
+fun decideNumCount(carForwardCount: MutableList<Int>, carCount: Int, randomNum: Int) {
+    if(randomNum>=4) {
+        carForwardCount[carCount]++
+    }
+}
+
+fun randomNumEachGame(carForwardCount: MutableList<Int>) {
+
+    for(carCount in 0..carForwardCount.size) {
+
+        val randomNum = Randoms.pickNumberInRange(0,9)
+
+        decideNumCount(carForwardCount, carCount, randomNum)
+    }
 }
 
 fun startGame(carName: List<String>, tryCount: Int) {
@@ -50,7 +62,7 @@ fun startGame(carName: List<String>, tryCount: Int) {
     initCarForwardCount(carForwardCount,carName.size)
 
     for(gameCount in 0..(tryCount-1)) {
-        randomNumEachCar(carForwardCount,gameCount)
+        randomNumEachGame(carForwardCount)
     }
     println(carForwardCount)
 }
