@@ -22,15 +22,7 @@ class View {
 
     fun printWinner(winnerList: List<String>) {
         print("최종 우승자 : ")
-        if (winnerList.size == 1) {
-            print(winnerList[0])
-            return
-        }
-        print(winnerList[0])
-        for (i in winnerList) {
-            print(", $i")
-        }
+        val winner = winnerList.joinToString(", ")
+        print(winner)
     }
-
-
 }
