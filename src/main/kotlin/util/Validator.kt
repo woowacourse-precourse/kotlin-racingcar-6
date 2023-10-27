@@ -22,7 +22,7 @@ object Validator {
 
     private fun carNameLengthCheck(carList: List<String>) {
         carList.forEach {
-            if (it.length in CAR_NAME_MIN_LENGTH..CAR_NAME_MAX_LENGTH) {
+            if (it.length !in CAR_NAME_MIN_LENGTH..CAR_NAME_MAX_LENGTH) {
                 throw IllegalArgumentException()
             }
         }
