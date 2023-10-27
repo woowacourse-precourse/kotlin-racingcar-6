@@ -10,7 +10,8 @@ class Race {
         fun run() {
             val race = Race()
             race.inputCar()
-            race.inputMoveNum()
+            val moveNum = race.inputMoveNum()
+            race.carMove(moveNum)
         }
     }
     fun inputCar() {
@@ -56,5 +57,29 @@ class Race {
             println("정수를 입력하세요.")
             false
         }
+    }
+
+    fun carMove(moveNum:Int) {
+        println("실행 결과")
+        for (i in 0..<moveNum) {
+            for ((car,moveCount) in garage.entries) {
+                if (checkMove()) {
+                    garage[car] = moveCount + 1
+                    printMove(car,moveCount + 1)
+                }
+                else {
+                    printMove(car,moveCount)
+                }
+            }
+            println()
+        }
+    }
+
+    fun checkMove() :Boolean {
+        TODO()
+    }
+
+    fun printMove(car:String,count:Int) {
+        TODO()
     }
 }
