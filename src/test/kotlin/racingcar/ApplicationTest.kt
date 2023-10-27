@@ -3,10 +3,13 @@ package racingcar
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
-import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.model.Car
 import racingcar.util.toCarNameList
+import racingcar.constants.EXCEPTION_LENGTH
+import racingcar.constants.EXCEPTION_LETTER
 
 class ApplicationTest : NsTest() {
     @Test
@@ -49,6 +52,46 @@ class ApplicationTest : NsTest() {
 
         // then
         assertThat(result).isEqualTo("pobi")
+    }
+
+    @Test
+    fun `자동차 이름이 1글자 이상 5글자 이하가 아닌 경우 예외가 발생한다`() {
+        // given
+        val case1 = "pobi"
+        val case2 = ""
+        val case3 = "thunder"
+
+        // when, then
+        assertThatCode { Car.validateNameLength(case1) }
+            .doesNotThrowAnyException()
+
+        assertThatThrownBy { Car.validateNameLength(case2) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage(EXCEPTION_LENGTH)
+
+        assertThatThrownBy { Car.validateNameLength(case3) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage(EXCEPTION_LENGTH)
+    }
+
+    @Test
+    fun `자동차 이름에 영어를 제외한 문자가 포함된 경우 예외가 발생한다`() {
+        // given
+        val case1 = "pobi"
+        val case2 = " pobi "
+        val case3 = "pobi2"
+
+        // when, then
+        assertThatCode { Car.validateNameLetter(case1) }
+            .doesNotThrowAnyException()
+
+        assertThatThrownBy { Car.validateNameLetter(case2) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage(EXCEPTION_LETTER)
+
+        assertThatThrownBy { Car.validateNameLetter(case3) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage(EXCEPTION_LETTER)
     }
 
     public override fun runMain() {
