@@ -15,8 +15,8 @@
   - [X] 자동차 이름이 6자 이상인 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.
 ---
 ### 이동 횟수 입력 받기
-- [ ] 사용자로부터 몇 번의 이동을 할 것인지 입력받는다. `inputNumMove()`
-- [ ] 숫자 이외의 문자가 들어간 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.
+- [X] 사용자로부터 몇 번의 이동을 할 것인지 입력받는다. `inputMoveNum()`
+- [X] 입력받은 문자열이 정수가 아닌 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다. `isInteger()`
 ---
 ### 자동차 전진, 멈춤 및 출력
 - [ ] 아래의 과정을 이동할 횟수 만큼 반복한다.
