@@ -12,17 +12,22 @@ class InputUser {
     fun printlnMent(){
       println(GameMessage.defaultInputMent)
     }
-    fun inputCarName():List<String>{
-        val input=scanner.nextLine()
-        val carNameList= mutableListOf<String>()
-        carNameList.add(input.split(",").map{it.trim()}.toString())
-        return carNameList
+    fun inputCarName(): List<String> {
+        val input = scanner.nextLine()
+        return input.split(",").map { it.trim() }
     }
     fun tryGameCount():Int{
-        println(GameMessage.gameCountMent)
-        val input=scanner.nextLine()
-        return input.toInt()
+            println(GameMessage.gameCountMent)
+            val input = scanner.nextLine()
+            return input.toInt()
     }
-    fun createMap(){
+    fun validName(carName:List<String>):Boolean{
+        for(name in carName.indices){
+            if(carName[name].length>=5) {
+                throw IllegalArgumentException("5글자를 초과한 이름은 입력 불가합니다.")
+                return false
+            }
+        }
+        return true
     }
 }
