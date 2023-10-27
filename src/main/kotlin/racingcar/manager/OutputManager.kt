@@ -1,4 +1,4 @@
-package racingcar.iomanager
+package racingcar.manager
 
 class OutputManager {
     fun racingCarNames() = println(INPUT_RACING_CAR_NAMES)

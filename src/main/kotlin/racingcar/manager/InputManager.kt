@@ -1,4 +1,4 @@
-package racingcar.iomanager
+package racingcar.manager
 
 import camp.nextstep.edu.missionutils.Console.readLine
 
