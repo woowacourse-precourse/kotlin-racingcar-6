@@ -6,6 +6,27 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     printGameStartMessage()
+    gameStart()
+}
+
+fun gameStart() {
+    val nameList = separateCarNames(inputCarNames())
+    val carModelList = makeCarModelList(nameList)
+    println("시도할 횟수는 몇 회인가요?")
+    val count = inputRaceCount()
+
+    println("실행결과")
+    repeat(count) {
+        carModelList.forEachIndexed { index, name ->
+            var moveOrNot = moveOrStop()
+            if (moveOrNot) {
+                carModelList[index].moveOneStep()
+            }
+            printName(carModelList[index].name)
+            printDistance(carModelList[index].moveDistance)
+        }
+        println()
+    }
 }
 
 fun printGameStartMessage() {
@@ -63,4 +84,5 @@ fun printDistance(distance: Int) {
     repeat(distance) {
         print("-")
     }
+    println()
 }
