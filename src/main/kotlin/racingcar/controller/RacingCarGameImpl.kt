@@ -8,4 +8,6 @@ class RacingCarGameImpl : RacingCarGame {
     override fun createRacingCars(racingCars: List<String>): List<RacingCar> =
         racingCars.map { RacingCar(name = it.trim()) }
 
+    override fun canRacingCarMove(): Boolean = Randoms.pickNumberInRange(0, 9) >= 4
+
 }
