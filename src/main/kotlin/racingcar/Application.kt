@@ -1,11 +1,7 @@
 package racingcar
 
-import racingcar.manager.InputManager
-import racingcar.manager.ValidationManager
+import racingcar.domain.Car
 
 fun main() {
-    InputManager().apply {
-        carNames()
-        attemptCount()
-    }
+    Car().race()
 }
