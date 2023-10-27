@@ -1,0 +1,22 @@
+## 기능 목록
+
+- [ ] 사용자에게 레이싱 카 이름 입력을 요청하는 기능 - `printCarNamePrompt()`#OutputView
+- [ ] 사용자에게 시도 횟수 입력을 요청하는 기능 - `printAttemptsPrompt()`#OutputView
+- [ ] 레이싱 카 경주 결과를 출력하는 기능 - `printCarRaceResults()`#OutputView
+- [ ] 최종 게임 우승자를 출력하는 기능 - `printGameWinner()`#OutputView
+- [ ] 빈 줄 출력 기능 - `printEmptyLine()`#OutputView
+- [ ] 게임 결과 메시지 출력 기능 - `printGameResult()`#OutputView
+- [ ] 사용자에게 레이싱 카 이름을 입력받는 기능 - `inputRacingCarNames()`#InputView
+- [ ] 사용자에게 시도 횟수를 입력받는 기능 - `inputAttemptsNum()`#InputView
+- [ ] 게임 실행 기능 - `playGame()`#RacingCarGameController
+- [ ] 레이싱 카 이름 입력 기능 - `getRacingCarNames()`#RacingCarGameController
+- [ ] 시도 횟수 입력 기능 - `getAttemptsNum()`#RacingCarGameController
+- [ ] 레이싱 카 레이스 진행 기능 - `race()`#RacingCarGameController
+- [ ] 레이싱 카 생성 기능 - `createRacingCars() `#RacingCarGameImpl
+- [ ] 레이싱 카 이동 가능 여부 확인 기능 - `canRacingCarMove()`#RacingCarGameImpl
+- [ ] 레이싱 카 이동 기능 - `moveRacingCars() `#RacingCarGameImpl
+- [ ] 우승자 결정 기능 - `getWinners()`#RacingCarGameImpl
+- [ ] 유효한 레이싱 카 이름을 검증하는 기능 - `requireValidCarNames()`#Exception
+- [ ] 유효한 정수인지 검증하는 기능 - `requireValidPositiveInt()`#Exception
+- [ ] 양의 정수를 검증하는 기능 - `requirePositiveInt()`#Exception
+- [ ] 상수 값 #Constant
