@@ -36,8 +36,9 @@ object Racing {
 
     private fun racingResult(carList: List<Car>) {
         val winnerList = mutableListOf<String>()
+        winnerLength++
         carList.forEach {
-            if (it.lengthPlus() == ++winnerLength) {
+            if (it.lengthPlus() == winnerLength) {
                 winnerList.add(it.getCarName())
             }
         }
