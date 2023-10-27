@@ -7,6 +7,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.Constants.EXCEPTION_CAR_NAME_DUPLICATION
 import racingcar.Constants.EXCEPTION_CAR_NAME_LENGTH
 import racingcar.Constants.EXCEPTION_CAR_NAME_STARTS_WITH_BLANK
 import racingcar.Constants.EXCEPTION_CAR_NUM
@@ -68,8 +69,16 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `0글자 자동차명 대한 예외 처리`() {
-        val input = "kmkim2689,,kkm"
+        val input = "kmkim,,kkm"
         assertThrows<IllegalArgumentException>(EXCEPTION_CAR_NAME_LENGTH) {
+            InputManager.getCarList(input)
+        }
+    }
+
+    @Test
+    fun `중복된 자동차명 대한 예외 처리`() {
+        val input = "kkm,kkm"
+        assertThrows<IllegalArgumentException>(EXCEPTION_CAR_NAME_DUPLICATION) {
             InputManager.getCarList(input)
         }
     }

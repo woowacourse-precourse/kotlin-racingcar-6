@@ -1,13 +1,14 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.Constants.EXCEPTION_CAR_NAME_DUPLICATION
 import racingcar.Constants.EXCEPTION_CAR_NAME_LENGTH
 import racingcar.Constants.EXCEPTION_CAR_NAME_STARTS_WITH_BLANK
 import racingcar.Constants.EXCEPTION_CAR_NUM
 import racingcar.Constants.EXCEPTION_TRIAL_NUM
 import racingcar.Constants.INPUT_NAMES
 import racingcar.Constants.INPUT_TRIAL_NUM
-import java.lang.IllegalArgumentException
+import kotlin.IllegalArgumentException
 
 object InputManager {
 
@@ -33,6 +34,7 @@ object InputManager {
         val carList = nameList.map { carName ->
             if (carName.length > 5 || carName.isEmpty()) throw IllegalArgumentException(EXCEPTION_CAR_NAME_LENGTH)
             if (carName.startsWith(" ")) throw IllegalArgumentException(EXCEPTION_CAR_NAME_STARTS_WITH_BLANK)
+            if (carName.count() >= 2) throw IllegalArgumentException(EXCEPTION_CAR_NAME_DUPLICATION)
 
             RacingCar(name = carName, moves = 0)
         }

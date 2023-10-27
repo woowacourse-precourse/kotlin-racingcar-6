@@ -13,4 +13,5 @@ object Constants {
     const val EXCEPTION_CAR_NUM = "자동차는 2대 이상만 가능합니다."
     const val EXCEPTION_CAR_NAME_LENGTH = "자동차 이름의 길이는 1자 이상 5자 이하만 가능합니다."
     const val EXCEPTION_CAR_NAME_STARTS_WITH_BLANK = "자동차 이름은 공백으로 시작할 수 없습니다."
+    const val EXCEPTION_CAR_NAME_DUPLICATION = "자동차 이름은 중복으로 사용할 수 없습니다."
 }
