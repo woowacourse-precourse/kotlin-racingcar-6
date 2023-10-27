@@ -45,3 +45,13 @@ fun moveOrStop(): Boolean {
     val getNumber = getRandomNumber()
     return getNumber >= 4
 }
+
+fun printName(name: String) {
+    print("$name : ")
+}
+
+fun printDistance(distance: Int) {
+    repeat(distance) {
+        print("-")
+    }
+}
