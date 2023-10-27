@@ -15,4 +15,11 @@ class RacingCarGame {
         }
         println()
     }
+
+    fun moveAllStep(step: Int) {
+        for(i in 0 until step) {
+            moveAllCarsOneStep()
+            printAllCarsState()
+        }
+    }
 }
