@@ -17,6 +17,8 @@ class Car private constructor(val name: String) : Comparable<Car> {
         return other.forwardCount.compareTo(this.forwardCount)
     }
 
+    override fun toString() = name
+
     companion object {
         fun of(name: String): Car {
             validateName(name)
