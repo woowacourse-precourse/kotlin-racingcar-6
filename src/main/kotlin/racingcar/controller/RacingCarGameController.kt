@@ -11,5 +11,10 @@ class RacingCarGameController(
 ) {
 
     fun playGame() {
+        val racingCarNames = getRacingCarNames()
+    private fun getRacingCarNames(): List<String> {
+        outputView.printCarNamePrompt()
+        return inputView.inputRacingCarNames()
+    }
     }
 }
