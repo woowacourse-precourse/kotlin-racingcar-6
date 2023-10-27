@@ -16,17 +16,17 @@ fun main() {
         throw IllegalArgumentException()
     }
 
-    val cars = HashMap<String, Int>()
+    val cars = HashMap<String, String>()
     for (name in getNames) {
         if (name.length > 5) throw IllegalArgumentException()
-        cars[name] = 0
+        cars[name] = ""
     }
 
     println("실행 결과")
     repeat(trialCount) {
         for (name in cars.keys) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                cars[name] = cars[name]!! + 1
+                cars[name] = cars[name]!! + "-"
             }
         }
     }
@@ -34,11 +34,11 @@ fun main() {
     var winner = mutableListOf<String>()
     var winnerScore: Int = 0
     for (name in cars.keys) {
-        if (cars[name]!! == winnerScore) {
+        if (cars[name]?.length == winnerScore) {
             winner.add(name)
         }
-        if (cars[name]!! > winnerScore) {
-            winnerScore = cars[name]!!
+        if (cars[name]?.length!! > winnerScore) {
+            winnerScore = cars[name]?.length!!
             winner = mutableListOf<String>()
             winner.add(name)
         }
