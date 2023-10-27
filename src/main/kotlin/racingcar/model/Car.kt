@@ -4,10 +4,18 @@ import racingcar.constants.EXCEPTION_LENGTH
 import racingcar.constants.EXCEPTION_LETTER
 import racingcar.constants.FORWARD_CHARACTER
 
-class Car private constructor(val name: String) {
+class Car private constructor(val name: String) : Comparable<Car> {
     val racingResult = StringBuilder()
+    private var forwardCount = 0
 
-    fun moveForward() = racingResult.append(FORWARD_CHARACTER)
+    fun moveForward() {
+        racingResult.append(FORWARD_CHARACTER)
+        forwardCount++
+    }
+
+    override fun compareTo(other: Car): Int {
+        return other.forwardCount.compareTo(this.forwardCount)
+    }
 
     companion object {
         fun of(name: String): Car {
