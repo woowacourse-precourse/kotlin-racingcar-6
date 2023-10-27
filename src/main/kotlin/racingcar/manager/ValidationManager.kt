@@ -24,6 +24,10 @@ class ValidationManager {
         return true
     }
 
+    fun getAttemptNumber(attemptNumber: String): Int =
+        attemptNumber.toIntOrNull() ?: throw IllegalArgumentException()
+
+
     companion object {
         private const val CAR_NAME_SIZE = 5
         private const val EMPTY_STRING = ""

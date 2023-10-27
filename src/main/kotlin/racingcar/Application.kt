@@ -1,9 +1,11 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Console
-import racingcar.iomanager.InputManager
+import racingcar.manager.InputManager
+import racingcar.manager.ValidationManager
 
 fun main() {
-    val inputManager = InputManager()
-    inputManager.carNames()
+    InputManager().apply {
+        carNames()
+        attemptCount()
+    }
 }

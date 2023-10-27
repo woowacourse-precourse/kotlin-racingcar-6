@@ -6,8 +6,8 @@
 - [ ] JUnit 5와 AssertJ를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인
 
 ### 기능 목록
-- [ ] 경주 할 자동차 이름 입력 구현 (`camp.nextstep.edu.missionutils Console` 라이브러리 사용)
-- [ ] 사용자 이동 횟수 입력 구현 (`camp.nextstep.edu.missionutils` 라이브러리 사용)
+- [x] 경주 할 자동차 이름 입력 구현 (`camp.nextstep.edu.missionutils Console` 라이브러리 사용)
+- [x] 사용자 이동 횟수 입력 구현 (`camp.nextstep.edu.missionutils` 라이브러리 사용)
 - [ ] 전진 조건 구현 (0 ~ 9사이 랜던 값이 4이상일 경우) (`camp.nextstep.edu.missionutils Randoms` 라이브러리 사용)
 - [ ] 경주 게임 완료 후 우승자 이름 출력 (우승자는 한 명 이상일 수 있음)
 - [ ] 우승자가 한 명 이상일 때, 쉼표를 이용하여 출력
