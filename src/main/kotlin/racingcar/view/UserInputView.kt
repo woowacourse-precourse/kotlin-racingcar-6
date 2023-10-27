@@ -7,4 +7,6 @@ object UserInputView {
 
     fun getCarsName() = Console.readLine()
 
+    fun getRoundCount() = Console.readLine()
+
 }
