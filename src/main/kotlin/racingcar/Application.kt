@@ -20,6 +20,15 @@ fun separateCarNames(carNames: String): List<String> {
     return carNames.split(",")
 }
 
+fun makeCarModelList(carNames: List<String>): MutableList<Car> {
+    var modelList = mutableListOf<Car>()
+    carNames.forEach {
+        modelList.add(Car(it))
+    }
+
+    return modelList
+}
+
 fun validateNameLength(carList: List<String>) {
     carList.forEach {
         if (it.length > 5) throw IllegalArgumentException("차 이름의 길이가 5보다 큽니다.")
