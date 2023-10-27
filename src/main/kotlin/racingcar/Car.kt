@@ -1,5 +1,5 @@
 package racingcar
 
-data class Car(val name: String, var move: Int = 0) {
+data class Car(val name: String, var numberOfMove: Int = 0) {
 
 }
