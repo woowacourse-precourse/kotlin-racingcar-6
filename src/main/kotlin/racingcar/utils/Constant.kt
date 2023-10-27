@@ -7,4 +7,8 @@ object Constant {
     const val GAME_WINNER_MESSAGE = "최종 우승자 : %s"
     const val GAME_OVER_MESSAGE = "게임 종료"
     const val GAME_RESULT_MESSAGE = "실행 결과"
+
+    const val MOVE_THRESHOLD = 4
+    const val MIN_VALUE = 0
+    const val MAX_VALUE = 9
 }
