@@ -1,3 +1,6 @@
+import MessageManager.RACING_FINAL_WINNER_MESSAGE
+import MessageManager.RACING_RESULT_MESSAGE
+import MessageManager.SEPARATOR
 import java.math.BigInteger
 
 object Racing {
@@ -6,7 +9,7 @@ object Racing {
 
     fun racingSetting(carList: List<Car>, round: BigInteger) {
         var count = BigInteger.ZERO
-        println("실행 결과")
+        println(RACING_RESULT_MESSAGE)
         while (count < round) {
             racingStart(carList)
             count++
@@ -42,10 +45,10 @@ object Racing {
     }
 
     private fun printResult(result: List<String>) {
-        print("최종 우승자 : ")
+        print(RACING_FINAL_WINNER_MESSAGE)
         result.forEachIndexed { index, s ->
             print(s)
-            if (index != result.lastIndex) print(", ")
+            if (index != result.lastIndex) print(SEPARATOR)
         }
     }
 }
