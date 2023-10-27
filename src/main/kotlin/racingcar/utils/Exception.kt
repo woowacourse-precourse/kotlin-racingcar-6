@@ -8,4 +8,6 @@ object Exception {
 
     fun String.requireValidPositiveInt() = requireNotNull(this.toIntOrNull()) { GAME_OVER_MESSAGE }
 
+    fun String.requirePositiveInt() = require(this.toInt() > 0) { GAME_OVER_MESSAGE }
+
 }
