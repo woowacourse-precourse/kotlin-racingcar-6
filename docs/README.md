@@ -21,4 +21,4 @@
 - [x] 양의 정수를 검증하는 기능 - `requirePositiveInt()`#Exception
 - [x] 상수 값 #Constant
 - [ ] RacingCarGame Test
-- [ ] Exception Test
+- [x] Exception Test
