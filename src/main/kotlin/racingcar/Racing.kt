@@ -7,6 +7,7 @@ class Racing() {
         cars = getCarList(InputView.getNameList())
         round = InputView.getRoundNumber()
 
+        OutputView.printExecutionResultMention()
         allRounds()
     }
 
