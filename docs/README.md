@@ -6,7 +6,7 @@
   - 이름 5자 이하
 - 시도 횟수 입력   #numberOfAttempts
 - 조건 0~9무작위 값을 구하기  #randomValue
-- 전진 출력칸  
+- 전진 출력칸  # moveCar
   - 자동차 이름 출력
   - 무작위 값이 4이상이면 전진 
 - 우승자 알려줌 #winner
