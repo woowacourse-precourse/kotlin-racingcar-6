@@ -5,8 +5,9 @@ import camp.nextstep.edu.missionutils.Console
 
 fun checkAvailableCarName(carName: List<String>) {
     for(name in carName) {
-        if(name.length > 5)
+        if(name.length > 5) {
             throw IllegalArgumentException("Car name must be at most 5 letters")
+        }
     }
 }
 
@@ -32,7 +33,28 @@ fun enterTryCount(): Int {
 
     return tryCount
 }
+
+fun initCarForwardCount(carForwardCount: MutableList<Int>, tryCount: Int) {
+    for(i in 1..tryCount)
+        carForwardCount.add(0)
+}
+
+fun randomNumEachCar(carForwardCount: MutableList<Int>, gameCount: Int) {
+    val randomNum = Randoms.pickNumberInRange(0,9)
+}
+
+fun startGame(carName: List<String>, tryCount: Int) {
+    //자동차 별 전진 횟수 저장
+    val carForwardCount = mutableListOf<Int>()
+
+    initCarForwardCount(carForwardCount,carName.size)
+
+    for(gameCount in 0..(tryCount-1)) {
+        randomNumEachCar(carForwardCount,gameCount)
+    }
+    println(carForwardCount)
+}
+
 fun main() {
-    enterCarName()
-    enterTryCount()
+    startGame(enterCarName(),enterTryCount())
 }
