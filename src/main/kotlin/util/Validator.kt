@@ -6,6 +6,7 @@ import java.math.BigInteger
 object Validator {
 
     fun inputRacingRoundContentCheck(input: String): BigInteger {
+        if (input.length > 1 && input.first() == '0') throw IllegalArgumentException()
         input.forEach {
             if (it !in '0'..'9') throw IllegalArgumentException()
         }
