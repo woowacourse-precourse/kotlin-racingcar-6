@@ -8,12 +8,15 @@ class RacingGame {
     fun gameStart(){
         carList = userClient.inputCarNames()
         val countMove = userClient.inputCountMove()
+        userClient.printResultMessage()
         runCars(countMove)
+        userClient.printResult(carList)
     }
 
     private fun runCars(countMove: Int) {
         repeat(countMove){
             startOneRound()
+            userClient.printCarStatus(carList)
         }
     }
 
