@@ -14,7 +14,7 @@
 - [ ] 레이싱 카 레이스 진행 기능 - `race()`#RacingCarGameController
 - [x] 레이싱 카 생성 기능 - `createRacingCars() `#RacingCarGameImpl
 - [x] 레이싱 카 이동 가능 여부 확인 기능 - `canRacingCarMove()`#RacingCarGameImpl
-- [ ] 레이싱 카 이동 기능 - `moveRacingCars() `#RacingCarGameImpl
+- [x] 레이싱 카 이동 기능 - `moveRacingCars() `#RacingCarGameImpl
 - [ ] 우승자 결정 기능 - `getWinners()`#RacingCarGameImpl
 - [x] 유효한 레이싱 카 이름을 검증하는 기능 - `requireValidCarNames()`#Exception
 - [x] 유효한 정수인지 검증하는 기능 - `requireValidPositiveInt()`#Exception
