@@ -19,9 +19,14 @@ class Exceptions {
         }
 
         fun checkPossibleName(name : String) {
-            for(i in name.indices){
-                if(!name[i].isLetter()) throw IllegalArgumentException("Name should contains only letters.")
-            }
+            require(!name.all { it.isLetter() }) { "Name should contains only letters." }
+            //for(i in name.indices){
+            //    if(!name[i].isLetter()) throw IllegalArgumentException()
+            //}
+        }
+
+        fun checkNumber(number : String) {
+            require(!number.all { it.isDigit() }) { "횟수는 숫자여야 합니다." }
         }
     }
 }

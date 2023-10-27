@@ -13,7 +13,14 @@ class InputView {
 
         // '.' 줄이기 위해 input함수 따로 작성
         private fun getInput() : String = Console.readLine()
-    }
 
+        fun getRoundNumber() : Int {
+            println("시도할 횟수는 몇 회인가요?")
+            val number = getInput()
+            Exceptions.checkNumber(number)
+            return number.toInt()
+        }
+
+    }
 
 }
