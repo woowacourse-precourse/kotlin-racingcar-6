@@ -11,7 +11,7 @@ import java.lang.IllegalArgumentException
 
 object InputManager {
 
-    fun inputEquipments(): GameSetting {
+    fun getGameSettings(): GameSetting {
         println(INPUT_NAMES)
         val cars = Console.readLine()
         val carList = getCarList(cars)
