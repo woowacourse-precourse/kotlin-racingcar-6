@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 class Car(private var name: String) {
     private var position = 0
 
-    init{
+    init {
         nameErrorCheck(name)
     }
 
@@ -13,7 +13,7 @@ class Car(private var name: String) {
         return name
     }
 
-    fun getPositionNumber() : Int{
+    fun getPositionNumber(): Int {
         return position
     }
 
