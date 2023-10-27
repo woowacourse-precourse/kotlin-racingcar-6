@@ -17,26 +17,26 @@ class RacingCarGame {
         racingCarGameMessage.printWinnerMessage(winners)
     }
 
-    fun moveAllCarsOneStep() {
+    private fun moveAllCarsOneStep() {
         for(car in cars) {
             car.move()
         }
     }
 
-    fun createCars(names: MutableList<String>) {
+    private fun createCars(names: MutableList<String>) {
         for(name in names) {
             cars.add(Car(name, 0))
         }
     }
 
-    fun printAllCarsState() {
+    private fun printAllCarsState() {
         for(car in cars) {
             car.printState()
         }
         println()
     }
 
-    fun moveAllStep(step: Int) {
+    private fun moveAllStep(step: Int) {
         for(i in 0 until step) {
             moveAllCarsOneStep()
             printAllCarsState()
