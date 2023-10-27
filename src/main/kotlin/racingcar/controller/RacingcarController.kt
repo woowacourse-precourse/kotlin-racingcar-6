@@ -12,9 +12,12 @@ class RacingcarController {
         println(racingcarName)
     }
 
-    private fun inputRacingcarName(): String {
+    private fun inputRacingcarName(): List<String> {
         val inputRacingcarName = Console.readLine()
-        return inputRacingcarName
+        val racingcarName = splitRacingcarName(inputRacingcarName)
+        return racingcarName
     }
+
+    fun splitRacingcarName(racingcarName: String): List<String> = racingcarName.split(",")
 
 }
