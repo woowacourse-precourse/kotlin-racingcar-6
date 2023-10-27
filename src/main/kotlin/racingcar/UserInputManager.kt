@@ -13,4 +13,9 @@ class UserInputManager {
         }
         return nameList
     }
+
+    fun userTryCountInput() : Int{
+        val input = Console.readLine()
+        return input.toInt()
+    }
 }
