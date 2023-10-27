@@ -9,3 +9,5 @@ const val EXCEPTION_POSITIVE = "시도할 횟수가 너무 작습니다. 0 이�
 const val RANDOM_START_NUMBER = 0
 const val RANDOM_END_NUMBER = 9
 const val MOVING_MORE_NUMBER = 4
+
+const val FORWARD_CHARACTER = '-'
