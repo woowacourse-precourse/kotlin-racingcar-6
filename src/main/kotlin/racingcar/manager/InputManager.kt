@@ -7,5 +7,5 @@ class InputManager(private val validationManager: ValidationManager = Validation
     fun carNames(): List<String> =
         validationManager.getValidCarNames(readLine()).split(",").map { it.trim() }
 
-    fun attemptCount() = validationManager.getAttemptNumber(readLine())
+    fun attemptCount() = validationManager.getAttemptCount(readLine())
 }

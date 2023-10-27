@@ -24,8 +24,8 @@ class ValidationManager {
         return true
     }
 
-    fun getAttemptNumber(attemptNumber: String): Int =
-        attemptNumber.toIntOrNull() ?: throw IllegalArgumentException()
+    fun getAttemptCount(attemptCount: String): Int =
+        attemptCount.toIntOrNull() ?: throw IllegalArgumentException()
 
 
     companion object {
