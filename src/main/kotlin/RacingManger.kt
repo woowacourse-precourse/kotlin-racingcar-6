@@ -1,7 +1,6 @@
 import CarFactory.makeCar
 import MessageManager.INPUT_CAR_NAME_MESSAGE
 import MessageManager.INPUT_RACING_ROUND_MESSAGE
-import Racing.racingSetting
 import camp.nextstep.edu.missionutils.Console
 import util.Validator.inputRacingRoundContentCheck
 
@@ -11,6 +10,7 @@ class RacingManger {
         val racingCarList = makeCar(Console.readLine())
         println(INPUT_RACING_ROUND_MESSAGE)
         val raceRound = inputRacingRoundContentCheck(Console.readLine())
-        racingSetting(racingCarList, raceRound)
+        val racing = Racing()
+        racing.racingSetting(racingCarList, raceRound)
     }
 }

@@ -3,7 +3,7 @@ import MessageManager.RACING_RESULT_MESSAGE
 import MessageManager.WINNER_SEPARATOR
 import java.math.BigInteger
 
-object Racing {
+class Racing {
 
     private var winnerLength = BigInteger.ZERO
 
