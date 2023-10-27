@@ -22,7 +22,8 @@ fun main() {
 
     repeat(trialCount) {
         for (name in cars.keys) {
-
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            }
         }
     }
 
