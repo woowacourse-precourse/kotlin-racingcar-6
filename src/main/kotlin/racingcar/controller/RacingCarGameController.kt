@@ -14,6 +14,10 @@ class RacingCarGameController(
         val racingCarNames = getRacingCarNames()
         val attemptsNum = getAttemptsNum()
         val racingCars = race(racingCarNames = racingCarNames, attemptsNum = attemptsNum)
+        val winners = racingCarGame.getWinners(racingCars = racingCars)
+        outputView.printGameWinner(winners = winners)
+    }
+
     private fun getRacingCarNames(): List<String> {
         outputView.printCarNamePrompt()
         return inputView.inputRacingCarNames()
