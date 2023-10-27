@@ -9,7 +9,7 @@ class Exceptions {
             checkPossibleNames(list)
         }
         fun checkAllNameInFiveLetters(list : List<String>) {
-            if(!list.all { it.length <= 5 }) throw IllegalArgumentException("Name Could not exceed 5 letters.")
+            require(list.all { it.length <= 5 }) { "Name Could not exceed 5 letters." }
         }
 
         fun checkPossibleNames(list : List<String>) {
@@ -19,14 +19,14 @@ class Exceptions {
         }
 
         fun checkPossibleName(name : String) {
-            require(!name.all { it.isLetter() }) { "Name should contains only letters." }
+            require(name.all { it.isLetter() }) { "Name should contains only letters." }
             //for(i in name.indices){
             //    if(!name[i].isLetter()) throw IllegalArgumentException()
             //}
         }
 
         fun checkNumber(number : String) {
-            require(!number.all { it.isDigit() }) { "횟수는 숫자여야 합니다." }
+            require(number.all { it.isDigit() }) { "횟수는 숫자여야 합니다." }
         }
     }
 }
