@@ -1,7 +1,5 @@
 package racingcar.domain
 
-import racingcar.constant.ErrorMessage
-
 class RacingCar(private val name: String) {
     private var forwardCount = INIT_FORWARD_COUNT
 
@@ -12,7 +10,7 @@ class RacingCar(private val name: String) {
     fun countForwardCount(): Int = forwardCount
 
     fun readRacingCarName(): String = name
-    
+
     companion object {
         private const val INIT_FORWARD_COUNT = 0
     }
