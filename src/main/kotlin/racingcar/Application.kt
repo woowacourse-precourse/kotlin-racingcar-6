@@ -1,16 +1,17 @@
 package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console.readLine
-import kotlin.reflect.typeOf
 
 fun main() {
     println("경주할 자동차 이름을 입력하세요.")
-    val carNames = readLine().split(',')
+    val carNames = readLine().split(',').map { it.trim() } // 쉼표로 나눈 후 앞뒤 공백 제거
     val carNamesAndResults = mutableMapOf<String, String>()
     val winners = mutableListOf<String>()
     var longDistance = ""
 
+    // 추가할 기능: 자동차 이름 공백 제거, 중복된 자동차 이름 처리
     for (i in carNames) {
+        i.trim()
         if (i == "" || i.length > 5)
             throw IllegalArgumentException("모든 자동차 이름은 1글자 이상, 5글자 이하여야 합니다.")
         carNamesAndResults[i] = ""
