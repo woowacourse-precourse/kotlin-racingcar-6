@@ -2,7 +2,6 @@ package racingcar.view
 
 import racingcar.view.Constant.INPUT_RACINGCAR_NAME_MASSAGE
 class OutputView {
-
     fun printInputRacingcarName() = println(INPUT_RACINGCAR_NAME_MASSAGE)
 }
 
