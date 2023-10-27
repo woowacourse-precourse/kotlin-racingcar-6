@@ -4,6 +4,7 @@ class OutputManager {
     fun racingCarNames() = println(INPUT_RACING_CAR_NAMES)
     fun attemptCount()  = println(INPUT_ATTEMPT_COUNT)
     fun racingResult() = println(RACING_RESULT)
+    fun newLine() = println()
 
 
     companion object {
