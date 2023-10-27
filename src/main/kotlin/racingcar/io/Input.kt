@@ -8,6 +8,6 @@ fun inputRacingCars(): List<String> {
     return racingCars.toCarNameList()
 }
 
-fun inputTryCount(): Int {
-    return Console.readLine().toInt()
+fun inputTryCount(): String {
+    return Console.readLine()
 }
