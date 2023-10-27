@@ -4,7 +4,7 @@
 - [x] docs/README.md 작성
 
 ### 입력
-- [ ] 경주할 자동차 이름, 시도 횟수 입력 받기
+- [x] 경주할 자동차 이름, 시도 횟수 입력 받기
 - [ ] IllegalArgumentException 처리
 
 ### 경주 진행
