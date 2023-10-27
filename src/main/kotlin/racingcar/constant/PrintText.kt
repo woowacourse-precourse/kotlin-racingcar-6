@@ -5,5 +5,6 @@ enum class PrintText(val text: String) {
     REQUIRE_ATTEMPT_COUNT("시도할 횟수는 몇 회인가요?"),
     SEPARATE_CAR_NAME_AND_FORWARD_COUNT(" : "),
     PRINT_FORWARD_MARK("-"),
-    PRINT_WINNER("최종 우승자 : ")
+    PRINT_WINNER("최종 우승자 : "),
+    SEPARATE_WINNER(", ")
 }
