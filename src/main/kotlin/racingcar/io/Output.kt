@@ -10,3 +10,7 @@ fun printCarListResult(carList: List<Car>) {
 }
 
 fun printCarResult(car: Car) = println("${car.name} : ${car.racingResult}")
+
+fun printWinner(winnerList: List<Car>) {
+    print("최종 우승자 : ${winnerList.joinToString(", ")}")
+}
