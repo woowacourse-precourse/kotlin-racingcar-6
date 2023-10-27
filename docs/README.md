@@ -20,5 +20,5 @@
 - [x] 유효한 정수인지 검증하는 기능 - `requireValidPositiveInt()`#Exception
 - [x] 양의 정수를 검증하는 기능 - `requirePositiveInt()`#Exception
 - [x] 상수 값 #Constant
-- [ ] RacingCarGame Test
+- [x] RacingCarGame Test
 - [x] Exception Test
