@@ -1,0 +1,4 @@
+package racingcar
+
+object PlayerConsole {
+}
