@@ -48,7 +48,7 @@ fun doGame(userInputTryCnt: Int) {
     println()
     println(Const.GAME_RESULT_MSG)
     var currentGameTryCnt = 0
-    while (currentGameTryCnt <= userInputTryCnt) {
+    while (currentGameTryCnt < userInputTryCnt) {
         carList.map { car ->
             car.moveForward()
         }
