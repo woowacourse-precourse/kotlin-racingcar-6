@@ -2,33 +2,34 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.model.RacingCar
 import java.lang.NumberFormatException
 
 fun main() {
-    val carList = makeCarList(getCarName())
+    val racingCarList = makeRacingCarList(getRacingCarName())
 
     for (tryNumber in 0 until getTryNumber()) {
-        forwardOrStop(carList)
-        printResult(tryNumber, carList)
+        forwardOrStop(racingCarList)
+        printResult(tryNumber, racingCarList)
     }
 
-    printWinners(carList)
+    printWinners(racingCarList)
 }
 
 // 기능 1. 자동차 이름 입력받기
-fun getCarName(): List<String> {
+fun getRacingCarName(): List<String> {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
 
-    val carNameInputList = Console.readLine()
-    val carNameList = carNameInputList.split(",")
+    val racingCarNameInputList = Console.readLine()
+    val racingCarNameList = racingCarNameInputList.split(",")
 
-    checkCarNameValidation(carNameList)
+    checkRacingCarNameValidation(racingCarNameList)
 
-    return carNameList
+    return racingCarNameList
 }
 
 // 기능 2. 자동차 이름 입력 값 유효성 검사하기
-fun checkCarNameValidation(checkList: List<String>) {
+fun checkRacingCarNameValidation(checkList: List<String>) {
     val checkDuplicateList = mutableListOf<String>()
 
     for (check in checkList) {
@@ -57,13 +58,13 @@ fun checkCarNameValidation(checkList: List<String>) {
 }
 
 // 기능 3. 자동차 리스트 만들기
-fun makeCarList(carNameList: List<String>): List<Car> {
-    val carList = mutableListOf<Car>()
-    for (name in carNameList) {
-        carList.add(Car(name))
+fun makeRacingCarList(racingCarNameList: List<String>): List<RacingCar> {
+    val racingCarList = mutableListOf<RacingCar>()
+    for (name in racingCarNameList) {
+        racingCarList.add(RacingCar(name))
     }
 
-    return carList
+    return racingCarList
 }
 
 // 기능 4. 시도할 횟수 정하기
@@ -97,41 +98,41 @@ fun getRandomNumber(): Int {
 }
 
 // 기능 7. 전진, 정지 판단하기
-fun forwardOrStop(carList: List<Car>) {
-    for (car in carList) {
+fun forwardOrStop(racingCarList: List<RacingCar>) {
+    for (racingCar in racingCarList) {
         if (getRandomNumber() >= 4) {
-            car.moveForward()
+            racingCar.moveForward()
         }
     }
 }
 
 // 기능 8. 실행 결과 출력하기
-fun printResult(tryNumber: Int, carList: List<Car>) {
+fun printResult(tryNumber: Int, racingCarList: List<RacingCar>) {
     if (tryNumber == 0) {
         println("\n실행 결과")
     }
 
-    for (car in carList) {
-        car.printStatus()
+    for (racingCar in racingCarList) {
+        racingCar.printStatus()
     }
     println()
 }
 
 // 기능 9. 우승자 안내하기
-fun printWinners(carList: List<Car>) {
+fun printWinners(racingCarList: List<RacingCar>) {
     var maxNumberOfMove = 0
 
-    for (car in carList) {
-        if (car.numberOfMove > maxNumberOfMove) {
-            maxNumberOfMove = car.numberOfMove
+    for (racingCar in racingCarList) {
+        if (racingCar.numberOfMove > maxNumberOfMove) {
+            maxNumberOfMove = racingCar.numberOfMove
         }
     }
 
     val winners = mutableListOf<String>()
 
-    for (car in carList) {
-        if (car.numberOfMove == maxNumberOfMove) {
-            winners.add(car.name)
+    for (racingCar in racingCarList) {
+        if (racingCar.numberOfMove == maxNumberOfMove) {
+            winners.add(racingCar.name)
         }
     }
 
