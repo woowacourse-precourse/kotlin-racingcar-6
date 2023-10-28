@@ -16,33 +16,34 @@ fun main() {
         throw IllegalArgumentException()
     }
 
-    val cars = HashMap<String, String>()
+    val cars = mutableListOf<CarModel>()
     for (name in getNames) {
         if (name.length > 5) throw IllegalArgumentException()
-        cars[name] = ""
+        cars.add(CarModel(name))
     }
 
     println("\n실행 결과")
     repeat(trialCount) {
-        for (name in cars.keys) {
+//        for (name in cars.keys) {
+        for (car in cars){
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                cars[name] = cars[name]!! + "-"
+                car.moveForward()
             }
-            println("$name : ${cars[name]}")
+            car.printPresentDistance()
         }
         println()
     }
 
     var winner = mutableListOf<String>()
     var winnerScore: Int = 0
-    for (name in cars.keys) {
-        if (cars[name]?.length == winnerScore) {
-            winner.add(name)
+    for (car in cars){
+        if (car.getDistance() == winnerScore) {
+            winner.add(car.getName())
         }
-        if (cars[name]?.length!! > winnerScore) {
-            winnerScore = cars[name]?.length!!
+        if (car.getDistance() > winnerScore) {
+            winnerScore = car.getDistance()
             winner = mutableListOf<String>()
-            winner.add(name)
+            winner.add(car.getName())
         }
     }
 
