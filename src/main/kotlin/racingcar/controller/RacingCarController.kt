@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.domain.Cars
 import racingcar.view.InputView
+import racingcar.view.OutputView
 
-class RacingCarController(private val inputView: InputView) {
+class RacingCarController(private val inputView: InputView, private val outputView: OutputView) {
     fun racingRun() {
         val carNames = inputCarName()
         val tryCount = inputTryRaceCount()
@@ -72,5 +73,11 @@ class RacingCarController(private val inputView: InputView) {
         }
     }
 
-
+    private fun tryRacing(cars: List<Cars>, tryCount: Int) {
+        for (idx in 1..tryCount) {
+            moveCarsBasedOnRandomConditions(cars)
+            outputView.drawDashOnMoveForward(cars)
+            println()
+        }
+    }
 }
