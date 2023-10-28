@@ -1,11 +1,13 @@
 package racingcar.controller
 
+import racingcar.util.Validator
 import racingcar.view.InputView
 
 class GameController {
 
     fun run() {
-        getUserInput()
+        val (carNames, attemptCount) = getUserInput()
+        Validator(carNames, attemptCount)
         play()
         printResult()
     }
@@ -13,10 +15,6 @@ class GameController {
     private fun getUserInput(): Pair<ArrayList<String>, String> {
         val input = InputView()
         return Pair(input.getCarName(), input.getNumberOfAttemps())
-    }
-
-    private fun isValidInput() {
-
     }
 
     private fun play() {
