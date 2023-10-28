@@ -1,14 +1,14 @@
 package racingcar
 
 import racingcar.PlayerConsole.getValidCarNames
+import racingcar.PlayerConsole.getValidMoveCount
 
 class RacingCarController {
 
-    val carList = createRacingCars()
-    val moveCount = PlayerConsole.getValidMoveCount()
+    val carList = createRacingCars(getValidCarNames())
+    val moveCount = getValidMoveCount()
 
     fun play() {
-        createRacingCars()
         repeat(moveCount) {
             moveAllCars()
         }
@@ -18,6 +18,6 @@ class RacingCarController {
         carList.forEach { it.moveForward() }
     }
 
-    private fun createRacingCars() = getValidCarNames().map { RacingCar(it, 0) }
+    private fun createRacingCars(carNameList: List<String>) = carNameList.map { RacingCar(it, 0) }
 
 }
