@@ -20,7 +20,7 @@ fun enterCarName(): List<String> {
 }
 
 fun validateCarNameLength(carNameList: List<String>) {
-    carNameList.map { name ->
+    carNameList.forEach { name ->
         if ((name.trim().length in 1..5).not()) throw IllegalArgumentException(Const.EXCEPTION_CAR_NAME_LENGTH_INVALIDATE)
     }
 }
@@ -30,9 +30,10 @@ fun validateCarNameDistinct(carNameList: List<String>) {
 }
 
 fun makeCar(carNameList: List<String>) {
-    carNameList.map { name ->
+    carNameList.forEach { name ->
         carList.add(Car(_name = name.trim()))
     }
+
 }
 
 fun enterTryCnt(): Int {
