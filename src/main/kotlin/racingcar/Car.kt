@@ -2,16 +2,15 @@ package racingcar
 
 class Car(val name: String) {
 
-    private var _currentPosition = 0
-    val currentPosition: Int
-        get() = _currentPosition
+    private var _distance = 0
+    val distance: Int get() = _distance
 
     init {
         require(name.isNotBlank() && name.length < 5) { Error.InvalidName }
     }
 
     fun moveForward() {
-        _currentPosition++
+        _distance++
     }
 
     internal enum class Error(private val message: String) {

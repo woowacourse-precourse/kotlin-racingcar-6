@@ -12,7 +12,7 @@ class CarTest {
         val car = Car(name = "셀카")
         car.moveForward()
         car.moveForward()
-        assertThat(car.currentPosition).isEqualTo(2)
+        assertThat(car.distance).isEqualTo(2)
     }
 
     @ParameterizedTest
