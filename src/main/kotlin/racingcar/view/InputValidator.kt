@@ -9,7 +9,8 @@ object InputValidator {
 
     fun validateName(name : String){
         if(!inputNameRegex.matches(name)){
-            throw IllegalArgumentException(GameMessage.GAME_INPUT_ERROR_MESSAGE)
+            throw IllegalArgumentException(GameMessage.GAME_INPUT_NAME_ERROR_MESSAGE)
         }
     }
+
 }
