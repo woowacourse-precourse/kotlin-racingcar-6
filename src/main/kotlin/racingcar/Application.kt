@@ -3,13 +3,13 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import racingcar.model.Car
 
-val carList = mutableListOf<Car>()
+val cars = mutableListOf<Car>()
 
 fun main() {
-    val carNameList = enterCarName()
-    validateCarNameLength(carNameList)
-    validateCarNameDistinct(carNameList)
-    makeCar(carNameList)
+    val carNames = enterCarName()
+    validateCarNameLength(carNames)
+    validateCarNameDistinct(carNames)
+    makeCar(carNames)
     doGame(enterTryCnt())
     showWinner()
 }
@@ -19,19 +19,19 @@ fun enterCarName(): List<String> {
     return Console.readLine().split(",")
 }
 
-fun validateCarNameLength(carNameList: List<String>) {
-    carNameList.forEach { name ->
+fun validateCarNameLength(carNames: List<String>) {
+    carNames.forEach { name ->
         if ((name.trim().length in 1..5).not()) throw IllegalArgumentException(Const.EXCEPTION_CAR_NAME_LENGTH_INVALIDATE)
     }
 }
 
-fun validateCarNameDistinct(carNameList: List<String>) {
-    if (carNameList.distinct().size != carNameList.size) throw IllegalArgumentException(Const.EXCEPTION_CAR_NAME_DUPLICATED)
+fun validateCarNameDistinct(carNames: List<String>) {
+    if (carNames.distinct().size != carNames.size) throw IllegalArgumentException(Const.EXCEPTION_CAR_NAME_DUPLICATED)
 }
 
-fun makeCar(carNameList: List<String>) {
-    carList.addAll(
-        carNameList.map { name ->
+fun makeCar(carNames: List<String>) {
+    cars.addAll(
+        carNames.map { name ->
             Car(_name = name.trim())
         }
     )
@@ -50,7 +50,7 @@ fun doGame(userInputTryCnt: Int) {
     println(Const.GAME_RESULT_MSG)
     var currentGameTryCnt = 0
     while (currentGameTryCnt < userInputTryCnt) {
-        carList.forEach { car ->
+        cars.forEach { car ->
             car.moveForward()
         }
         println()
@@ -59,8 +59,8 @@ fun doGame(userInputTryCnt: Int) {
 }
 
 fun showWinner() {
-    carList.maxOfOrNull { it.forwardCnt }?.let { maxForwardCnt ->
-        val winner = carList.filter { car ->
+    cars.maxOfOrNull { it.forwardCnt }?.let { maxForwardCnt ->
+        val winner = cars.filter { car ->
             car.forwardCnt == maxForwardCnt
         }.joinToString { it.name }
         println(Const.GAME_WINNER_MSG + winner)
