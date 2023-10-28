@@ -58,6 +58,25 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `우승자 1명 검증`(){
+        val carList = listOf(Car("lh99j"), Car("pobi"))
+        carList[0].moveOneStep()
+        val validation = getWinner(carList).joinToString()
+        val result = "lh99j"
+        assertThat(validation).isEqualTo(result)
+    }
+
+    @Test
+    fun `우승자 여러명 검증`(){
+        val carList = listOf(Car("lh99j"), Car("pobi"), Car("anjji"))
+        carList[0].moveOneStep()
+        carList[2].moveOneStep()
+        val validation = getWinner(carList).joinToString(", ")
+        val result = "lh99j, anjji"
+        assertThat(validation).isEqualTo(result)
+    }
+
     public override fun runMain() {
         main()
     }
