@@ -17,4 +17,8 @@ data class RacingCar(
         val random = Randoms.pickNumberInRange(0, 9)
         return (4 <= random)
     }
+
+    fun printLocation() {
+        println("$name : ${"-".repeat(location)}")
+    }
 }
