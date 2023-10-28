@@ -4,17 +4,20 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import racingcar.domain.Car
 
 class ApplicationTest : NsTest() {
-    @Test
-    fun `전진 정지`() {
-        //given
+    @AfterEach
+    fun reset() {
         carNames = mutableListOf()
         highScore = 0
-        //then
+    }
+
+    @Test
+    fun `전진 정지`() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni", "1")
@@ -55,10 +58,6 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `printWinner 단독 우승시`() {
-        //given
-        carNames = mutableListOf()
-        highScore = 0
-        //then
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni,hodol", "2")
@@ -69,10 +68,6 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `printWinner 공동 우승시`() {
-        //given
-        carNames = mutableListOf()
-        highScore = 0
-        //then
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni,joon", "1")
