@@ -16,4 +16,8 @@ object PlayerConsole {
         return this
     }
 
+    private fun String.toNumberOrException(): Int {
+        require(this.all { it.isDigit() }) { "숫자만 입력해 주세요." }
+        return this.toInt()
+    }
 }
