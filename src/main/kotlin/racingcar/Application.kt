@@ -24,7 +24,6 @@ fun main() {
 
     println("\n실행 결과")
     repeat(trialCount) {
-//        for (name in cars.keys) {
         for (car in cars){
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
                 car.moveForward()
