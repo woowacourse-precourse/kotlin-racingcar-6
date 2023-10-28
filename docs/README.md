@@ -9,7 +9,7 @@
 
 ### 자동차 생성(RacingCarFactory)
 - 메서드
-  - [x] 자동차 생성 함수(createCars)
+  - [x] 자동차 생성(createCars)
 
 ### 자동차 게임(RacingCarGame)
 - 프로퍼티
@@ -21,7 +21,7 @@
   - [x] RacingCarMovementRecorder 객체
   
 - 메서드
-  - [x] 게임 진행 함수(gamePlay)
+  - [x] 게임 진행(gamePlay)
 
 ### 자동차 게임 메시지(RacingCarGameMessage)
 - 상수
@@ -30,38 +30,38 @@
   - [x] 실행 결과 메시지(RESULT_MESSAGE)
   
 - 메서드 
-  - [x] 자동차 이름 출력 함수(printCarNameInputMessage)
-  - [x] 시도할 횟수 입력 출력 함수(printTryCountInputMessage)
-  - [x] 실행 결과 메시지 출력 함수(printResultMessage)
-  - [x] 최종 우승자 출력 함수(printWinnerMessage)
+  - [x] 자동차 이름 출력(printCarNameInputMessage)
+  - [x] 시도할 횟수 입력 출력(printTryCountInputMessage)
+  - [x] 실행 결과 메시지 출력(printResultMessage)
+  - [x] 최종 우승자 출력(printWinnerMessage)
     
 ### 자동차 게임 판정(RacingCarGameResultEvaluator)
 - 메서드
-  - [x] 최종 우승자 판정 함수(racingCarGameJudge)
+  - [x] 최종 우승자 판정(racingCarGameJudge)
 
 ### 자동차 전진 상태 출력(RacingCarGameStatePrinter)
 - 상수
   - [x] 거리 표현 문자열(DISTANCE_EXPRESSION)
   
 - 메서드
-  - [x] 자동차 전진 거리 출력 함수(printCarDistance)
-  - [x] 모든 자동차의 1회 전진 거리 출력 함수(printAllCarsDistance)
+  - [x] 자동차 전진 거리 출력(printCarDistance)
+  - [x] 모든 자동차의 1회 전진 거리 출력(printAllCarsDistance)
 
 ### 모든 자동차 이동(RacingCarManager)
 - 메서드
-  - [x] 모든 자동차의 1회 전진 함수(moveAllCars)
+  - [x] 모든 자동차의 1회 전진(moveAllCars)
 
 ### 자동차 전진 과정 기록(RacingCarMovementRecorder)
 - 메서드
-  - [x] 전진 횟수에 따른 자동차 전진 및 이동 거리 출력 함수(racingCarMovementRecordByTryCount)
+  - [x] 전진 횟수에 따른 자동차 전진 및 이동 거리 출력(racingCarMovementRecordByTryCount)
 
 ### 사용자 입력(UserInputManager)
 - 프로퍼티
   - [x] UserInputValidator 객체
   
 - 메서드
-  - [x] 이름 입력 함수(userNameInput)
-  - [x] 시도할 횟수 입력 함수(userTryCountInput)
+  - [x] 이름 입력(userNameInput)
+  - [x] 시도할 횟수 입력(userTryCountInput)
 
 ### 사용자 입력 예외처리(UserInputValidator)
 - 상수
@@ -71,7 +71,7 @@
   - [x] 이동 횟수 음수 입력 예외처리 메시지(USER_TRY_COUNT_INPUT_IS_MINUS_NUMBER_EXCEPTION_MESSAGE)
   
 - 메서드
-  - [x] 이름 입력 예외처리 함수(userNameInputValidator)
-  - [x] 이동 횟수 입력 예외처리 함수(userTryCountInputValidator)
-  - [x] 이름 개수 반환 함수(calNameCount)
-  - [x] IllegalArgumentException 발생 함수(invokeIllegalArgumentException)
+  - [x] 이름 입력 예외처리(userNameInputValidator)
+  - [x] 이동 횟수 입력 예외처리(userTryCountInputValidator)
+  - [x] 이름 개수 반환(calNameCount)
+  - [x] IllegalArgumentException 발생(invokeIllegalArgumentException)
