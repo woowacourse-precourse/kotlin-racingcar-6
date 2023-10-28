@@ -5,13 +5,14 @@ import racingcar.view.InputView
 
 class RacingCarController(private val inputView: InputView) {
     fun racingRun() {
-        inputCarName()
-        inputTryRaceCount()
+        val carNames = inputCarName()
+        val tryCount = inputTryRaceCount()
     }
-    private fun inputCarName() {
+    private fun inputCarName(): List<String> {
         inputView.inputCarNamesMessage()
         val inputName = Console.readLine()
-        splitInputName(inputName.trim())
+        val carNames = splitInputName(inputName.trim())
+        return carNames
     }
 
     private fun splitInputName(inputName: String): List<String> {
@@ -26,7 +27,7 @@ class RacingCarController(private val inputView: InputView) {
         }
     }
 
-    private fun inputTryRaceCount() {
+    private fun inputTryRaceCount(): Int {
         var tryCount:Int = 0
         inputView.inputTryRaceCountMessage()
         try {
@@ -35,6 +36,8 @@ class RacingCarController(private val inputView: InputView) {
             throw IllegalArgumentException("숫자가 아닌 다른 값이 입력되었습니다.")
         }
         validateInputTryRace(tryCount)
+
+        return tryCount
     }
 
     private fun validateInputTryRace(tryCount: Int) {
