@@ -21,7 +21,7 @@ fun moveOrStop(index: Int){
 }
 
 fun main() {
-    print("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,)로 구분)\n")
+    print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n")
     val input = readLine()
 
     checkInputIsNull(input)
@@ -47,15 +47,13 @@ fun main() {
         throw IllegalArgumentException("유효한 정수를 입력해주세요.")
     }
 
+    print("\n실행결과")
     // 경주 게임 실행
     for (i in 1..playTimeAsInt){
+        print("\n")
         moveOrStop(0)
         moveOrStop(1)
         moveOrStop(2)
-        print("\n")
     }
-
-    print(carNames)
-
 
 }
