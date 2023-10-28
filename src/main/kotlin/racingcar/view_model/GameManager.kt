@@ -1,9 +1,6 @@
 package racingcar.view_model
 
-import racingcar.model.CarNameSeparator
-import racingcar.model.Constants
-import racingcar.model.RacingGame
-import racingcar.model.Validation
+import racingcar.model.*
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -15,8 +12,9 @@ class GameManager {
         OutputView().tryInputMassage()
         val tryNum = InputView().tryNameInput()
         val Num = Validation().tryNum(tryNum)
+        var carProgress :List<Int> = CarProgress().progress(carNamesSeparated.size)
         for (i in 0..Num){
-            RacingGame().racing(carNamesSeparated)
+            RacingGame().racing(carProgress)
         }
     }
 }
