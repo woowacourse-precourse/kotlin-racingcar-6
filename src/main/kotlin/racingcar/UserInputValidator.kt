@@ -10,15 +10,19 @@ class UserInputValidator {
     fun userNameInputValidator(nameList: MutableList<String>) {
         for(name in nameList) {
             when {
-                name.length > 5 -> throw IllegalArgumentException(USER_NAME_INPUT_EXCEPTION_MESSAGE)
+                name.length > 5 -> invokeIllegalArgumentException(USER_NAME_INPUT_EXCEPTION_MESSAGE)
             }
         }
     }
 
     fun userTryCountInputValidator(input: String) {
         when {
-            input.toIntOrNull() == null -> throw IllegalArgumentException(USER_TRY_COUNT_INPUT_IS_NOT_NUMBER_EXCEPTION_MESSAGE)
-            input.toInt() < 0 -> throw IllegalArgumentException(USER_TRY_COUNT_INPUT_IS_MINUS_NUMBER_EXCEPTION_MESSAGE)
+            input.toIntOrNull() == null -> invokeIllegalArgumentException(USER_TRY_COUNT_INPUT_IS_NOT_NUMBER_EXCEPTION_MESSAGE)
+            input.toInt() < 0 -> invokeIllegalArgumentException(USER_TRY_COUNT_INPUT_IS_MINUS_NUMBER_EXCEPTION_MESSAGE)
         }
+    }
+
+    private fun invokeIllegalArgumentException(message: String) {
+        throw IllegalArgumentException(message)
     }
 }
