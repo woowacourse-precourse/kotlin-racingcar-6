@@ -32,6 +32,16 @@ class CarGameManager {
             println()
         }
 
+        val winnerListLength = carResultList.max().length
+        val winnersList = mutableListOf<String>()
+        print(Message.FINAL_WINNER_MESSAGE)
+        for (countList in 0 ..<carListCount){
+            if (winnerListLength == carResultList[countList].length){
+                winnersList.add(carNamesList[countList])
+            }
+        }
+        val winner = winnersList.joinToString( ", " )
+        println(winner)
 
 
 
