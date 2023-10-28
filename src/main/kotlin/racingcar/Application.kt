@@ -25,9 +25,15 @@ fun main() {
 
 }
 
-class Car(name: String) {
+class Car(name: String, var position: Int = 0) {
 
     val name = name
+
+    fun move() {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            position++
+        }
+    }
 
 }
 
@@ -37,7 +43,17 @@ class Racing(val cars: List<Car>, attempts: Int) {
     }
 
     fun start() {
- 
+        for (i in 0 until attempts) {
+            cars.forEach { it.move() }
+            printResult()
+        }
+    }
+
+    fun printResult() {
+        cars.forEach { car ->
+            println("${car.name} : ${"-".repeat(car.position)}")
+        }
+        println()
     }
 
 }
