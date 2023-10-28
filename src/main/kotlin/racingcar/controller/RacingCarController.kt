@@ -13,7 +13,7 @@ class RacingCarController(private val inputView: InputView, private val outputVi
         val cars: List<Cars> = carNames.map { Cars(it) }
 
         tryRacing(cars, tryCount)
-        raceWinner(cars)
+        raceWinners(cars)
     }
 
     private fun inputCarName(): List<String> {
@@ -83,8 +83,12 @@ class RacingCarController(private val inputView: InputView, private val outputVi
         }
     }
 
-    private fun raceWinner(cars: List<Cars>) {
-        val maxPosition: Int? = cars.maxOfOrNull { it.carPosition }
+    private fun racePointMax(cars: List<Cars>): Int? {
+        return cars.maxOfOrNull { it.carPosition }
+    }
+
+    private fun raceWinners(cars: List<Cars>) {
+        val maxPosition = racePointMax(cars)
         if (maxPosition != null) {
             val winners = cars.filter { it.carPosition == maxPosition }
             println("최종 우승자 : ${winners.joinToString(", ") { it.carName }}")
