@@ -18,12 +18,12 @@ fun main() {
 
 fun enterCarName(): List<String> {
     println(GameConst.ENTER_CAR_NAME_MSG)
-    return Console.readLine().split(",")
+    return Console.readLine().split(",").map { it.trim() }
 }
 
 fun validateCarNameLength(carNames: List<String>) {
     carNames.forEach { name ->
-        if ((name.trim().length in 1..5).not()) throw IllegalArgumentException(ExceptionConst.EXCEPTION_CAR_NAME_LENGTH_INVALIDATE)
+        if ((name.length in 1..5).not()) throw IllegalArgumentException(ExceptionConst.EXCEPTION_CAR_NAME_LENGTH_INVALIDATE)
     }
 }
 
@@ -34,7 +34,7 @@ fun validateCarNameDistinct(carNames: List<String>) {
 fun makeCar(carNames: List<String>) {
     cars.addAll(
         carNames.map { name ->
-            Car(_name = name.trim())
+            Car(_name = name)
         }
     )
 }
