@@ -2,29 +2,19 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 
-
-const val NAME_SEPARATOR = ","
-const val MAX_NAME_LENGTH = 5
-
 class User {
-    fun requestInputCarNames() {
+    fun requestInputCarNames(): List<Car> {
         val input = Console.readLine()
 
-        if (input.isEmpty()) {
-            throw IllegalArgumentException("잘못 입력했어요.")
-        }
+        return createCars(input)
+    }
+
+    fun createCars(input: String): List<Car> {
+        Validator.validateInput(input)
 
         val carNames = input.split(NAME_SEPARATOR).map { it.trim() }
-        carNames.forEach {
-            if (it.isEmpty()) {
-                throw IllegalArgumentException("자동차 이름을 잘못 입력했어요.")
-            }
+        carNames.forEach { Validator.validateCarName(it) }
 
-            if (it.length > MAX_NAME_LENGTH) {
-                throw IllegalArgumentException("자동차 이름은 ${MAX_NAME_LENGTH}자 이하로 입력해주세요.")
-            }
-        }
-
-        val cars = carNames.map { Car(it) }
+        return carNames.map { Car(it) }
     }
 }
