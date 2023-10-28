@@ -12,4 +12,14 @@ class Car(name: String) {
             distance++
         }
     }
+    fun getDistance():Int{
+        return distance
+    }
+
+    fun printResult(){
+        print("$name : ")
+        for (i in 1..distance)
+            print("-")
+        println()
+    }
 }

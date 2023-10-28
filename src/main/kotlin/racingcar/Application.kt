@@ -5,11 +5,21 @@ import racingcar.domain.Car
 
 fun main() {
     var carNames: MutableList<Car> = mutableListOf()
-
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     carNames = askCarName(carNames, Console.readLine())
     println("시도할 횟수는 몇 회인가요?")
     val count = askNumber(Console.readLine())
+    var highScore = 0
+    for(i in 1 .. count){
+        carNames.all {
+            it.move()
+            it.printResult()
+            if (it.getDistance()>highScore)
+                highScore=it.getDistance()
+            true
+        }
+    }
+
 }
 
 fun askCarName(carNames: MutableList<Car>, input: String): MutableList<Car> {
