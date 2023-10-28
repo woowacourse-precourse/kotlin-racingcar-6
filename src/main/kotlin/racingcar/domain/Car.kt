@@ -12,6 +12,9 @@ class Car(name: String) {
             distance++
         }
     }
+    fun getName():String{
+        return name
+    }
     fun getDistance():Int{
         return distance
     }

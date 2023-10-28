@@ -9,19 +9,18 @@
 
 ### 🖥️ 출력
 
-- [] 각 차수별 실행 결과를 출력 
-  - [] 자동차의 이름과 전진한 거리를 출력- Car#printResult()
-- [] 게임 완료 후, 가장 멀리 전진한 자동차 우승자 안내 문구를 출력 - printWinner()
-  - [] 공동 우승일 경우, 쉼표(,)로 구분 - printWinner()
+- [done] 각 차수별 실행 결과를 출력 
+  - [done] 자동차의 이름과 전진한 거리를 출력- Car#printResult()
+- [done] 게임 완료 후, 가장 멀리 전진한 자동차 우승자 안내 문구를 출력 - printWinner()
+  - [done] 공동 우승일 경우, 쉼표(,)로 구분 - printWinner()
 
 ### 📱 기능 처리
 
 - [done] 전진하는 조건 처리 
   - [done] 0에서 9 사이의 무작위 값을 생성 - NumberGenerator#createRandomNumber()
   - [done] 위의 무작위 값이 4 이상인지 확인 후 전진 - Car#move()
-  - [done] 움직인 후 "이름 : 움직인 거리만큼의 '-'출력" - Car#printResult()
-- [] 우승자 가리기
-  - [] 자동차들 중 우승자 가리기 - Judgement#decideWinner()
+- [done] 우승자 가리기
+  - [done] 자동차들 중 우승자 가리기 - decideWinner()
 
 ### 💡 아이디어
 

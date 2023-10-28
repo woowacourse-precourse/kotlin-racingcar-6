@@ -10,16 +10,16 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val count = askNumber(Console.readLine())
     var highScore = 0
-    for(i in 1 .. count){
+    for (i in 1..count) {
         carNames.all {
             it.move()
             it.printResult()
-            if (it.getDistance()>highScore)
-                highScore=it.getDistance()
+            if (it.getDistance() > highScore)
+                highScore = it.getDistance()
             true
         }
     }
-
+    printWinner(carNames, highScore)
 }
 
 fun askCarName(carNames: MutableList<Car>, input: String): MutableList<Car> {
@@ -36,6 +36,25 @@ fun askNumber(count: String): Int {
     return count.toIntOrNull() ?: throw IllegalArgumentException("Input is not Int")
 }
 
-fun printWinner() {
+fun printWinner(carNames: MutableList<Car>, highScore: Int) {
+    var isFirst = true
+    print("최종 우승자 : ")
+    carNames.all {
+        isFirst = decideWinner(it,highScore,isFirst)
+        true
+    }
+    println()
+}
 
+fun decideWinner(car:Car,highScore:Int,isFirst:Boolean):Boolean{
+    if(car.getDistance()==highScore){
+        val name = car.getName()
+        if (isFirst) {
+            print(name)
+            return false
+        }
+        print(", $name")
+        return false
+    }
+    return isFirst
 }
