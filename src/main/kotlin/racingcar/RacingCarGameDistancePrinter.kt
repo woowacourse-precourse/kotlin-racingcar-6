@@ -1,6 +1,6 @@
 package racingcar
 
-class RacingCarGameStatePrinter {
+class RacingCarGameDistancePrinter {
     companion object {
         const val DISTANCE_EXPRESSION = "-"
     }
