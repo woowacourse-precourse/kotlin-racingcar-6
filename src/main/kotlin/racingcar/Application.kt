@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 
 fun main() {
@@ -15,5 +16,12 @@ fun main() {
 
     println("시도할 횟수는 몇 회인가요?")
     val attempts = Console.readLine().toInt()
-    
+
+    val cars = names.map { Car(it) }
+}
+
+class Car(name: String) {
+
+    val name = name
+
 }
