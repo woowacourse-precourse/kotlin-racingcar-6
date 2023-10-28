@@ -73,3 +73,4 @@
 - 메서드
   - [x] 이름 입력 예외처리 함수(userNameInputValidator)
   - [x] 이동 횟수 입력 예외처리 함수(userTryCountInputValidator)
+  - [x] IllegalArgumentException 발생 함수(invokeIllegalArgumentException)
