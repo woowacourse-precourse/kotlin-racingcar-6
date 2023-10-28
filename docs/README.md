@@ -60,8 +60,8 @@
   - [x] UserInputValidator 객체
   
 - 메서드
-  - [x] 이름 입력 함수
-  - [x] 이동 횟수 입력 함수
+  - [x] 이름 입력 함수(userNameInput)
+  - [x] 시도할 횟수 입력 함수(userTryCountInput)
 
 ### 사용자 입력 예외처리(UserInputValidator)
 - 상수
@@ -69,5 +69,5 @@
   - [x] 이동 횟수 입력 예외처리 메시지
   
 - 메서드
-  - [x] 이름 입력 예외처리 함수
-  - [x] 이동 횟수 입력 예외처리 함수
+  - [x] 이름 입력 예외처리 함수(userNameInputValidator)
+  - [x] 이동 횟수 입력 예외처리 함수(userTryCountInputValidator)
