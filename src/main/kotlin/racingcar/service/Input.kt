@@ -4,17 +4,16 @@ import camp.nextstep.edu.missionutils.Console.*
 import racingcar.exception.Exception
 
 class Input(private val exception: Exception) {
-
     fun inputName(): List<String> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val name = readLine()
 
         with(exception) {
-            checkEmpty(name)
-            checkDuplicationName(name)
-            checkSpaceName(name)
-            checkSpaceInName(name)
-            checkLengthName(name)
+            catchEmpty(name)
+            catchDuplicationName(name)
+            catchSpaceName(name)
+            catchSpaceInName(name)
+            catchLengthName(name)
         }
 
         return name.split(",")
@@ -25,8 +24,9 @@ class Input(private val exception: Exception) {
         val cycle = readLine()
 
         with(exception) {
-            checkEmpty(cycle)
-            checkCycleString(cycle)
+            catchEmpty(cycle)
+            catchCycleString(cycle)
+            catchZero(cycle)
         }
 
         return cycle.toInt()

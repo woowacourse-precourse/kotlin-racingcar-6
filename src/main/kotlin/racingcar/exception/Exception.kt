@@ -1,7 +1,7 @@
 package racingcar.exception
 
 class Exception {
-    fun checkSpaceInName(name: String) {
+    fun catchSpaceInName(name: String) {
         val check = name.split(",")
         check.forEach {
             require(!it.contains(Regex("\\s"))) {
@@ -10,7 +10,7 @@ class Exception {
         }
     }
 
-    fun checkSpaceName(name: String) {
+    fun catchSpaceName(name: String) {
         val check = name.split(",")
         check.forEach {
             require(it.isNotBlank()) {
@@ -19,14 +19,14 @@ class Exception {
         }
     }
 
-    fun checkDuplicationName(name: String) {
+    fun catchDuplicationName(name: String) {
         val check = name.split(",")
         require(check.toSet().size == check.size) {
             "중복된 이름입니다."
         }
     }
 
-    fun checkLengthName(name: String) {
+    fun catchLengthName(name: String) {
         val check = name.split(",")
         repeat(check.size) {
             require(check[it].length <= NAME_LENGTH) {
@@ -35,14 +35,20 @@ class Exception {
         }
     }
 
-    fun checkCycleString(number: String) {
+    fun catchCycleString(number: String) {
         val length = number.length
         require(number.matches(Regex("[0-9]{$length}"))) {
             "숫자만 입력해 주세요."
         }
     }
 
-    fun checkEmpty(text: String) {
+    fun catchZero(number: String) {
+        require(number.toInt() != 0) {
+            "이동 횟수는 1이상 입력해 주세요"
+        }
+    }
+
+    fun catchEmpty(text: String) {
         require(text.isNotEmpty()) {
             "값을 입력해주세요."
         }
