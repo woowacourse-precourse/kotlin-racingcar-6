@@ -7,6 +7,7 @@ val carList = mutableListOf<Car>()
 
 fun main() {
     enterCarName()
+    val tryCnt = enterTryCnt()
 }
 
 fun enterCarName() {
@@ -26,4 +27,12 @@ fun makeCar(carNameList: List<String>) {
     carNameList.map { name ->
         carList.add(Car(_name = name))
     }
+}
+
+fun enterTryCnt(): Int {
+    println(Const.ENTER_TRY_CNT_MSG)
+    Console.readLine().toIntOrNull()?.let { tryCnt ->
+        return tryCnt
+    }
+    throw IllegalArgumentException(Const.EXCEPTION_INPUT_NOT_INT)
 }

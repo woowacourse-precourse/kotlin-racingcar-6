@@ -6,4 +6,5 @@ object Const {
     val GAME_RESULT_MSG = "실행 결과"
     val GAME_WINNER_MSG = "최종 우승자 : "
     val EXCEPTION_INPUT_RANGE_OVERFLOW = "자동차 이름은 5글자 이하만 가능합니다."
+    val EXCEPTION_INPUT_NOT_INT = "시도 횟수는 숫자만 입력해주세요."
 }
