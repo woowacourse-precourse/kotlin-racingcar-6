@@ -26,7 +26,7 @@ class RaceGenerator {
     return numberOfMoves
   }
 
-  private fun checkCarNames(input: String): List<String> {
+  fun checkCarNames(input: String): List<String> {
     val carNames: List<String> = input.split(",")
 
     if (carNames.size != carNames.toSet().size) {
@@ -46,7 +46,7 @@ class RaceGenerator {
     return carNames
   }
 
-  private fun checkNumberOfMoves(input: String): Int {
+  fun checkNumberOfMoves(input: String): Int {
     return input.toIntOrNull() ?: throw IllegalArgumentException("숫자를 입력해주세요.")
   }
 }
