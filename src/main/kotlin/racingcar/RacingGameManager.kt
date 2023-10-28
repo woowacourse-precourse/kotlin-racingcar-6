@@ -8,11 +8,14 @@ class RacingGameManager {
     fun run() {
         printGameStart()
         createCars()
+        printGameRoundQuestion()
 
         closeConsole()
     }
 
     private fun printGameStart() = println(Message.INPUT_CAR_NAME.message)
+
+    private fun printGameRoundQuestion() = println(Message.INPUT_GAME_ROUND.message)
 
     private fun createCars(): List<Car> {
         val cars = mutableListOf<Car>()
