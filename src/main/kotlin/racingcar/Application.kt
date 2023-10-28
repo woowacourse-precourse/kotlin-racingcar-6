@@ -140,6 +140,7 @@ val scoreMap = mutableMapOf<String?, Int>()
 fun repeatRacing(tryCount: Int, multiCarName: List<String?>) {
     repeat(tryCount) {
         racingEachCar(multiCarName)
+        printScore(multiCarName)
     }
 }
 
@@ -162,6 +163,15 @@ fun getRandomNum(): Int {
 
 fun checkPositiveForward(randomNum: Int): Boolean {
     return randomNum >= 4
+}
+
+fun printScore(multiCarName: List<String?>) {
+    for (carName in multiCarName) {
+        val score = scoreMap.getOrDefault(carName, 0)
+        val forward = "-".repeat(score)
+        println("$carName : $forward")
+    }
+    println()
 }
 
 fun soloChampion(carName: String) {
