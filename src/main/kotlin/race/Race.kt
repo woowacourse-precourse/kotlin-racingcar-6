@@ -13,10 +13,12 @@ class Race {
             race.inputCar()
             val moveNum = race.inputMoveNum()
             race.carMove(moveNum)
+            race.printWinner()
         }
     }
+
     fun inputCar() {
-        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분")
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val carString = Console.readLine()
         checkCar(carString)
 
@@ -39,58 +41,80 @@ class Race {
             }
         }
     }
-    fun inputMoveNum() : Int {
+
+    fun inputMoveNum(): Int {
         println("시도할 횟수는 몇 회인가요?")
         val moveNumber = Console.readLine()
         if (isInteger(moveNumber)) {
             return moveNumber.toInt()
-        }
-        else {
+        } else {
             throw IllegalArgumentException("정수를 입력하세요.")
         }
     }
 
-    private fun isInteger(checkString:String) : Boolean {
+    private fun isInteger(checkString: String): Boolean {
         return try {
             checkString.toInt()
             true
-        } catch (e:NumberFormatException) {
+        } catch (e: NumberFormatException) {
             println("정수를 입력하세요.")
             false
         }
     }
 
-    fun carMove(moveNum:Int) {
+    fun carMove(moveNum: Int) {
         println("실행 결과")
         for (i in 0..<moveNum) {
             carMoveOnce()
         }
     }
+
     private fun carMoveOnce() {
-        for ((car,moveCount) in garage.entries) {
+        for ((car, moveCount) in garage.entries) {
             if (checkMove()) {
                 garage[car] = moveCount + 1
-                printMove(car,moveCount + 1)
-            }
-            else {
-                printMove(car,moveCount)
+                printMove(car, moveCount + 1)
+            } else {
+                printMove(car, moveCount)
             }
         }
         println()
     }
-    private fun checkMove() :Boolean {
+
+    private fun checkMove(): Boolean {
         val randomNumber = generateRandomNum()
         return randomNumber >= 4
     }
 
-    private fun generateRandomNum() :Int {
-        val ranNum = Randoms.pickNumberInRange(0,9)
-        print(ranNum)
+    private fun generateRandomNum(): Int {
+        val ranNum = Randoms.pickNumberInRange(0, 9)
+        print(ranNum) // 확인용
         return ranNum
     }
 
-    private fun printMove(car:String, count:Int) {
+    private fun printMove(car: String, count: Int) {
         val repeatMinus = "-".repeat(count)
         println("$car : $repeatMinus")
+    }
+
+    private fun getWinner(garage: Map<String, Int>): List<String> {
+        val maxValue = garage.values.max()
+        val winner = mutableListOf<String>()
+        for ((car, value) in garage.entries) {
+            if (value == maxValue) {
+                winner.add(car)
+            }
+        }
+        return winner
+    }
+
+    fun printWinner() {
+        val winner = getWinner(garage)
+        if (winner.size == 1) {
+            print("최종 우승자 : ${winner[0]}")
+        } else {
+            val result = winner.joinToString(", ")
+            print("최종 우승자 : $result")
+        }
     }
 }
