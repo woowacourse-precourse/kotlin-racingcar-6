@@ -5,10 +5,10 @@ import racingcar.view.InputView
 
 class RacingCarController(private val inputView: InputView) {
     fun racingRun() {
-        inputView.inputCarNamesMessage()
         inputCarName()
     }
     private fun inputCarName() {
+        inputView.inputCarNamesMessage()
         val inputName = Console.readLine()
         splitInputName(inputName.trim())
     }
