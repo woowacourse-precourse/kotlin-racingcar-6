@@ -13,6 +13,8 @@ class CarNameSeparator {
                 carName += word
             }
         }
+        Validation().carName(carName)
+        separatedName.add(carName)
         return separatedName
     }
 }
