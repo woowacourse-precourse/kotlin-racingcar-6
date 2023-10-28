@@ -7,11 +7,9 @@ import java.lang.NumberFormatException
 fun main() {
     val carList = makeCarList(getCarName())
 
-    val tryNumber = getTryNumber()
-
-    for (i in 0 until tryNumber) {
+    for (tryNumber in 0 until getTryNumber()) {
         forwardOrStop(carList)
-        printResult(i, carList)
+        printResult(tryNumber, carList)
     }
 }
 
@@ -106,8 +104,8 @@ fun forwardOrStop(carList: List<Car>) {
 }
 
 // 기능 8. 실행 결과 출력하기
-fun printResult(i: Int, carList: List<Car>) {
-    if (i == 0) {
+fun printResult(tryNumber: Int, carList: List<Car>) {
+    if (tryNumber == 0) {
         println("\n실행 결과")
     }
 
