@@ -1,15 +1,15 @@
 package racingcar.service
 
-import camp.nextstep.edu.missionutils.Randoms
 import racingcar.domain.Car
+import racingcar.exception.Exception
 
 class Racing {
-    init {
-        startRacing(Input(), Winner(), Distance())
+    fun startRace() {
+        startRacing(Input(Exception()), Winner(), Distance())
     }
 
     private fun startRacing(input: Input, winner: Winner, distance: Distance) {
-        val playerList = choicePlayer()
+        val playerList = choicePlayer(input)
         val cycle = input.inputCycle()
         val distanceList = MutableList(playerList.size) { "" }
         print("\n실행결과\n")
@@ -26,13 +26,13 @@ class Racing {
         winner.printWinner(winnerList)
     }
 
-    private fun choicePlayer(): List<Car> {
-        val nameList: List<String> = Input().inputName()
+    private fun choicePlayer(input: Input): List<Car> {
+        val nameList: List<String> = input.inputName()
 
         return nameList.map { name -> Car(name) }
     }
 
     companion object {
-        var COUNT = 0
+        private var COUNT = 0
     }
 }
