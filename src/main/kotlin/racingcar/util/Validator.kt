@@ -8,15 +8,15 @@ class Validator(carNames: ArrayList<String>, attemptCount: String) {
         isPositiveInteger(attemptCount)
     }
 
-    fun isValidLengthAndAlphabetic(carNames: ArrayList<String>) {
+    private fun isValidLengthAndAlphabetic(carNames: ArrayList<String>) {
 
     }
 
-    fun checkIfDuplicateNameExists(carNames: ArrayList<String>) {
+    private fun checkIfDuplicateNameExists(carNames: ArrayList<String>) {
 
     }
 
-    fun isPositiveInteger(attemptCount: String) {
+    private fun isPositiveInteger(attemptCount: String) {
 
     }
 }
