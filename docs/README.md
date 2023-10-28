@@ -25,9 +25,9 @@
 
 ### 자동차 게임 메시지(RacingCarGameMessage)
 - 상수
-  - [x] 자동차 이름 입력 메시지
-  - [x] 시도할 횟수 입력 메시지
-  - [x] 실행 결과 메시지
+  - [x] 자동차 이름 입력 메시지(CAR_NAME_INPUT_MESSAGE)
+  - [x] 시도할 횟수 입력 메시지(TRY_COUNT_MESSAGE)
+  - [x] 실행 결과 메시지(RESULT_MESSAGE)
   
 - 메서드 
   - [x] 자동차 이름 출력 함수(printCarNameInputMessage)
@@ -41,7 +41,7 @@
 
 ### 자동차 전진 상태 출력(RacingCarGameStatePrinter)
 - 상수
-  - [x] 거리 표현 문자열
+  - [x] 거리 표현 문자열(distanceString)
   
 - 메서드
   - [x] 자동차 전진 상태 출력 함수(printState)
@@ -65,8 +65,8 @@
 
 ### 사용자 입력 예외처리(UserInputValidator)
 - 상수
-  - [x] 이름 입력 예외처리 메시지
-  - [x] 이동 횟수 입력 예외처리 메시지
+  - [x] 이름 입력 예외처리 메시지(USER_NAME_INPUT_EXCEPTION_MESSAGE)
+  - [x] 이동 횟수 입력 예외처리 메시지(USER_TRY_COUNT_INPUT_EXCEPTION_MESSAGE)
   
 - 메서드
   - [x] 이름 입력 예외처리 함수(userNameInputValidator)
