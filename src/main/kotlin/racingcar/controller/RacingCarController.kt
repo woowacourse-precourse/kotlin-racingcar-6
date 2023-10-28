@@ -6,6 +6,7 @@ import racingcar.view.InputView
 class RacingCarController(private val inputView: InputView) {
     fun racingRun() {
         inputCarName()
+        inputTryRaceCount()
     }
     private fun inputCarName() {
         inputView.inputCarNamesMessage()
@@ -25,5 +26,8 @@ class RacingCarController(private val inputView: InputView) {
         }
     }
 
-
+    private fun inputTryRaceCount() {
+        inputView.inputTryRaceCountMessage()
+        val tryCount:Int = Console.readLine().toInt()
+    }
 }
