@@ -8,4 +8,9 @@ class InputView {
         val names : String = Console.readLine()
         return names
     }
+
+    fun tryNameInput():String{
+        val tryNum : String = Console.readLine()
+        return tryNum
+    }
 }
