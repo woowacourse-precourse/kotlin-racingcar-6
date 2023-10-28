@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.domain.Car
 
 class ApplicationTest : NsTest() {
     @Test
@@ -24,6 +25,34 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
+    }
+
+    @Test
+    fun `askCarName 메서드로 이름 분리`() {
+        //given
+        val carNames: MutableList<Car> = mutableListOf()
+        val input = "pobi,java,joon,car"
+
+        //when
+        val result = askCarName(carNames, input)
+
+        //then
+        assertThat(result).hasSize(4)
+        assertThat(result[0].name).isEqualTo("pobi")
+        assertThat(result[1].name).isEqualTo("java")
+        assertThat(result[2].name).isEqualTo("joon")
+        assertThat(result[3].name).isEqualTo("car")
+    }
+
+    @Test
+    fun `askCarName 메서드 사용시 이름이 5자 이상일 때`() {
+        //given
+        val carNames: MutableList<Car> = mutableListOf()
+        val input = "pobi,java,joontae,car"
+
+        //then
+        assertThrows<IllegalArgumentException>("String index out of range: 5")
+        { askCarName(carNames, input) }
     }
 
     public override fun runMain() {
