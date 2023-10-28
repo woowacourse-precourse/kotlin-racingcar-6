@@ -16,4 +16,26 @@ internal class CarTest {
         // then
         assertEquals(expectCarString, carString)
     }
+
+    @Test
+    fun getDistance() {
+        // given
+        val car = Car("bamin")
+        val expectCarDistance = 0
+        // when
+        val carDistance = car.getDistance()
+        // then
+        assertEquals(expectCarDistance, car.getDistance())
+    }
+
+    @Test
+    fun getName() {
+        // given
+        val car = Car("bamin")
+        val expectedName = "bamin"
+        // when
+        val carName = car.getName()
+        // then
+        assertEquals(expectedName, carName)
+    }
 }
