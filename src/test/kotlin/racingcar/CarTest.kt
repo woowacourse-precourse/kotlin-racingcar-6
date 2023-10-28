@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
-import java.lang.IllegalArgumentException
 
 class CarTest {
 
@@ -21,6 +20,13 @@ class CarTest {
     fun `자동차 이름이 5글자 초과이거나 공백이 아닌지`(input: String) {
         assertEqualsThrowsMessage<IllegalArgumentException>(Car.Error.InvalidName) {
             Car(name = input)
+        }
+    }
+
+    @Test
+    fun `자동차 이름이 중복되는지`() {
+        assertEqualsThrowsMessage<IllegalArgumentException>(CarGroup.Error.Duplicated) {
+            CarGroup("가나다,가나다")
         }
     }
 }
