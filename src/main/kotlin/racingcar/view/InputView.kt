@@ -10,9 +10,9 @@ class InputView {
             return carName.split(",")
         }
 
-        fun inputNumberAttempts(): String {
+        fun inputNumberAttempts(): Int {
             println("시도할 횟수는 몇 회인가요?")
-            return Console.readLine()
+            return Console.readLine().toInt()
         }
     }
 }

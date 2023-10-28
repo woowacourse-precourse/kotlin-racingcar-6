@@ -8,7 +8,7 @@ class GameController {
     private val winningCarMembers = mutableListOf<String>()
     fun start() {
         val carMembers = InputView.inputCarName()
-        val numberAttempts = InputView.inputNumberAttempts().toInt()
+        val numberAttempts = InputView.inputNumberAttempts()
         val carList = generateCarList(carMembers)
 
         OutputView.printExecutionResultText()
