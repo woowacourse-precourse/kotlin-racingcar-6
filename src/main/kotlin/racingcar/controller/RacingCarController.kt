@@ -13,6 +13,7 @@ class RacingCarController(private val inputView: InputView, private val outputVi
         val cars: List<Cars> = carNames.map { Cars(it) }
 
         tryRacing(cars, tryCount)
+        raceWinner(cars)
     }
 
     private fun inputCarName(): List<String> {
@@ -79,6 +80,13 @@ class RacingCarController(private val inputView: InputView, private val outputVi
             moveCarsBasedOnRandomConditions(cars)
             outputView.drawDashOnMoveForward(cars)
             println()
+        }
+    }
+
+    private fun raceWinner(cars: List<Cars>) {
+        val maxPosition: Int? = cars.maxOfOrNull { it.carPosition }
+        if (maxPosition != null) {
+            val winners = cars.filter { it.carPosition == maxPosition }
         }
     }
 }
