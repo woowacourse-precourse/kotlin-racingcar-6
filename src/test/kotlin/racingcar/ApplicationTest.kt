@@ -1,155 +1,221 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.assertThrows
+import racingcar.domain.IOHandler
+import racingcar.domain.Validator
+import java.io.ByteArrayInputStream
 
 class ApplicationTest : NsTest() {
 
+    private lateinit var validator: Validator
+    private lateinit var ioHandler: IOHandler
+
+    @BeforeEach
+    fun setUp() {
+        validator = Validator()
+        ioHandler = IOHandler(validator)
+    }
+
+    @AfterEach
+    fun tearDown() {
+        Console.close()
+    }
+
     @Test
-    fun `조건에 맞는 이름 1개를 입력 받는다`() {
+    fun `pobi 이름이 조건에 맞는지 검사하면 true를 반환한다`() {
         // given
         val name = "pobi"
-        val result = listOf("pobi")
 
         // when
+        val actual = validator.checkCarNameValid(name)
 
         // then
+        val expected = true
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
-    fun `5자를 초과하는 이름을 입력받는다`() {
+    fun `123456 이름이 조건에 맞는지 검사하면 false를 반환한다`() {
         // given
         val name = "123456"
-        // throw IllegalArgumentException
 
         // when
+        val actual = validator.checkCarNameValid(name)
 
         // then
+        val expected = false
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
-    fun `특수 문자를 사용하는 이름을 입력 받는다`() {
+    fun `굿이모지👍 이름이 조건에 맞는지 검사하면 true를 반환한다`() {
         // given
         val name = "굿이모지👍"
-        val result = listOf("굿이모지👍")
 
         // when
+        val actual = validator.checkCarNameValid(name)
 
         // then
+        val expected = true
+        assertThat(actual).isEqualTo(expected)
     }
-    
+
     @Test
-    fun `세 개의 이름을 입력 받는다`() {
+    fun `ppoBi,영수,철수를 자동차 이름으로 입력하면 ppoBi와 영수와 철수로 된 list를 반환한다`() {
         // given
-        val names = "pobi,영수,철수"
-        val result = listOf("pobi", "영수", "철수")
-        
+        val names = "ppoBi,영수,철수"
+        setInput(names)
+
         // when
-        
+        val actual = ioHandler.getCarNameFromUser()
+
         // then
-    }
-    
-    @Test
-    fun `"를 사용하는 이름을 입력받는다`() {
-        // given
-        val name = "가\"나다라"
-        val result = listOf("""가"나다""")
-        
-        // when
-        
-        // then
+        val expected = listOf("ppoBi", "영수", "철수")
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
-    fun `line break을 이름으로 입력받는다`() {
+    fun `가"나"다를 자동차 이름으로 입력하면 가"나"다로 된 list를 반환한다`() {
         // given
-        val name = """이\n름, 정상이름"""
-        val result = listOf("""이\n름""", "정상이름")
+        val name = "가\"나\"다"
+        setInput(name)
 
         // when
+        val actual = ioHandler.getCarNameFromUser()
 
         // then
-    }
-    
-    @Test
-    fun `빈 이름을 1개 입력 받는다`() {
-        // given
-        val name = ""
-        val result: List<String>
-        
-        // when
-        
-        // then
-    }
-    
-    @Test
-    fun `공백 이름을 1개 입력 받는다`() {
-        // given
-        val name = " "
-        val result = listOf(" ")
-        
-        // when
-        
-        // then
+        val expected = listOf("""가"나"다""")
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
-    fun `중간에 공백이 있는 이름을 입력 받는다`() {
+    fun `line break 문자열을 포함한 자동차 이름을 입력하면 line break이 포함된 list를 반환한다`() {
+        // given
+        val name = "이\\n름, 정상이름"
+        setInput(name)
+
+        // when
+        val actual = ioHandler.getCarNameFromUser()
+
+        // then
+        val expected = listOf("이\\n름", " 정상이름")
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `빈 문자열을 자동차 이름으로 입력하면 IllegalArgumentException이 발생한다`() {
+        // given
+        val name = "\n"
+        setInput(name)
+
+        // when
+        val actual: java.lang.IllegalArgumentException = assertThrows(IllegalArgumentException::class.java) {
+            ioHandler.getCarNameFromUser()
+        }
+
+        // then
+        val expectedClass = IllegalArgumentException::class.java
+        val expectedErrorMessage = "문자열 길이가 1 ~ 5에 속하지 않습니다."
+        assertThat(actual).isInstanceOf(expectedClass)
+        assertThat(actual).hasMessageContaining(expectedErrorMessage)
+
+    }
+
+    @Test
+    fun `"  "을 자동차 이름으로 입력하면 " "를 리턴한다`() {
+        // given
+        val name = "  "
+        setInput(name)
+
+        // when
+        val actual = ioHandler.getCarNameFromUser()
+
+        // then
+        val expected = listOf("  ")
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `"김 치"를 자동차 이름으로 입력하면 "김 치"를 리턴한다`() {
         // given
         val name = "김 치"
-        val result = listOf("김 치")
+        setInput(name)
 
         // when
+        val actual = ioHandler.getCarNameFromUser()
 
         // then
+        val expected = listOf("김 치")
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
-    fun `끝에 공백이 있는 이름을 입력 받는다`() {
+    fun `"김 치 "를 자동차 이름으로 입력하면 "김 치 "를 리턴한다`() {
         // given
-        val name = "김치 "
-        val result = listOf("김치 ")
+        val name = "김 치 "
+        setInput(name)
 
         // when
+        val actual = ioHandler.getCarNameFromUser()
 
         // then
+        val expected = listOf("김 치 ")
+        assertThat(actual).isEqualTo(expected)
     }
-    
+
     @Test
-    fun `공백 이름을 3개 입력 받는다`() {
+    fun `" ,   ,  "를 자동차 이름으로 입력하면 " ", "   ","  "를 리턴한다`() {
         // given
         val name = " ,   ,  "
-        val result = listOf(" ", "   ","  ")
-        
+        setInput(name)
+
         // when
-        
+        val actual = ioHandler.getCarNameFromUser()
+
         // then
+        val expected = listOf(" ", "   ", "  ")
+        assertThat(actual).isEqualTo(expected)
     }
-    
+
     @Test
-    fun `빈 이름과 공백 이름을 입력 받는다`() {
+    fun `",  , "를 자동차 이름으로 입력하면 IllegalArgumentException이 발생한다`() {
         // given
         val names = ",  , "
-        val result: List<String>
-        
+        setInput(names)
+
         // when
-        
+        val actual: java.lang.IllegalArgumentException = assertThrows(IllegalArgumentException::class.java) {
+            ioHandler.getCarNameFromUser()
+        }
+
         // then
+        val expectedClass = IllegalArgumentException::class.java
+        val expectedErrorMessage = "문자열 길이가 1 ~ 5에 속하지 않습니다."
+        assertThat(actual).isInstanceOf(expectedClass)
+        assertThat(actual).hasMessageContaining(expectedErrorMessage)
     }
-    
+
     @Test
-    fun `중복된 이름을 입력 받는다`() {
+    fun `중복된 이름을 입력할 수 있다`() {
         // given
-        val names = "아우디, 아우지, 아우디"
-        val result = listOf("아우디", "아우지", "아우디")
-        
+        val names = "아우디, 아우지,아우디"
+        setInput(names)
+
         // when
-        
+        val actual = ioHandler.getCarNameFromUser()
+
         // then
+        val expected = listOf("아우디", " 아우지", "아우디")
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -157,9 +223,9 @@ class ApplicationTest : NsTest() {
         // given
         val input = "5"
         val result = 5
-        
+
         // when
-        
+
         // then
     }
 
@@ -190,6 +256,11 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
+    }
+
+    private fun setInput(input: String) {
+        val inputStream = ByteArrayInputStream(input.toByteArray())
+        System.setIn(inputStream)
     }
 
     public override fun runMain() {
