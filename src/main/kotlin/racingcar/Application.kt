@@ -101,14 +101,11 @@ fun inputTryCountMessage() {
 
 fun validateTryCount(tryCount: String, multiCarName: List<String?>) {
     when (true) {
-        validateNullOrBlank(tryCount) ->
-            throw IllegalArgumentException("시도할 횟수를 반드시 입력해야 합니다.")
+        validateNullOrBlank(tryCount) -> throw IllegalArgumentException("시도할 횟수를 반드시 입력해야 합니다.")
 
-        validateNotNum(tryCount) ->
-            throw IllegalArgumentException("시도할 횟수는 1부터 10 사이로만 입력 가능합니다.")
+        validateNotNum(tryCount) -> throw IllegalArgumentException("시도할 횟수는 1부터 10 사이로만 입력 가능합니다.")
 
-        validateNotInRange(tryCount) ->
-            throw IllegalArgumentException("시도할 횟수는 1부터 10 사이로만 입력 가능합니다.")
+        validateNotInRange(tryCount) -> throw IllegalArgumentException("시도할 횟수는 1부터 10 사이로만 입력 가능합니다.")
 
         else -> multiRacingGame(tryCount.toInt(), multiCarName)
     }
@@ -135,13 +132,14 @@ fun startRacingMessage() {
     println("\n실행 결과")
 }
 
-val scoreMap = mutableMapOf<String?, Int>()
+val scoreMap = mutableMapOf<String, Int>()
 
 fun repeatRacing(tryCount: Int, multiCarName: List<String?>) {
     repeat(tryCount) {
         racingEachCar(multiCarName)
         printScore(multiCarName)
     }
+    multiChampion()
 }
 
 fun racingEachCar(multiCarName: List<String?>) {
@@ -153,7 +151,7 @@ fun racingEachCar(multiCarName: List<String?>) {
 fun racingSingleCar(carName: String?) {
     val randomNum = getRandomNum()
     if (checkPositiveForward(randomNum)) {
-        scoreMap[carName] = scoreMap.getOrDefault(carName, 0) + 1
+        scoreMap[carName!!] = scoreMap.getOrDefault(carName, 0) + 1
     }
 }
 
@@ -172,6 +170,12 @@ fun printScore(multiCarName: List<String?>) {
         println("$carName : $forward")
     }
     println()
+}
+
+fun multiChampion() {
+    val highestScore = scoreMap.values.maxOrNull() ?: 0
+    val winners = scoreMap.filter { it.value == highestScore && it.key != null }.keys
+    println("최종 우승자 : ${winners.joinToString(",")}")
 }
 
 fun soloChampion(carName: String) {
