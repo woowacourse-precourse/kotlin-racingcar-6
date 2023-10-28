@@ -1,16 +1,20 @@
 package racingcar.model
 
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.Const
 
 data class Car(
     private val _name: String,
-    private var _position: Int = 0,
+    private var _forwardResult: String = "",
 ) {
-    val name = _name
-    val position = _position
+    val name
+        get() = _name
+    val forwardCnt: Int
+        get() = _forwardResult.length
 
     fun moveForward() {
         val enableMove = Randoms.pickNumberInRange(0, 9) >= 4
-        if (enableMove) _position++
+        if (enableMove) _forwardResult += Const.FORWARD_STRING
+        println("$name : $_forwardResult")
     }
 }

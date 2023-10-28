@@ -1,6 +1,7 @@
 package racingcar
 
 object Const {
+    val FORWARD_STRING = "-"
     val ENTER_CAR_NAME_MSG = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     val ENTER_TRY_CNT_MSG = "시도할 횟수는 몇 회인가요?"
     val GAME_RESULT_MSG = "실행 결과"

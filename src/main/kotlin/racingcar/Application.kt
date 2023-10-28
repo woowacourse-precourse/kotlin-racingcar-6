@@ -7,7 +7,15 @@ val carList = mutableListOf<Car>()
 
 fun main() {
     enterCarName()
-    val tryCnt = enterTryCnt()
+    var currentGameTryCnt = 0
+    val userInputTryCnt = enterTryCnt()
+    while (currentGameTryCnt <= userInputTryCnt) {
+        carList.map { car ->
+            car.moveForward()
+        }
+        println()
+        currentGameTryCnt++
+    }
 }
 
 fun enterCarName() {
@@ -19,13 +27,13 @@ fun enterCarName() {
 
 fun validateCarName(carNameList: List<String>) {
     carNameList.map { name ->
-        if (name.length > 5) throw IllegalArgumentException(Const.EXCEPTION_INPUT_RANGE_OVERFLOW)
+        if (name.trim().length > 5) throw IllegalArgumentException(Const.EXCEPTION_INPUT_RANGE_OVERFLOW)
     }
 }
 
 fun makeCar(carNameList: List<String>) {
     carNameList.map { name ->
-        carList.add(Car(_name = name))
+        carList.add(Car(_name = name.trim()))
     }
 }
 
