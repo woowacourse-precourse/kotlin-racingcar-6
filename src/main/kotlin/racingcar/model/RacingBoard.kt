@@ -6,7 +6,7 @@ class RacingBoard(racerList: List<Car>) {
         private const val RACER_LIST_EMPTY_MESSAGE = "참가자가 한명도 없습니다."
     }
 
-    val racerList: List<Car>
+    private val racerList: List<Car>
 
     init {
         validateRacerList(racerList)
@@ -25,5 +25,9 @@ class RacingBoard(racerList: List<Car>) {
     fun getResult(): List<Car> {
         val maxPos = racerList.maxByOrNull { car: Car -> car.pos }?.pos
         return racerList.filter { it.pos == maxPos }
+    }
+
+    override fun toString(): String {
+        return racerList.joinToString("\n")
     }
 }
