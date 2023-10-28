@@ -91,12 +91,18 @@ fun printDistance(distance: Int) {
 }
 
 fun getWinner(carModelList: List<Car>): MutableList<String> {
-    val nameList = carModelList.map { it.name }.toList()
-    val distanceList = carModelList.map { it.moveDistance }.toList()
+    val nameList = carModelList.map { it.name }
+    val distanceList = carModelList.map { it.moveDistance }
+
+    return findWinner(nameList, distanceList)
+}
+
+fun findWinner(nameList: List<String>, distanceList: List<Int>): MutableList<String> {
     var winnerList = mutableListOf<String>()
+    val maxDistance = distanceList.max()
 
     for (i in distanceList.indices) {
-        if (distanceList[i] == distanceList.max()) {
+        if (distanceList[i] == maxDistance) {
             winnerList.add(nameList[i])
         }
     }
