@@ -11,6 +11,8 @@ fun main() {
         forwardOrStop(carList)
         printResult(tryNumber, carList)
     }
+
+    printWinners(carList)
 }
 
 // 기능 1. 자동차 이름 입력받기
@@ -113,4 +115,25 @@ fun printResult(tryNumber: Int, carList: List<Car>) {
         car.printStatus()
     }
     println()
+}
+
+// 기능 9. 우승자 안내하기
+fun printWinners(carList: List<Car>) {
+    var maxNumberOfMove = 0
+
+    for (car in carList) {
+        if (car.numberOfMove > maxNumberOfMove) {
+            maxNumberOfMove = car.numberOfMove
+        }
+    }
+
+    val winners = mutableListOf<String>()
+
+    for (car in carList) {
+        if (car.numberOfMove == maxNumberOfMove) {
+            winners.add(car.name)
+        }
+    }
+
+    println("최종 우승자 : ${winners.joinToString(", ")}")
 }
