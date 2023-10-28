@@ -15,6 +15,9 @@ class CarRacingGame(
         outputManager.attemptCount()
         val attemptCount: Int = inputManager.attemptCount()
 
+        outputManager.newLine()
+        outputManager.racingResult()
+
         return Car(
             carNames = carNames,
             attemptCount = attemptCount
