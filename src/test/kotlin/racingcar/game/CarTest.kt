@@ -32,7 +32,7 @@ internal class CarTest {
     }
 
     @Test
-    fun getDistance() {
+    fun `getDistance 테스트`() {
         // given
         val car = Car("bamin")
         val expectCarDistance = 0
@@ -43,7 +43,7 @@ internal class CarTest {
     }
 
     @Test
-    fun getName() {
+    fun `getName 테스트`() {
         // given
         val car = Car("bamin")
         val expectedName = "bamin"
@@ -54,7 +54,7 @@ internal class CarTest {
     }
 
     @Test
-    fun startEngine() {
+    fun `startEngine 테스트`() {
         // given
         val car = Car("bamin")
         val expectedResult = true
