@@ -2,13 +2,13 @@ package racingcar
 
 class RacingCarGameStatePrinter {
     companion object {
-        const val distanceString = "-"
+        const val DISTANCE_EXPRESSION = "-"
     }
 
     private fun printState(car: RacingCar) {
         val sb = StringBuilder()
         for(i in 0 until car.distance) {
-            sb.append(distanceString)
+            sb.append(DISTANCE_EXPRESSION)
         }
         println("${car.name} : $sb")
     }
