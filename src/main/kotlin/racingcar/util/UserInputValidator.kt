@@ -10,17 +10,19 @@ class UserInputValidator {
 
     fun validateCarNames(carNames: List<String>) {
         require(isNotBlankName(carNames)) { ErrorMessage.NOT_EMPTY_NAMES.message }
-        require(carNames.all { it.none { char -> char.isDigit() } }) { ErrorMessage.NOT_CONTAINS_NUMBER_IN_NAME.message }
-        require(carNames.none { it.contains(ExtraText.BLANK.text) }) { ErrorMessage.NOT_CONTAINS_BLANK_IN_NAME.message }
+        require(isNotContainBlank(carNames)) { ErrorMessage.NOT_CONTAINS_BLANK_IN_NAME.message }
     }
 
     private fun isNotBlankName(carNames: List<String>): Boolean {
-        carNames.forEachIndexed { index, name ->
-            println(name)
-            if (name.isBlank() && index != carNames.lastIndex) {
+        carNames.forEach { name ->
+            if (name.isBlank()) {
                 return false
             }
         }
         return true
+    }
+
+    private fun isNotContainBlank(carNames: List<String>): Boolean {
+        return carNames.none { it.first() == ExtraText.BLANK.text || it.last() == ExtraText.BLANK.text }
     }
 }
