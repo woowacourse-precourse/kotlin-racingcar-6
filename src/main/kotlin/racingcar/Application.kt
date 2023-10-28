@@ -30,10 +30,11 @@ fun validateCarNameDistinct(carNameList: List<String>) {
 }
 
 fun makeCar(carNameList: List<String>) {
-    carNameList.forEach { name ->
-        carList.add(Car(_name = name.trim()))
-    }
-
+    carList.addAll(
+        carNameList.map { name ->
+            Car(_name = name.trim())
+        }
+    )
 }
 
 fun enterTryCnt(): Int {
@@ -49,7 +50,7 @@ fun doGame(userInputTryCnt: Int) {
     println(Const.GAME_RESULT_MSG)
     var currentGameTryCnt = 0
     while (currentGameTryCnt < userInputTryCnt) {
-        carList.map { car ->
+        carList.forEach { car ->
             car.moveForward()
         }
         println()
