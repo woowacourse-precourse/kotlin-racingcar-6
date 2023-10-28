@@ -16,7 +16,18 @@ class RacingGameManager {
 
     private fun createCars(): List<Car> {
         val cars = mutableListOf<Car>()
-        val carNameFromUser = inputDataFromUser()
+
+        inputDataFromUser().let { carNames ->
+            carNames.split(",").forEach { name ->
+                cars.add(
+                    Car(name = name
+                        .filterNot {
+                            it.isWhitespace()
+                        }
+                    )
+                )
+            }
+        }
 
         return cars
     }
