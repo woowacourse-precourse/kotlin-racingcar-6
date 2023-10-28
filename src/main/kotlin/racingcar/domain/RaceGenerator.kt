@@ -6,7 +6,7 @@ class RaceGenerator() {
   private val cars: MutableList<Car> = mutableListOf()
   private var numberOfMoves: Int = -1
 
-  fun generateCars(): MutableList<Car> {
+  fun generateCars(): List<Car> {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val input: String = Console.readLine()
     val carNames = checkCarNames(input)
@@ -18,10 +18,12 @@ class RaceGenerator() {
     return cars
   }
 
-  fun askNumberOfMoves() {
+  fun askNumberOfMoves(): Int {
     println("시도할 횟수는 몇 회인가요?")
     val input: String = Console.readLine()
     numberOfMoves = checkNumberOfMoves(input)
+
+    return numberOfMoves
   }
 
   private fun checkCarNames(input: String): List<String> {
