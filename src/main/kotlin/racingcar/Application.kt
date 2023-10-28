@@ -23,7 +23,25 @@ private fun checkSoloCar(inputCarName: String): Boolean {
         soloCarGame(inputCarName)
     } else {
         val multiCarName = inputCarName.split(",")
+        validateInputMultiCarName(multiCarName)
         multiCarGame(multiCarName)
+    }
+    return true
+}
+
+fun validateInputMultiCarName(multiCarName: List<String>) {
+    when (true) {
+        validateMaxInput5(multiCarName) ->
+            throw IllegalArgumentException("자동차 이름은 5자 이하로만 가능합니다.")
+        else -> "dd"
+    }
+}
+
+fun validateMaxInput5(multiCarName: List<String>): Boolean {
+    for (element in multiCarName) {
+        if (element.length > 5) {
+            return false
+        }
     }
     return true
 }
