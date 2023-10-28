@@ -7,7 +7,7 @@ object InputValidator {
 
     private val inputNameRegex = Regex("^[a-z0-9A-Z]{1,5}${'$'}")
 
-    fun vaildateName(name : String){
+    fun validateName(name : String){
         if(!inputNameRegex.matches(name)){
             throw IllegalArgumentException(GameMessage.GAME_INPUT_ERROR_MESSAGE)
         }
