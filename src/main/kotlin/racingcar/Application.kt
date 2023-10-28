@@ -11,14 +11,19 @@ fun main() {
 
 fun enterCarName() {
     println(Const.ENTER_CAR_NAME_MSG)
-    val inputCarNames = Console.readLine()
-    validateCarName(inputCarNames)
-    //makeCar(Console.readLine())
+    val carNameList = Console.readLine().split(",")
+    validateCarName(carNameList)
+    makeCar(carNameList)
 }
 
-fun validateCarName(inputCarNames: String) {
-    val nameList = inputCarNames.split(",")
-    nameList.map { name ->
+fun validateCarName(carNameList: List<String>) {
+    carNameList.map { name ->
         if (name.length > 5) throw IllegalArgumentException(Const.EXCEPTION_INPUT_RANGE_OVERFLOW)
+    }
+}
+
+fun makeCar(carNameList: List<String>) {
+    carNameList.map { name ->
+        carList.add(Car(_name = name))
     }
 }
