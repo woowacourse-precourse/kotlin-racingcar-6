@@ -11,6 +11,12 @@ fun main() {
 
     println("시도할 횟수는 몇 회인가요?")
     var round = getUserIntInput()
+
+    println("실행 결과")
+    for (i in 0 until round) {
+        progressRound(listOfCar)
+        println()
+    }
 }
 fun getUserIntInput(): Int {
     var input: Int
@@ -20,6 +26,15 @@ fun getUserIntInput(): Int {
         throw IllegalArgumentException()
     }
     return input
+}
+fun progressRound(
+    listOfCar:List<Car>
+)
+{
+    listOfCar.forEach {
+        it.move()
+        print(it)
+    }
 }
 class Car(
     val name: String,
