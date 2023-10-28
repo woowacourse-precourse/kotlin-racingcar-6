@@ -10,6 +10,11 @@ class CarGroup(carNames: String) {
         cars = split.map { name -> Car(name) }
     }
 
+    fun getCarsWithLongestDistance(): List<Car> {
+        val maxDistance = cars.maxByOrNull { car -> car.distance } ?: 0
+        return cars.filter { car -> car.distance == maxDistance }
+    }
+
     internal enum class Error(private val message: String) {
         Duplicated("이미 등록된 자동차예요. 다른 이름으로 입력해주세요.");
 
