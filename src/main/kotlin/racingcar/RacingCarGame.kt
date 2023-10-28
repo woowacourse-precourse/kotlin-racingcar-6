@@ -7,6 +7,7 @@ class RacingCarGame {
     private val racingCarGameResultEvaluator = RacingCarGameResultEvaluator()
     private val racingCarFactory = RacingCarFactory()
     private val racingCarGameStatePrinter = RacingCarGameStatePrinter()
+    private val racingCarManager = RacingCarManager()
     fun gamePlay() {
         racingCarGameMessage.printCarNameInputMessage()
         val names = userInputManager.userNameInput()
@@ -19,15 +20,9 @@ class RacingCarGame {
         racingCarGameMessage.printWinnerMessage(winners)
     }
 
-    private fun moveAllCarsOneStep() {
-        for(car in cars) {
-            car.move()
-        }
-    }
-
     private fun moveAllStep(step: Int) {
         for(i in 0 until step) {
-            moveAllCarsOneStep()
+            racingCarManager.moveAllCars(cars)
             racingCarGameStatePrinter.printAllCarsState(cars)
         }
     }
