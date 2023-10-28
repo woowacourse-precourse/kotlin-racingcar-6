@@ -1,6 +1,8 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.common.ExceptionConst
+import racingcar.common.GameConst
 import racingcar.model.Car
 
 val cars = mutableListOf<Car>()
@@ -15,18 +17,18 @@ fun main() {
 }
 
 fun enterCarName(): List<String> {
-    println(Const.ENTER_CAR_NAME_MSG)
+    println(GameConst.ENTER_CAR_NAME_MSG)
     return Console.readLine().split(",")
 }
 
 fun validateCarNameLength(carNames: List<String>) {
     carNames.forEach { name ->
-        if ((name.trim().length in 1..5).not()) throw IllegalArgumentException(Const.EXCEPTION_CAR_NAME_LENGTH_INVALIDATE)
+        if ((name.trim().length in 1..5).not()) throw IllegalArgumentException(ExceptionConst.EXCEPTION_CAR_NAME_LENGTH_INVALIDATE)
     }
 }
 
 fun validateCarNameDistinct(carNames: List<String>) {
-    if (carNames.distinct().size != carNames.size) throw IllegalArgumentException(Const.EXCEPTION_CAR_NAME_DUPLICATED)
+    if (carNames.distinct().size != carNames.size) throw IllegalArgumentException(ExceptionConst.EXCEPTION_CAR_NAME_DUPLICATED)
 }
 
 fun makeCar(carNames: List<String>) {
@@ -38,16 +40,16 @@ fun makeCar(carNames: List<String>) {
 }
 
 fun enterTryCnt(): Int {
-    println(Const.ENTER_TRY_CNT_MSG)
+    println(GameConst.ENTER_TRY_CNT_MSG)
     Console.readLine().toIntOrNull()?.let { tryCnt ->
         return tryCnt
     }
-    throw IllegalArgumentException(Const.EXCEPTION_TRY_CNT_NOT_INT)
+    throw IllegalArgumentException(ExceptionConst.EXCEPTION_TRY_CNT_NOT_INT)
 }
 
 fun doGame(userInputTryCnt: Int) {
     println()
-    println(Const.GAME_RESULT_MSG)
+    println(GameConst.GAME_RESULT_MSG)
     var currentGameTryCnt = 0
     while (currentGameTryCnt < userInputTryCnt) {
         cars.forEach { car ->
@@ -63,6 +65,6 @@ fun showWinner() {
         val winner = cars.filter { car ->
             car.forwardCnt == maxForwardCnt
         }.joinToString { it.name }
-        println(Const.GAME_WINNER_MSG + winner)
+        println(GameConst.GAME_WINNER_MSG + winner)
     }
 }
