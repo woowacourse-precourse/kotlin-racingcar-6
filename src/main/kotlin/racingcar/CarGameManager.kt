@@ -10,46 +10,48 @@ import racingcar.Constants.Companion.MIN_NUMBER
 import racingcar.Constants.Companion.TRY_COUNT_PROMPT_MESSAGE
 
 class CarGameManager {
-    private val winnersList: MutableList<String> = mutableListOf()
-
     fun play() {
         println(INPUT_PROMPT_MESSAGE)
-        val carNames = getUserInput()
+        val carNames = getUserInputString()
         val carNamesList = carNames.split(",")
         val carListCount = carNamesList.size
         Validator().validateUserInput(carNamesList.map { it.trim() })
         println(TRY_COUNT_PROMPT_MESSAGE)
-        val tryCount = getUserInput()
+        val tryCount = getUserInputString()
         Validator().validateUserTryCount(tryCount)
         println(EXECUTION_RESULT_MESSAGE)
         val carResultList = MutableList(carListCount){""}
-        for (countTry in 0 until tryCount.toInt()) {
-           printExecutionResult(carResultList, carListCount, carNamesList)
+        for (countTry in MIN_NUMBER until tryCount.toInt()) {
+            printExecutionResult(carResultList, carListCount, carNamesList)
         }
-        findAndPrintWinners(carResultList, carListCount, carNamesList)
+        determineWinnersAndPrint(carResultList, carListCount, carNamesList)
     }
-    private fun getUserInput(): String {
+
+    private fun getUserInputString(): String {
         return Console.readLine()
     }
+
     private fun generateRandomNumber(): Int {
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
     }
+
     private fun printExecutionResult(carResultList: MutableList<String>, carListCount: Int, carNamesList: List<String>) {
-        for (countList in 0 until carListCount) {
+        for (countList in MIN_NUMBER until carListCount) {
             val randomNumber = generateRandomNumber()
             if (randomNumber >= FORWARD_CONDITION) carResultList[countList] += "-"
             println("${carNamesList[countList]} : ${carResultList[countList]}")
         }
         println()
     }
-    private fun findAndPrintWinners(carResultList: MutableList<String>, carListCount: Int, carNamesList: List<String>) {
+
+    private fun determineWinnersAndPrint(carResultList: MutableList<String>, carListCount: Int, carNamesList: List<String>) {
+        val winnersList: MutableList<String> = mutableListOf()
         val winnerListLength = carResultList.max().length
-        for (countList in 0 until carListCount) {
+        for (countList in MIN_NUMBER until carListCount) {
             if (winnerListLength == carResultList[countList].length) {
                 winnersList.add(carNamesList[countList])
             }
         }
         println("${Constants.FINAL_WINNER_MESSAGE}${winnersList.joinToString(", ")}")
     }
-
 }
