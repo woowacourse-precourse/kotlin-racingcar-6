@@ -27,6 +27,10 @@ class RaceGenerator {
   }
 
   private fun checkCarNames(input: String): List<String> {
+    if (input.isEmpty()) {
+      throw IllegalArgumentException("자동차 이름을 입력해주세요.")
+    }
+
     val carNames: List<String> = input.split(",")
 
     for (carName in carNames) {
