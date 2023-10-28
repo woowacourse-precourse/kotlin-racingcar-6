@@ -41,11 +41,11 @@
 
 ### 자동차 전진 상태 출력(RacingCarGameStatePrinter)
 - 상수
-  - [x] 거리 표현 문자열(distanceString)
+  - [x] 거리 표현 문자열(DISTANCE_EXPRESSION)
   
 - 메서드
-  - [x] 자동차 전진 상태 출력 함수(printState)
-  - [x] 모든 자동차의 1회 전진 상태 출력 함수(printAllCarsState)
+  - [x] 자동차 전진 거리 출력 함수(printCarDistance)
+  - [x] 모든 자동차의 1회 전진 거리 출력 함수(printAllCarsDistance)
 
 ### 모든 자동차 이동(RacingCarManager)
 - 메서드
@@ -53,7 +53,7 @@
 
 ### 자동차 전진 과정 기록(RacingCarMovementRecorder)
 - 메서드
-  - [x] 전진 횟수에 따른 자동차 전진 및 상태 출력 함수(racingCarMovementRecordByTryCount)
+  - [x] 전진 횟수에 따른 자동차 전진 및 이동 거리 출력 함수(racingCarMovementRecordByTryCount)
 
 ### 사용자 입력(UserInputManager)
 - 프로퍼티

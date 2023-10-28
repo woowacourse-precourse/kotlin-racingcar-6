@@ -6,7 +6,7 @@ class RacingCarMovementRecorder {
     fun racingCarMovementRecordByTryCount(cars: MutableList<RacingCar>, tryCount: Int) {
         for(i in 0 until tryCount) {
             racingCarManager.moveAllCars(cars)
-            racingCarGameStatePrinter.printAllCarsState(cars)
+            racingCarGameStatePrinter.printAllCarsDistance(cars)
         }
     }
 }
