@@ -1,9 +1,9 @@
 package caroption
 
-import CarConfiguration.MIN_START_FLAG
+import CarConfiguration.START_FLAG
 
 class Engine {
     fun start(forwardFlag: Int) : Boolean {
-        return forwardFlag >= MIN_START_FLAG
+        return forwardFlag >= START_FLAG
     }
 }
