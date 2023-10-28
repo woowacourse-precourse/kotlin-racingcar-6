@@ -56,9 +56,7 @@ class RacingCarController(private val racingCarGame: RacingCarGame = RacingCarGa
 
     private fun tryRacing() {
         for (car in cars){
-            if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                car.moveForward()
-            }
+            if (racingCarGame.isRandomNumberMet()) car.moveForward()
             car.printPresentDistance()
         }
     }
