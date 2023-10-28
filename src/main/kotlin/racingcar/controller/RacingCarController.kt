@@ -23,11 +23,19 @@ class RacingCarController(
             val attemptResult = racingCarService.moveRacingCars()
             outputView.printAttemptResult(attemptResult)
         }
+        printWinner(racingCarService)
+    }
+
+    private fun printWinner(racingCarService: RacingCarService) {
         val winners = racingCarService.calculateRacingResult()
-        if (winners.getWinners().size == 1) {
+        if (winners.getWinners().size == SOLE_WINNER_NUMBER) {
             outputView.printSoleWinner(winners)
             return
         }
         outputView.printJointWinner(winners)
+    }
+
+    companion object {
+        private const val SOLE_WINNER_NUMBER = 1
     }
 }

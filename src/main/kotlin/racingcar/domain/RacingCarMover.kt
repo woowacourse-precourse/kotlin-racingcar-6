@@ -27,7 +27,7 @@ class RacingCarMover {
     private fun validateCarNamesLength(racingCars: RacingCars) {
         require(
             racingCars.loadRacingCars()
-                .none { it.readRacingCarName().length > MAX_NAME_LENGTH }) { ErrorMessage.NAME_LENGTH_GREATER_THAN_FIVE }
+                .none { it.readRacingCarName().length > MAX_NAME_LENGTH }) { ErrorMessage.NAME_LENGTH_GREATER_THAN_FIVE.message }
     }
 
 
