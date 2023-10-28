@@ -8,7 +8,11 @@ class RacingCarController {
     private val carList = createRacingCars(getValidCarNames())
     private val moveCount = getValidMoveCount()
 
-    private fun createRacingCars(carNameList: List<String>) = carNameList.map { RacingCar(it, 0) }
+    private fun createRacingCars(carNameList: List<String>): List<RacingCar> {
+        require(1 < carNameList.size) { "2대 이상의 자동차가 필요합니다." }
+        require(carNameList.toSet().size == carNameList.size) { "자동차 이름은 서로 중복될 수 없습니다." }
+        return carNameList.map { RacingCar(it, 0) }
+    }
 
     fun play() {
         repeat(moveCount) {

@@ -12,7 +12,6 @@ object PlayerConsole {
     private fun List<String>.validateCarNames(): List<String> {
         require(this.all { it.length <= 5 && it.isNotEmpty() }) { "자동차 이름은 한 글자 이상, 5글자 이하로 입력해 주세요." }
         require(this.all { playerName -> playerName.all { it.isLetter() || it.isDigit() } }) { "문자와 숫자만 입력해 주세요." }
-        require(this.toSet().size == this.size) { "자동차 이름은 서로 중복될 수 없습니다." }
         return this
     }
 
