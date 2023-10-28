@@ -21,7 +21,7 @@ fun checkAdvance(): Boolean {
 
 fun moveCar(trial: Int, carsList: List<String>) {
     // 자동차의 위치를 나타낼 바뀔수 있는 List인 carsLocation 생성
-    val carsLocation: MutableList<Int> = mutableListOf(0 * carsList.size)
+    val carsLocation = MutableList(carsList.size) {0}
 
     // 전체 carsLocation을 살펴보고
     repeat(carsLocation.size) {
@@ -31,9 +31,17 @@ fun moveCar(trial: Int, carsList: List<String>) {
     }
 
     // 현재 위치 표시
-    printMoveStatus(carsLocation)
+    printMoveStatus(carsList, carsLocation)
 }
 
-fun printMoveStatus() {
-    TODO("각 시도 당 실행결과 출력")
+fun printMoveStatus(carsList: List<String>, carsLocation: List<Int>) {
+    // 모든 차를 출력
+    repeat(carsList.size) {
+        // '차 이름 : '
+        print(carsList[it] + " : ")
+        repeat(carsLocation[it]) {
+            print("-")  // 이동 거리 출력
+        }
+        println()   // 줄바꿈
+    }
 }
