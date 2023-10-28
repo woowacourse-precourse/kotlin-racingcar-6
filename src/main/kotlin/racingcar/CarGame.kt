@@ -2,8 +2,11 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-fun repeatMove(trial: Int) {
-    TODO("trial만큼 게임을 반복")
+fun repeatMove(trial: Int, carsList: List<String>) {
+    // trial만큼 자동차 이동 반복
+    repeat(trial) {
+        moveCar(carsList)
+    }
 }
 
 fun checkAdvance(): Boolean {
@@ -19,7 +22,7 @@ fun checkAdvance(): Boolean {
         return false
 }
 
-fun moveCar(trial: Int, carsList: List<String>) {
+fun moveCar(carsList: List<String>) {
     // 자동차의 위치를 나타낼 바뀔수 있는 List인 carsLocation 생성
     val carsLocation = MutableList(carsList.size) {0}
 
