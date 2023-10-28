@@ -12,11 +12,12 @@ class Car (private val name: String) {
 
     fun getName() = name
 
-    fun startEngine() {
+    fun startEngine(): Int {
         val engineLevel = Randoms.pickNumberInRange(ENGINE_LEVEL_ZERO, ENGINE_LEVEL_MAX)
         if (checkEngineAvailable(engineLevel)) {
             move()
         }
+        return engineLevel
     }
 
     private fun checkEngineAvailable(engineLevel: Int): Boolean {
