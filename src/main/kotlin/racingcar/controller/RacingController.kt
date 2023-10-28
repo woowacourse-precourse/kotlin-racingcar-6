@@ -14,4 +14,9 @@ class RacingController(
         return inputView.inputCarName()
     }
 
+    fun inputRound(): Int {
+        outputView.printInputRound()
+        return inputView.inputRound()
+    }
+
 }
