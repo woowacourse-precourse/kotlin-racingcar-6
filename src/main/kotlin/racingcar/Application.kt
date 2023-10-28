@@ -111,6 +111,6 @@ fun findWinner(nameList: List<String>, distanceList: List<Int>): MutableList<Str
 }
 
 fun printWinner(winnerList: MutableList<String>) {
-    print("최종 우승자 : ")
-    println(winnerList.joinToString(", "))
+    val winner = winnerList.joinToString(", ")
+    println("최종 우승자 : $winner")
 }
