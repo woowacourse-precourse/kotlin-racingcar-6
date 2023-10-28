@@ -45,7 +45,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `askCarName 메서드 사용시 이름이 5자 이상일 때`() {
+    fun `askCarName 메서드 사용시 이름이 5자 이상일 때 예외 발생`() {
         //given
         val carNames: MutableList<Car> = mutableListOf()
         val input = "pobi,java,joontae,car"
@@ -53,6 +53,26 @@ class ApplicationTest : NsTest() {
         //then
         assertThrows<IllegalArgumentException>("String index out of range: 5")
         { askCarName(carNames, input) }
+    }
+
+    @Test
+    fun `askNumber 메서드로 String형을 Int형으로`() {
+        //given
+        val input = "1"
+        val result = 1
+
+        //then
+        assertThat(askNumber(input)).isEqualTo(1)
+    }
+
+    @Test
+    fun `askNumber 메서드 문자 입력 시 예외 발생`() {
+        //given
+        val input = "1"
+        val result = 1
+
+        //then
+        assertThat(askNumber(input)).isEqualTo(result)
     }
 
     public override fun runMain() {
