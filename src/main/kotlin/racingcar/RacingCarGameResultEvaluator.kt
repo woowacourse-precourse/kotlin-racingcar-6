@@ -5,7 +5,7 @@ class RacingCarGameResultEvaluator {
         val winners = mutableListOf<String>()
         var max = Int.MIN_VALUE
         for(car in cars) {
-            max = Math.max(max, car.distance)
+            max = max.coerceAtLeast(car.distance)
         }
         for(car in cars) {
             if(car.distance == max) {
