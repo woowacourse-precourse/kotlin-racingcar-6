@@ -24,7 +24,7 @@ class GameTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = ["Car1,Car23", "pobi,woni,jun"])
+    @ValueSource(strings = ["Car1,Car23", "pobi,woni,jun", " pob i , j u n "])
     fun `자동차 이름이 1자 이상 5자인 경우`(carNames: String) {
         assertDoesNotThrow {
             game.inputCarName(carNames)
@@ -32,7 +32,7 @@ class GameTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = ["Car12,Car345", ",min", " ,jun"])
+    @ValueSource(strings = ["Car12,Car345", " p o b i , jun", ",jun", " ,jun"])
     fun `자동차 이름이 1자 미만 또는 5자 초과인 경우`(carNames: String) {
         assertThrows<IllegalArgumentException> {
             game.inputCarName(carNames)

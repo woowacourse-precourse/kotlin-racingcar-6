@@ -5,7 +5,8 @@ import racingcar.util.Constants.EXCEPTION_WRONG_LENGTH
 object Validation {
 
     fun validateLength(str: String): String {
-        val name = str.replace(" ", "")
+        val name = str.trim()
+        println(name.length)
         if (name.length in 1..5) {
             return name
         } else {
