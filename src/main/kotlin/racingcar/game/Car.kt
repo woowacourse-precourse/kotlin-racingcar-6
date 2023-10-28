@@ -14,7 +14,7 @@ class Car (private val name: String) {
 
     fun startEngine() {
         val engineLevel = Randoms.pickNumberInRange(ENGINE_LEVEL_ZERO, ENGINE_LEVEL_MAX)
-        if(checkEngineAvailable(engineLevel)) {
+        if (checkEngineAvailable(engineLevel)) {
             move()
         }
     }
