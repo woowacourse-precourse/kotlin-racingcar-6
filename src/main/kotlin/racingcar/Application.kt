@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 import java.lang.NumberFormatException
 
 fun main() {
@@ -83,4 +84,9 @@ fun checkTryNumberValidation(check: String) {
     } catch (exception: NumberFormatException) {
         throw IllegalArgumentException("시도할 횟수는 숫자여야 한다.")
     }
+}
+
+// 기능 6. 무작위 값 구하기
+fun getRandomNumber():Int {
+    return Randoms.pickNumberInRange(0, 9)
 }
