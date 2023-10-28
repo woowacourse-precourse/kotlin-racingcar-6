@@ -47,13 +47,14 @@ fun main() {
         throw IllegalArgumentException("유효한 정수를 입력해주세요.")
     }
 
-    print("\n실행결과")
+    print("\n실행결과\n")
+
     // 경주 게임 실행
-    for (i in 1..playTimeAsInt){
+    for (i in 1..playTimeAsInt) {
+        for (j in 0 until carNames.size) {
+            moveOrStop(j)
+        }
         print("\n")
-        moveOrStop(0)
-        moveOrStop(1)
-        moveOrStop(2)
     }
 
 }
