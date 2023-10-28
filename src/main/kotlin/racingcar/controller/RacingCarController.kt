@@ -54,7 +54,7 @@ class RacingCarController(private val inputView: InputView) {
         return Randoms.pickNumberInRange(0, 9)
     }
 
-    private fun positionMove(): Boolean {
+    private fun chooseActionFromRandomNumber(): Boolean {
         val randomNumber = generateRandomNumber()
         var move = 0
         when {
@@ -63,5 +63,4 @@ class RacingCarController(private val inputView: InputView) {
         }
         return move == 1
     }
-
 }
