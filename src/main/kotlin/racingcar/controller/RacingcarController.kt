@@ -2,15 +2,17 @@ package racingcar.controller
 
 import racingcar.view.OutputView
 import camp.nextstep.edu.missionutils.Console
+import racingcar.model.GenerateRandomNumber
 
 class RacingcarController {
     private val outputView = OutputView()
-
+    private val generateRandomNumber = GenerateRandomNumber()
     fun startRacing() {
         outputView.printInputRacingcarName()
         val racingcarName = inputRacingcarName()
         outputView.printTryNumber()
         val tryNumber = inputTryNumber()
+        val randomNumber = generateRandomNumber.generate()
     }
 
     private fun inputRacingcarName(): List<String> {
