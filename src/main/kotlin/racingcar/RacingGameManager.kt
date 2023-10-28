@@ -5,10 +5,18 @@ import racingcar.data.Car
 
 class RacingGameManager {
 
+    private val gameRound: Int by lazy {
+        setGameRound()
+    }
+
     fun run() {
         printGameStart()
         createCars()
         printGameRoundQuestion()
+
+        repeat(gameRound) {
+            // TODO
+        }
 
         closeConsole()
     }
@@ -34,6 +42,8 @@ class RacingGameManager {
 
         return cars
     }
+
+    private fun setGameRound(): Int = inputDataFromUser().toInt()
 
     private fun inputDataFromUser(): String = Console.readLine()
 
