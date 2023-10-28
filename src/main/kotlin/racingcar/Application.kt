@@ -11,11 +11,17 @@ val carNames = mutableListOf<Car>() // Car 객체를 저장하는 리스트
 fun checkInputIsNull(input : String?){
     input?.let { nonNullInput ->
         val carNameList = nonNullInput.split(",").map { it.trim() }
-        if (carNameList.any { it.isEmpty() }) {
-            throw IllegalArgumentException("공백은 입력할 수 없습니다.")
+
+        // 중복 제거
+        val distinctCarNameList = carNameList.distinct()
+
+        if (distinctCarNameList.size < carNameList.size) {
+            throw IllegalArgumentException("중복된 자동차 이름이 입력되었습니다.")
         }
-        carNames.addAll(carNameList.map { Car(it, 0) }) // Car 객체로 저장
+
+        carNames.addAll(distinctCarNameList.map { Car(it, 0) }) // Car 객체로 저장
     }
+
 }
 fun moveOrStop(index: Int){
     val randomNumber = Randoms.pickNumberInRange(0, 9)
