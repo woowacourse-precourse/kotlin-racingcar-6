@@ -5,7 +5,7 @@ class RacingCarGameStatePrinter {
         const val distanceString = "-"
     }
 
-    private fun printState(car: Car) {
+    private fun printState(car: RacingCar) {
         val sb = StringBuilder()
         for(i in 0 until car.distance) {
             sb.append(distanceString)
@@ -13,7 +13,7 @@ class RacingCarGameStatePrinter {
         println("${car.name} : $sb")
     }
 
-    fun printAllCarsState(cars: MutableList<Car>) {
+    fun printAllCarsState(cars: MutableList<RacingCar>) {
         for(car in cars) {
             printState(car)
         }

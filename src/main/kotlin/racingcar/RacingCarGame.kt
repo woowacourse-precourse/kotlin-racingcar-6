@@ -1,7 +1,7 @@
 package racingcar
 
 class RacingCarGame {
-    private val cars = mutableListOf<Car>()
+    private val cars = mutableListOf<RacingCar>()
     private val userInputManager = UserInputManager()
     private val racingCarGameMessage = RacingCarGameMessage()
     private val racingCarGameResultEvaluator = RacingCarGameResultEvaluator()
