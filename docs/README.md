@@ -1,6 +1,7 @@
 ## 기능 목록
 #### Preset.kt
 - 자동차 이름을 입력 받아 자동차를 배정하는 함수 - fun presetCars()
+- 시도 횟수를 제대로 입력했는지 확인하는 함수 - fun checkValidInput()
 #### CarGame.kt
 - 시도할 횟수를 입력 받아 게임을 진행하는 함수 - fun repeatMove()
 - 0에서 9 사이 무작위 값을 구한뒤 4 이상인지 판단하는 함수 - fun checkAdvance()
