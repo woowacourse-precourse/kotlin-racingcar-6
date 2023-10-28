@@ -1,5 +1,9 @@
 package racingcar
 
+import racingcar.controller.RacingCarController
+import racingcar.view.InputView
+
 fun main() {
-    // TODO: 프로그램 구현
+    val racingCarController = RacingCarController(InputView())
+    racingCarController.racingRun()
 }
