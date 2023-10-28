@@ -21,6 +21,8 @@ fun main() {
 
     val racing = Racing(cars, attempts)
 
+    racing.start()
+
 }
 
 class Car(name: String) {
@@ -33,4 +35,9 @@ class Racing(val cars: List<Car>, attempts: Int) {
     val attempts = attempts.also {
         if (it < 0) throw IllegalArgumentException("시도할 횟수는 0 이상이어야 합니다.")
     }
+
+    fun start() {
+ 
+    }
+
 }
