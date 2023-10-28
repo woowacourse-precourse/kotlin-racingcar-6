@@ -27,7 +27,18 @@ class RacingCarController(private val inputView: InputView) {
     }
 
     private fun inputTryRaceCount() {
+        var tryCount:Int = 0
         inputView.inputTryRaceCountMessage()
-        val tryCount:Int = Console.readLine().toInt()
+        try {
+            tryCount = Console.readLine().toInt()
+        }catch (e:NumberFormatException){
+            throw IllegalArgumentException("숫자가 아닌 다른 값이 입력되었습니다.")
+        }
+        validateInputTryRace(tryCount)
+    }
+
+    private fun validateInputTryRace(tryCount: Int) {
+        if(tryCount == 0)
+            throw IllegalArgumentException("0은 입력될 수 없습니다.")
     }
 }
