@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 class RacingCarController(private val racingCarGame: RacingCarGame = RacingCarGame()) {
 
@@ -17,6 +18,9 @@ class RacingCarController(private val racingCarGame: RacingCarGame = RacingCarGa
             tryRacing()
             println()
         }
+
+        // 최종 우승자 판단
+        findWinners()
 
         // 최종 우승자 출력
         printWinners()
@@ -51,6 +55,15 @@ class RacingCarController(private val racingCarGame: RacingCarGame = RacingCarGa
     }
 
     private fun tryRacing() {
+        for (car in cars){
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                car.moveForward()
+            }
+            car.printPresentDistance()
+        }
+    }
+
+    private fun findWinners() {
         for (car in cars) {
             if (car.getDistance() == racingCarGame.getWinningDistance())
                 racingCarGame.addWinner(car.getName())
