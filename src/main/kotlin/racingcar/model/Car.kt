@@ -3,8 +3,8 @@ package racingcar.model
 import camp.nextstep.edu.missionutils.Randoms
 
 class Car(name: String) {
-    private val carName: String = name
-    private var moveCount: Int = 0
+    val carName: String = name
+    var moveCount: Int = 0
 
     fun move() {
         val randomNumber = generateRandomNumber()
