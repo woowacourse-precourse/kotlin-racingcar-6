@@ -1,6 +1,6 @@
 package racingcar.domain
 
-class Commentator(val cars: List<Car>, val numberOfMoves: Int) {
+class Commentator(private val cars: List<Car>, private val numberOfMoves: Int) {
   fun commentRace() {
     println()
     println("실행 결과")
