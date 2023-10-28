@@ -45,7 +45,7 @@ fun validateInputMultiCarName(multiCarName: List<String?>) {
 
         validateRacingCarRange(multiCarName) -> throw IllegalArgumentException("게임에 참여 가능한 자동차 대수는 1대 이상 7대 이하만 가능합니다.")
 
-        else -> inputTryCount()
+        else -> inputTryCount(multiCarName)
     }
 }
 
@@ -89,10 +89,10 @@ fun soloCarGame(inputCarName: String) {
     }
 }
 
-fun inputTryCount() {
+fun inputTryCount(multiCarName: List<String?>) {
     inputTryCountMessage()
     val tryCount = Console.readLine()
-    validateTryCount(tryCount)
+    validateTryCount(tryCount, multiCarName)
 }
 
 fun inputTryCountMessage() {
@@ -110,7 +110,7 @@ fun validateTryCount(tryCount: String, multiCarName: List<String?>) {
         validateNotInRange(tryCount) ->
             throw IllegalArgumentException("시도할 횟수는 1부터 10 사이로만 입력 가능합니다.")
 
-        else -> multiRacingGame(multiCarName)
+        else -> multiRacingGame(tryCount.toInt(), multiCarName)
     }
 }
 
@@ -128,19 +128,40 @@ fun validateNullOrBlank(tryCount: String?): Boolean {
 
 fun multiRacingGame(tryCount: Int, multiCarName: List<String?>) {
     startRacingMessage()
-    repeat(tryCount) {
-        for(carName in multiCarName) {
-            val randomNum = getRandomNum()
-        }
-    }
+    repeatRacing(tryCount, multiCarName)
 }
 
 fun startRacingMessage() {
     println("\n실행 결과")
 }
 
+val scoreMap = mutableMapOf<String?, Int>()
+
+fun repeatRacing(tryCount: Int, multiCarName: List<String?>) {
+    repeat(tryCount) {
+        racingEachCar(multiCarName)
+    }
+}
+
+fun racingEachCar(multiCarName: List<String?>) {
+    for (carName in multiCarName) {
+        racingSingleCar(carName)
+    }
+}
+
+fun racingSingleCar(carName: String?) {
+    val randomNum = getRandomNum()
+    if (checkPositiveForward(randomNum)) {
+        scoreMap[carName] = scoreMap.getOrDefault(carName, 0) + 1
+    }
+}
+
 fun getRandomNum(): Int {
     return Randoms.pickNumberInRange(0, 9)
+}
+
+fun checkPositiveForward(randomNum: Int): Boolean {
+    return randomNum >= 4
 }
 
 fun soloChampion(carName: String) {
