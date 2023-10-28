@@ -1,38 +1,12 @@
 package racingcar.domain
 
-import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
-
 class Car(
+    attemptCount: Int,
     private val carNames: List<String>,
-    private val attemptCount: Int
+    private val carRace: CarRace = CarRace(attemptCount)
 ) {
     fun race() {
-
-    }
-
-    private fun executeRace(): ArrayList<MoveResult> {
-        val moveResultList = arrayListOf<MoveResult>()
-        carNames.forEach { carName ->
-            val moveResult = MoveResult(
-                carName = carName,
-                moveCount = move()
-            )
-            moveResultList.add(moveResult)
-        }
-        return moveResultList
-    }
-
-    private fun move(): Int =
-         if(pickNumberInRange(MIN_VALUE, MAX_VALUE) >= POSSIBLE_FORWARD) FORWARD else STOP
-
-    companion object {
-        private const val MIN_VALUE = 0
-        private const val MAX_VALUE = 0
-
-        private const val POSSIBLE_FORWARD = 4
-
-        private const val FORWARD = 1
-        private const val STOP = 1
+        carRace.executeRace(carNames)
     }
 }
 
