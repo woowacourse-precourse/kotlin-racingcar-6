@@ -7,6 +7,7 @@ object Constants {
     // EXCEPTION
     const val EXCEPTION_WRONG_LENGTH = "자동차 이름은 1자 이상 5자 이하만 가능합니다."
     const val EXCEPTION_WRONG_NUMBER = "자동차가 최소 2대 이상이어야 경주를 할 수 있습니다."
+    const val EXCEPTION_DUPLICATE_CARS = "이름이 중복되는 자동차가 존재합니다."
 
     // VALUE
     const val CAR_NAME_DELIMITER = ","

@@ -2,6 +2,7 @@ package racingcar.util
 
 import racingcar.util.Constants.EXCEPTION_WRONG_LENGTH
 import racingcar.util.Constants.EXCEPTION_WRONG_NUMBER
+import racingcar.util.Constants.EXCEPTION_DUPLICATE_CARS
 
 object Validation {
 
@@ -15,9 +16,15 @@ object Validation {
         }
     }
 
-    fun validateNumberOfList(list: MutableList<String>) {
-        if (list.size < 2) {
+    fun validateNumberOfCars(cars: MutableList<String>) {
+        if (cars.size < 2) {
             throw IllegalArgumentException(EXCEPTION_WRONG_NUMBER)
+        }
+    }
+
+    fun validateDuplicateOfCars(cars: MutableList<String>) {
+        if (cars.toSet().size != cars.size) {
+            throw IllegalArgumentException(EXCEPTION_DUPLICATE_CARS)
         }
     }
 }

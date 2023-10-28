@@ -4,7 +4,8 @@ import camp.nextstep.edu.missionutils.Console
 import racingcar.util.Constants.CAR_NAME_DELIMITER
 import racingcar.util.Constants.TEXT_START_GAME
 import racingcar.util.Validation.validateLength
-import racingcar.util.Validation.validateNumberOfList
+import racingcar.util.Validation.validateNumberOfCars
+import racingcar.util.Validation.validateDuplicateOfCars
 
 class Game {
 
@@ -24,7 +25,8 @@ class Game {
              splitResult.add(validateLength(it))
          }
 
-         validateNumberOfList(splitResult)
+         validateNumberOfCars(splitResult)
+         validateDuplicateOfCars(splitResult)
 
          return splitResult
     }
