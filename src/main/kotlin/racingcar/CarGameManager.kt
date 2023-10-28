@@ -14,20 +14,21 @@ class CarGameManager {
 
     fun play() {
         println(INPUT_PROMPT_MESSAGE)
-        val carNames = getUserInputCarData()
+        val carNames = getUserInput()
         val carNamesList = carNames.split(",")
         val carListCount = carNamesList.size
         Validator().validateUserInput(carNamesList.map { it.trim() })
         println(TRY_COUNT_PROMPT_MESSAGE)
-        val tryCount = getUserInputCarData().toInt()
+        val tryCount = getUserInput()
+        Validator().validateUserTryCount(tryCount)
         println(EXECUTION_RESULT_MESSAGE)
         val carResultList = MutableList(carListCount){""}
-        for (countTry in 0 until tryCount) {
+        for (countTry in 0 until tryCount.toInt()) {
            printExecutionResult(carResultList, carListCount, carNamesList)
         }
         findAndPrintWinners(carResultList, carListCount, carNamesList)
     }
-    private fun getUserInputCarData(): String {
+    private fun getUserInput(): String {
         return Console.readLine()
     }
     private fun generateRandomNumber(): Int {
