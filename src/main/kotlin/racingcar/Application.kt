@@ -79,9 +79,12 @@ fun soloCarGame(inputCarName: String) {
     var soloCount = 0
     repeat(2) {
         val randomNum = Randoms.pickNumberInRange(0, 9)
-        if (randomNum >= 4) {
-            soloCount += 1
+        if (checkPositiveForward(randomNum)) {
+            soloCount++
         }
+        val forward = "-".repeat(soloCount)
+        println("$inputCarName : $forward")
+        println("")
     }
 
     if (soloCount >= 1) {
