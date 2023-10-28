@@ -47,6 +47,7 @@ class Racing(val cars: List<Car>, attempts: Int) {
             cars.forEach { it.move() }
             printResult()
         }
+        printWinners()
     }
 
     fun printResult() {
@@ -54,6 +55,12 @@ class Racing(val cars: List<Car>, attempts: Int) {
             println("${car.name} : ${"-".repeat(car.position)}")
         }
         println()
+    }
+
+    fun printWinners() {
+        val maxPosition = cars.maxOf { it.position }
+        val winners = cars.filter { it.position == maxPosition }.joinToString { it.name }
+        println("최종 우승자 : $winners")
     }
 
 }
