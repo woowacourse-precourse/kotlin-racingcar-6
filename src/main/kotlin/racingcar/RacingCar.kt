@@ -7,6 +7,12 @@ data class RacingCar(
     var location: Int = 0
 ) {
 
+    fun moveForward() {
+        if (isAbleToMove()) {
+            location += 1
+        }
+    }
+
     private fun isAbleToMove(): Boolean {
         val random = Randoms.pickNumberInRange(0, 9)
         return (4 <= random)
