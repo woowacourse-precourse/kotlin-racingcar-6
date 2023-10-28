@@ -2,10 +2,12 @@ package User
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+
 class User {
     companion object {
         const val MAX_NAME = 5
     }
+
     fun inputCarName(){
         var userNames = Console.readLine()
         var userNameList = userNames.split(',')
@@ -25,5 +27,9 @@ class User {
         }
     }
 
+    fun inputCycleNumber() : Int{
+        var CycleNumber = Console.readLine()
 
+        return CycleNumber.toInt()
+    }
 }

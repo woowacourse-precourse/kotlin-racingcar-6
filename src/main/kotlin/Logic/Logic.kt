@@ -1,0 +1,4 @@
+package Logic
+
+class Logic {
+}
