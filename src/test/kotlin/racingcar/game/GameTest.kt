@@ -1,8 +1,11 @@
 package racingcar.game
 
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.assertDoesNotThrow
+import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class GameTest {
 
@@ -13,12 +16,26 @@ class GameTest {
         game = Game()
     }
 
-    @Test
-    fun `입력값을 올바르게 split`() {
-        val input = "Car1,Car2,Car3"
+    @ParameterizedTest
+    @ValueSource(strings = ["Car1,Car2,Car3"])
+    fun `입력값을 올바르게 split`(carNames: String) {
+        val result = game.inputCarName(carNames)
+        assertEquals(listOf("Car1", "Car2", "Car3"), result)
+    }
 
-        val carList = game.inputCarName(input)
+    @ParameterizedTest
+    @ValueSource(strings = ["Car1,Car23", "pobi,woni,jun"])
+    fun `자동차 이름이 1자 이상 5자인 경우`(carNames: String) {
+        assertDoesNotThrow {
+            game.inputCarName(carNames)
+        }
+    }
 
-        assertEquals(listOf("Car1", "Car2", "Car3"), carList)
+    @ParameterizedTest
+    @ValueSource(strings = ["Car12,Car345", ",min", " ,jun"])
+    fun `자동차 이름이 1자 미만 또는 5자 초과인 경우`(carNames: String) {
+        assertThrows<IllegalArgumentException> {
+            game.inputCarName(carNames)
+        }
     }
 }
