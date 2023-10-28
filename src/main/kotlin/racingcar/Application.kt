@@ -10,8 +10,8 @@ fun main() {
     validateCarNameLength(carNameList)
     validateCarNameDistinct(carNameList)
     makeCar(carNameList)
-    val tryCnt = enterTryCnt()
-    doGame(tryCnt)
+    doGame(enterTryCnt())
+    showWinner()
 }
 
 fun enterCarName(): List<String> {
@@ -53,5 +53,14 @@ fun doGame(userInputTryCnt: Int) {
         }
         println()
         currentGameTryCnt++
+    }
+}
+
+fun showWinner() {
+    carList.maxOfOrNull { it.forwardCnt }?.let { maxForwardCnt ->
+        val winner = carList.filter { car ->
+            car.forwardCnt == maxForwardCnt
+        }.joinToString { it.name }
+        println(Const.GAME_WINNER_MSG + winner)
     }
 }
