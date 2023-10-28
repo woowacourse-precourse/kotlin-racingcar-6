@@ -32,5 +32,4 @@ class OutputView {
     private fun printMessage(message: String) {
         println(message)
     }
-
 }

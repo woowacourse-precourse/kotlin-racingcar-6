@@ -11,7 +11,7 @@ class RacingGameController {
 
         val playCount = view.inputPlayCount()
         view.printResultMessage()
-        repeat(playCount){
+        repeat(playCount) {
             board.play()
             view.printPlayResult(playResult = board.toString())
         }

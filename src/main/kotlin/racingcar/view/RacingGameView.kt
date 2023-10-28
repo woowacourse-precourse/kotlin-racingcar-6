@@ -4,7 +4,6 @@ import racingcar.model.Car
 import racingcar.validator.InputValidator
 
 class RacingGameView {
-
     private val input = InputView()
     private val output = OutputView()
     private val inputValidator = InputValidator()

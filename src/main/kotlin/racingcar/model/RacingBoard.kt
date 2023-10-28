@@ -1,7 +1,6 @@
 package racingcar.model
 
 class RacingBoard(racerList: List<Car>) {
-
     companion object {
         private const val RACER_LIST_EMPTY_MESSAGE = "참가자가 한명도 없습니다."
     }
@@ -16,7 +15,6 @@ class RacingBoard(racerList: List<Car>) {
     private fun validateRacerList(racerList: List<Car>) {
         require(racerList.isNotEmpty()) { RACER_LIST_EMPTY_MESSAGE }
     }
-
 
     fun play() {
         racerList.forEach { car: Car -> car.move() }
