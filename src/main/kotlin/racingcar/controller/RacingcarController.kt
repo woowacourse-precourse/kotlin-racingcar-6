@@ -26,6 +26,7 @@ class RacingcarController {
 
     private fun inputTryNumber(): String {
         val tryNumber = Console.readLine()
+        checkTryNumber(tryNumber)
         return tryNumber
     }
 
@@ -33,5 +34,9 @@ class RacingcarController {
 
     private fun checkCarNameLength(racingcarName: String) {
         if (racingcarName.length > 5) callException()
+    }
+
+    private fun checkTryNumber(tryNumber: String) {
+        tryNumber.toIntOrNull() ?: callException()
     }
 }
