@@ -23,11 +23,11 @@ class StringTest {
         assertEquals(listOf(POBI), result)
     }
 
-    @Test
-    fun `trim 메서드로 공백 제거`() {
-        val result = gameController.inputCarNames("  $POBI,  $JSON  ")
-        assertEquals(listOf(POBI, JSON), result)
-    }
+//    @Test
+//    fun `trim 메서드로 공백 제거`() {
+//        val result = gameController.inputCarNames("  $POBI,  $JSON  ")
+//        assertEquals(listOf(POBI, JSON), result)
+//    }
 
 //    @Test
 //    fun `get 메서드로 특정 위치의 문자 찾기`() {

@@ -3,6 +3,7 @@ package racingcar.controller
 import racingcar.model.Car
 import racingcar.model.Cars
 import racingcar.model.Repetition
+import racingcar.model.Round
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -21,6 +22,12 @@ class GameController {
 
         val repetitionInput = inputView.promptRepetition()
         val repetition = Repetition(repetitionInput)
+
+        repeat(repetition.count) {
+            playRound(cars)
+            outputView.printRoundResult(cars)
+        }
+
     }
 
     // TODO: 최종 Test 이후, private으로 수정
@@ -29,5 +36,14 @@ class GameController {
             return carNames.split(COMMA_DELIMITERS)
         }
         return listOf(carNames)
+    }
+
+    private fun playRound(cars: Cars) {
+        cars.carList.map { car ->
+            val randomNumber = Round.generateRandomNumber()
+            if (Round.isForward(randomNumber)) {
+                car.moveForward()
+            }
+        }
     }
 }

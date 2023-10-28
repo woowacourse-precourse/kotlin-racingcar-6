@@ -68,14 +68,12 @@ class ApplicationTest : NsTest() {
 //        )
 //    }
 //
-//    @Test
-//    fun `이름에 대한 예외 처리`() {
-//        assertSimpleTest {
-//            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
-//        }
-//    }
-
-
+    @Test
+    fun `이름에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
 
     public override fun runMain() {
         main()

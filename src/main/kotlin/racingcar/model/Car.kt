@@ -1,10 +1,11 @@
 package racingcar.model
 
 data class Car(private val inputName: String) {
-    private var _carList: String
+    private var _name: String
     private var _score: Int = ZERO
 
-    val carList: String get() = _carList
+    val name: String get() = _name
+    val score: Int get() = _score
 
     companion object {
         private const val ZERO = 0
@@ -16,7 +17,7 @@ data class Car(private val inputName: String) {
         println("inputName : $inputName (length: ${inputName.length})")
         checkLengthWithinFive()
         checkDigitAndLetter()
-        _carList = inputName
+        _name = inputName
     }
 
     private fun checkLengthWithinFive() =
@@ -24,4 +25,6 @@ data class Car(private val inputName: String) {
 
     private fun checkDigitAndLetter() =
         require(inputName.all { it.isDigit() || it.isLetter() } ) { "자동차 이름 : 특수 문자는 포함될 수 없습니다." }
+
+    internal fun moveForward() = _score++
 }
