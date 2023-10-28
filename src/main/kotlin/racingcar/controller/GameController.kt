@@ -1,5 +1,7 @@
 package racingcar.controller
 
+import racingcar.view.InputView
+
 class GameController {
 
     fun run() {
@@ -9,7 +11,8 @@ class GameController {
     }
 
     private fun getUserInput() {
-
+        val input = InputView()
+        val carNames = input.getCarName()
     }
 
     private fun play() {
