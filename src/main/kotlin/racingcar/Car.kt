@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 
 const val FORWARDABLE_NUMBER = 4
 
-class Car(name: String) {
+class Car(val name: String) {
 
     private var forwardCount = 0
 
