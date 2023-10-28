@@ -7,7 +7,6 @@ data class Car(val name: String, var count: Int)
 
 val carNames = mutableListOf<Car>() // Car 객체를 저장하는 리스트
 
-//입력값이 null인지 확인
 fun checkInputIsValid(input: String?) {
     input?.let { nonNullInput ->
         val trimmedInput = nonNullInput.trim()
@@ -18,18 +17,27 @@ fun checkInputIsValid(input: String?) {
 fun checkInputIsNull(trimmedInput: String){
     if (trimmedInput.isNotEmpty()) {
         val carNameList = trimmedInput.split(",").map { it.trim() }.filter { it.isNotBlank() }
-        if (carNameList.isEmpty()) {
-            throw IllegalArgumentException("적어도 1대 이상의 자동차 이름을 입력해주세요.")
-        }
-        if (carNameList.size != carNameList.distinct().size) {
-            throw IllegalArgumentException("중복된 자동차 이름이 입력되었습니다.")
-        }
+        carNameIsEmpty(carNameList)
+
+        carNameIsDoubled(carNameList)
+
         carNames.addAll(carNameList.map { Car(it, 0) }) // Car 객체로 저장
     } else {
         throw IllegalArgumentException("적어도 1대 이상의 자동차 이름을 입력해주세요.")
     }
 }
 
+fun carNameIsEmpty(carNameList: List<String>){
+    if (carNameList.isEmpty()) {
+        throw IllegalArgumentException("적어도 1대 이상의 자동차 이름을 입력해주세요.")
+    }
+}
+
+fun carNameIsDoubled(carNameList: List<String>){
+    if (carNameList.size != carNameList.distinct().size) {
+        throw IllegalArgumentException("중복된 자동차 이름이 입력되었습니다.")
+    }
+}
 
 fun moveOrStop(index: Int){
     val randomNumber = Randoms.pickNumberInRange(0, 9)
@@ -47,13 +55,11 @@ fun playByCarSize(){
     print("\n")
 }
 
-// 최대 'count' 값을 가지는 Car 객체의 이름 찾기
 fun findNameOfWinnerWithMaxCount(): List<String> {
     val maxCount = carNames.maxByOrNull { it.count }?.count
     val winners = carNames.filter { it.count == maxCount }
     return winners.map { it.name }
 }
-
 
 fun main() {
     print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n")
@@ -77,7 +83,7 @@ fun main() {
         throw IllegalArgumentException("유효한 정수를 입력해주세요.")
     }
 
-    print("\n실행결과\n")
+    print("\n실행 결과\n")
 
     // 경주 게임 실행
     for (i in 1..playTimeAsInt) {
