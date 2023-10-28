@@ -14,6 +14,10 @@ class Commentator(private val cars: List<Car>, private val numberOfMoves: Int) {
   }
 
   fun theWinnerIs() {
+    val maxRecord = cars.map{ it.record }.maxOf { it.length }
+    val nameOfWinners = cars.filter { it.record.length == maxRecord }.map { it.carName }
 
+    print("최종 우승자 : ")
+    println(nameOfWinners.joinToString(", "))
   }
 }

@@ -10,4 +10,6 @@ fun main() {
 
   val myCommentator = Commentator(racingCars, numberOfMoves)
   myCommentator.commentRace()
+
+  myCommentator.theWinnerIs()
 }
