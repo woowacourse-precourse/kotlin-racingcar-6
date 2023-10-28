@@ -1,5 +1,7 @@
 package racingcar.Controller
 
+import racingcar.Model.RoundState
+import racingcar.Model.UserInputCheck
 import racingcar.View.UserInput
 
 class GameController {
@@ -7,10 +9,10 @@ class GameController {
     fun gameStarter(){
 
         val carNameInputs=UserInput().inputCarName()
-        var carNames=ErrorController().carNameErrorController(carNameInputs)
+        var carNames= UserInputCheck().carNameErrorController(carNameInputs)
 
         val userRoundInput=UserInput().inputRoundNumber()
-        var roundInput=ErrorController().roundNumberErrorController(userRoundInput)
+        var roundInput= UserInputCheck().roundNumberErrorController(userRoundInput)
 
         gameProgress(carNames,roundInput)
     }
@@ -19,8 +21,9 @@ class GameController {
         var raceStatus = mutableMapOf<String, List<Boolean>>()
 
         for (i in 1..roundInput) {
-            var oneRoundResults = RoundStateController().oneRoundResult(carNames)
-            raceStatus= RoundStateController().placementOfScores(carNames,oneRoundResults,raceStatus)
+            var oneRoundResults = RoundState().oneRoundResult(carNames,raceStatus)
         }
+
+
     }
 }
