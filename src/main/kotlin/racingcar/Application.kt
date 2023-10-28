@@ -38,17 +38,13 @@ private fun checkSoloCar(inputCarName: String): Boolean {
 
 fun validateInputMultiCarName(multiCarName: List<String?>) {
     when (false) {
-        validateMaxInput5(multiCarName) ->
-            throw IllegalArgumentException("자동차 이름은 5자 이하로만 가능합니다.")
+        validateMaxInput5(multiCarName) -> throw IllegalArgumentException("자동차 이름은 5자 이하로만 가능합니다.")
 
-        validateIsBlank(multiCarName) ->
-            throw IllegalArgumentException("자동차 이름은 필수로 입력해야 합니다.")
+        validateIsBlank(multiCarName) -> throw IllegalArgumentException("자동차 이름은 필수로 입력해야 합니다.")
 
-        validateDuplicateCarName(multiCarName) ->
-            throw IllegalArgumentException("자동차 이름은 중복하지 않아야 합니다.")
+        validateDuplicateCarName(multiCarName) -> throw IllegalArgumentException("자동차 이름은 중복하지 않아야 합니다.")
 
-        validateRacingCarRange(multiCarName) ->
-            throw IllegalArgumentException("게임에 참여 가능한 자동차 대수는 1대 이상 7대 이하만 가능합니다.")
+        validateRacingCarRange(multiCarName) -> throw IllegalArgumentException("게임에 참여 가능한 자동차 대수는 1대 이상 7대 이하만 가능합니다.")
 
         else -> inputTryCount()
     }
@@ -95,7 +91,21 @@ fun soloCarGame(inputCarName: String) {
 }
 
 fun inputTryCount() {
-    val tryCount = Console.readLine().toInt()
+    val tryCount = Console.readLine()
+    validateTryCount(tryCount)
+}
+
+fun validateTryCount(tryCount: String) {
+    when (false) {
+        validateNotNum(tryCount) ->
+            throw IllegalArgumentException("시도할 횟수는 1부터 10 사이로만 입력 가능합니다.")
+
+        else -> {}
+    }
+}
+
+fun validateNotNum(tryCount: String): Boolean {
+    return tryCount.toIntOrNull() == null
 }
 
 fun multiCarGame(multiCarName: List<String>) {
