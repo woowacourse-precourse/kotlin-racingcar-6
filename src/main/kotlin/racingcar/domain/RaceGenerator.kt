@@ -2,7 +2,7 @@ package racingcar.domain
 
 import camp.nextstep.edu.missionutils.Console
 
-class RaceGenerator() {
+class RaceGenerator {
   private val cars: MutableList<Car> = mutableListOf()
   private var numberOfMoves: Int = -1
 
