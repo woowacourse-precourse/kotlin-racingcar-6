@@ -5,27 +5,25 @@ import racingcar.common.ExceptionConst
 import racingcar.common.GameConst
 import racingcar.model.Car
 
-val carNames = mutableListOf<String>()
 val cars = mutableListOf<Car>()
-val tryCnt: String by lazy { Console.readLine() }
-var validatedTryCnt: Int? = null
+var validatedTryCnt: Int = 0
 
 fun main() {
-    enterCarName()
-    validateCarNames()
-    enterTryCnt()
-    validateTryCnt()
-    makeCar()
+    val carNames = enterCarName()
+    validateCarNames(carNames)
+    val tryCnt = enterTryCnt()
+    validateTryCnt(tryCnt)
+    makeCar(carNames)
     doGame()
     showWinner()
 }
 
-fun enterCarName() {
+fun enterCarName(): List<String> {
     println(GameConst.ENTER_CAR_NAME_MSG)
-    carNames.addAll(Console.readLine().split(",").map { it.trim() })
+    return Console.readLine().split(",").map { it.trim() }
 }
 
-fun validateCarNames() {
+fun validateCarNames(carNames: List<String>) {
     validateCarNameLength(carNames)
     validateCarNameDistinct(carNames)
 }
@@ -40,14 +38,12 @@ fun validateCarNameDistinct(carNames: List<String>) {
     if (carNames.distinct().size != carNames.size) throw IllegalArgumentException(ExceptionConst.EXCEPTION_CAR_NAME_DUPLICATED)
 }
 
-fun validateTryCnt() {
-    validateTryCntIsNumber()
-    validatedTryCnt?.let {
-        validateTryCntIsMoreThanZero()
-    }
+fun validateTryCnt(tryCnt: String) {
+    validateTryCntIsNumber(tryCnt)
+    validateTryCntIsMoreThanZero()
 }
 
-fun validateTryCntIsNumber() {
+fun validateTryCntIsNumber(tryCnt: String) {
     tryCnt.toIntOrNull()?.let {
         validatedTryCnt = it
         return
@@ -56,13 +52,13 @@ fun validateTryCntIsNumber() {
 }
 
 fun validateTryCntIsMoreThanZero() {
-    if (validatedTryCnt!!.toInt() < 1) {
-        validatedTryCnt = null
+    if (validatedTryCnt < 1) {
+        validatedTryCnt = 0
         throw IllegalArgumentException(ExceptionConst.EXCEPTION_TRY_CNT_LESS_THAN_ONE)
     }
 }
 
-fun makeCar() {
+fun makeCar(carNames: List<String>) {
     cars.addAll(
         carNames.map { name ->
             Car(_name = name)
@@ -70,17 +66,16 @@ fun makeCar() {
     )
 }
 
-fun enterTryCnt() {
+fun enterTryCnt(): String {
     println(GameConst.ENTER_TRY_CNT_MSG)
-    tryCnt
+    return Console.readLine()
 }
 
 fun doGame() {
-    if (validatedTryCnt == null) return
     println()
     println(GameConst.GAME_RESULT_MSG)
     var currentGameTryCnt = 0
-    while (currentGameTryCnt < validatedTryCnt!!) {
+    while (currentGameTryCnt < validatedTryCnt) {
         cars.forEach { car ->
             car.moveForward()
         }
