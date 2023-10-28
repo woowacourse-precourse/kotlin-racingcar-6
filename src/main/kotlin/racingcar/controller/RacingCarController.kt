@@ -50,11 +50,18 @@ class RacingCarController(private val inputView: InputView) {
             throw IllegalArgumentException("0은 입력될 수 없습니다.")
     }
 
-
-
-
     private fun generateRandomNumber(): Int {
         return Randoms.pickNumberInRange(0, 9)
+    }
+
+    private fun positionMove(): Boolean {
+        val randomNumber = generateRandomNumber()
+        var move = 0
+        when {
+            randomNumber >= 4 -> move = 1
+            randomNumber < 4 -> move = 0
+        }
+        return move == 1
     }
 
 }
