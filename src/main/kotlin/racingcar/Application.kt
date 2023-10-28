@@ -89,6 +89,8 @@ fun soloCarGame(inputCarName: String) {
 
     if (soloCount >= 1) {
         soloChampion(inputCarName)
+    } else {
+        println("우승자가 없습니다.")
     }
 }
 
