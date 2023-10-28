@@ -1,6 +1,6 @@
-package racingcar
+package racingcar.model
 
-data class Car(val name: String, var numberOfMove: Int = 0) {
+data class RacingCar(val name: String, var numberOfMove: Int = 0) {
     fun moveForward() {
         this.numberOfMove += 1
     }
