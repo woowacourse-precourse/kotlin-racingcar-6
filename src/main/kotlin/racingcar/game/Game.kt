@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import racingcar.util.Constants.CAR_NAME_DELIMITER
 import racingcar.util.Constants.TEXT_START_GAME
 import racingcar.util.Validation.validateLength
+import racingcar.util.Validation.validateNumberOfList
 
 class Game {
 
@@ -17,12 +18,14 @@ class Game {
     }
 
      fun inputCarName(input: String) : MutableList<String> {
-        val splitResult = mutableListOf<String>()
+         val splitResult = mutableListOf<String>()
 
-        input.split(CAR_NAME_DELIMITER).forEach {
-            splitResult.add(validateLength(it))
-        }
+         input.split(CAR_NAME_DELIMITER).forEach {
+             splitResult.add(validateLength(it))
+         }
 
-        return splitResult
+         validateNumberOfList(splitResult)
+
+         return splitResult
     }
 }

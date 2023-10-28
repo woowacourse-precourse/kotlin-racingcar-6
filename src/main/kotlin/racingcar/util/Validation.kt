@@ -1,6 +1,7 @@
 package racingcar.util
 
 import racingcar.util.Constants.EXCEPTION_WRONG_LENGTH
+import racingcar.util.Constants.EXCEPTION_WRONG_NUMBER
 
 object Validation {
 
@@ -11,6 +12,12 @@ object Validation {
             return name
         } else {
             throw IllegalArgumentException(EXCEPTION_WRONG_LENGTH)
+        }
+    }
+
+    fun validateNumberOfList(list: MutableList<String>) {
+        if (list.size < 2) {
+            throw IllegalArgumentException(EXCEPTION_WRONG_NUMBER)
         }
     }
 }
