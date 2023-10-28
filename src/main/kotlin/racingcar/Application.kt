@@ -1,5 +1,8 @@
 package racingcar
 
+import org.junit.jupiter.api.parallel.Execution
+const val result = "실행 결과"
+
 private fun makeCar(): MutableList<Car> {
     val carsString = InputManager.inputCar()
     val limitChar = ","
@@ -14,10 +17,23 @@ private fun makeCar(): MutableList<Car> {
     return car
 }
 
+private fun printResult(car: MutableList<Car>){
+    car.map {
+        it.forwardCar()
+        print("${it.name} : ")
+        println("-".repeat(it.forwardCount))
+    }
+    println()
+}
+
 private fun playGame() {
     val car: MutableList<Car> = makeCar()
     val executionNumber = InputManager.inputExecutionNumber()
 
+    println(result)
+    repeat(executionNumber) {
+        printResult(car)
+    }
 
 }
 

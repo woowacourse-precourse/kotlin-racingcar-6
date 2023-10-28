@@ -15,7 +15,6 @@ object InputManager {
         println(INPUT_EXECUTION_NUMBER)
 
         val executionNumberString = readLine()
-
         return executionNumberString.toInt()
     }
 }
