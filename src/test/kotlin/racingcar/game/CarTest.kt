@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions.*
 internal class CarTest {
 
     @Test
-    fun testToString() {
+    fun `toString Test - distance가 0일때`() {
         // given
         val car = Car("bamin")
         val expectCarString = "bamin : "
@@ -15,6 +15,20 @@ internal class CarTest {
         val carString = car.toString()
         // then
         assertEquals(expectCarString, carString)
+    }
+
+    @Test
+    fun `toString 테스트 distance가 0이 아닐 경우`() {
+        // given
+        val car = Car("bamin")
+        // when
+        while (car.getDistance() > 0) {
+            car.startEngine()
+        }
+        val carStringWithDistance = car.toString()
+        // then
+        val expectedString = "bamin : ${"-".repeat(car.getDistance())}"
+        assertEquals(expectedString, carStringWithDistance)
     }
 
     @Test
