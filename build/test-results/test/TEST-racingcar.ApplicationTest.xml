@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="racingcar.ApplicationTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-10-28T12:17:27" hostname="KAMANOTE" time="0.534">
+  <properties/>
+  <testcase name="이름에 대한 예외 처리()" classname="racingcar.ApplicationTest" time="0.022"/>
+  <testcase name="전진 정지()" classname="racingcar.ApplicationTest" time="0.511"/>
+  <system-out><![CDATA[경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
+경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
+시도할 횟수는 몇 회인가요?
+pobi : -
+woni : 
+
+최종 우승자 : pobi
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

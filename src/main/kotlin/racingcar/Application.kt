@@ -13,4 +13,7 @@ fun main() {
         it
     }
 
+    println("시도할 횟수는 몇 회인가요?")
+    val attempts = Console.readLine().toInt()
+    
 }
