@@ -50,7 +50,7 @@ fun validateInputMultiCarName(multiCarName: List<String?>) {
         validateRacingCarRange(multiCarName) ->
             throw IllegalArgumentException("게임에 참여 가능한 자동차 대수는 1대 이상 7대 이하만 가능합니다.")
 
-        else -> "dd"
+        else -> inputTryCount()
     }
 }
 
@@ -92,6 +92,10 @@ fun soloCarGame(inputCarName: String) {
     if (soloCount >= 1) {
         soloChampion(inputCarName)
     }
+}
+
+fun inputTryCount() {
+    val tryCount = Console.readLine().toInt()
 }
 
 fun multiCarGame(multiCarName: List<String>) {
