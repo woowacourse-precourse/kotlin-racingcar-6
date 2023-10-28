@@ -10,9 +10,13 @@ class GameController {
         printResult()
     }
 
-    private fun getUserInput() {
+    private fun getUserInput(): Pair<ArrayList<String>, String> {
         val input = InputView()
-        val carNames = input.getCarName()
+        return Pair(input.getCarName(), input.getNumberOfAttemps())
+    }
+
+    private fun isValidInput() {
+
     }
 
     private fun play() {
