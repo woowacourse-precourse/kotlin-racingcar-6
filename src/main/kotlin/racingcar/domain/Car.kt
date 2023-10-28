@@ -1,6 +1,8 @@
 package racingcar.domain
 
-class Car {
+class Car(val carName: String) {
+  var record: String = ""
+
   fun moveOrNot() {
 
   }

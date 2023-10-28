@@ -3,10 +3,10 @@
 ## 기능 목록
 
 - 경기에 대한 정보를 입력 받는다: 1) 경주할 자동차 이름 & 2) 시도할 횟수
-  - [ ] n대의 **자동차의 이름**을 입력 받는다. - RaceGenerator#generateCars()
-    - [ ] 자동차 이름은 **쉼표**(,)를 기준으로 구분한다.
-    - [ ] 5자 이하만 가능하다.
-  - [ ] **몇 번의 시도**(**이동**)을 할 것인지를 입력 받는다. - RaceGenerator#askNumberOfMoves()
+  - [x] n대의 **자동차의 이름**을 입력 받는다. - RaceGenerator#generateCars()
+    - [x] 자동차 이름은 **쉼표**(,)를 기준으로 구분한다.
+    - [x] 5자 이하만 가능하다. - RaceGenerator#checkCarNames()
+  - [x] **몇 번의 시도**(**이동**)을 할 것인지를 입력 받는다. - RaceGenerator#askNumberOfMoves()
 - [ ] 각 차수마다의 모든 자동차의 기록을 출력한다. - Commentator#commentRace()
   - [ ] 자동차 이름을 같이 출력한다.
   - [ ] 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다. - Car#moveOrNot()

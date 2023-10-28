@@ -1,19 +1,42 @@
 package racingcar.domain
 
-class RaceGenerator(private val name: String) {
-  fun generateCars() {
+import camp.nextstep.edu.missionutils.Console
 
+class RaceGenerator() {
+  private val cars: MutableList<Car> = mutableListOf()
+  private var numberOfMoves: Int = -1
+
+  fun generateCars(): MutableList<Car> {
+    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    val input: String = Console.readLine()
+    val carNames = checkCarNames(input)
+
+    for (carName in carNames) {
+      cars.add(Car(carName))
+    }
+
+    return cars
   }
 
   fun askNumberOfMoves() {
-
+    println("시도할 횟수는 몇 회인가요?")
+    val input: String = Console.readLine()
+    numberOfMoves = checkNumberOfMoves(input)
   }
 
-  fun checkCarNames() {
+  private fun checkCarNames(input: String): List<String> {
+    val carNames: List<String> = input.split(",")
 
+    for (carName in carNames) {
+      if (carName.length > 5) {
+        throw IllegalArgumentException("자동차 이름을 5자 이하로 작성해주세요.")
+      }
+    }
+
+    return carNames
   }
 
-  fun checkNumberOfMoves() {
-
+  private fun checkNumberOfMoves(input: String): Int {
+    return input.toIntOrNull() ?: throw IllegalArgumentException("숫자를 입력해주세요.")
   }
 }
