@@ -56,9 +56,9 @@
 ### RacingGameView
 레이싱 게임에서 사용자와 상호작용을 담당한다.
 - 필요에 따라 InputView, InputValidator, OutputView를 사용하여 상호작용을 담당한다.
-- [ ] 입력 전 안내 메세지를 출력한다. (InputView)
-- [ ] 사용자로부터 입력을 받는다. (InputView)
-- [ ] 입력 값을 검증한다. (InputValidator)
+- [x] 입력 전 안내 메세지를 출력한다. (InputView)
+- [x] 사용자로부터 입력을 받는다. (InputView)
+- [x] 입력 값을 검증한다. (InputValidator)
 ### InputView
 레이싱 게임에서 사용자로 부터 입력을 받는다.
 - 사용자의 입력을 받는다.
