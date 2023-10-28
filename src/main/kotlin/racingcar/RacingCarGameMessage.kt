@@ -11,7 +11,7 @@ class RacingCarGameMessage {
         println(CAR_NAME_INPUT_MESSAGE)
     }
 
-    fun printTryCountMessage() {
+    fun printTryCountInputMessage() {
         println(TRY_COUNT_MESSAGE)
     }
 

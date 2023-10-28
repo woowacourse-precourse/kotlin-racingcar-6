@@ -10,7 +10,7 @@ class RacingCarGame {
         racingCarGameMessage.printCarNameInputMessage()
         val names = userInputManager.userNameInput()
         racingCarFactory.createCars(cars, names)
-        racingCarGameMessage.printTryCountMessage()
+        racingCarGameMessage.printTryCountInputMessage()
         val tryCount = userInputManager.userTryCountInput()
         racingCarGameMessage.printResultMessage()
         moveAllStep(tryCount)
