@@ -22,8 +22,11 @@ class OutputView {
     }
 
     fun printPlayResult(playResult: String) {
-        printMessage(PLAY_RESULT_MESSAGE)
         printMessage(playResult)
+    }
+
+    fun printResultMessage() {
+        printMessage(PLAY_RESULT_MESSAGE)
     }
 
     private fun printMessage(message: String) {

@@ -26,6 +26,10 @@ class RacingGameView {
         output.printResultWinner(winnerList = winnerList)
     }
 
+    fun printResultMessage() {
+        output.printResultMessage()
+    }
+
     fun printPlayResult(playResult: String) {
         output.printPlayResult(playResult = playResult)
     }
