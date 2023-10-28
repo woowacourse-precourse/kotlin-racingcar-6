@@ -1,5 +1,7 @@
+import CarConfiguration.MIN_START_FLAG
+
 class Engine {
     fun start(forwardFlag: Int) : Boolean {
-        return forwardFlag >= 4
+        return forwardFlag >= MIN_START_FLAG
     }
 }
