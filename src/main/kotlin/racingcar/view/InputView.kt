@@ -4,9 +4,10 @@ import camp.nextstep.edu.missionutils.Console
 
 class InputView {
     companion object {
-        fun inputCarName(): String {
+        fun inputCarName(): List<String> {
             println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-            return Console.readLine()
+            val carName: String = Console.readLine()
+            return carName.split(",")
         }
 
         fun inputNumberAttempts(): String {
