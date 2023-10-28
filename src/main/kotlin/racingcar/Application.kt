@@ -2,7 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-data class Car(val name: String, val count: Int) // Car 데이터 클래스 정의
+data class Car(val name: String, var count: Int) // Car 데이터 클래스 정의
 
 val carNames = mutableListOf<Car>() // Car 객체를 저장하는 리스트
 
@@ -10,6 +10,14 @@ fun checkInputIsNull(input: String?){
     if (input.isNullOrEmpty()){
         throw IllegalArgumentException("입력값이 없거나 공백입니다.")
     }
+}
+
+fun moveOrStop(index: Int){
+    val randomNumber = Randoms.pickNumberInRange(0, 9)
+    if(randomNumber >= 4){
+        carNames[index].count +=1
+    }
+    print("${carNames[index].name} : ${"-".repeat(carNames[index].count)}\n")
 }
 
 fun main() {
@@ -39,15 +47,15 @@ fun main() {
         throw IllegalArgumentException("유효한 정수를 입력해주세요.")
     }
 
-    print(carNames)
-
     // 경주 게임 실행
     for (i in 1..playTimeAsInt){
-        val randomNumber = Randoms.pickNumberInRange(0, 9)
-        if(randomNumber >= 4){
-            // 이곳에서 경주 로직을 처리
-        }
+        moveOrStop(0)
+        moveOrStop(1)
+        moveOrStop(2)
+        print("\n")
     }
+
+    print(carNames)
 
 
 }
