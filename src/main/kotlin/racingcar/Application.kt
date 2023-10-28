@@ -30,9 +30,13 @@ private fun checkSoloCar(inputCarName: String): Boolean {
 }
 
 fun validateInputMultiCarName(multiCarName: List<String>) {
-    when (true) {
+    when (false) {
         validateMaxInput5(multiCarName) ->
             throw IllegalArgumentException("자동차 이름은 5자 이하로만 가능합니다.")
+
+        validateDuplicateCarName(multiCarName) ->
+            throw IllegalArgumentException("자동차 이름은 중복하지 않아야 합니다.")
+
         else -> "dd"
     }
 }
@@ -44,6 +48,10 @@ fun validateMaxInput5(multiCarName: List<String>): Boolean {
         }
     }
     return true
+}
+
+fun validateDuplicateCarName(multiCarName: List<String>): Boolean {
+    return multiCarName.size == multiCarName.distinct().count()
 }
 
 fun soloCarGame(inputCarName: String) {
