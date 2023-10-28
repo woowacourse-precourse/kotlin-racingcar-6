@@ -9,8 +9,9 @@ fun main() {
 
     val tryNumber = getTryNumber()
 
-    for (i in 0 until carList.size) {
-        forwardOrStop(tryNumber, carList[i])
+    for (i in 0 until tryNumber) {
+        forwardOrStop(carList)
+        printResult(i, carList)
     }
 }
 
@@ -96,10 +97,22 @@ fun getRandomNumber(): Int {
 }
 
 // 기능 7. 전진, 정지 판단하기
-fun forwardOrStop(tryNumber: Int, car: Car) {
-    for (i in 0 until tryNumber) {
+fun forwardOrStop(carList: List<Car>) {
+    for (car in carList) {
         if (getRandomNumber() >= 4) {
             car.moveForward()
         }
     }
+}
+
+// 기능 8. 실행 결과 출력하기
+fun printResult(i: Int, carList: List<Car>) {
+    if (i == 0) {
+        println("\n실행 결과")
+    }
+
+    for (car in carList) {
+        car.printStatus()
+    }
+    println()
 }
