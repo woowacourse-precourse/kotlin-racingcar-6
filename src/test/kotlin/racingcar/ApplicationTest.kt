@@ -57,23 +57,23 @@ class ApplicationTest : NsTest() {
         }
     }
 
-//    @Test
-//    fun `전진 정지`() {
-//        assertRandomNumberInRangeTest(
-//            {
-//                run("pobi,woni", "1")
-//                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-//            },
-//            MOVING_FORWARD, STOP
-//        )
-//    }
-//
     @Test
-    fun `이름에 대한 예외 처리`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
-        }
+    fun `전진 정지`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD, STOP
+        )
     }
+
+//    @Test
+//    fun `이름에 대한 예외 처리`() {
+//        assertSimpleTest {
+//            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+//        }
+//    }
 
     public override fun runMain() {
         main()

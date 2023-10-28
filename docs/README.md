@@ -17,11 +17,11 @@
 - [x] 라운드의 진행 결과를 출력하는 기능 - view/OutputView.printRoundResult()
 
 **5. 자동차 경주 우승자  - model/Winner(Race)**
-- [ ] 참가자 중 `최고 Score를 계산`하는 기능 - model/Winner.maxScore(`Cars`)
-- [ ] 우승자가 `몇 명인지 판단`하는 기능 - model/Winner.howMany()
-- [ ] 우승자를 `출력`하는 기능 - view/OutputView.printWinner()
-    - [ ] 한 명
-    - [ ] 여러 명 : 쉼표로 구분
+- [X] 참가자 중 `최고 Score를 계산`하는 기능 - model/Winner.init
+- [X] 우승자가 `누구 인지 판단`하는 기능 - model/Winner.init
+- [X] 우승자를 `출력`하는 기능 - view/OutputView.printWinner()
+    - [X] 한 명
+    - [X] 여러 명 : 쉼표로 구분
 
 **6. 반복 - controller.GameController**
 - [ ] 경주가 N번 반복 가능하도록 확장 - Controller

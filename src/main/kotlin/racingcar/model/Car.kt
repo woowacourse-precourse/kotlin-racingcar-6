@@ -24,7 +24,7 @@ data class Car(private val inputName: String) {
         require(inputName.length <= ALLOW_LENGTH_OF_CAR_NAME) { "자동차 이름 : 1~5 길이로 작성해 주세요." }
 
     private fun checkDigitAndLetter() =
-        require(inputName.all { it.isDigit() || it.isLetter() } ) { "자동차 이름 : 특수 문자는 포함될 수 없습니다." }
+        require(inputName.all { it.isDigit() || it.isLetter() }) { "자동차 이름 : 특수 문자는 포함될 수 없습니다." }
 
     internal fun moveForward() = _score++
 }

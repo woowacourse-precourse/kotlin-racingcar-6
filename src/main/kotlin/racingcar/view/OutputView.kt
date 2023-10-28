@@ -1,6 +1,7 @@
 package racingcar.view
 
 import racingcar.model.Cars
+import racingcar.model.Winner
 
 class OutputView {
     fun printRoundResult(cars: Cars) {
@@ -9,4 +10,6 @@ class OutputView {
         }
         println()
     }
+
+    fun printWinner(winner: Winner) = println("최종 우승자 : ${winner.winnerList.joinToString(", ")}")
 }
