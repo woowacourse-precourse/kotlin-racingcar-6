@@ -11,7 +11,7 @@ class Car(name: String) {
     }
 
     private val name: String
-    private var pos: Int = 0
+    var pos: Int = 0
 
     init {
         validateName(name = name)
