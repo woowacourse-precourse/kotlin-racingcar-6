@@ -96,22 +96,30 @@ fun inputTryCount() {
 }
 
 fun validateTryCount(tryCount: String) {
-    when (false) {
+    when (true) {
+        validateNullOrBlank(tryCount) ->
+            throw IllegalArgumentException("시도할 횟수를 반드시 입력해야 합니다.")
+
         validateNotNum(tryCount) ->
             throw IllegalArgumentException("시도할 횟수는 1부터 10 사이로만 입력 가능합니다.")
 
         validateNotInRange(tryCount) ->
             throw IllegalArgumentException("시도할 횟수는 1부터 10 사이로만 입력 가능합니다.")
+
         else -> {}
     }
 }
 
-fun validateNotNum(tryCount: String): Boolean {
-    return tryCount.toIntOrNull() == null
+fun validateNotNum(tryCount: String?): Boolean {
+    return tryCount!!.toIntOrNull() == null
 }
 
-fun validateNotInRange(tryCount: String): Boolean {
-    return tryCount.toInt() !in 1..10
+fun validateNotInRange(tryCount: String?): Boolean {
+    return tryCount!!.toInt() !in 1..10
+}
+
+fun validateNullOrBlank(tryCount: String?): Boolean {
+    return tryCount.isNullOrBlank()
 }
 
 fun multiCarGame(multiCarName: List<String>) {
