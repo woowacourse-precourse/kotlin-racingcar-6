@@ -15,7 +15,14 @@ fun gameStartMessage() {
 
 fun getCarName() {
     val inputCarName = Console.readLine()
+    validateInputBlank(inputCarName)
     checkSoloCar(inputCarName)
+}
+
+fun validateInputBlank(inputCarName: String) {
+    if (inputCarName.isBlank()) {
+        throw IllegalArgumentException("자동차 이름을 반드시 입력해야 합니다.")
+    }
 }
 
 private fun checkSoloCar(inputCarName: String): Boolean {
@@ -29,7 +36,7 @@ private fun checkSoloCar(inputCarName: String): Boolean {
     return true
 }
 
-fun validateInputMultiCarName(multiCarName: List<String>) {
+fun validateInputMultiCarName(multiCarName: List<String?>) {
     when (false) {
         validateMaxInput5(multiCarName) ->
             throw IllegalArgumentException("자동차 이름은 5자 이하로만 가능합니다.")
@@ -41,16 +48,16 @@ fun validateInputMultiCarName(multiCarName: List<String>) {
     }
 }
 
-fun validateMaxInput5(multiCarName: List<String>): Boolean {
+fun validateMaxInput5(multiCarName: List<String?>): Boolean {
     for (element in multiCarName) {
-        if (element.length > 5) {
+        if (element == null || element.length > 5) {
             return false
         }
     }
     return true
 }
 
-fun validateDuplicateCarName(multiCarName: List<String>): Boolean {
+fun validateDuplicateCarName(multiCarName: List<String?>): Boolean {
     return multiCarName.size == multiCarName.distinct().count()
 }
 
