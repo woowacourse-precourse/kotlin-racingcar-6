@@ -5,6 +5,7 @@
         1. 입력값 쉼표를 기준으로 구분
         2. 여러 개가 입력되어도 됨
         3. 단, 입력한 자동차의 이름이 5글자 이하 -> 예외 처리: `IllegalArgumentException`
+        4. 자동차 이름은 숫자여도 됨
     2. 시도할 횟수 입력 : playTime :Int
         1. 예외 처리
            숫자 이외의 값 : `IllegalArgumentException`

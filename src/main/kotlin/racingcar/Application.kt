@@ -28,7 +28,11 @@ fun main() {
 
     checkInputIsNull(playTime)
 
-
+    try {
+        val playTimeAsInt = playTime!!.toInt()
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException("유효한 정수를 입력해주세요.")
+    }
 
 
 }
