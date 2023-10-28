@@ -27,13 +27,17 @@ class RaceGenerator {
   }
 
   private fun checkCarNames(input: String): List<String> {
-    if (input.isEmpty()) {
-      throw IllegalArgumentException("자동차 이름을 입력해주세요.")
-    }
-
     val carNames: List<String> = input.split(",")
 
+    if (carNames.size != carNames.toSet().size) {
+      throw IllegalArgumentException("자동차 이름들을 구별되게 지어주세요.")
+    }
+
     for (carName in carNames) {
+      if (carName.isEmpty()) {
+        throw IllegalArgumentException("자동차 이름을 입력해주세요.")
+      }
+
       if (carName.length > 5) {
         throw IllegalArgumentException("자동차 이름을 5자 이하로 작성해주세요.")
       }
