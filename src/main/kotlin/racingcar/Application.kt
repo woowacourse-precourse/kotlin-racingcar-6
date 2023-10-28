@@ -7,12 +7,16 @@ data class Car(val name: String, var count: Int)
 
 val carNames = mutableListOf<Car>() // Car 객체를 저장하는 리스트
 
-fun checkInputIsNull(input: String?){
-    if (input.isNullOrEmpty()){
-        throw IllegalArgumentException("입력값이 없거나 공백입니다.")
+//입력값이 null인지 확인
+fun checkInputIsNull(input : String?){
+    input?.let { nonNullInput ->
+        val carNameList = nonNullInput.split(",").map { it.trim() }
+        if (carNameList.any { it.isEmpty() }) {
+            throw IllegalArgumentException("공백은 입력할 수 없습니다.")
+        }
+        carNames.addAll(carNameList.map { Car(it, 0) }) // Car 객체로 저장
     }
 }
-
 fun moveOrStop(index: Int){
     val randomNumber = Randoms.pickNumberInRange(0, 9)
     if(randomNumber >= 4){
@@ -21,13 +25,13 @@ fun moveOrStop(index: Int){
     print("${carNames[index].name} : ${"-".repeat(carNames[index].count)}\n")
 }
 
+//자동차 갯수만큼 전진(move) or 멈춤(stop) 진행
 fun playByCarSize(){
     for (j in 0 until carNames.size) {
         moveOrStop(j)
     }
     print("\n")
 }
-
 
 // 최대 'count' 값을 가지는 Car 객체의 이름 찾기
 fun findNameOfWinnerWithMaxCount(): List<String> {
@@ -41,11 +45,7 @@ fun main() {
     print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n")
     val input = readLine()
 
-    checkInputIsNull(input)
-
-    input?.let { nonNullInput ->
-        carNames.addAll(nonNullInput.split(",").map { Car(it.trim(), 0) }) // Car 객체로 저장
-    }
+    checkInputIsNull(input);
 
     val invalidCarNames = carNames.filter { it.name.length > 5 }
     if (invalidCarNames.isNotEmpty()){
