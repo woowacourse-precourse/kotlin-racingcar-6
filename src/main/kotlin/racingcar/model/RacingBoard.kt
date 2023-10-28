@@ -10,15 +10,18 @@ class RacingBoard(racerList: List<Car>) {
 
     init {
         validateRacerList(racerList)
-        this.racerList =racerList
+        this.racerList = racerList
     }
 
     private fun validateRacerList(racerList: List<Car>) {
-        require(racerList.isNotEmpty()) {RACER_LIST_EMPTY_MESSAGE}
+        require(racerList.isNotEmpty()) { RACER_LIST_EMPTY_MESSAGE }
     }
+
+
     fun play() {
-        racerList.forEach { car: Car -> car.move()}
+        racerList.forEach { car: Car -> car.move() }
     }
+
     fun getResult(): List<Car> {
         val maxPos = racerList.maxByOrNull { car: Car -> car.pos }?.pos
         return racerList.filter { it.pos == maxPos }
