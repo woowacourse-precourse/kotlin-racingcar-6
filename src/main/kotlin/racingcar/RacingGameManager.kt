@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 import racingcar.data.Car
 
 class RacingGameManager {
@@ -11,11 +12,11 @@ class RacingGameManager {
 
     fun run() {
         printGameStart()
-        createCars()
+        val cars = createCars()
         printGameRoundQuestion()
 
         repeat(gameRound) {
-            // TODO
+            createMoveNumberOfCars(cars)
         }
 
         printGameEnd()
@@ -44,6 +45,14 @@ class RacingGameManager {
 
         return cars
     }
+
+    private fun createMoveNumberOfCars(cars: List<Car>) {
+        cars.forEach { car ->
+            car.changeMove(generateRandomNumber())
+        }
+    }
+
+    private fun generateRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
 
     private fun setGameRound(): Int = inputDataFromUser().toInt()
 
