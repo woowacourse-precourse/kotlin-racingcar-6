@@ -8,7 +8,9 @@ class UserInputValidator {
 
     fun userNameInputValidator(nameList: MutableList<String>) {
         for(name in nameList) {
-            if (name.length > 5) throw IllegalArgumentException(USER_NAME_INPUT_EXCEPTION_MESSAGE)
+            when {
+                name.length > 5 -> throw IllegalArgumentException(USER_NAME_INPUT_EXCEPTION_MESSAGE)
+            }
         }
     }
 
