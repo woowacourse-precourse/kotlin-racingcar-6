@@ -18,7 +18,7 @@
 
 - [] 전진하는 조건 처리
   - [done] 0에서 9 사이의 무작위 값을 생성 - NumberGenerator#createRandomNumber()
-  - [] 위의 무작위 값이 4 이상인지 확인 후 전진 - Car#Move
+  - [done] 위의 무작위 값이 4 이상인지 확인 후 전진 - Car#Move
 - [] 우승자 가리기
   - [] 자동차들 중 우승자 가리기 - Judgement#decideWinner()
 
