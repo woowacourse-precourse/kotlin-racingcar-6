@@ -2,16 +2,14 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 
 fun repeatMove(trial: Int, carsList: List<String>) {
-    var carsLocation: List<Int>
+    // 자동차의 위치를 나타낼 바뀔수 있는 List인 carsLocation 생성
+    var carsLocation = MutableList(carsList.size) {0}
 
     // trial만큼 자동차 이동 반복
     repeat(trial) {
-        carsLocation = moveCar(carsList)
-
-        // 마지막일 때 우승자를 보여준다
-        if(it == trial - 1)
-            showWinners(carsList, carsLocation)
+        carsLocation = moveCar(carsList, carsLocation)
     }
+    showWinners(carsList, carsLocation)
 }
 
 fun checkAdvance(): Boolean {
@@ -27,10 +25,7 @@ fun checkAdvance(): Boolean {
         return false
 }
 
-fun moveCar(carsList: List<String>): List<Int> {
-    // 자동차의 위치를 나타낼 바뀔수 있는 List인 carsLocation 생성
-    val carsLocation = MutableList(carsList.size) {0}
-
+fun moveCar(carsList: List<String>, carsLocation: MutableList<Int>): MutableList<Int> {
     // 전체 carsLocation을 살펴보고
     repeat(carsLocation.size) {
         // checkAdvance를 통과하면 한 칸 전진

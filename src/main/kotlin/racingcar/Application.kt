@@ -15,4 +15,6 @@ fun main() {
     val trialInput = Console.readLine()
     // 제대로 된 입력인지 체크하여 맞다면 trial에 저장
     val trial = checkValidInput(trialInput)
+
+    repeatMove(trial, carsList)
 }
