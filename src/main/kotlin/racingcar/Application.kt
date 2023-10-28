@@ -18,10 +18,19 @@ fun main() {
     val attempts = Console.readLine().toInt()
 
     val cars = names.map { Car(it) }
+
+    val racing = Racing(cars, attempts)
+
 }
 
 class Car(name: String) {
 
     val name = name
 
+}
+
+class Racing(val cars: List<Car>, attempts: Int) {
+    val attempts = attempts.also {
+        if (it < 0) throw IllegalArgumentException("시도할 횟수는 0 이상이어야 합니다.")
+    }
 }
