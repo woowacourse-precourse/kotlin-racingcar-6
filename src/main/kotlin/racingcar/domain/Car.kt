@@ -7,21 +7,22 @@ class Car(
     private val attemptCount: Int
 ) {
     fun race() {
-        
+
     }
+
     private fun executeRace(): ArrayList<MoveResult> {
         val moveResultList = arrayListOf<MoveResult>()
         carNames.forEach { carName ->
             val moveResult = MoveResult(
                 carName = carName,
-                moveCount = isMovable()
+                moveCount = move()
             )
             moveResultList.add(moveResult)
         }
         return moveResultList
     }
 
-    private fun isMovable(): Int =
+    private fun move(): Int =
          if(pickNumberInRange(MIN_VALUE, MAX_VALUE) >= POSSIBLE_FORWARD) FORWARD else STOP
 
     companion object {
