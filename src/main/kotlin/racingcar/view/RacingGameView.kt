@@ -1,5 +1,6 @@
 package racingcar.view
 
+import racingcar.model.Car
 import racingcar.validator.InputValidator
 
 class RacingGameView {
@@ -7,11 +8,11 @@ class RacingGameView {
     private val input = InputView()
     private val output = OutputView()
     private val inputValidator = InputValidator()
-    fun inputCarNameList(): List<String> {
+    fun inputCarNameList(): List<Car> {
         output.printInputGuideCarNameList()
         val carNameList = input.inputCarNameList()
         inputValidator.validateCarNameList(carNameList = carNameList)
-        return carNameList
+        return carNameList.map { carName -> Car(name = carName) }
     }
 
     fun inputPlayCount(): Int {

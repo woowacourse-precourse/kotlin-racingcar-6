@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 class Car(name: String) {
     companion object {
         private const val NAME_ERROR_MESSAGE = "이름이 %d 이하가 아닙니다."
+        private const val NAME_EMPTY_MESSAGE = "이름이 비어있습니다."
         private const val NAME_MAX_SIZE = 5
         private const val MOVABLE_LEVEL = 4
         private val RANDOM_RANGE = Pair(0, 9)
@@ -20,6 +21,7 @@ class Car(name: String) {
 
     private fun validateName(name: String) {
         require(name.length <= NAME_MAX_SIZE) { NAME_ERROR_MESSAGE.format(NAME_MAX_SIZE) }
+        require(name.isNotEmpty()) { NAME_EMPTY_MESSAGE }
     }
 
     fun move() {
