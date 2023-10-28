@@ -27,6 +27,8 @@ fun gameStart() {
         }
         println()
     }
+
+    printResult(carModelList)
 }
 
 fun printGameStartMessage() {
@@ -85,4 +87,18 @@ fun printDistance(distance: Int) {
         print("-")
     }
     println()
+}
+
+fun printResult(carModelList: List<Car>) {
+    val nameList = carModelList.map { it.name }.toList()
+    val distanceList = carModelList.map { it.moveDistance }.toList()
+    var resultList = mutableListOf<String>()
+
+    for (i in distanceList.indices) {
+        if (distanceList[i] == distanceList.max()) {
+            resultList.add(nameList[i])
+        }
+    }
+    print("최종 우승자 : ")
+    println(resultList.joinToString(", "))
 }
