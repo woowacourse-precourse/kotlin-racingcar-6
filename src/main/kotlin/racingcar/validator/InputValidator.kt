@@ -6,11 +6,6 @@ class InputValidator {
         private const val NOT_POSITIVE_INT_MESSAGE = "양수가 아닙니다."
     }
 
-    fun validateCarNameList(carNameList: List<String>) {
-        require(carNameList.isNotEmpty()) { EMPTY_LIST_MESSAGE }
-    }
-
-    fun validatePlayCount(playCount: Int) {
-        require(playCount > 0) { NOT_POSITIVE_INT_MESSAGE }
-    }
+    fun validateCarNameList(carNameList: List<String>) = require(carNameList.isNotEmpty()) { EMPTY_LIST_MESSAGE }
+    fun validatePlayCount(playCount: Int) = require(playCount > 0) { NOT_POSITIVE_INT_MESSAGE }
 }

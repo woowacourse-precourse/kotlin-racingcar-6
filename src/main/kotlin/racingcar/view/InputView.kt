@@ -8,15 +8,7 @@ class InputView {
         private const val TO_INT_ERROR_MESSAGE = "숫자를 입력하세요"
     }
 
-    fun inputCarNameList(): List<String> {
-        return inputUserForWait().split(',')
-    }
-
-    fun inputPlayCount(): Int {
-        return inputUserForWait().toIntOrNull() ?: throw IllegalArgumentException(TO_INT_ERROR_MESSAGE)
-    }
-
-    private fun inputUserForWait(): String {
-        return Console.readLine() ?: throw IllegalArgumentException(INPUT_ERROR_MESSAGE)
-    }
+    fun inputCarNameList(): List<String> = inputUserForWait().split(',')
+    fun inputPlayCount(): Int = inputUserForWait().toIntOrNull() ?: throw IllegalArgumentException(TO_INT_ERROR_MESSAGE)
+    private fun inputUserForWait(): String = Console.readLine() ?: throw IllegalArgumentException(INPUT_ERROR_MESSAGE)
 }

@@ -12,9 +12,7 @@ class RacingBoard(racerList: List<Car>) {
         this.racerList = racerList
     }
 
-    private fun validateRacerList(racerList: List<Car>) {
-        require(racerList.isNotEmpty()) { RACER_LIST_EMPTY_MESSAGE }
-    }
+    private fun validateRacerList(racerList: List<Car>) = require(racerList.isNotEmpty()) { RACER_LIST_EMPTY_MESSAGE }
 
     fun play() {
         racerList.forEach { car: Car -> car.move() }

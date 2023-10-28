@@ -8,28 +8,13 @@ class OutputView {
         private const val PLAY_RESULT_MESSAGE = "\n실행 결과"
     }
 
-    fun printInputGuideCarNameList() {
-        printMessage(INPUT_GUIDE_CAR_NAME_LIST_MESSAGE)
-    }
-
-    fun printInputGuidePlayCount() {
-        printMessage(INPUT_GUIDE_PLAY_COUNT_MESSAGE)
-    }
-
+    private fun printMessage(message: String) = println(message)
+    fun printInputGuideCarNameList() = printMessage(INPUT_GUIDE_CAR_NAME_LIST_MESSAGE)
+    fun printInputGuidePlayCount() = printMessage(INPUT_GUIDE_PLAY_COUNT_MESSAGE)
+    fun printResultMessage() = printMessage(PLAY_RESULT_MESSAGE)
+    fun printPlayResult(playResult: String) = printMessage(playResult)
     fun printResultWinner(winnerList: List<String>) {
         val winnerString = winnerList.joinToString(", ")
         printMessage(RESULT_WINNER_MESSAGE.format(winnerString))
-    }
-
-    fun printPlayResult(playResult: String) {
-        printMessage(playResult)
-    }
-
-    fun printResultMessage() {
-        printMessage(PLAY_RESULT_MESSAGE)
-    }
-
-    private fun printMessage(message: String) {
-        println(message)
     }
 }
