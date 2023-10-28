@@ -1,8 +1,12 @@
 package racingcar.view
 
 import racingcar.view.Constant.INPUT_RACINGCAR_NAME_MASSAGE
+import racingcar.view.Constant.TRY_NUMBER_MESSAGE
+
 class OutputView {
     fun printInputRacingcarName() = println(INPUT_RACINGCAR_NAME_MASSAGE)
+
+    fun printTryNumber() = println(TRY_NUMBER_MESSAGE)
 }
 
 object Constant {
