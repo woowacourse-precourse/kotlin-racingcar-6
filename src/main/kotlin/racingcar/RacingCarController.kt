@@ -10,8 +10,12 @@ class RacingCarController {
     fun play() {
         createRacingCars()
         repeat(moveCount) {
-            // TODO:전진
+            moveAllCars()
         }
+    }
+
+    private fun moveAllCars() {
+        carList.forEach { it.moveForward() }
     }
 
     private fun createRacingCars() = getValidCarNames().map { RacingCar(it, 0) }
