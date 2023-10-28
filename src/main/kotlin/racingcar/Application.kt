@@ -29,11 +29,13 @@ fun playByCarSize(){
 }
 
 
-// 최대 'count' 값을 가지는 Car 객체 찾기
-fun findCarsWithMaxCount(): List<Car> {
+// 최대 'count' 값을 가지는 Car 객체의 이름 찾기
+fun findNameOfWinnerWithMaxCount(): List<String> {
     val maxCount = carNames.maxByOrNull { it.count }?.count
-    return carNames.filter { it.count == maxCount }
+    val winners = carNames.filter { it.count == maxCount }
+    return winners.map { it.name }
 }
+
 
 fun main() {
     print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n")
@@ -69,6 +71,7 @@ fun main() {
         playByCarSize()
     }
 
-    val winners = findCarsWithMaxCount()
-    print("최종 우승자 : ${winners}")
+    val winnerNames = findNameOfWinnerWithMaxCount()
+    print("최종 우승자 : ${winnerNames.joinToString(", ")}")
+
 }
