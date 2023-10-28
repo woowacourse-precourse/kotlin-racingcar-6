@@ -7,7 +7,7 @@ class InputValidator {
     }
 
     fun validateCarNameList(carNameList: List<String>) {
-        require(carNameList.isEmpty()) { EMPTY_LIST_MESSAGE }
+        require(carNameList.isNotEmpty()) { EMPTY_LIST_MESSAGE }
     }
 
     fun validatePlayCount(playCount: Int) {
