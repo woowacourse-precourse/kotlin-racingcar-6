@@ -17,7 +17,7 @@
 
 - [ ] game.kt
 
-- [ ] racingcar.kt - Car 객체 선언
+- [x] racingcar.kt - Car 객체 선언
 
 - [ ] 입력 처리
   - [x] 경주할 자동차 이름 처리
