@@ -7,8 +7,9 @@ fun main() {
     var carNames: MutableList<Car> = mutableListOf()
 
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    val input = Console.readLine()
-    carNames = askCarName(carNames, input)
+    carNames = askCarName(carNames, Console.readLine())
+    println("시도할 횟수는 몇 회인가요?")
+    val count = askNumber(Console.readLine())
 }
 
 fun askCarName(carNames: MutableList<Car>, input: String): MutableList<Car> {
@@ -21,8 +22,8 @@ fun askCarName(carNames: MutableList<Car>, input: String): MutableList<Car> {
     return carNames
 }
 
-fun askNumber() {
-
+fun askNumber(count: String): Int {
+    return count.toIntOrNull() ?: throw IllegalArgumentException("Input is not Int")
 }
 
 fun printWinner() {
