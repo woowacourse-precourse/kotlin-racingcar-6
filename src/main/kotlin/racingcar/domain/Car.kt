@@ -8,15 +8,16 @@ class Car(name: String) {
 
     fun move() {
         val numberGenerator = NumberGenerator()
-        if(numberGenerator.createRandomNumber()>=4){
+        if (numberGenerator.createRandomNumber() >= 4) {
             distance++
         }
     }
-    fun getDistance():Int{
+
+    fun getDistance(): Int {
         return distance
     }
 
-    fun printResult(){
+    fun printResult() {
         print("$name : ")
         for (i in 1..distance)
             print("-")
