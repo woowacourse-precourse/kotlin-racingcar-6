@@ -17,6 +17,14 @@ fun main() {
         progressRound(listOfCar)
         println()
     }
+
+    print("최종 우승자 : ")
+    val maxPosition = listOfCar
+        .maxOf { it.position }
+    val listOfWinner = listOfCar
+        .filter { it.position == maxPosition }
+        .map { it.name }
+    print(listOfWinner.joinToString(","))
 }
 fun getUserIntInput(): Int {
     var input: Int
