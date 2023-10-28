@@ -1,5 +1,7 @@
 package racingcar
 
+import racingcar.view_model.GameManager
+
 fun main() {
-    // TODO: 프로그램 구현
+    GameManager().start()
 }
