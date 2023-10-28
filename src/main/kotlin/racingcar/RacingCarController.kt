@@ -28,10 +28,21 @@ class RacingCarController {
     }
 
     private fun finish() {
-        val maxLocation = carList.maxBy { it.location }.location
-        val winnerList = carList.filter { it.location == maxLocation }
-        val finalWinner: List<String> = winnerList.map { it.name }
-        val winnerNames = finalWinner.joinToString(", ")
-        println("최종 우승자 : $winnerNames")
+        val maxLocation: Int = getMaxLocation(carList)
+        val finalWinner: List<String> = getWinnerNames(carList, maxLocation)
+        printWinnerNames(finalWinner)
     }
+
+    private fun getMaxLocation(carList: List<RacingCar>) = carList.maxBy { it.location }.location
+
+    private fun getWinnerNames(carList: List<RacingCar>, maxLocation: Int): List<String> {
+        val winnerList = carList.filter { it.location == maxLocation }
+        return winnerList.map { it.name }
+    }
+
+    private fun printWinnerNames(winnerNames: List<String>) {
+        val winner = winnerNames.joinToString(", ")
+        println("최종 우승자 : $winner")
+    }
+
 }
