@@ -25,7 +25,7 @@ internal class CarTest {
         // when
         val carDistance = car.getDistance()
         // then
-        assertEquals(expectCarDistance, car.getDistance())
+        assertEquals(expectCarDistance, carDistance)
     }
 
     @Test
