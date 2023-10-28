@@ -65,7 +65,8 @@
 
 ### 사용자 입력 예외처리(UserInputValidator)
 - 상수
-  - [x] 이름 입력 예외처리 메시지(USER_NAME_INPUT_EXCEPTION_MESSAGE)
+  - [x] 이름 입력 길이 5 이상 예외처리 메시지(USER_NAME_INPUT_LENGTH_EXCEPTION_MESSAGE)
+  - [x] 이름 중복 입력 예외처리 메시지(USER_NAME_INPUT_NAME_DUPLICATE_EXCEPTION_MESSAGE)
   - [x] 이동 횟수 입력 예외처리 메시지(USER_TRY_COUNT_INPUT_IS_NOT_NUMBER_EXCEPTION_MESSAGE)
   - [x] 이동 횟수 음수 입력 예외처리 메시지(USER_TRY_COUNT_INPUT_IS_MINUS_NUMBER_EXCEPTION_MESSAGE)
   
