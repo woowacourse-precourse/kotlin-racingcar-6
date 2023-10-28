@@ -6,8 +6,8 @@
 - [x] 검증 : `5자리 이하 문자열들이 쉼표로 구분되어 있는지` - Car.init -> Cars.init
 
 **2. 시도할 횟수 - model/Repetition**
-- [ ] 입력 - view/InputView -> Repetition()
-- [ ] 검증 : `자연수` - Repetition.Validation -> Set
+- [x] 입력 - view/InputView -> Repetition()
+- [x] 검증 : `자연수` - Repetition.Validation -> Set
 
 **3. 자동차 전진 조건 - model/Round**
 - [ ] 0 ~ 9 사이의 `랜덤값 구하는 기능` model/Round.generateRandomNumber()

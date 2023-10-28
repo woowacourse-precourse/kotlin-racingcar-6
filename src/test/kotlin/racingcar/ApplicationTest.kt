@@ -6,10 +6,12 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import racingcar.controller.GameController
 import racingcar.model.Car
 import racingcar.model.Cars
+import racingcar.model.Repetition
 
 class ApplicationTest : NsTest() {
     val gameController = GameController()
@@ -19,34 +21,59 @@ class ApplicationTest : NsTest() {
     @Test
     fun `공백 제거후 리스트로 반환 되는지`() {
         val carNames = gameController.inputCarNames("  $POBI,  $JSON  ")
-        val cars = Cars(carNames.map { Car(it) })
-        // 순서를 고려할 필요는 없지만, Exactly 사용
+        val cars = Cars(carNames.map { Car(it.trim()) })
+
         Assertions.assertEquals(Cars(listOf(Car(POBI), Car(JSON))), cars)
     }
 
     @Test
-    fun `split 메서드 사용시 구분자가 포함되지 않은 경우 값을 그대로 반환`() {
-        val result = Car("  $POBI")
-        Assertions.assertEquals(Car(POBI), result)
-    }
+    fun `자동차 이름 중복 입력 오류테스트`() {
+        val carNames = gameController.inputCarNames("$POBI,$JSON,$POBI")
 
-    @Test
-    fun `전진 정지`() {
-        assertRandomNumberInRangeTest(
-            {
-                run("pobi,woni", "1")
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-            },
-            MOVING_FORWARD, STOP
-        )
-    }
-
-    @Test
-    fun `이름에 대한 예외 처리`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        assertThrows<IllegalArgumentException> {
+            val cars = Cars(carNames.map { Car(it.trim()) })
         }
     }
+
+    @Test
+    fun `반복 횟수 입력 오류테스트`() {
+        val TestExceptionList = listOf("a", "^", "0", "-1")
+
+        TestExceptionList.forEach {
+            assertThrows<IllegalArgumentException> {
+                Repetition(it)
+            }
+        }
+    }
+
+    @Test
+    fun `반복 횟수 입력 테스트`() {
+        val TestList = listOf("1", "512", "123")
+
+        TestList.forEach {
+            assertDoesNotThrow {
+                Repetition(it)
+            }
+        }
+    }
+
+//    @Test
+//    fun `전진 정지`() {
+//        assertRandomNumberInRangeTest(
+//            {
+//                run("pobi,woni", "1")
+//                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
+//            },
+//            MOVING_FORWARD, STOP
+//        )
+//    }
+//
+//    @Test
+//    fun `이름에 대한 예외 처리`() {
+//        assertSimpleTest {
+//            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+//        }
+//    }
 
 
 

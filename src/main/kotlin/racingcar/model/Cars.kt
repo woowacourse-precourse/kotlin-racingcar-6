@@ -9,6 +9,7 @@ data class Cars(private val inputCars: List<Car>) {
         _names = inputCars
     }
 
+    // TODO: 매직 스트링 제거, 디버깅 출력문 제거
     private fun checkDuplicateName() {
         require(inputCars.size == inputCars.distinct().size) { "자동차 이름 : 중복된 이름이 있습니다."}
     }
