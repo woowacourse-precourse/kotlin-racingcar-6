@@ -26,5 +26,4 @@
 - 우승자는 한 명이상일 수 있다
 - 우승자가 여러 명일 때 쉼표를 이용하여 구분한다
 #### 입력 오류
-- 사용자가 자동차의 이름을 입력할 때 정수를 입력하면 IllegalArgumentException을 발생 시킨다
-- 사용자가 몇 번의 이동을 할 것인지 입력할 때 정수가 아닌 것을 입력하면 IllegalArgumentException을 발생 시킨다
+- 사용자가 몇 번의 이동을 할 것인지 입력할 때 1 이상의 정수가 아니라면 IllegalArgumentException을 발생 시킨다
