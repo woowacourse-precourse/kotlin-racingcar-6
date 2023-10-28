@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 class IOHandler(private val validator: Validator) {
 
-    fun getCarNameFromUser(): List<String> {
+    fun getCarName(): List<String> {
         val input = getInput()
         val names = splitNameFromInput(input)
 

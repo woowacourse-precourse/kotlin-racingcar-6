@@ -76,7 +76,7 @@ class ApplicationTest : NsTest() {
         setInput(names)
 
         // when
-        val actual = ioHandler.getCarNameFromUser()
+        val actual = ioHandler.getCarName()
 
         // then
         val expected = listOf("ppoBi", "영수", "철수")
@@ -90,7 +90,7 @@ class ApplicationTest : NsTest() {
         setInput(name)
 
         // when
-        val actual = ioHandler.getCarNameFromUser()
+        val actual = ioHandler.getCarName()
 
         // then
         val expected = listOf("""가"나"다""")
@@ -104,7 +104,7 @@ class ApplicationTest : NsTest() {
         setInput(name)
 
         // when
-        val actual = ioHandler.getCarNameFromUser()
+        val actual = ioHandler.getCarName()
 
         // then
         val expected = listOf("이\\n름", " 정상이름")
@@ -119,7 +119,7 @@ class ApplicationTest : NsTest() {
 
         // when
         val actual: java.lang.IllegalArgumentException = assertThrows(IllegalArgumentException::class.java) {
-            ioHandler.getCarNameFromUser()
+            ioHandler.getCarName()
         }
 
         // then
@@ -137,7 +137,7 @@ class ApplicationTest : NsTest() {
         setInput(name)
 
         // when
-        val actual = ioHandler.getCarNameFromUser()
+        val actual = ioHandler.getCarName()
 
         // then
         val expected = listOf("  ")
@@ -151,7 +151,7 @@ class ApplicationTest : NsTest() {
         setInput(name)
 
         // when
-        val actual = ioHandler.getCarNameFromUser()
+        val actual = ioHandler.getCarName()
 
         // then
         val expected = listOf("김 치")
@@ -165,7 +165,7 @@ class ApplicationTest : NsTest() {
         setInput(name)
 
         // when
-        val actual = ioHandler.getCarNameFromUser()
+        val actual = ioHandler.getCarName()
 
         // then
         val expected = listOf("김 치 ")
@@ -179,7 +179,7 @@ class ApplicationTest : NsTest() {
         setInput(name)
 
         // when
-        val actual = ioHandler.getCarNameFromUser()
+        val actual = ioHandler.getCarName()
 
         // then
         val expected = listOf(" ", "   ", "  ")
@@ -194,7 +194,7 @@ class ApplicationTest : NsTest() {
 
         // when
         val actual: java.lang.IllegalArgumentException = assertThrows(IllegalArgumentException::class.java) {
-            ioHandler.getCarNameFromUser()
+            ioHandler.getCarName()
         }
 
         // then
@@ -211,7 +211,7 @@ class ApplicationTest : NsTest() {
         setInput(names)
 
         // when
-        val actual = ioHandler.getCarNameFromUser()
+        val actual = ioHandler.getCarName()
 
         // then
         val expected = listOf("아우디", " 아우지", "아우디")
