@@ -8,6 +8,10 @@ fun main() {
     val carList = makeCarList(getCarName())
 
     val tryNumber = getTryNumber()
+
+    for (i in 0 until carList.size) {
+        forwardOrStop(tryNumber, carList[i])
+    }
 }
 
 // 기능 1. 자동차 이름 입력받기
@@ -87,6 +91,15 @@ fun checkTryNumberValidation(check: String) {
 }
 
 // 기능 6. 무작위 값 구하기
-fun getRandomNumber():Int {
+fun getRandomNumber(): Int {
     return Randoms.pickNumberInRange(0, 9)
+}
+
+// 기능 7. 전진, 정지 판단하기
+fun forwardOrStop(tryNumber: Int, car: Car) {
+    for (i in 0 until tryNumber) {
+        if (getRandomNumber() >= 4) {
+            car.moveForward()
+        }
+    }
 }
