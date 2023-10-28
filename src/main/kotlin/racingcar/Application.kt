@@ -21,14 +21,19 @@ fun main() {
 fun enterCarName() {
     println(Const.ENTER_CAR_NAME_MSG)
     val carNameList = Console.readLine().split(",")
-    validateCarName(carNameList)
+    validateCarNameLength(carNameList)
+    validateCarNameDistinct(carNameList)
     makeCar(carNameList)
 }
 
-fun validateCarName(carNameList: List<String>) {
+fun validateCarNameLength(carNameList: List<String>) {
     carNameList.map { name ->
-        if (name.trim().length > 5) throw IllegalArgumentException(Const.EXCEPTION_INPUT_RANGE_OVERFLOW)
+        if ((name.trim().length in 1..5).not()) throw IllegalArgumentException(Const.EXCEPTION_CAR_NAME_LENGTH_INVALIDATE)
     }
+}
+
+fun validateCarNameDistinct(carNameList: List<String>) {
+    if (carNameList.distinct().size != carNameList.size) throw IllegalArgumentException(Const.EXCEPTION_CAR_NAME_DUPLICATED)
 }
 
 fun makeCar(carNameList: List<String>) {
@@ -42,5 +47,5 @@ fun enterTryCnt(): Int {
     Console.readLine().toIntOrNull()?.let { tryCnt ->
         return tryCnt
     }
-    throw IllegalArgumentException(Const.EXCEPTION_INPUT_NOT_INT)
+    throw IllegalArgumentException(Const.EXCEPTION_TRY_CNT_NOT_INT)
 }
