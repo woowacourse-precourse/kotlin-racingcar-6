@@ -8,4 +8,7 @@ class Car(
     val position: Int
         get() = _position
 
+    fun move() {
+        _position++
+    }
 }
