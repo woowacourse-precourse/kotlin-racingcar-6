@@ -1,6 +1,6 @@
 package racingcar.Model
 
-class RoundState {
+class RaceState {
 
     fun oneRoundResult(carNames:List<String>,raceStatus: MutableMap<String, List<Boolean>>):MutableMap<String,List<Boolean>> {
 

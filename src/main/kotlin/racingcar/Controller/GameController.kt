@@ -1,8 +1,9 @@
 package racingcar.Controller
 
-import racingcar.Model.RoundState
+import racingcar.Model.RaceState
 import racingcar.Model.UserInputCheck
 import racingcar.View.UserInput
+import racingcar.View.RaceViewer
 
 class GameController {
 
@@ -20,8 +21,11 @@ class GameController {
 
         var raceStatus = mutableMapOf<String, List<Boolean>>()
 
-        for (i in 1..roundInput) {
-            var oneRoundResults = RoundState().oneRoundResult(carNames,raceStatus)
+        println("\n실행 결과")
+        repeat (roundInput) {
+            var oneRoundResults = RaceState().oneRoundResult(carNames,raceStatus)
+            RaceViewer().roundResultViewer(oneRoundResults)
+
         }
 
 
