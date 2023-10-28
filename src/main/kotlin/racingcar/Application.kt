@@ -2,7 +2,8 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-data class Car(val name: String, var count: Int) // Car 데이터 클래스 정의
+// Car 데이터 클래스 정의
+data class Car(val name: String, var count: Int)
 
 val carNames = mutableListOf<Car>() // Car 객체를 저장하는 리스트
 
@@ -18,6 +19,12 @@ fun moveOrStop(index: Int){
         carNames[index].count +=1
     }
     print("${carNames[index].name} : ${"-".repeat(carNames[index].count)}\n")
+}
+
+// 최대 'count' 값을 가지는 Car 객체 찾기
+fun findCarsWithMaxCount(): List<Car> {
+    val maxCount = carNames.maxByOrNull { it.count }?.count
+    return carNames.filter { it.count == maxCount }
 }
 
 fun main() {
@@ -57,4 +64,6 @@ fun main() {
         print("\n")
     }
 
+    val winners = findCarsWithMaxCount()
+    print("최종 우승자 : ${winners}")
 }
