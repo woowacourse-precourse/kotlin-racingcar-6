@@ -153,6 +153,28 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `이동 횟수 5를 입력 받는다`() {
+        // given
+        val input = "5"
+        val result = 5
+        
+        // when
+        
+        // then
+    }
+
+    @Test
+    fun `이동 횟수로 숫자가 아닌 다른 값을 입력 받으면 예외를 발생시킨다`() {
+        // given
+        val input = "열 번"
+        // throw IllegalArgumentException
+
+        // when
+
+        // then
+    }
+
+    @Test
     fun `전진 정지`() {
         assertRandomNumberInRangeTest(
             {
