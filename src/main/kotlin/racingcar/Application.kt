@@ -8,21 +8,29 @@ data class Car(val name: String, var count: Int)
 val carNames = mutableListOf<Car>() // Car 객체를 저장하는 리스트
 
 //입력값이 null인지 확인
-fun checkInputIsNull(input : String?){
+fun checkInputIsValid(input: String?) {
     input?.let { nonNullInput ->
-        val carNameList = nonNullInput.split(",").map { it.trim() }
+        val trimmedInput = nonNullInput.trim()
+        checkInputIsNull(trimmedInput)
+    }
+}
 
-        // 중복 제거
-        val distinctCarNameList = carNameList.distinct()
-
-        if (distinctCarNameList.size < carNameList.size) {
+fun checkInputIsNull(trimmedInput: String){
+    if (trimmedInput.isNotEmpty()) {
+        val carNameList = trimmedInput.split(",").map { it.trim() }.filter { it.isNotBlank() }
+        if (carNameList.isEmpty()) {
+            throw IllegalArgumentException("적어도 1대 이상의 자동차 이름을 입력해주세요.")
+        }
+        if (carNameList.size != carNameList.distinct().size) {
             throw IllegalArgumentException("중복된 자동차 이름이 입력되었습니다.")
         }
-
-        carNames.addAll(distinctCarNameList.map { Car(it, 0) }) // Car 객체로 저장
+        carNames.addAll(carNameList.map { Car(it, 0) }) // Car 객체로 저장
+    } else {
+        throw IllegalArgumentException("적어도 1대 이상의 자동차 이름을 입력해주세요.")
     }
-
 }
+
+
 fun moveOrStop(index: Int){
     val randomNumber = Randoms.pickNumberInRange(0, 9)
     if(randomNumber >= 4){
@@ -51,7 +59,7 @@ fun main() {
     print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n")
     val input = readLine()
 
-    checkInputIsNull(input);
+    checkInputIsValid(input);
 
     val invalidCarNames = carNames.filter { it.name.length > 5 }
     if (invalidCarNames.isNotEmpty()){
@@ -61,7 +69,6 @@ fun main() {
     print("시도할 횟수는 몇 회인가요?\n")
     val playTime = readLine()
 
-    checkInputIsNull(playTime)
     val playTimeAsInt: Int
 
     try {
@@ -77,6 +84,7 @@ fun main() {
         playByCarSize()
     }
 
+    //최종 우승자 출력
     val winnerNames = findNameOfWinnerWithMaxCount()
     print("최종 우승자 : ${winnerNames.joinToString(", ")}")
 
