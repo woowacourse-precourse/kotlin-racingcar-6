@@ -21,6 +21,14 @@ fun moveOrStop(index: Int){
     print("${carNames[index].name} : ${"-".repeat(carNames[index].count)}\n")
 }
 
+fun playByCarSize(){
+    for (j in 0 until carNames.size) {
+        moveOrStop(j)
+    }
+    print("\n")
+}
+
+
 // 최대 'count' 값을 가지는 Car 객체 찾기
 fun findCarsWithMaxCount(): List<Car> {
     val maxCount = carNames.maxByOrNull { it.count }?.count
@@ -58,10 +66,7 @@ fun main() {
 
     // 경주 게임 실행
     for (i in 1..playTimeAsInt) {
-        for (j in 0 until carNames.size) {
-            moveOrStop(j)
-        }
-        print("\n")
+        playByCarSize()
     }
 
     val winners = findCarsWithMaxCount()
