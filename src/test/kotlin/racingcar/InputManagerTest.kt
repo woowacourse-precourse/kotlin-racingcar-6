@@ -14,4 +14,12 @@ class InputManagerTest {
             assertThrows<IllegalArgumentException> { ExceptionManager.carException(inputData) }
         }
     }
+
+    @Test
+    fun `입력 받은 시도 횟수의 예외 처리`() {
+        val inputData = "-1"
+        assertSimpleTest{
+            assertThrows<IllegalArgumentException> { ExceptionManager.executionNumberException(inputData) }
+        }
+    }
 }

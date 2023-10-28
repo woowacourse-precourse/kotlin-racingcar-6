@@ -16,7 +16,9 @@ private fun makeCar(): MutableList<Car> {
 
 private fun playGame() {
     val car: MutableList<Car> = makeCar()
-    car.map { println(it.name) }
+    val executionNumber = InputManager.inputExecutionNumber()
+
+
 }
 
 fun main() {

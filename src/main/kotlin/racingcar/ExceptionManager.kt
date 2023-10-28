@@ -5,9 +5,16 @@ object ExceptionManager {
 
     fun carException(carString: List<String>) {
         carString.map {
-            if (it.length > MAX_CARS_STRING_NUMBER || it.isEmpty()) {
-                throw IllegalArgumentException()
-            }
+            if (it.length > MAX_CARS_STRING_NUMBER || it.isEmpty()) throw IllegalArgumentException()
+        }
+    }
+
+    fun executionNumberException(numberString: String){
+        try {
+            val number = numberString.toInt()
+            if (number < 0 ) throw IllegalArgumentException()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException()
         }
     }
 }
