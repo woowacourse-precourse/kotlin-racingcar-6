@@ -87,6 +87,7 @@ class RacingCarController(private val inputView: InputView, private val outputVi
         val maxPosition: Int? = cars.maxOfOrNull { it.carPosition }
         if (maxPosition != null) {
             val winners = cars.filter { it.carPosition == maxPosition }
+            println("최종 우승자 : ${winners.joinToString(", ") { it.carName }}")
         }
     }
 }
