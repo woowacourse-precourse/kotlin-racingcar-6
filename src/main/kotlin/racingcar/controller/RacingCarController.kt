@@ -12,6 +12,7 @@ class RacingCarController(private val inputView: InputView, private val outputVi
         val tryCount = inputTryRaceCount()
         val cars: List<Cars> = carNames.map { Cars(it) }
 
+        tryRacing(cars, tryCount)
     }
 
     private fun inputCarName(): List<String> {
