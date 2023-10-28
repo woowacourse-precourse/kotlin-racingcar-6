@@ -6,24 +6,17 @@ import racingcar.model.Car
 val carList = mutableListOf<Car>()
 
 fun main() {
-    enterCarName()
-    var currentGameTryCnt = 0
-    val userInputTryCnt = enterTryCnt()
-    while (currentGameTryCnt <= userInputTryCnt) {
-        carList.map { car ->
-            car.moveForward()
-        }
-        println()
-        currentGameTryCnt++
-    }
-}
-
-fun enterCarName() {
-    println(Const.ENTER_CAR_NAME_MSG)
-    val carNameList = Console.readLine().split(",")
+    val carNameList = enterCarName()
     validateCarNameLength(carNameList)
     validateCarNameDistinct(carNameList)
     makeCar(carNameList)
+    val tryCnt = enterTryCnt()
+    doGame(tryCnt)
+}
+
+fun enterCarName(): List<String> {
+    println(Const.ENTER_CAR_NAME_MSG)
+    return Console.readLine().split(",")
 }
 
 fun validateCarNameLength(carNameList: List<String>) {
@@ -48,4 +41,17 @@ fun enterTryCnt(): Int {
         return tryCnt
     }
     throw IllegalArgumentException(Const.EXCEPTION_TRY_CNT_NOT_INT)
+}
+
+fun doGame(userInputTryCnt: Int) {
+    println()
+    println(Const.GAME_RESULT_MSG)
+    var currentGameTryCnt = 0
+    while (currentGameTryCnt <= userInputTryCnt) {
+        carList.map { car ->
+            car.moveForward()
+        }
+        println()
+        currentGameTryCnt++
+    }
 }
