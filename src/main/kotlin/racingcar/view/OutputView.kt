@@ -25,10 +25,15 @@ class OutputView {
 
     fun dashPrint(progress: Int) {
         if (progress != 0) {
-            for (index in 0..progress-1) {
+            for (index in 1..progress) {
                 print(Constants.DASH)
             }
         }
         println()
+    }
+
+    fun winner(winners:List<String>) {
+        val result = winners.joinToString { ", " }
+        println(result)
     }
 }
