@@ -5,7 +5,7 @@ class CarGroup(carNames: String) {
     val cars: List<Car>
 
     init {
-        val split = carNames.split(",")
+        val split = carNames.split(NAME_SEPARATOR)
         require(split.hasNoDuplicated()) { Error.Duplicated }
         cars = split.map { name -> Car(name) }
     }
@@ -19,6 +19,10 @@ class CarGroup(carNames: String) {
         Duplicated("이미 등록된 자동차예요. 다른 이름으로 입력해주세요.");
 
         override fun toString() = message
+    }
+
+    companion object {
+        private const val NAME_SEPARATOR = ","
     }
 }
 
