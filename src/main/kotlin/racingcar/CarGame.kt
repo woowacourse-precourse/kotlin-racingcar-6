@@ -19,8 +19,19 @@ fun checkAdvance(): Boolean {
         return false
 }
 
-fun moveCar() {
-    TODO("주사위의 결과에 따라 차를 이동")
+fun moveCar(trial: Int, carsList: List<String>) {
+    // 자동차의 위치를 나타낼 바뀔수 있는 List인 carsLocation 생성
+    val carsLocation: MutableList<Int> = mutableListOf(0 * carsList.size)
+
+    // 전체 carsLocation을 살펴보고
+    repeat(carsLocation.size) {
+        // checkAdvance를 통과하면 한 칸 전진
+        if (checkAdvance() == true)
+            carsLocation[it] += 1
+    }
+
+    // 현재 위치 표시
+    printMoveStatus(carsLocation)
 }
 
 fun printMoveStatus() {

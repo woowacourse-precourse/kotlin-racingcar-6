@@ -1,8 +1,8 @@
 package racingcar
 
-fun presetCars(carsNameInput: String): MutableList<String> {
+fun presetCars(carsNameInput: String): List<String> {
     // 입력받은 자동차들의 이름을 ,에 따라 구분하여 List에 저장
-    val splitedCars = carsNameInput.split(",".toRegex()).toMutableList()
+    val splitedCars = carsNameInput.split(",".toRegex()).toList()
 
     // 이름에 따라 구분된 자동차가 들어가나 List 반환
     return splitedCars

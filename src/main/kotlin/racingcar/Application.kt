@@ -7,7 +7,7 @@ fun main() {
     // 자동차의 이름을 String으로 받는 carsNameInput
     val carsNameInput = Console.readLine()
     // ,로 구분된 자동차 리스트를 carsList에 저장
-    val carsList: MutableList<String> = presetCars(carsNameInput)
+    val carsList: List<String> = presetCars(carsNameInput)
 
     // 시도 횟수 입력 메시지
     println("시도할 횟수는 몇 회인가요?")
