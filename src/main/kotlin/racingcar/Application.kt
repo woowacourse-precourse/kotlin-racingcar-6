@@ -2,6 +2,7 @@ package racingcar
 
 import org.junit.jupiter.api.parallel.Execution
 const val result = "실행 결과"
+const val winner = "최종 우승자 :"
 
 private fun makeCar(): MutableList<Car> {
     val carsString = InputManager.inputCar()
@@ -17,7 +18,7 @@ private fun makeCar(): MutableList<Car> {
     return car
 }
 
-private fun printResult(car: MutableList<Car>){
+private fun printProcess(car: MutableList<Car>){
     car.map {
         it.forwardCar()
         print("${it.name} : ")
@@ -26,15 +27,26 @@ private fun printResult(car: MutableList<Car>){
     println()
 }
 
+private fun printResult(car: MutableList<Car>){
+    val maxCount = car.maxOf { it.forwardCount }
+    val maxCar = car.filter { it.forwardCount == maxCount }
+    val maxCarName = maxCar.map { it.name }
+    val maxCarString = maxCarName.joinToString(", ")
+
+//    val maxCarName = maxCar.name
+    println("$winner $maxCarString")
+}
+
 private fun playGame() {
     val car: MutableList<Car> = makeCar()
     val executionNumber = InputManager.inputExecutionNumber()
 
     println(result)
     repeat(executionNumber) {
-        printResult(car)
+        printProcess(car)
     }
 
+    printResult(car)
 }
 
 fun main() {
