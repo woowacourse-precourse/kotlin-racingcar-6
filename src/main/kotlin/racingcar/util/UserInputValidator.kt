@@ -6,7 +6,9 @@ import racingcar.constant.ExtraText
 class UserInputValidator {
     fun validateNumberFormat(userChoice: String) {
         require(userChoice.none { char -> !char.isDigit() }) { ErrorMessage.NOT_NUMBER.message }
+        require(userChoice.toInt() > 0) { ErrorMessage.NOT_POSITIVE_NUMBER.message }
     }
+
 
     fun validateCarNames(carNames: List<String>) {
         require(isNotBlankName(carNames)) { ErrorMessage.NOT_EMPTY_NAMES.message }
