@@ -11,6 +11,7 @@ fun main() {
 
 fun gameStart() {
     val nameList = separateCarNames(inputCarNames())
+    validateNameLength(nameList)
     val carModelList = makeCarModelList(nameList)
     println("시도할 횟수는 몇 회인가요?")
     val count = inputRaceCount()
