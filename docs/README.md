@@ -15,7 +15,7 @@
 - [x] application.kt
   - [x] 게임 시작, racingcar 인스턴스 생성 및 입출력
 
-- [ ] game.kt
+- [x] game.kt
 
 - [x] racingcar.kt - Car 객체 선언
 
