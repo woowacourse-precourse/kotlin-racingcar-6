@@ -5,26 +5,27 @@ import racingcar.common.ExceptionConst
 import racingcar.common.GameConst
 import racingcar.model.Car
 
+val carNames = mutableListOf<String>()
 val cars = mutableListOf<Car>()
-val inputTryCnt: String by lazy { Console.readLine() }
-var tryCnt: Int? = null
+val tryCnt: String by lazy { Console.readLine() }
+var validatedTryCnt: Int? = null
 
 fun main() {
-    val carNames = enterCarName()
-    validateCarNames(carNames)
+    enterCarName()
+    validateCarNames()
     enterTryCnt()
     validateTryCnt()
-    makeCar(carNames)
+    makeCar()
     doGame()
     showWinner()
 }
 
-fun enterCarName(): List<String> {
+fun enterCarName() {
     println(GameConst.ENTER_CAR_NAME_MSG)
-    return Console.readLine().split(",").map { it.trim() }
+    carNames.addAll(Console.readLine().split(",").map { it.trim() })
 }
 
-fun validateCarNames(carNames: List<String>) {
+fun validateCarNames() {
     validateCarNameLength(carNames)
     validateCarNameDistinct(carNames)
 }
@@ -41,27 +42,27 @@ fun validateCarNameDistinct(carNames: List<String>) {
 
 fun validateTryCnt() {
     validateTryCntIsNumber()
-    tryCnt?.let {
+    validatedTryCnt?.let {
         validateTryCntIsMoreThanZero()
     }
 }
 
 fun validateTryCntIsNumber() {
-    inputTryCnt.toIntOrNull()?.let {
-        tryCnt = it
+    tryCnt.toIntOrNull()?.let {
+        validatedTryCnt = it
         return
     }
     throw IllegalArgumentException(ExceptionConst.EXCEPTION_TRY_CNT_NOT_INT)
 }
 
 fun validateTryCntIsMoreThanZero() {
-    if (tryCnt!!.toInt() < 1) {
-        tryCnt = null
+    if (validatedTryCnt!!.toInt() < 1) {
+        validatedTryCnt = null
         throw IllegalArgumentException(ExceptionConst.EXCEPTION_TRY_CNT_LESS_THAN_ONE)
     }
 }
 
-fun makeCar(carNames: List<String>) {
+fun makeCar() {
     cars.addAll(
         carNames.map { name ->
             Car(_name = name)
@@ -71,15 +72,15 @@ fun makeCar(carNames: List<String>) {
 
 fun enterTryCnt() {
     println(GameConst.ENTER_TRY_CNT_MSG)
-    inputTryCnt
+    tryCnt
 }
 
 fun doGame() {
-    if (tryCnt == null) return
+    if (validatedTryCnt == null) return
     println()
     println(GameConst.GAME_RESULT_MSG)
     var currentGameTryCnt = 0
-    while (currentGameTryCnt < tryCnt!!) {
+    while (currentGameTryCnt < validatedTryCnt!!) {
         cars.forEach { car ->
             car.moveForward()
         }
