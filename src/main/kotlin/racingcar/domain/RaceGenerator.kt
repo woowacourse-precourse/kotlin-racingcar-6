@@ -47,6 +47,13 @@ class RaceGenerator {
   }
 
   fun checkNumberOfMoves(input: String): Int {
-    return input.toIntOrNull() ?: throw IllegalArgumentException("숫자를 입력해주세요.")
+    val result = input.toIntOrNull()
+      ?: throw IllegalArgumentException("정수를 입력해주세요.")
+
+    if (result < 0) {
+      throw IllegalArgumentException("양의 정수를 입력해주세요.")
+    }
+
+    return result
   }
 }
