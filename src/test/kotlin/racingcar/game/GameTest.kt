@@ -46,4 +46,12 @@ class GameTest {
             game.inputCarName(carNames)
         }
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["Car1,Car 1, Car1 "])
+    fun `자동차 이름이 중복되는 경우`(carNames: String) {
+        assertThrows<IllegalArgumentException> {
+            game.inputCarName(carNames)
+        }
+    }
 }
