@@ -31,7 +31,6 @@ private fun checkSoloCar(inputCarName: String): Boolean {
     } else {
         val multiCarName = inputCarName.split(",")
         validateInputMultiCarName(multiCarName)
-        multiCarGame(multiCarName)
     }
     return true
 }
@@ -91,11 +90,16 @@ fun soloCarGame(inputCarName: String) {
 }
 
 fun inputTryCount() {
+    inputTryCountMessage()
     val tryCount = Console.readLine()
     validateTryCount(tryCount)
 }
 
-fun validateTryCount(tryCount: String) {
+fun inputTryCountMessage() {
+    println("시도할 횟수는 몇 회인가요?")
+}
+
+fun validateTryCount(tryCount: String, multiCarName: List<String?>) {
     when (true) {
         validateNullOrBlank(tryCount) ->
             throw IllegalArgumentException("시도할 횟수를 반드시 입력해야 합니다.")
@@ -106,7 +110,7 @@ fun validateTryCount(tryCount: String) {
         validateNotInRange(tryCount) ->
             throw IllegalArgumentException("시도할 횟수는 1부터 10 사이로만 입력 가능합니다.")
 
-        else -> {}
+        else -> multiRacingGame(multiCarName)
     }
 }
 
@@ -122,7 +126,21 @@ fun validateNullOrBlank(tryCount: String?): Boolean {
     return tryCount.isNullOrBlank()
 }
 
-fun multiCarGame(multiCarName: List<String>) {
+fun multiRacingGame(tryCount: Int, multiCarName: List<String?>) {
+    startRacingMessage()
+    repeat(tryCount) {
+        for(carName in multiCarName) {
+            val randomNum = getRandomNum()
+        }
+    }
+}
+
+fun startRacingMessage() {
+    println("\n실행 결과")
+}
+
+fun getRandomNum(): Int {
+    return Randoms.pickNumberInRange(0, 9)
 }
 
 fun soloChampion(carName: String) {
