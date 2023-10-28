@@ -22,8 +22,8 @@ class RacingGameView {
         return playCount
     }
 
-    fun printResultWinner(winnerList: List<String>) {
-        output.printResultWinner(winnerList = winnerList)
+    fun printResultWinner(winnerList: List<Car>) {
+        output.printResultWinner(winnerList = winnerList.map { car: Car -> car.name })
     }
 
     fun printResultMessage() {
@@ -31,6 +31,6 @@ class RacingGameView {
     }
 
     fun printPlayResult(playResult: String) {
-        output.printPlayResult(playResult = playResult)
+        output.printPlayResult(playResult = playResult + "\n")
     }
 }

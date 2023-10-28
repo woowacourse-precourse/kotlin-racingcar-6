@@ -11,7 +11,7 @@ class Car(name: String) {
         private val RANDOM_RANGE = Pair(0, 9)
     }
 
-    private val name: String
+    val name: String
     var pos: Int = 0
 
     init {
