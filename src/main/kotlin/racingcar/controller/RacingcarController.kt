@@ -16,6 +16,9 @@ class RacingcarController {
     private fun inputRacingcarName(): List<String> {
         val inputRacingcarName = Console.readLine()
         val racingcarName = splitRacingcarName(inputRacingcarName)
+        racingcarName.forEach { name ->
+            checkCarNameLength(name)
+        }
         return racingcarName
     }
 
@@ -24,5 +27,11 @@ class RacingcarController {
     private fun inputTryNumber(): String {
         val tryNumber = Console.readLine()
         return tryNumber
+    }
+
+    private fun callException(): Nothing = throw IllegalArgumentException("잘못된 값을 입력하였습니다.")
+
+    private fun checkCarNameLength(racingcarName: String) {
+        if (racingcarName.length > 5) callException()
     }
 }
