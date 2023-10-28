@@ -14,10 +14,10 @@ class RacingCarController(private val inputView: InputView) {
         splitInputName(inputName.trim())
     }
 
-    private fun splitInputName(inputName: String): String {
+    private fun splitInputName(inputName: String): List<String> {
         val splitInputName = inputName.split(",")
         validateInputName(splitInputName)
-        return inputName
+        return splitInputName
     }
 
     private fun validateInputName(splitInputName: List<String>) {
