@@ -5,9 +5,8 @@ import racingcar.view.InputView
 import racingcar.view.OutputView
 
 class GameManager {
-    fun start(){
+    fun start() {
         OutputView().carInputMassage()
         val carNames = InputView().carNameInput()
-
     }
 }

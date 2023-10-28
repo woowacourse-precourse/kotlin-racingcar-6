@@ -7,8 +7,8 @@ class Constants {
         const val RESULT : String = "실행 결과"
         const val WINNER : String = "최종 우승자"
         const val COLON : String = " : "
-        const val DASH : String = "-"
-        const val COMMA : String = ","
+        const val DASH : Char = '-'
+        const val COMMA : Char = ','
         const val FOUR : Int = 4
         const val NAME_LENGTH : Int = 5
         const val MAX : Int = 9
