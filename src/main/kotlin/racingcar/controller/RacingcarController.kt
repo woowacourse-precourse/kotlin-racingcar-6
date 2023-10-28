@@ -10,7 +10,7 @@ class RacingcarController {
         outputView.printInputRacingcarName()
         val racingcarName = inputRacingcarName()
         outputView.printTryNumber()
-
+        val tryNumber = inputTryNumber()
     }
 
     private fun inputRacingcarName(): List<String> {
@@ -19,6 +19,10 @@ class RacingcarController {
         return racingcarName
     }
 
-    fun splitRacingcarName(racingcarName: String): List<String> = racingcarName.split(",")
+    private fun splitRacingcarName(racingcarName: String): List<String> = racingcarName.split(",")
 
+    private fun inputTryNumber(): String {
+        val tryNumber = Console.readLine()
+        return tryNumber
+    }
 }
