@@ -38,4 +38,12 @@ class GameTest {
             game.inputCarName(carNames)
         }
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["MyCar"])
+    fun `자동차가 1대인 경우`(carNames: String) {
+        assertThrows<IllegalArgumentException> {
+            game.inputCarName(carNames)
+        }
+    }
 }
