@@ -1,9 +1,9 @@
 package racingcar.model
 
-class Cars (carsList: MutableList<Car>){
+class Cars() {
     private var cars: MutableList<Car> = mutableListOf()
 
-    init {
-        this.cars = carsList
+    fun add(car: Car) {
+        cars.add(car)
     }
 }

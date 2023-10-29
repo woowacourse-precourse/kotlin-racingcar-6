@@ -17,6 +17,16 @@ class GameController (private val view: ScreenView){
             currentCount++
         }
     }
+    fun inputCars(): Cars {
+        val userCar = view.inputCarName()
+        val carList = userCar.split(",")
+        val cars = Cars()
 
+        for (carName in carList) {
+            val car = Car(name = carName)
+            cars.add(car)
+        }
 
+        return cars
+    }
 }
