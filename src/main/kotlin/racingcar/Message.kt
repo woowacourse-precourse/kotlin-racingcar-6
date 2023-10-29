@@ -7,4 +7,5 @@ enum class Message(val message: String) {
     OUTPUT_GAME_END("실행 결과"),
 
     VALID_INPUT_NOT_BLANK("경주할 자동차의 이름이 입력되지 않았습니다."),
+    VALID_INPUT_OVER_SIZE("경주할 자동차의 수가 최대 개수인 10대를 초과하였습니다."),
 }
