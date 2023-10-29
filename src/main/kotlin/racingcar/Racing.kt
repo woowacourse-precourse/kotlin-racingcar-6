@@ -4,12 +4,12 @@ import camp.nextstep.edu.missionutils.Console
 import org.mockito.internal.matchers.Null
 
 class Racing {
+    val carCollection=CarCollection()
     fun startRacing(){
 
     }
     private fun registerCar(){
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        val carCollection=CarCollection()
         val registerCarNames = Console.readLine()
         val registerCarNamesList=registerCarNames.split(",")
         for (name in registerCarNamesList){
@@ -18,13 +18,19 @@ class Racing {
             carCollection.putCar(car)
         }
     }
-    fun setRacingNum(){
+    fun setRacingNum():RacingNum{
         println("시도할 횟수는 몇 회인가요?")
         val getRacingNum=Console.readLine()
-        val intRacingNum=RacingNum(getRacingNum.toInt())
+        val racingNum=RacingNum(getRacingNum.toInt())
+        return racingNum
+    }
+    fun moveRacingCar(){
+        val racingNum=setRacingNum()
+        for (i:Int in 0..racingNum.amount()){
+            carCollection.moveCars()
+        }
     }
     fun showRacingResult(){
-
     }
     fun showRacingWinner(){
 

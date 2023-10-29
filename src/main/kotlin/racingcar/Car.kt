@@ -8,7 +8,12 @@ class Car(name:CarName) {
         this.location=0
     }
     fun moveCar(){
+        val randNum=Randoms.pickNumberInRange(0,9)
+        if(randNum>=4){
+            location++
+        }else if(randNum<3){
 
+        }
     }
 
 }
