@@ -8,20 +8,30 @@ class RacingGame {
     private val tries: Int
 
     init {
-        try {
-            println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).")
-            val input = Console.readLine()
-            val names = input.split(",").map { it.trim() }
-            require(names.all { it.length <= 5 }) { "자동차 이름은 5자를 초과할 수 없습니다." }
-            cars = names.map { Car(it) }
+        cars = getCarsInput()
+        tries = getTriesInput()
+    }
 
-            println("시도할 횟수는 몇 회인가요?")
-            val inputTries = Console.readLine()
-            tries = inputTries.toIntOrNull() ?: throw IllegalArgumentException("입력값이 정수가 아닙니다.")
-        } catch (e: IllegalArgumentException) {
-            println(e.message)
-            throw e
-        }
+    private fun getCarsInput(): List<Car> {
+        println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).")
+        val input = Console.readLine()
+        return parseCarNames(input)
+    }
+
+    private fun parseCarNames(input: String): List<Car> {
+        val names = input.split(",").map { it.trim() }
+        require(names.all { it.length <= 5 }) { "자동차 이름은 5자를 초과할 수 없습니다." }
+        return names.map { Car(it) }
+    }
+
+    private fun getTriesInput(): Int {
+        println("시도할 횟수는 몇 회인가요?")
+        val input = Console.readLine()
+        return parseTries(input)
+    }
+
+    private fun parseTries(input: String): Int {
+        return input.toIntOrNull() ?: throw IllegalArgumentException("입력값이 정수가 아닙니다.")
     }
 
     fun play() {
