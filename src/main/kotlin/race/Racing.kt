@@ -4,10 +4,12 @@ import car.Car
 import car.CarFactory.makeCar
 
 class Racing {
-    private var racingCarList = mutableListOf<Car>()
+    private var racingCarList = listOf<Car>()
     fun settingRacingCar(carList: List<String>) {
+        val tempCarList = mutableListOf<Car>()
         carList.forEach {
-            racingCarList.add(makeCar(it))
+            tempCarList.add(makeCar(it))
         }
+        racingCarList = tempCarList
     }
 }
