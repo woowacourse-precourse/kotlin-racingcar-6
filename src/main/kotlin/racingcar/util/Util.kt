@@ -47,7 +47,7 @@ object Util {
     }
 
     // 우승자(들)을 list에 저장하는 함수
-    fun findWinner(cars:MutableList<RacingCar>) : MutableList<RacingCar>{
+    fun findWinner(cars: MutableList<RacingCar>): MutableList<RacingCar> {
         val winners = mutableListOf<RacingCar>()
 
         val maxCount = cars.maxOfOrNull { it.forwardCount }

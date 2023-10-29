@@ -37,16 +37,16 @@ class RacingService {
     }
 
     //자동차가 앞으로 전진해야하는지 파악 함수
-    fun isGoForward(number : Int): Boolean {
+    fun isGoForward(number: Int): Boolean {
 
         return number >= MINIMUM_NUMBER_TO_WIN
     }
 
-    private fun getRandomNumber() : Int{
-        return Randoms.pickNumberInRange(0,9)
+    private fun getRandomNumber(): Int {
+        return Randoms.pickNumberInRange(0, 9)
     }
 
-    companion object{
+    companion object {
         const val MINIMUM_NUMBER_TO_WIN = 4
     }
 }

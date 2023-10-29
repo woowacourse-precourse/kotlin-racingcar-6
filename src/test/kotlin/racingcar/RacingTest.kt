@@ -22,7 +22,7 @@ class RacingTest {
         val randomNumber = MINIMUM_NUMBER_TO_WIN - 1
 
         val result = RacingService().isGoForward(randomNumber)
-        
+
         assertFalse(result)
     }
 }
