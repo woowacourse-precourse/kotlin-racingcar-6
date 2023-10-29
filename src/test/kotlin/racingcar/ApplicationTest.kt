@@ -32,37 +32,41 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `횟수가 숫자가 아닐 경우 예외 처리`(){
+    fun `횟수가 숫자가 아닐 경우 예외 처리`() {
         assertSimpleTest {
-            val exception = assertThrows<IllegalArgumentException> {runException("pobi,rion","a")  }
-            assertEquals(exception.message,GameMessage.GAME_INPUT_ATTEMPT_ERROR_MESSAGE)
+            val exception = assertThrows<IllegalArgumentException> { runException("pobi,rion", "a") }
+            assertEquals(exception.message, GameMessage.GAME_INPUT_ATTEMPT_ERROR_MESSAGE)
         }
     }
+
     @Test
-    fun `생성되는 난수 검사`(){
+    fun `생성되는 난수 검사`() {
         val minValue = 0
         val maxValue = 9
         val randomNumber = RandomGenerator.makeRandomNumber()
-        assertTrue(randomNumber in minValue.. maxValue)
+        assertTrue(randomNumber in minValue..maxValue)
     }
+
     @Test
-    fun `난수가 0~3일때 자동차 이동 결과`(){
+    fun `난수가 0~3일때 자동차 이동 결과`() {
         val testMove = Move(0)
         val beforePosition = testMove.position
-        testMove.checkMove(Randoms.pickNumberInRange(0,3))
+        testMove.checkMove(Randoms.pickNumberInRange(0, 3))
         val afterPosition = testMove.position
         assertEquals(beforePosition, afterPosition)
     }
+
     @Test
-    fun `난수가 4~9일때 자동차 이동 결과`(){
+    fun `난수가 4~9일때 자동차 이동 결과`() {
         val testMove = Move(0)
         val beforePosition = testMove.position
-        testMove.checkMove(Randoms.pickNumberInRange(4,9))
+        testMove.checkMove(Randoms.pickNumberInRange(4, 9))
         val afterPosition = testMove.position
-        assertNotEquals(beforePosition,afterPosition)
+        assertNotEquals(beforePosition, afterPosition)
     }
+
     @Test
-    fun `승자 결정`(){
+    fun `승자 결정`() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni,jun", "2")
@@ -71,8 +75,9 @@ class ApplicationTest : NsTest() {
             MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
         )
     }
+
     @Test
-    fun `승자가 복수인 경우`(){
+    fun `승자가 복수인 경우`() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni,jun", "3")
@@ -81,6 +86,7 @@ class ApplicationTest : NsTest() {
             MOVING_FORWARD, STOP, STOP, STOP, MOVING_FORWARD, STOP, STOP, STOP, MOVING_FORWARD
         )
     }
+
     public override fun runMain() {
         main()
     }
