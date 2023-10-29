@@ -11,7 +11,7 @@ class Controller {
 
     fun start() {
         outputView.printInputRaceCarNames()
-        val cars = CarGroup(Console.readLine())
+        val cars = CarGroup.from(Console.readLine())
 
         outputView.printInputNumberOfAttempts()
         val input = Console.readLine()

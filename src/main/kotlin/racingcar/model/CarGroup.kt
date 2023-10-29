@@ -1,14 +1,6 @@
 package racingcar.model
 
-class CarGroup(carNames: String) {
-
-    val cars: List<Car>
-
-    init {
-        val split = carNames.split(NAME_SEPARATOR)
-        require(split.hasNoDuplicated()) { Error.Duplicated }
-        cars = split.map { name -> Car(name) }
-    }
+class CarGroup private constructor(val cars: List<Car>) {
 
     fun getCarsWithLongestDistance(): List<Car> {
         val maxDistance = cars.maxOfOrNull { car -> car.distance } ?: 0
@@ -23,6 +15,13 @@ class CarGroup(carNames: String) {
 
     companion object {
         private const val NAME_SEPARATOR = ","
+
+        fun from(carNames: String): CarGroup {
+            val split = carNames.split(NAME_SEPARATOR)
+            require(split.hasNoDuplicated()) { Error.Duplicated }
+            val cars = split.map { name -> Car(name) }
+            return CarGroup(cars)
+        }
     }
 }
 
