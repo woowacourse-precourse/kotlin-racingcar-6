@@ -10,7 +10,7 @@ class RacingGame(
     private var rounds: Int
 
     init {
-        var playerNames = askCarNames()
+        val playerNames = askCarNames()
         players = setPlayers(playerNames)
         rounds = askTryNumbers()
     }
@@ -31,6 +31,7 @@ class RacingGame(
 
         return players
     }
+
 
     fun play() {
         ui.printResultMessage()
