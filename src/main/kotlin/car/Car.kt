@@ -20,7 +20,7 @@ class Car(name: String) {
     }
 
     fun printDist() {
-        dashBoard.printDist(dashBoard.nowDist())
+        dashBoard.printDist(carName, dashBoard.nowDist())
     }
 
     fun nowDist() = dashBoard.nowDist()
