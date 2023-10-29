@@ -6,15 +6,13 @@ class UserInterface(
 ) {
     fun enterCarNames(): List<String> {
         output.askCarNames()
-        val carNames = input.enterCarNames()
 
-        return carNames
+        return input.enterCarNames()
     }
 
     fun enterTryNumbers(): Int {
         output.askTryNumber()
-        val tryNumber = input.enterTryNumber()
 
-        return tryNumber
+        return input.enterTryNumber()
     }
 }

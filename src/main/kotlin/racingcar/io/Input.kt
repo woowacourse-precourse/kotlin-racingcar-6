@@ -14,8 +14,8 @@ class Input(private val exceptionChecker: ExceptionChecker = ExceptionChecker())
     }
 
     fun enterTryNumber(): Int {
-        val tryNumber = Console.readLine().toInt()
-
-        return tryNumber
+        val tryNumber = Console.readLine()
+        exceptionChecker.checkTryNumber(tryNumber)
+        return tryNumber.toInt()
     }
 }

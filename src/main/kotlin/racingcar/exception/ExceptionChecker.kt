@@ -8,6 +8,7 @@ class ExceptionChecker {
         checkNameSize(carNames)
         checkIsNameBlank(carNames)
     }
+
     private fun checkNameSize(carNames: List<String>) {
 
         for (name in carNames) {
@@ -16,11 +17,32 @@ class ExceptionChecker {
             }
         }
     }
+
     private fun checkIsNameBlank(carNames: List<String>) {
-        for(name in carNames) {
+        for (name in carNames) {
             if (name.isBlank()) {
                 throw IllegalArgumentException("[ERROR] 공백만 입력하셨어요.")
             }
+        }
+    }
+
+    fun checkTryNumber(tryNumber: String) {
+        isNum(tryNumber)
+        isPositiveNumber(tryNumber)
+    }
+
+    private fun isNum(tryNumber: String) {
+
+        for (char in tryNumber) {
+            if (!char.isDigit()) {
+                throw IllegalArgumentException("[ERROR] 양수를 입력해주세요.")
+            }
+        }
+    }
+
+    private fun isPositiveNumber(tryNumber: String) {
+        if (tryNumber.toInt() <= 0) {
+            throw IllegalArgumentException("[ERROR} 양수를 입력해주세요.")
         }
     }
 }
