@@ -20,15 +20,18 @@ class GameController {
     private fun gameProgress(carNames:List<String>, roundInput:Int) {
 
         var entireRaceStatus = mutableMapOf<String, List<Boolean>>()
+        var oneRoundResults: List<Boolean>
+        val raceWinner:List<String>
 
         println("\n실행 결과")
         repeat (roundInput) {
-            var oneRoundResults = RaceState().oneRoundResult(carNames)
+            oneRoundResults = RaceState().oneRoundResult(carNames)
             entireRaceStatus=RaceState().updateEntireRaceScore(carNames,oneRoundResults,entireRaceStatus)
             RaceViewer().roundResultViewer(entireRaceStatus)
-
         }
 
+        raceWinner=RaceState().raceWinnerSelect(entireRaceStatus)
+        RaceViewer().winnerViewer(raceWinner)
 
     }
 }

@@ -15,5 +15,9 @@ class RaceViewer {
         println("")
     }
 
+    fun winnerViewer(winner:List<String>){
+
+        println("최종 우승자 : ${winner.joinToString(", ")}")
+    }
 
 }
