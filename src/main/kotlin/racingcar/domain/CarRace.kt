@@ -7,14 +7,14 @@ class CarRace(
     private val carNames: List<String>,
     private val raceResult: RaceResult = RaceResult()
 ) {
-    fun executeRacingAllRound(carNames: List<String>): ArrayList<MoveResult> {
-        repeat(attemptNumber) {
-
-        }
+    fun executeRacingAllRound() {
+        val raceAllRoundList: ArrayList<List<MoveResult>> = arrayListOf()
+        repeat(attemptNumber) { raceAllRoundList.add(executeRacingRound()) }
+        raceResult.raceResult(raceAllRoundList)
     }
 
     fun executeRacingRound(): List<MoveResult> {
-        val moveResultList = arrayListOf<MoveResult>()
+        val moveResultList: ArrayList<MoveResult> = arrayListOf()
         carNames.forEach { carName ->
             val moveResult = MoveResult(
                 carName = carName,
