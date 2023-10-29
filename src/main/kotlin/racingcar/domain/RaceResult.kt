@@ -1,7 +1,9 @@
 package racingcar.domain
 
-class RaceResult() {
-    fun getRaceResult(moveResultList: ArrayList<MoveResult>) {
+class RaceResult(private val winner: Winners = Winners()) {
+    fun raceResult(moveResultList: List<List<MoveResult>>) {
+        moveResultList.forEach { round ->
 
+        }
     }
 }
