@@ -10,18 +10,22 @@ const val BASE_NUMBER = 4
 private const val  NUMBER_ATTEMPTS_REGEX = "[1-9]+"
 fun main() {
     println(RACE_START_MSG)
-    val cars = getCarList()
+    val carNames = getCarList()
 
-    if (!isCarNameUnique(cars)) throw IllegalArgumentException("Duplicate car names are not allowed.")
-    cars.forEach { car ->
-        if (!isCarNameNotEmpty(car)) throw IllegalArgumentException("Car name cannot be empty.")
-        if (!isCarNameLengthValid(car)) throw IllegalArgumentException("Car name '$car' exceeds the maximum allowed length of $CAR_NAME_MAX_LENGTH.")
+    if (!isCarNameUnique(carNames)) throw IllegalArgumentException("Duplicate car names are not allowed.")
+    carNames.forEach { name ->
+        if (!isCarNameNotEmpty(name)) throw IllegalArgumentException("Car name cannot be empty.")
+        if (!isCarNameLengthValid(name)) throw IllegalArgumentException("Car name '$name' exceeds the maximum allowed length of $CAR_NAME_MAX_LENGTH.")
     }
 
     println(NUMBER_ATTEMPTS_MSG)
 
     val numberAttempts = getNumberAttempts()
     if(!isNumberAttemptsValid(numberAttempts)) throw IllegalArgumentException("Invalid format for number of attempts. Please use the specified format.")
+
+    val cars: List<Car> = carNames.indices.map { Car(name = "", distance = 0) }
+    carNames.forEachIndexed { idx, name -> cars[idx].name = name }
+
 }
 
 fun getCarList() = Console.readLine().split(",")

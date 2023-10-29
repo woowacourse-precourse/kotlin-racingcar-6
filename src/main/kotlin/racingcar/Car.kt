@@ -1,6 +1,6 @@
 package racingcar
 
 data class Car(
-    val name:String = "",
-     val distance:Int = 0
+    var name:String = "",
+    var distance:Int = 0
 )
