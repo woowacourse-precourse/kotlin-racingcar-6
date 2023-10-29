@@ -1,30 +1,38 @@
 package racingcar.model
 
-data class Car(private val inputName: String) {
+data class Car(
+    private var inputName: String,
+) {
     private var _name: String
-    private var _score: Int = ZERO
+    private var _score: Int = CAR_SCORE_DEFAULT
 
     val name: String get() = _name
     val score: Int get() = _score
 
-    companion object {
-        private const val ZERO = 0
-        private const val ALLOW_LENGTH_OF_CAR_NAME = 5
-    }
-
-    // TODO: 매직 스트링 제거, 디버깅 출력문 제거
     init {
-        println("inputName : $inputName (length: ${inputName.length})")
-        checkLengthWithinFive()
-        checkDigitAndLetter()
+        inputName = inputName.trim()
+        println("inputName : $inputName (length: ${inputName.length})") // TODO : 디버깅 출력문 제거
+        checkNameLength()
+        checkNameLetter()
         _name = inputName
     }
 
-    private fun checkLengthWithinFive() =
-        require(inputName.length <= ALLOW_LENGTH_OF_CAR_NAME) { "자동차 이름 : 1~5 길이로 작성해 주세요." }
+    private fun checkNameLength() =
+        require(inputName.length <= CAR_NAME_MAX) { CAR_NAME_LENGTH_ERROR }
 
-    private fun checkDigitAndLetter() =
-        require(inputName.all { it.isDigit() || it.isLetter() }) { "자동차 이름 : 특수 문자는 포함될 수 없습니다." }
+    private fun checkNameLetter() =
+        require(inputName.all { it.isDigit() || it.isLetter() }) { CAR_NAME_FORMAT_ERROR }
 
     internal fun moveForward() = _score++
+
+    companion object {
+        private const val CAR_SCORE_DEFAULT = 0
+
+        private const val CAR_NAME_MIN = 1
+        private const val CAR_NAME_MAX = 5
+
+        private const val CAR_NAME_LENGTH_ERROR =
+            "자동차 이름은 ${CAR_NAME_MIN}자 이상 ${CAR_NAME_MAX}자 이하로 입력해주세요."
+        private const val CAR_NAME_FORMAT_ERROR = "자동차 이름은 한글, 영문, 숫자만 사용할 수 있습니다."
+    }
 }

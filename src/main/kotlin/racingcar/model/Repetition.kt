@@ -1,23 +1,29 @@
 package racingcar.model
 
-data class Repetition(private val inputRepetition: String) {
+data class Repetition(
+    private val inputRepetition: String,
+) {
     private var _count: Int
-
     val count: Int get() = _count
 
-    // TODO: 매직 스트링 제거, 디버깅 출력문 제거
     init {
         checkDigitRange()
         _count = inputRepetition.toInt()
     }
 
     private fun checkDigitRange() {
-        require(inputRepetition.all { it.isDigit() }) { "숫자만 입력해주세요." }
+        val inputRepetitionInt = inputRepetition.toIntOrNull()
+            ?: throw IllegalArgumentException(ONLY_DIGIT)
 
-        val inputRepetitionInt = inputRepetition.toInt()
-        require(inputRepetitionInt >= 1) { "1이상의 숫자를 입력해주세요." }
+        require(inputRepetitionInt >= MIN_REPETITION_COUNT) { DIGIT_THAN_ONE }
 
         _count = inputRepetitionInt
-        println("Repetition.count : $count")
+    }
+
+    companion object {
+        private const val MIN_REPETITION_COUNT = 1
+
+        private const val ONLY_DIGIT = "숫자만 입력해 주세요"
+        private const val DIGIT_THAN_ONE = "숫자는 1 이상이어야 합니다."
     }
 }

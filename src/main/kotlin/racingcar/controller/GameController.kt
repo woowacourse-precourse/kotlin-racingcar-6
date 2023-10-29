@@ -9,46 +9,46 @@ import racingcar.view.InputView
 import racingcar.view.OutputView
 
 class GameController {
-    companion object {
-        const val COMMA_DELIMITERS = ','
-    }
-
     private val inputView: InputView = InputView()
     private val outputView: OutputView = OutputView()
 
     fun start() {
-        val carNames = inputCarNames(inputView.promptCarNames())
-        val cars = Cars(carNames.map { Car(it.trim()) })
+        val carNameList = inputCarName()
+        val cars = Cars.fromNames(carNameList)
 
-        val repetition = Repetition(inputView.promptRepetition())
+        val repetitionInput = inputRepetition()
+        val repetition = Repetition(repetitionInput)
 
-        repeat(repetition.count) {
-            playRound(cars)
-            outputView.printRoundResult(cars)
-        }
-        playResult(cars)
+        playRounds(repetition.count, cars.carList)
+        playResult(cars.carList)
     }
 
-    // TODO: 최종 Test 이후, private으로 수정
-    internal fun inputCarNames(carNames: String): List<String> {
-        if (carNames.contains(COMMA_DELIMITERS)) {
-            return carNames.split(COMMA_DELIMITERS)
-        }
-        return listOf(carNames)
+    fun inputCarName(): List<String> {
+        val carNameInput = inputView.promptCarNames()
+        return inputView.splitCarNamesByComma(carNameInput)
     }
 
-    private fun playRound(cars: Cars) {
-        for (car in cars.carList) {
-            val randomNumber = Round.generateRandomNumber()
-            if (Round.isForward(randomNumber)) {
-                car.moveForward()
+    fun inputRepetition() = inputView.promptRepetition()
+
+    fun playRounds(count: Int, carList: List<Car>) {
+        repeat(count) {
+            advanceCarsInRound(carList)
+            outputView.printRoundResult(carList)
+        }
+    }
+
+    private fun advanceCarsInRound(carList: List<Car>) {
+        for (currentCar in carList) {
+            val generatedNumber = Round.generateRandomNumber()
+            val canMoveForward = Round.isForward(generatedNumber)
+            if (canMoveForward) {
+                currentCar.moveForward()
             }
         }
     }
 
-    private fun playResult(cars: Cars) {
-        val winner = Winner(cars.carList)
-        outputView.printWinner(winner)
+    private fun playResult(carList: List<Car>) {
+        val winner = Winner(carList)
+        outputView.printWinner(winner.winnerList)
     }
-
 }

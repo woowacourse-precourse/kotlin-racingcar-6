@@ -3,6 +3,13 @@ package racingcar.utils
 import camp.nextstep.edu.missionutils.Randoms
 
 object Round {
-    fun generateRandomNumber() = Randoms.pickNumberInRange(0, 9)
-    fun isForward(randomNumber: Int): Boolean = true.takeIf { randomNumber >= 4 } ?: false
+    fun generateRandomNumber() = Randoms.pickNumberInRange(RANDOM_RANGE_START, RANDOM_RANGE_END)
+
+    fun isForward(randomNumber: Int): Boolean =
+        true.takeIf { randomNumber >= FORWARD_THRESHOLD } ?: false
+
+    const val RANDOM_RANGE_START = 0
+    const val RANDOM_RANGE_END = 9
+
+    const val FORWARD_THRESHOLD = 4
 }
