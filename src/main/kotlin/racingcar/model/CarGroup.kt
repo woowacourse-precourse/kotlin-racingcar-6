@@ -7,12 +7,6 @@ class CarGroup private constructor(val cars: List<Car>) {
         return cars.filter { car -> car.distance == maxDistance }
     }
 
-    internal enum class Error(private val message: String) {
-        Duplicated("이미 등록된 자동차예요. 다른 이름으로 입력해주세요.");
-
-        override fun toString() = message
-    }
-
     companion object {
         private const val NAME_SEPARATOR = ","
 
@@ -22,6 +16,12 @@ class CarGroup private constructor(val cars: List<Car>) {
             val cars = split.map { name -> Car(name) }
             return CarGroup(cars)
         }
+    }
+
+    internal enum class Error(private val message: String) {
+        Duplicated("이미 등록된 자동차예요. 다른 이름으로 입력해주세요.");
+
+        override fun toString() = message
     }
 }
 
