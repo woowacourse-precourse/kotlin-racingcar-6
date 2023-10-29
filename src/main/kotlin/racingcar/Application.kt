@@ -1,5 +1,6 @@
 package racingcar
 
+import CarFactoryImpl
 import racingcar.controller.RaceController
 import racingcar.model.car.Car
 import racingcar.view.ConsoleInputView
@@ -14,7 +15,7 @@ fun main() {
 
     val controller = RaceController(
         raceView = view,
-        carFactory = { name -> Car(name) }
+        carFactory = CarFactoryImpl()
     )
 
     controller.startRace()
