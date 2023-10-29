@@ -3,6 +3,7 @@ package racingcar.play
 import racingcar.ui.UserInput
 import racingcar.ui.UserInput.createNameList
 import racingcar.ui.UserOutput
+import racingcar.ui.Validator
 
 object RacingGameManager {
     private var carNames: List<String> = listOf()
@@ -17,7 +18,7 @@ object RacingGameManager {
     private fun registerCarNames() {
         carNames = UserInput.readCarName()
             .createNameList()
-        // (예정사항) carNames를 넘겨 입력 유효성 검사.
+        Validator.checkNamesLength(carNames)
         for (carName in carNames) {
             racingCars.add(RacingCar(name = carName))
         }

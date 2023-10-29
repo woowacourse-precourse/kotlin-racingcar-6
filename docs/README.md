@@ -6,7 +6,7 @@
 - [x] 경주할 자동차의 이름을 입력받는다. // UserInput.readCarName()
   - [x] 입력받은 이름을 리스트에 저장한다. // String.createNameList()
   - [x] 쉼표(,)를 기준으로 이름을 구분한다. // String.split(",") 사용
-  - [ ] 이름이 5글자 이하인지 검사한다.
+  - [x] 이름이 5글자 이하인지 검사한다. // Validator.checkNamesLength
 
 - [x] 자동차의 이동 횟수를 입력받는다. // UserInput.readAttemptCount()
   - [x] 입력을 정수로 변환한다.
