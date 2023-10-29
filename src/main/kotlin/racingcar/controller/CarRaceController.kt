@@ -13,12 +13,19 @@ class CarRaceController(val view : CarRaceView) {
     }
 
     fun run(){
+        //이름 입력
         val cars = view.inputCarName()
         validateName(cars)
 
+        //시도 횟수 입력
         println(ATTEMPT_NUMBER)
         val num = view.inputAttemptNumber()
         validateNum(num)
+
+        //결과 출력
+
+
+        //최종 우승자 출력
 
     }
 }
