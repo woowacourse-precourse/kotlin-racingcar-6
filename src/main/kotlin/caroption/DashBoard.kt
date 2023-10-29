@@ -8,9 +8,12 @@ class DashBoard {
     fun distPlus() {
         dist++
     }
+
     fun nowDist() = dist
 
-    fun printDist() {
-        print(DIST_SYMBOL)
+    fun printDist(dist: Int) {
+        repeat(dist) {
+            print(DIST_SYMBOL)
+        }
     }
 }

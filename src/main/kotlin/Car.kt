@@ -18,8 +18,6 @@ class Car(name: String) {
     }
 
     fun printDist() {
-        repeat(dashBoard.nowDist()) {
-            dashBoard.printDist()
-        }
+        dashBoard.printDist(dashBoard.nowDist())
     }
 }
