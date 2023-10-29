@@ -39,10 +39,17 @@ class RaceView(
         outputView.displayText(result.toString())
     }
 
+    fun displayWinners(winnerNames: List<CarName>) {
+        val joinedCarNames = winnerNames.joinToString(WINNER_SEPARATOR)
+        outputView.displayText("$WINNER : $joinedCarNames")
+    }
+
     companion object {
         private const val ENTER_CAR_NAMES = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
         private const val ENTER_TURN_NUMBER = "시도할 횟수는 몇 회인가요?"
         private const val RESULT_TITLE = "실행 결과"
         private const val DISTANCE_MARKER = '-'
+        private const val WINNER = "최종 우승자"
+        private const val WINNER_SEPARATOR = ", "
     }
 }
