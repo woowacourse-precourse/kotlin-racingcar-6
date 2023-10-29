@@ -35,8 +35,7 @@ fun runOneCycle(carModelList: List<Car>) {
         if (moveOrStop()) {
             car.moveOneStep()
         }
-        printName(car.name)
-        printDistance(car.moveDistance)
+        printCarDistance(car)
     }
     println()
 }
@@ -107,17 +106,10 @@ fun moveOrStop(): Boolean {
     return getNumber >= 4
 }
 
-fun printName(name: String) = print("$name : ")
-
-
-fun printDistance(distance: Int) {
-    repeat(distance) {
-        print("-")
-    }
-    println()
+fun printCarDistance(car: Car) {
+    println("${car.name} : ${"-".repeat(car.moveDistance)}")
 }
 
-//굳이 두개로 나눠야할까?
 fun getWinner(carModelList: List<Car>): MutableList<String> {
     val nameList = carModelList.map { it.name }
     val distanceList = carModelList.map { it.moveDistance }
