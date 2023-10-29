@@ -11,12 +11,17 @@ class InputHandler {
 
     fun start() {
         inputCarNames()
+        inputCount()
     }
     private fun inputCarNames() {
-        println("자동차 이름을 5자 이하로 입력해주세요.")
+        println("자동차 이름을 5자 이하로 입력해주세요 (예: car1,car2,car3)")
         val input = Console.readLine()
         val names = input.split(",").map { it.trim() }
         cars.addAll(names.map { Car(it) })
+    }
+
+    private fun inputCount(): Int? {
+        return Console.readLine()?.toInt()
     }
 }
 
