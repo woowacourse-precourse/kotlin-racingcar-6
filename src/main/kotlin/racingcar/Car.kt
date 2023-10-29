@@ -32,10 +32,10 @@ class Car(private var name: String) {
     }
 
     fun generateRandomNumber(): Int {
-        return Randoms.pickNumberInRange(1, 9)
+        return Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)
     }
 
     fun judgeNumber(number: Int): Boolean {
-        return number >= 4
+        return number >= FORWARD_NUMBER
     }
 }

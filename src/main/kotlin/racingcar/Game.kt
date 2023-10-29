@@ -11,7 +11,7 @@ class Game {
         playGame(times.toInt())
     }
 
-    private fun playGame(times:Int){
+    private fun playGame(times: Int) {
         for (i in 1..times) {
             moveCars()
             input.printPosition(cars)
@@ -40,9 +40,9 @@ class Game {
 
     private fun checkLeadPosition(): Int {
         var leadPosition = 0
-        for (i in cars) {
-            if (leadPosition < i.getPositionNumber()) {
-                leadPosition = i.getPositionNumber()
+        for (car in cars) {
+            if (leadPosition < car.getPositionNumber()) {
+                leadPosition = car.getPositionNumber()
             }
         }
         return leadPosition

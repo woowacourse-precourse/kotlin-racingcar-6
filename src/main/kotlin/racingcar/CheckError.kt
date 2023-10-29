@@ -5,19 +5,19 @@ fun nameErrorCheck(name: String) {
     nameEmptyCheck(name)
 }
 
-fun nameLengthCheck(name :String){
-    if (name.length >= 6) throw IllegalArgumentException("입력의 길이가 잘못되었습니다.")
+fun nameLengthCheck(name: String) {
+    if (name.length >= 6) throw IllegalArgumentException(LENGTH_ERROR)
 }
 
-fun nameEmptyCheck(name:String){
+fun nameEmptyCheck(name: String) {
     if (name.isEmpty()) {
-        throw IllegalArgumentException("공백은 안됩니다!")
+        throw IllegalArgumentException(BLANK_ERROR)
     }
 }
 
 fun redundancyErrorCheck(names: List<String>) {
     if (names.size != names.distinct().size) {
-        throw IllegalArgumentException("똑같은 이름이 있습니다.")
+        throw IllegalArgumentException(SAME_ERROR)
     }
 }
 
@@ -26,16 +26,16 @@ fun numberTimesErrorCheck(number: String) {
     numberTimesCharCheck(number)
 }
 
-fun numberTimesEmptyCheck(number : String){
+fun numberTimesEmptyCheck(number: String) {
     if (number.isEmpty()) {
-        throw IllegalArgumentException("공백은 안됩니다!")
+        throw IllegalArgumentException(BLANK_ERROR)
     }
 }
 
-fun numberTimesCharCheck(number:String){
+fun numberTimesCharCheck(number: String) {
     for (i in number.indices) {
         if (number[i] > '9' || number[i] < '0') {
-            throw IllegalArgumentException("입력값에 숫자가 아닌 값이 있습니다.")
+            throw IllegalArgumentException(NUMBER_ERROR)
         }
     }
 }
