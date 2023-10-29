@@ -8,7 +8,7 @@ import racingcar.utils.Values
 import java.lang.NumberFormatException
 
 class RacingGameController(private val view: RacingGameView, private val model: RacingGameModel) {
-    private lateinit var carList: List<Pair<String, Int>>
+    private var carList: MutableList<Pair<String, Int>> = mutableListOf()
     private lateinit var carNameList: List<String>
     private var playCount = 5
     fun run() {
@@ -17,10 +17,11 @@ class RacingGameController(private val view: RacingGameView, private val model: 
         if (isAnyCarNameLengthExceeded(carNameList)) {
             throw IllegalArgumentException("${ErrorMessage.ERRORMESSAGE_CAR_NAME_LENGTH_EXCEEDED} ${Values.MAXIMUM_CAR_NAME_LENGTH}")
         }
-        carList = carNameList.map { carName -> carName to 0 }
+        carList.addAll(carNameList.map { carName -> carName to 0 })
         view.requestPlayCountInputMessage()
         try {
-            checkPlayCountNatural(playCount = setPlayCount().toInt())
+            playCount = setPlayCount().toInt()
+            checkPlayCountNatural(playCount)
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException(ErrorMessage.ERRORMESSAGE_PLAY_COUNT_NOT_NATURAL)
         }
