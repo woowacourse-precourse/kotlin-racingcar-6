@@ -33,6 +33,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `시도할 횟수가 문자일 경우에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,park,kim", "p") }
+        }
+    }
+
     public override fun runMain() {
         main()
     }
