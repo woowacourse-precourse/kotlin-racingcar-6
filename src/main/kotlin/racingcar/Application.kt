@@ -16,6 +16,7 @@ fun main() {
     for(racingCar in racingCars){
         RacingCarValidator().validateCarName(racingCar)
     }
-    println(racingCars)
-
+    println("시도 할 횟수는 몇 회인가요?")
+    val trying = Console.readLine()
+    RacingGames().checkTime(racingCars, trying.toInt())
 }
