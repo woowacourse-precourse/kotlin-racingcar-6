@@ -52,6 +52,11 @@ class RacingGameManager {
         }
     }
 
+    private fun isMoveCar(randomNumber: Int): Boolean = when (randomNumber) {
+        in 4..9 -> true
+        else -> false
+    }
+
     private fun generateRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
 
     private fun setGameRound(): Int = inputDataFromUser().toInt()
