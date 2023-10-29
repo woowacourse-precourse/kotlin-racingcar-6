@@ -8,12 +8,19 @@ class Car(name:CarName) {
         this.location=0
     }
     fun moveCar(){
-        val randNum=Randoms.pickNumberInRange(0,9)
+        var randNum=Randoms.pickNumberInRange(0,9)
         if(randNum>=4){
             location++
         }else if(randNum<3){
 
         }
+    }
+    fun showResult(){
+        print("${name.amount()} : ")
+        for(i:Int in 0..location){
+            print("-")
+        }
+        println()
     }
 
 }

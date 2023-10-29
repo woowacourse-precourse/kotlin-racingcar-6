@@ -11,4 +11,10 @@ class CarCollection {
             car.moveCar()
         }
     }
+    fun showResults(){
+        for(car in carList){
+            car.showResult()
+        }
+        println()
+    }
 }

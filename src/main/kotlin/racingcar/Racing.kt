@@ -6,6 +6,8 @@ import org.mockito.internal.matchers.Null
 class Racing {
     val carCollection=CarCollection()
     fun startRacing(){
+        registerCar()
+        moveRacingCar()
 
     }
     private fun registerCar(){
@@ -26,11 +28,15 @@ class Racing {
     }
     fun moveRacingCar(){
         val racingNum=setRacingNum()
+        println()
+        println("실행 결과")
         for (i:Int in 0..racingNum.amount()){
             carCollection.moveCars()
+            showRacingResult()
         }
     }
     fun showRacingResult(){
+        carCollection.showResults()
     }
     fun showRacingWinner(){
 
