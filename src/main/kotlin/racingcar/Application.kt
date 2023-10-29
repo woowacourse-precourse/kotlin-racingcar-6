@@ -76,7 +76,7 @@ fun startGame() {
 
 // random 값을 확인하여 질주 체크
 fun checkGo(item: Car, random: Int) {
-    if (random > 4) {
+    if (random >= 4) {
         item.goStraight()
     }
     println("${item.name} : ${"-".repeat(item.go)}")
@@ -89,8 +89,9 @@ fun checkMaxDistance(item: Car) {
     }
 }
 
+// 최대값과 객체의 go가 일치함 확인
 fun checkisMaximum(item: Car) {
-    if(item.go == MAX_DISTANCE) {
+    if (item.go == MAX_DISTANCE) {
         WINNER_LIST.add(item.name)
     }
 }
