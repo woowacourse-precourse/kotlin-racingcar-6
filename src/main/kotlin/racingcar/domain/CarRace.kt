@@ -7,22 +7,17 @@ class CarRace(
     private val carNames: List<String>,
     private val raceResult: RaceResult = RaceResult()
 ) {
-    fun executeRacingAllRound() {
-        val raceAllRoundList: ArrayList<List<RacingRound>> = arrayListOf()
-        repeat(attemptNumber) { raceAllRoundList.add(executeRacingRound()) }
-        raceResult.raceResult(raceAllRoundList)
-    }
 
-    private fun executeRacingRound(): List<RacingRound> {
-        val moveResultList: ArrayList<RacingRound> = arrayListOf()
-        carNames.forEach { carName ->
-            val moveResult = RacingRound(
-                carName = carName,
-                moveCount = setCarMoveState()
-            )
-            moveResultList.add(moveResult)
+    fun executeRacing() {
+        val racingRoundResult: HashMap<String, ArrayList<Int>> = hashMapOf()
+        repeat(attemptNumber) {
+            carNames.forEach {
+                racingRoundResult
+                    .getOrPut(it) { arrayListOf() }
+                    .add(setCarMoveState())
+            }
         }
-        return moveResultList
+        raceResult.raceResult(racingRoundResult)
     }
 
     private fun setCarMoveState(): Int =
