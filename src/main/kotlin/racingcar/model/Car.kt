@@ -2,7 +2,7 @@ package racingcar.model
 
 import java.lang.StringBuilder
 
-data class Car(private val name : String){
+data class Car(val name : String){
 
     private var _move = Move(position =0)
     val move get() = _move
