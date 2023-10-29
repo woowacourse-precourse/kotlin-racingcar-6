@@ -2,6 +2,7 @@ package racingcar.play
 
 import racingcar.ui.UserInput
 import racingcar.ui.UserInput.createNameList
+import racingcar.ui.UserOutput
 
 object RacingGameManager {
     private var carNames: List<String> = listOf()
@@ -29,8 +30,14 @@ object RacingGameManager {
     }
 
     fun startRace() {
+        UserOutput.printResultMessage()
         for (i in 1..attemptCount) {
-            racingCars.map { it.move() }
+            racingCars.forEach {
+                it.move()
+                UserOutput.displayRoundResult(it.name, it.path)
+                println()
+            }
+            println()
         }
     }
 
