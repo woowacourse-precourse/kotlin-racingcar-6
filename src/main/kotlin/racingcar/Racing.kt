@@ -15,7 +15,7 @@ class Racing(private val cars: List<Car>) {
             }
             printMatchProgress()
         }
-        getWinner()
+        printWinner(getWinner())
     }
 
     private fun printMatchProgress() {
@@ -23,9 +23,13 @@ class Racing(private val cars: List<Car>) {
         println()
     }
 
-    private fun getWinner() {
+    private fun getWinner(): String {
         val maxDistance = cars.maxOfOrNull { it.distance }
         val winners = cars.filter { it.distance == maxDistance }
-        val winnerNames = winners.joinToString { it.name }
+        return winners.joinToString { it.name }
+    }
+
+    private fun printWinner(winnerNames:String){
+        println("최종 우승자 : $winnerNames")
     }
 }
