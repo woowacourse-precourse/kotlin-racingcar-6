@@ -22,7 +22,7 @@ class Judge(private val carGroup: CarGroup) {
 
     companion object {
         private const val RANDOM_START_NUMBER = 0
-        private const val RANDOM_END_NUMBER = 0
+        private const val RANDOM_END_NUMBER = 9
         private const val MOVING_POINT = 4
     }
 }
