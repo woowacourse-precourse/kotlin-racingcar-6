@@ -5,10 +5,10 @@
 - [x] 경주할 자동차 이름을 입력한다.  (`InputCars`)
   - [x] 이 때 자동차 이름은 쉼표(,) 로 구분한다.
    
-- [ ] 자동차 입력에 대한 유효성을 판단한다.(`Cars.validate`) 
+- [x] 자동차 입력에 대한 유효성을 판단한다.(`Cars.validate`) 
   - [x] 각 자동차 이름은 5글자 이하이다. (`Car.validateCar`)
   - [x] 각 자동차 이름이 공백으로 이루어지면 안된다. (`Car.validateCar`)
-  - [ ] 각 자동차에 중복이 있으면 안된다.(`Cars.validateDuplicate`)
+  - [x] 각 자동차에 중복이 있으면 안된다.(`Cars.validateDuplicate`)
 - [x] 시도할 횟수를 자연수로 입력한다.(`InputTry`)
   - [x] 시도에 대한 유효성을 판단한다. 
 - [ ] 자동차가 전진한다.(`Car.moveForward`)
