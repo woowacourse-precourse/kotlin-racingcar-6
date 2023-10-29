@@ -9,7 +9,7 @@ class RacingGameView {
     fun requestPlayCountInputMessage() {
         println(ConsoleMessage.REQUEST_PLAY_COUNT_INPUT)
     }
-    fun showProgressMessage() {
+    fun informShowProgressMessage() {
         println(ConsoleMessage.SHOW_PROGRESS)
     }
 }

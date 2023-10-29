@@ -22,7 +22,10 @@ class RacingGameController(private val view: RacingGameView, private val model: 
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException(ErrorMessage.ERRORMESSAGE_PLAY_COUNT_NOT_NATURAL)
         }
-        view.showProgressMessage()
+        view.informShowProgressMessage()
+        for(i in 0 until playCount) {
+
+        }
     }
     @JvmName("callFromString")
     private fun setCarList(): List<String> {
