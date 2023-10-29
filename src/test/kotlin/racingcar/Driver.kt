@@ -9,6 +9,14 @@ class Driver {
         carList = carName
         return carName
     }
+    private fun checkCarNameExeption() {
+        //자동차의 이름은 5자 이하만 가능, 자동차는 string만
+        for (carName in carList) {
+            if (carName.length !in 0..5) {
+                IllegalArgumentException(ERROR_CAR_NAME_LENGTH)
+            }
+        }
+    }
 
 
 
