@@ -64,6 +64,7 @@ fun raceCars(carNames: List<String>, tryCount: Int) {
 
         printDistances(totalDistances)
     }
+    printWinner(totalDistances)
 }
 
 fun calculateDistances(carNames: List<String>): List<Pair<String, String>> {
@@ -79,6 +80,17 @@ fun calculateDistances(carNames: List<String>): List<Pair<String, String>> {
 fun printDistances(totalDistances: Map<String, Int>) {
     totalDistances.forEach { (name, distance) ->
         println("$name: ${"-".repeat(distance)}")
+    }
+}
+
+fun printWinner(totalDistances: Map<String, Int>) {
+    val maxDistance = totalDistances.values.maxOrNull()
+    val winners = totalDistances.filterValues { it == maxDistance }.keys
+
+    if (winners.size == 1) {
+        println("\n최종 우승자 : ${winners.first()}")
+    } else {
+        println("\n최종 우승자 : ${winners.joinToString(", ")}")
     }
 }
 
