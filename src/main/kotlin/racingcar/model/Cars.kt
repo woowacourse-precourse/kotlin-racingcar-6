@@ -12,4 +12,6 @@ class Cars(private val cars: List<Car>) {
         }
     }
 
+    // 읽기 전용 불변 리스트로 반환
+    fun getCars() = cars
 }
