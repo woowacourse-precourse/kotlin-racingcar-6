@@ -19,8 +19,10 @@ class RaceController(
         val cars = carNames.map(carFactory::create)
         raceView.displayRaceResultTitle()
 
-        raceOnce(cars = cars)
-        raceView.displayRaceResult(cars = cars)
+        repeat(turnNumber.number) {
+            raceOnce(cars = cars)
+            raceView.displayRaceResult(cars = cars)
+        }
     }
 
     private fun raceOnce(cars: List<Car>) {
