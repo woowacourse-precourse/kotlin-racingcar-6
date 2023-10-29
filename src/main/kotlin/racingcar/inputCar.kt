@@ -10,4 +10,3 @@ fun inputCar(): List<String> {                              // 자동차 이름�
     }
     return carNames
 }
-// 들여쓰기 줄여보자!!

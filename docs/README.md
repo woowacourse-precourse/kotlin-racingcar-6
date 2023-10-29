@@ -23,3 +23,17 @@
   - "실행 결과"
   - "최종 우승자"
 
+
+변경 된 부분
+- 조건 0~9무작위 값을 구하기   #randomValue
+- 전진 출력칸                # moveCar
+  - 자동차 이름 출력
+    - 무작위 값이 4이상이면 전진 
+이부분을    
+- RacingCarGame 클래스 안에 다 넣음
+  - 조건 0~9무작위 값을 구하기   #randomValue
+  - 자동차 포지션 초기화 #initializeCarPosition
+  - 무작위 값이 4이상이면 전진 #updateCarPosition
+  - 이름, 전진 출력하기 #isplayCarPosition
+  - 시도 횟수만큼 실행 #run
+
