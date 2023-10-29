@@ -4,10 +4,12 @@ import racingcar.view.OutputView
 import camp.nextstep.edu.missionutils.Console
 import racingcar.model.GenerateRandomNumber
 import racingcar.model.MoveCar
+import racingcar.model.Winner
 
 class RacingcarController {
     private val outputView = OutputView()
     private val moveCar = MoveCar()
+    private val winner = Winner()
 
     fun startRacing() {
         outputView.printInputRacingcarName()
@@ -46,12 +48,14 @@ class RacingcarController {
         tryNumber.toIntOrNull() ?: callException()
     }
 
-    fun race(racingcarName: List<String>, tryNumber: Int) {
+    private fun race(racingcarName: List<String>, tryNumber: Int) {
         var carScore = racingcarName.associateWith { 0 }.toMutableMap()
 
         for (i in 0 until tryNumber) {
             moveCar.calculateScore(carScore)
             outputView.printCarScore(carScore)
         }
+        val winner = winner.calculateWinner(carScore)
+        outputView.printWinner(winner)
     }
 }
