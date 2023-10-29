@@ -12,11 +12,11 @@ object CarList {
 
     fun userInputToCarList(userInput: String): List<Car> {
         return userInput.split(",").map { name ->
-            Car(name = name)
-        }.also { carsValidation(it) }
+            Car(name = name.trim())
+        }.also { it.carsValidation() }
     }
 
-    private fun carsValidation(racingCars : List<Car>) = with(racingCars) {
+    private fun List<Car>.carsValidation() {
         require(size >= MIN_CAR_COUNT_VALUE) {
             ZERO_CAR_ERROR
         }
