@@ -1,5 +1,11 @@
 package racingcar
 
+import racingcar.domain.CarName
+
 fun main() {
-    // TODO: 프로그램 구현
+    val carName = CarName()
+    carName.requestInput()
+
+    val getCarName = carName.getInput()
+    carName.validateInput(getCarName)
 }
