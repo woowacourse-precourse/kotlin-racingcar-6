@@ -11,8 +11,11 @@ class Car(val name: String, private val randomGenerator: RandomGenerator) {
     }
 
     fun move() {
-        val randomNumber = randomGenerator.generate()
+        if (randomGenerator.generate() >= 4) {
+            position++
+        }
     }
+
     fun printPosition() {
         println("$name : ${"-".repeat(position)}")
     }
@@ -22,9 +25,7 @@ class RacingGame(private val cars: List<Car>, private val tries: Int) {
     fun play() {
         repeat(tries) {
             cars.forEach { car ->
-                if (RandomGenerator().generate() >= 4) {
-                    car.move()
-                }
+                car.move()
                 car.printPosition()
             }
             println()
@@ -37,22 +38,16 @@ class RacingGame(private val cars: List<Car>, private val tries: Int) {
     }
 }
 
-class InputHandler {
-    private val cars = mutableListOf<Car>()
-    private val randomGenerator = RandomGenerator()
-
-    fun start() {
-        inputCarNames()
-        inputCount()
-    }
-    private fun inputCarNames() {
+class InputHandler(private val randomGenerator: RandomGenerator) {
+    fun getCars(): List<Car> {
         val input = Console.readLine()
         val names = input.split(",").map { it.trim() }
-        cars.addAll(names.map { Car(it, randomGenerator) })
+        return names.map { Car(it, randomGenerator) }
     }
 
-    private fun inputCount(): Int? {
-        return Console.readLine()?.toInt()
+    fun getTries(): Int {
+        val input = Console.readLine()
+        return input.toIntOrNull() ?: throw IllegalArgumentException("입력값이 정수가 아닙니다.")
     }
 }
 
@@ -63,15 +58,6 @@ class OutputHandler {
 
     fun printInputCount() {
         println("시도할 횟수는 몇 회인가요?")
-    }
-
-    fun printResult(result: Map<String, String>) {
-        println("실행 결과")
-        result.forEach { entry ->
-            val eachResult = entry.key + " : " + entry.value
-            println(eachResult)
-        }
-        println()
     }
 
     fun printWinner(winners: List<String>) {
@@ -85,10 +71,24 @@ class RandomGenerator {
     }
 }
 
-
-
 fun main() {
-    // TODO: 프로그램 구현
-    val inputHandler = InputHandler()
-    inputHandler.start()
+    try {
+        val randomGenerator = RandomGenerator()
+        val inputHandler = InputHandler(randomGenerator)
+        val outputHandler = OutputHandler()
+
+        outputHandler.printInputCarName()
+        val cars = inputHandler.getCars()
+
+        outputHandler.printInputCount()
+        val tries = inputHandler.getTries()
+
+        val game = RacingGame(cars, tries)
+        game.play()
+
+        val winners = game.findWinners()
+        outputHandler.printWinner(winners)
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }
