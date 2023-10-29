@@ -5,8 +5,6 @@ object Comments {
     const val NUMBER_OF_ATTEMPT_COMMENT = "시도할 횟수는 몇 회인가요?"
     const val GAME_RESULT_COMMENT = "실행 결과"
     const val FINAL_WINNER_COMMENT = "최종 우승자 : "
-    const val SPACE = " "
-    const val COMMA = ","
     const val SEPARATOR = " : "
     const val MOVEMENT = "-"
 }
