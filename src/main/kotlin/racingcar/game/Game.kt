@@ -1,6 +1,8 @@
 package racingcar.game
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.model.Car
+import racingcar.model.Cars
 import racingcar.util.Constants.CAR_NAME_DELIMITER
 import racingcar.util.Constants.TEXT_START_GAME
 import racingcar.util.Validation.validateLength
@@ -9,25 +11,37 @@ import racingcar.util.Validation.validateDuplicateOfCars
 
 class Game {
 
-    private var carList = mutableListOf<String>()
+    private lateinit var cars: Cars
 
     fun startGame() {
         println(TEXT_START_GAME)
 
-        val input = Console.readLine()
-        carList = inputCarName(input)
+        inputCarName()
     }
 
-     fun inputCarName(input: String) : MutableList<String> {
-         val splitResult = mutableListOf<String>()
+    private fun inputCarName() {
+        val input = Console.readLine()
+        cars = Cars(mapToCar(splitCarName(input)))
+    }
 
-         input.split(CAR_NAME_DELIMITER).forEach {
-             splitResult.add(validateLength(it))
-         }
+    fun splitCarName(input: String): List<String> {
+        val splitResult = mutableListOf<String>()
 
-         validateNumberOfCars(splitResult)
-         validateDuplicateOfCars(splitResult)
+        input.split(CAR_NAME_DELIMITER).forEach {
+            splitResult.add(validateLength(it))
+        }
 
-         return splitResult
+        validateNumberOfCars(splitResult)
+        validateDuplicateOfCars(splitResult)
+
+        return splitResult
+    }
+
+    private fun mapToCar(carList: List<String>): List<Car> {
+        val mapResult = mutableListOf<Car>()
+        carList.forEach {
+            mapResult.add(Car(it, 0))
+        }
+        return mapResult
     }
 }
