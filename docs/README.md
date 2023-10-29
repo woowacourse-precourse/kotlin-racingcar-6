@@ -2,9 +2,9 @@
 
 ### ⌨️ 입력
 
-- [done] 자동자의 이름을 쉼표(,)를 기준으로 입력 받는다. - askCarName()
+- [done] 자동자의 이름을 쉼표(,)를 기준으로 입력 받는다. - User#askCarName()
   - [done] 이름은 5자 초과라면 IllegalArgumentException 발생 
-- [done] 시도할 횟수를 입력 받는다. - askNumber()
+- [done] 시도할 횟수를 입력 받는다. - User#askNumber()
   - [done] 입력이 문자나 공백 등 숫자가 아니라면, IllegalArgumentException 발생 
 
 ### 🖥️ 출력

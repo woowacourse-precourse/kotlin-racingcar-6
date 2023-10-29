@@ -1,6 +1,6 @@
-package racingcar.domain
+package racingcar.domain.car
 
-import javax.swing.text.html.HTML.Attribute.N
+import racingcar.domain.NumberGenerator
 
 class Car(name: String) {
     val name = name

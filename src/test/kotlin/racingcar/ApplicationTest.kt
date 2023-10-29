@@ -4,18 +4,16 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.domain.car.Cars
 
 class ApplicationTest : NsTest() {
     @AfterEach
-    fun reset() {
-        carNames = mutableListOf()
-        highScore = 0
+    fun reset(){
+        cars = Cars()
     }
-
     @Test
     fun `전진 정지`() {
         assertRandomNumberInRangeTest(
@@ -33,31 +31,10 @@ class ApplicationTest : NsTest() {
         }
     }
 
-    @Test
-    fun `askCarName 메서드 사용시 이름이 5자 이상일 때 예외 발생`() {
-        //given
-        val input = "pobi,java,joontae,car"
 
-        //then
-        assertThrows<IllegalArgumentException>("String index out of range: 5") {
-            askCarName(
-                input
-            )
-        }
-    }
 
     @Test
-    fun `askNumber 메서드 문자 입력 시 예외 발생`() {
-        //given
-        val input = "1"
-        val result = 1
-
-        //then
-        assertThat(askNumber(input)).isEqualTo(result)
-    }
-
-    @Test
-    fun `printWinner 단독 우승시`() {
+    fun `단독 우승시`() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni,hodol", "2")
@@ -67,7 +44,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `printWinner 공동 우승시`() {
+    fun `공동 우승시`() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni,joon", "1")
