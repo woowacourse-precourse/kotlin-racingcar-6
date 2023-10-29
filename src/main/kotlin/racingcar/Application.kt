@@ -43,9 +43,7 @@ fun runOneCycle(carModelList: List<Car>) {
 }
 
 fun initGame() {
-    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     carModelList = inputCarNames()
-    println("시도할 횟수는 몇 회인가요?")
     gameCount = inputRaceCount()
 }
 
@@ -54,6 +52,7 @@ fun inputCars(): String {
 }
 
 fun inputCarNames(): List<Car> {
+    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val carNameList = separateCarNames(inputCars())
     validateNameLength(carNameList)
     validateNull(carNameList)
@@ -92,6 +91,7 @@ fun validateDuplicate(carList: List<String>) {
 }
 
 fun inputRaceCount(): Int {
+    println("시도할 횟수는 몇 회인가요?")
     val input = Console.readLine()
     validateNumber(input)
 
