@@ -1,15 +1,13 @@
 package racingcar.model
 
-import racingcar.resources.Comments.COMMA
 import racingcar.resources.Comments.FINAL_WINNER_COMMENT
 import racingcar.resources.Comments.MOVEMENT
 import racingcar.resources.Comments.SEPARATOR
-import racingcar.resources.Comments.SPACE
 import racingcar.resources.GameValue.MOVEMENT_THRESHOLD_VALUE
 import racingcar.resources.GameValue.MOVEMENT_VALUE
 import racingcar.utils.generateRandomNumbers
 
-class RacingCars(
+class RacingCarState(
     private var carList: List<Car>
 ) {
 
@@ -44,7 +42,7 @@ class RacingCars(
 
         val winners = carList.filter { car ->
             car.movement == maxMovement
-        }.map { it.name }.joinToString(COMMA + SPACE)
+        }.map { it.name }.joinToString(", ")
 
         return FINAL_WINNER_COMMENT + winners
     }
