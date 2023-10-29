@@ -3,7 +3,7 @@ package racingcar.controller
 import camp.nextstep.edu.missionutils.Console
 import racingcar.view.RacingGameView
 import racingcar.model.RacingGameModel
-import racingcar.utils.ConsoleMessage
+import racingcar.utils.ErrorMessage
 import racingcar.utils.Values
 
 class RacingGameController(private val view: RacingGameView, private val model: RacingGameModel) {
@@ -11,7 +11,7 @@ class RacingGameController(private val view: RacingGameView, private val model: 
     fun run() {
         view.requestCarNameInput()
         if (isAnyCarNameLengthExceeded(carList = getCarList())) {
-            throw IllegalArgumentException()
+            throw IllegalArgumentException("${ErrorMessage.ERRORMESSAGE_CAR_NAME_LENGTH_EXCEEDED} ${Values.MAXIMUM_CAR_NAME_LENGTH}")
         }
 
     }
