@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val carNames = readCarNames()//차이름
@@ -70,7 +71,7 @@ fun raceCars(carNames: List<String>, tryCount: Int) {
 fun calculateDistances(carNames: List<String>): List<Pair<String, String>> {
     return carNames.map { carName ->
         val distance = (0 until 1).count {
-            val randomValue = (0..9).random()
+            val randomValue = Randoms.pickNumberInRange(0,9)
             randomValue >= 4
         }
         carName to "-".repeat(distance)
