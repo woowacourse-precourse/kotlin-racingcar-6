@@ -15,11 +15,14 @@ class RacingGameManager {
         val cars = createCars()
         printGameRoundQuestion()
 
-        repeat(gameRound) {
+        repeat(gameRound) { round ->
+            if (round == 0) {
+                println()
+                printGameEnd()
+            }
+
             moveForwardCar(cars)
         }
-
-        printGameEnd()
         closeConsole()
     }
 
