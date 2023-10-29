@@ -22,6 +22,8 @@ class RacingGameManager {
             }
 
             moveForwardCar(cars)
+            printGameResultPerGameRound(cars)
+            println()
         }
         closeConsole()
     }
@@ -30,6 +32,18 @@ class RacingGameManager {
 
     private fun printGameRoundQuestion() = println(Message.INPUT_GAME_ROUND.message)
     private fun printGameEnd() = println(Message.OUTPUT_GAME_END.message)
+    private fun printGameResultPerGameRound(cars: List<Car>) {
+        val stringBuilder = StringBuilder()
+
+        cars.forEach { car ->
+            stringBuilder.append(car.toString())
+            (1..car.distance).forEach { _ ->
+                stringBuilder.append("-")
+            }
+            println(stringBuilder)
+            stringBuilder.clear()
+        }
+    }
 
     private fun createCars(): List<Car> {
         val cars = mutableListOf<Car>()
