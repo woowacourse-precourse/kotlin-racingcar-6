@@ -7,16 +7,44 @@ fun isCarMove(car: String): Boolean {
     return dice >= 4
 }
 
+
+fun printRoundResult(racingGame: LinkedHashMap<String, Int>) {
+    for (car in racingGame.keys) {
+        val sb = StringBuilder()
+        sb.append("${car} : ")
+        racingGame[car]?.let {
+            repeat(it) {
+                sb.append("-")
+            }
+        }
+        println(sb.toString())
+    }
+    println()
+}
+
+fun onRoundPlay(racingGame: LinkedHashMap<String, Int>) {
+    for (car in racingGame.keys) {
+        if (isCarMove(car)) {
+            racingGame[car] = (racingGame[car] ?: 0) + 1
+        }
+    }
+
+    printRoundResult(racingGame)
+}
+
 fun runRacingGame(carList: List<String>, racingTime: Int) {
     val racingGame = LinkedHashMap<String, Int>()
     for (car in carList) {
         racingGame.put(car, 0)
     }
 
+    repeat(racingTime) {
+        onRoundPlay(racingGame)
+    }
 }
 
 fun main() {
-    // TODO: 프로그램 구현
-    val carList = readLine()!!.split(", ")
+    val carList = readLine()!!.split(",")
     val racingTime = readLine()!!.toInt()
+    runRacingGame(carList, racingTime)
 }
