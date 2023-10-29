@@ -1,7 +1,7 @@
 package racingcar.model
 
 class Car(
-    private val name: String,
+    val name: String,
     var position: Int
 ) {
 

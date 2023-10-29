@@ -10,4 +10,9 @@ class Cars(
             car.move(moveStep)
         }
     }
+
+    fun getWinner(): List<Car> {
+        val winnerCar = cars.maxBy { it.position }
+        return cars.filter { it.position == winnerCar.position }
+    }
 }
