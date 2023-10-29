@@ -28,6 +28,8 @@ class IOHandler(private val validator: Validator) {
         return count
     }
 
+    fun show(sentence: Any) = print(sentence)
+
     private fun getInput(): String = Console.readLine()
 
     private fun splitNameFromInput(input: String): List<String> = input.split(INPUT_SPLITTER)
