@@ -11,7 +11,11 @@ class RacingCarModel(val name: String) {
 
 
     fun tryToMove() {
-        if (randomNumberGenerator.generate() >= 4)  place++
+        if (randomNumberGenerator.generate() >= MIN_NUMBER_OF_MOVE)  place++
+    }
+
+    companion object{
+        const val MIN_NUMBER_OF_MOVE = 4
     }
 
 }
