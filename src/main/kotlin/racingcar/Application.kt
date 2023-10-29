@@ -3,8 +3,8 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
-class Car(private val name: String, private val randomGenerator: RandomGenerator) {
-    private var position = 0
+class Car(val name: String, private val randomGenerator: RandomGenerator) {
+    var position = 0
 
     init {
         require(name.length <= 5) { "자동차 이름은 5자를 초과할 수 없습니다." }
@@ -12,12 +12,28 @@ class Car(private val name: String, private val randomGenerator: RandomGenerator
 
     fun move() {
         val randomNumber = randomGenerator.generate()
-        if (randomNumber >= 4) {
-            position++
-        }
     }
     fun printPosition() {
         println("$name : ${"-".repeat(position)}")
+    }
+}
+
+class RacingGame(private val cars: List<Car>, private val tries: Int) {
+    fun play() {
+        repeat(tries) {
+            cars.forEach { car ->
+                if (RandomGenerator().generate() >= 4) {
+                    car.move()
+                }
+                car.printPosition()
+            }
+            println()
+        }
+    }
+
+    fun findWinners(): List<String> {
+        val maxPosition = cars.maxOf { it.position }
+        return cars.filter { it.position == maxPosition }.map { it.name }
     }
 }
 
