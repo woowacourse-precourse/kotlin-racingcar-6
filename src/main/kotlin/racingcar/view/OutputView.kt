@@ -17,25 +17,9 @@ class OutputView {
         println()
     }
 
-    // 기능 9. 우승자 안내하기분
-    fun printWinner(racingCarList: List<RacingCar>) {
-        var maxMove = 0
-
-        for (racingCar in racingCarList) {
-            if (racingCar.totalMove > maxMove) {
-                maxMove = racingCar.totalMove
-            }
-        }
-
-        val winnerList = mutableListOf<String>()
-
-        for (racingCar in racingCarList) {
-            if (racingCar.totalMove == maxMove) {
-                winnerList.add(racingCar.carName)
-            }
-        }
-
-        println("최종 우승자 : ${winnerList.joinToString(", ")}")
+    fun printWinner(winnerList: List<RacingCar>) {
+        val winnerNameList = winnerList.joinToString(", ") { winner -> winner.carName }
+        println("최종 우승자 : $winnerNameList")
     }
 
     fun printRacingCarMove(racingCar: RacingCar) {

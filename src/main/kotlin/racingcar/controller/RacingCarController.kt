@@ -20,7 +20,7 @@ class RacingCarController(
             outputView.printAttemptResult(attemptNumber, racingCarList)
         }
 
-        outputView.printWinner(racingCarList)
+        outputView.printWinner(findWinner(racingCarList))
     }
 
     // 기능 3. 자동차 리스트 만들기
@@ -45,5 +45,20 @@ class RacingCarController(
                 racingCar.move()
             }
         }
+    }
+
+    // 기능 9. 우승자 안내하기
+    private fun findWinner(racingCarList: List<RacingCar>): List<RacingCar> {
+        val maxMove = racingCarList.maxBy { racingCar -> racingCar.totalMove }.totalMove
+
+        val winnerList = mutableListOf<RacingCar>()
+
+        for (racingCar in racingCarList) {
+            if (racingCar.totalMove == maxMove) {
+                winnerList.add(racingCar)
+            }
+        }
+
+        return winnerList
     }
 }
