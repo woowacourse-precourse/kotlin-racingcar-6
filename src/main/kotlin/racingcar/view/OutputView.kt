@@ -15,19 +15,9 @@ class OutputView {
         println(Constants.RESULT)
     }
 
-    fun eachRacingResult(cars: List<String>, progress: List<Int>) {
+    fun eachRacingResult(cars: List<String>, progress: List<String>) {
         for (index in 0..cars.size - 1) {
-            print(cars[index] + Constants.COLON)
-            dashPrint(progress[index])
-        }
-        println()
-    }
-
-    fun dashPrint(progress: Int) {
-        if (progress != 0) {
-            for (index in 1..progress) {
-                print(Constants.DASH)
-            }
+            println(cars[index] + Constants.COLON + progress[index])
         }
         println()
     }

@@ -1,10 +1,10 @@
 package racingcar.model
 
 class CarProgressInit {
-    fun progress(carNums: Int): MutableList<Int> {
-        val carProgress: MutableList<Int> = mutableListOf()
+    fun progress(carNums: Int): List<String> {
+        val carProgress = mutableListOf<String>()
         for (i in 1..carNums) {
-            carProgress.add(0)
+            carProgress.add(Constants.EMPTY_SPACE)
         }
         return carProgress
     }
