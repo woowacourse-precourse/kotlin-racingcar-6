@@ -14,9 +14,9 @@ class Output {
         println("실행 결과")
     }
 
-    fun printPlayerProgress(name:String,progress: Int) {
+    fun printPlayerProgress(name: String, progress: Int) {
         print("$name : ")
-        for(i in 0 until progress) {
+        for (i in 0 until progress) {
             print("-")
         }
         println()
@@ -24,5 +24,10 @@ class Output {
 
     fun printBlankLine() {
         println()
+    }
+
+    fun printWinners(winners: List<String>) {
+        val result = winners.joinToString(", ")
+        println("최종 우승자 : $result")
     }
 }

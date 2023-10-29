@@ -33,7 +33,7 @@ class GameTest {
     fun `이름과 진행도 정상 출력 기능 확인`() {
         val ui = UserInterface()
 
-        ui.printPlayerProgress("aaa",5)
+        ui.printPlayerProgress("aaa", 5)
 
         val expectedOutput = "aaa : -----"
 

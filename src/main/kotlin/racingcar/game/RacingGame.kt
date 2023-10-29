@@ -8,6 +8,7 @@ class RacingGame(
 
     private val players: List<Player>
     private var rounds: Int
+    private var maxProgress: Int = 0
 
     init {
         val playerNames = askCarNames()
@@ -38,6 +39,8 @@ class RacingGame(
         repeat(rounds) {
             playRound()
         }
+
+
     }
 
     private fun playRound() {
@@ -45,15 +48,38 @@ class RacingGame(
             player.rollTheDice()
         }
         printRoundResult()
+        printWinners(getWinner())
 
     }
 
     private fun printRoundResult() {
         for (player in players) {
+            maintainMaxProgress(player.getProgress())
             ui.printPlayerProgress(player.getPlayerName(), player.getProgress())
         }
         ui.printBlankLine()
 
+    }
+
+    private fun maintainMaxProgress(currentProgress: Int) {
+        if (maxProgress < currentProgress) {
+            maxProgress = currentProgress
+        }
+
+    }
+
+    fun getWinner(): List<String> {
+        val winners = mutableListOf<String>()
+        for (player in players) {
+            if (player.getProgress() == maxProgress) {
+                winners.add(player.getPlayerName())
+            }
+        }
+        return winners
+    }
+
+    fun printWinners(winners: List<String>) {
+        ui.printWinners(winners)
     }
 
 

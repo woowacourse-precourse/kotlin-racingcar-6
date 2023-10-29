@@ -20,11 +20,15 @@ class UserInterface(
         output.printResultMessage()
     }
 
-    fun printPlayerProgress(name:String, progress:Int) {
-        output.printPlayerProgress(name,progress)
+    fun printPlayerProgress(name: String, progress: Int) {
+        output.printPlayerProgress(name, progress)
     }
 
     fun printBlankLine() {
         output.printBlankLine()
+    }
+
+    fun printWinners(winners: List<String>) {
+        output.printWinners(winners)
     }
 }
