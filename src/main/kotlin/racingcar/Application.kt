@@ -9,6 +9,8 @@ var MAX_DISTANCE = 0
 val WINNER_LIST = mutableListOf<String>()
 
 fun main() {
+    initialize()
+
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val carsName = Console.readLine()
     val names = carsName.split(',')
@@ -45,6 +47,13 @@ fun main() {
     }
 
     println("최종 우승자 : ${WINNER_LIST.joinToString()}")
+}
+
+fun initialize() {
+    CAR_NAME_LIST.clear()
+    CAR_LIST.clear()
+    MAX_DISTANCE = 0
+    WINNER_LIST.clear()
 }
 
 // 경주할 자동차 이름 글자 수 체크

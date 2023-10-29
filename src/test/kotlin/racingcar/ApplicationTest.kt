@@ -33,6 +33,17 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `경주자가 한명일 시`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi", "1")
+                assertThat(output()).contains("pobi : -", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD
+        )
+    }
+
     public override fun runMain() {
         main()
     }
