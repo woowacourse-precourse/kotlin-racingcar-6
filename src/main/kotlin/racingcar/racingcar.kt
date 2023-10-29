@@ -11,7 +11,7 @@ class Car(private val name: String) {
             print("-")
         }
     }
-    fun isAdvance (): Int {
+    fun advancePosition () {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
             position++
         }
