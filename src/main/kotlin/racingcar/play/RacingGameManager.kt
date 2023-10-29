@@ -29,7 +29,7 @@ object RacingGameManager {
         attemptCount = input.toInt()
     }
 
-    fun startRace() {
+    fun startRace(): RacingGameManager {
         UserOutput.printResultMessage()
         for (i in 1..attemptCount) {
             racingCars.forEach {
@@ -39,8 +39,10 @@ object RacingGameManager {
             }
             println()
         }
+        return this
     }
 
+    fun announceWinner() {
 
-
+    }
 }
