@@ -26,6 +26,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `이름 중복에 대한 예외처리`(){
+        assertSimpleTest{
+            val carNames = listOf("abc","abc","aa","bb")
+            assertThrows<IllegalArgumentException> { isCarNameUnique(carNames) }
+        }
+    }
+
     public override fun runMain() {
         main()
     }
