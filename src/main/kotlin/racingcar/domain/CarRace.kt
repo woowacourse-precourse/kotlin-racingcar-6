@@ -12,9 +12,7 @@ class CarRace(
         val racingRoundResult: HashMap<String, ArrayList<Int>> = hashMapOf()
         repeat(attemptNumber) {
             carNames.forEach {
-                racingRoundResult
-                    .getOrPut(it) { arrayListOf() }
-                    .add(setCarMoveState())
+                racingRoundResult.getOrPut(it) { arrayListOf() }.add(setCarMoveState())
             }
         }
         raceResult.raceResult(racingRoundResult)
@@ -33,8 +31,3 @@ class CarRace(
         private const val STOP = 0
     }
 }
-
-data class RacingRound(
-    val carName: String,
-    val moveCount: Int
-)
