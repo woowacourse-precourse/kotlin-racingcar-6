@@ -34,13 +34,26 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `자동차 이름 중복 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>("중복된 차 이름이 존재합니다.") {
+                validateDuplicate(listOf("pobi", "lh99j", "pobi"))
+            }
+
+            assertThrows<IllegalArgumentException>("중복된 차 이름이 존재합니다.") {
+                validateDuplicate(listOf("pobi", "lh99j", "anjji", "anjji"))
+            }
+        }
+    }
+
+    @Test
     fun `자동차 이름 널값 검증`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException>("차 이름의 길이가 5보다 큽니다.") {
+            assertThrows<IllegalArgumentException>("차 이름에 널값이 존재합니다.") {
                 validateNull(listOf("pobi", " "))
             }
 
-            assertThrows<IllegalArgumentException>("차 이름의 길이가 5보다 큽니다.") {
+            assertThrows<IllegalArgumentException>("차 이름에 널값이 존재합니다.") {
                 validateNull(listOf("pobi", ""))
             }
         }
