@@ -24,4 +24,10 @@ class Circuit(private val outputView: OutputView = OutputView()) {
         }
         _state = CircuitState.End
     }
+
+    fun findWinner() : List<Car>{
+        val maxPosition = cars.maxOf{ it.move.position }
+        _state = CircuitState.Exit
+        return  cars.filter { it.move.position == maxPosition }
+    }
 }
