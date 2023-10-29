@@ -21,4 +21,8 @@ class RacingManager {
             nowRound++
         }
     }
+
+    fun printWinner() {
+        racing.printWinner()
+    }
 }
