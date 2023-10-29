@@ -30,5 +30,21 @@ class InputTest {
         }
     }
 
+    @Test
+    fun `toInt 메서드로 String을 Int타입으로 변경`(){
+        val input = "1"
+        val result = Util.stringToInt(input)
+        Assertions.assertThat(result).isEqualTo(1)
+    }
+
+    @Test
+    fun `toInt 메서드로 String이 Int타입으로 변경되지 않을때 예외 발생`(){
+        val input = "one"
+        val inputToInt = Util.stringToInt(input)
+        assertThrows<IllegalArgumentException>("숫자형태의 String이 아닙니다.") {
+            Util.checkInt(inputToInt)
+        }
+    }
+
 
 }
