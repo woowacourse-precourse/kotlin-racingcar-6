@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.Assertions.*
 import racingcar.util.GameMessage
+import racingcar.util.RandomGenerator
 
 class ApplicationTest : NsTest() {
     @Test
@@ -34,6 +35,13 @@ class ApplicationTest : NsTest() {
             val exception = assertThrows<IllegalArgumentException> {runException("pobi,rion","a")  }
             assertEquals(exception.message,GameMessage.GAME_INPUT_ATTEMPT_ERROR_MESSAGE)
         }
+    }
+    @Test
+    fun `생성되는 난수 검사`(){
+        val minValue = 0
+        val maxValue = 9
+        val randomNumber = RandomGenerator.makeRandomNumber()
+        assertTrue(randomNumber in minValue.. maxValue)
     }
     public override fun runMain() {
         main()
