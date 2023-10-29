@@ -12,16 +12,13 @@ class RacingcarController {
     private val winner = Winner()
 
     fun startRacing() {
-        outputView.printInputRacingcarName()
         val racingcarName = inputRacingcarName()
-        outputView.printTryNumber()
         val tryNumber = inputTryNumber()
-        outputView.printResult()
         race(racingcarName, tryNumber)
-
     }
 
     private fun inputRacingcarName(): List<String> {
+        outputView.printInputRacingcarName()
         val inputRacingcarName = Console.readLine()
         val racingcarName = splitRacingcarName(inputRacingcarName)
         racingcarName.forEach { name ->
@@ -33,6 +30,7 @@ class RacingcarController {
     private fun splitRacingcarName(racingcarName: String): List<String> = racingcarName.split(",")
 
     private fun inputTryNumber(): Int {
+        outputView.printTryNumber()
         val tryNumber = Console.readLine()
         checkTryNumber(tryNumber)
         return tryNumber.toInt()
@@ -49,6 +47,7 @@ class RacingcarController {
     }
 
     private fun race(racingcarName: List<String>, tryNumber: Int) {
+        outputView.printResult()
         var carScore = racingcarName.associateWith { 0 }.toMutableMap()
 
         for (i in 0 until tryNumber) {
