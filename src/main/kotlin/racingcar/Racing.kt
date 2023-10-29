@@ -8,17 +8,14 @@ class Racing {
         RacingSystem.setCarNames(Console.readLine())
         println("시도할 횟수는 몇 회인가요?")
         RacingSystem.setAttemptNumber(Console.readLine())
-        RacingSystem.createCars()
-        println()
+        RacingSystem.createCarLane()
     }
 
-    fun start(){
-        val attmeptNumber = RacingSystem.getAttemptNumber()
-        for (i in 0..attmeptNumber) {
-            RacingSystem.runCars()
-            RacingSystem.showLap()
-        }
+    fun start() {
+        RacingSystem.startAttemptCarLane()
     }
 
-
+    fun presentWinner() {
+        RacingSystem.presentWinner()
+    }
 }

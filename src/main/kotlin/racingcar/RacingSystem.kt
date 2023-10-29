@@ -55,4 +55,11 @@ object RacingSystem {
         val winners = carLane.judgeWinner().joinToString(separator = ", ")
         println("\n최종 우승자 : ${winners}")
     }
+
+    fun startAttemptCarLane(){
+        for (i in 1..attemptNumber) {
+            carLane.runCars()
+            carLane.showLap()
+        }
+    }
 }
