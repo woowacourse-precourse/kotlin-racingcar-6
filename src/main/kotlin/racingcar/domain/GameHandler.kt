@@ -42,6 +42,7 @@ class GameHandler(private val io: IOHandler) {
             moveCars(cars)
             showLocation(cars)
         }
+        judgeWinner(cars)
     }
 
     private fun moveCars(cars: List<Car>) {
@@ -64,10 +65,29 @@ class GameHandler(private val io: IOHandler) {
         io.show(LINE_BREAK)
     }
 
+    private fun judgeWinner(cars: List<Car>) {
+        var maxNum = NOT_YET_SET
+        val winners = cars.sortedBy {
+            -it.location
+        }.takeWhile {
+            if (maxNum == NOT_YET_SET || it.location == maxNum) {
+                maxNum = it.location
+                return@takeWhile true
+            }
+            false
+        }
+
+        val sentence = winners.joinToString(", ") {
+            it.name
+        }
+        io.show("$SENTENCE_FOR_WINNER$sentence")
+    }
+
     companion object {
         private const val SENTENCE_FOR_GETTING_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
         private const val SENTENCE_FOR_GETTING_MOVEMENT = "시도할 횟수는 몇 회인가요?\n"
         private const val SENTENCE_FOR_RESULT = "실행 결과\n"
+        private const val SENTENCE_FOR_WINNER = "최종 우승자 : "
         private const val NOT_YET_SET = Int.MIN_VALUE
         private const val MIN_RANDOM_NUM = 0
         private const val MAX_RANDOM_NUM = 9
