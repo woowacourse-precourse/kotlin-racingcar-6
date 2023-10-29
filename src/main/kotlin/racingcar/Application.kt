@@ -14,6 +14,7 @@ fun main() {
 fun run() {
     initGame()
     gameStart()
+    gameEnd()
 }
 
 fun gameStart() {
@@ -21,6 +22,10 @@ fun gameStart() {
     repeat(gameCount) {
         runOneCycle(carModelList)
     }
+
+}
+
+fun gameEnd() {
     val winnerList = getWinner(carModelList)
     printWinner(winnerList)
 }
