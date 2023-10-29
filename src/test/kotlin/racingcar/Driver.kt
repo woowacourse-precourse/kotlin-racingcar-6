@@ -18,7 +18,9 @@ class Driver {
         }
     }
 
-
+    fun inputTryGame(): Int {
+        return Console.readLine().toInt()
+    }
 
     companion object {
         const val ERROR_CAR_NAME_LENGTH = "자동차의 이름이 5자 이하가 아닙니다."
