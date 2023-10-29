@@ -8,4 +8,9 @@ class RacingCarsManagement(private val cars:MutableList<RacingCarModel>) {
         cars.add(racingCarModel)
     }
 
+    fun getWinners():List<RacingCarModel>{
+        val maxPlace = cars.maxOf { it.place }
+        return cars.filter { car -> car.place == maxPlace}
+    }
+
 }
