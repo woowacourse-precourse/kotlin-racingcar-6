@@ -39,13 +39,7 @@ class Game {
     }
 
     private fun checkLeadPosition(): Int {
-        var leadPosition = 0
-        for (car in cars) {
-            if (leadPosition < car.getPositionNumber()) {
-                leadPosition = car.getPositionNumber()
-            }
-        }
-        return leadPosition
+        return cars.maxOf { it.getPositionNumber() }
     }
 
     private fun makeWinnerList(leadPosition: Int): List<String> {
