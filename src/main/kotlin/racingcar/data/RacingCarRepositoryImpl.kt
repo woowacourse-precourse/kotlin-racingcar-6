@@ -21,10 +21,10 @@ class RacingCarRepositoryImpl : RacingCarRepository {
         gameRound--
     }
 
-
     override fun checkRemainingRounds(): Boolean {
         return GameUtils.checkRoundEnded(gameRound)
     }
 
+    override fun getState(): List<RacingCarModel> = carList
 
 }

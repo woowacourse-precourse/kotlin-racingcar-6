@@ -22,17 +22,17 @@ class RacingCarGame {
             // 예외처리 추가예정
             viewModel.setData(inputCars, inputRounds.toInt())
 
-            while (true){
-                if(viewModel.roundCheck()){ // round가 0 이면 게임 종료
+            while (true) {
+                if (viewModel.checkRounds()) { // round가 0 이면 게임 종료
                     break
                 }
                 println(CommonStrings.MESSAGE_EXECUTION_RESULT)
-
-                
+                viewModel.updateRounds()
+                viewModel.getRoundState().forEach { car->
+                    println("${car.carName} : ${car.moveState}")
+                }
             }
-
-
-
         }
     }
+
 }

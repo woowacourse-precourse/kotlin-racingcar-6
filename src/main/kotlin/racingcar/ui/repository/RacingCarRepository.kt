@@ -7,4 +7,5 @@ interface RacingCarRepository {
     fun setCarList(list : List<RacingCarModel>)
     fun updateRoundState()
     fun checkRemainingRounds() : Boolean
+    fun getState(): List<RacingCarModel>
 }
