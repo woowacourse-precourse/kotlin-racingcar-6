@@ -7,9 +7,10 @@ object RacingGameManager {
     private var carNames: List<String> = listOf()
     private var racingCars: MutableList<RacingCar> = mutableListOf()
     private var attemptCount: Int = 0
-    fun play() {
+    fun init(): RacingGameManager {
         registerCarNames()
         getAttemptCount()
+        return this
     }
 
     private fun registerCarNames() {
@@ -25,6 +26,12 @@ object RacingGameManager {
         val input = UserInput.readAttemptCount()
         // (예정사항) input을 넘겨 입력 유효성 검사.
         attemptCount = input.toInt()
+    }
+
+    fun startRace() {
+        for (i in 1..attemptCount) {
+            racingCars.map { it.move() }
+        }
     }
 
 
