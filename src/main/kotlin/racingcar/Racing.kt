@@ -1,10 +1,13 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
+import org.mockito.internal.matchers.Null
+
 class Racing {
     fun startRacing(){
 
     }
-    fun registerCar(){
+    private fun registerCar(){
 
     }
     fun setRacingNum(){
