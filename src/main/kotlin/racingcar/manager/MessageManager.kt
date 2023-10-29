@@ -11,18 +11,25 @@ class MessageManager {
 
     fun printGameResult() = println(GAME_RESULT)
 
-    fun printCarProgress(car: Car) =
+    fun printOneRacingResult(carList : List<Car>){
+        for (car in carList)
+            printCarProgress(car)
+        println()
+    }
+
+    private fun printCarProgress(car: Car) =
         println("${car.name} : ${"-".repeat(car.progress)}")
 
+    // 구분자(SEPARATOR) 삽입해서 carList 출력
     fun printWinningCars(carList: List<String>) =
         print(GAME_WINNER + carList.joinToString(SEPARATOR))
 
     companion object {
-        const val GAME_START = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-        const val GAME_COUNT = "시도할 횟수는 몇 회인가요?"
-        const val GAME_RESULT = "실행 결과"
-        const val GAME_WINNER = "최종 우승자 : "
-        const val SEPARATOR = ", "
+        private const val GAME_START = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+        private const val GAME_COUNT = "시도할 횟수는 몇 회인가요?"
+        private const val GAME_RESULT = "\n실행 결과"
+        private const val GAME_WINNER = "최종 우승자 : "
+        private const val SEPARATOR = ", "
     }
 
 }

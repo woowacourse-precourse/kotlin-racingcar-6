@@ -6,24 +6,19 @@ import racingcar.model.Car
 // 레이싱을 진행하는 매니저입니다.
 class RacingManager {
 
-    fun oneRacingCycle(
-        carList: MutableList<Car>
+    fun racingCycle(
+        carList: List<Car>
     ) {
         for (car in carList)
-            remoteCarProgress(
-                car, makeRandomNumber()
-            )
+            remoteCarProgress(car)
+    }
+
+    private fun remoteCarProgress(car: Car) {
+        if (makeRandomNumber() in 4..9)
+            car.progress += 1
     }
 
     private fun makeRandomNumber(): Int {
         return Randoms.pickNumberInRange(0, 9)
-    }
-
-    private fun remoteCarProgress(
-        car: Car,
-        randomNumber: Int
-    ) {
-        if (randomNumber in 4..9)
-            car.progress += 1
     }
 }
