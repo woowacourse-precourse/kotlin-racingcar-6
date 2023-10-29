@@ -4,7 +4,7 @@ import car.CarConfiguration.MAX_NAME_LENGTH
 
 object Validator {
 
-    fun startCheck(input: String) {
+    fun nameCheck(input: String) {
         val splitInput = input.split(CAR_DELIMITER)
         splitInput.forEach {
             nameLengthCheck(it)
