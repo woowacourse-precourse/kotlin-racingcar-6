@@ -1,4 +1,4 @@
-package racingcar.car
+package racingcar.game
 
 import racingcar.domain.Car
 import racingcar.manager.InputManager

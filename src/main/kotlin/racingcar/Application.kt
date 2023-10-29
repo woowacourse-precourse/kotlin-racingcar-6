@@ -1,6 +1,6 @@
 package racingcar
 
-import racingcar.car.CarRacingGame
+import racingcar.game.CarRacingGame
 
 fun main() {
     CarRacingGame()
