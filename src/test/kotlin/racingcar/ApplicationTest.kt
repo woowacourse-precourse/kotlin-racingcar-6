@@ -1,5 +1,6 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
@@ -7,6 +8,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.Assertions.*
+import racingcar.model.Move
 import racingcar.util.GameMessage
 import racingcar.util.RandomGenerator
 
@@ -42,6 +44,14 @@ class ApplicationTest : NsTest() {
         val maxValue = 9
         val randomNumber = RandomGenerator.makeRandomNumber()
         assertTrue(randomNumber in minValue.. maxValue)
+    }
+    @Test
+    fun `난수가 0~3일때 자동차 이동 결과`(){
+        val testMove = Move(0)
+        val beforePosition = testMove.position
+        testMove.checkMove(Randoms.pickNumberInRange(0,3))
+        val afterPosition = testMove.position
+        assertEquals(beforePosition, afterPosition)
     }
     public override fun runMain() {
         main()
