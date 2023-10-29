@@ -7,6 +7,10 @@ class RacingCar private constructor(
     var movingCount = 0
         private set
 
+    fun move() {
+        ++movingCount
+    }
+
     companion object {
         private const val MAX_NAME_LENGTH = 5
 
