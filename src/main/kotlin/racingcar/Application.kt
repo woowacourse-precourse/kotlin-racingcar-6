@@ -38,6 +38,9 @@ fun main() {
         checkMaxDistance(item)
     }
 
+    for (item in CAR_LIST) {
+        checkisMaximum(item)
+    }
 }
 
 // 경주할 자동차 이름 글자 수 체크
@@ -79,5 +82,11 @@ fun checkGo(item: Car, random: Int) {
 fun checkMaxDistance(item: Car) {
     if (item.go >= MAX_DISTANCE) {
         MAX_DISTANCE = item.go
+    }
+}
+
+fun checkisMaximum(item: Car) {
+    if(item.go == MAX_DISTANCE) {
+        WINNER_LIST.add(item.name)
     }
 }
