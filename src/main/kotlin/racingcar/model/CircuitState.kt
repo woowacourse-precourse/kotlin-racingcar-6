@@ -5,4 +5,6 @@ sealed class CircuitState{
     data object Start : CircuitState()
     data object Racing : CircuitState()
     data object End : CircuitState()
+
+    data object Exit : CircuitState()
 }
