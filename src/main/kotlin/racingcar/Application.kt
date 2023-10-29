@@ -1,5 +1,7 @@
 package racingcar
 
+import racingcar.ui.UserInput
+
 fun main() {
-    // TODO: 프로그램 구현
+    UserInput.readCarName()
 }
