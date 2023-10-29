@@ -70,7 +70,7 @@ class Game {
     }
 
     private fun printWinner() {
-        val winnerList = cars.getWinner()
-        println("$TEXT_PRINT_WINNER : ${winnerList.joinToString(", ") { it.name }}")
+        val winners = cars.getWinner()
+        println("$TEXT_PRINT_WINNER : ${winners.joinToString(", ")}")
     }
 }

@@ -11,8 +11,9 @@ class Cars(
         }
     }
 
-    fun getWinner(): List<Car> {
+    fun getWinner(): List<String> {
         val winnerCar = cars.maxBy { it.position }
-        return cars.filter { it.position == winnerCar.position }
+        val winnerCarList = cars.filter { it.position == winnerCar.position }
+        return winnerCarList.map { it.name }
     }
 }
