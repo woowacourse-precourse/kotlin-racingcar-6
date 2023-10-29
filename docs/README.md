@@ -8,6 +8,7 @@
    - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
 4. 유저가 올바르게 시도할 횟수를 입력했는지 확인
    - 숫자 변환 불가시, `IllegalArgumentException`
+   - 0 미만의 값이 들어올 경우도 `IllegalArgumentException`
 5. 모든 자동차에 대해 전진을 할지 멈출지 정함
    - 무작위 값을 구하여서 전진 여부 결정
      - 값이 4 이상일 경우, 전진
