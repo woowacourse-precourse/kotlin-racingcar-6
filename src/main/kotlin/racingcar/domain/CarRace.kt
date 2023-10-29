@@ -6,7 +6,7 @@ class CarRace(
     attemptNumber: Int,
     private val raceResult: RaceResult = RaceResult(attemptNumber)
 ) {
-    fun executeRace(carNames: List<String>): ArrayList<MoveResult> {
+    fun executeRace(carNames: List<String>) {
         val moveResultList = arrayListOf<MoveResult>()
         carNames.forEach { carName ->
             val moveResult = MoveResult(
@@ -15,7 +15,6 @@ class CarRace(
             )
             moveResultList.add(moveResult)
         }
-        return moveResultList
     }
 
     private fun move(): Int =
@@ -28,6 +27,6 @@ class CarRace(
         private const val POSSIBLE_FORWARD = 4
 
         private const val FORWARD = 1
-        private const val STOP = 1
+        private const val STOP = 0
     }
 }
