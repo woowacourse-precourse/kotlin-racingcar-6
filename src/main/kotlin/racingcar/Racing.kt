@@ -9,5 +9,16 @@ class Racing {
         println("시도할 횟수는 몇 회인가요?")
         RacingSystem.setAttemptNumber(Console.readLine())
         RacingSystem.createCars()
+        println()
     }
+
+    fun start(){
+        val attmeptNumber = RacingSystem.getAttemptNumber()
+        for (i in 0..attmeptNumber) {
+            RacingSystem.runCars()
+            RacingSystem.showLap()
+        }
+    }
+
+
 }
