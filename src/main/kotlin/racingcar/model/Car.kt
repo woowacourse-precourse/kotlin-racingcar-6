@@ -9,4 +9,8 @@ class Car (name: String, distance: Int){
         require(name.isEmpty()) { "이름을 입력해주세요." }
         this.name = name
     }
+
+    fun moved() {
+        distance++
+    }
 }
