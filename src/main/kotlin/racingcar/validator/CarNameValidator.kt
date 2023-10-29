@@ -1,20 +1,18 @@
 package racingcar.validator
 
+import racingcar.utils.Converter
+
 class CarNameValidator {
     fun validate(carNames: String) {
-        val carNameList = splitByCommaAndTrimToStringList(carNames)
+        val carNameList = Converter.splitByCommaToStringList(carNames)
 
-        requireNoEmptyName(carNameList)
+        requireNoBlanckName(carNameList)
         requireNameLengthInRange(carNameList)
         requireNoDuplicatedName(carNameList)
     }
 
-    private fun splitByCommaAndTrimToStringList(carNames: String): List<String> {
-        return carNames.split(",").map { it.trim() }
-    }
-
-    private fun requireNoEmptyName(carNameList: List<String>) {
-        require(carNameList.all { it.isNotEmpty() }) { "이름에 공백을 입력할 수 없습니다." }
+    private fun requireNoBlanckName(carNameList: List<String>) {
+        require(carNameList.all { it.isNotBlank() }) { "이름에 공백을 입력할 수 없습니다." }
     }
 
     private fun requireNameLengthInRange(carNameList: List<String>) {
