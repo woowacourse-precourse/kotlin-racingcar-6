@@ -1,8 +1,8 @@
 package racingcar
 
+import racingcar.play.RacingGameManager
 import racingcar.ui.UserInput
 
 fun main() {
-    UserInput.readCarName()
-    UserInput.readAttemptCount()
+    RacingGameManager.startRace()
 }

@@ -1,4 +1,7 @@
 package racingcar.play
 
-class RacingGameManager {
+object RacingGameManager {
+    fun startRace() {
+
+    }
 }
