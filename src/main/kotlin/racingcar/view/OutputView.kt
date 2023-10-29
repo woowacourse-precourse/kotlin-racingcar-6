@@ -9,7 +9,18 @@ class OutputView {
 
     fun printTryNumber() = println(TRY_NUMBER_MESSAGE)
 
-    fun printResult() = println(RESULT_MESSAGE)
+    fun printResult() = println("\n$RESULT_MESSAGE")
+
+    fun printCarScore(carScore: MutableMap<String, Int>) {
+        carScore.forEach{(name, score) ->
+            print("$name : ")
+            for (i in 0 until score) {
+                print("-")
+            }
+            print("\n")
+        }
+        print("\n")
+    }
 }
 
 object Constant {

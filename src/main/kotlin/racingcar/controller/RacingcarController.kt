@@ -51,7 +51,7 @@ class RacingcarController {
 
         for (i in 0 until tryNumber) {
             moveCar.calculateScore(carScore)
-            println(carScore)
+            outputView.printCarScore(carScore)
         }
     }
 }
