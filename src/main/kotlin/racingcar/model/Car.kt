@@ -34,9 +34,4 @@ class Car(name: String) {
         val num = Randoms.pickNumberInRange(RANDOM_RANGE.first, RANDOM_RANGE.second)
         return num >= MOVABLE_LEVEL
     }
-
-    override fun toString(): String {
-        val stringPos = "-".repeat(this.pos)
-        return "${this.name} : $stringPos"
-    }
 }

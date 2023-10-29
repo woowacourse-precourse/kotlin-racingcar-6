@@ -13,7 +13,7 @@ class RacingGameController {
         view.printResultMessage()
         repeat(playCount) {
             board.play()
-            view.printPlayResult(playResult = board.toString())
+            view.printPlayStatus(playStatus = board.getPlayStatus())
         }
         view.printResultWinner(winnerList = board.getResult())
     }

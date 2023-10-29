@@ -26,5 +26,5 @@ class RacingGameView {
     }
 
     fun printResultMessage() = output.printResultMessage()
-    fun printPlayResult(playResult: String) = output.printPlayResult(playResult = playResult + "\n")
+    fun printPlayStatus(playStatus: String) = output.printPlayStatus(playStatus = playStatus + "\n")
 }

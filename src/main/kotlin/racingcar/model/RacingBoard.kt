@@ -23,7 +23,10 @@ class RacingBoard(racerList: List<Car>) {
         return racerList.filter { it.pos == maxPos }
     }
 
-    override fun toString(): String {
-        return racerList.joinToString("\n")
+    fun getPlayStatus(): String {
+        return racerList.joinToString("\n") { car: Car ->
+            val stringPos = "-".repeat(car.pos)
+            "${car.name} : $stringPos"
+        }
     }
 }

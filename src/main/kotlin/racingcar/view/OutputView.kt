@@ -12,7 +12,7 @@ class OutputView {
     fun printInputGuideCarNameList() = printMessage(INPUT_GUIDE_CAR_NAME_LIST_MESSAGE)
     fun printInputGuidePlayCount() = printMessage(INPUT_GUIDE_PLAY_COUNT_MESSAGE)
     fun printResultMessage() = printMessage(PLAY_RESULT_MESSAGE)
-    fun printPlayResult(playResult: String) = printMessage(playResult)
+    fun printPlayStatus(playStatus: String) = printMessage(playStatus)
     fun printResultWinner(winnerList: List<String>) {
         val winnerString = winnerList.joinToString(", ")
         printMessage(RESULT_WINNER_MESSAGE.format(winnerString))
