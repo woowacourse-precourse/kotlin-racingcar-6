@@ -1,5 +1,6 @@
 package racingcar.ui
 
+import camp.nextstep.edu.missionutils.Console
 import racingcar.data.RacingCarRepositoryImpl
 import racingcar.ui.repository.RacingCarRepository
 import racingcar.ui.viewmodel.RacingCarViewModel
@@ -11,7 +12,12 @@ class RacingCarGame {
     private val viewModel = RacingCarViewModel(repository)
     fun start() {
         println(CommonStrings.MESSAGE_INPUT_CAR_NAME)
-        viewModel
+        val inputCars = Console.readLine()
+        // 예외처리 추가예정
+        println(CommonStrings.MESSAGE_INPUT_NUMBER_OF_ROUNDS)
+        val inputRounds = Console.readLine()
+        // 예외처리 추가예정
+        viewModel.setData(inputCars,inputRounds.toInt())
 
 
 

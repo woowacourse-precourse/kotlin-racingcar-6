@@ -43,6 +43,6 @@ object GameUtils {
     }
     // 입력값(carNames) Parsing & Mapping
     fun mappingToCarList(input : String) = input.split(",").map { RacingCarModel(it.trim()) }
-    
+
 }
 
