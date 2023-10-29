@@ -1,14 +1,13 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Console
-
 object RacingSystem {
     private var carNames:List<String> = emptyList()
     private var attemptNumber:Int = 0
-    private var carLane:MutableList<Car> = arrayListOf()
-    fun setCarNames(namesInput:String){
-        carNames = splitNameList(namesInput)
-        require(checkCarName())
+    private lateinit var carLane:CarLane
+    fun setCarNames(carNamesInput:String){
+        var splitedCarNameInput = splitCarNameInput(carNamesInput)
+        require(checkCarNameLength(splitedCarNameInput))
+        carNames = splitedCarNameInput
     }
 
     fun setAttemptNumber(attemptNumberInput:String){
@@ -20,11 +19,9 @@ object RacingSystem {
         }
 
     }
-    fun createCars(){
-        carNames.forEach{
-            var car = Car(it)
-            carLane.add(car)
-        }
+
+    fun createCarLane(){
+        carLane = CarLane(carNames)
     }
 
     fun getCarNames():List<String>{
@@ -35,35 +32,27 @@ object RacingSystem {
         return attemptNumber
     }
 
-    fun getCars():List<Car>{
+    fun getCarLane():CarLane{
         return carLane
     }
 
-    private fun splitNameList(str:String):List<String>{
+    private fun splitCarNameInput(carNamesInput:String):List<String>{
         var result:MutableList<String> = arrayListOf()
-        str.split(',').forEach{
+        carNamesInput.split(',').forEach{
             result.add(it.trim())
         }
         return result
     }
 
-    private fun checkCarName():Boolean{
-        carNames.forEach{
+    private fun checkCarNameLength(carNamesInput:List<String>):Boolean{
+        carNamesInput.forEach{
             require(it.length < 6)
         }
         return true
     }
 
-    fun runCars(){
-        carLane.forEach{
-            it.moveForward()
-        }
-        println()
-    }
-
-    fun showLap() {
-        carLane.forEach {
-            it.showDistanceWithName()
-        }
+    fun presentWinner(){
+        val winners = carLane.judgeWinner().joinToString(separator = ", ")
+        println("\n최종 우승자 : ${winners}")
     }
 }

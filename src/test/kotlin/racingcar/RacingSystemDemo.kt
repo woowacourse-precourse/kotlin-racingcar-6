@@ -52,9 +52,9 @@ class RacingSystemDemo {
     fun `자동차 이름이 들어간 자동차들이 생성되었는지 테스트`() {
         val input = "람보르기니, 레드불, 맥라렌"
         RacingSystem.setCarNames(input)
-        RacingSystem.createCars()
+        RacingSystem.createCarLane()
         var result = arrayListOf<String>()
-        RacingSystem.getCars().forEach { result.add(it.getName())}
+        RacingSystem.getCarLane().getCars().forEach { result.add(it.getName())}
 
         assertEquals(listOf("람보르기니","레드불","맥라렌"),result)
     }
