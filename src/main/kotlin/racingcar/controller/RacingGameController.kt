@@ -6,16 +6,18 @@ import racingcar.model.RacingGameModel
 import racingcar.utils.ErrorMessage
 import racingcar.utils.Values
 import java.lang.NumberFormatException
-import kotlin.properties.Delegates
 
 class RacingGameController(private val view: RacingGameView, private val model: RacingGameModel) {
     private lateinit var carList: List<Pair<String, Int>>
-    private var playCount = 0
+    private lateinit var carNameList: List<String>
+    private var playCount = 5
     fun run() {
         view.requestCarNameInputMessage()
-        if (isAnyCarNameLengthExceeded(carList = setCarList())) {
+        carNameList = setCarList()
+        if (isAnyCarNameLengthExceeded(carNameList)) {
             throw IllegalArgumentException("${ErrorMessage.ERRORMESSAGE_CAR_NAME_LENGTH_EXCEEDED} ${Values.MAXIMUM_CAR_NAME_LENGTH}")
         }
+        carList = carNameList.map { carName -> carName to 0 }
         view.requestPlayCountInputMessage()
         try {
             checkPlayCountNatural(playCount = setPlayCount().toInt())
@@ -23,27 +25,32 @@ class RacingGameController(private val view: RacingGameView, private val model: 
             throw IllegalArgumentException(ErrorMessage.ERRORMESSAGE_PLAY_COUNT_NOT_NATURAL)
         }
         view.informShowProgressMessage()
-        for(i in 0 until playCount) {
-            model.raceTrial(carList)
+        repeat(playCount) {
+            view.showCarProgress(model.raceTrial(carList))
+            println()
         }
     }
+
     @JvmName("callFromString")
     private fun setCarList(): List<String> {
         return listOf(*Console.readLine().split(",").toTypedArray<String>())
     }
+
     private fun setPlayCount(): String {
         return Console.readLine()
     }
-    private fun isAnyCarNameLengthExceeded(carList: List<String>): Boolean {
-        for (i in carList) {
+
+    private fun isAnyCarNameLengthExceeded(carNameList: List<String>): Boolean {
+        for (i in carNameList) {
             if (i.length > Values.MAXIMUM_CAR_NAME_LENGTH) {
                 return true
             }
         }
         return false
     }
+
     private fun checkPlayCountNatural(playCount: Int) {
-        if(playCount < 1) {
+        if (playCount < 1) {
             throw IllegalArgumentException(ErrorMessage.ERRORMESSAGE_PLAY_COUNT_NOT_NATURAL)
         }
     }

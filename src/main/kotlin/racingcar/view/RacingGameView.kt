@@ -12,4 +12,16 @@ class RacingGameView {
     fun informShowProgressMessage() {
         println(ConsoleMessage.SHOW_PROGRESS)
     }
+    fun showCarProgress(carList: List<Pair<String, Int>>) {
+        for(i in 0 until carList.count()) {
+            println("${carList[i].first} : ${visualCarMovedDistance(carList[i].second)}")
+        }
+    }
+    fun visualCarMovedDistance(distance: Int): String {
+        var visualDistance = ""
+        repeat(distance) {
+            visualDistance += "-"
+        }
+        return visualDistance
+    }
 }
