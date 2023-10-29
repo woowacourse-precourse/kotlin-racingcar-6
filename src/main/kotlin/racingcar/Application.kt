@@ -6,8 +6,7 @@ fun main() {
     val carNames = readCarNames()//차이름
     val tryCount = readTryCount()//입력한 수
 
-    val distances = calculateDistances(carNames,tryCount)
-    printDistances(distances)
+    raceCars(carNames, tryCount)
 }
 
 fun readCarNames(): List<String> {
@@ -49,21 +48,41 @@ fun readTryCount(): Int {
     }
 }
 
-fun calculateDistances(carNames: List<String>, tryCount: Int): List<Pair<String, Int>> {
-    return carNames.map { carName ->
-        val distance = (0 until tryCount).count {
-            val randomValue = (0..9).random()
-            randomValue >= 4
+fun raceCars(carNames: List<String>, tryCount: Int) {
+    println("\n시도 결과")
+
+    val totalDistances = mutableMapOf<String, Int>()
+
+    (1..tryCount).forEach { tryIndex ->
+        println("\n$tryIndex 라운드")
+        val distances = calculateDistances(carNames)
+
+        distances.forEach { (name, distance) ->
+            val currentDistance = totalDistances.getOrDefault(name, 0)
+            totalDistances[name] = currentDistance + distance.count { it == '-' }
         }
-        carName to distance
+
+        printDistances(totalDistances)
     }
 }
 
-fun printDistances(distances: List<Pair<String, Int>>) {
-    distances.forEach { (name, distance) ->
-        println("$name: $distance")
+fun calculateDistances(carNames: List<String>): List<Pair<String, String>> {
+    return carNames.map { carName ->
+        val distance = (0 until 1).count {
+            val randomValue = (0..9).random()
+            randomValue >= 4
+        }
+        carName to "-".repeat(distance)
     }
 }
+
+fun printDistances(totalDistances: Map<String, Int>) {
+    totalDistances.forEach { (name, distance) ->
+        println("$name: ${"-".repeat(distance)}")
+    }
+}
+
+
 
 
 
