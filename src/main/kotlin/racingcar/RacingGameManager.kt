@@ -21,7 +21,7 @@ class RacingGameManager {
                 printGameEnd()
             }
 
-            moveForwardCar(cars)
+            moveCarsForward(cars)
             printGameResultPerGameRound(cars)
             println()
         }
@@ -67,15 +67,15 @@ class RacingGameManager {
         return cars
     }
 
-    private fun moveForwardCar(cars: List<Car>) {
+    private fun moveCarsForward(cars: List<Car>) {
         cars.forEach { car ->
-            if (isMoveCar(generateRandomNumber())) {
+            if (isCarMovingAllowed(generateRandomNumber())) {
                 car.addDistance()
             }
         }
     }
 
-    private fun isMoveCar(randomNumber: Int): Boolean = when (randomNumber) {
+    private fun isCarMovingAllowed(randomNumber: Int): Boolean = when (randomNumber) {
         in 4..9 -> true
         else -> false
     }
