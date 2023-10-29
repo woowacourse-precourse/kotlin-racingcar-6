@@ -18,7 +18,7 @@ data class Car(
     }
 
     private fun checkNameLength() =
-        require(inputName.length <= CAR_NAME_MAX) { CAR_NAME_LENGTH_ERROR }
+        require(inputName.length in CAR_NAME_MIN..CAR_NAME_MAX) { CAR_NAME_LENGTH_ERROR }
 
     private fun checkNameLetter() =
         require(inputName.all { it.isDigit() || it.isLetter() }) { CAR_NAME_FORMAT_ERROR }
