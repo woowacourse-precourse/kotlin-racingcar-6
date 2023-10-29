@@ -76,6 +76,10 @@ class RacingGameManager {
         else -> false
     }
 
+    private fun findMaxDistanceCar(cars: List<Car>): Car? {
+        return cars.maxByOrNull { car -> car.distance }
+    }
+
     private fun generateRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
 
     private fun setGameRound(): Int = inputDataFromUser().toInt()
