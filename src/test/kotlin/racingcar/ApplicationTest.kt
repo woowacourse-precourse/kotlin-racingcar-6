@@ -124,7 +124,7 @@ class ApplicationTest : NsTest() {
 
         // then
         val expectedClass = IllegalArgumentException::class.java
-        val expectedErrorMessage = "문자열 길이가 1 ~ 5에 속하지 않습니다."
+        val expectedErrorMessage = IOHandler.NAME_LENGTH_IS_NOT_MATCHED
         assertThat(actual).isInstanceOf(expectedClass)
         assertThat(actual).hasMessageContaining(expectedErrorMessage)
 
@@ -199,7 +199,7 @@ class ApplicationTest : NsTest() {
 
         // then
         val expectedClass = IllegalArgumentException::class.java
-        val expectedErrorMessage = "문자열 길이가 1 ~ 5에 속하지 않습니다."
+        val expectedErrorMessage = IOHandler.NAME_LENGTH_IS_NOT_MATCHED
         assertThat(actual).isInstanceOf(expectedClass)
         assertThat(actual).hasMessageContaining(expectedErrorMessage)
     }
@@ -219,25 +219,99 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `이동 횟수 5를 입력 받는다`() {
+    fun `이동 횟수로 5를 입력 받으면 5를 리턴한다`() {
         // given
         val input = "5"
-        val result = 5
+        setInput(input)
 
         // when
+        val actual = ioHandler.getMoveCount()
 
         // then
+        val expected = 5
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
-    fun `이동 횟수로 숫자가 아닌 다른 값을 입력 받으면 예외를 발생시킨다`() {
+    fun `이동 횟수로 "열 번"을 입력 받으면 예외를 발생시킨다`() {
         // given
         val input = "열 번"
-        // throw IllegalArgumentException
+        setInput(input)
 
         // when
+        val actual: java.lang.IllegalArgumentException = assertThrows(IllegalArgumentException::class.java) {
+            ioHandler.getMoveCount()
+        }
 
         // then
+        val expectedClass = IllegalArgumentException::class.java
+        val expectedErrorMessage = IOHandler.INPUT_IS_NOT_NUM
+        assertThat(actual).isInstanceOf(expectedClass)
+        assertThat(actual).hasMessageContaining(expectedErrorMessage)
+    }
+
+    @Test
+    fun `이동 횟수로 "12삼4"를 입력 받으면 예외를 발생시킨다`() {
+        // given
+        val input = "12삼4"
+        setInput(input)
+
+        // when
+        val actual: java.lang.IllegalArgumentException = assertThrows(IllegalArgumentException::class.java) {
+            ioHandler.getMoveCount()
+        }
+
+        // then
+        val expectedClass = IllegalArgumentException::class.java
+        val expectedErrorMessage = IOHandler.INPUT_IS_NOT_NUM
+        assertThat(actual).isInstanceOf(expectedClass)
+        assertThat(actual).hasMessageContaining(expectedErrorMessage)
+    }
+
+    @Test
+    fun `이동 횟수로 "-1"을 입력 받으면 예외를 발생시킨다`() {
+        // given
+        val input = "-1"
+        setInput(input)
+
+        // when
+        val actual: java.lang.IllegalArgumentException = assertThrows(IllegalArgumentException::class.java) {
+            ioHandler.getMoveCount()
+        }
+
+        // then
+        val expectedClass = IllegalArgumentException::class.java
+        val expectedErrorMessage = IOHandler.NOT_ALLOWED_COUNT
+        assertThat(actual).isInstanceOf(expectedClass)
+        assertThat(actual).hasMessageContaining(expectedErrorMessage)
+    }
+
+    @Test
+    fun `이동 횟수로 "0"을 입력 받으면 0을 리턴한다`() {
+        // given
+        val input = "0"
+        setInput(input)
+
+        // when
+        val actual = ioHandler.getMoveCount()
+
+        // then
+        val expected = 0
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `이동 횟수로 "1_000_000"을 입력 받으면 1_000_000을 리턴한다`() {
+        // given
+        val input = "1000000"
+        setInput(input)
+
+        // when
+        val actual = ioHandler.getMoveCount()
+
+        // then
+        val expected = 1_000_000
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
