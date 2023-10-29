@@ -9,8 +9,8 @@ import java.lang.NumberFormatException
 import kotlin.properties.Delegates
 
 class RacingGameController(private val view: RacingGameView, private val model: RacingGameModel) {
-    private lateinit var carList: List<String>
-    private var playCount by Delegates.notNull<Int>()
+    private lateinit var carList: List<Pair<String, Int>>
+    private var playCount = 0
     fun run() {
         view.requestCarNameInputMessage()
         if (isAnyCarNameLengthExceeded(carList = setCarList())) {
@@ -24,7 +24,7 @@ class RacingGameController(private val view: RacingGameView, private val model: 
         }
         view.informShowProgressMessage()
         for(i in 0 until playCount) {
-
+            model.raceTrial(carList)
         }
     }
     @JvmName("callFromString")
