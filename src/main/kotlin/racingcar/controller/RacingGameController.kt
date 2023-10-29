@@ -12,16 +12,17 @@ class RacingGameController(private val view: RacingGameView, private val model: 
     private lateinit var carList: List<String>
     private var playCount by Delegates.notNull<Int>()
     fun run() {
-        view.requestCarNameInput()
+        view.requestCarNameInputMessage()
         if (isAnyCarNameLengthExceeded(carList = setCarList())) {
             throw IllegalArgumentException("${ErrorMessage.ERRORMESSAGE_CAR_NAME_LENGTH_EXCEEDED} ${Values.MAXIMUM_CAR_NAME_LENGTH}")
         }
-        view.requestPlayCountInput()
+        view.requestPlayCountInputMessage()
         try {
             checkPlayCountNatural(playCount = setPlayCount().toInt())
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException(ErrorMessage.ERRORMESSAGE_PLAY_COUNT_NOT_NATURAL)
         }
+        view.showProgressMessage()
     }
     @JvmName("callFromString")
     private fun setCarList(): List<String> {
@@ -39,7 +40,7 @@ class RacingGameController(private val view: RacingGameView, private val model: 
         return false
     }
     private fun checkPlayCountNatural(playCount: Int) {
-        if(playCount > 0) {
+        if(playCount < 1) {
             throw IllegalArgumentException(ErrorMessage.ERRORMESSAGE_PLAY_COUNT_NOT_NATURAL)
         }
     }
