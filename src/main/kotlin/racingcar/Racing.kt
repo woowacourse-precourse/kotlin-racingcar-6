@@ -1,14 +1,13 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
-import org.mockito.internal.matchers.Null
 
 class Racing {
     val carCollection=CarCollection()
     fun startRacing(){
         registerCar()
         moveRacingCar()
-
+        showRacingWinner()
     }
     private fun registerCar(){
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -39,6 +38,16 @@ class Racing {
         carCollection.showResults()
     }
     fun showRacingWinner(){
-
+        val winnerList=carCollection.getWinner()
+        print("최 우승자 : ")
+        for (i:Int in 0..(winnerList.size-1)){
+            val winnerName=winnerList[i].name
+            if((winnerList.size-1)==i){
+                print(winnerName.amount())
+            }else if((winnerList.size-1)!=i){
+                print("${winnerName.amount()}, ")
+            }
+        }
+        println()
     }
 }
