@@ -58,7 +58,7 @@ fun initialize() {
 
 // 경주할 자동차 이름 글자 수 체크
 fun checkName(name: String) {
-    if (name.length > 4) {
+    if (name.length > 5) {
         throw IllegalArgumentException()
     } else {
         CAR_NAME_LIST.add(name)
