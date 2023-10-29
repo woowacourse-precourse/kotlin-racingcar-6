@@ -1,6 +1,6 @@
 package racingcar.view
 
-import racingcar.car.CarName
+import racingcar.model.CarName
 
 interface RaceView {
     fun displayEnterCarNames()

@@ -1,7 +1,7 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
-import racingcar.car.CarName
+import racingcar.model.CarName
 
 class ConsoleRaceView : RaceView {
 
