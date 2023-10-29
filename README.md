@@ -1,52 +1,35 @@
 # 미션 - 자동차 경주
 
-## 🔍 기능 목록
+## 🔍 진행 방식
 
-### 자동차 생성, 이름 부여
-### 이동 횟수 입력
-  - 게임 루프 실행
-### 자동차의 이동 여부 결정
-  - 각 라운드에 무작위 값 생성
-### 각 라운드 결과 출력
-### 우승자 결정
-  - 우승자 출력
-  - 게임 종료
-### 예외 처리
-  - 자동차 이름, 이동 횟수 부분에서 입력값이 잘못될 경우
-  - illegalArgumentException 발생
+- 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
+- 세 개의 요구 사항을 만족하기 위해 노력한다. 특히 기능을 구현하기 전에 기능 목록을 만들고, 기능 단위로 커밋 하는 방식으로 진행한다.
+- 기능 요구 사항에 기재되지 않은 내용은 스스로 판단하여 구현한다.
 
-## 📮 진행사항
+## 📮 미션 제출 방법
 
-### 자동차 생성, 이름 부여
-  - [ ] 자동차 이름 입력
-  - [ ] 이름 분리
-### 이동 횟수 입력
-  - [ ] 게임 우승 목표 입력 
-  - 게임 루프 실행
-    - [ ] 입력기반 횟수 만큼 게임 반복
-### 자동차의 이동 여부 결정
-  - 각 라운드에 무작위 값 생성
-    - [ ] 0~9 까지 랜덤 숫자 생성
-    - [ ] 각 자동차에 전달
-    - [ ] 4 이상일시 자동차 전진 
-### 각 라운드 결과 출력
-  - [ ] 자동차 이름 결과를 출력
-### 우승자 결정
-  - [ ] 가장 빠르게 우승 목표에 도달한 자동차가 우승자
-    - 우승자 출력
-      - [ ] 우승자 출력, 공동일시 ','로 동시 출력
-    - 게임 종료
-### 예외 처리
-  - 자동차 이름, 이동 횟수 부분에서 입력값이 잘못될 경우
-    - [ ] 자동차 이름이 5자 이상일시 예외처리
-    - [ ] 이동 횟수가 자연수가 아닐시 예외처리
-  - illegalArgumentException 발생
+- 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
+    - GitHub을 활용한 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고해 제출한다.
+- GitHub에 미션을 제출한 후 [우아한테크코스 지원](https://apply.techcourse.co.kr) 사이트에 접속하여 프리코스 과제를 제출한다.
+    - 자세한 방법은 [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 참고
+    - **Pull Request만 보내고 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
 
 ## 🚨 과제 제출 전 체크 리스트 - 0점 방지
 
 - 기능 구현을 모두 정상적으로 했더라도 **요구 사항에 명시된 출력값 형식을 지키지 않을 경우 0점으로 처리**한다.
 - 기능 구현을 완료한 뒤 아래 가이드에 따라 테스트를 실행했을 때 모든 테스트가 성공하는지 확인한다.
 - **테스트가 실패할 경우 0점으로 처리**되므로, 반드시 확인 후 제출한다.
+
+### 테스트 실행 가이드
+
+- 터미널에서 Mac 또는 Linux 사용자의 경우 `./gradlew clean test` 명령을 실행하고,   
+  Windows 사용자의 경우 `gradlew.bat clean test` 또는 `./gradlew.bat clean test` 명령을 실행할 때 모든 테스트가 아래와 같이 통과하는지 확인한다.
+
+```
+BUILD SUCCESSFUL in 0s
+```
+
+---
 
 ## 🚀 기능 요구 사항
 
@@ -151,13 +134,13 @@ jun : -----
   힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
 - 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
 - JUnit 5와 AssertJ를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
-  - 테스트 도구 사용법이 익숙하지 않다면 test/kotlin/study를 참고하여 학습한 후 테스트를 구현한다.
+    - 테스트 도구 사용법이 익숙하지 않다면 test/kotlin/study를 참고하여 학습한 후 테스트를 구현한다.
 
 ### 라이브러리
 
 - `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
-  - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
-  - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+    - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+    - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
 
@@ -168,3 +151,11 @@ Randoms.pickNumberInRange(0, 9)
 ```
 
 ---
+
+## ✏️ 과제 진행 요구 사항
+
+- 미션은 [kotlin-racingcar-6](https://github.com/woowacourse-precourse/kotlin-racingcar-6) 저장소를 Fork & Clone해 시작한다.
+- **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
+- **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
+    - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
+- 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
