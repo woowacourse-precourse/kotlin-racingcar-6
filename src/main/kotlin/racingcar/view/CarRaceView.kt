@@ -11,4 +11,10 @@ class CarRaceView {
         return cars
     }
 
+    fun inputAttemptNumber() : String {
+        val num = Console.readLine()
+
+        return num
+    }
+
 }
