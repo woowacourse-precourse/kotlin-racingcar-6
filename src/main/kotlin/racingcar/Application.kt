@@ -10,9 +10,7 @@ fun main() {
 }
 
 fun gameStart() {
-    val nameList = separateCarNames(inputCarNames())
-    validateNameLength(nameList)
-    val carModelList = makeCarModelList(nameList)
+    val carModelList = inputCarNames()
     println("시도할 횟수는 몇 회인가요?")
     val count = inputRaceCount()
 
@@ -36,21 +34,29 @@ fun printGameStartMessage() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
 }
 
-fun inputCarNames(): String {
+fun inputCars(): String {
     return Console.readLine()
+}
+
+fun inputCarNames(): List<Car> {
+    val carNameList = separateCarNames(inputCars())
+    validateNameLength(carNameList)
+    validateNull(carNameList)
+    validateDuplicate(carNameList)
+    return makeCarModelList(carNameList)
 }
 
 fun separateCarNames(carNames: String): List<String> {
     return carNames.split(",")
 }
 
-fun makeCarModelList(carNames: List<String>): MutableList<Car> {
+fun makeCarModelList(carNames: List<String>): List<Car> {
     var modelList = mutableListOf<Car>()
     carNames.forEach {
         modelList.add(Car(it))
     }
 
-    return modelList
+    return modelList.toList()
 }
 
 fun validateNameLength(carList: List<String>) {
