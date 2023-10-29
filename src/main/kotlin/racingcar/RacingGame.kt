@@ -2,7 +2,10 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-import java.lang.IllegalArgumentException
+import racingcar.Validator.validateDuplicate
+import racingcar.Validator.validateNameLength
+import racingcar.Validator.validateNull
+import racingcar.Validator.validateNumber
 
 class RacingGame {
     lateinit var carModelList: List<Car>
@@ -66,33 +69,12 @@ class RacingGame {
         return modelList.toList()
     }
 
-    fun validateNameLength(carList: List<String>) {
-        carList.forEach {
-            if (it.length > 5) throw IllegalArgumentException("차 이름의 길이가 5보다 큽니다.")
-        }
-    }
-
-    fun validateNull(carList: List<String>) {
-        carList.forEach {
-            if (it.trim().isEmpty()) throw IllegalArgumentException("차 이름에 널값이 존재합니다.")
-        }
-    }
-
-    fun validateDuplicate(carList: List<String>) {
-        val validation = carList.toSet()
-        if (validation.size != carList.size) throw IllegalArgumentException("중복된 차 이름이 존재합니다.")
-    }
-
     fun inputRaceCount(): Int {
         println("시도할 횟수는 몇 회인가요?")
         val input = Console.readLine()
         validateNumber(input)
 
         return input.toInt()
-    }
-
-    fun validateNumber(count: String) {
-        count.toIntOrNull() ?: throw IllegalArgumentException("사용자의 입력이 숫자가 아닙니다.")
     }
 
     fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
