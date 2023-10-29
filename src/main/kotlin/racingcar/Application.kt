@@ -1,5 +1,8 @@
 package racingcar
 
+import racingcar.ui.RacingCarGame
+
 fun main() {
-    // TODO: 프로그램 구현
+    val game = RacingCarGame()
+    game.start()
 }
