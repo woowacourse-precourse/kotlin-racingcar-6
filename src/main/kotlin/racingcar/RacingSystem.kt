@@ -53,4 +53,17 @@ object RacingSystem {
         }
         return true
     }
+
+    fun runCars(){
+        carLane.forEach{
+            it.moveForward()
+        }
+        println()
+    }
+
+    fun showLap() {
+        carLane.forEach {
+            it.showDistanceWithName()
+        }
+    }
 }
