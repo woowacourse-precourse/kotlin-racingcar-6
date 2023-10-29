@@ -14,7 +14,7 @@ object InputValidator {
     }
     fun validateAttempt(attempt : String){
         if(attempt.toIntOrNull()==null){
-            throw IllegalArgumentException(GameMessage.GAME_INPUT_ATTEMPT_MESSAGE)
+            throw IllegalArgumentException(GameMessage.GAME_INPUT_ATTEMPT_ERROR_MESSAGE)
         }
     }
 }
