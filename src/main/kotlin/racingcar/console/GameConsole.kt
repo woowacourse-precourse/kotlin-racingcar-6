@@ -11,7 +11,6 @@ object GameConsole {
     private var racingCount = 0
     fun getCarList(): List<Car> = carList
 
-    fun getCarCount(): Int = carList.size
     fun getRacingCount(): Int = racingCount
 
     fun separateCarList() {
@@ -19,6 +18,13 @@ object GameConsole {
             discriminator.checkCarName(carName)
             registerCar((carName))
         }
+    }
+
+    fun selectWinner() : List<String>{
+        return carList
+            .groupBy { it.progress }// progress 기준으로 mapping
+            .maxBy { it.key } // 키(progress) 기준으로 가장 큰 값 선별
+            .value.map { it.name } // 가장 큰 키의 Car name list 리턴
     }
 
     fun setRacingCount() {

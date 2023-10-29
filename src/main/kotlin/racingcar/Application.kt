@@ -18,8 +18,15 @@ fun main() {
 
     messenger.printGameResult()
     repeat(GameConsole.getRacingCount()){
-        racingManager.racingCycle(GameConsole.getCarList())
-        messenger.printOneRacingResult(GameConsole.getCarList())
+        racingManager.racingCycle(
+            GameConsole.getCarList()
+        )
+        messenger.printOneRacingResult(
+            GameConsole.getCarList()
+        )
     }
 
+    messenger.printWinningCars(
+        GameConsole.selectWinner()
+    )
 }
