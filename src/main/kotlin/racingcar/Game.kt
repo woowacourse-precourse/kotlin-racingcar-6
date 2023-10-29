@@ -50,9 +50,9 @@ class Game {
 
     private fun makeWinnerList(leadPosition: Int): List<String> {
         val winnerList = mutableListOf<String>()
-        for (i in cars) {
-            if (leadPosition == i.getPositionNumber()) {
-                winnerList.add(i.getName())
+        for (car in cars) {
+            if (leadPosition == car.getPositionNumber()) {
+                winnerList.add(car.getName())
             }
         }
         return winnerList
