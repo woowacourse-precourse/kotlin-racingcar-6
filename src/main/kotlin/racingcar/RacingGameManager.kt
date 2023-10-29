@@ -96,7 +96,12 @@ class RacingGameManager {
 
     private fun setGameRound(): Int = inputDataFromUser().toInt()
 
-    private fun inputDataFromUser(): String = Console.readLine()
+    private fun inputDataFromUser(): String {
+        val inputData = Console.readLine()
+        Validator.checkInputNonBlank(inputData)
+
+        return inputData
+    }
 
     private fun closeConsole() = Console.close()
 }
