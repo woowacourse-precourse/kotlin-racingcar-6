@@ -11,21 +11,19 @@ object Validation {
 
     fun validateLength(str: String): String {
         val name = str.trim()
-        println(name.length)
-        if (name.length in 1..5) {
-            return name
-        } else {
+        if (name.length !in 1..5) {
             throw IllegalArgumentException(EXCEPTION_WRONG_LENGTH)
         }
+        return name
     }
 
-    fun validateNumberOfCars(cars: MutableList<String>) {
+    fun validateNumberOfCars(cars: List<String>) {
         if (cars.size < 2) {
             throw IllegalArgumentException(EXCEPTION_WRONG_NUMBER)
         }
     }
 
-    fun validateDuplicateOfCars(cars: MutableList<String>) {
+    fun validateDuplicateOfCars(cars: List<String>) {
         if (cars.toSet().size != cars.size) {
             throw IllegalArgumentException(EXCEPTION_DUPLICATE_CARS)
         }
