@@ -17,7 +17,7 @@ class Car(name: String) {
         return carName
     }
 
-    public fun getForwardCount(): String {
-        return carName
+    public fun getForwardCount(): Int {
+        return forwardCount
     }
 }
