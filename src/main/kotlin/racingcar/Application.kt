@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 val CAR_NAME_LIST = mutableListOf<String>()
 val CAR_LIST = mutableListOf<Car>()
+var MAX_DISTANCE = 0
 
 fun main() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -25,10 +26,17 @@ fun main() {
 
     println()
     println("실행 결과")
+
     // count만큼 경주 게임을 시작한다.
     for (i in 0 until count.toInt()) {
         startGame()
     }
+
+    // 최대 거리값을 구한다.
+    for(item in CAR_LIST) {
+        checkMaxDistance(item)
+    }
+    println(MAX_DISTANCE)
 }
 
 // 경주할 자동차 이름 글자 수 체크
@@ -58,9 +66,17 @@ fun startGame() {
     println()
 }
 
+// random 값을 확인하여 질주 체크
 fun checkGo(item: Car, random: Int) {
     if (random > 4) {
         item.goStraight()
     }
     println("${item.name} : ${"-".repeat(item.go)}")
+}
+
+// 거리 최대값을 구함
+fun checkMaxDistance(item: Car) {
+    if(item.go >= MAX_DISTANCE) {
+        MAX_DISTANCE = item.go
+    }
 }
