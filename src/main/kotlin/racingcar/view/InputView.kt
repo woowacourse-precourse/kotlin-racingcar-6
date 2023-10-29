@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 class InputView {
     // 기능 1. 자동차 이름 입력받기
-    fun getRacingCarName(): List<String> {
+    fun inputRacingCarName(): List<String> {
         val racingCarNameInputList = Console.readLine()
         val racingCarNameList = racingCarNameInputList.split(",")
 
@@ -43,7 +43,7 @@ class InputView {
     }
 
     // 기능 4. 시도할 횟수 정하기
-    fun getAttemptNumber(): Int {
+    fun inputAttemptNumber(): Int {
         val attemptNumber = Console.readLine()
 
         validateAttemptNumber(attemptNumber)

@@ -11,10 +11,10 @@ class RacingCarController(
 ) {
     fun run() {
         outputView.printRacingCarNameInstructions()
-        val racingCarList = makeRacingCarList(inputView.getRacingCarName())
+        val racingCarList = makeRacingCarList(inputView.inputRacingCarName())
 
         outputView.printAttemptNumberInstruction()
-        for (attemptNumber in 0 until inputView.getAttemptNumber()) {
+        for (attemptNumber in 0 until inputView.inputAttemptNumber()) {
             moveOrStop(racingCarList)
 
             outputView.printAttemptResult(attemptNumber, racingCarList)
