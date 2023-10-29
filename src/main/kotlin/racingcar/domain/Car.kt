@@ -9,6 +9,6 @@ class Car(
     )
 ) {
     fun race() {
-        carRace.executeRacingRound()
+        carRace.executeRacingAllRound()
     }
 }
