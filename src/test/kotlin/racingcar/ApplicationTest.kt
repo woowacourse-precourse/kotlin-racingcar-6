@@ -6,6 +6,10 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.Validator.validateDuplicate
+import racingcar.Validator.validateNameLength
+import racingcar.Validator.validateNull
+import racingcar.Validator.validateNumber
 
 class ApplicationTest : NsTest() {
     @Test
@@ -61,8 +65,9 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `이름 문자열 배열로 변환`() {
+        val racingGame = RacingGame()
         val input = "pobi,javaji"
-        val validation = separateCarNames(input)
+        val validation = racingGame.separateCarNames(input)
         val result = listOf("pobi", "javaji")
         assertThat(validation).isEqualTo(result)
     }
@@ -86,19 +91,21 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `우승자 1명 검증`() {
+        val racingGame = RacingGame()
         val carList = listOf(Car("lh99j"), Car("pobi"))
         carList[0].moveOneStep()
-        val validation = getWinner(carList).joinToString()
+        val validation = racingGame.getWinner(carList).joinToString()
         val result = "lh99j"
         assertThat(validation).isEqualTo(result)
     }
 
     @Test
     fun `우승자 여러명 검증`() {
+        val racingGame = RacingGame()
         val carList = listOf(Car("lh99j"), Car("pobi"), Car("anjji"))
         carList[0].moveOneStep()
         carList[2].moveOneStep()
-        val validation = getWinner(carList).joinToString(", ")
+        val validation = racingGame.getWinner(carList).joinToString(", ")
         val result = "lh99j, anjji"
         assertThat(validation).isEqualTo(result)
     }
