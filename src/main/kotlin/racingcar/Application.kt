@@ -16,18 +16,22 @@ fun gameStart() {
 
     println("실행결과")
     repeat(count) {
-        carModelList.forEachIndexed { index, name ->
-            var moveOrNot = moveOrStop()
-            if (moveOrNot) {
-                carModelList[index].moveOneStep()
-            }
-            printName(carModelList[index].name)
-            printDistance(carModelList[index].moveDistance)
-        }
-        println()
+        runOneCycle(carModelList)
     }
     val winnerList = getWinner(carModelList)
     printWinner(winnerList)
+}
+
+fun runOneCycle(carModelList: List<Car>) {
+    carModelList.forEachIndexed { index, name ->
+        val moveOrNot = moveOrStop()
+        if (moveOrNot) {
+            carModelList[index].moveOneStep()
+        }
+        printName(carModelList[index].name)
+        printDistance(carModelList[index].moveDistance)
+    }
+    println()
 }
 
 fun printGameStartMessage() {
