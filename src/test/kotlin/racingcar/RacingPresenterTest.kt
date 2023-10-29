@@ -52,6 +52,27 @@ class RacingPresenterTest {
         )
     }
 
+    @Test
+    fun `getWinners 메서드 사용시 가장 멀리 이동한 레이싱 카들을 반환`() {
+        val presenter = RacingPresenter()
+        val input = "pobi,hello,mando"
+        presenter.createRacingCarsOrThrow(input)
+
+        assertRandomNumberInRangeTest(
+            {
+                repeat(5) { presenter.moveRacingCars() }
+                val winners = presenter.getWinners()
+                val winnerNames = winners.map { it.name }
+                Assertions.assertThat(winnerNames).contains("hello", "mando")
+            },
+            MOVING_FORWARD, STOP,           STOP,
+            STOP,           MOVING_FORWARD, MOVING_FORWARD,
+            STOP,           MOVING_FORWARD, STOP,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            STOP,           STOP,           MOVING_FORWARD,
+        )
+    }
+
     companion object {
         private const val MOVING_FORWARD = 4
         private const val STOP = 3

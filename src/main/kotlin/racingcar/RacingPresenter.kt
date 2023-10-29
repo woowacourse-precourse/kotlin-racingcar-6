@@ -27,6 +27,11 @@ class RacingPresenter {
         }
     }
 
+    fun getWinners(): List<RacingCar> {
+        val maxMovingCount = racingCars.maxOf { it.movingCount }
+        return racingCars.filter { it.movingCount == maxMovingCount }
+    }
+
     companion object {
         private const val MOVING_RANDOM_RANGE_START = 0
         private const val MOVING_RANDOM_RANGE_END = 9
