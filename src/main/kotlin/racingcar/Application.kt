@@ -6,8 +6,8 @@ import racingcar.view.OutputView
 
 fun main() {
     val inputView = InputView()
-    val outputView = OutputView()
     val racingGame = RacingGame()
+    val outputView = OutputView()
     val racingCars = inputView.prepareToPlay()
 
     racingGame.playGame(racingCars)

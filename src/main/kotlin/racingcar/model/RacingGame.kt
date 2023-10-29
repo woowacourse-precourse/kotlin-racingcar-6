@@ -8,25 +8,27 @@ class RacingGame() {
     fun playGame(racingCars: RacingCars) {
         var cnt = 0
         println("실행 결과")
-        while(racingCars.tryCnt > cnt) {
+        while (racingCars.tryCnt > cnt) {
             cnt++
             move(racingCars)
             outputView.printProgress(racingCars.carList)
         }
     }
+
     private fun move(racingCars: RacingCars) {
-        for(racingCar in racingCars.carList) {
+        for (racingCar in racingCars.carList) {
             val checkNum = generateNumber()
-            if(haveCondition(checkNum)) {
+            if (haveCondition(checkNum)) {
                 racingCar.distance += STR_DIST
             }
         }
     }
-    private fun generateNumber() : Int {
+
+    private fun generateNumber(): Int {
         return Randoms.pickNumberInRange(MIN_NUM, MAX_NUM)
     }
 
-    private fun haveCondition(num : Int) : Boolean {
+    private fun haveCondition(num: Int): Boolean {
         return num >= MOVE_CONDITION_NUM
     }
 
