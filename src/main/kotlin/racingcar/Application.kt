@@ -18,5 +18,9 @@ fun getCarNames(): String {
 
 fun getRounds(): Int {
     println("시도할 횟수는 몇 회인가요?")
-    return Console.readLine().toInt()
+    val userInput = Console.readLine()
+    if (userInput.any { !it.isDigit() }) {
+        throw IllegalArgumentException("입력값은 숫자여야 합니다.")
+    }
+    return userInput.toInt()
 }
