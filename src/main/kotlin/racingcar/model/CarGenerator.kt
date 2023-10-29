@@ -2,5 +2,5 @@ package racingcar.model
 
 interface CarGenerator {
 
-    fun generate()
+    fun generate():RacingCarModel
 }
