@@ -19,13 +19,13 @@ class Racing {
             carCollection.putCar(car)
         }
     }
-    fun setRacingNum():RacingNum{
+    private fun setRacingNum():RacingNum{
         println("시도할 횟수는 몇 회인가요?")
         val getRacingNum=Console.readLine()
         val racingNum=RacingNum(getRacingNum.toInt())
         return racingNum
     }
-    fun moveRacingCar(){
+    private fun moveRacingCar(){
         val racingNum=setRacingNum()
         println()
         println("실행 결과")
@@ -34,12 +34,12 @@ class Racing {
             showRacingResult()
         }
     }
-    fun showRacingResult(){
+    private fun showRacingResult(){
         carCollection.showResults()
     }
-    fun showRacingWinner(){
+    private fun showRacingWinner(){
         val winnerList=carCollection.getWinner()
-        print("최 우승자 : ")
+        print("최종 우승자 : ")
         for (i:Int in 0..(winnerList.size-1)){
             val winnerName=winnerList[i].name
             if((winnerList.size-1)==i){
