@@ -20,6 +20,8 @@ fun main() {
     val count = Console.readLine()
     checkCount(count)
 
+    Console.close()
+
     // CAR_NAME_LIST에 들어있는 이름으로 Car 객체를 만들어준다.
     for (name in CAR_NAME_LIST) {
         CAR_LIST.add(Car(name))
@@ -41,6 +43,8 @@ fun main() {
     for (item in CAR_LIST) {
         checkisMaximum(item)
     }
+
+    println("최종 우승자 : ${WINNER_LIST.joinToString()}")
 }
 
 // 경주할 자동차 이름 글자 수 체크
