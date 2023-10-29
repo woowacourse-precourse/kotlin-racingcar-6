@@ -4,18 +4,17 @@ import camp.nextstep.edu.missionutils.Console
 import java.lang.IllegalArgumentException
 import camp.nextstep.edu.missionutils.Randoms
 
+lateinit var carModelList: List<Car>
+var gameCount = 0
+
 fun main() {
-    printGameStartMessage()
     gameStart()
 }
 
 fun gameStart() {
-    val carModelList = inputCarNames()
-    println("시도할 횟수는 몇 회인가요?")
-    val count = inputRaceCount()
-
+    initGame()
     println("실행결과")
-    repeat(count) {
+    repeat(gameCount) {
         runOneCycle(carModelList)
     }
     val winnerList = getWinner(carModelList)
@@ -34,8 +33,11 @@ fun runOneCycle(carModelList: List<Car>) {
     println()
 }
 
-fun printGameStartMessage() {
+fun initGame() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    carModelList = inputCarNames()
+    println("시도할 횟수는 몇 회인가요?")
+    gameCount = inputRaceCount()
 }
 
 fun inputCars(): String {
