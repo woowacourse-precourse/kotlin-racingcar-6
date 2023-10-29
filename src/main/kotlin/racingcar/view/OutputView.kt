@@ -6,11 +6,7 @@ class OutputView {
     private val move = "-"
 
     // 기능 8. 실행 결과 출력하기
-    fun printAttemptResult(attemptNumber: Int, racingCarList: List<RacingCar>) {
-        if (attemptNumber == 0) {
-            printResultHeader()
-        }
-
+    fun printAttemptResult(racingCarList: List<RacingCar>) {
         for (racingCar in racingCarList) {
             printRacingCarMove(racingCar)
         }
@@ -31,7 +27,7 @@ class OutputView {
         println("실행 결과")
     }
 
-    fun printRacingCarNameInstructions() {
+    fun printRacingCarNameInstruction() {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     }
 

@@ -10,14 +10,18 @@ class RacingCarController(
         private val outputView: OutputView
 ) {
     fun run() {
-        outputView.printRacingCarNameInstructions()
+        outputView.printRacingCarNameInstruction()
         val racingCarList = makeRacingCarList(inputView.inputRacingCarName())
 
         outputView.printAttemptNumberInstruction()
         for (attemptNumber in 0 until inputView.inputAttemptNumber()) {
             moveOrStop(racingCarList)
 
-            outputView.printAttemptResult(attemptNumber, racingCarList)
+            if (attemptNumber == 0) {
+                outputView.printResultHeader()
+            }
+
+            outputView.printAttemptResult(racingCarList)
         }
 
         outputView.printWinner(findWinner(racingCarList))
@@ -49,9 +53,9 @@ class RacingCarController(
 
     // 기능 9. 우승자 안내하기
     private fun findWinner(racingCarList: List<RacingCar>): List<RacingCar> {
-        val maxMove = racingCarList.maxBy { racingCar -> racingCar.totalMove }.totalMove
-
         val winnerList = mutableListOf<RacingCar>()
+
+        val maxMove = racingCarList.maxBy { racingCar -> racingCar.totalMove }.totalMove
 
         for (racingCar in racingCarList) {
             if (racingCar.totalMove == maxMove) {
