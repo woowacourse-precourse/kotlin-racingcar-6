@@ -11,7 +11,7 @@ class CarGroup(carNames: String) {
     }
 
     fun getCarsWithLongestDistance(): List<Car> {
-        val maxDistance = cars.maxByOrNull { car -> car.distance } ?: 0
+        val maxDistance = cars.maxOfOrNull { car -> car.distance } ?: 0
         return cars.filter { car -> car.distance == maxDistance }
     }
 
