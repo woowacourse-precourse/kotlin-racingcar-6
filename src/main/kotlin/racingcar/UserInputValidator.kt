@@ -26,6 +26,7 @@ class UserInputValidator {
     }
 
     private fun isNotCorrectLength(name: String) = name.length > NAME_MAX_LENGTH
+    private fun isNotNumber(str: String) = str.toIntOrNull() == null
 
 
     private fun hasDuplicateName(target: String, nameList: MutableList<String>): Boolean {
