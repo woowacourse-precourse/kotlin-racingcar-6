@@ -41,4 +41,26 @@ class GameTest {
 
         assertThat(consoleOutput).isEqualTo(expectedOutput)
     }
+
+    @Test
+    fun `우승자 출력 확인1`() {
+        val ui = UserInterface()
+        ui.printWinners(listOf("aaa","bbb","ccc"))
+
+        val expectedOutput = "최종 우승자 : aaa, bbb, ccc"
+        val consoleOutput = outputStream.toString().trim()
+
+        assertThat(consoleOutput).isEqualTo(expectedOutput)
+    }
+
+    @Test
+    fun `우승자 출력 확인2`() {
+        val ui = UserInterface()
+        ui.printWinners(listOf("aaa"))
+
+        val expectedOutput = "최종 우승자 : aaa"
+        val consoleOutput = outputStream.toString().trim()
+
+        assertThat(consoleOutput).isEqualTo(expectedOutput)
+    }
 }

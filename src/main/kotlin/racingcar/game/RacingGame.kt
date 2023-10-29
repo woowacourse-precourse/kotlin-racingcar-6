@@ -39,8 +39,7 @@ class RacingGame(
         repeat(rounds) {
             playRound()
         }
-
-
+        printWinners(getWinner())
     }
 
     private fun playRound() {
@@ -48,8 +47,6 @@ class RacingGame(
             player.rollTheDice()
         }
         printRoundResult()
-        printWinners(getWinner())
-
     }
 
     private fun printRoundResult() {
@@ -68,7 +65,7 @@ class RacingGame(
 
     }
 
-    fun getWinner(): List<String> {
+    private fun getWinner(): List<String> {
         val winners = mutableListOf<String>()
         for (player in players) {
             if (player.getProgress() == maxProgress) {
@@ -78,7 +75,7 @@ class RacingGame(
         return winners
     }
 
-    fun printWinners(winners: List<String>) {
+    private fun printWinners(winners: List<String>) {
         ui.printWinners(winners)
     }
 
