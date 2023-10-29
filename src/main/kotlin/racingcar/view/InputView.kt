@@ -11,7 +11,7 @@ class InputView {
     }
 
     // 기능 2. 자동차 이름 입력 값 유효성 검사하기
-    fun validateRacingCarName(racingCarNameList: List<String>): List<String> {
+    private fun validateRacingCarName(racingCarNameList: List<String>): List<String> {
         val validRacingCarNameList = mutableListOf<String>()
 
         for (racingCarName in racingCarNameList) {
@@ -49,7 +49,7 @@ class InputView {
     }
 
     // 기능 5. 시도할 횟수 입력값 유효성 검사하기
-    fun validateAttemptNumber(attemptNumber: String): Int {
+    private fun validateAttemptNumber(attemptNumber: String): Int {
         try {
             val validAttemptNumber = attemptNumber.toInt()
 

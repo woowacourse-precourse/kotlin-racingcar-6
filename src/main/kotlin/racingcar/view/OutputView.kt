@@ -20,10 +20,6 @@ class OutputView {
         println("최종 우승자 : $winnerNameList")
     }
 
-    fun printRacingCarMove(racingCar: RacingCar) {
-        println("${racingCar.carName} : " + MOVE.repeat(racingCar.totalMove))
-    }
-
     fun printResultHeader() {
         println()
         println("실행 결과")
@@ -35,5 +31,9 @@ class OutputView {
 
     fun printAttemptNumberInstruction() {
         println("시도할 횟수는 몇 회인가요?")
+    }
+
+    private fun printRacingCarMove(racingCar: RacingCar) {
+        println("${racingCar.carName} : " + MOVE.repeat(racingCar.totalMove))
     }
 }
