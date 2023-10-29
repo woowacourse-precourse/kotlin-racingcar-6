@@ -1,6 +1,6 @@
 package racingcar
 
 fun main() {
-    val carGame = CarGame()
-    carGame.run()
+    val carRaceGame = CarRaceGame()
+    carRaceGame.run()
 }
