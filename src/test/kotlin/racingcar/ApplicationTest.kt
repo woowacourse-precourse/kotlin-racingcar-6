@@ -27,7 +27,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `이름 중복에 대한 예외처리`() {
+    fun `이름 중복에 대한 예외 처리`() {
         assertSimpleTest {
             val carNames = listOf("abc", "abc", "aa", "bb")
             assertThrows<IllegalArgumentException> { isCarNameUnique(carNames) }
@@ -35,13 +35,24 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `이름 길이에 대한 예외처리`() {
+    fun `이름 길이에 대한 예외 처리`() {
         assertSimpleTest {
-            val carNames = listOf("hello", "sponge", "bob","haha")
+            val carNames = listOf("hello", "sponge", "bob", "haha")
             assertThrows<IllegalArgumentException> {
                 carNames.forEach { isCarNameLengthValid(it) }
             }
         }
+    }
+
+    @Test
+    fun `이름 공백에 대한 예외 처리`() {
+        assertSimpleTest {
+            val carNames = listOf("hello", " ", "", "hey")
+            assertThrows<IllegalArgumentException> {
+                carNames.forEach { isCarNameNotEmpty(it) }
+            }
+        }
+
     }
 
     public override fun runMain() {
