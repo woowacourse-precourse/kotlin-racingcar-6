@@ -34,10 +34,10 @@
 ## 기능 목록 체크리스트
 
 - 게임 시작 전
-- [x]  게임 시작 문구를 출력한다. `printGameStartMessage`
+- [x]  게임 시작 문구를 출력한다.
 - [x]  자동차 경주 이름을 입력받는다. `inputCarNames`
 - [x]  자동차 이름들을 구분한다. `separateCarNames`
-- [x]  자동차 이름의 유효성을 검사한다. `validateNameLength`
+- [x]  자동차 이름의 유효성을 검사한다. `validateNameLength` `validateNull` `validateDuplicate`
 - [x]  게임 횟수를 입력받는다. `inputRaceCount`
 
 <br>
@@ -50,13 +50,13 @@
 <br>
 
 - 게임 종료
-- [x]  최종 우승자를 출력한다. `printWinner`
+- [x]  최종 우승자를 출력한다. `getWinner` `printWinner`
 - [x]  여러 명일 경우에는 쉼표로 구분하여 출력한다.
 
 <br><br>
 
 ## 프로그래밍 요구 사항
 
-- [ ]  indent(인덴트, 들여쓰기)는 depth를 3이 넘지 않도록 구현한다.
-- [ ]  함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
-- [ ]  JUnit 5와 AssertJ를 이용하여 기능 목록이 정상적으로 작동하는지 테스트 코드를 작성하여 확인한다.
+- [x]  indent(인덴트, 들여쓰기)는 depth를 3이 넘지 않도록 구현한다.
+- [x]  함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
+- [x]  JUnit 5와 AssertJ를 이용하여 기능 목록이 정상적으로 작동하는지 테스트 코드를 작성하여 확인한다.
