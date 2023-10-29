@@ -79,7 +79,7 @@ fun calculateDistances(carNames: List<String>): List<Pair<String, String>> {
 
 fun printDistances(totalDistances: Map<String, Int>) {
     totalDistances.forEach { (name, distance) ->
-        println("$name: ${"-".repeat(distance)}")
+        println("$name : ${"-".repeat(distance)}")
     }
 }
 
