@@ -8,4 +8,9 @@ class Output {
     fun askTryNumber() {
         println("시도할 횟수는 몇 회인가요?")
     }
+
+    fun printResultMessage() {
+        println()
+        println("실행 결과")
+    }
 }

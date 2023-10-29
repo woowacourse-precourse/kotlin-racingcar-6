@@ -15,4 +15,8 @@ class UserInterface(
 
         return input.enterTryNumber()
     }
+
+    fun printResultMessage() {
+        output.printResultMessage()
+    }
 }
