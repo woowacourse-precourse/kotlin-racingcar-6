@@ -16,22 +16,26 @@ class CircuitController(
             proceedCircuit(circuit)
         }
     }
-    private fun proceedCircuit(circuit: Circuit ){
-        when(circuit.state){
+
+    private fun proceedCircuit(circuit: Circuit) {
+        when (circuit.state) {
             CircuitState.Start -> {
                 outputView.printGameStartMessage()
                 circuit.makeCars(inputView.inputCars())
             }
+
             CircuitState.Racing -> {
                 outputView.printGameInputAttemptMessage()
                 val attempt = inputView.inputAttempt()
                 outputView.printGameResultMessage()
                 circuit.moveCars(attempt)
             }
+
             CircuitState.End -> {
                 val winners = circuit.findWinner()
                 outputView.printGameWinnerMessage(winners)
             }
+
             CircuitState.Exit -> return
         }
     }

@@ -2,9 +2,9 @@ package racingcar.model
 
 import java.lang.StringBuilder
 
-data class Car(val name : String){
+data class Car(val name: String) {
 
-    private var _move = Move(position =0)
+    private var _move = Move(position = 0)
     val move get() = _move
 
     override fun toString(): String {
@@ -16,7 +16,7 @@ data class Car(val name : String){
         return str.toString()
     }
 
-    fun attemptMove(condition : Int){
+    fun attemptMove(condition: Int) {
         _move.checkMove(condition)
     }
 }
