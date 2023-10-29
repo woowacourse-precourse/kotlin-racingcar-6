@@ -41,6 +41,7 @@ object GameUtils {
         val winners = cars.filter { it.moveForward == maxDistance }.map { it.carName }
         return winners
     }
+
     // 입력값(carNames) Parsing & Mapping
     fun mappingToCarList(input : String) = input.split(",").map { RacingCarModel(it.trim()) }
 

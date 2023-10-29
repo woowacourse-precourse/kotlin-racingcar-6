@@ -12,7 +12,7 @@ class RacingCarRepositoryImpl : RacingCarRepository {
         gameRound = round
     }
 
-    override fun setCarList(list : List<RacingCarModel>){
+    override fun setCarList(list: List<RacingCarModel>) {
         carList = list
     }
 
@@ -21,7 +21,8 @@ class RacingCarRepositoryImpl : RacingCarRepository {
         gameRound--
     }
 
-    override fun checkRemainingRounds() : Boolean{
+
+    override fun checkRemainingRounds(): Boolean {
         return GameUtils.checkRoundEnded(gameRound)
     }
 

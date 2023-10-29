@@ -11,4 +11,6 @@ class RacingCarViewModel(val repository: RacingCarRepository) {
         repository.setCarList(GameUtils.mappingToCarList(cars))
     }
 
+    fun roundCheck():Boolean =repository.checkRemainingRounds()
+
 }
