@@ -26,6 +26,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `중복된 이름에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,park,pobi", "1") }
+        }
+    }
+
     public override fun runMain() {
         main()
     }
