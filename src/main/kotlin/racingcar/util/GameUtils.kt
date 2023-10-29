@@ -30,12 +30,18 @@ object GameUtils {
         return isMoving
     }
 
-    private fun checkRoundEnded(isRoundEnded : Int) : Boolean{
+    // 라운드 횟수가 끝났는지 확인
+    fun checkRoundEnded(isRoundEnded : Int) : Boolean{
         return isRoundEnded == 0
     }
 
+    // 게임 종료 후 우승자를 판단해줄 함수
+    fun findWinners(cars: List<RacingCarModel>): List<String> {
+        val maxDistance = cars.maxBy{ it.moveForward }.moveForward
+        val winners = cars.filter { it.moveForward == maxDistance }.map { it.carName }
+        return winners
+    }
 
-
-
+    
 }
 
