@@ -1,5 +1,4 @@
 import InputValue.CAR_DELIMITER
-import car.Car
 import car.CarConfiguration.MAX_NAME_LENGTH
 
 object Validator {
