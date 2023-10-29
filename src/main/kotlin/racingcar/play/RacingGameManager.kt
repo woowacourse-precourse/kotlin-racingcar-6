@@ -16,8 +16,8 @@ object RacingGameManager {
         carNames = UserInput.readCarName()
             .createNameList()
         // (예정사항) carNames를 넘겨 입력 유효성 검사.
-        for (name in carNames) {
-            racingCars.add(RacingCar(name))
+        for (carName in carNames) {
+            racingCars.add(RacingCar(name = carName))
         }
     }
 
@@ -26,5 +26,7 @@ object RacingGameManager {
         // (예정사항) input을 넘겨 입력 유효성 검사.
         attemptCount = input.toInt()
     }
+
+
 
 }
