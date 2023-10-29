@@ -3,6 +3,8 @@ package racingcar.view
 import racingcar.model.RacingCar
 
 class OutputView {
+    private val step = "-"
+
     // 기능 8. 실행 결과 출력하기
     fun printResult(tryNumber: Int, racingCarList: List<RacingCar>) {
         if (tryNumber == 0) {
@@ -37,7 +39,7 @@ class OutputView {
     }
 
     fun printMoveOfRacingCar(racingCar: RacingCar) {
-        println("${racingCar.name} : " + "-".repeat(racingCar.numberOfMove))
+        println("${racingCar.name} : " + step.repeat(racingCar.numberOfMove))
     }
 
     fun printInstructionForRacingCarName() {
