@@ -6,7 +6,7 @@ class Car(val name: String) {
     val distance: Int get() = _distance
 
     init {
-        require(name.isNotBlank() && name.length < 5) { Error.InvalidName }
+        require(name.isNotBlank() && name.length <= 5) { Error.InvalidName }
     }
 
     fun moveForward() {
