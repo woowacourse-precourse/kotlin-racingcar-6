@@ -19,6 +19,7 @@ class RacingCarController(private val inputView: InputView, private val outputVi
     private fun inputCarName(): List<String> {
         inputView.inputCarNamesMessage()
         val inputName = Console.readLine()
+        validateCommaNotFind(inputName)
         return splitInputName(inputName.trim())
     }
 
@@ -31,6 +32,12 @@ class RacingCarController(private val inputView: InputView, private val outputVi
     private fun validateInputName(splitInputName: List<String>) {
         splitInputName.map { names ->
             if (names.length > 5) throw IllegalArgumentException("5글자가 넘는 자동차 이름이 있습니다.")
+        }
+    }
+
+    private fun validateCommaNotFind(inputName: String) {
+        if (!inputName.contains(",")){
+            throw IllegalArgumentException("입력값에 쉼표가 포함되지 않았습니다.")
         }
     }
 
