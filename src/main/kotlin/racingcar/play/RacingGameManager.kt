@@ -44,6 +44,7 @@ object RacingGameManager {
 
     fun announceWinner() {
         val winner = whoIsWinner(racingCars)
+        UserOutput.printWinner(winner)
     }
 
     /**
@@ -62,4 +63,4 @@ object RacingGameManager {
     private fun hasMaxDistance(cars: MutableList<RacingCar>, max: Int): List<String> {
         return cars.filter { it.distance == max }.map { it.name }
     }
-}R
+}
