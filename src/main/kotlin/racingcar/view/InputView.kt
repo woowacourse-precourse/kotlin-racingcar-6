@@ -9,7 +9,8 @@ class InputView {
         return Console.readLine()
     }
 
-    fun getMoveCountFromUser() {
+    fun getMoveCountFromUser(): String {
         println("시도할 횟수는 몇 회인가요?")
+        return Console.readLine()
     }
 }
