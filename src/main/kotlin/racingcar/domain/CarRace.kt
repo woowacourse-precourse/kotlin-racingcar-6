@@ -8,14 +8,18 @@ class CarRace(
     private val raceResult: RaceResult = RaceResult()
 ) {
 
-    fun executeRacing() {
+    fun racingResult(): Map<String, ArrayList<Int>> {
         val racingRoundResult: HashMap<String, ArrayList<Int>> = hashMapOf()
         repeat(attemptNumber) {
             carNames.forEach {
                 racingRoundResult.getOrPut(it) { arrayListOf() }.add(setCarMoveState())
             }
         }
-        raceResult.raceResult(racingRoundResult)
+        return raceResult.getRaceResult(racingRoundResult)
+    }
+
+    fun winner(racingRoundResult: Map<String, ArrayList<Int>) {
+        raceResult.getRaceWinner(racingRoundResult)
     }
 
     private fun setCarMoveState(): Int =
