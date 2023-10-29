@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     askCarNames()
+    askNumber()
 }
 
 fun askCarNames(): List<String> {
@@ -15,5 +16,15 @@ fun askCarNames(): List<String> {
     return carList
 }
 
-
+fun askNumber(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+    val tryNumber = try {
+        val num = Console.readLine().toInt()
+        require(num >= 1) { "1 이상 숫자만 입력해 주세요" }
+        num
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException("1 이상 숫자만 입력해 주세요")
+    }
+    return tryNumber
+}
 
