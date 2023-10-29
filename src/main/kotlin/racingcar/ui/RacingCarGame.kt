@@ -28,9 +28,15 @@ class RacingCarGame {
                 }
                 println(CommonStrings.MESSAGE_EXECUTION_RESULT)
                 viewModel.updateRounds()
-                viewModel.getRoundState().forEach { car->
+                viewModel.getRoundState().forEach { car ->
                     println("${car.carName} : ${car.moveState}")
                 }
+            }
+            val winners = viewModel.findFinalWinners()
+            if (winners.size == 1) {
+                println(CommonStrings.MESSAGE_FINAL_WINNER + "$winners")
+            } else {
+                println(CommonStrings.MESSAGE_FINAL_WINNER + winners.joinToString(","))
             }
         }
     }

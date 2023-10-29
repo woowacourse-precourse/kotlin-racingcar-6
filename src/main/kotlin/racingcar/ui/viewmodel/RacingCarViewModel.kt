@@ -24,5 +24,9 @@ class RacingCarViewModel(val repository: RacingCarRepository) {
         }
     }
 
+    fun findFinalWinners(): List<String> {
+        return GameUtils.findWinners(repository.getState())
+    }
+
 
 }
