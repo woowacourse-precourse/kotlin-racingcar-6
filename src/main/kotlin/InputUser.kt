@@ -14,8 +14,11 @@ class InputUser {
         val input = Console.readLine()
         return input.split(",").map { it.trim() }
     }
+    fun printlnGameCountMent(){
+        println(GameMessage.gameCountMent)
+
+    }
     fun tryGameCount():Int{
-            println(GameMessage.gameCountMent)
             val input = Console.readLine()
             return input.toInt()
     }
