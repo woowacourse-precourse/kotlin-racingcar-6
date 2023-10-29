@@ -20,6 +20,12 @@ object RacingSystem {
         }
 
     }
+    fun createCars(){
+        carNames.forEach{
+            var car = Car(it)
+            carLane.add(car)
+        }
+    }
 
     fun getCarNames():List<String>{
         return carNames
@@ -27,6 +33,10 @@ object RacingSystem {
 
     fun getAttemptNumber():Int{
         return attemptNumber
+    }
+
+    fun getCars():List<Car>{
+        return carLane
     }
 
     private fun splitNameList(str:String):List<String>{
@@ -42,12 +52,5 @@ object RacingSystem {
             require(it.length < 6)
         }
         return true
-    }
-
-    fun createCars(){
-        carNames.forEach{
-            var car = Car(it)
-            carLane.add(car)
-        }
     }
 }
