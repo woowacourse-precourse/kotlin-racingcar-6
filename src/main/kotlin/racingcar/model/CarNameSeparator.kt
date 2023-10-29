@@ -6,14 +6,12 @@ class CarNameSeparator {
         var carName = ""
         for (word in names) {
             if (word == Constants.COMMA) {
-                Validation().carName(carName)
                 separatedName.add(carName)
                 carName = ""
             } else {
                 carName += word
             }
         }
-        Validation().carName(carName)
         separatedName.add(carName)
         return separatedName
     }

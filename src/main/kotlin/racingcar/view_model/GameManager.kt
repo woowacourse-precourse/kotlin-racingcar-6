@@ -11,6 +11,7 @@ class GameManager {
         val carNamesSeparated = CarNameSeparator().separator(carNames)
         OutputView().tryInputMassage()
         val tryNum = InputView().tryNameInput()
+        Validation().carName(carNamesSeparated)
         val Num = Validation().tryNum(tryNum)
         var carProgress: MutableList<Int> = CarProgressInit().progress(carNamesSeparated.size)
         OutputView().racingResult()
