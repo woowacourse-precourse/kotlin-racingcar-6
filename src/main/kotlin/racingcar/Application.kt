@@ -1,7 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
-import com.sun.tools.example.debug.expr.ExpressionParserConstants.COLON
+import camp.nextstep.edu.missionutils.Randoms
 
 class Car(val name: String) {
 
@@ -37,7 +37,7 @@ class OutputHandler {
     fun printResult(result: Map<String, String>) {
         println("실행 결과")
         result.forEach { entry ->
-            val eachResult = entry.key + COLON + entry.value
+            val eachResult = entry.key + " : " + entry.value
             println(eachResult)
         }
         println()
@@ -46,8 +46,15 @@ class OutputHandler {
     fun printWinner(winners: List<String>) {
         println("최종 우승자: " + winners.joinToString(", "))
     }
-
 }
+
+class RandomGenerator {
+    fun generate(): Int {
+        return Randoms.pickNumberInRange(0, 9)
+    }
+}
+
+
 
 fun main() {
     // TODO: 프로그램 구현
