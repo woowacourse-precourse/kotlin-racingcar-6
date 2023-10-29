@@ -31,13 +31,12 @@ fun gameEnd() {
 }
 
 fun runOneCycle(carModelList: List<Car>) {
-    carModelList.forEachIndexed { index, name ->
-        val moveOrNot = moveOrStop()
-        if (moveOrNot) {
-            carModelList[index].moveOneStep()
+    carModelList.forEach { car ->
+        if (moveOrStop()) {
+            car.moveOneStep()
         }
-        printName(carModelList[index].name)
-        printDistance(carModelList[index].moveDistance)
+        printName(car.name)
+        printDistance(car.moveDistance)
     }
     println()
 }
