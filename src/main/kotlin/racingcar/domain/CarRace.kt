@@ -30,3 +30,8 @@ class CarRace(
         private const val STOP = 0
     }
 }
+
+data class MoveResult(
+    val carName: String = "",
+    val moveCount: Int = 0
+)

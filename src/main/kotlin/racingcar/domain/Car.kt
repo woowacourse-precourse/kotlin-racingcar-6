@@ -9,8 +9,3 @@ class Car(
         carRace.executeRace(carNames)
     }
 }
-
-data class MoveResult(
-    val carName: String = "",
-    val moveCount: Int = 0
-)
