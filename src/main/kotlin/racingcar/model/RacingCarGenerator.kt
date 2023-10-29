@@ -2,9 +2,9 @@ package racingcar.model
 
 class RacingCarGenerator {
     val racingCarValidation = RacingCarValidation()
-    fun addPlayer(name: String): Racingcar {
+    fun addPlayer(name: String): RacingCar {
         racingCarValidation.validation(name)
-        return Racingcar(name, INIT_DIST)
+        return RacingCar(name, INIT_DIST)
     }
 
     companion object {
