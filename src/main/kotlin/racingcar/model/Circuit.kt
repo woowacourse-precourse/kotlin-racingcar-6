@@ -1,5 +1,6 @@
 package racingcar.model
 
+import racingcar.util.RandomGenerator
 import racingcar.view.OutputView
 
 class Circuit(private val outputView: OutputView = OutputView()) {
@@ -9,7 +10,10 @@ class Circuit(private val outputView: OutputView = OutputView()) {
     val cars  : List<Car> get() = _cars
 
     fun makeCars(names: List<String>){ //TODO 입력받은 이름들로 자동차 추가하기
-
+        for (name in names){
+            _cars.add(Car(name))
+        }
+        _state = CircuitState.Racing
     }
     fun moveCars(attempt : Int){ //TODO 시도횟수만큼 랜덤숫자를 생성해서 자동차 움직이기
 

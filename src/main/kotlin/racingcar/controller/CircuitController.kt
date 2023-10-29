@@ -15,9 +15,8 @@ class CircuitController(
         while (circuit.state != CircuitState.End) {
             when (circuit.state) {
                 CircuitState.Start -> {
-                    //TODO 게임 시작 메시지 출력
-                    //TODO 자동차 이름 입력 받기
-                    //TODO 입력받은 자동차로 자동차 추가하기
+                    outputView.printGameStartMessage()
+                    circuit.makeCars(inputView.inputCars())
                 }
 
                 CircuitState.Racing -> {
@@ -29,7 +28,6 @@ class CircuitController(
                 CircuitState.End -> {
                     //TODO 승자선정하기
                     //TODO 승자 출력하기
-
                 }
             }
         }
