@@ -1,5 +1,9 @@
 package racingcar.util
 
+import racingcar.constant.Constants.MAX_NAME_LENGTH
+import racingcar.constant.Constants.MIN_ATTEMPT_COUNT
+import racingcar.constant.Constants.MIN_NAME_LENGTH
+
 class Validator(carNames: ArrayList<String>, attemptCount: String) {
 
     init {
@@ -10,7 +14,7 @@ class Validator(carNames: ArrayList<String>, attemptCount: String) {
 
     private fun isValidLengthAndAlphabetic(carNames: ArrayList<String>) {
         carNames.forEach { carName ->
-            if (carName.length !in 1..5 || !carName.all { it.isLetter() }) {
+            if (carName.length !in MIN_NAME_LENGTH..MAX_NAME_LENGTH || !carName.all { it.isLetter() }) {
                 throw IllegalArgumentException("Car names must be alphabetic and have a length of 1 to 5 characters.")
             }
         }
@@ -30,7 +34,7 @@ class Validator(carNames: ArrayList<String>, attemptCount: String) {
             throw IllegalArgumentException("Attempt count must be a positive integer.")
         }
 
-        if (attemptCountInt <= 0) {
+        if (attemptCountInt <= MIN_ATTEMPT_COUNT) {
             throw IllegalArgumentException("Attempt count must be a positive integer.")
         }
     }
