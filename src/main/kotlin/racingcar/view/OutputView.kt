@@ -1,7 +1,7 @@
 package racingcar.view
 
-import racingcar.Car
-import racingcar.CarGroup
+import racingcar.model.Car
+import racingcar.model.CarGroup
 
 class OutputView {
 
@@ -13,7 +13,7 @@ class OutputView {
         val message = buildString {
             appendLine(Message.Result)
             result.cars.forEach { car ->
-                appendLine(String.format(Message.ResultFormat.toString(), car.name, car.distance))
+                appendLine(String.format(Message.ResultFormat.toString(), car.name, formatDistance(car)))
             }
         }
         println(message)
@@ -21,8 +21,17 @@ class OutputView {
 
     fun printWinner(winners: List<Car>) {
         val nameOfWinners = winners.map { winner -> winner.name }
-        print(String.format(Message.WinnerFormat.toString(), Message.formatWinner(nameOfWinners)))
+        print(String.format(Message.WinnerFormat.toString(), formatWinner(nameOfWinners)))
     }
+
+    private fun formatDistance(car: Car): String =
+        buildString {
+            repeat(car.distance) {
+                append("_")
+            }
+        }
+
+    private fun formatWinner(names: List<String>): String = names.joinToString(", ")
 
     private enum class Message(private val message: String) {
         RaceCarNames("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"),
@@ -32,12 +41,5 @@ class OutputView {
         ResultFormat("%s : %s");
 
         override fun toString() = message
-
-        companion object {
-            fun formatWinner(names: List<String>): String =
-                buildString {
-                    append(names).append(", ")
-                }.dropLast(2)
-        }
     }
 }
