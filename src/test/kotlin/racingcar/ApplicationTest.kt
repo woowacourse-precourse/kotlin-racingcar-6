@@ -71,6 +71,16 @@ class ApplicationTest : NsTest() {
             MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
         )
     }
+    @Test
+    fun `승자가 복수인 경우`(){
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,jun", "3")
+                assertThat(output()).contains("pobi : -", "woni : -", "jun : -", "최종 우승자 : pobi, woni, jun")
+            },
+            MOVING_FORWARD, STOP, STOP, STOP, MOVING_FORWARD, STOP, STOP, STOP, MOVING_FORWARD
+        )
+    }
     public override fun runMain() {
         main()
     }
