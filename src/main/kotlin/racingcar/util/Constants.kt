@@ -11,4 +11,7 @@ object Constants {
 
     // VALUE
     const val CAR_NAME_DELIMITER = ","
+
+    const val MOVE_STOP = 0
+    const val MOVE_FORWARD = 1
 }
