@@ -13,7 +13,7 @@ class RacingCarController(
         val racingCarList = makeRacingCarList(inputRacingCarName())
 
         for (tryNumber in 0 until inputTryNumber()) {
-            forwardOrStop(racingCarList)
+            moveForwardOrStop(racingCarList)
             outputView.printResult(tryNumber, racingCarList)
         }
 
@@ -36,7 +36,7 @@ class RacingCarController(
     }
 
     // 기능 7. 전진, 정지 판단하기
-    private fun forwardOrStop(racingCarList: List<RacingCar>) {
+    private fun moveForwardOrStop(racingCarList: List<RacingCar>) {
         for (racingCar in racingCarList) {
             if (getRandomNumber() >= 4) {
                 racingCar.moveForward()
