@@ -17,6 +17,7 @@ fun main() {
     checkCount(count)
 }
 
+// 경주할 자동차 이름 글자 수 체크
 fun checkName(name: String) {
     if (name.length > 4) {
         throw IllegalArgumentException()
@@ -25,6 +26,7 @@ fun checkName(name: String) {
     }
 }
 
+// 시도 횟수 Int형 체크
 fun checkCount(count: String) {
     try {
         count.toInt()
