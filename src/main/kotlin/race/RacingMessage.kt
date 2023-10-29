@@ -1,4 +1,4 @@
-package raceoption
+package race
 
 object RacingMessage {
     const val CAR_DIST_SEPARATOR = " : "
