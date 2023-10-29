@@ -25,7 +25,7 @@ class InputTest {
     @Test
     fun `자동차의 이름이 5글자를 넘게 되면 예외 발생`() {
         val input = "abc123"
-        assertThrows<StringIndexOutOfBoundsException>("String index out of range: 5") {
+        assertThrows<IllegalArgumentException>("글자수가 5자 보다 깁니다.") {
             Util.checkCarName(input)
         }
     }
