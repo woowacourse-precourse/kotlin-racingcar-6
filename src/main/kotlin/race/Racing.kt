@@ -3,6 +3,8 @@ package race
 import car.Car
 import car.CarConfiguration.INIT_DIST
 import car.CarFactory.makeCar
+import race.RacingSystemValues.FINAL_WINNER
+import race.RacingSystemValues.WINNER_SEPARATOR
 import java.math.BigInteger
 
 class Racing {
@@ -25,5 +27,16 @@ class Racing {
             }
         }
         println()
+    }
+
+    fun printWinner() {
+        val winnerList = racingCarList.filter { it.nowDist() == firstCarDist }
+        print(FINAL_WINNER)
+        winnerList.forEachIndexed { index, car ->
+            car.printCarName()
+            if (index != winnerList.lastIndex) {
+                print(WINNER_SEPARATOR)
+            }
+        }
     }
 }

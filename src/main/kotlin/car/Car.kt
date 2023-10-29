@@ -12,6 +12,10 @@ class Car(name: String) {
     private val engine = Engine()
     private val dashBoard = DashBoard()
 
+    fun printCarName() {
+        print(carName)
+    }
+
     fun start() {
         val startFlag = Randoms.pickNumberInRange(MIN_FLAG_VALUE, MAX_FLAG_VALUE)
         if (engine.start(startFlag)) {
