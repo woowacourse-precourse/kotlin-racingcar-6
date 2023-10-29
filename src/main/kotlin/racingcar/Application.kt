@@ -17,7 +17,7 @@ fun main() {
     }
      */
     val numberAttempts = getNumberAttempts()
-
+    if(!isNumberAttemptsValid(numberAttempts)) throw IllegalArgumentException("Invalid format for number of attempts. Please use the specified format.")
 }
 
 fun getCarList() = Console.readLine().split(",")
@@ -26,4 +26,5 @@ fun isCarNameLengthValid(carName: String) = carName.length <= CAR_NAME_MAX_LENGT
 fun isCarNameNotEmpty(carName: String) = carName.trim().isNotEmpty()
 
 fun getNumberAttempts(): String = Console.readLine().trim()
+fun isNumberAttemptsValid(numberAttempts:String) = NUMBER_ATTEMPTS_REGEX.toRegex().matches(numberAttempts)
 
