@@ -8,7 +8,7 @@ class OutputView {
     // 기능 8. 실행 결과 출력하기
     fun printResult(tryNumber: Int, racingCarList: List<RacingCar>) {
         if (tryNumber == 0) {
-            println("\n실행 결과")
+            printInstructionForResult()
         }
 
         for (racingCar in racingCarList) {
@@ -40,6 +40,11 @@ class OutputView {
 
     fun printMoveOfRacingCar(racingCar: RacingCar) {
         println("${racingCar.name} : " + step.repeat(racingCar.numberOfMove))
+    }
+
+    fun printInstructionForResult() {
+        println()
+        println("실행 결과")
     }
 
     fun printInstructionForRacingCarName() {
