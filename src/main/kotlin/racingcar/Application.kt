@@ -8,11 +8,15 @@ lateinit var carModelList: List<Car>
 var gameCount = 0
 
 fun main() {
+    run()
+}
+
+fun run() {
+    initGame()
     gameStart()
 }
 
 fun gameStart() {
-    initGame()
     println("실행결과")
     repeat(gameCount) {
         runOneCycle(carModelList)
