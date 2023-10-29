@@ -9,6 +9,7 @@ import racingcar.util.Constants.TEXT_INPUT_ROUND
 import racingcar.util.Validation.validateLength
 import racingcar.util.Validation.validateNumberOfCars
 import racingcar.util.Validation.validateDuplicateOfCars
+import racingcar.util.Validation.validateRound
 
 class Game {
 
@@ -51,6 +52,6 @@ class Game {
 
     private fun inputRound() {
         val input = Console.readLine()
-        round = input.toInt()
+        round = validateRound(input)
     }
 }
