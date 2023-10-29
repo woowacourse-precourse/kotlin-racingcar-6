@@ -39,7 +39,7 @@ class RacingService {
         return number >= MINIMUM_NUMBER_TO_WIN
     }
 
-    fun getRandomNumber() : Int{
+    private fun getRandomNumber() : Int{
         return Randoms.pickNumberInRange(0,9)
     }
 
