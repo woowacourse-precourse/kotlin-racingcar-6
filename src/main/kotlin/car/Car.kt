@@ -1,5 +1,7 @@
-import CarConfiguration.MAX_FLAG_VALUE
-import CarConfiguration.MIN_FLAG_VALUE
+package car
+
+import car.CarConfiguration.MAX_FLAG_VALUE
+import car.CarConfiguration.MIN_FLAG_VALUE
 import camp.nextstep.edu.missionutils.Randoms
 import caroption.DashBoard
 import caroption.Engine

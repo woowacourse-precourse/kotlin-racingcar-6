@@ -1,7 +1,7 @@
 package caroption
 
-import CarConfiguration.DIST_SYMBOL
-import CarConfiguration.INIT_DIST
+import car.CarConfiguration.DIST_SYMBOL
+import car.CarConfiguration.INIT_DIST
 
 class DashBoard {
     private var dist = INIT_DIST

@@ -1,3 +1,5 @@
+package car
+
 object CarConfiguration {
     const val START_FLAG = 4
     const val INIT_DIST = 0
