@@ -7,7 +7,6 @@ private const val RACE_START_MSG = "경주할 자동차 이름을 입력하세�
 private const val NUMBER_ATTEMPTS_MSG = "시도할 횟수는 몇 회인가요?"
 const val BASE_NUMBER = 4
 
-private const val NUMBER_ATTEMPTS_REGEX = "[1-9]+"
 
 fun main() {
 
@@ -39,5 +38,6 @@ fun isCarNameLengthValid(carName: String) = carName.length <= CAR_NAME_MAX_LENGT
 fun isCarNameNotEmpty(carName: String) = carName.trim().isNotEmpty()
 
 fun getNumberAttempts(): String = Console.readLine().trim()
-fun isNumberAttemptsValid(numberAttempts: String) = NUMBER_ATTEMPTS_REGEX.toRegex().matches(numberAttempts)
+fun isNumberAttemptsValid(numberAttempts: String) = numberAttempts.all { it.isDigit() } && numberAttempts.toInt() >= 1
+
 
