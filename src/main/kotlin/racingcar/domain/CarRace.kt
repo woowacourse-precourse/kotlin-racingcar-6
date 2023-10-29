@@ -18,14 +18,14 @@ class CarRace(
         carNames.forEach { carName ->
             val moveResult = MoveResult(
                 carName = carName,
-                moveCount = moveCar()
+                moveCount = setCarMoveState()
             )
             moveResultList.add(moveResult)
         }
         return moveResultList
     }
 
-    private fun moveCar(): Int =
+    private fun setCarMoveState(): Int =
         if(Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE) >= POSSIBLE_FORWARD) FORWARD else STOP
 
     companion object {
