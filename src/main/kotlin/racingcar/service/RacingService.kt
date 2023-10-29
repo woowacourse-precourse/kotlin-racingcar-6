@@ -11,6 +11,7 @@ class RacingService {
     val carList = mutableListOf<RacingCar>()
     var playCount = 0
 
+    //자동차 경주 전 세팅
     fun setRacing() {
         message.requestCarNames()
 
@@ -24,6 +25,7 @@ class RacingService {
         playCount = Util.getPlayCount() ?: throw IllegalArgumentException()
     }
 
+    //경주 시작
     fun doRacing() {
         carList.forEach { car ->
             val randomNumber = getRandomNumber()
@@ -34,6 +36,7 @@ class RacingService {
         message.progress(carList)
     }
 
+    //자동차가 앞으로 전진해야하는지 파악 함수
     fun isGoForward(number : Int): Boolean {
 
         return number >= MINIMUM_NUMBER_TO_WIN

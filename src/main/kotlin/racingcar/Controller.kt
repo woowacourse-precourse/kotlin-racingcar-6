@@ -7,6 +7,7 @@ class Controller {
     private val racingService = RacingService()
     private val message = Message()
 
+    //자동차 경주
     fun executeRacing(){
         setGame()
         startGame()
@@ -14,14 +15,17 @@ class Controller {
         racingOver()
     }
 
+    //경주 시작전 세팅
     private fun setGame(){
         racingService.setRacing()
     }
 
+    //경주 시작
     private fun startGame(){
         println()
     }
 
+    //경주가 진행중
     private fun gameInProgress(){
         message.executionResult()
         val playCount = racingService.playCount
@@ -30,6 +34,7 @@ class Controller {
         }
     }
 
+    //경주가 끝남
     private fun racingOver(){
         message.winner(racingService.carList)
     }
