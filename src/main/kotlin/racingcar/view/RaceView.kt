@@ -1,7 +1,8 @@
 package racingcar.view
 
-import racingcar.model.car.CarName
 import racingcar.model.TurnNumber
+import racingcar.model.car.Car
+import racingcar.model.car.CarName
 
 class RaceView(
     private val inputView: InputView,
@@ -23,8 +24,25 @@ class RaceView(
         return TurnNumber(number = inputView.readInt())
     }
 
+    fun displayRaceResultTitle() {
+        outputView.displayText("\n$RESULT_TITLE") // 입력을 받고 한줄 띄우고 실행 결과 출력
+    }
+
+    fun displayRaceResult(cars: List<Car>) {
+        cars.forEach { car -> car.showResult() }
+        outputView.displayText("") // 한줄 띄우기
+    }
+
+    private fun Car.showResult() {
+        val result = StringBuilder("$name : ")
+        repeat(distance) { result.append(DISTANCE_MARKER) }
+        outputView.displayText(result.toString())
+    }
+
     companion object {
         private const val ENTER_CAR_NAMES = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
         private const val ENTER_TURN_NUMBER = "시도할 횟수는 몇 회인가요?"
+        private const val RESULT_TITLE = "실행 결과"
+        private const val DISTANCE_MARKER = '-'
     }
 }
