@@ -33,7 +33,7 @@ class CarLane {
 
     fun getMaxDistance():Int{
         var winnerCar = cars.maxBy{ it.getDistance() }
-        return winnerCar!!.getDistance()
+        return winnerCar.getDistance()
     }
 
 }

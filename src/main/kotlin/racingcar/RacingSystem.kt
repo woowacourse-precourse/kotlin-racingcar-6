@@ -46,7 +46,8 @@ object RacingSystem {
 
     private fun checkCarNameLength(carNamesInput:List<String>):Boolean{
         carNamesInput.forEach{
-            require(it.length < 6)
+            require(it.length < 6 )
+            require(it.length > 0)
         }
         return true
     }
