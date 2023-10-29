@@ -5,7 +5,7 @@ import java.util.StringTokenizer
 
 class UserInputManager {
     private val userInputValidator = UserInputValidator()
-    fun userNameInput() : MutableList<String>{
+    fun userNameInput() : MutableList<String> {
         val nameList = mutableListOf<String>()
         val input = Console.readLine()
         val st = StringTokenizer(input, ",")
@@ -16,7 +16,7 @@ class UserInputManager {
         return nameList
     }
 
-    fun userTryCountInput() : Int{
+    fun userTryCountInput() : Int {
         val input = Console.readLine()
         userInputValidator.userTryCountInputValidator(input)
         return input.toInt()
