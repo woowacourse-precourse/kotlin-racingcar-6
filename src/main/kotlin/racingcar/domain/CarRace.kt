@@ -8,15 +8,15 @@ class CarRace(
     private val raceResult: RaceResult = RaceResult()
 ) {
     fun executeRacingAllRound() {
-        val raceAllRoundList: ArrayList<List<MoveResult>> = arrayListOf()
+        val raceAllRoundList: ArrayList<List<RacingRound>> = arrayListOf()
         repeat(attemptNumber) { raceAllRoundList.add(executeRacingRound()) }
         raceResult.raceResult(raceAllRoundList)
     }
 
-    fun executeRacingRound(): List<MoveResult> {
-        val moveResultList: ArrayList<MoveResult> = arrayListOf()
+    private fun executeRacingRound(): List<RacingRound> {
+        val moveResultList: ArrayList<RacingRound> = arrayListOf()
         carNames.forEach { carName ->
-            val moveResult = MoveResult(
+            val moveResult = RacingRound(
                 carName = carName,
                 moveCount = setCarMoveState()
             )
@@ -39,7 +39,7 @@ class CarRace(
     }
 }
 
-data class MoveResult(
-    val carName: String = "",
-    val moveCount: Int = 0
+data class RacingRound(
+    val carName: String,
+    val moveCount: Int
 )
