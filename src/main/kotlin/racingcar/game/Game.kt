@@ -6,6 +6,7 @@ import racingcar.model.Cars
 import racingcar.util.Constants.CAR_NAME_DELIMITER
 import racingcar.util.Constants.TEXT_INPUT_CAR_NAME
 import racingcar.util.Constants.TEXT_INPUT_ROUND
+import racingcar.util.Constants.TEXT_PRINT_RESULT
 import racingcar.util.Validation.validateLength
 import racingcar.util.Validation.validateNumberOfCars
 import racingcar.util.Validation.validateDuplicateOfCars
@@ -22,6 +23,12 @@ class Game {
 
         println(TEXT_INPUT_ROUND)
         inputRound()
+
+        println("\n${TEXT_PRINT_RESULT}")
+        for (turn in 1 .. round) {
+            cars.moveAllCars()
+            println()
+        }
     }
 
     private fun inputCarName() {
