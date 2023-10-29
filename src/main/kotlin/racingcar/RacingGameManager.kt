@@ -16,7 +16,7 @@ class RacingGameManager {
         printGameRoundQuestion()
 
         repeat(gameRound) {
-            createMoveNumberOfCars(cars)
+            moveForwardCar(cars)
         }
 
         printGameEnd()
@@ -46,9 +46,11 @@ class RacingGameManager {
         return cars
     }
 
-    private fun createMoveNumberOfCars(cars: List<Car>) {
+    private fun moveForwardCar(cars: List<Car>) {
         cars.forEach { car ->
-            car.changeMove(generateRandomNumber())
+            if (isMoveCar(generateRandomNumber())) {
+                car.addDistance()
+            }
         }
     }
 
