@@ -1,7 +1,6 @@
 package car
 
 object CarFactory {
-    fun makeCar(name: String): Car {
-        return Car(name)
-    }
+    fun makeCar(name: String) = Car(name)
+
 }
