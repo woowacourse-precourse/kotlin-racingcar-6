@@ -11,11 +11,16 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val rounds: Int = readLine().toIntOrNull() ?: throw IllegalArgumentException()
 
-    println("실행 결과")
+    println("\n실행 결과")
     repeat(rounds){
         startRound(cars)
         printRoundResult(cars)
     }
+
+    print("최종 우승자 : ")
+    val winners = findWinner(cars).joinToString(", ") { car -> car.name }
+    println(winners)
+
 }
 
 fun List<String>.toCarListOrNull(): List<Car>{
@@ -38,4 +43,9 @@ fun printRoundResult(cars: List<Car>){
         println(it)
     }
     println()
+}
+
+fun findWinner(cars: List<Car>): List<Car>{
+    val maxForward = cars.maxByOrNull { it.forward }?.forward
+    return cars.filter { it.forward == maxForward }
 }

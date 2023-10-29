@@ -5,9 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms
 data class Car(
     val name: String,
 ) {
-    private var forward: Int = 0
+    var forward: Int = 0
+        private set
 
-    constructor(name: String, forward: Int): this(name){
+    constructor(name: String, forward: Int) : this(name) {
         this.forward = forward
     }
 
