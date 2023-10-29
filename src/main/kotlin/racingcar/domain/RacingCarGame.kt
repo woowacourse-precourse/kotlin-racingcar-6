@@ -9,6 +9,7 @@ class RacingCarGame {
 
     fun startGame() {
         val carName = getCarNames()
+        val race = Race(carName)
     }
 
     private fun getCarNames():String {
