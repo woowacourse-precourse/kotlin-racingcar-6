@@ -75,6 +75,7 @@
   - [x] 이름 입력 예외처리(userNameInputValidator)
   - [x] 이동 횟수 입력 예외처리(userTryCountInputValidator)
   - [x] 이름 최대 글자 수에 부적합 여부(isNotCorrectLength)
-  - [x] 입력한 문자열이 숫자에 부적합 여부(isNotCorrectLength)
+  - [x] 시도할 횟수가 숫자에 부적합 여부(isNotCorrectLength)
+  - [x] 시도할 횟수가 음수인지 여부(isMinusNumber)
   - [x] 이름 중복 여부(hasDuplicateName)
   - [x] IllegalArgumentException 발생(invokeIllegalArgumentException)

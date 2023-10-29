@@ -21,12 +21,13 @@ class UserInputValidator {
     fun userTryCountInputValidator(input: String) {
         when {
             isNotNumber(input) -> invokeIllegalArgumentException(USER_TRY_COUNT_INPUT_IS_NOT_NUMBER_EXCEPTION_MESSAGE)
-            input.toInt() < 0 -> invokeIllegalArgumentException(USER_TRY_COUNT_INPUT_IS_MINUS_NUMBER_EXCEPTION_MESSAGE)
+            isMinusNumber(input) -> invokeIllegalArgumentException(USER_TRY_COUNT_INPUT_IS_MINUS_NUMBER_EXCEPTION_MESSAGE)
         }
     }
 
     private fun isNotCorrectLength(name: String) = name.length > NAME_MAX_LENGTH
     private fun isNotNumber(str: String) = str.toIntOrNull() == null
+    private fun isMinusNumber(str: String) = str.toInt() < 0
 
 
     private fun hasDuplicateName(target: String, nameList: MutableList<String>): Boolean {
