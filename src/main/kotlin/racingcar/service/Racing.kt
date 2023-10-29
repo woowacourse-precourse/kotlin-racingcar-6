@@ -1,14 +1,15 @@
 package racingcar.service
 
+import camp.nextstep.edu.missionutils.Console
 import racingcar.domain.Car
-import racingcar.exception.Exception
+import racingcar.view.Print
 
 class Racing {
     fun startRace() {
-        startRacing(Input(Exception()), Winner(), Distance())
+        startRacing(Input(), Winner(), Distance(), Print())
     }
 
-    private fun startRacing(input: Input, winner: Winner, distance: Distance) {
+    private fun startRacing(input: Input, winner: Winner, distance: Distance, print: Print) {
         val playerList = choicePlayer(input)
         val cycle = input.inputCycle()
         val distanceList = MutableList(playerList.size) { "" }
@@ -19,11 +20,12 @@ class Racing {
                 val move = distance.decideDistance(playerList[index])
                 distance.saveDistance(move, distanceList, index)
             }
-            distance.printDistance(playerList, distanceList)
+            print.printDistance(playerList, distanceList)
             COUNT++
         }
         val winnerList = winner.decideWinner(playerList, distanceList)
-        winner.printWinner(winnerList)
+        print.printWinner(winnerList)
+        Console.close()
     }
 
     private fun choicePlayer(input: Input): List<Car> {

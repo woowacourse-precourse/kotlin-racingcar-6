@@ -19,13 +19,6 @@ class Distance {
         }
     }
 
-    fun printDistance(playerList: List<Car>, distanceList: List<String>) {
-        repeat(playerList.size) {index ->
-            println("${playerList[index].name} : ${distanceList[index]}")
-        }
-        println()
-    }
-
     companion object {
         private const val GO = 1
         private const val STOP = 0

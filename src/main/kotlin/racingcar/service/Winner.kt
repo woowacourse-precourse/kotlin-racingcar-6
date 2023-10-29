@@ -10,12 +10,6 @@ class Winner {
         return playerMap.filterValues { it == longDistance }.keys.toList()
     }
 
-    fun printWinner(winnerList: List<String>) {
-        print("최종 우승자 : ")
-        val winner = winnerList.joinToString(", ")
-        println(winner)
-    }
-
     private fun changeListToMap(playerList: List<Car>, distanceList: List<String>) : Map<String, String> {
         val playerMap = mutableMapOf<String, String>()
         repeat(playerList.size) {
