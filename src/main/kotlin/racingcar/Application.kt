@@ -6,7 +6,8 @@ fun main() {
     val carNames = readCarNames()//차이름
     val tryCount = readTryCount()//입력한 수
 
-    printView(carNames, tryCount)
+    val distances = calculateDistances(carNames,tryCount)
+    printDistances(distances)
 }
 
 fun readCarNames(): List<String> {
@@ -43,12 +44,26 @@ fun readTryCount(): Int {
                 return tryCountInt
             }
         }
+        //익셉션 처리하기
         println("올바른 숫자를 입력해주세요.")
     }
 }
 
-fun printView(carNames: List<String>, tryCount: Int) {
-    println("자동차 이름: ${carNames.joinToString(", ")}, 시도 횟수: $tryCount")
+fun calculateDistances(carNames: List<String>, tryCount: Int): List<Pair<String, Int>> {
+    return carNames.map { carName ->
+        val distance = (0 until tryCount).count {
+            val randomValue = (0..9).random()
+            randomValue >= 4
+        }
+        carName to distance
+    }
 }
+
+fun printDistances(distances: List<Pair<String, Int>>) {
+    distances.forEach { (name, distance) ->
+        println("$name: $distance")
+    }
+}
+
 
 
