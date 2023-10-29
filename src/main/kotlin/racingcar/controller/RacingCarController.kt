@@ -10,8 +10,7 @@ class RacingCarController(
         private val outputView: OutputView
 ) {
     fun run() {
-        outputView.printInstructionForRacingCarName()
-        val racingCarList = makeRacingCarList(inputView.getRacingCarName())
+        val racingCarList = makeRacingCarList(inputRacingCarName())
 
         outputView.printInstructionForTryNumber()
         for (tryNumber in 0 until inputView.getTryNumber()) {
@@ -44,5 +43,10 @@ class RacingCarController(
                 racingCar.moveForward()
             }
         }
+    }
+
+    private fun inputRacingCarName(): List<String> {
+        outputView.printInstructionForRacingCarName()
+        return inputView.getRacingCarName()
     }
 }
