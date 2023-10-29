@@ -6,12 +6,12 @@ class CarNameValidator {
     fun validate(carNames: String) {
         val carNameList = Converter.splitByCommaToStringList(carNames)
 
-        requireNoBlanckName(carNameList)
+        requireNoBlankName(carNameList)
         requireNameLengthInRange(carNameList)
         requireNoDuplicatedName(carNameList)
     }
 
-    private fun requireNoBlanckName(carNameList: List<String>) {
+    private fun requireNoBlankName(carNameList: List<String>) {
         require(carNameList.all { it.isNotBlank() }) { "이름에 공백을 입력할 수 없습니다." }
     }
 
