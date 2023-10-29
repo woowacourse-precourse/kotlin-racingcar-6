@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.Assertions.*
+import racingcar.util.GameMessage
 
 class ApplicationTest : NsTest() {
     @Test
@@ -26,6 +28,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `횟수가 숫자가 아닐 경우 예외 처리`(){
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> {runException("pobi,rion","a")  }
+            assertEquals(exception.message,GameMessage.GAME_INPUT_ATTEMPT_ERROR_MESSAGE)
+        }
+    }
     public override fun runMain() {
         main()
     }
