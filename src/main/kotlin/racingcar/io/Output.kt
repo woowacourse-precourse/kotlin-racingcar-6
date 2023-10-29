@@ -13,4 +13,16 @@ class Output {
         println()
         println("실행 결과")
     }
+
+    fun printPlayerProgress(name:String,progress: Int) {
+        print("$name : ")
+        for(i in 0 until progress) {
+            print("-")
+        }
+        println()
+    }
+
+    fun printBlankLine() {
+        println()
+    }
 }

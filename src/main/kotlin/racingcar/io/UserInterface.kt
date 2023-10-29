@@ -19,4 +19,12 @@ class UserInterface(
     fun printResultMessage() {
         output.printResultMessage()
     }
+
+    fun printPlayerProgress(name:String, progress:Int) {
+        output.printPlayerProgress(name,progress)
+    }
+
+    fun printBlankLine() {
+        output.printBlankLine()
+    }
 }

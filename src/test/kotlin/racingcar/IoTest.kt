@@ -1,16 +1,12 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
-import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
-import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.*
 import racingcar.exception.ExceptionChecker
-import racingcar.io.Input
 import racingcar.io.UserInterface
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
-import java.io.InputStream
 import java.io.PrintStream
 import java.lang.IllegalArgumentException
 
