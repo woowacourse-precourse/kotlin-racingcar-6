@@ -1,14 +1,10 @@
 package racingcar.domain.car
 
-import racingcar.domain.NumberGenerator
-
-class Car(name: String) {
-    val name = name
+class Car(val name: String) {
     private var distance = 0
 
-    fun move() {
-        val numberGenerator = NumberGenerator()
-        if (numberGenerator.createRandomNumber() >= 4) {
+    fun move(num : Int) {
+        if (num >= 4) {
             distance++
         }
     }
@@ -17,10 +13,10 @@ class Car(name: String) {
         return distance
     }
 
-    fun printResult() {
-        print("$name : ")
+    fun printResult() : String{
+        var result = "$name : "
         for (i in 1..distance)
-            print("-")
-        println()
+            result += "-"
+        return result
     }
 }

@@ -5,7 +5,7 @@ import racingcar.domain.car.Cars
 
 
 class User {
-    fun askCarName(input: String, cars: Cars) : Cars {
+    fun askCarName(input: String, cars: Cars): Cars {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val carNameList = input.split(",")
         for (carName in carNameList) {
