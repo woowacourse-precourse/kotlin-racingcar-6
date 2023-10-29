@@ -1,10 +1,10 @@
 package race
 
-object RacingManager {
-    private lateinit var racing: Racing
-
-    fun makeRacing() {
-        racing = Racing()
+import Controller.inputCarInformation
+class RacingManager {
+    private val racing = Racing()
+    fun settingRacingCar() {
+        racing.settingRacingCar(inputCarInformation())
     }
 
 }
