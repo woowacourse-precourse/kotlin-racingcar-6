@@ -59,6 +59,12 @@ fun validateNameLength(carList: List<String>) {
     }
 }
 
+fun validateNull(carList: List<String>) {
+    carList.forEach {
+        if (it.trim().isEmpty()) throw IllegalArgumentException("차 이름의 길이가 5보다 큽니다.")
+    }
+}
+
 fun inputRaceCount(): Int {
     val input = Console.readLine()
     validateNumber(input)
@@ -90,6 +96,7 @@ fun printDistance(distance: Int) {
     println()
 }
 
+//굳이 두개로 나눠야할까?
 fun getWinner(carModelList: List<Car>): MutableList<String> {
     val nameList = carModelList.map { it.name }
     val distanceList = carModelList.map { it.moveDistance }
