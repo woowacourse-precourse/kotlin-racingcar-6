@@ -14,6 +14,10 @@ class Car {
         return name
     }
 
+    fun getDistance():Int{
+        return distance
+    }
+
     fun moveForward() {
         val randomNumber = Randoms.pickNumberInRange(0, 9)
         if (randomNumber >= 4) {
