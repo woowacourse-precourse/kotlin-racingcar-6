@@ -69,9 +69,11 @@
   - [x] 이름 중복 입력 예외처리 메시지(USER_NAME_INPUT_NAME_DUPLICATE_EXCEPTION_MESSAGE)
   - [x] 이동 횟수 입력 예외처리 메시지(USER_TRY_COUNT_INPUT_IS_NOT_NUMBER_EXCEPTION_MESSAGE)
   - [x] 이동 횟수 음수 입력 예외처리 메시지(USER_TRY_COUNT_INPUT_IS_MINUS_NUMBER_EXCEPTION_MESSAGE)
+  - [x] 이름 최대 글자 수(NAME_MAX_LENGTH)
   
 - 메서드
   - [x] 이름 입력 예외처리(userNameInputValidator)
   - [x] 이동 횟수 입력 예외처리(userTryCountInputValidator)
+  - [x] 이름 최대 글자 수에 부적합 여부(isNotCorrectLength)
   - [x] 이름 개수 반환(calNameCount)
   - [x] IllegalArgumentException 발생(invokeIllegalArgumentException)

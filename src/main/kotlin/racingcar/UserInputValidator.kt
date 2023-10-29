@@ -6,12 +6,13 @@ class UserInputValidator {
         const val USER_NAME_INPUT_NAME_DUPLICATE_EXCEPTION_MESSAGE = "입력하신 이름 중 중복되는 이름이 있습니다."
         const val USER_TRY_COUNT_INPUT_IS_NOT_NUMBER_EXCEPTION_MESSAGE = "입력한 문자열이 숫자가 아닙니다."
         const val USER_TRY_COUNT_INPUT_IS_MINUS_NUMBER_EXCEPTION_MESSAGE = "시도할 횟수에는 음수가 올 수 없습니다."
+        const val NAME_MAX_LENGTH = 5
     }
 
     fun userNameInputValidator(nameList: MutableList<String>) {
         for(name in nameList) {
             when {
-                name.length > 5 -> invokeIllegalArgumentException(USER_NAME_INPUT_LENGTH_EXCEPTION_MESSAGE)
+                isNotCorrectLength(name) -> invokeIllegalArgumentException(USER_NAME_INPUT_LENGTH_EXCEPTION_MESSAGE)
                 calNameCount(name, nameList) > 1 -> invokeIllegalArgumentException(USER_NAME_INPUT_NAME_DUPLICATE_EXCEPTION_MESSAGE)
             }
         }
@@ -23,6 +24,8 @@ class UserInputValidator {
             input.toInt() < 0 -> invokeIllegalArgumentException(USER_TRY_COUNT_INPUT_IS_MINUS_NUMBER_EXCEPTION_MESSAGE)
         }
     }
+
+    private fun isNotCorrectLength(name: String) = name.length > NAME_MAX_LENGTH
 
     private fun calNameCount(target: String, nameList: MutableList<String>): Int {
         var count = 0
