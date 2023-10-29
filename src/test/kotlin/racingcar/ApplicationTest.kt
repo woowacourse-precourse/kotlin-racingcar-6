@@ -52,7 +52,16 @@ class ApplicationTest : NsTest() {
                 carNames.forEach { isCarNameNotEmpty(it) }
             }
         }
+    }
 
+    @Test
+    fun `시도 횟수 입력에 대한 예외 처리`(){
+        assertSimpleTest {
+            val attempts = listOf("0", " A", "2","10","a", "ㄱ")
+            assertThrows<IllegalArgumentException> {
+                attempts.forEach { isNumberAttemptsValid(it) }
+            }
+        }
     }
 
     public override fun runMain() {
