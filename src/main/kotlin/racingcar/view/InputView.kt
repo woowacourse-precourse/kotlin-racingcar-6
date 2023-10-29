@@ -5,8 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 class InputView {
     // 기능 1. 자동차 이름 입력받기
     fun inputRacingCarName(): List<String> {
-        val racingCarNameInputList = Console.readLine()
-        val racingCarNameList = racingCarNameInputList.split(",")
+        val racingCarNameList = Console.readLine().split(",")
 
         validateRacingCarName(racingCarNameList)
 
