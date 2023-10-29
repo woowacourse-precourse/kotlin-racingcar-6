@@ -11,15 +11,19 @@ class CarRace(
     fun racingResult(): Map<String, ArrayList<Int>> {
         val racingRoundResult: HashMap<String, ArrayList<Int>> = hashMapOf()
         repeat(attemptNumber) {
-            carNames.forEach {
-                racingRoundResult.getOrPut(it) { arrayListOf() }.add(setCarMoveState())
-            }
+            setRacingRound(racingRoundResult)
         }
         return raceResult.getRaceResult(racingRoundResult)
     }
 
-    fun winner(racingRoundResult: Map<String, ArrayList<Int>) {
+    fun winner(racingRoundResult: Map<String, ArrayList<Int>>) {
         raceResult.getRaceWinner(racingRoundResult)
+    }
+
+    private fun setRacingRound(round: HashMap<String, ArrayList<Int>>) {
+        carNames.forEach { carName ->
+            round.getOrPut(carName) { arrayListOf() }.add(setCarMoveState())
+        }
     }
 
     private fun setCarMoveState(): Int =
@@ -27,7 +31,7 @@ class CarRace(
 
     companion object {
         private const val MIN_VALUE = 0
-        private const val MAX_VALUE = 0
+        private const val MAX_VALUE = 9
 
         private const val POSSIBLE_FORWARD = 4
 
