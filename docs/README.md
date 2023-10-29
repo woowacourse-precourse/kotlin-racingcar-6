@@ -31,3 +31,9 @@
   - [ ] 값이 4 이상인 경우, 자동차가 전진한다.  
 
 📖 무작위 값은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+
+### 게임 관리
+- [ ] 게임을 실행한다. // RacingGameManager.startRace()
+- [ ] 입력 객체에게 입력을 사용자 정보를 요청한다.
+- [ ] 입력받은 사용자 정보로 게임을 진행한다.
+- [ ] 출력 객체에게 게임 결과 출력을 요청한다.
