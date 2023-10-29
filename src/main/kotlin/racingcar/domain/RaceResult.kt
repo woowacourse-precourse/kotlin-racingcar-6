@@ -1,9 +1,7 @@
 package racingcar.domain
 
-class RaceResult(private val attemptNumber: Int) {
+class RaceResult() {
     fun getRaceResult(moveResultList: ArrayList<MoveResult>) {
-        repeat(attemptNumber) {
-            raceResultList.add(executeRace())
-        }
+
     }
 }

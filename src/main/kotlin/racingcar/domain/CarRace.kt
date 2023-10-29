@@ -3,21 +3,29 @@ package racingcar.domain
 import camp.nextstep.edu.missionutils.Randoms
 
 class CarRace(
-    attemptNumber: Int,
-    private val raceResult: RaceResult = RaceResult(attemptNumber)
+    private val attemptNumber: Int,
+    private val carNames: List<String>,
+    private val raceResult: RaceResult = RaceResult()
 ) {
-    fun executeRace(carNames: List<String>) {
+    fun executeRacingAllRound(carNames: List<String>): ArrayList<MoveResult> {
+        repeat(attemptNumber) {
+
+        }
+    }
+
+    fun executeRacingRound(): List<MoveResult> {
         val moveResultList = arrayListOf<MoveResult>()
         carNames.forEach { carName ->
             val moveResult = MoveResult(
                 carName = carName,
-                moveCount = move()
+                moveCount = moveCar()
             )
             moveResultList.add(moveResult)
         }
+        return moveResultList
     }
 
-    private fun move(): Int =
+    private fun moveCar(): Int =
         if(Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE) >= POSSIBLE_FORWARD) FORWARD else STOP
 
     companion object {
