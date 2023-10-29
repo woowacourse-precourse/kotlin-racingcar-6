@@ -101,10 +101,8 @@ fun validateNumber(count: String) {
 fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
 
 
-fun moveOrStop(): Boolean {
-    val getNumber = getRandomNumber()
-    return getNumber >= 4
-}
+fun moveOrStop(): Boolean = getRandomNumber() >= 4
+
 
 fun printCarDistance(car: Car) {
     println("${car.name} : ${"-".repeat(car.moveDistance)}")
