@@ -9,11 +9,13 @@ class RacingCarTest {
     fun `값이 4이상일 때, 전진 테스트_값 3`() {
         testCar.move(3)
         assertThat(testCar.distance).isEqualTo(0)
+        assertThat(testCar.path).isEqualTo("")
     }
 
     @Test
     fun `값이 4이상일 때, 전진 테스트_값 4`() {
         testCar.move(4)
         assertThat(testCar.distance).isEqualTo(1)
+        assertThat(testCar.path).isEqualTo("-")
     }
 }
