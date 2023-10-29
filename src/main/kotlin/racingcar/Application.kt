@@ -10,6 +10,12 @@ fun main() {
 
     println("시도할 횟수는 몇 회인가요?")
     val rounds: Int = readLine().toIntOrNull() ?: throw IllegalArgumentException()
+
+    println("실행 결과")
+    repeat(rounds){
+        startRound(cars)
+        printRoundResult(cars)
+    }
 }
 
 fun List<String>.toCarListOrNull(): List<Car>{
@@ -17,6 +23,19 @@ fun List<String>.toCarListOrNull(): List<Car>{
         if(name.length > 5) throw IllegalArgumentException()
         if(name == "") throw IllegalArgumentException()
 
-        Car(name, 0)
+        Car(name)
     }
+}
+
+fun startRound(cars: List<Car>) {
+    cars.forEach {
+        it.moveForward()
+    }
+}
+
+fun printRoundResult(cars: List<Car>){
+    cars.forEach {
+        println(it)
+    }
+    println()
 }
