@@ -2,6 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.test.NsTest
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterEach
@@ -11,17 +12,13 @@ import racingcar.game.RacingGame
 import racingcar.io.UserInterface
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
+import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 
-class GameTest {
+class GameTest: NsTest() {
 
     private val originalSystemOut = System.out
     private val outputStream = ByteArrayOutputStream()
 
-
-    @BeforeEach
-    fun setUp() {
-        System.setOut(PrintStream(outputStream))
-    }
 
     @AfterEach
     fun tearDown() {
@@ -31,6 +28,7 @@ class GameTest {
 
     @Test
     fun `이름과 진행도 정상 출력 기능 확인`() {
+        System.setOut(PrintStream(outputStream))
         val ui = UserInterface()
 
         ui.printPlayerProgress("aaa", 5)
@@ -44,6 +42,7 @@ class GameTest {
 
     @Test
     fun `우승자 출력 확인1`() {
+        System.setOut(PrintStream(outputStream))
         val ui = UserInterface()
         ui.printWinners(listOf("aaa","bbb","ccc"))
 
@@ -55,6 +54,7 @@ class GameTest {
 
     @Test
     fun `우승자 출력 확인2`() {
+        System.setOut(PrintStream(outputStream))
         val ui = UserInterface()
         ui.printWinners(listOf("aaa"))
 
@@ -62,5 +62,26 @@ class GameTest {
         val consoleOutput = outputStream.toString().trim()
 
         assertThat(consoleOutput).isEqualTo(expectedOutput)
+    }
+
+    @Test
+    fun `모두 한칸도 진행하지 않았을 경우`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("aaa,bbb", "1")
+                assertThat(output()).contains("aaa : ", "bbb : ", "최종 우승자 : aaa, bbb")
+            },
+            STOP, STOP
+        )
+
+    }
+
+    public override fun runMain() {
+        main()
+    }
+
+    companion object {
+        private const val MOVING_FORWARD = 4
+        private const val STOP = 3
     }
 }
