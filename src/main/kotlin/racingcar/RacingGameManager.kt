@@ -25,6 +25,8 @@ class RacingGameManager {
             printGameResultPerGameRound(cars)
             println()
         }
+
+        printWinners(findWinners(cars, findMaxDistanceCar(cars)))
         closeConsole()
     }
 
@@ -44,6 +46,8 @@ class RacingGameManager {
             stringBuilder.clear()
         }
     }
+
+    private fun printWinners(winners: List<Car>) = println("최종 우승자 : ${winners.joinToString(", ")}")
 
     private fun createCars(): List<Car> {
         val cars = mutableListOf<Car>()
