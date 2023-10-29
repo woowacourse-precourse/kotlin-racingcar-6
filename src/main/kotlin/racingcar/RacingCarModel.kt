@@ -2,7 +2,7 @@ package racingcar
 
 class RacingCarModel(
     var racerCrew: Racer = Racer(),
-    var champion: Champion = Champion()
+    val raceChampion: Champion = Champion()
 ) {
     fun requestUpdateRacerName(racerName: MutableList<String>) {
         racerCrew.updateRacerName(racerName)
@@ -21,6 +21,6 @@ class RacingCarModel(
     }
 
     fun requestJudgeChampion() {
-        champion.getChampion(racerCrew)
+        raceChampion.getChampion(racerCrew)
     }
 }

@@ -11,9 +11,16 @@ class RacingCarView() {
 
     fun printRaceOnView(racerCrew: Racer){
         for (index in racerCrew.racerName.indices) {
-            println("${racerCrew.racerName[index]} : ${"-".repeat(racerCrew.moveForward[index])}")
+            val personalMoveResult = "${racerCrew.racerName[index]} : ${"-".repeat(racerCrew.moveForward[index])}"
+            println(personalMoveResult)
         }
         println()
+    }
+
+    fun printChampionOnView(raceChampion: Champion){
+        val championName = raceChampion.championName.joinToString(", ")
+        val announceChampion = "최종 우승자 : $championName"
+        println(announceChampion)
     }
 
     fun printRequestRacer(){

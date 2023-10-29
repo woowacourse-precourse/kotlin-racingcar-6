@@ -6,16 +6,14 @@ class RacingCarController(private val view: RacingCarView, private val model: Ra
     fun race() {
         signUpRacer()
         enterPlayTime()
-        initializationBeforeJudgeRace()
+        initializationMoveForward()
         requestPrintResultText()
         for(sequence in 0 until model.racerCrew.playTime) {
             judgeRace()
             printRace()
         }
         judgeChampion()
-        /*
         printChampion()
-        */
     }
 
     private fun signUpRacer() {
@@ -32,7 +30,7 @@ class RacingCarController(private val view: RacingCarView, private val model: Ra
         model.requestUpdatePlayTime(verifiedPlayTime)
     }
 
-    private fun initializationBeforeJudgeRace() {
+    private fun initializationMoveForward() {
         model.requestInitializationMoveForward()
     }
 
@@ -50,8 +48,11 @@ class RacingCarController(private val view: RacingCarView, private val model: Ra
         view.printRaceOnView(model.racerCrew)
     }
 
-    private fun judgeChampion(){
-
+    private fun judgeChampion() {
         model.requestJudgeChampion()
+    }
+
+    private fun printChampion() {
+        view.printChampionOnView(model.raceChampion)
     }
 }
