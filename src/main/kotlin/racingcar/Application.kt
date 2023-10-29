@@ -3,12 +3,27 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
-class Car(val name: String) {
+class Car(private val name: String, private val randomGenerator: RandomGenerator) {
+    private var position = 0
 
+    init {
+        require(name.length <= 5) { "자동차 이름은 5자를 초과할 수 없습니다." }
+    }
+
+    fun move() {
+        val randomNumber = randomGenerator.generate()
+        if (randomNumber >= 4) {
+            position++
+        }
+    }
+    fun printPosition() {
+        println("$name : ${"-".repeat(position)}")
+    }
 }
 
 class InputHandler {
     private val cars = mutableListOf<Car>()
+    private val randomGenerator = RandomGenerator()
 
     fun start() {
         inputCarNames()
@@ -17,7 +32,7 @@ class InputHandler {
     private fun inputCarNames() {
         val input = Console.readLine()
         val names = input.split(",").map { it.trim() }
-        cars.addAll(names.map { Car(it) })
+        cars.addAll(names.map { Car(it, randomGenerator) })
     }
 
     private fun inputCount(): Int? {
