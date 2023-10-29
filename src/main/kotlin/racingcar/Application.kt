@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 val CAR_NAME_LIST = mutableListOf<String>()
 val CAR_LIST = mutableListOf<Car>()
@@ -21,7 +22,13 @@ fun main() {
     for (name in CAR_NAME_LIST) {
         CAR_LIST.add(Car(name))
     }
-    
+
+    println()
+    println("실행 결과")
+    // count만큼 경주 게임을 시작한다.
+    for (i in 0 until count.toInt()) {
+        startGame()
+    }
 }
 
 // 경주할 자동차 이름 글자 수 체크
@@ -40,4 +47,20 @@ fun checkCount(count: String) {
     } catch (e: NumberFormatException) {
         throw IllegalArgumentException()
     }
+}
+
+// 경주 게임 시작
+fun startGame() {
+    for (item in CAR_LIST) {
+        val random = Randoms.pickNumberInRange(0, 9)
+        checkGo(item, random)
+    }
+    println()
+}
+
+fun checkGo(item: Car, random: Int) {
+    if (random > 4) {
+        item.goStraight()
+    }
+    println("${item.name} : ${"-".repeat(item.go)}")
 }
