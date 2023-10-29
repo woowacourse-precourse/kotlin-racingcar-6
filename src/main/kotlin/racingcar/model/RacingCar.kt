@@ -1,3 +1,3 @@
 package racingcar.model
 
-class RacingCar(var name: String, var distance: Int)
+class RacingCar(var name: String, var distance: String)

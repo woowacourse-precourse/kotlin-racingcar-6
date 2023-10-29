@@ -1,13 +1,13 @@
 package racingcar.model
 
 class RacingCarGenerator {
-    val racingCarValidation = RacingCarValidation()
-    fun addPlayer(name: String): RacingCar {
+    private val racingCarValidation = RacingCarValidation()
+    fun addCar(name: String): RacingCar {
         racingCarValidation.validation(name)
         return RacingCar(name, INIT_DIST)
     }
 
     companion object {
-        private const val INIT_DIST = 0
+        private const val INIT_DIST = ""
     }
 }
