@@ -24,7 +24,7 @@
     - [X] 여러 명 : 쉼표로 구분
 
 **6. 반복 - controller.GameController**
-- [ ] 경주가 N번 반복 가능하도록 확장 - Controller
+- [X] 경주가 N번 반복 가능하도록 확장 - Controller
   <br><br>
 
 

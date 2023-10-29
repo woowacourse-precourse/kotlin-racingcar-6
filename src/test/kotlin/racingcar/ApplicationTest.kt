@@ -12,26 +12,27 @@ import racingcar.controller.GameController
 import racingcar.model.Car
 import racingcar.model.Cars
 import racingcar.model.Repetition
+import racingcar.view.InputView
 
 class ApplicationTest : NsTest() {
     val gameController = GameController()
+    val inputView = InputView()
     val POBI = "pobi"
     val JSON = "json"
 
     @Test
     fun `공백 제거후 리스트로 반환 되는지`() {
-        val carNames = gameController.inputCarNames("  $POBI,  $JSON  ")
-        val cars = Cars(carNames.map { Car(it.trim()) })
+        val carNameList = inputView.splitCarNamesByComma("  $POBI,  $JSON  ")
+        val cars = Cars.fromNames(carNameList)
 
         Assertions.assertEquals(Cars(listOf(Car(POBI), Car(JSON))), cars)
     }
 
     @Test
     fun `자동차 이름 중복 입력 오류테스트`() {
-        val carNames = gameController.inputCarNames("$POBI,$JSON,$POBI")
-
         assertThrows<IllegalArgumentException> {
-            val cars = Cars(carNames.map { Car(it.trim()) })
+            val carNameList = inputView.splitCarNamesByComma("$POBI,$JSON,$POBI")
+            Cars.fromNames(carNameList)
         }
     }
 
@@ -68,12 +69,12 @@ class ApplicationTest : NsTest() {
         )
     }
 
-//    @Test
-//    fun `이름에 대한 예외 처리`() {
-//        assertSimpleTest {
-//            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
-//        }
-//    }
+    @Test
+    fun `이름에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
 
     public override fun runMain() {
         main()
