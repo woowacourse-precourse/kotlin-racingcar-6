@@ -1,5 +1,6 @@
 package racingcar.controller
 
+import racingcar.domain.Judgment
 import racingcar.domain.NumberGenerator
 import racingcar.util.Validator
 import racingcar.view.InputView
@@ -9,7 +10,7 @@ class GameController {
     fun run() {
         val (carNames, attemptCount) = getUserInput()
         Validator(carNames, attemptCount)
-        play(attemptCount.toInt())
+        play(carNames, attemptCount.toInt())
         printResult()
     }
 
@@ -18,12 +19,15 @@ class GameController {
         return Pair(input.getCarName(), input.getNumberOfAttemps())
     }
 
-    private fun play(attemptCount: Int) {
+    private fun play(carNames: ArrayList<String>, attemptCount: Int) {
         val numberGenerator = NumberGenerator()
+        val judgment = Judgment()
 
         var currentCount = 0
         while (currentCount < attemptCount) {
-            val randomNumber = numberGenerator.createRandomNumber()
+                val randomNumber = numberGenerator.createRandomNumber()
+                if(judgment.canMoveForward(randomNumber)) { }
+
             currentCount++
         }
     }
