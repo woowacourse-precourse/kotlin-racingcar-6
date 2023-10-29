@@ -1,8 +1,8 @@
 package car
 
+import camp.nextstep.edu.missionutils.Randoms
 import car.CarConfiguration.MAX_FLAG_VALUE
 import car.CarConfiguration.MIN_FLAG_VALUE
-import camp.nextstep.edu.missionutils.Randoms
 import caroption.DashBoard
 import caroption.Engine
 
@@ -24,5 +24,4 @@ class Car(name: String) {
     }
 
     fun nowDist() = dashBoard.nowDist()
-
 }
