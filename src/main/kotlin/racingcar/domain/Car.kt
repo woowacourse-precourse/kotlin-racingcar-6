@@ -15,10 +15,10 @@ class Car(private val name: String) {
     }
 
     fun showCurrentPositionWithName() {
-        val positionString = "-".repeat(position)
-        val result = "$name : $positionString"
-        println(result)
+        println("$name : ${getStringPosition()}")
     }
+
+    fun isWinnerCar(maxDistance: Int): Boolean = maxDistance == position
 
     fun getPosition() = position
 
@@ -26,5 +26,5 @@ class Car(private val name: String) {
 
     private fun isMovable(): Boolean = Randoms.pickNumberInRange(RANGE_START, RANGE_END) >= MIN_MOVEMENT_THRESHOLD
 
-    private fun isMovable(): Boolean = Randoms.pickNumberInRange(0, 9) >= 4
+    private fun getStringPosition(): String = "-".repeat(position)
 }
