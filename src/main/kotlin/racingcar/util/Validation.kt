@@ -30,7 +30,7 @@ object Validation {
     }
 
     fun validateRound(num: String): Int {
-        if (num < MIN_ROUND_VALUE.toString() || num > MAX_ROUND_VALUE.toString()) {
+        if (num.toLong() !in MIN_ROUND_VALUE..MAX_ROUND_VALUE) {
             throw IllegalArgumentException(EXCEPTION_WRONG_BOUNDARY)
         }
         return num.toInt()
