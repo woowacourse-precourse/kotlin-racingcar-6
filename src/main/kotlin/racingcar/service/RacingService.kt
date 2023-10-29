@@ -26,17 +26,21 @@ class RacingService {
 
     fun doRacing() {
         carList.forEach { car ->
-            if (isGoForward()) {
+            val randomNumber = getRandomNumber()
+            if (isGoForward(randomNumber)) {
                 car.goOneStep()
             }
         }
         message.progress(carList)
     }
 
-    fun isGoForward(): Boolean {
-        val randomNumber = Randoms.pickNumberInRange(0, 9)
+    fun isGoForward(number : Int): Boolean {
 
-        return randomNumber >= MINIMUM_NUMBER_TO_WIN
+        return number >= MINIMUM_NUMBER_TO_WIN
+    }
+
+    fun getRandomNumber() : Int{
+        return Randoms.pickNumberInRange(0,9)
     }
 
     companion object{
