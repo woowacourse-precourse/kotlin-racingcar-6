@@ -1,11 +1,9 @@
 package racingcar.model
 
-import camp.nextstep.edu.missionutils.test.Assertions
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import racingcar.ApplicationTest
 
 class CarTest {
     companion object {
