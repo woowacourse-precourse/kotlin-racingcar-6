@@ -11,8 +11,6 @@ class DashBoard {
     fun nowDist() = dist
 
     fun printDist() {
-        repeat(dist) {
-            print(DIST_SYMBOL)
-        }
+        print(DIST_SYMBOL)
     }
 }
