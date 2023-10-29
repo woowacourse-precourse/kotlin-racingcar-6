@@ -16,6 +16,12 @@ class Circuit(private val outputView: OutputView = OutputView()) {
         _state = CircuitState.Racing
     }
     fun moveCars(attempt : Int){ //TODO 시도횟수만큼 랜덤숫자를 생성해서 자동차 움직이기
-
+        repeat(attempt){
+            for(car in cars){
+                car.attemptMove(RandomGenerator.makeRandomNumber())
+            }
+            outputView.printGameStatusMessage(cars)
+        }
+        _state = CircuitState.End
     }
 }

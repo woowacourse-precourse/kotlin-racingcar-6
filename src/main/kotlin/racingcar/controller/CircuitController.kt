@@ -20,9 +20,10 @@ class CircuitController(
                 }
 
                 CircuitState.Racing -> {
-                    //TODO 시도 횟수 메시지 출력
-                    //TODO 시도 횟수 입력받기
-                    //TODO 시도 횟수만큼 자동차 움직이기 시도하기
+                    outputView.printGameInputAttemptMessage()
+                    val attempt = inputView.inputAttempt()
+                    outputView.printGameResultMessage()
+                    circuit.moveCars(attempt)
                 }
 
                 CircuitState.End -> {
