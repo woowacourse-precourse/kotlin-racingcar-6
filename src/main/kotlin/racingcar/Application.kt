@@ -12,17 +12,16 @@ fun main() {
 
     println(RACE_START_MSG)
     val carNames = getCarList()
-
-    if (!isCarNameUnique(carNames)) throw IllegalArgumentException("Duplicate car names are not allowed.")
+    isCarNameUnique(carNames)
     carNames.forEach { name ->
-        if (!isCarNameNotEmpty(name)) throw IllegalArgumentException("Car name cannot be empty.")
-        if (!isCarNameLengthValid(name)) throw IllegalArgumentException("Car name '$name' exceeds the maximum allowed length of $CAR_NAME_MAX_LENGTH.")
+        isCarNameLengthValid(name)
+        isCarNameNotEmpty(name)
     }
 
     println(NUMBER_ATTEMPTS_MSG)
 
     val numberAttempts = getNumberAttempts()
-    if (!isNumberAttemptsValid(numberAttempts)) throw IllegalArgumentException("Invalid format for number of attempts. Please use the specified format.")
+    isNumberAttemptsValid(numberAttempts)
 
 
     val cars: List<Car> = carNames.indices.map { Car(name = "", distance = 0) }
@@ -33,11 +32,22 @@ fun main() {
 }
 
 fun getCarList() = Console.readLine().split(",")
-fun isCarNameUnique(carList: List<String>) = carList.size == carList.toSet().size
-fun isCarNameLengthValid(carName: String) = carName.length <= CAR_NAME_MAX_LENGTH
-fun isCarNameNotEmpty(carName: String) = carName.trim().isNotEmpty()
+fun isCarNameUnique(carList: List<String>) {
+    if (carList.size != carList.toSet().size) throw IllegalArgumentException("Duplicate car names are not allowed.")
+}
+
+fun isCarNameLengthValid(carName: String) {
+    if (carName.length > CAR_NAME_MAX_LENGTH) throw IllegalArgumentException("Car name cannot be empty.")
+}
+
+fun isCarNameNotEmpty(carName: String) {
+    if (carName.trim().isEmpty()) throw  IllegalArgumentException("Car name '$carName' exceeds the maximum allowed length of $CAR_NAME_MAX_LENGTH.")
+}
 
 fun getNumberAttempts(): String = Console.readLine().trim()
-fun isNumberAttemptsValid(numberAttempts: String) = numberAttempts.all { it.isDigit() } && numberAttempts.toInt() >= 1
+
+fun isNumberAttemptsValid(numberAttempts: String) {
+    if(! (numberAttempts.all { it.isDigit() }) || numberAttempts.toInt() < 1) throw  IllegalArgumentException("Invalid format for number of attempts. Please use the specified format.")
+}
 
 
