@@ -29,8 +29,8 @@
   - [ ] 2명 이상의 우승자가 있을 경우, 쉼표로 구분하여 출력한다.
 
 ### 게임 기능
-- [x] 0에서 9 사이의 무작위 값을 구한다.
-  - [x] 값이 4 이상인 경우, 자동차가 전진한다.  
+- [x] 0에서 9 사이의 무작위 값을 구한다. // createRandomNumber()
+  - [x] 값이 4 이상인 경우, 자동차가 전진한다. // RacingCar.move()
 
 📖 무작위 값은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
 
