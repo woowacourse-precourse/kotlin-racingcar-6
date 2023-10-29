@@ -12,11 +12,13 @@ class GameManager {
         OutputView().tryInputMassage()
         val tryNum = InputView().tryNameInput()
         val Num = Validation().tryNum(tryNum)
-        var carProgress :MutableList<Int> = CarProgressInit().progress(carNamesSeparated.size)
+        var carProgress: MutableList<Int> = CarProgressInit().progress(carNamesSeparated.size)
         OutputView().racingResult()
-        for (i in 0..Num-1){
+        for (i in 0..Num - 1) {
             carProgress = RacingGame().racing(carProgress)
-            OutputView().eachRacingResult(carNamesSeparated,carProgress)
+            OutputView().eachRacingResult(carNamesSeparated, carProgress)
         }
+        val winners = WinnerDiscrimination().answer(carProgress, carNamesSeparated)
+        OutputView().winner(winners)
     }
 }

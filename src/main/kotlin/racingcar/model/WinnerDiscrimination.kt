@@ -1,21 +1,25 @@
 package racingcar.model
 
 class WinnerDiscrimination {
-    fun answer(scoreBoard: List<Int>): MutableList<Int> {
-        var index = 0
-        var score: Int
+    fun answer(scoreBoard: List<Int>, cars: List<String>): MutableList<String> {
         var max = 0
-        var winner = mutableListOf<Int>()
-        for (score in scoreBoard) {
+        var winnerIndices = mutableListOf<Int>()
+        var winnerCars = mutableListOf<String>()
+
+        for ((index, score) in scoreBoard.withIndex()) {
             if (score > max) {
                 max = score
-                winner = mutableListOf()
-                winner.add(index)
+                winnerIndices = mutableListOf(index)
             } else if (score == max) {
-                winner.add(index)
+                winnerIndices.add(index)
             }
-            index++
         }
-        return winner
+
+
+        for (selectedIndex in winnerIndices) {
+            winnerCars.add(cars[selectedIndex])
+        }
+
+        return winnerCars
     }
 }

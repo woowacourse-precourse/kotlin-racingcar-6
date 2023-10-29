@@ -32,8 +32,9 @@ class OutputView {
         println()
     }
 
-    fun winner(winners:List<String>) {
-        val result = winners.joinToString { ", " }
+    fun winner(winners: List<String>) {
+        val result: String = winners.joinToString(Constants.COMMA.toString() + Constants.SPACE_BAR.toString())
+        print(Constants.WINNER + Constants.COLON)
         println(result)
     }
 }

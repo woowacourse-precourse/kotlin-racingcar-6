@@ -9,11 +9,12 @@ class Validation {
             throw error(Constants.ERROR_WORD_MIN)
         }
     }
-    fun tryNum(tryNum: String) :Int{
-        val Num:Int
+
+    fun tryNum(tryNum: String): Int {
+        val Num: Int
         try {
             Num = tryNum.toInt()
-        } catch (e:NumberFormatException){
+        } catch (e: NumberFormatException) {
             error(Constants.ERROR_NUMBER_VALIDITY)
         }
         return Num
