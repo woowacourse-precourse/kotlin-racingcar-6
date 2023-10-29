@@ -29,7 +29,20 @@ class ApplicationTest : NsTest() {
     @Test
     fun `자동차 이름 예외 처리`() {
         assertThrows<IllegalArgumentException>("차 이름의 길이가 5보다 큽니다.") {
-            validateNameLength(listOf("pobi, javaji"))
+            validateNameLength(listOf("pobi", "javaji"))
+        }
+    }
+
+    @Test
+    fun `자동차 이름 널값 검증`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>("차 이름의 길이가 5보다 큽니다.") {
+                validateNull(listOf("pobi", " "))
+            }
+
+            assertThrows<IllegalArgumentException>("차 이름의 길이가 5보다 큽니다.") {
+                validateNull(listOf("pobi", ""))
+            }
         }
     }
 
@@ -59,7 +72,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `우승자 1명 검증`(){
+    fun `우승자 1명 검증`() {
         val carList = listOf(Car("lh99j"), Car("pobi"))
         carList[0].moveOneStep()
         val validation = getWinner(carList).joinToString()
@@ -68,7 +81,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `우승자 여러명 검증`(){
+    fun `우승자 여러명 검증`() {
         val carList = listOf(Car("lh99j"), Car("pobi"), Car("anjji"))
         carList[0].moveOneStep()
         carList[2].moveOneStep()
