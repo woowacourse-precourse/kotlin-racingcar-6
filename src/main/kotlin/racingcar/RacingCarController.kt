@@ -1,17 +1,20 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 
 class RacingCarController(private val view: RacingCarView, private val model: RacingCarModel) {
     fun race() {
         signUpRacer(model.racerCrew)
         enterPlayTime(model.racerCrew)
-        /*
+        initializationBeforeJudgeRace()
         for(sequence in 0 until model.racerCrew.playTime) {
-            model.judgeRace(sequence)
-            view.printRace()
+            judgeRace(sequence)
+            println(model.racerCrew.moveForward)
+            printRace()
         }
+        /*
         judgeChampion()
         printChampion()
         */
@@ -22,6 +25,7 @@ class RacingCarController(private val view: RacingCarView, private val model: Ra
         val unverifiedRacerName = RacerName(Console.readLine())
         val verifiedRacer: MutableList<String> = unverifiedRacerName.verifyRacerName()
         model.requestUpdateRacerName(verifiedRacer)
+        model.requestInitializationMoveForward()
     }
 
     private fun enterPlayTime(racerCrew: Racer){
@@ -31,5 +35,16 @@ class RacingCarController(private val view: RacingCarView, private val model: Ra
         model.requestUpdatePlayTime(verifiedPlayTime)
     }
 
+    private fun initializationBeforeJudgeRace(){
+        model.requestInitializationMoveForward()
+    }
 
+    private fun judgeRace(sequence: Int){
+        val raceMove = RaceMove()
+        raceMove.getMoveNumber(model.racerCrew.racerName.size)
+        model.requestUpdateMoveForward(raceMove)
+    }
+
+    private fun printRace(){
+    }
 }

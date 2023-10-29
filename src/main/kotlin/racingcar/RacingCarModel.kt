@@ -3,20 +3,20 @@ package racingcar
 class RacingCarModel(
     var racerCrew: Racer = Racer()
 ) {
-    fun requestUpdateRacerName(racerName: MutableList<String>){
+    fun requestUpdateRacerName(racerName: MutableList<String>) {
         racerCrew.updateRacerName(racerName)
     }
 
-    fun requestUpdatePlayTime(playTime: Int){
+    fun requestInitializationMoveForward() {
+        racerCrew.initializationMoveForward()
+    }
+
+    fun requestUpdatePlayTime(playTime: Int) {
         racerCrew.updatePlayTime(playTime)
     }
 
-    fun judgeRace(sequence: Int){
-
-    }
-
-    fun requestPrintRace(){
-
+    fun requestUpdateMoveForward(moveForward: RaceMove) {
+        racerCrew.updateMoveForward(moveForward)
     }
 
 }

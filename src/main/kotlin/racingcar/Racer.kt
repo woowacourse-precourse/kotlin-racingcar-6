@@ -1,20 +1,27 @@
 package racingcar
 
-
 class Racer (
-    private var racerName: MutableList<String> = mutableListOf(),
-    private var moveForward: MutableList<Int> = mutableListOf(),
-    private var playTime: Int = 0
+    var racerName: MutableList<String> = mutableListOf(),
+    var moveForward: MutableList<Int> = mutableListOf(),
+    var playTime: Int = 0
 ) {
-    fun updateRacerName(racerName:MutableList<String>){
+    fun updateRacerName(racerName:MutableList<String>) {
         this.racerName = racerName
     }
 
-    fun getMoveForward(moveForward: MutableList<Int>){
-        this.moveForward = moveForward
+    fun initializationMoveForward() {
+        moveForward = MutableList(racerName.size) { 0 }
     }
 
-    fun updatePlayTime(playTime:Int){
+    fun updateMoveForward(moveForward: RaceMove) {
+        for (i in moveForward.moveChanceNumber.indices) {
+            if (i < moveForward.moveChanceNumber.size && i < this.moveForward.size) {
+                this.moveForward[i] += moveForward.moveChanceNumber[i]
+            }
+        }
+    }
+
+    fun updatePlayTime(playTime:Int) {
         this.playTime = playTime
     }
 }
