@@ -1,8 +1,11 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.CarInitializer.Companion.initializeCars
+import racingcar.CarMover.Companion.move
+import racingcar.CarResultPrinter.Companion.printResult
 
-class CarGame {
+class CarRaceGame {
     companion object {
         const val CAR_NAME_LENGTH = 5
     }
@@ -10,6 +13,12 @@ class CarGame {
     fun run() {
         val carName = getCarNames()
         val tryNumber = getTryNumbers()
+        val initCar = initializeCars(carName)
+
+        for (move in 1..tryNumber) {
+            move(initCar)
+        }
+        printResult(initCar)
     }
 
     private fun getCarNames(): List<String> {
@@ -18,8 +27,9 @@ class CarGame {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         return try {
             val carName = Console.readLine() ?: ""
-            val carNames = carName.split(",").map { it.trim() }
-            for (car in carNames) {
+            val cars = carName.split(",").map { it.trim() }
+
+            for (car in cars) {
                 if (car.length <= CAR_NAME_LENGTH) {
                     carNameList.add(car)
                 } else {
