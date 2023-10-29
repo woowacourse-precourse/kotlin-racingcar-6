@@ -17,8 +17,11 @@ class RacingGameView {
             println("${carList[i].first} : ${visualCarMovedDistance(carList[i].second)}")
         }
     }
+    fun showFinalResultMessage() {
+        print(ConsoleMessage.SHOW_WINNER)
+    }
     private fun visualCarMovedDistance(distance: Int): String {
-        var visualDistance = "-"
+        var visualDistance = ""
         repeat(distance) {
             visualDistance += "-"
         }
