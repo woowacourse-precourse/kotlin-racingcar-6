@@ -26,6 +26,25 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `이름 입력에 쉼표가 없는 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi.woni.stone", "1") }
+        }
+    }
+
+    @Test
+    fun `횟수에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "go") }
+        }
+    }
+
+    @Test
+    fun `이름을 쉼표로 정확히 나눈 경우`() {
+
+    }
+
     public override fun runMain() {
         main()
     }
