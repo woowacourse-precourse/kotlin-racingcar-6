@@ -5,9 +5,3 @@ fun main() {
     val carPositions = gameRun()
     winner(carPositions)
 }
-
-
-
-
-
-

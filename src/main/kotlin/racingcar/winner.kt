@@ -9,3 +9,4 @@ fun winner(carPositions: Map<String, Int>) {
 
     println("최종 우승자 : $winners")
 }
+// 들여쓰기 줄여보자!!
