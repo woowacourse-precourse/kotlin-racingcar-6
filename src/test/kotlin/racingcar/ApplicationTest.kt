@@ -27,10 +27,20 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `이름 중복에 대한 예외처리`(){
-        assertSimpleTest{
-            val carNames = listOf("abc","abc","aa","bb")
+    fun `이름 중복에 대한 예외처리`() {
+        assertSimpleTest {
+            val carNames = listOf("abc", "abc", "aa", "bb")
             assertThrows<IllegalArgumentException> { isCarNameUnique(carNames) }
+        }
+    }
+
+    @Test
+    fun `이름 길이에 대한 예외처리`() {
+        assertSimpleTest {
+            val carNames = listOf("hello", "sponge", "bob","haha")
+            assertThrows<IllegalArgumentException> {
+                carNames.forEach { isCarNameLengthValid(it) }
+            }
         }
     }
 
