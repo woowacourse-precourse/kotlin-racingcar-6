@@ -3,6 +3,7 @@ package racingcar
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.model.RacingCar
 import racingcar.util.Util
 
 class InputTest {
@@ -31,19 +32,44 @@ class InputTest {
     }
 
     @Test
-    fun `toInt 메서드로 String을 Int타입으로 변경`(){
+    fun `toInt 메서드로 String을 Int타입으로 변경`() {
         val input = "1"
         val result = Util.stringToInt(input)
         Assertions.assertThat(result).isEqualTo(1)
     }
 
     @Test
-    fun `toInt 메서드로 String이 Int타입으로 변경되지 않을때 예외 발생`(){
+    fun `toInt 메서드로 String이 Int타입으로 변경되지 않을때 예외 발생`() {
         val input = "one"
         val inputToInt = Util.stringToInt(input)
         assertThrows<IllegalArgumentException>("숫자형태의 String이 아닙니다.") {
             Util.checkInt(inputToInt)
         }
+    }
+
+    @Test
+    fun `단독 우승자인 경우`() {
+        val input = mutableListOf<RacingCar>()
+        input.add(RacingCar(name = "james", forwardCount = 1))
+        input.add(RacingCar(name = "thomas", forwardCount = 2))
+        input.add(RacingCar(name = "lisa", forwardCount = 3))
+
+        val expectedWinner = mutableListOf(RacingCar(name = "lisa", forwardCount = 3))
+        val result = Util.findWinner(input)
+        Assertions.assertThat(result).isEqualTo(expectedWinner)
+    }
+
+    @Test
+    fun `공동 우승자인 경우`() {
+        val input = mutableListOf<RacingCar>()
+        input.add(RacingCar(name = "james", forwardCount = 1))
+        input.add(RacingCar(name = "thomas", forwardCount = 3))
+        input.add(RacingCar(name = "lisa", forwardCount = 3))
+
+        val expectedWinner =
+            mutableListOf(RacingCar(name = "thomas", forwardCount = 3),RacingCar(name = "lisa", forwardCount = 3))
+        val result = Util.findWinner(input)
+        Assertions.assertThat(result).isEqualTo(expectedWinner)
     }
 
 
