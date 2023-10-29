@@ -3,6 +3,7 @@ package racingcar.model
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThat
+import racingcar.model.car.CarName
 
 class CarNameTest {
     @Test

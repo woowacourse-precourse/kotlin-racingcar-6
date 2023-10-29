@@ -1,6 +1,6 @@
 package racingcar.view
 
-import racingcar.model.CarName
+import racingcar.model.car.CarName
 import racingcar.model.TurnNumber
 
 class RaceView(
