@@ -2,6 +2,4 @@ package racingcar.util
 
 import racingcar.model.Car
 
-fun String.toCarNameList() = this.split(",")
-
-fun List<String>.toCarList() = this.map { Car.of(it) }
+fun String.toCarList() = this.split(",").map { carName -> Car.of(carName) }

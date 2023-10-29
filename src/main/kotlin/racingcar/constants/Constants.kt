@@ -2,6 +2,7 @@ package racingcar.constants
 
 const val EXCEPTION_LENGTH = "1글자와 5글자 사의의 자동차 이름을 입력해주세요."
 const val EXCEPTION_LETTER = "자동차 이름은 대소문자의 영어로만 이루어질 수 있습니다."
+const val EXCEPTION_COMMA = "자동차 이름은 하나의 쉼표로만 구분하며, 입력의 처음이나 마지막에 쉼표가 올 수는 없습니다."
 const val EXCEPTION_DUPLICATION = "자동차 이름은 중복되지 않아야 합니다."
 
 const val EXCEPTION_DIGIT = "시도할 횟수는 숫자만 입력할 수 있습니다."

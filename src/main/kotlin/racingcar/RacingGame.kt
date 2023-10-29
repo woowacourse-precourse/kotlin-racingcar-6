@@ -1,10 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
-import racingcar.constants.EXCEPTION_DUPLICATION
-import racingcar.constants.MOVING_MORE_NUMBER
-import racingcar.constants.RANDOM_END_NUMBER
-import racingcar.constants.RANDOM_START_NUMBER
+import racingcar.constants.*
 import racingcar.io.inputRacingCars
 import racingcar.io.inputTryCount
 import racingcar.io.printCarListResult
@@ -18,12 +15,14 @@ class RacingGame {
     private lateinit var `try`: Try
 
     fun run() {
-        val carNameList = inputRacingCars()
-        validateCarNameDuplication(carNameList)
-        carList = carNameList.toCarList()
+        carList = inputRacingCars().let { carNames ->
+            validateCarNameComma(carNames)
+            carNames.toCarList()
+        }
 
-        val tryCount = inputTryCount()
-        `try` = Try.of(tryCount)
+        validateCarNameDuplication(carList)
+
+        `try` = Try.of(inputTryCount())
 
         println()
         println("실행 결과")
@@ -56,7 +55,12 @@ class RacingGame {
         return carList.filter { car -> car.forwardCount == winnerForwardCount }
     }
 
-    fun validateCarNameDuplication(racingCars: List<String>) {
+    fun validateCarNameComma(carNames: String) {
+        require(!carNames.contains(",,") && !carNames.endsWith(",") && !carNames.startsWith(",")) { EXCEPTION_COMMA }
+    }
+
+    fun validateCarNameDuplication(racingCars: List<Car>) {
+        print(racingCars)
         require(racingCars.size == racingCars.distinct().size) { EXCEPTION_DUPLICATION }
     }
 }
