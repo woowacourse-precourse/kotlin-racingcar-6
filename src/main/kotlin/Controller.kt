@@ -4,6 +4,7 @@ import Validator.roundCheck
 import camp.nextstep.edu.missionutils.Console
 import race.RacingMessage.CAR_INPUT_MESSAGE
 import race.RacingMessage.TRIES_REQUEST_MESSAGE
+import java.math.BigInteger
 
 object Controller {
     fun inputCarInformation(): List<String> {
@@ -13,11 +14,10 @@ object Controller {
         return input.split(CAR_DELIMITER)
     }
 
-    fun inputRacingRoundInformation(): Int {
+    fun inputRacingRoundInformation(): BigInteger {
         println(TRIES_REQUEST_MESSAGE)
         val input = Console.readLine()
         roundCheck(input)
-        return input.toInt()
+        return input.toBigInteger()
     }
-
 }
