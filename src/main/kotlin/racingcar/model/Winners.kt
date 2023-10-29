@@ -1,7 +1,7 @@
 package racingcar.model
 
-class Winners (winnersList: List<Car>){
-    private var winners: List<Car>
+class Winners (winnersList: MutableList<Car>){
+    private var winners: MutableList<Car> = mutableListOf()
 
     init {
         this.winners = winnersList
