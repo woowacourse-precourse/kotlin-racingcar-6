@@ -10,14 +10,23 @@ class Race(carNames: String, private var moveCount: Int) {
     }
 
     fun startRace() {
+        println()
+        println("실행 결과")
+
         while (moveCount > 0) {
             moveOrStayAllCars()
+            printCarPositions()
             moveCount--
         }
     }
 
     private fun moveOrStayAllCars() {
         carList.forEach { it.moveOrStay() }
+    }
+
+    private fun printCarPositions() {
+        carList.forEach {it.showCurrentPositionWithName()}
+        println()
     }
 
     private fun createCarList(carNames: String) {

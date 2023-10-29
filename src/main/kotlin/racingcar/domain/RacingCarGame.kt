@@ -11,8 +11,10 @@ class RacingCarGame {
 
     fun startGame() {
         val carName = getCarNames()
-        val race = Race(carName)
-        val moveCount = getMoveCount()
+        val moveCount = getMoveCount().toInt()
+        val race = Race(carName, moveCount)
+
+        race.startRace()
     }
 
     private fun getCarNames():String {
