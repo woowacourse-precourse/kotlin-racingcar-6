@@ -13,6 +13,7 @@ class RacingGameController(private val view: RacingGameView, private val model: 
         if (isAnyCarNameLengthExceeded(carList = getCarList())) {
             throw IllegalArgumentException("${ErrorMessage.ERRORMESSAGE_CAR_NAME_LENGTH_EXCEEDED} ${Values.MAXIMUM_CAR_NAME_LENGTH}")
         }
+        view.requestPlayCountInput()
     }
     @JvmName("callFromString")
     private fun getCarList(): List<String> {
