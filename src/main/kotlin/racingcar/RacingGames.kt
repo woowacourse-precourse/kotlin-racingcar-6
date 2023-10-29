@@ -37,11 +37,15 @@ class RacingGames {
     //횟수 체크
     fun checkTime(racingCars: List<String>, times: Int){
         var race = MutableList(racingCars.size) { "" }
+        println("")
+        println("실행 결과")
         for(i in 0 until times){
             val updates = checkCars(racingCars)
             race = moveCars(race, updates)
-            println(race)
+            RacingResult().gameResult(racingCars, race)
+            println("")
         }
+        RacingResult().winnerResult(racingCars, race)
 
     }
 }
