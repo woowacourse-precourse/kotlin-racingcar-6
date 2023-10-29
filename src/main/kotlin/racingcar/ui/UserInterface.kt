@@ -10,6 +10,11 @@ object UserInput {
         println(MSG_INPUT_CAR_NAME)
         return Console.readLine()
     }
+    fun readAttemptCount(): String {
+        println(MSG_INPUT_ATTEMPT_COUNT)
+        return Console.readLine()
+    }
+
 }
 
 object UserOutput {
