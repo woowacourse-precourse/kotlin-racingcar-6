@@ -1,4 +1,6 @@
-package racingcar
+package racingcar.model
+
+import racingcar.RandomGenerator
 
 class Judge(private val carGroup: CarGroup) {
 
