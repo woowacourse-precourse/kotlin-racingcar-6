@@ -1,17 +1,15 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
-import camp.nextstep.edu.missionutils.Randoms
-
 
 class RacingCarController(private val view: RacingCarView, private val model: RacingCarModel) {
     fun race() {
-        signUpRacer(model.racerCrew)
-        enterPlayTime(model.racerCrew)
+        signUpRacer()
+        enterPlayTime()
         initializationBeforeJudgeRace()
-        for(sequence in 0 until model.racerCrew.playTime) {
-            judgeRace(sequence)
-            println(model.racerCrew.moveForward)
+        requestPrintResultText()
+        for(sequexnce in 0 until model.racerCrew.playTime) {
+            judgeRace()
             printRace()
         }
         /*
@@ -20,7 +18,7 @@ class RacingCarController(private val view: RacingCarView, private val model: Ra
         */
     }
 
-    private fun signUpRacer(racerCrew: Racer){
+    private fun signUpRacer(){
         view.printRequestRacer()
         val unverifiedRacerName = RacerName(Console.readLine())
         val verifiedRacer: MutableList<String> = unverifiedRacerName.verifyRacerName()
@@ -28,7 +26,7 @@ class RacingCarController(private val view: RacingCarView, private val model: Ra
         model.requestInitializationMoveForward()
     }
 
-    private fun enterPlayTime(racerCrew: Racer){
+    private fun enterPlayTime(){
         view.printRequestPlayTime()
         val unverifiedPlayTime = RaceTime(Console.readLine().toInt())
         val verifiedPlayTime = unverifiedPlayTime.verifyPlayTime()
@@ -39,12 +37,17 @@ class RacingCarController(private val view: RacingCarView, private val model: Ra
         model.requestInitializationMoveForward()
     }
 
-    private fun judgeRace(sequence: Int){
+    private fun requestPrintResultText(){
+        view.printResultText()
+    }
+
+    private fun judgeRace(){
         val raceMove = RaceMove()
         raceMove.getMoveNumber(model.racerCrew.racerName.size)
         model.requestUpdateMoveForward(raceMove)
     }
 
     private fun printRace(){
+        view.printRaceOnView(model.racerCrew)
     }
 }

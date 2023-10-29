@@ -1,7 +1,8 @@
 package racingcar
 
 class RacingCarModel(
-    var racerCrew: Racer = Racer()
+    var racerCrew: Racer = Racer(),
+    var raceMove: RaceMove = RaceMove()
 ) {
     fun requestUpdateRacerName(racerName: MutableList<String>) {
         racerCrew.updateRacerName(racerName)
