@@ -4,7 +4,8 @@ import camp.nextstep.edu.missionutils.Console
 import racingcar.model.Car
 import racingcar.model.Cars
 import racingcar.util.Constants.CAR_NAME_DELIMITER
-import racingcar.util.Constants.TEXT_START_GAME
+import racingcar.util.Constants.TEXT_INPUT_CAR_NAME
+import racingcar.util.Constants.TEXT_INPUT_ROUND
 import racingcar.util.Validation.validateLength
 import racingcar.util.Validation.validateNumberOfCars
 import racingcar.util.Validation.validateDuplicateOfCars
@@ -12,11 +13,14 @@ import racingcar.util.Validation.validateDuplicateOfCars
 class Game {
 
     private lateinit var cars: Cars
+    private var round: Int = 0
 
     fun startGame() {
-        println(TEXT_START_GAME)
-
+        println(TEXT_INPUT_CAR_NAME)
         inputCarName()
+
+        println(TEXT_INPUT_ROUND)
+        inputRound()
     }
 
     private fun inputCarName() {
@@ -43,5 +47,10 @@ class Game {
             mapResult.add(Car(it, 0))
         }
         return mapResult
+    }
+
+    private fun inputRound() {
+        val input = Console.readLine()
+        round = input.toInt()
     }
 }

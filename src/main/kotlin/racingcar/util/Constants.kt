@@ -2,7 +2,8 @@ package racingcar.util
 
 object Constants {
     // TEXT
-    const val TEXT_START_GAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+    const val TEXT_INPUT_CAR_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+    const val TEXT_INPUT_ROUND = "시도할 횟수는 몇 회인가요?"
 
     // EXCEPTION
     const val EXCEPTION_WRONG_LENGTH = "자동차 이름은 1자 이상 5자 이하만 가능합니다."
