@@ -40,11 +40,6 @@ class ApplicationTest : NsTest() {
         }
     }
 
-    @Test
-    fun `이름을 쉼표로 정확히 나눈 경우`() {
-
-    }
-
     public override fun runMain() {
         main()
     }
