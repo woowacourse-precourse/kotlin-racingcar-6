@@ -11,5 +11,5 @@ fun main() {
     val racingCars = inputView.prepareToPlay()
 
     racingGame.playGame(racingCars)
-    outputView.gameResult()
+    outputView.gameResult(racingCars.carList)
 }

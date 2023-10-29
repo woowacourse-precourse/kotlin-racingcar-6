@@ -1,18 +1,20 @@
 package racingcar.view
 
+import racingcar.model.RacingCar
+import racingcar.model.WinnerGenerator
+
 class OutputView {
-    private fun printProgress() {
-        println("실행 결과")
-        // TODO 시도할 횟수만큼의 실행 결과 출력
+    private val winnerGenerator = WinnerGenerator()
+    fun printProgress(racingCars: MutableList<RacingCar>) {
+        for (racingCar in racingCars) {
+            println("${racingCar.name} : ${racingCar.distance}")
+        }
+        println()
     }
 
-    private fun printWinner() {
+    fun gameResult(racingCars: MutableList<RacingCar>) {
         print("최종 우승자 : ")
-        // TODO 우승자 출력
-    }
-
-    fun gameResult() {
-        printProgress()
-        printWinner()
+        val winners = winnerGenerator.win(racingCars)
+        println(winners.getWinners())
     }
 }
