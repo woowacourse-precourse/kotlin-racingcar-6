@@ -1,5 +1,7 @@
 package racingcar.util
 
+import racingcar.model.RacingCar
+
 object Util {
 
     fun getCarNames(): List<String> {
@@ -42,5 +44,16 @@ object Util {
         if (int == null) throw IllegalArgumentException("양의 정수를 입력해주세요.")
     }
 
+    fun findWinner(cars:MutableList<RacingCar>) : MutableList<RacingCar>{
+        val winners = mutableListOf<RacingCar>()
+
+        val maxCount = cars.maxOfOrNull { it.forwardCount }
+
+        if (maxCount != null) {
+            winners.addAll(cars.filter { it.forwardCount == maxCount })
+        }
+
+        return winners
+    }
 
 }
