@@ -13,28 +13,29 @@ class UserInputValidator {
         for(name in nameList) {
             when {
                 isNotCorrectLength(name) -> invokeIllegalArgumentException(USER_NAME_INPUT_LENGTH_EXCEPTION_MESSAGE)
-                calNameCount(name, nameList) > 1 -> invokeIllegalArgumentException(USER_NAME_INPUT_NAME_DUPLICATE_EXCEPTION_MESSAGE)
+                hasDuplicateName(name, nameList) -> invokeIllegalArgumentException(USER_NAME_INPUT_NAME_DUPLICATE_EXCEPTION_MESSAGE)
             }
         }
     }
 
     fun userTryCountInputValidator(input: String) {
         when {
-            input.toIntOrNull() == null -> invokeIllegalArgumentException(USER_TRY_COUNT_INPUT_IS_NOT_NUMBER_EXCEPTION_MESSAGE)
+            isNotNumber(input) -> invokeIllegalArgumentException(USER_TRY_COUNT_INPUT_IS_NOT_NUMBER_EXCEPTION_MESSAGE)
             input.toInt() < 0 -> invokeIllegalArgumentException(USER_TRY_COUNT_INPUT_IS_MINUS_NUMBER_EXCEPTION_MESSAGE)
         }
     }
 
     private fun isNotCorrectLength(name: String) = name.length > NAME_MAX_LENGTH
 
-    private fun calNameCount(target: String, nameList: MutableList<String>): Int {
+
+    private fun hasDuplicateName(target: String, nameList: MutableList<String>): Boolean {
         var count = 0
         for(name in nameList) {
             if(name == target) {
                 count += 1
             }
         }
-        return count
+        return count > 1
     }
 
     private fun invokeIllegalArgumentException(message: String) {
