@@ -11,6 +11,10 @@ fun main() {
     for (name in names) {
         checkName(name)
     }
+
+    println("시도할 횟수는 몇 회인가요?")
+    val count = Console.readLine()
+    checkCount(count)
 }
 
 fun checkName(name: String) {
@@ -18,5 +22,13 @@ fun checkName(name: String) {
         throw IllegalArgumentException()
     } else {
         CAR_NAME_LIST.add(name)
+    }
+}
+
+fun checkCount(count: String) {
+    try {
+        count.toInt()
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException()
     }
 }

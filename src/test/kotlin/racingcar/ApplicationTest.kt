@@ -26,6 +26,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `시도 횟수에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,nana", "a") }
+        }
+    }
+
     public override fun runMain() {
         main()
     }
