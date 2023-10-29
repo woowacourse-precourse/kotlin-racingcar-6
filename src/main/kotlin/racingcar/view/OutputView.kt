@@ -3,7 +3,9 @@ package racingcar.view
 import racingcar.model.RacingCar
 
 class OutputView {
-    private val move = "-"
+    companion object {
+        private const val MOVE = "-"
+    }
 
     // 기능 8. 실행 결과 출력하기
     fun printAttemptResult(racingCarList: List<RacingCar>) {
@@ -19,7 +21,7 @@ class OutputView {
     }
 
     fun printRacingCarMove(racingCar: RacingCar) {
-        println("${racingCar.carName} : " + move.repeat(racingCar.totalMove))
+        println("${racingCar.carName} : " + MOVE.repeat(racingCar.totalMove))
     }
 
     fun printResultHeader() {
