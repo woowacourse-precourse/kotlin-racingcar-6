@@ -2,6 +2,7 @@ package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
 import racingcar.model.CarName
+import racingcar.model.TurnNumber
 
 class ConsoleRaceView : RaceView {
 
@@ -17,12 +18,14 @@ class ConsoleRaceView : RaceView {
         println(ENTER_TURN_NUMBER)
     }
 
-    override fun getTurnNumberFromUser(): Int {
-        return Console.readLine().toInt()
+    override fun getTurnNumberFromUser(): TurnNumber {
+        val number = requireNotNull(Console.readLine().toIntOrNull()) { INPUT_NOT_NUMBER_EXCEPTION }
+        return TurnNumber(number = number)
     }
 
     companion object {
         private const val ENTER_CAR_NAMES = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
         private const val ENTER_TURN_NUMBER = "시도할 횟수는 몇 회인가요?"
+        private const val INPUT_NOT_NUMBER_EXCEPTION = "Input must be a number"
     }
 }

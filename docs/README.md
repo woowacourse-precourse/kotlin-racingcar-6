@@ -6,7 +6,7 @@
    - 각 자동차에 이름을 **부여할 수 있다**고 했으므로 이름이 비어있어도 **예외 처리는 하지 않음**
 3. 시도할 횟수를 입력해 달라고 출력 후 유저에게 시도할 횟수를 입력 받기 ✅
    - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
-4. 유저가 올바르게 시도할 횟수를 입력했는지 확인
+4. 유저가 올바르게 시도할 횟수를 입력했는지 확인 ✅
    - 숫자 변환 불가시, `IllegalArgumentException`
    - 0 미만의 값이 들어올 경우도 `IllegalArgumentException`
 5. 모든 자동차에 대해 전진을 할지 멈출지 정함
