@@ -3,7 +3,9 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 private const val CAR_NAME_MAX_LENGTH = 5
+private const val RACE_START_MSG = "경주할 자동차 이름을 입력하세요."
 fun main() {
+    println(RACE_START_MSG)
     val cars = getCarList()
 
     if (!isCarNameUnique(cars)) throw IllegalArgumentException("Duplicate car names are not allowed.")
@@ -11,6 +13,7 @@ fun main() {
         if (!isCarNameNotEmpty(car)) throw IllegalArgumentException("Car name cannot be empty.")
         if (!isCarNameLengthValid(car)) throw IllegalArgumentException("Car name '$car' exceeds the maximum allowed length of $CAR_NAME_MAX_LENGTH.")
     }
+
 }
 
 fun getCarList() = Console.readLine().split(",")
