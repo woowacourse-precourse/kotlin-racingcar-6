@@ -8,7 +8,9 @@ object RacingSystem {
     private var carLane:MutableList<Car> = arrayListOf()
     fun setCarNames(namesInput:String){
         carNames = splitNameList(namesInput)
+        require(checkCarName())
     }
+
     fun setAttemptNumber(attemptNumberInput:String){
         try {
             attemptNumber = attemptNumberInput.toInt()
@@ -35,23 +37,17 @@ object RacingSystem {
         return result
     }
 
-    private fun checkCarName(nameList:List<String>):Boolean{
-        nameList.forEach{
+    private fun checkCarName():Boolean{
+        carNames.forEach{
             require(it.length < 6)
         }
         return true
     }
 
     fun createCars(){
-        require(checkCarName(carNames))
         carNames.forEach{
             var car = Car(it)
             carLane.add(car)
         }
     }
-
-
-
-
-
 }
