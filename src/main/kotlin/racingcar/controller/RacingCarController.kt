@@ -81,9 +81,9 @@ class RacingCarController(private val inputView: InputView, private val outputVi
     }
 
     private fun moveCarsBasedOnRandomConditions(cars: List<Cars>) {
-        for (car in cars) {
+        cars.forEach {
             if (chooseActionFromRandomNumber()) {
-                car.carPosition++
+                it.carPosition++
             }
         }
     }
