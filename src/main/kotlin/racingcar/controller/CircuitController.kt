@@ -12,7 +12,7 @@ class CircuitController(
 
     fun run() {
         val circuit = Circuit()
-        while (circuit.state != CircuitState.End) {
+        while (circuit.state != CircuitState.Exit) {
             when (circuit.state) {
                 CircuitState.Start -> {
                     outputView.printGameStartMessage()
@@ -27,9 +27,10 @@ class CircuitController(
                 }
 
                 CircuitState.End -> {
-                    //TODO 승자선정하기
-                    //TODO 승자 출력하기
+                    val winners = circuit.findWinner()
+                    outputView.printGameWinnerMessage(winners)
                 }
+                CircuitState.Exit -> break
             }
         }
     }
