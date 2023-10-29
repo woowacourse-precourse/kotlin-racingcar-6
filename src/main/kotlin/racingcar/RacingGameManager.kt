@@ -76,6 +76,14 @@ class RacingGameManager {
         else -> false
     }
 
+    private fun findWinners(cars: List<Car>, maxDistanceCar: Car?): List<Car> {
+        val winners = cars.filter { car ->
+            car.distance == maxDistanceCar?.distance
+        }
+
+        return winners
+    }
+
     private fun findMaxDistanceCar(cars: List<Car>): Car? {
         return cars.maxByOrNull { car -> car.distance }
     }
