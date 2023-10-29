@@ -19,12 +19,13 @@ class GameController {
     }
     private fun gameProgress(carNames:List<String>, roundInput:Int) {
 
-        var raceStatus = mutableMapOf<String, List<Boolean>>()
+        var entireRaceStatus = mutableMapOf<String, List<Boolean>>()
 
         println("\n실행 결과")
         repeat (roundInput) {
-            var oneRoundResults = RaceState().oneRoundResult(carNames,raceStatus)
-            RaceViewer().roundResultViewer(oneRoundResults)
+            var oneRoundResults = RaceState().oneRoundResult(carNames)
+            entireRaceStatus=RaceState().updateEntireRaceScore(carNames,oneRoundResults,entireRaceStatus)
+            RaceViewer().roundResultViewer(entireRaceStatus)
 
         }
 
