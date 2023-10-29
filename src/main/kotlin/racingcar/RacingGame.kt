@@ -15,7 +15,28 @@ import racingcar.util.toCarList
 
 class RacingGame {
     private lateinit var carList: List<Car>
-    
+    private lateinit var `try`: Try
+
+    fun run() {
+        val carNameList = inputRacingCars()
+        validateCarNameDuplication(carNameList)
+        carList = carNameList.toCarList()
+
+        val tryCount = inputTryCount()
+        `try` = Try.of(tryCount)
+
+        println()
+        println("실행 결과")
+
+        for (count in 0 until `try`.count) {
+            progressGameStep()
+            printCarListResult(carList)
+        }
+
+        val winnerList = pickWinner(carList)
+        printWinner(winnerList)
+    }
+
     private fun progressGameStep() {
         carList.forEach { car ->
             val random = Randoms.pickNumberInRange(RANDOM_START_NUMBER, RANDOM_END_NUMBER)
