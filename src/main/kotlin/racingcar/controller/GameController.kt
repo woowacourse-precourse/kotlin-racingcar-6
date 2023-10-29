@@ -1,7 +1,6 @@
 package racingcar.controller
 
-import racingcar.domain.Judgment
-import racingcar.domain.NumberGenerator
+import racingcar.domain.CarStatusUpdater
 import racingcar.util.Validator
 import racingcar.view.InputView
 
@@ -20,13 +19,14 @@ class GameController {
     }
 
     private fun play(carNames: ArrayList<String>, attemptCount: Int) {
-        val numberGenerator = NumberGenerator()
-        val judgment = Judgment()
+        val carStatusUpdater = CarStatusUpdater()
 
+        val carStatus = carNames.associateWith { "" }.toMutableMap()
         var currentCount = 0
         while (currentCount < attemptCount) {
-                val randomNumber = numberGenerator.createRandomNumber()
-                if(judgment.canMoveForward(randomNumber)) { }
+            for (car in carStatus) {
+                carStatusUpdater.moveCarForward(carStatus, car.key)
+            }
 
             currentCount++
         }
