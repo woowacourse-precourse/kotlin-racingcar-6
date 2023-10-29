@@ -8,5 +8,6 @@ class RacingGameService {
     private val view = RacingGameView()
     private val controller = RacingGameController(view = view, model = model)
     fun run() {
+        controller.run()
     }
 }
