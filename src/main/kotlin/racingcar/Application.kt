@@ -16,6 +16,12 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val count = Console.readLine()
     checkCount(count)
+
+    // CAR_NAME_LIST에 들어있는 이름으로 Car 객체를 만들어준다.
+    for (name in CAR_NAME_LIST) {
+        CAR_LIST.add(Car(name))
+    }
+    
 }
 
 // 경주할 자동차 이름 글자 수 체크
