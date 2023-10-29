@@ -12,6 +12,5 @@ class UserInterfaceTest {
         val inputNames = input.createNameList()
 
         assertEquals(names, inputNames)
-
     }
 }

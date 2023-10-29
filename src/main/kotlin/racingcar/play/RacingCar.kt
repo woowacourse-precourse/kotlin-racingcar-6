@@ -1,4 +1,4 @@
 package racingcar.play
 
-class RacingCar {
+data class RacingCar(var name: String, var distance: Int = 0) {
 }

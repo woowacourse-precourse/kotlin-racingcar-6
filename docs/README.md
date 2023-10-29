@@ -3,10 +3,10 @@
 ---
 
 ### 입력 
-- [x] 경주할 자동차의 이름을 입력받는다.// UserInput.readCarName()
-  - [ ] 입력받은 이름을 리스트에 저장한다// String.createNameList()
+- [x] 경주할 자동차의 이름을 입력받는다. // UserInput.readCarName()
+  - [x] 입력받은 이름을 리스트에 저장한다. // String.createNameList()
   - [ ] 이름이 5글자 이하인지 검사한다.
-  - [ ] 쉼표(,)를 기준으로 이름을 구분한다. 
+  - [x] 쉼표(,)를 기준으로 이름을 구분한다. // String.split(",") 사용
   
 
 - [x] 자동차의 이동 횟수를 입력받는다. // UserInput.readAttemptCounts()
@@ -15,7 +15,7 @@
 
 ❗️ 사용자가 잘못된 값을 입력할 경우, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.
 - 사용자 입력에서, 문자열 앞 뒤 공백은 무시한다. (trim() 사용)  
-- 자동차 이름 내부의 띄어쓰기는 1회만 허용한다. 2회 이상의 공백은 1회로 치환(replace(Regex("\\\s+), " "))
+
 📖 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 이용하여 사용자 입력을 받는다.
 
 ---
@@ -34,8 +34,8 @@
 
 📖 무작위 값은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
 
-### 게임 관리
-- [ ] 게임을 실행한다. // RacingGameManager.startRace()
-- [ ] 입력 객체에게 입력을 사용자 정보를 요청한다.
-- [ ] 입력받은 사용자 정보로 게임을 진행한다.
-- [ ] 출력 객체에게 게임 결과 출력을 요청한다.
+### 게임 관리(RaicingGameManager)
+- [ ] 게임을 실행한다. // play()
+  - [x] 차량 등록 => 입력 객체에게 입력을 사용자 정보를 요청하고, 자동차 객체(RacingCar)를 생성한다. // registerCarNames()
+  - [ ] 입력받은 사용자 정보로 게임을 진행한다.
+  - [ ] 출력 객체에게 게임 결과 출력을 요청한다.
