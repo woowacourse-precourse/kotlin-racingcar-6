@@ -13,11 +13,34 @@ object Util {
 
     }
 
-    fun splitCarName(input : String) : List<String> {
+    fun splitCarName(input: String): List<String> {
         return input.split(',')
     }
 
-    fun checkCarName(name : String) {
-        if(name.length > 5) throw IllegalArgumentException("이름은 5자 이하만 가능합니다.")
+    fun checkCarName(name: String) {
+        if (name.length > 5) throw IllegalArgumentException("이름은 5자 이하만 가능합니다.")
     }
+
+    fun getPlayCount(): Int? {
+        val playCountString = camp.nextstep.edu.missionutils.Console.readLine()
+
+        val playCount = stringToInt(playCountString)
+
+        checkInt(playCount)
+
+        camp.nextstep.edu.missionutils.Console.close()
+
+        return playCount
+
+    }
+
+    fun stringToInt(string: String): Int? {
+        return string.toIntOrNull()
+    }
+
+    fun checkInt(int: Int?) {
+        if (int == null) throw IllegalArgumentException("양의 정수를 입력해주세요.")
+    }
+
+
 }
