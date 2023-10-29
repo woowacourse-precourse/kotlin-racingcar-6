@@ -53,6 +53,14 @@ class ApplicationTest : NsTest() {
         val afterPosition = testMove.position
         assertEquals(beforePosition, afterPosition)
     }
+    @Test
+    fun `난수가 4~9일때 자동차 이동 결과`(){
+        val testMove = Move(0)
+        val beforePosition = testMove.position
+        testMove.checkMove(Randoms.pickNumberInRange(4,9))
+        val afterPosition = testMove.position
+        assertNotEquals(beforePosition,afterPosition)
+    }
     public override fun runMain() {
         main()
     }
