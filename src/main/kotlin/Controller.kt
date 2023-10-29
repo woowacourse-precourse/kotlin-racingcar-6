@@ -6,6 +6,7 @@ object Controller {
     fun inputCarInformation() {
         println(CAR_INPUT_MESSAGE)
         val inputValue = Console.readLine()
+        startCheck(inputValue)
     }
 
 }
