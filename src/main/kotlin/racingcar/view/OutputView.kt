@@ -3,55 +3,55 @@ package racingcar.view
 import racingcar.model.RacingCar
 
 class OutputView {
-    private val step = "-"
+    private val move = "-"
 
     // 기능 8. 실행 결과 출력하기
-    fun printResult(tryNumber: Int, racingCarList: List<RacingCar>) {
-        if (tryNumber == 0) {
-            printInstructionForResult()
+    fun printAttemptResult(attemptNumber: Int, racingCarList: List<RacingCar>) {
+        if (attemptNumber == 0) {
+            printResultHeader()
         }
 
         for (racingCar in racingCarList) {
-            printMoveOfRacingCar(racingCar)
+            printRacingCarMove(racingCar)
         }
         println()
     }
 
     // 기능 9. 우승자 안내하기분
-    fun printWinners(racingCarList: List<RacingCar>) {
-        var maxNumberOfMove = 0
+    fun printWinner(racingCarList: List<RacingCar>) {
+        var maxMove = 0
 
         for (racingCar in racingCarList) {
-            if (racingCar.numberOfMove > maxNumberOfMove) {
-                maxNumberOfMove = racingCar.numberOfMove
+            if (racingCar.totalMove > maxMove) {
+                maxMove = racingCar.totalMove
             }
         }
 
-        val winners = mutableListOf<String>()
+        val winnerList = mutableListOf<String>()
 
         for (racingCar in racingCarList) {
-            if (racingCar.numberOfMove == maxNumberOfMove) {
-                winners.add(racingCar.name)
+            if (racingCar.totalMove == maxMove) {
+                winnerList.add(racingCar.carName)
             }
         }
 
-        println("최종 우승자 : ${winners.joinToString(", ")}")
+        println("최종 우승자 : ${winnerList.joinToString(", ")}")
     }
 
-    fun printMoveOfRacingCar(racingCar: RacingCar) {
-        println("${racingCar.name} : " + step.repeat(racingCar.numberOfMove))
+    fun printRacingCarMove(racingCar: RacingCar) {
+        println("${racingCar.carName} : " + move.repeat(racingCar.totalMove))
     }
 
-    fun printInstructionForResult() {
+    fun printResultHeader() {
         println()
         println("실행 결과")
     }
 
-    fun printInstructionForRacingCarName() {
+    fun printRacingCarNameInstructions() {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     }
 
-    fun printInstructionForTryNumber() {
+    fun printAttemptNumberInstruction() {
         println("시도할 횟수는 몇 회인가요?")
     }
 }

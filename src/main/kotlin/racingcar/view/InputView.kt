@@ -1,7 +1,6 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
-import java.lang.NumberFormatException
 
 class InputView {
     // 기능 1. 자동차 이름 입력받기
@@ -9,55 +8,53 @@ class InputView {
         val racingCarNameInputList = Console.readLine()
         val racingCarNameList = racingCarNameInputList.split(",")
 
-        checkRacingCarNameValidation(racingCarNameList)
+        validateRacingCarName(racingCarNameList)
 
         return racingCarNameList
     }
 
     // 기능 2. 자동차 이름 입력 값 유효성 검사하기
-    fun checkRacingCarNameValidation(checkList: List<String>) {
-        val checkDuplicateList = mutableListOf<String>()
+    fun validateRacingCarName(racingCarNameList: List<String>) {
+        val uniqueRacingCarNameList = mutableListOf<String>()
 
-        for (check in checkList) {
-            if (check.length > 5) {
+        for (racingCarName in racingCarNameList) {
+            if (racingCarName.length > 5) {
                 throw IllegalArgumentException("자동차 이름은 이름은 5자 이하만 가능하다.")
             }
 
-            if (checkDuplicateList.contains(check)) {
+            if (uniqueRacingCarNameList.contains(racingCarName)) {
                 throw IllegalArgumentException("자동차 이름은 중복이 허용되지 않는다.")
             }
 
-            if (check.isEmpty()) {
+            if (racingCarName.isEmpty()) {
                 throw IllegalArgumentException("쉼표(,) 뒤에 자동차 이름이 입력되지 않았다.")
             }
 
-            if (check[0] == ' ') {
+            if (racingCarName[0] == ' ') {
                 throw IllegalArgumentException("자동차 이름의 첫글자는 공백이 아니다.")
             }
 
-            checkDuplicateList.add(check)
+            uniqueRacingCarNameList.add(racingCarName)
         }
 
-        if (checkList.size < 2) {
+        if (racingCarNameList.size < 2) {
             throw IllegalArgumentException("자동차 이름은 2개 이상 입력받아야 한다.")
         }
     }
 
     // 기능 4. 시도할 횟수 정하기
-    fun getTryNumber(): Int {
-        val inputTryNumber = Console.readLine()
+    fun getAttemptNumber(): Int {
+        val attemptNumber = Console.readLine()
 
-        checkTryNumberValidation(inputTryNumber)
+        validateAttemptNumber(attemptNumber)
 
-        return inputTryNumber.toInt()
+        return attemptNumber.toInt()
     }
 
     // 기능 5. 시도할 횟수 입력값 유효성 검사하기
-    fun checkTryNumberValidation(check: String) {
+    fun validateAttemptNumber(attemptNumberToCheck: String) {
         try {
-            val checkNumber = check.toInt()
-
-            if (checkNumber < 1) {
+            if (attemptNumberToCheck.toInt() < 1) {
                 throw IllegalArgumentException("시도할 횟수는 1보다 커야한다.")
             }
 

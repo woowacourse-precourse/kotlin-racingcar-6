@@ -1,7 +1,7 @@
 package racingcar.model
 
-data class RacingCar(val name: String, var numberOfMove: Int = 0) {
-    fun moveForward() {
-        this.numberOfMove += 1
+data class RacingCar(val carName: String, var totalMove: Int = 0) {
+    fun move() {
+        this.totalMove += 1
     }
 }

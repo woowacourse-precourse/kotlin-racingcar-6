@@ -10,17 +10,17 @@ class RacingCarController(
         private val outputView: OutputView
 ) {
     fun run() {
-        outputView.printInstructionForRacingCarName()
+        outputView.printRacingCarNameInstructions()
         val racingCarList = makeRacingCarList(inputView.getRacingCarName())
 
-        outputView.printInstructionForTryNumber()
-        for (tryNumber in 0 until inputView.getTryNumber()) {
-            moveForwardOrStop(racingCarList)
+        outputView.printAttemptNumberInstruction()
+        for (attemptNumber in 0 until inputView.getAttemptNumber()) {
+            moveOrStop(racingCarList)
 
-            outputView.printResult(tryNumber, racingCarList)
+            outputView.printAttemptResult(attemptNumber, racingCarList)
         }
 
-        outputView.printWinners(racingCarList)
+        outputView.printWinner(racingCarList)
     }
 
     // 기능 3. 자동차 리스트 만들기
@@ -34,15 +34,15 @@ class RacingCarController(
     }
 
     // 기능 6. 무작위 값 구하기
-    private fun getRandomNumber(): Int {
+    private fun generateRandomNumber(): Int {
         return Randoms.pickNumberInRange(0, 9)
     }
 
     // 기능 7. 전진, 정지 판단하기
-    private fun moveForwardOrStop(racingCarList: List<RacingCar>) {
+    private fun moveOrStop(racingCarList: List<RacingCar>) {
         for (racingCar in racingCarList) {
-            if (getRandomNumber() >= 4) {
-                racingCar.moveForward()
+            if (generateRandomNumber() >= 4) {
+                racingCar.move()
             }
         }
     }
