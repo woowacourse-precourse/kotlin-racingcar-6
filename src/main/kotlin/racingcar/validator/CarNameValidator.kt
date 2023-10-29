@@ -1,6 +1,7 @@
 package racingcar.validator
 
 import racingcar.utils.Converter
+import racingcar.utils.Constants
 
 class CarNameValidator {
     fun validate(carNames: String) {
@@ -12,15 +13,15 @@ class CarNameValidator {
     }
 
     private fun requireNoBlankName(carNameList: List<String>) {
-        require(carNameList.all { it.isNotBlank() }) { "이름에 공백을 입력할 수 없습니다." }
+        require(carNameList.all { it.isNotBlank() }) { Constants.NAME_CONTAINS_WHITESPACE_ERROR_MESSAGE }
     }
 
     private fun requireNameLengthInRange(carNameList: List<String>) {
-        require(carNameList.all { it.length <= 5 }) { "이름은 다섯 자 이하로 입력해야 합니다." }
+        require(carNameList.all { it.length <= Constants.MAX_CAR_NAME_LENGTH }) { Constants.INVALID_NAME_LENGTH_MESSAGE }
     }
 
     private fun requireNoDuplicatedName(carNameList: List<String>) {
         val carNameSet = carNameList.toHashSet()
-        require(carNameList.size == carNameSet.size) { "중복된 이름을 입력할 수 없습니다." }
+        require(carNameList.size == carNameSet.size) { Constants.DUPLICATE_NAME_INPUT_ERROR_MESSAGE }
     }
 }

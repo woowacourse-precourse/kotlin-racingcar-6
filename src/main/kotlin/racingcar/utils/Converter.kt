@@ -4,7 +4,7 @@ import java.lang.NumberFormatException
 
 object Converter {
     fun splitByCommaToStringList(string: String): List<String> {
-        return string.split(",").toList()
+        return string.split(Constants.COMMA).toList()
     }
 
     fun convertStringToInt(string: String): Int {
@@ -12,7 +12,7 @@ object Converter {
             return string.toInt()
         }
         catch (e:NumberFormatException) {
-            throw IllegalArgumentException("숫자가 아닌 다른 형식을 입력할 수 없습니다.")
+            throw IllegalArgumentException(Constants.NON_NUMERIC_INPUT_ERROR_MESSAGE)
         }
     }
 }

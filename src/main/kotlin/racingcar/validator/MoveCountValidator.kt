@@ -1,5 +1,6 @@
 package racingcar.validator
 
+import racingcar.utils.Constants
 import racingcar.utils.Converter
 
 class MoveCountValidator {
@@ -7,7 +8,8 @@ class MoveCountValidator {
         val moveCount = Converter.convertStringToInt(stringMoveCount)
         requirePositiveNumber(moveCount)
     }
-    private fun requirePositiveNumber(moveCount :Int) {
-        require(moveCount >= 1) {"1 이상의 숫자만 입력할 수 있습니다."}
+
+    private fun requirePositiveNumber(moveCount: Int) {
+        require(moveCount >= Constants.MINIMUM_POSITIVE_NUMBER) { Constants.INVALID_NON_POSITIVE_NUMBER_ERROR_MESSAGE }
     }
 }
