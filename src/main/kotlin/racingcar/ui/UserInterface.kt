@@ -24,6 +24,7 @@ object UserInput {
     fun readAttemptCount(): String {
         println(MSG_INPUT_ATTEMPT_COUNT)
         return Console.readLine()
+            .trim()
     }
 }
 
