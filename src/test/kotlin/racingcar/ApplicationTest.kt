@@ -40,6 +40,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `시도할 횟수가 음수일 경우에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,park,kim", "-1") }
+        }
+    }
+
     public override fun runMain() {
         main()
     }
