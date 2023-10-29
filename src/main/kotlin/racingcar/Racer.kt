@@ -15,9 +15,7 @@ class Racer (
 
     fun updateMoveForward(moveForward: RaceMove) {
         for (index in moveForward.moveChanceNumber.indices) {
-            if (index < moveForward.moveChanceNumber.size && index < this.moveForward.size) {
-                this.moveForward[index] += moveForward.moveChanceNumber[index]
-            }
+            this.moveForward[index] += moveForward.moveChanceNumber[index]
         }
     }
 

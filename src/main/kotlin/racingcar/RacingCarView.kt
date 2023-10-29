@@ -10,8 +10,8 @@ class RacingCarView() {
     }
 
     fun printRaceOnView(racerCrew: Racer){
-        for (i in racerCrew.racerName.indices) {
-            println("${racerCrew.racerName[i]} : ${"-".repeat(racerCrew.moveForward[i])}")
+        for (index in racerCrew.racerName.indices) {
+            println("${racerCrew.racerName[index]} : ${"-".repeat(racerCrew.moveForward[index])}")
         }
         println()
     }

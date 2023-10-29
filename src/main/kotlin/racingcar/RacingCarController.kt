@@ -8,46 +8,50 @@ class RacingCarController(private val view: RacingCarView, private val model: Ra
         enterPlayTime()
         initializationBeforeJudgeRace()
         requestPrintResultText()
-        for(sequexnce in 0 until model.racerCrew.playTime) {
+        for(sequence in 0 until model.racerCrew.playTime) {
             judgeRace()
             printRace()
         }
-        /*
         judgeChampion()
+        /*
         printChampion()
         */
     }
 
-    private fun signUpRacer(){
+    private fun signUpRacer() {
         view.printRequestRacer()
         val unverifiedRacerName = RacerName(Console.readLine())
         val verifiedRacer: MutableList<String> = unverifiedRacerName.verifyRacerName()
         model.requestUpdateRacerName(verifiedRacer)
-        model.requestInitializationMoveForward()
     }
 
-    private fun enterPlayTime(){
+    private fun enterPlayTime() {
         view.printRequestPlayTime()
         val unverifiedPlayTime = RaceTime(Console.readLine().toInt())
         val verifiedPlayTime = unverifiedPlayTime.verifyPlayTime()
         model.requestUpdatePlayTime(verifiedPlayTime)
     }
 
-    private fun initializationBeforeJudgeRace(){
+    private fun initializationBeforeJudgeRace() {
         model.requestInitializationMoveForward()
     }
 
-    private fun requestPrintResultText(){
+    private fun requestPrintResultText() {
         view.printResultText()
     }
 
-    private fun judgeRace(){
+    private fun judgeRace() {
         val raceMove = RaceMove()
         raceMove.getMoveNumber(model.racerCrew.racerName.size)
         model.requestUpdateMoveForward(raceMove)
     }
 
-    private fun printRace(){
+    private fun printRace() {
         view.printRaceOnView(model.racerCrew)
+    }
+
+    private fun judgeChampion(){
+
+        model.requestJudgeChampion()
     }
 }
