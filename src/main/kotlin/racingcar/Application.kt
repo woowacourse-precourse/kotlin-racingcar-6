@@ -47,9 +47,8 @@ fun initGame() {
     gameCount = inputRaceCount()
 }
 
-fun inputCars(): String {
-    return Console.readLine()
-}
+fun inputCars(): String = Console.readLine()
+
 
 fun inputCarNames(): List<Car> {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -60,9 +59,8 @@ fun inputCarNames(): List<Car> {
     return makeCarModelList(carNameList)
 }
 
-fun separateCarNames(carNames: String): List<String> {
-    return carNames.split(",")
-}
+fun separateCarNames(carNames: String): List<String> = carNames.split(",")
+
 
 fun makeCarModelList(carNames: List<String>): List<Car> {
     var modelList = mutableListOf<Car>()
@@ -102,18 +100,16 @@ fun validateNumber(count: String) {
     count.toIntOrNull() ?: throw IllegalArgumentException("사용자의 입력이 숫자가 아닙니다.")
 }
 
-fun getRandomNumber(): Int {
-    return Randoms.pickNumberInRange(0, 9)
-}
+fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
+
 
 fun moveOrStop(): Boolean {
     val getNumber = getRandomNumber()
     return getNumber >= 4
 }
 
-fun printName(name: String) {
-    print("$name : ")
-}
+fun printName(name: String) = print("$name : ")
+
 
 fun printDistance(distance: Int) {
     repeat(distance) {
