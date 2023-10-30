@@ -2,7 +2,6 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console.readLine
 
-// 자동차 이름 입력 받기
 fun getCarNames(): List<String> {
     println("경주할 자동차 이름을 입력하세요.")
     val carNamesInput = readLine()

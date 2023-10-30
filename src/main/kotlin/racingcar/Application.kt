@@ -1,4 +1,5 @@
 package racingcar
+import camp.nextstep.edu.missionutils.Console.readLine
 
 fun main() {
     val carNames = getCarNames()
