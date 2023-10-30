@@ -53,14 +53,14 @@ object RacingGameManager {
      *    최댓값을 가진 객체들의 name 리스트를 반환한다.
      */
     private fun createWinnerList(cars: MutableList<RacingCar>): List<String> {
-        return hasMaxDistance(cars, getMaxDistance(cars))
+        return findCarNameWithMaxDistance(cars, getMaxDistance(cars))
     }
 
     private fun getMaxDistance(cars: MutableList<RacingCar>): Int {
         return cars.maxOf { it.distance }
     }
 
-    private fun hasMaxDistance(cars: MutableList<RacingCar>, max: Int): List<String> {
+    private fun findCarNameWithMaxDistance(cars: MutableList<RacingCar>, max: Int): List<String> {
         return cars.filter { it.distance == max }.map { it.name }
     }
 }
