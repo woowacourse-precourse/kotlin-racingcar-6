@@ -18,7 +18,7 @@ class Validation {
 
     fun checkCarNameDuplication(carsNameList: List<String>) {
         if (carsNameList.distinct().size != carsNameList.size) {
-            throw IllegalArgumentException("중복된 이름은 입력할 수 없습니다.")
+            throw IllegalArgumentException("자동차 이름은 쉼표(,)로 구분해 주세요.")
         }
     }
 
