@@ -2,7 +2,7 @@ package racingcar.model
 
 import racingcar.constants.CarException
 
-class Car private constructor(val name: String) : Comparable<Car> {
+class Car private constructor(private val name: String) : Comparable<Car> {
     private val racingResult = StringBuilder()
     private var forwardCount = 0
 

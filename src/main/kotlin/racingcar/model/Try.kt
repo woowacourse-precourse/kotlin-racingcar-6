@@ -21,7 +21,7 @@ class Try private constructor(private val count: Int) {
         }
 
         fun validateTryDigit(countString: String) {
-            require(countString.all { it.isDigit() }) { TryException.DIGIT }
+            require(countString.all { countChar -> countChar.isDigit() }) { TryException.DIGIT }
         }
 
         fun validateTryMax(countString: String) {

@@ -2,11 +2,11 @@ package racingcar.io
 
 import racingcar.model.Car
 
-fun printCarListResult(carList: List<Car>) {
-    carList.forEach { car -> println(car.getRacingResultString()) }
+fun printCarsResult(cars: List<Car>) {
+    cars.forEach { car -> println(car.getRacingResultString()) }
     println()
 }
 
-fun printWinner(winnerList: List<Car>) {
-    print("최종 우승자 : ${winnerList.joinToString(", ")}")
+fun printWinners(winners: List<Car>) {
+    print("최종 우승자 : ${winners.joinToString(", ")}")
 }

@@ -7,8 +7,8 @@ import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.constants.*
-import racingcar.io.printCarListResult
-import racingcar.io.printWinner
+import racingcar.io.printCarsResult
+import racingcar.io.printWinners
 import racingcar.model.Car
 import racingcar.model.Try
 import racingcar.util.toCarList
@@ -45,12 +45,12 @@ class ApplicationTest : NsTest() {
         // then
         result1.forEachIndexed { idx, car ->
             assertThat(car).isInstanceOf(Car::class.java)
-            assertThat(car.name).isEqualTo(case1.split(",")[idx])
+            assertThat(car.toString()).isEqualTo(case1.split(",")[idx])
         }
 
         result2.forEachIndexed { idx, car ->
             assertThat(car).isInstanceOf(Car::class.java)
-            assertThat(car.name).isEqualTo(case2.split(",")[idx])
+            assertThat(car.toString()).isEqualTo(case2.split(",")[idx])
         }
     }
 
@@ -263,11 +263,11 @@ class ApplicationTest : NsTest() {
         )
 
         // when
-        val result = racingGame.pickWinner(case)
+        val result = racingGame.pickWinners(case)
 
         // then
         assertThat(result.size).isEqualTo(1)
-        assertThat(result[0].name).isEqualTo("woni")
+        assertThat(result[0].toString()).isEqualTo("woni")
     }
 
     @Test
@@ -285,12 +285,12 @@ class ApplicationTest : NsTest() {
         )
 
         // when
-        val result = racingGame.pickWinner(case)
+        val result = racingGame.pickWinners(case)
 
         // then
         assertThat(result.size).isEqualTo(2)
-        assertThat(result[0].name).isEqualTo("woni")
-        assertThat(result[1].name).isEqualTo("jun")
+        assertThat(result[0].toString()).isEqualTo("woni")
+        assertThat(result[1].toString()).isEqualTo("jun")
     }
 
     @Test
@@ -308,7 +308,7 @@ class ApplicationTest : NsTest() {
         )
 
         // when
-        printCarListResult(case)
+        printCarsResult(case)
 
         // then
         assertThat(output())
@@ -325,7 +325,7 @@ class ApplicationTest : NsTest() {
         val case = listOf(Car.of("pobi"))
 
         // when
-        printWinner(case)
+        printWinners(case)
 
         // then
         assertThat(output()).isEqualTo("최종 우승자 : pobi")
@@ -337,7 +337,7 @@ class ApplicationTest : NsTest() {
         val case = listOf(Car.of("pobi"), Car.of("woni"))
 
         // when
-        printWinner(case)
+        printWinners(case)
 
         // then
         assertThat(output()).isEqualTo("최종 우승자 : pobi, woni")
