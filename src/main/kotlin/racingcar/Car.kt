@@ -10,9 +10,18 @@ class Car(private val name: String, private var howGoForward: Int = 0) {
 
     private fun createRandomNumber() = Randoms.pickNumberInRange(0, 9)
 
+    fun moveForwardIfRandomNumberIsGreaterThanStandard() {
+        val randomNumber = createRandomNumber()
+
+        if (randomNumber >= CAR_FORWARD_STANDARD) {
+            howGoForward++
+        }
+    }
+
     fun getCarName() = this.name
 
     companion object {
         const val NAME_MAX_LENGTH = 5
+        const val CAR_FORWARD_STANDARD = 4
     }
 }
