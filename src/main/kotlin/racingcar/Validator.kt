@@ -9,6 +9,7 @@ class Validator {
         checkCarNameSeparator(input)
         checkCarNameLength(input)
         checkCarNameCount(input)
+        checkCarNameDistinction(input)
     }
 
     private fun checkCarNameBlank(input: String) {
@@ -30,6 +31,12 @@ class Validator {
         val carNames = input.split(COMMA)
 
         if (carNames.size < MIN_NAME_COUNT) throw IllegalArgumentException()
+    }
+
+    private fun checkCarNameDistinction(input: String) {
+        val carNames = input.split(COMMA)
+
+        if (carNames.toSet().size != carNames.size) throw IllegalArgumentException()
     }
 
     companion object {
