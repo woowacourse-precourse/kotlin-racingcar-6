@@ -16,12 +16,12 @@ class Logic {
         return carDistanceList
     }
 
-    fun moveCar(carDistanceList: MutableList<String>) {
+    fun moveCar(carDistanceList: MutableList<String>) : MutableList<String>{
         for(i in 0..carDistanceList.size-1) {
             if(makeRandomNumber() > 4){
                 carDistanceList[i] += "-"
             }
         }
+        return carDistanceList
     }
-
 }
