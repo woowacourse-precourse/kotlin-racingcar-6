@@ -27,3 +27,15 @@ private fun carNames(): String {
     }
     return inputCarNames
 }
+
+private fun checkWin(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+
+    return try {
+        val attempts = Console.readLine().toInt()
+        if (attempts <= 0) throw IllegalArgumentException()
+        attempts
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException()
+    }
+}
