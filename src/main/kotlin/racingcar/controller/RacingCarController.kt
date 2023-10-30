@@ -28,7 +28,7 @@ class RacingCarController(
     }
 
     private fun playGame(attemptCount: Int) {
-        for (i in 0 until attemptCount) {
+        repeat(attemptCount) {
             val attemptResult = service.moveRacingCars()
             outputView.printAttemptResult(attemptResult)
         }
