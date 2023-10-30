@@ -22,7 +22,13 @@ object InputHandler {
         return if (isValidAmount(inputData)) inputData!! else throw IllegalArgumentException("")
     }
 
-    fun isValidCarName(carNames: List<String>): Boolean = carNames.all { isAllLowerCase(it) && isLengthLessThanOrEqualTo5(it) }
+    fun isValidCarName(carNames: List<String>): Boolean {
+        val nameSet = mutableSetOf<String>()
+        return carNames.all { name ->
+            isAllLowerCase(name) && isLengthLessThanOrEqualTo5(name) && nameSet.add(name)
+        }
+    }
+
 
     fun isValidAmount(amount: Int?): Boolean {
         amount?.let {
