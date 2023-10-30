@@ -27,4 +27,14 @@ class RacingGame {
         val input = Console.readLine()
         return input.split(",")
     }
+
+    private fun readRounds(): Int {
+        println("시도할 횟수는 몇 회인가요?")
+        val input = Console.readLine()
+        val count = input.toIntOrNull() ?: throw IllegalArgumentException("숫자가 아닙니다.")
+        if (count < 0) throw IllegalArgumentException("0보다 작은 수는 입력할 수 없습니다.")
+        return count
+    }
+
+    private fun playGames(car: List<Car>, roundCount: Int) {}
 }
