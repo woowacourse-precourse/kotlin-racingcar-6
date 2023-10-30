@@ -3,24 +3,30 @@ package racingcar
 import java.lang.IllegalArgumentException
 
 object Validator {
+    private const val MAX_LENGTH = 5
+    private const val INVALID_LENGTH = "자동차 이름의 길이가 5보다 큽니다."
+    private const val INVALID_NAME = "자동차 이름에 널값이 존재합니다."
+    private const val INVALID_UNIQUE = "중복된 자동차 이름이 존재합니다."
+    private const val INVALID_NUMBER = "사용자의 입력이 숫자가 아닙니다."
+
     fun validateNameLength(carList: List<String>) {
         carList.forEach {
-            if (it.length > 5) throw IllegalArgumentException("차 이름의 길이가 5보다 큽니다.")
+            if (it.length > MAX_LENGTH) throw IllegalArgumentException(INVALID_LENGTH)
         }
     }
 
     fun validateNull(carList: List<String>) {
         carList.forEach {
-            if (it.trim().isEmpty()) throw IllegalArgumentException("차 이름에 널값이 존재합니다.")
+            if (it.trim().isEmpty()) throw IllegalArgumentException(INVALID_NAME)
         }
     }
 
     fun validateDuplicate(carList: List<String>) {
         val validation = carList.toSet()
-        if (validation.size != carList.size) throw IllegalArgumentException("중복된 차 이름이 존재합니다.")
+        if (validation.size != carList.size) throw IllegalArgumentException(INVALID_UNIQUE)
     }
 
     fun validateNumber(count: String) {
-        count.toIntOrNull() ?: throw IllegalArgumentException("사용자의 입력이 숫자가 아닙니다.")
+        count.toIntOrNull() ?: throw IllegalArgumentException(INVALID_NUMBER)
     }
 }

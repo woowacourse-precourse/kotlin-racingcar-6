@@ -8,6 +8,12 @@ import racingcar.Validator.validateNull
 import racingcar.Validator.validateNumber
 
 class RacingGame {
+    companion object {
+        private const val START_NUMBER = 0
+        private const val COMPARE_NUMBER = 4
+        private const val END_NUMBER = 9
+    }
+
     var gameCount = 0
     private val cars = Cars()
     private val carManager = CarManager()
@@ -64,9 +70,9 @@ class RacingGame {
         return input.toInt()
     }
 
-    private fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
+    private fun getRandomNumber(): Int = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER)
 
-    private fun checkMovable(number: Int): Boolean = number >= 4
+    private fun checkMovable(number: Int): Boolean = number >= COMPARE_NUMBER
 
     private fun printCarDistance(car: Car) {
         println("${car.name} : ${"-".repeat(car.moveDistance)}")
