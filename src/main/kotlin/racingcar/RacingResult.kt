@@ -2,9 +2,12 @@ package racingcar
 
 class RacingResult {
     fun gameResult(cars:List<String>, race:List<String>){
+        //var result:String = "" //테스트 코드용
         for(i: Int in cars.indices){
             println(cars[i] + " : " + race[i])
+            //result += (cars[i] + " : " + race[i] + "\n") //테스트 코드용
         }
+        //return result //테스트 코드용
     }
     fun winnerResult(cars:List<String>, race:List<String>){
         val index = mutableListOf<Int>()
@@ -20,12 +23,16 @@ class RacingResult {
             }
         }
         print("최종 우승자 : ")
-        for(winner in 0 until index.size){
+        //var winners = "최종 우승자 : " //테스트 코드용
+        for(winner in 0 until index.size) {
             print(cars[index[winner]])
+            //winners += cars[index[winner]] //테스트 코드용
             if (winner < index.size - 1) {
                 print(", ")
+                //winners += ", " //테스트 코드용
             }
         }
+        //return winners 테스트 코드용
 
     }
 }
