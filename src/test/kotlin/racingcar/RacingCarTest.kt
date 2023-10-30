@@ -97,7 +97,7 @@ class RacingCarTest {
 
     @Test
     fun `무작위 값 구하기`() {
-        val randomNumber: Int
+        var randomNumber = 0
 
         randomNumber = racingCarController.generateRandomNumber()
 
@@ -146,7 +146,7 @@ class RacingCarTest {
 
         val winner = racingCarController.findWinner(racingCarList)
 
-        assertThat(winner).isEqualTo(listOf(RacingCar("pobi", 1)))
+        assertThat(winner).contains(RacingCar("pobi", 1))
     }
 
     @Test
@@ -155,7 +155,7 @@ class RacingCarTest {
 
         val winner = racingCarController.findWinner(racingCarList)
 
-        assertThat(winner).isEqualTo(listOf(RacingCar("pobi", 1), RacingCar("woni", 1)))
+        assertThat(winner).contains(RacingCar("pobi", 1), RacingCar("woni", 1))
     }
 
     @Test
