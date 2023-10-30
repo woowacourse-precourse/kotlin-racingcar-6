@@ -66,7 +66,4 @@ class InputView {
             throw IllegalArgumentException("0은 입력될 수 없습니다.")
     }
 
-
-
-
 }
