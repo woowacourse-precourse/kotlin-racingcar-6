@@ -12,7 +12,7 @@ class RandomNumberGeneratorTest {
     fun randomNumberInCorrectRange() {
         //given
         //when
-        //thenf
-        Assertions.assertThat(RandomNumberGenerator.generateRandomNumber()).isLessThan(10).isGreaterThan(-1)
+        //then
+        Assertions.assertThat(RandomNumberGenerator().generateRandomNumber()).isLessThan(10).isGreaterThan(-1)
     }
 }
