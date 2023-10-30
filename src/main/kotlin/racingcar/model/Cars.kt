@@ -3,7 +3,8 @@ package racingcar.model
 class Cars(private val cars: List<Car>) {
 
     init {
-        require(cars.size == cars.toSet().size) { "중복된 이름이 존재합니다!" }
+        val distinctByName = cars.distinctBy { it.name.name }
+        require(cars.size == distinctByName.size) { "중복된 이름이 존재합니다!" }
     }
 
     fun raceCars() {
