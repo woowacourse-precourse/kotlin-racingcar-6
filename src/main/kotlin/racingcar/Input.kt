@@ -9,4 +9,11 @@ class Input {
         val inputString = Console.readLine()
         return makeCar(inputString)
     }
+
+    fun inputAttempt(): Int {
+        println("시도할 횟수는 몇 회인가요?")
+        val inputInt = Console.readLine()
+        validAttempt(inputInt)
+        return inputInt.toInt()
+    }
 }
