@@ -12,17 +12,28 @@ class Controller {
     private val inputView = InputView()
 
     fun start() {
+        val participants = getRaceParticipants()
+        val attemptNumber = getAttemptNumber()
+        val judge = Judge(participants)
+        displayRaceResult(attemptNumber, judge)
+        inputView.terminated()
+    }
+
+    private fun getRaceParticipants(): CarGroup {
         outputView.printInputRaceCarNames()
-        val cars = CarGroup.from(inputView.getUserInput())
+        return CarGroup.from(inputView.getUserInput())
+    }
 
+    private fun getAttemptNumber(): Int {
         outputView.printInputNumberOfAttempts()
-        val number = inputView.getUserInput().validateNumber().getOrThrow().toInt()
+        return inputView.getUserInput().validateNumber().getOrThrow().toInt()
+    }
 
-        val judge = Judge(cars)
-        repeat(number) {
-            outputView.printAllRaceResults(judge.play())
+    private fun displayRaceResult(attemptNumber: Int, judge: Judge) {
+        outputView.printResult()
+        repeat(attemptNumber) {
+            outputView.printCurrentRaceResult(judge.play())
         }
         outputView.printWinner(judge.getWinner())
-        inputView.terminated()
     }
 }
