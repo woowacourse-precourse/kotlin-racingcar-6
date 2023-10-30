@@ -6,7 +6,7 @@ import racingcar.manager.OutputManager
 
 class CarRacingGame(
     private val inputManager: InputManager = InputManager(),
-    private val outputManager: OutputManager = OutputManager()
+    val outputManager: OutputManager = OutputManager()
 ) {
     fun setUp(): Car {
         outputManager.racingCarNames()
@@ -22,13 +22,5 @@ class CarRacingGame(
             carNames = carNames,
             attemptCount = attemptCount
         )
-    }
-
-    fun printRaceResult() {
-
-    }
-
-    fun printWinner() {
-
     }
 }

@@ -1,19 +1,16 @@
 package racingcar
 
 import racingcar.game.CarRacingGame
-import racingcar.manager.OutputManager
 
 fun main() {
     startRacingGame()
 }
 
 private fun startRacingGame() {
-    val carRaceGame = CarRacingGame()
-        .setUp()
-        .race()
-    with(OutputManager()) {
-        racingRoundResult(carRaceGame.racingResult())
-        winner(carRaceGame.winner())
+    CarRacingGame().apply {
+        val carRaceGame = setUp().race()
+        outputManager.racingRoundResult(carRaceGame.racingResult())
+        outputManager.winner(carRaceGame.winner())
     }
 }
 
