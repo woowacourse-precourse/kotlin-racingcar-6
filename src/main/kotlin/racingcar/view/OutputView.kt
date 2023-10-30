@@ -3,9 +3,11 @@ package racingcar.view
 import racingcar.domain.Cars
 
 class OutputView {
-
+    companion object {
+        private const val RUN_RESULT = "실행 결과"
+    }
     fun printHeadResult() {
-        println("실행 결과")
+        println(RUN_RESULT)
     }
     fun printScore(cars: List<Cars>) {
         for (car in cars) {
@@ -15,9 +17,7 @@ class OutputView {
     }
 
     private fun printCarScore(cars: Cars) {
-        print(cars.carName + " : ")
-        cars.changeRepeatPosition()
-        println()
+        println(cars.joinNameAndPosition())
     }
 
     private fun racePointMax(cars: List<Cars>): Int? {
