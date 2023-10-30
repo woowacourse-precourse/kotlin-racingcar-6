@@ -35,3 +35,14 @@ fun move(car: Car) { //자동차 0~9랜덤 추출 후 4이상이면 포지션 �
         car.position++
     }
 }
+
+fun race(cars: List<Car>, numberOfMoves: Int) {  //횟수만큼 moving 함수 실행
+    repeat(numberOfMoves) {
+        moving(cars: List<Car>)
+    }
+}
+fun moving(cars: List<Car>){  //cars배열 속 하나하나 move함수 실행
+    for (car in cars) {
+        move(car)
+    }
+}
