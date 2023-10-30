@@ -20,7 +20,7 @@ class Cars {
         val maxDistance = getMaxDistance()
         val winnerList = mutableListOf<String>()
         _list.forEach { car ->
-            if (car.moveDistance == maxDistance) {
+            if (car.isWinner(maxDistance)) {
                 winnerList.add(car.name)
             }
         }
