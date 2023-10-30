@@ -6,17 +6,19 @@ import racingcar.ErrorMessage.CAR_MINIMUM_COUNT_ERROR
 import racingcar.ErrorMessage.CAR_NAME_LENGTH_OVER_ERROR
 import racingcar.ErrorMessage.DUPLICATE_CAR_NAME_ERROR
 import racingcar.GameMessage.INPUT_RACING_CAR_NAME_MESSAGE
+import racingcar.UserInput.getUserInput
 
 object RacingCarInput {
     private const val MIN_CAR_COUNT = 1
     private const val MAX_CAR_NAME_LENGTH = 5
 
     fun getCarNameMap(): Map<String, Int> {
-        try {
-            println(INPUT_RACING_CAR_NAME_MESSAGE)
-            return convertStringToMap(Console.readLine()).apply { validate(this) }
-        } catch (e: IllegalArgumentException) {
-            throw e
+        println(INPUT_RACING_CAR_NAME_MESSAGE)
+        val userInput = getUserInput()
+        return runCatching {
+            convertStringToMap(userInput).apply { validate(this) }
+        }.getOrElse { throwable ->
+            throw IllegalArgumentException(throwable)
         }
     }
 
