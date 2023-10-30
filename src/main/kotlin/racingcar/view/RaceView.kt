@@ -13,7 +13,8 @@ class RaceView(
     }
 
     fun getCarNamesFromUser(): List<CarName> {
-        return inputView.readLine().split(",").map(::CarName)
+        val userInput = inputView.readLine()
+        return if (userInput.isEmpty()) emptyList() else userInput.split(',').map(::CarName)
     }
 
     fun displayEnterTurnNumber() {
