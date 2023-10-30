@@ -1,22 +1,5 @@
 import kotlin.random.Random
 
-// 자동차를 나타내는 클래스
-class Car(val name: String) {
-    var distance = 0
-
-    // 자동차가 전진하는 조건을 체크하고 전진할 경우 distance를 1 증가시킨다.
-    fun move() {
-        if (Random.nextInt(10) >= 4) {
-            distance++
-        }
-    }
-
-    // 자동차의 현재 상태를 출력하기 위한 함수
-    fun printStatus() {
-        println("$name : ${"-".repeat(distance)}")
-    }
-}
-
 fun main() {
     // 사용자로부터 자동차 이름을 입력받는다.
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -71,4 +54,21 @@ fun main() {
     }
 
     println("최종 우승자 : ${winners.joinToString()}")
+}
+
+// 자동차를 나타내는 클래스
+class Car(val name: String) {
+    var distance = 0
+
+    // 자동차가 전진하는 조건을 체크하고 전진할 경우 distance를 1 증가시킨다.
+    fun move() {
+        if (Random.nextInt(10) >= 4) {
+            distance++
+        }
+    }
+
+    // 자동차의 현재 상태를 출력하기 위한 함수
+    fun printStatus() {
+        println("$name : ${"-".repeat(distance)}")
+    }
 }
