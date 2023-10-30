@@ -1,18 +1,33 @@
 package racingcar
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.controller.RacingCarController
 import racingcar.model.RacingCar
 import racingcar.view.InputView
 import racingcar.view.OutputView
+import java.io.ByteArrayOutputStream
+import java.io.PrintStream
 
 
 class RacingCarTest {
     private val inputView = InputView()
     private val outputView = OutputView()
+    private val outputStream = ByteArrayOutputStream()
     private val racingCarController = RacingCarController(inputView, outputView)
+
+    @BeforeEach
+    fun before() {
+        System.setOut(PrintStream(outputStream))
+    }
+
+    @AfterEach
+    fun after() {
+        System.setOut(System.out)
+    }
 
     @Test
     fun `자동차 이름 5자 초과 입력 예외 처리`() {
@@ -82,6 +97,7 @@ class RacingCarTest {
     @Test
     fun `전진 판단하기`() {
         val movingCar = RacingCar("pobi")
+
         racingCarController.moveOrStop(movingCar, MOVING_FORWARD)
 
         assertThat(movingCar).isEqualTo(RacingCar("pobi", 1))
@@ -90,13 +106,25 @@ class RacingCarTest {
     @Test
     fun `정지 판단하기`() {
         val stoppedCar = RacingCar("pobi")
+
         racingCarController.moveOrStop(stoppedCar, STOP)
 
         assertThat(stoppedCar).isEqualTo(RacingCar("pobi", 0))
     }
 
+    @Test
+    fun `전진 실행 결과 출력하기`() {
+        val racingCar = RacingCar("pobi", 1)
+
+        outputView.printRacingCarMove(racingCar)
+
+        assertThat(outputStream.toString().trim()).isEqualTo("pobi : $MOVE")
+    }
+
+
     companion object {
         private const val MOVING_FORWARD = 4
         private const val STOP = 3
+        private const val MOVE = "-"
     }
 }
