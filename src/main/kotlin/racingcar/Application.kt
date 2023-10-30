@@ -9,6 +9,8 @@ class RacingCar(val name: String) {
 fun main() {
     try {
         val carNames = getCarNames()
+        val tryCount = getTryCount()
+        println("")
 
     } catch (e: IllegalArgumentException) {
         println("에러: ${e.message}")
@@ -27,4 +29,8 @@ fun getCarNames(): List<String> {
 fun getTryCount(): Int {
     println("시도할 횟수는 몇 회인가요?")
     return Console.readLine()?.toInt() ?: throw IllegalArgumentException("잘못된 입력입니다.")
+}
+
+fun createCars(carNames: List<String>): List<RacingCar> {
+    return carNames.map { RacingCar(it) }
 }
