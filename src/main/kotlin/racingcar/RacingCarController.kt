@@ -1,5 +1,11 @@
 package racingcar
 
+import racingcar.Constants.CAR_NAME_SEPARATOR
+import racingcar.Constants.MESSAGE_CAR_MINIMUM_REQUIRED
+import racingcar.Constants.MESSAGE_DUPLICATE_CAR_NAME
+import racingcar.Constants.MESSAGE_FINAL_WINNER
+import racingcar.Constants.MINIMUM_CAR_NUMBER
+import racingcar.Constants.START_LOCATION
 import racingcar.PlayerConsole.getValidCarNames
 import racingcar.PlayerConsole.getValidMoveCount
 
@@ -9,9 +15,9 @@ class RacingCarController {
     private val moveCount = getValidMoveCount()
 
     private fun createRacingCars(carNameList: List<String>): List<RacingCar> {
-        require(1 < carNameList.size) { "2대 이상의 자동차가 필요합니다." }
-        require(carNameList.toSet().size == carNameList.size) { "자동차 이름은 서로 중복될 수 없습니다." }
-        return carNameList.map { RacingCar(it, 0) }
+        require(MINIMUM_CAR_NUMBER <= carNameList.size) { MESSAGE_CAR_MINIMUM_REQUIRED }
+        require(carNameList.toSet().size == carNameList.size) { MESSAGE_DUPLICATE_CAR_NAME }
+        return carNameList.map { RacingCar(it, START_LOCATION) }
     }
 
     fun play() {
@@ -45,8 +51,8 @@ class RacingCarController {
     }
 
     private fun printWinnerNames(winnerNames: List<String>) {
-        val winner = winnerNames.joinToString(", ")
-        println("최종 우승자 : $winner")
+        val winner = winnerNames.joinToString(CAR_NAME_SEPARATOR)
+        println(MESSAGE_FINAL_WINNER + winner)
     }
 
 }
