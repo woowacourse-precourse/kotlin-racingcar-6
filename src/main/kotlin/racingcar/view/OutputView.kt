@@ -10,4 +10,12 @@ object OutputView {
     fun startReadCount() {
         println(Constants.INPUT_COUNT_MESSAGE)
     }
+
+    fun showResult(carName: String, position: Int) {
+        println("$carName : ${Constants.POSITION_SYMBOL.repeat(position)}")
+    }
+
+    fun runMessage() {
+        println(Constants.RUN_MESSAGE)
+    }
 }

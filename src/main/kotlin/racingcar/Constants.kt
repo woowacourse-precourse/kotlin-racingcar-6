@@ -4,6 +4,8 @@ object Constants {
     // Game
     const val INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     const val INPUT_COUNT_MESSAGE = "시도할 회수는 몇회인가요?"
+    const val POSITION_SYMBOL = "-"
+    const val RUN_MESSAGE = "실행 결과"
 
     //Ball Status
 
