@@ -15,16 +15,18 @@ object InputView {
 
     fun inputCarNames(): List<String> {
         println(INPUT_CAR_NAMES)
-        return validateInputCarNames(Console.readLine())
+        val inputCarNames = stringToList(Console.readLine())
+        validateInputCarNames(inputCarNames)
+        return inputCarNames
     }
 
-    fun validateInputCarNames(input: String): List<String> {
-        val inputCarNames = input.split(",").map { it.trim() }
+    private fun stringToList(input: String): List<String> = input.split(",").map { it.trim() }
+
+    fun validateInputCarNames(inputCarNames: List<String>) {
         checkCarNamesNull(inputCarNames)
         checkCarNamesLength(inputCarNames)
         checkCarNamesDuplicate(inputCarNames)
         checkCarNamesContainBlank(inputCarNames)
-        return inputCarNames
     }
 
     private fun checkCarNamesNull(carNames: List<String>) {
