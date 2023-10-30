@@ -47,7 +47,9 @@ fun turnProcess(raceCars: List<raceCar>) {
 fun main() {
     val raceCars = parseCarName()
     val turnCount = parseTurnCount()
+    println("\n실행 결과")
     for (i in 1..turnCount) {
         turnProcess(raceCars)
+        println(raceCars.joinToString("\n", postfix = "\n"))
     }
 }
