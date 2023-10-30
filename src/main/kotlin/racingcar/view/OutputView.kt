@@ -27,7 +27,7 @@ class OutputView {
     private fun formatDistance(car: Car): String =
         buildString {
             repeat(car.distance) {
-                append("_")
+                append("-")
             }
         }
 
