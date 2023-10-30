@@ -1,6 +1,6 @@
 package racingcar.view
 
-import racingcar.Car
+import racingcar.game.Car
 
 object OutputView {
 
@@ -17,6 +17,6 @@ object OutputView {
         println()
     }
 
-    fun outputFinalWinner(cars: List<Car>) =
+    fun outputFinalWinners(cars: List<Car>) =
         println(OUTPUT_FINAL_WINNER.format(cars.joinToString(", ") { it.name }))
 }

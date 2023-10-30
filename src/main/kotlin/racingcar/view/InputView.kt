@@ -1,7 +1,7 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
-import racingcar.Car
+import racingcar.game.Car
 import racingcar.utils.TypeConverter.stringToCarList
 import racingcar.utils.TypeConverter.stringToInt
 

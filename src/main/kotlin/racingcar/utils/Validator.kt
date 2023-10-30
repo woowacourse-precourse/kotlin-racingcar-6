@@ -1,6 +1,6 @@
 package racingcar.utils
 
-import racingcar.Car
+import racingcar.game.Car
 
 object Validator {
 
