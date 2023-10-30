@@ -2,7 +2,7 @@ package racingcar
 
 class GameManager {
 
-    companion object{
+    companion object {
         const val DEFAULT_VALUE = 0
     }
 
@@ -11,11 +11,11 @@ class GameManager {
 
     private var movementAttemptCount: Int = DEFAULT_VALUE
 
-    var _gameState: GameState = GameState.INIT
-        private set
+    private val _movedDirection: HashMap<String, Int> = hashMapOf()
 
     fun addCarToGame(car: Car) {
         _gameCars.add(car)
+        _movedDirection.put(key = car.name, value = DEFAULT_VALUE)
     }
 
     fun setMovementAttemptCount(input: String) {
@@ -29,6 +29,44 @@ class GameManager {
         }
         require(input.toInt() >= 0) {
             "전진을 시도할 횟수는 음수일 수 없습니다."
+        }
+    }
+
+    fun startGame() {
+        while (movementAttemptCount > DEFAULT_VALUE) {
+            tryForwardMovementAllCars()
+            displayAllCarsDirectionMoved()
+            movementAttemptCount -= 1
+            println()
+        }
+    }
+
+    private fun tryForwardMovementAllCars() {
+        _gameCars.map { car ->
+            val carState = car.tryForwardMovement()
+            handleCarState(carState, car.name)
+        }
+    }
+
+    private fun handleCarState(carState: CarState, carName: String) {
+        when (carState) {
+            CarState.MOVING_FORWARD ->
+                _movedDirection[carName] = _movedDirection.getValue(carName) + 1
+
+            CarState.STOP -> Unit
+        }
+    }
+
+    private fun displayAllCarsDirectionMoved() {
+        _gameCars.map { car ->
+            displayCarDirectionMoved(car)
+        }
+    }
+
+    private fun displayCarDirectionMoved(car: Car) {
+        println("${car.name} : ")
+        repeat(_movedDirection.getValue(car.name)) {
+            print("-")
         }
     }
 }
