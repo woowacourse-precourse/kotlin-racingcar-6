@@ -16,10 +16,19 @@ class CarTest {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
             Assertions.assertThat(car.getPosition()).isEqualTo(1)
         }
-        if (Randoms.pickNumberInRange(0, 9) < 4){
+        if (Randoms.pickNumberInRange(0, 9) < 4) {
             Assertions.assertThat(car.getPosition()).isEqualTo(0)
         }
     }
 
+    @Test
+    fun `-를 출력하는지 테스트`() {
+        val car = Car("test")
+        val outContent = ByteArrayOutputStream()
+        System.setOut(PrintStream(outContent))
+        car.move()
+        car.printStatus()
+        Assertions.assertThat(outContent.toString()).contains("-")
 
+    }
 }
