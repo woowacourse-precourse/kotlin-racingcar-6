@@ -1,10 +1,11 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.views.InputView
+import racingcar.views.OutputView
 
 private val inputView = InputView()
+private val outputView = OutputView()
 
 fun main() {
     inputView.gameStartMessage()
@@ -75,6 +76,7 @@ fun validateRacingCarRange(multiCarName: List<String?>): Boolean {
 }
 
 fun soloCarGame(inputCarName: String) {
+    outputView.printSoloGameRules()
     var soloCount = 0
     repeat(2) {
         val randomNum = Randoms.pickNumberInRange(0, 9)
@@ -82,14 +84,13 @@ fun soloCarGame(inputCarName: String) {
             soloCount++
         }
         val forward = "-".repeat(soloCount)
-        println("$inputCarName : $forward")
-        println("")
+        outputView.printSoloGameResult(inputCarName, forward)
     }
 
     if (soloCount >= 1) {
-        soloChampion(inputCarName)
+        outputView.printSoloWinner(inputCarName)
     } else {
-        println("우승자가 없습니다.")
+        outputView.printNoWinner()
     }
 }
 
@@ -124,12 +125,8 @@ fun validateNullOrBlank(tryCount: String?): Boolean {
 }
 
 fun multiRacingGame(tryCount: Int, multiCarName: List<String?>) {
-    startRacingMessage()
+    outputView.printResultMessage()
     repeatRacing(tryCount, multiCarName)
-}
-
-fun startRacingMessage() {
-    println("\n실행 결과")
 }
 
 val scoreMap = mutableMapOf<String, Int>()
@@ -137,7 +134,7 @@ val scoreMap = mutableMapOf<String, Int>()
 fun repeatRacing(tryCount: Int, multiCarName: List<String?>) {
     repeat(tryCount) {
         racingEachCar(multiCarName)
-        printScore(multiCarName)
+        outputView.printMultiGameResult(multiCarName)
     }
     multiChampion()
 }
@@ -163,21 +160,8 @@ fun checkPositiveForward(randomNum: Int): Boolean {
     return randomNum >= 4
 }
 
-fun printScore(multiCarName: List<String?>) {
-    for (carName in multiCarName) {
-        val score = scoreMap.getOrDefault(carName, 0)
-        val forward = "-".repeat(score)
-        println("$carName : $forward")
-    }
-    println()
-}
-
 fun multiChampion() {
     val highestScore = scoreMap.values.maxOrNull() ?: 0
     val winners = scoreMap.filter { it.value == highestScore && it.key != null }.keys
-    println("최종 우승자 : ${winners.joinToString(",")}")
-}
-
-fun soloChampion(carName: String) {
-    println("최종 우승자 : $carName")
+    outputView.printMultiWinner(winners)
 }
