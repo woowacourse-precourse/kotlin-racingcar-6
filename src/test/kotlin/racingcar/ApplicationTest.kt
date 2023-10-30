@@ -91,21 +91,23 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `우승자 1명 검증`() {
-        val racingGame = RacingGame()
+        val cars = Cars()
         val carList = listOf(Car("lh99j"), Car("pobi"))
-        carList[0].moveOneStep()
-        val validation = racingGame.getWinner(carList).joinToString()
+        carList[0].moveOneStep(true)
+        cars.addAllList(carList)
+        val validation = cars.getWinners().joinToString()
         val result = "lh99j"
         assertThat(validation).isEqualTo(result)
     }
 
     @Test
     fun `우승자 여러명 검증`() {
-        val racingGame = RacingGame()
+        val cars = Cars()
         val carList = listOf(Car("lh99j"), Car("pobi"), Car("anjji"))
-        carList[0].moveOneStep()
-        carList[2].moveOneStep()
-        val validation = racingGame.getWinner(carList).joinToString(", ")
+        carList[0].moveOneStep(true)
+        carList[2].moveOneStep(true)
+        cars.addAllList(carList)
+        val validation = cars.getWinners().joinToString(", ")
         val result = "lh99j, anjji"
         assertThat(validation).isEqualTo(result)
     }
