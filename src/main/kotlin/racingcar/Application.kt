@@ -28,4 +28,7 @@ fun main() {
         }
         outputCurrentCarPositions(cars)
     }
+
+    val maxPosition = cars.maxOf { it.position }
+    val winnerCars = cars.filter { it.position == maxPosition }
 }
