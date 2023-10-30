@@ -19,9 +19,16 @@ class RacingGame(carList : List<String>, amount : Int) {
                 car.move()
             }
         }
+        displayRoundResult()
     }
 
-    fun canCarMove() : Boolean = Randoms.pickNumberInRange(1, 9) >= 4
+    private fun canCarMove() : Boolean = Randoms.pickNumberInRange(1, 9) >= 4
+
+    private fun displayRoundResult(){
+         cars.forEach{ index, car ->
+             car.displayLocation()
+         }
+    }
 
 
 

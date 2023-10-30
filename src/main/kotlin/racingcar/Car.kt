@@ -9,4 +9,12 @@ class Car(name : String) {
     }
 
     fun getName() = name
+
+    fun displayLocation() {
+        print("$name : ")
+        repeat(loc){
+            print("-")
+        }
+        println()
+    }
 }
