@@ -30,4 +30,10 @@ class Validation {
         }
     }
 
+    fun checkNumberOfAttemptOneAndMore(numberOfAttempt: Int) {
+        if (numberOfAttempt < 1) {
+            throw IllegalArgumentException("1 이상 입력 가능합니다")
+        }
+    }
+
 }
