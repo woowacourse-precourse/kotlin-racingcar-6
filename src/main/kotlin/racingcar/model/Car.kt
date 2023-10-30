@@ -1,7 +1,7 @@
 package racingcar.model
 
-import racingcar.inputView
-import racingcar.validateCarName
+import racingcar.controller.inputView
+import racingcar.controller.validateCarName
 
 class Car {
 

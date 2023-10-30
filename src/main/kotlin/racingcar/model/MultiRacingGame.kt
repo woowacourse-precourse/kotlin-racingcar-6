@@ -1,8 +1,8 @@
 package racingcar.model
 
-import racingcar.inputView
-import racingcar.randomUtils
-import racingcar.validateRacingCount
+import racingcar.controller.inputView
+import racingcar.controller.randomUtils
+import racingcar.controller.validateRacingCount
 import racingcar.views.OutputView
 
 class MultiRacingGame() {
