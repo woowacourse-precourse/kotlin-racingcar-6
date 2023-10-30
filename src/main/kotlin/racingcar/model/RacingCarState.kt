@@ -31,10 +31,10 @@ class RacingCarState(
         }
     }
 
-    fun getMovementResult(): List<String> {
-        return carList.map { (name, movement) ->
+    fun getMovementResult(): String {
+        return carList.map { (name, movement) : Car ->
             name + SEPARATOR + MOVEMENT.repeat(movement)
-        }
+        }.joinToString("\n")
     }
 
     fun getWinner(): String {
