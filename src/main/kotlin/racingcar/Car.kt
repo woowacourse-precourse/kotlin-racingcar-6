@@ -15,9 +15,6 @@ class Car(name : String){
         makeRandom()
         printResult()
     }
-    fun move() {
-        position++
-    }
 
     fun getPosition(): Int {
         return this.position

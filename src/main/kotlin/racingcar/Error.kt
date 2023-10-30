@@ -10,14 +10,20 @@ class Error {
     fun checkName(cars: List<String>) {
         for(i in cars.indices){
             checkError(cars[i])
+            checkDuplicate(cars)
         }
     }
-    fun checkError(input: String) {
+    private fun checkError(input: String) {
         if(input.length>5 || input.length<0){
             throw IllegalArgumentException("이름이 5자가 넘어가거나 값이 없습니다.")
         }
         if(input.contains(" ")){
             throw IllegalArgumentException(",뒤에 공백이 있습니다.")
+        }
+    }
+    private fun checkDuplicate(input: List<String>) {
+        if (input.toSet().size != input.size) {
+            throw IllegalArgumentException("중복된 수가 있습니다.")
         }
     }
 }

@@ -10,6 +10,7 @@ class Game {
     }
     fun gameStart() {
         input()
+        winner()
     }
     private fun input(){
         val error = Error()
@@ -22,7 +23,7 @@ class Game {
         }
 
         println("시도할 횟수는 몇 회인가요?")
-        var repeat = Console.readLine()
+        val repeat = Console.readLine()
         error.checkNum(repeat)
         processGame(repeat.toInt())
     }
@@ -38,6 +39,25 @@ class Game {
             println()
             rep--
         }
+    }
+    private fun winner(){
+        val winners: MutableList<String> = ArrayList()
+        val maxPosition = findMaxPos()
+        for (car in cars!!) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName())
+            }
+        }
+        println("최종 우승자 : " + winners.joinToString(", "))
+    }
+    private fun findMaxPos(): Int {
+        var maxPos: Int = 0
+        for (car in cars!!) {
+            if (car.getPosition() > maxPos) {
+                maxPos = car.getPosition()
+            }
+        }
+        return maxPos
     }
 
 }
