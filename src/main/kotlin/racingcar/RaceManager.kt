@@ -3,8 +3,13 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 
 class RaceManager {
+    private lateinit var cars: List<Car>
 
-    fun race(cars: List<Car>): List<Car> {
+    fun setup(cars: List<Car>) {
+        this.cars = cars
+    }
+
+    fun race(): List<Car> {
         for (car in cars) {
             moveIfPossible(car)
         }
@@ -17,7 +22,7 @@ class RaceManager {
         }
     }
 
-    fun findWinners(cars: List<Car>): List<Car> {
+    fun findWinners(): List<Car> {
         val maxPosition = cars.maxOf { it.position }
         return cars.filter { it.position == maxPosition }
     }
