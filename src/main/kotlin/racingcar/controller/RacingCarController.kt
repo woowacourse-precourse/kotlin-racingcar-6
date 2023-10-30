@@ -12,7 +12,7 @@ class RacingCarController(
 ) {
     fun play() {
         val userInputCarNames = requireCarNames()
-        service.initGame(userInputCarNames)
+        service.saveRacingCars(userInputCarNames)
         val userInputAttemptCount = requireAttemptCount()
         playGame(userInputAttemptCount)
     }
