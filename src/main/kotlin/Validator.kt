@@ -16,9 +16,6 @@ object Validator {
 
     fun roundCheck(input: String) {
         if (input.first() == INPUT_NOT_FIRST_VALUE) throw IllegalArgumentException()
-        input.forEach {
-            if (it !in INPUT_MIN_VALUE..INPUT_MAX_VALUE) throw IllegalArgumentException()
-        }
         castingCheck(input)
     }
 
