@@ -1,7 +1,5 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Randoms
-
 class Car(private val _name: String) {
     private var _moveDistance: Int = 0
     val moveDistance: Int
