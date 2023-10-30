@@ -6,6 +6,9 @@ object Constants {
     const val INPUT_COUNT_MESSAGE = "시도할 회수는 몇회인가요?"
     const val POSITION_SYMBOL = "-"
     const val RUN_MESSAGE = "실행 결과"
+    const val NEXT_WINNER = ", "
+    const val COMMA = ","
+    const val WINNER_MESSAGE = "최종 우승자 : "
 
     //Ball Status
 

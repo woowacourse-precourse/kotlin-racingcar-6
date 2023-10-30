@@ -15,7 +15,7 @@ class RacingCarGame(private val carMap: MutableMap<String, Int>) {
             println()
         }
         getWinners().let {
-            //우승자 출력
+            OutputView.showWinners(it)
         }
     }
 
