@@ -12,7 +12,9 @@ class RacingCarController(private val inputView: InputView, private val outputVi
 
         outputView.printAttemptNumberInstruction()
         for (attemptNumber in 0 until inputView.inputAttemptNumber()) {
-            moveOrStop(racingCarList)
+            for (racingCar in racingCarList) {
+                moveOrStop(racingCar, generateRandomNumber())
+            }
 
             if (attemptNumber == 0) {
                 outputView.printResultHeader()
@@ -35,11 +37,9 @@ class RacingCarController(private val inputView: InputView, private val outputVi
     }
 
     // 기능 7. 전진, 정지 판단하기
-    fun moveOrStop(racingCarList: List<RacingCar>) {
-        for (racingCar in racingCarList) {
-            if (generateRandomNumber() >= 4) {
-                racingCar.move()
-            }
+    fun moveOrStop(racingCar: RacingCar, randomNumber: Int) {
+        if (randomNumber >= 4) {
+            racingCar.move()
         }
     }
 
