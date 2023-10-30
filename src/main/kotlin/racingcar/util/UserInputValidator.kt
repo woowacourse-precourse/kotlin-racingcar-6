@@ -1,12 +1,12 @@
 package racingcar.util
 
 import racingcar.constant.ErrorMessage
-import racingcar.constant.ExtraText
+import racingcar.constant.ExtraChar
 
 class UserInputValidator {
-    fun validateNumberFormat(userChoice: String) {
-        require(userChoice.none { char -> !char.isDigit() }) { ErrorMessage.NOT_NUMBER.message }
-        require(userChoice.toInt() > 0) { ErrorMessage.NOT_POSITIVE_NUMBER.message }
+    fun validateNumberFormat(userAttemptCount: String) {
+        require(userAttemptCount.none { char -> !char.isDigit() }) { ErrorMessage.NOT_NUMBER.message }
+        require(userAttemptCount.toInt() >= MIN_ATTEMPT_COUNT) { ErrorMessage.NOT_POSITIVE_NUMBER.message }
     }
 
 
@@ -16,15 +16,14 @@ class UserInputValidator {
     }
 
     private fun isNotBlankName(carNames: List<String>): Boolean {
-        carNames.forEach { name ->
-            if (name.isBlank()) {
-                return false
-            }
-        }
-        return true
+        return carNames.none { it.isBlank() }
     }
 
     private fun isNotContainBlank(carNames: List<String>): Boolean {
-        return carNames.none { it.first() == ExtraText.BLANK.text || it.last() == ExtraText.BLANK.text }
+        return carNames.none { it.first() == ExtraChar.BLANK.text || it.last() == ExtraChar.BLANK.text }
+    }
+
+    companion object {
+        private const val MIN_ATTEMPT_COUNT = 1
     }
 }

@@ -1,6 +1,18 @@
 package racingcar.domain
 
-class RacingGameWinners(private val winnerList: List<String>) {
+import racingcar.constant.PrintText
 
-    fun getWinners(): List<String> = winnerList
+class RacingGameWinners(private val winnerNames: List<String>) {
+
+    fun toWinnerNamesGameResult(): String {
+        val winnerName = StringBuilder()
+        winnerNames.forEachIndexed { index, winner ->
+            if (index == winnerNames.lastIndex) {
+                winnerName.append(winner)
+                return winnerName.toString()
+            }
+            winnerName.append(winner + PrintText.SEPARATE_WINNER.text)
+        }
+        return winnerName.toString()
+    }
 }

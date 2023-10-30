@@ -15,25 +15,14 @@ class PrintOutputView {
     }
 
     fun printAttemptResult(racingCars: RacingCars) {
-        for (racingCar in racingCars.loadRacingCars()) {
-            print(racingCar.readRacingCarName() + PrintText.SEPARATE_CAR_NAME_AND_FORWARD_COUNT.text)
-            for (count in 0 until racingCar.receiveForwardCount()) {
-                print(PrintText.PRINT_FORWARD_MARK.text)
-            }
-            println()
-        }
-        println()
+        val attemptResult = racingCars.toRacingCarsAttemptResult()
+        println(attemptResult)
     }
 
-    fun printSoleWinner(gameWinner: RacingGameWinners) {
-        println(PrintText.PRINT_WINNER.text + gameWinner.getWinners().first().toString())
-    }
-
-    fun printJointWinner(gameWinner: RacingGameWinners) {
+    fun printWinner(gameWinner: RacingGameWinners) {
         print(PrintText.PRINT_WINNER.text)
-        for (i in 0 until gameWinner.getWinners().size - 1) {
-            print(gameWinner.getWinners()[i] + PrintText.SEPARATE_WINNER.text)
-        }
-        println(gameWinner.getWinners().last())
+        val winners = gameWinner.toWinnerNamesGameResult()
+        println(winners)
     }
+
 }
