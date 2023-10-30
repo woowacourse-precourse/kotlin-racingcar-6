@@ -5,7 +5,7 @@ class RacingGame {
     private val host = Host()
     private val validation = Validation()
 
-    fun startGame() {
+    fun start() {
         host.printRequestEnterCarName()
         validation.isValidCarName()
         host.printQuestionNumberOfAttempt()
