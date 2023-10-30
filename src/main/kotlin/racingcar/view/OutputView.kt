@@ -30,12 +30,14 @@ class OutputView {
 
     private fun formatDistance(car: Car): String =
         buildString {
-            repeat(car.distance) {
-                append("-")
-            }
+            repeat(car.distance) { append(ONE_STEP) }
         }
 
     private fun formatWinner(names: List<String>): String = names.joinToString(", ")
+
+    companion object {
+        private const val ONE_STEP = "-"
+    }
 
     private enum class Message(private val message: String) {
         RaceCarNames("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"),
