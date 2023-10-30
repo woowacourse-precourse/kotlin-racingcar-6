@@ -1,7 +1,6 @@
 package racingcar
 
 import racingcar.state.CarState
-import java.util.Collections
 
 class RaceManager {
 

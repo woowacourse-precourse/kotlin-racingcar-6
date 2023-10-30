@@ -8,11 +8,11 @@ import org.junit.jupiter.params.provider.ValueSource
 import racingcar.fake.FakeNumberGenerator
 import racingcar.state.CarState
 
-class CarTest{
+class CarTest {
 
     @ParameterizedTest
     @ValueSource(strings = ["a", "ab", "abc", "abcd", "tgyuu"])
-    fun `자동차의 이름은 1글자 이상 5글자 이하여야 한다`(carName : String){
+    fun `자동차의 이름은 1글자 이상 5글자 이하여야 한다`(carName: String) {
         //given
 
 
@@ -21,13 +21,13 @@ class CarTest{
 
         //then
         assertDoesNotThrow {
-            Car(name= carName)
+            Car(name = carName)
         }
     }
 
     @ParameterizedTest
-    @ValueSource(strings = ["abcdef","tgyuuJJang", ""])
-    fun `자동차의 이름은 6글자 이상이거나 공백일 수 없다`(carName : String){
+    @ValueSource(strings = ["abcdef", "tgyuuJJang", ""])
+    fun `자동차의 이름은 6글자 이상이거나 공백일 수 없다`(carName: String) {
         //given
 
 
@@ -36,15 +36,15 @@ class CarTest{
 
         //then
         assertThrows<IllegalArgumentException> {
-            Car(name= carName)
+            Car(name = carName)
         }
     }
 
     @ParameterizedTest
-    @ValueSource(ints = [4,5,6,7,8,9])
-    fun `랜덤으로 생성된 숫자가 4이상 일 경우, 자동차는 전진할 수 있다`(input : Int){
+    @ValueSource(ints = [4, 5, 6, 7, 8, 9])
+    fun `랜덤으로 생성된 숫자가 4이상 일 경우, 자동차는 전진할 수 있다`(input: Int) {
         //given
-        val fakeNumberGenerator : NumberGenerator = FakeNumberGenerator(input)
+        val fakeNumberGenerator: NumberGenerator = FakeNumberGenerator(input)
         val car = Car(name = "tgyuu", numberGenerator = fakeNumberGenerator)
 
         //when
@@ -57,10 +57,10 @@ class CarTest{
     }
 
     @ParameterizedTest
-    @ValueSource(ints = [1,2,3])
-    fun `랜덤으로 생성된 숫자가 4미만 일 경우, 자동차는 전진할 수 없다`(input : Int){
+    @ValueSource(ints = [1, 2, 3])
+    fun `랜덤으로 생성된 숫자가 4미만 일 경우, 자동차는 전진할 수 없다`(input: Int) {
         //given
-        val fakeNumberGenerator : NumberGenerator = FakeNumberGenerator(input)
+        val fakeNumberGenerator: NumberGenerator = FakeNumberGenerator(input)
         val car = Car(name = "tgyuu", numberGenerator = fakeNumberGenerator)
 
         //when

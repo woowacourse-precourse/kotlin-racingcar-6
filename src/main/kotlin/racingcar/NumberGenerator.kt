@@ -1,7 +1,5 @@
 package racingcar
 
 interface NumberGenerator {
-
-    fun generateNumber() : Int
-
+    fun generateNumber(): Int
 }

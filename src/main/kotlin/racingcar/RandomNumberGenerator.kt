@@ -3,7 +3,8 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 
 class RandomNumberGenerator : NumberGenerator {
-    companion object{
+
+    companion object {
         private const val MIN_NUMBER = 1
         private const val MAX_NUMBER = 9
     }
