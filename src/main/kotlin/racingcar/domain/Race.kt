@@ -8,9 +8,13 @@ class Race {
         return null
     }
 
-    fun racing(racingCar: String): Boolean {
-        val go: Boolean = true
-        val stop: Boolean = false
-        return if (Randoms.pickNumberInRange(0, 9) >= 4) go else stop
+    fun racing(racingCars: Map<String, Int>): Map<String, Int> {
+        val racing = racingCars.toMutableMap()
+        racing.forEach { (name, value) ->
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                racing[name] = value + 1
+            }
+        }
+        return racing.toMap()
     }
 }
