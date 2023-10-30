@@ -15,12 +15,6 @@ object RacingGameManager {
             racingGame.initRound()
         }
     }
-
     private fun isGameOver() = racingGame.getCurrentGameRound() == racingGameTotalRounds
-
-
-
-
-
-
+    
 }

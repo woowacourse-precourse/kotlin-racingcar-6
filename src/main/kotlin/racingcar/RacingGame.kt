@@ -4,17 +4,17 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class RacingGame(carList : List<String>) {
     private var gameRound : Int = 0
-    private val cars = HashMap<Int, Car>(carList.size)
+    private val cars = mutableSetOf<Car>()
 
     init {
-        for ((index, carName) in carList.withIndex()){
-            cars[index] = Car(carName)
+        carList.forEach {
+            cars.add(Car(it))
         }
     }
 
     fun initRound(){
         gameRound++
-        cars.forEach { index, car ->
+        cars.forEach { car ->
             if (canCarMove()){
                 car.move()
             }
@@ -27,7 +27,7 @@ class RacingGame(carList : List<String>) {
     private fun canCarMove() : Boolean = Randoms.pickNumberInRange(1, 9) >= 4
 
     private fun displayRoundResult(){
-         cars.forEach{ index, car ->
+         cars.forEach{ car ->
              car.displayLocation()
          }
         println()
