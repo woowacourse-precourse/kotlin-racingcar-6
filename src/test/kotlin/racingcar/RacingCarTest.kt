@@ -150,6 +150,15 @@ class RacingCarTest {
     }
 
     @Test
+    fun `우승자 여러명 찾기`() {
+        val racingCarList = listOf(RacingCar("pobi", 1), RacingCar("woni", 1))
+
+        val winner = racingCarController.findWinner(racingCarList)
+
+        assertThat(winner).isEqualTo(listOf(RacingCar("pobi", 1), RacingCar("woni", 1)))
+    }
+
+    @Test
     fun `우승자 1명 안내하기`() {
         val racingCarList = listOf(RacingCar("pobi", 1), RacingCar("woni", 0))
 
