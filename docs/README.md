@@ -14,6 +14,10 @@
 #### racingCarName() : 경주에 참여할 레이싱 카의 이름을 입력받는다.
 #### racingNumber() : 경주 실행 횟수를 입력받는다.
 
+### 데이터 클래스 Players
+#### name: 각 레이싱 카의 이름
+#### num: 각 레이싱 카가 움직인 거리
+
 ### RacingGame
 ---
 #### randomRace(): 전진 조건 위한 무작위 숫자 생성
