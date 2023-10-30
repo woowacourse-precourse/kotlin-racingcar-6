@@ -28,7 +28,7 @@ fun parseCarName(): List<RaceCar> {
 }
 
 fun isNonnegativeInt(target: String): Boolean {
-    return (target.size >= 1) and (target.all { it.isDigit() })
+    return (target.isNotEmpty()) and (target.all { it.isDigit() })
 }
 
 fun parseTurnCount(): Int {
@@ -58,4 +58,5 @@ fun main() {
         println(raceCars.joinToString("\n", postfix = "\n"))
     }
     val winners = decideWinners(raceCars)
+    println(winners.joinToString(", ", "최종 우승자 : "))
 }
