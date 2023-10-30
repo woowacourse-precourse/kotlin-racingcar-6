@@ -17,4 +17,9 @@ class Racing {
             }
         }
     }
+
+    fun getWinner(): List<String> {
+        val maxPosition = cars.maxOf { it.getPosition() }
+        return cars.filter { it.getPosition() == maxPosition }.map { it.name }
+    }
 }
