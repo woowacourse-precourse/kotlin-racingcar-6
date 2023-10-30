@@ -6,13 +6,18 @@ import race.RacingSystemValues.COMPUTATION_OUTCOME
 import race.RacingSystemValues.INIT_RACING_ROUND
 import java.math.BigInteger
 
-class RacingManager {
-    private val racing = Racing()
-    fun settingRacingCar() {
+class RacingManager(private val racing: Racing) {
+    init {
+        settingRacingCar()
+        raceStart()
+        printWinner()
+    }
+
+    private fun settingRacingCar() {
         racing.settingRacingCar(inputCarInformation())
     }
 
-    fun raceStart() {
+    private fun raceStart() {
         val round = inputRacingRoundInformation()
         var nowRound = BigInteger(INIT_RACING_ROUND)
         println(COMPUTATION_OUTCOME)
@@ -22,7 +27,7 @@ class RacingManager {
         }
     }
 
-    fun printWinner() {
+    private fun printWinner() {
         racing.printWinner()
     }
 }
