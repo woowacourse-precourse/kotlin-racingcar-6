@@ -3,7 +3,6 @@ package racingcar
 class RacingCar(
     name: String
 ) : Car(name) {
-
     override fun move() {
         position += POSITION_UNIT
     }
