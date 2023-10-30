@@ -1,6 +1,7 @@
 package racingcar
 
 import org.assertj.core.api.AssertionsForClassTypes
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import racingcar.view.OutputView
@@ -10,6 +11,7 @@ import java.io.PrintStream
 class PrintTest {
     private lateinit var outputStreamCaptor: ByteArrayOutputStream
     private val outputView = OutputView()
+
     @BeforeEach
     fun setUp() {
         this.outputStreamCaptor = ByteArrayOutputStream()
@@ -33,5 +35,23 @@ class PrintTest {
 
         val output = outputStreamCaptor.toString()
         AssertionsForClassTypes.assertThat(output).contains("시도할 횟수는 몇 회인가요?")
+    }
+
+    @Test
+    fun `실행 결과 출력이 올바른지 검증`() {
+        System.setOut(PrintStream(outputStreamCaptor))
+
+        val input = mutableMapOf(
+            "Car1" to 3,
+            "Car2" to 2,
+            "Car3" to 4
+        )
+        outputView.printCarScore(input)
+        val output = outputStreamCaptor.toString()
+        AssertionsForClassTypes.assertThat(output).contains(
+            "Car1 : ---\n" +
+            "Car2 : --\n" +
+            "Car3 : ----"
+        )
     }
 }

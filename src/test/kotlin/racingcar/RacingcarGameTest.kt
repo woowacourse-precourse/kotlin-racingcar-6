@@ -1,15 +1,18 @@
 package racingcar
 
 import org.assertj.core.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import racingcar.controller.RacingcarController
 import racingcar.model.GenerateRandomNumber
 import org.junit.jupiter.api.Assertions.assertTrue
+import racingcar.model.MoveCar
 
 
 class RacingcarGameTest {
     private val racingcarController = RacingcarController()
     private val generateRandomNumber = GenerateRandomNumber()
+    private val moveCar = MoveCar()
     @Test
     fun `입력한 자동차 이름이 쉼표 기준으로 구분 검증`() {
         val input = "test1,test2,test3"
