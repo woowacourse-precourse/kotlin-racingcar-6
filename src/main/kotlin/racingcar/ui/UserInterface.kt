@@ -9,6 +9,7 @@ const val MSG_OUTPUT_RESULT = "실행 결과"
 const val MSG_OUTPUT_WINNER = "최종 우승자 : "
 
 const val MSG_EXCEPTION_NAME_LENGTH = "이름은 5자 이하만 가능합니다."
+const val MSG_EXCEPTION_ONLY_DIGIT = "시도 횟수는 숫자만 가능합니다."
 
 object UserInput {
 
@@ -43,5 +44,9 @@ object InputValidator {
     private const val MAX_NAME_LENGTH = 5
     fun checkNamesLength(names: List<String>) {
         names.forEach { require(it.length <= MAX_NAME_LENGTH) { MSG_EXCEPTION_NAME_LENGTH } }
+    }
+
+    fun checkOnlyDigit(input: String) {
+        input.forEach { require(it in '0'..'9') { MSG_EXCEPTION_ONLY_DIGIT } }
     }
 }

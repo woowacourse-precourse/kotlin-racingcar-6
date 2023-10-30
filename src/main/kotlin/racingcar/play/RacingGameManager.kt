@@ -26,7 +26,7 @@ object RacingGameManager {
 
     private fun getAttemptCount() {
         val input = UserInput.readAttemptCount()
-        // (예정사항) input을 넘겨 입력 유효성 검사.
+        InputValidator.checkOnlyDigit(input)
         attemptCount = input.toInt()
     }
 
