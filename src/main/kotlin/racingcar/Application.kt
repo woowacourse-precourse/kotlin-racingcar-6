@@ -33,3 +33,10 @@ fun forwardCondition(distanceList: MutableList<Int>): MutableList<Int>{
 
     return distanceList
 }
+
+fun showProcedure(allCarList: List<String>, distanceList: MutableList<Int>){
+    for(i in distanceList.indices){
+        print("${allCarList[i]} : ")
+        println("-".repeat(distanceList[i]))
+    }
+}
