@@ -1,7 +1,6 @@
 package racingcar
 
 import racingcar.car.Car
-import racingcar.car.RacingCar
 import racingcar.constants.GameInstruction
 
 class RacingGame(
@@ -9,6 +8,7 @@ class RacingGame(
     private val monitor: Monitor = Monitor(),
 ) {
     fun play() {
+        monitor.display(GameInstruction.ENTER_CAR_NAMES)
         val cars: List<Car> = generateCars(player.determineCarNames())
         val attemptCount: Int = generateAttemptCount()
         val race = Race(attemptCount, cars).apply { start(this) }
@@ -23,10 +23,7 @@ class RacingGame(
         }
     }
 
-    private fun generateCars(carNames: List<String>): List<Car> {
-        monitor.display(GameInstruction.ENTER_NUMBER)
-        return carNames.map { name -> RacingCar(name) }
-    }
+    private fun generateCars(carNames: List<String>) = carNames.map { name -> Car(name) }
 
     private fun generateAttemptCount(): Int {
         monitor.display(GameInstruction.ATTEMPT_COUNT)
