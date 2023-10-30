@@ -7,4 +7,5 @@ object CarConfiguration {
     const val MIN_FLAG_VALUE = 0
     const val MAX_FLAG_VALUE = 9
     const val MAX_NAME_LENGTH = 5
+    const val MIN_NAME_LENGTH = 1
 }
