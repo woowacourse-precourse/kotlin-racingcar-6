@@ -2,10 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-object RaceManager {
-    private const val RANDOM_START_NUMBER = 0
-    private const val RANDOM_END_NUMBER = 9
-    private const val MOVE_MIN_NUMBER = 4
+class RaceManager {
 
     fun race(cars: List<Car>): List<Car> {
         for (car in cars) {
@@ -23,5 +20,11 @@ object RaceManager {
     fun findWinners(cars: List<Car>): List<Car> {
         val maxPosition = cars.maxOf { it.position }
         return cars.filter { it.position == maxPosition }
+    }
+
+    companion object {
+        private const val RANDOM_START_NUMBER = 0
+        private const val RANDOM_END_NUMBER = 9
+        private const val MOVE_MIN_NUMBER = 4
     }
 }
