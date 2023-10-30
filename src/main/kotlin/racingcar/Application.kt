@@ -28,6 +28,30 @@ class RacingGame(val cars: List<RacingCar>) {
     }
 }
 
+// 메인 함수
+fun main() {
+    // 사용자는 자동차 이름 입력하기
+    val carName = carNames()
+    val cars = carNames().map { RacingCar(it) }
+
+    // 사용자는 레이싱할 횟수 입력하기
+    val laps = lapCounts()
+
+    // 레이싱 시작
+    val racingGame = RacingGame(cars)
+
+    // 실행 결과 보여주기
+    println("\n실행 결과")
+    for (i in 0 until laps) {
+        racingGame.race()
+        raceStatus(cars)
+    }
+
+    // 최종 우승자 출력하기
+    val winners = racingGame.racingWinner()
+    finalWinner(winners)
+}
+
 // 자동차의 현재 상태 출력하기
 fun raceStatus(cars: List<RacingCar>) {
     cars.forEach {
@@ -41,41 +65,14 @@ fun finalWinner(winners: List<String>) {
     println("최종 우승자 : ${winners.joinToString()}")
 }
 
-fun main() {
-    // 사용자가 자동차 이름 입력하기 (이름은 쉼표(,) 기준으로 구분)
+// 사용자가 입력하는 부분 (자동차가 2대 이상인 경우, 쉼표로 구분)
+fun carNames(): List<String> {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    val inputNames = Console.readLine() ?: ""
-    val carNames = inputNames.split(",")
+    return Console.readLine()?.split(",") ?: listOf()
+}
 
-    // 자동차 이름 5자 초과하는 경우 예외 발생
-    for (name in carNames) {
-        if (name.length > 5) {
-            println("자동차 이름은 5자 이하만 가능합니다.")
-            return
-        }
-    }
-    // 사용자가 경주할 횟수 입력하기
+// 사용자가 몇회 게임을 진행할지 설정하기
+fun lapCounts(): Int {
     println("시도할 횟수는 몇 회인가요?")
-    val cntInput = Console.readLine() ?: ""
-    val counts = cntInput.toIntOrNull()
-    if (counts == null) {
-        println("정수를 입력해주세요.")
-        return
-    }
-    // 입력받은 자동차 이름으로 Car 객체 리스트 생성
-    val cars = mutableListOf<RacingCar>()
-    for (name in carNames) {
-        cars.add(RacingCar(name))
-    }
-    val racingGame = RacingGame(cars)
-
-    println("\n실행 결과")
-    for (i in 0 until counts) {
-        racingGame.race()
-        raceStatus(cars)
-    }
-
-    // 최종 우승자 출력하기
-    val winners = racingGame.racingWinner()
-    finalWinner(winners)
+    return Console.readLine()?.toIntOrNull() ?: 0
 }
