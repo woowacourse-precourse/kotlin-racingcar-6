@@ -45,8 +45,15 @@ class MultiRacingGame() {
 
     private fun multiChampion() {
         val highestScore = scoreMap.values.maxOrNull() ?: 0
-        val winners = scoreMap.filter { it.value == highestScore && it.key != null }.keys
+        noWinner(highestScore)
+        val winners = scoreMap.filter { it.value == highestScore }.keys
         outputView.printMultiWinner(winners)
+    }
+
+    private fun noWinner(highestScore: Int) {
+        if (highestScore == 0) {
+            outputView.printNoWinner()
+        }
     }
 
     private fun checkPositiveForward(randomNum: Int): Boolean {
