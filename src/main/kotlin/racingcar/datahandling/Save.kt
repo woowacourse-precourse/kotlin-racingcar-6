@@ -1,17 +1,6 @@
-package racingcar.service
+package racingcar.datahandling
 
-import camp.nextstep.edu.missionutils.Randoms
-import racingcar.domain.Car
-
-class Distance {
-    fun decideDistance(player: Car): Int {
-        return if (Randoms.pickNumberInRange(0, 9) > 3) {
-            player.moveForward()
-        } else {
-            player.stop()
-        }
-    }
-
+class Save {
     fun saveDistance(move: Int, distance: MutableList<String>, index: Int) {
         when (move) {
             GO -> distance[index] += GO_STRING
