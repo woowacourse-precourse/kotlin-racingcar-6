@@ -6,11 +6,11 @@
 - [x] 경주할 자동차의 이름을 입력받는다. // UserInput.readCarName()
   - [x] 입력받은 이름을 리스트에 저장한다. // String.createNameList()
   - [x] 쉼표(,)를 기준으로 이름을 구분한다. // String.split(",") 사용
-  - [x] 이름이 5글자 이하인지 검사한다. // Validator.checkNamesLength
+  - [x] 이름이 5글자 이하인지 검사한다. // InputValidator.checkNamesLength
 
 - [x] 자동차의 이동 횟수를 입력받는다. // UserInput.readAttemptCount()
   - [x] 입력을 정수로 변환한다.
-  - [ ] 입력이 숫자로만 되어있는지 검사한다.
+  - [x] 입력이 숫자로만 되어있는지 검사한다. // InputValidator.checkOnlyDigit
 
 
 ❗️ 사용자가 잘못된 값을 입력할 경우, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.
