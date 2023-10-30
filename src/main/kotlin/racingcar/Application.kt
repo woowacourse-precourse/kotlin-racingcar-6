@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 class RacingCar(val name: String) {
     var position = 0
@@ -11,6 +12,11 @@ fun main() {
         val carNames = getCarNames()
         val tryCount = getTryCount()
         println("")
+
+        val cars = createCars(carNames)
+
+        println("실행 결과")
+        race(tryCount, cars)
 
     } catch (e: IllegalArgumentException) {
         println("에러: ${e.message}")
@@ -33,4 +39,21 @@ fun getTryCount(): Int {
 
 fun createCars(carNames: List<String>): List<RacingCar> {
     return carNames.map { RacingCar(it) }
+}
+
+fun race(tryCount: Int, cars: List<RacingCar>) {
+    repeat(tryCount) {
+        cars.forEach { car ->
+            moveCar(car)
+            println("${car.name} : ${"-".repeat(car.position)}")
+        }
+        println()
+    }
+}
+
+fun moveCar(car: RacingCar) {
+    val randomValue = Randoms.pickNumberInRange(0, 9)
+    if (randomValue >= 4) {
+        car.position++
+    }
 }
