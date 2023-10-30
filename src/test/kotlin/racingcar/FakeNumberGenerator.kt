@@ -1,9 +1,7 @@
 package racingcar
 
-import racingcar.Car.Companion.THRESHHOLD_FOR_MOVE_FORWARD
-
-class FakeNumberGenerator : NumberGenerator {
+class FakeNumberGenerator(private val input : Int) : NumberGenerator {
     override fun generateNumber(): Int {
-        return THRESHHOLD_FOR_MOVE_FORWARD
+        return input
     }
 }
