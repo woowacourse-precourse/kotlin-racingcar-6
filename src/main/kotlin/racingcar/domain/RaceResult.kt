@@ -6,27 +6,30 @@ class RaceResult(private val winner: Winner = Winner()) {
         carNames: List<String>,
         attemptCount: Int,
     ): String {
-        val racingResult = racingRoundResult.mapValues { (_, moveCount) -> moveCount.sumMoveCount() }
         val racingResultFormat = StringBuilder()
+        val racingResult = racingRoundResult.mapValues { (_, moveCount) -> moveCount.sumMoveCount() }
 
         repeat(attemptCount) { count ->
-            val executeRacing = carNames.executeRacing(
+            val racingRound = carNames.executeRacingRound(
                 index = count,
                 racingResult = racingResult
             )
-            racingResultFormat.apply {
-                append(executeRacing)
-                append("\n")
-            }
+            racingResultFormat.append(racingRound).append(NEW_LINE)
         }
-        return racingResultFormat.toString()
+        return racingResultFormat.removeSuffix(NEW_LINE).toString()
     }
 
-    fun getRaceWinner(racingRoundResult: Map<String, ArrayList<Int>>): String {
-        return winner.raceGameWinner(racingRoundResult)
+    private fun ArrayList<Int>.sumMoveCount(): ArrayList<Int> {
+        val moveCountList: ArrayList<Int> = arrayListOf()
+        var sum = 0
+        for (moveCount in this) {
+            sum += moveCount
+            moveCountList.add(sum)
+        }
+        return moveCountList
     }
 
-    private fun List<String>.executeRacing(
+    private fun List<String>.executeRacingRound(
         index: Int,
         racingResult: Map<String, ArrayList<Int>>
     ): String {
@@ -40,17 +43,16 @@ class RaceResult(private val winner: Winner = Winner()) {
 
     private fun convertCountSign(count: Int): String {
         var countSign = ""
-        repeat(count) { countSign += "-" }
+        repeat(count) { countSign += MOVE_COUNT_SIGN }
         return countSign
     }
 
-    private fun ArrayList<Int>.sumMoveCount(): ArrayList<Int> {
-        val moveCountList: ArrayList<Int> = arrayListOf()
-        var sum = 0
-        for (moveCount in this) {
-            sum += moveCount
-            moveCountList.add(sum)
-        }
-        return moveCountList
+    fun raceWinner(racingRoundResult: Map<String, ArrayList<Int>>): String {
+        return winner.raceGameWinner(racingRoundResult.mapValues { (_, moveCount) -> moveCount.sumMoveCount() })
+    }
+
+    companion object {
+        private const val MOVE_COUNT_SIGN = "-"
+        private const val NEW_LINE = "\n"
     }
 }

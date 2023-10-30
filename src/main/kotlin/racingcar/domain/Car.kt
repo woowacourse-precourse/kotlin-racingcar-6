@@ -8,7 +8,5 @@ class Car(
         carNames = carNames
     )
 ) {
-    fun race() {
-        carRace.executeRacing()
-    }
+    fun race(): CarRace = carRace
 }

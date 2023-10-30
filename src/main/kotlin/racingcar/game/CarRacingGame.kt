@@ -23,4 +23,12 @@ class CarRacingGame(
             attemptCount = attemptCount
         )
     }
+
+    fun printRaceResult() {
+
+    }
+
+    fun printWinner() {
+
+    }
 }

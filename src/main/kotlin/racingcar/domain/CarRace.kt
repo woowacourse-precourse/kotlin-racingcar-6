@@ -1,27 +1,23 @@
 package racingcar.domain
 
 import camp.nextstep.edu.missionutils.Randoms
-import net.bytebuddy.dynamic.scaffold.MethodGraph.Linked
 
 class CarRace(
     private val attemptNumber: Int,
     private val carNames: List<String>,
     private val raceResult: RaceResult = RaceResult()
 ) {
+    private var test: LinkedHashMap<String, ArrayList<Int>> = linkedMapOf()
+    fun winner(): String = raceResult.raceWinner(test)
 
-    fun racingResult(): Unit {
-        val racingRoundResult: LinkedHashMap<String, ArrayList<Int>> = linkedMapOf()
-        repeat(attemptNumber) { setRacingRound(racingRoundResult) }
+    fun racingResult(): String {
+        repeat(attemptNumber) { setRacingRound(test) }
 
         return raceResult.raceResult(
-            racingRoundResult = racingRoundResult,
+            racingRoundResult = test,
             attemptCount = attemptNumber,
             carNames = carNames
         )
-    }
-
-    fun winner(racingRoundResult: Map<String, ArrayList<Int>>) {
-        raceResult.getRaceWinner(racingRoundResult)
     }
 
     private fun setRacingRound(round: LinkedHashMap<String, ArrayList<Int>>) {

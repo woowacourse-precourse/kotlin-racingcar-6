@@ -1,6 +1,7 @@
 package racingcar
 
 import racingcar.game.CarRacingGame
+import racingcar.manager.OutputManager
 
 fun main() {
     startRacingGame()
@@ -8,13 +9,11 @@ fun main() {
 
 private fun startRacingGame() {
     val carRaceGame = CarRacingGame()
-        .setUp().race()
-//        printRaceResult()
-//        printWinner()
-
-
-
-    val raceResult = carRaceGame.racingResult()
-    println(raceResult)
+        .setUp()
+        .race()
+    with(OutputManager()) {
+        racingRoundResult(carRaceGame.racingResult())
+        winner(carRaceGame.winner())
+    }
 }
 
