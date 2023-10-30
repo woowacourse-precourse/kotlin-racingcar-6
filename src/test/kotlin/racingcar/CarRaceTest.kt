@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.controller.CarRaceController
 import org.assertj.core.api.Assertions.assertThat
+import racingcar.model.Car
 import racingcar.view.CarRaceView
 
 class CarRaceTest : NsTest() {
@@ -33,6 +34,17 @@ class CarRaceTest : NsTest() {
         val position = 5
         val result = carRaceController.showCars(position)
         assertThat(result).isEqualTo("-----")
+    }
+
+    @Test
+    fun `우승자 출력`() {
+        val car1 = Car("a", 3)
+        val car2 = Car("b", 4)
+        val car3 = Car("c", 2)
+        val cars = listOf(car1, car2, car3)
+
+        val winner = carRaceController.choiceWinner(cars)
+        assertThat(carRaceController.changeListToStr(winner)).isEqualTo("b")
     }
 
 
