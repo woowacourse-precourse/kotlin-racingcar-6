@@ -1,6 +1,5 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Console
 import racingcar.Converter.convertStringToMap
 import racingcar.ErrorMessage.CAR_MINIMUM_COUNT_ERROR
 import racingcar.ErrorMessage.CAR_NAME_LENGTH_OVER_ERROR
