@@ -2,12 +2,14 @@ package racingcar.view
 
 import racingcar.Constants
 import camp.nextstep.edu.missionutils.Console
+import racingcar.domain.car.CarNames
 
 object InputView {
-    fun readNames(): List<String> {
+    fun readNames(): CarNames {
         OutputView.startReadNames()
         val input = Console.readLine() ?: throw IllegalArgumentException(Constants.EMPTY_INPUT_ERROR_MESSAGE)
-        return input.split(",")
+        val carNames = input.split(",")
+        return CarNames(carNames)
     }
 
     fun readCount(): Int {
