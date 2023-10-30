@@ -12,7 +12,12 @@ class Car(val name: String) {
             position++
         }
     }
+
     fun getPosition(): Int {
         return position
+    }
+
+    fun getCurrentPosition() {
+        println("$name : ${"-".repeat(position)}")
     }
 }
