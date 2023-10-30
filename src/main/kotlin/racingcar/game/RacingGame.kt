@@ -1,8 +1,8 @@
 package racingcar.game
 
 import camp.nextstep.edu.missionutils.Randoms
-import racingcar.utils.Validator.validateInputCarNames
-import racingcar.utils.Validator.validateInputRoundCount
+import racingcar.utils.InputValidator.validateInputCarNames
+import racingcar.utils.InputValidator.validateInputRoundCount
 import racingcar.view.InputView.inputCarNames
 import racingcar.view.InputView.inputRoundCount
 import racingcar.view.OutputView.outputCurrentCarPositions
