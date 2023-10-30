@@ -9,27 +9,18 @@ import java.lang.NumberFormatException
 
 class RacingGameController(private val view: RacingGameView, private val model: RacingGameModel) {
     fun run() {
-        val carList: MutableList<Pair<String, Int>> = mutableListOf()
-        val playCount: Int
         view.requestCarNameInputMessage()
-        val carNameList: List<String> = setCarList()
-        if (isAnyCarNameLengthExceeded(carNameList)) {
-            throw IllegalArgumentException("${ErrorMessage.ERRORMESSAGE_CAR_NAME_LENGTH_EXCEEDED} ${Values.MAXIMUM_CAR_NAME_LENGTH}")
-        }
-        carList.addAll(carNameList.map { carName -> carName to 0 })
+        val carNameList: List<String> = setCarNameList()
+        checkAnyCarNameIsInvalid(carNameList)
+        val carList: MutableList<Pair<String, Int>> = carNameList.map { it to 0 }.toMutableList()
         view.requestPlayCountInputMessage()
-        try {
-            playCount = setPlayCount().toInt()
-            checkPlayCountNatural(playCount)
-        } catch (e: NumberFormatException) {
-            throw IllegalArgumentException(ErrorMessage.ERRORMESSAGE_PLAY_COUNT_NOT_NATURAL)
-        }
+        val playCount: Int = checkPlayCountIsNatural()
         view.informShowProgressMessage(carList, playCount)
         val highScore: Int = setHighScore(carList)
         val winnerList: List<String> = setWinnerList(carList, highScore)
         view.showFinalResultMessage(winnerList)
     }
-    private fun setCarList(): List<String> {
+    private fun setCarNameList(): List<String> {
         return listOf(*Console.readLine().split(",").toTypedArray<String>())
     }
     private fun setPlayCount(): String {
@@ -37,39 +28,46 @@ class RacingGameController(private val view: RacingGameView, private val model: 
     }
     private fun setHighScore(carList: MutableList<Pair<String, Int>>): Int {
         var highScore = 0
-        for(i in 0 until carList.count()) {
+        for (i in 0 until carList.count()) {
             highScore = getMaxValue(Pair(highScore, carList[i].second))
         }
         return highScore
     }
     private fun setWinnerList(carList: List<Pair<String, Int>>, highScore: Int): List<String> {
         var winnerList: List<String> = listOf()
-        for(i in 0 until carList.count()) {
-            if(carList[i].second == highScore) {
+        for (i in 0 until carList.count()) {
+            if (carList[i].second == highScore) {
                 winnerList = winnerList.plus(carList[i].first)
             }
         }
         return winnerList
     }
-    private fun isAnyCarNameLengthExceeded(carNameList: List<String>): Boolean {
+    private fun getMaxValue(compareValues: Pair<Int, Int>): Int {
+        return if (compareValues.first > compareValues.second) {
+            compareValues.first
+        } else {
+            compareValues.second
+        }
+    }
+    private fun checkAnyCarNameIsInvalid(carNameList: List<String>) {
         for (i in carNameList) {
             if (i.length > Values.MAXIMUM_CAR_NAME_LENGTH) {
-                return true
+                throw IllegalArgumentException("${ErrorMessage.ERRORMESSAGE_CAR_NAME_LENGTH_EXCEEDED} ${Values.MAXIMUM_CAR_NAME_LENGTH}")
             }
         }
-        return false
+    }
+    private fun checkPlayCountIsNatural(): Int {
+        try {
+            val playCount = setPlayCount().toInt()
+            checkPlayCountNatural(playCount)
+            return playCount
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException(ErrorMessage.ERRORMESSAGE_PLAY_COUNT_NOT_NATURAL)
+        }
     }
     private fun checkPlayCountNatural(playCount: Int) {
         if (playCount < 1) {
             throw IllegalArgumentException(ErrorMessage.ERRORMESSAGE_PLAY_COUNT_NOT_NATURAL)
         }
     }
-    private fun getMaxValue(compareValues: Pair<Int, Int>): Int {
-        return if(compareValues.first > compareValues.second) {
-            compareValues.first
-        } else {
-            compareValues.second
-        }
-    }
-
 }
