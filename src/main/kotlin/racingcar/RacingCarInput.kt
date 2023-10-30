@@ -8,6 +8,12 @@ object RacingCarInput {
     private const val MIN_CAR_COUNT = 1
     private const val MAX_CAR_NAME_LENGTH = 5
 
+    private fun validate(carNameMap: Map<String, Int>) {
+        validateCarNameDuplicate(carNameMap)
+        validateMinimumCarCount(carNameMap)
+        validateCarNameLength(carNameMap)
+    }
+
     private fun validateCarNameDuplicate(carNameMap: Map<String, Int>) {
         val carNames = carNameMap.keys
         if (carNames.size != carNames.distinct().size) {
