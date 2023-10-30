@@ -16,7 +16,7 @@ class CarRaceController {
         view.printSentenceResult()
         for (i in 1..numberOfAttempts) {
             model.updateScores(carNames)
-            view.showResults(model.getScores())
+            view.showResults(generateResults(model.getScores()))
         }
 
         view.showWinners(model.getScores())
@@ -26,7 +26,6 @@ class CarRaceController {
         view.printSentenceWriteCarName()
         val carNames = splitCarNames(Console.readLine())
         val validNames = carNames.filter { it.length <= 5 }
-        println(validNames)
 
         when {
             validNames.size != carNames.size -> throw IllegalArgumentException("5자 이하로 입력해주세요.")
@@ -39,6 +38,15 @@ class CarRaceController {
 
     fun splitCarNames(readLine: String): List<String> {
         return readLine.split(",")
+    }
+
+    fun generateResults(carNameAndScore: Map<String, Int>): List<String> {
+        val allResult = carNameAndScore.map { (carName, score) ->
+            val scoreResult = "-".repeat(score)
+            "$carName : $scoreResult"
+        }
+
+        return allResult
     }
 
     private fun inputNumberOfAttempts(): Int {

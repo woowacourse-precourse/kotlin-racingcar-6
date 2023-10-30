@@ -1,11 +1,8 @@
 package racingcar.views
 
 class CarRaceView {
-    fun showResults(carNameAndScore: Map<String, Int>) {
-        for ((carName, score) in carNameAndScore) {
-            val scoreResult = "-".repeat(score)
-            println("$carName : $scoreResult")
-        }
+    fun showResults(allResult: List<String>) {
+        println(allResult.joinToString("\n"))
     }
 
     fun showWinners(carNameAndScore: Map<String, Int>) {
