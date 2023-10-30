@@ -6,9 +6,10 @@ object InputHandler {
 
     fun getCarName(): List<String> {
         val inputReadLine = Console.readLine()
-        if(inputReadLine.contains(" ")){
+        if (inputReadLine.contains(" ") || inputReadLine.length > 5) {
             throw IllegalArgumentException("")
         }
+
         val inputData = inputReadLine.split(",")
         return if (isValidCarName(inputData)) inputData else throw IllegalArgumentException("")
     }
@@ -18,11 +19,11 @@ object InputHandler {
         return if (isValidAmount(inputData)) inputData!! else throw IllegalArgumentException("")
     }
 
-    fun isValidCarName(carNames: List<String>) : Boolean = carNames.all { isAllLowerCase(it) }
+    fun isValidCarName(carNames: List<String>): Boolean = carNames.all { isAllLowerCase(it) }
 
-    fun isValidAmount(amount : Int?) : Boolean{
+    fun isValidAmount(amount: Int?): Boolean {
         amount?.let {
-            if (isPositiveNumber(it)){
+            if (isPositiveNumber(it)) {
                 return true
             }
         }

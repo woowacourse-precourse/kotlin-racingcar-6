@@ -10,4 +10,9 @@ class RacingGame(carList : List<String>, amount : Int) {
         }
     }
 
+    fun startNextRound(){
+
+    }
+
+
 }
