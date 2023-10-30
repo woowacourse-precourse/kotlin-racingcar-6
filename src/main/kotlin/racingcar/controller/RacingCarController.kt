@@ -1,41 +1,44 @@
 package racingcar.controller
 
+import racingcar.domain.RacingCars
 import racingcar.service.RacingCarService
 import racingcar.view.PrintOutputView
 import racingcar.view.ReadUserInputView
 
 class RacingCarController(
     private val userInputView: ReadUserInputView,
-    private val outputView: PrintOutputView
+    private val outputView: PrintOutputView,
+    private val service: RacingCarService
 ) {
     fun play() {
-        val racingCarService = RacingCarService()
-        outputView.printRequireCarNames()
-        val userInputCarNames = userInputView.readCarNames()
-        outputView.printRequireAttemptCount()
-        racingCarService.initGame(userInputCarNames)
-        val userInputAttemptCount = userInputView.readAttemptNumber()
-        playGame(racingCarService, userInputAttemptCount)
+        val userInputCarNames = requireCarNames()
+        service.initGame(userInputCarNames)
+        val userInputAttemptCount = requireAttemptCount()
+        playGame(userInputAttemptCount)
     }
 
-    private fun playGame(racingCarService: RacingCarService, attemptCount: Int) {
+    private fun requireCarNames(): RacingCars {
+        outputView.printRequireCarNames()
+        return userInputView.readCarNames()
+    }
+
+    private fun requireAttemptCount(): Int {
+        outputView.printRequireAttemptCount()
+        return userInputView.readAttemptNumber()
+    }
+
+    private fun playGame(attemptCount: Int) {
         for (i in 0 until attemptCount) {
-            val attemptResult = racingCarService.moveRacingCars()
+            val attemptResult = service.moveRacingCars()
             outputView.printAttemptResult(attemptResult)
         }
-        printWinner(racingCarService)
+        printWinner()
     }
 
-    private fun printWinner(racingCarService: RacingCarService) {
-        val winners = racingCarService.calculateRacingResult()
-        if (winners.getWinners().size == SOLE_WINNER_NUMBER) {
-            outputView.printSoleWinner(winners)
-            return
-        }
-        outputView.printJointWinner(winners)
+    private fun printWinner() {
+        val winners = service.calculateRacingResult()
+
+        outputView.printWinner(winners)
     }
 
-    companion object {
-        private const val SOLE_WINNER_NUMBER = 1
-    }
 }

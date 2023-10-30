@@ -5,6 +5,7 @@ import racingcar.domain.RacingCars
 import racingcar.domain.RacingCarsComparator
 import racingcar.domain.RacingGameWinners
 import racingcar.repository.RacingCarsRepository
+import racingcar.util.RandomNumberGenerator
 
 class RacingCarService {
     private val racingCarsRepository = RacingCarsRepository()
@@ -15,7 +16,10 @@ class RacingCarService {
 
     fun moveRacingCars(): RacingCars {
         val racingCarMover = RacingCarMover()
-        racingCarsRepository.saveRacingCars(racingCarMover.moveRacingCars(racingCarsRepository.loadRacingCars()))
+        racingCarMover.moveRacingCars(
+            racingCarsRepository.loadRacingCars(),
+            RandomNumberGenerator()
+        )
         return racingCarsRepository.loadRacingCars()
     }
 
