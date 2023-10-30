@@ -60,7 +60,17 @@ internal class UserInputUtilTest {
 
     @Test
     fun `getAttempts 리턴 값 테스팅`() {
-
+        // given
+        try {
+            command("6")
+            val attempts = UserInputUtil.getAttempts()
+            // when
+            val expectedAttempts = 6
+            // then
+            assertEquals(expectedAttempts, attempts)
+        } finally {
+            Console.close()
+        }
     }
 
     @Test
