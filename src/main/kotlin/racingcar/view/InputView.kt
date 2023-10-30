@@ -15,6 +15,10 @@ object InputView {
     fun readCount(): Int {
         OutputView.startReadCount()
         val input = Console.readLine() ?: throw IllegalArgumentException(Constants.EMPTY_INPUT_ERROR_MESSAGE)
-        return input.toInt()
+        return try {
+            input.toInt()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException(Constants.NOT_NUMBER_ERROR_MESSAGE)
+        }
     }
 }
