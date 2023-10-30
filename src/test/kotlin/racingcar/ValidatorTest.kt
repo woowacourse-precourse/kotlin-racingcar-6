@@ -26,6 +26,12 @@ class ValidatorTest {
     }
 
     @Test
-    fun validateUserTryCount() {
+    fun `시도횟수가 숫자가 아니면 예외처리`() {
+        val tryCount = "1번"
+        assertThrows<IllegalArgumentException>("유효한 숫자를 입력하세요.") {
+            if (tryCount.toIntOrNull() == null) {
+                throw IllegalArgumentException("유효한 숫자를 입력하세요.")
+            }
+        }
     }
 }
