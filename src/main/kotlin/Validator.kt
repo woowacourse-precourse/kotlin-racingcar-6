@@ -14,12 +14,16 @@ object Validator {
     }
 
     fun roundCheck(input: String) {
-        if (input.first() == INPUT_NOT_FIRST_VALUE) throw IllegalArgumentException()
+        try {
+            if (input.first() == INPUT_NOT_FIRST_VALUE) throw IllegalArgumentException()
+        } catch (e: Exception) {
+            throw IllegalArgumentException()
+        }
         castingCheck(input)
     }
 
     private fun nameLengthCheck(name: String) {
-        if (name.length !in MIN_NAME_LENGTH .. MAX_NAME_LENGTH) throw IllegalArgumentException()
+        if (name.length !in MIN_NAME_LENGTH..MAX_NAME_LENGTH) throw IllegalArgumentException()
     }
 
     private fun castingCheck(input: String) {
