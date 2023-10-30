@@ -3,7 +3,9 @@ package racingcar.game
 import camp.nextstep.edu.missionutils.Console
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import java.io.ByteArrayInputStream
+import java.lang.IllegalArgumentException
 import java.lang.String.*
 
 internal class UserInputUtilTest {
@@ -24,7 +26,19 @@ internal class UserInputUtilTest {
 
     @Test
     fun `getRacingCars - 중복된 이름인 경우 예외처리`() {
-
+        // given
+        val exception = assertThrows<IllegalArgumentException> {
+            try {
+                command("bamin,bamin,bamin")
+                UserInputUtil.getRacingCars()
+            } finally {
+                Console.close()
+            }
+        }
+        // when
+        val expectedExceptionMessage = "잘못된 입력 값입니다.(중복 이름 발생)"
+        // then
+        assertEquals(expectedExceptionMessage, exception.message)
     }
 
     @Test
