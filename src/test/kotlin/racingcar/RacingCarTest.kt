@@ -1,8 +1,10 @@
 package racingcar
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.controller.RacingCarController
+import racingcar.model.RacingCar
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -60,5 +62,13 @@ class RacingCarTest {
         val attemptNumber = "one"
 
         assertThrows<IllegalArgumentException> { inputView.validateAttemptNumber(attemptNumber) }
+    }
+
+    @Test
+    fun `자동차 리스트 만들기`() {
+        val racingCarList = racingCarController.makeRacingCarList(listOf("pobi", "woni"))
+
+        assertThat(racingCarList).contains(RacingCar("woni"), RacingCar("pobi"))
+        assertThat(racingCarList).containsExactly(RacingCar("pobi"), RacingCar("woni"))
     }
 }
