@@ -21,7 +21,7 @@ class RacingGame {
     private fun gameStart() {
         println("실행결과")
         repeat(gameCount) {
-            runOneCycle(cars.list)
+            runOneCycle()
         }
     }
 
@@ -30,8 +30,8 @@ class RacingGame {
         printWinner(winnerList)
     }
 
-    private fun runOneCycle(carModelList: List<Car>) {
-        carModelList.forEach { car ->
+    private fun runOneCycle() {
+        cars.list.forEach { car ->
             val isMovable = checkMovable(getRandomNumber())
             car.moveOneStep(isMovable)
             printCarDistance(car)
