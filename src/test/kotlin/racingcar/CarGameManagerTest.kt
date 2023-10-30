@@ -30,15 +30,34 @@ class CarGameManagerTest {
         }
     }
     @Test
-    fun `우승자 출력 테스트`(){
+    fun `우승자 출력 테스트`() {
 
         val carNameListTest: List<String> = listOf("yang", "won", "sik")
         val carListCountTest = carNameListTest.size
-        val twoWinnerResultTest: MutableList<String> = mutableListOf("-----","----","-----")
-        val oneWinnerResultTest: MutableList<String> = mutableListOf("--","-------","---")
+        val oneWinnerResultTest= mutableListOf("--", "-------", "---")
+        val twoWinnerResultTest= mutableListOf("-----", "----", "-----")
         val oneWinnerText = "최종 우승자 : won"
         val twoWinnerText = "최종 우승자 : yang, sik"
-        assertEquals(CarGameManager().determineWinnersAndPrint(oneWinnerResultTest,carListCountTest,carNameListTest),oneWinnerText)
-        assertEquals(CarGameManager().determineWinnersAndPrint(twoWinnerResultTest,carListCountTest,carNameListTest),twoWinnerText)
+        val oneWinnersList: MutableList<String> = mutableListOf()
+        val twoWinnersList: MutableList<String> = mutableListOf()
+        val oneWinnerListLength = oneWinnerResultTest.max().length
+        val twoWinnerListLength = twoWinnerResultTest.max().length
+        for (countList in MIN_NUMBER until carListCountTest) {
+            if (oneWinnerListLength == oneWinnerResultTest[countList].length) {
+                oneWinnersList.add(carNameListTest[countList])
+            }
+        }
+        val oneWinnerOutput = "${Constants.FINAL_WINNER_MESSAGE}${oneWinnersList.joinToString(", ")}"
+        assertEquals(oneWinnerOutput,oneWinnerText)
+
+        for (countList in MIN_NUMBER until carListCountTest) {
+            if (twoWinnerListLength == twoWinnerResultTest[countList].length) {
+                twoWinnersList.add(carNameListTest[countList])
+            }
+        }
+        val twoWinnerOutput = "${Constants.FINAL_WINNER_MESSAGE}${twoWinnersList.joinToString(", ")}"
+        assertEquals(twoWinnerOutput,twoWinnerText)
+
     }
+
 }

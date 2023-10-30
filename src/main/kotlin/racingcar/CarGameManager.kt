@@ -48,7 +48,7 @@ class CarGameManager {
         println()
     }
 
-    fun determineWinnersAndPrint(
+    private fun determineWinnersAndPrint(
         carResultList: MutableList<String>,
         carListCount: Int,
         carNamesList: List<String>
