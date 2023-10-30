@@ -24,4 +24,14 @@ class PrintTest {
         val output = outputStreamCaptor.toString()
         AssertionsForClassTypes.assertThat(output).contains("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     }
+
+    @Test
+    fun `시도할 횟수를 묻는 문구 출력`() {
+        System.setOut(PrintStream(outputStreamCaptor))
+
+        outputView.printTryNumber()
+
+        val output = outputStreamCaptor.toString()
+        AssertionsForClassTypes.assertThat(output).contains("시도할 횟수는 몇 회인가요?")
+    }
 }
