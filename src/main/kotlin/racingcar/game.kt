@@ -10,6 +10,8 @@ class Game (private val cars: List<Car>, private val rounds: Int) {
                 println("")
             }
         }
+        val winners = findWinners()
+        printWinners(winners)
     }
 
     private fun findWinners(): List<Car> {
