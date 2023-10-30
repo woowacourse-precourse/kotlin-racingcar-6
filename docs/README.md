@@ -37,3 +37,7 @@
 
 1. 각 자동차 객체로부터 전진 상태를 받아서 진행 상황 출력
 2. 경주 결과로 가장 많이 전진한 자동차 목록 출력
+
+<br>
+
+![image](https://github.com/gaeun5744/gaeun5744/assets/92314556/3f36ac4c-36ab-4495-831c-bbaedddd3bbc)
