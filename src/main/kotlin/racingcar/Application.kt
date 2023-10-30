@@ -5,6 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms
 class RacingCar(val name: String) {
     var distance = 0
 
+    // 예외 설정 (자동차 이름 5자 초과인 경우)
+    init {
+        if (name.length > 5) throw IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.")
+    }
+
     // 자동차의 전진 조건
     fun move() {
         // 0 ~ 9사이 임의의 값 중에 4이상 이면 전진하기
@@ -68,11 +73,11 @@ fun finalWinner(winners: List<String>) {
 // 사용자가 입력하는 부분 (자동차가 2대 이상인 경우, 쉼표로 구분)
 fun carNames(): List<String> {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    return Console.readLine()?.split(",") ?: listOf()
+    return Console.readLine()?.split(",") ?: throw IllegalArgumentException("잘못 입력하였습니다.")
 }
 
 // 사용자가 게임 횟수 지정하기
 fun lapCounts(): Int {
     println("시도할 횟수는 몇 회인가요?")
-    return Console.readLine()?.toIntOrNull() ?: 0
+    return Console.readLine()?.toIntOrNull() ?: throw IllegalArgumentException("잘못 입력하였습니다.")
 }
