@@ -1,7 +1,16 @@
 package racingcar
 
-import race.Race
+import race.CarController
+import race.CarModel
+import race.PrintResult
 
 fun main() {
-    Race.run()
+    run()
+}
+
+fun run() {
+    val carModel = CarModel()
+    val printResult = PrintResult()
+    val carController = CarController(carModel,printResult)
+    carController.runRace()
 }
