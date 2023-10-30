@@ -26,4 +26,12 @@ class RacingCarTest {
 
         assertThrows<IllegalArgumentException> { inputView.validateRacingCarName(racingCarNameList) }
     }
+
+
+    @Test
+    fun `자동차 이름 쉼표(,) 뒤 빈값 예외 처리`() {
+        val racingCarNameList = "pobi,woni,".split(",")
+
+        assertThrows<IllegalArgumentException> { inputView.validateRacingCarName(racingCarNameList) }
+    }
 }
