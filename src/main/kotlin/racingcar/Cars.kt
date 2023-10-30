@@ -8,8 +8,8 @@ class Cars {
         cars = CarsBuilder().create()
     }
 
-    fun getCars(): List<Car> {
-        return cars
+    fun showWinners() {
+        GameWinnerGenerator(cars).result()
     }
 
     fun showRoundResult() {
