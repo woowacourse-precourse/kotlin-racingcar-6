@@ -2,25 +2,27 @@
 
 ```
 • 게임 시작 전
-    ◦ 경주할 자동차 이름을 입력받는다. (1)
-        ▫︎ 자동차 이름은 쉼표로 구분한다.
-        ▫︎ 자동차 이름은 5자 이하여야 하며, 넘어갈 시 애러를 발생시킨다. (3)
-        ▫︎ 자동자 이름에 중복이 있다면 에러를 발생시킨다. (3)
-        ▫︎ 자동차 이름에 null값이 들어오면 에러를 발생시킨다. (3)
-    ◦ 게임 횟수를 입력받는다. (2)
-        ▫︎ 입력이 숫자가 아닐 시 이러를 발생시킨다. (3)
+    ◦ 경주할 자동차 이름을 입력받는다. (1) - RacingGame#inputCarNames
+        ▫︎ 자동차 이름은 쉼표로 구분한다. - CarManager#separateCarNames
+        ▫︎ 자동차 이름은 5자 이하여야 하며, 넘어갈 시 애러를 발생시킨다. (3) - Validator#validateNameLength
+        ▫︎ 자동자 이름에 중복이 있다면 에러를 발생시킨다. (3) - Validator#validateDuplicate
+        ▫︎ 자동차 이름에 null값이 들어오면 에러를 발생시킨다. (3) - Validator#validateNull
+    ◦ 게임 횟수를 입력받는다. (2) - RacingGame#inputRaceCount
+        ▫︎ 입력이 숫자가 아닐 시 이러를 발생시킨다. (3) - Validator#validateNumber
+        ▫︎ 횟수가 0일 시 에러를 발생시킨다. (3) - Validator#validateRange
 
 • 게임 중
-    ◦ 0부터 9까지의 숫자를 랜덤하게 구한다. (1)
-        ▫︎ 구한 숫자가 4이상의 숫자인지 확인한다.
-    ◦ 4이상의 숫자일 시 자동차를 전진한다.
-        ▫︎ 자동차 전진은 '-'으로 표기한다.
+    ◦ 0부터 9까지의 숫자를 랜덤하게 구한다. (1) - RacingGame#getRandomNumber
+        ▫︎ 구한 숫자가 4이상의 숫자인지 확인한다. - RacingGame#checkMovable
+    ◦ 4이상의 숫자일 시 자동차를 전진한다. - Car#moveOneStep
+        ▫︎ 자동차 전진은 '-'으로 표기한다. - RacingGame#printCarDistance
         ▫︎ 단 첫번째 출력시에는 자동차 이름도 같이 표기한다.
         (ex. pobi : -)
-    ◦ 게임 횟수만큼 반복한다.
+    ◦ 게임 횟수만큼 반복한다. - RacingGame#gameStart
 
 • 게임 종료
-    ◦ 최종 우승자를 출력한다. (4)
+    ◦ 최종 우승자 리스트를 가져온다. - Cars#getWinners
+    ◦ 최종 우승자를 출력한다. (4) - RacingGame#printWinner
         ▫︎ 게임 우승자는 여러명이 나올 수도 있으며, 여러명일 경우에는 쉼표로 구분하여 출력한다.
 
 (1) 랜덤값 추출은 camp.nextstep.edu.missionutils.Randoms.pickNumberInRange()을 이용한다.
@@ -39,6 +41,7 @@
 - [x]  자동차 이름들을 구분한다. `separateCarNames`
 - [x]  자동차 이름의 유효성을 검사한다. `validateNameLength` `validateNull` `validateDuplicate`
 - [x]  게임 횟수를 입력받는다. `inputRaceCount`
+- [x]  게임 횟수의 유효성을 검사한다. `validateNumber` `validateRange`
 
 <br>
 
@@ -50,7 +53,7 @@
 <br>
 
 - 게임 종료
-- [x]  최종 우승자를 출력한다. `getWinner` `printWinner`
+- [x]  최종 우승자를 출력한다. `getWinners` `printWinner`
 - [x]  여러 명일 경우에는 쉼표로 구분하여 출력한다.
 
 <br><br>
