@@ -2,12 +2,18 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class Car(val name: String, position: Int = 0) {
-    var position = position
-        private set
+class Car(private val name: String, private var position: Int = 0) {
 
     fun moving() {
         val num = Randoms.pickNumberInRange(1, 9)
         if (num >= 4) position++
+    }
+
+    fun printPosition() {
+        var status = "${this.name} : "
+        repeat(this.position) {
+            status += "-"
+        }
+        println(status)
     }
 }
