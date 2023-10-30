@@ -6,13 +6,16 @@ class RacingGame {
 
     private fun userInput() = Console.readLine()
 
-    fun startRacing() {
+    fun readyRacing() {
         val printer = Printer()
 
         printer.printOutEnteringCarName()
         val carsInputString = userInput()
 
-        val carsList = carsInputString.split(",").filter { it.isNotBlank() }.map { Car(it) }
+        val carsList = carsInputString.split(",").filter { it.isNotBlank() }.map { name ->
+
+            Car(name)
+        }
         requireValidCarsInput(carsInputString = carsInputString, carsList = carsList)
         requireCheckingForDuplicateNames(carsList = carsList)
 
@@ -20,7 +23,19 @@ class RacingGame {
         val attemptsNumberInputString = userInput()
         requireValidAttemptsNumberInput(attemptsNumberInputString = attemptsNumberInputString)
         val attemptsNumber = attemptsNumberInputString.toInt()
+
+        startRacing(attemptsNumber = attemptsNumber)
     }
+
+    private fun startRacing(attemptsNumber: Int) {
+        var attempts = attemptsNumber
+        while (attempts > 0) {
+
+
+            attempts--
+        }
+    }
+
     private fun requireValidCarsInput(carsInputString: String, carsList: List<Car>) {
         require(carsInputString.count { it == ',' } == carsList.size - 1)
         require(carsInputString.length <= carsList.size * CARS_MAX_LENGTH + carsInputString.count { it == ',' })
