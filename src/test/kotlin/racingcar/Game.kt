@@ -1,7 +1,0 @@
-package racingcar
-
-class Game {
-
-
-
-}
