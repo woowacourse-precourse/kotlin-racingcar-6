@@ -8,12 +8,12 @@ class RacingCarController(private val view: RacingCarView, private val model: Ra
         enterPlayTime() //이동 시도 횟수 입력 요청 및 처리
         initializationMoveDistance() //이동 거리 리스트 초기화
         requestPrintResultText() //실행 결과 텍스트 사전 출력
-        for(sequence in FIRST_SEQUENCE until model.racerCrew.playTime) { //
-            judgeRace()
-            printRace()
+        for(sequence in FIRST_SEQUENCE until model.racerCrew.playTime) { //이동 시도 횟수 반복
+            judgeRace() //정지 혹은 전진 판단 및 반영
+            printRace() //정지 혹은 전진 판단 결과 출력
         }
-        judgeChampion()
-        printChampion()
+        judgeChampion() //최종 우승자 도출
+        printChampion() //최종 우승자 출력
     }
 
     private fun signUpRacer() {

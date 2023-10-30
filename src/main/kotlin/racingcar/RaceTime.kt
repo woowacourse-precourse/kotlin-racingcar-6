@@ -8,6 +8,6 @@ class RaceTime(private val moveChance: Int = INITIALIZATION) {
 
     private fun checkPlayTimeRange(){
         if(moveChance < PLAYTIME_MINIMUM || PLAYTIME_MAXIMUM < moveChance)
-            throw IllegalArgumentException(Message.RaceTimeRangeError.messageText)
+            throw IllegalArgumentException(Message.RACE_TIME_RANGE_ERROR.messageText)
     }
 }

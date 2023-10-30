@@ -3,6 +3,7 @@ package racingcar
 class Champion(var championName: MutableList<String> = mutableListOf()) {
     fun getChampion(racerCrew: Racer) {
         val maxDistance = getMaxDistance(racerCrew)
+        checkStayStartPlace(maxDistance)
         getMaxDistanceRacer(racerCrew, maxDistance)
     }
 
@@ -12,6 +13,11 @@ class Champion(var championName: MutableList<String> = mutableListOf()) {
             maxDistance = compareMaxDistance(racerCrew, maxDistance, index)
         }
         return maxDistance
+    }
+
+    private fun checkStayStartPlace(maxDistance: Int) {
+        if (maxDistance == START_PLACE)
+            throw IllegalArgumentException(Message.NO_CHAMPION_ERROR.messageText)
     }
 
     private fun getMaxDistanceRacer(racerCrew: Racer, maxDistance: Int) {

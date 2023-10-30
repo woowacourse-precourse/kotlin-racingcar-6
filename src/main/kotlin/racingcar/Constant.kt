@@ -22,3 +22,5 @@ const val STOP_MAXIMUM = 3
 const val MOVE = 1
 const val MOVE_MINIMUM = 4
 const val MOVE_MAXIMUM = 9
+
+const val START_PLACE = 0

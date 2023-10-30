@@ -14,7 +14,7 @@ class RaceMove (val moveChanceNumber: MutableList<Int> = mutableListOf()) {
         return when (moveDecisionNumber) {
             in STOP_MINIMUM..STOP_MAXIMUM -> STOP
             in MOVE_MINIMUM..MOVE_MAXIMUM -> MOVE
-            else -> throw IllegalArgumentException(Message.MoveError.messageText)
+            else -> throw IllegalArgumentException(Message.MOVE_ERROR.messageText)
         }
     }
 }

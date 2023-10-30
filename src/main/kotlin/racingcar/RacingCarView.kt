@@ -17,14 +17,14 @@ class RacingCarView() {
 
     fun printResultText(){
         println()
-        println(Message.ResultText.messageText)
+        println(Message.RESULT_TEXT.messageText)
     }
 
     fun printRequestRacer(){
-        println(Message.RequestRacerName.messageText)
+        println(Message.REQUEST_RACER_NAME.messageText)
     }
 
     fun printRequestPlayTime(){
-        println(Message.RequestPlayTime.messageText)
+        println(Message.REQUEST_PLAY_TIME.messageText)
     }
 }
