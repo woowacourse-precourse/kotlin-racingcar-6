@@ -53,3 +53,7 @@ fun printRace(){ //레이스 하는 과정 print
     }
 }
 
+fun findWinners(cars: List<Car): List<String> { //우승자 검색
+    val maxPosition = cars.map { it.position }.maxOrNull()
+    return cars.filter { it.position == maxPosition }.map { it.name }
+}
