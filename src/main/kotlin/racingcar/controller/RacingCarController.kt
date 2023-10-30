@@ -5,10 +5,7 @@ import racingcar.model.RacingCar
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
-class RacingCarController(
-        private val inputView: InputView,
-        private val outputView: OutputView
-) {
+class RacingCarController(private val inputView: InputView, private val outputView: OutputView) {
     fun run() {
         outputView.printRacingCarNameInstruction()
         val racingCarList = makeRacingCarList(inputView.inputRacingCarName())
@@ -29,12 +26,7 @@ class RacingCarController(
 
     // 기능 3. 자동차 리스트 만들기
     private fun makeRacingCarList(racingCarNameList: List<String>): List<RacingCar> {
-        val racingCarList = mutableListOf<RacingCar>()
-        for (name in racingCarNameList) {
-            racingCarList.add(RacingCar(name))
-        }
-
-        return racingCarList
+        return racingCarNameList.map { racingCarName -> RacingCar(racingCarName) }
     }
 
     // 기능 6. 무작위 값 구하기
