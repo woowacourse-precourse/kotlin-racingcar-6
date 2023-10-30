@@ -5,5 +5,5 @@ fun main(){
     val model = RacingCarModel()
     val controller = RacingCarController(view, model)
 
-    controller.race()
+    controller.race() //자동차경주 시작
 }

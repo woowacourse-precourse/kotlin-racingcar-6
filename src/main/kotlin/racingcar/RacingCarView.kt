@@ -3,7 +3,7 @@ package racingcar
 class RacingCarView() {
     fun printRaceOnView(racerCrew: Racer){
         for (index in racerCrew.racerName.indices) {
-            val personalMoveResult = "${racerCrew.racerName[index]} : ${"-".repeat(racerCrew.moveForward[index])}"
+            val personalMoveResult = "${racerCrew.racerName[index]} : ${"-".repeat(racerCrew.moveDistance[index])}"
             println(personalMoveResult)
         }
         println()

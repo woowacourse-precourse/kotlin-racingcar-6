@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Console
 
 class RacingCarController(private val view: RacingCarView, private val model: RacingCarModel) {
     fun race() {
-        signUpRacer()
-        enterPlayTime()
-        initializationMoveForward()
-        requestPrintResultText()
-        for(sequence in FIRST_SEQUENCE until model.racerCrew.playTime) {
+        signUpRacer() //자동차 경주 입력 요청 및 처리
+        enterPlayTime() //이동 시도 횟수 입력 요청 및 처리
+        initializationMoveDistance() //이동 거리 리스트 초기화
+        requestPrintResultText() //실행 결과 텍스트 사전 출력
+        for(sequence in FIRST_SEQUENCE until model.racerCrew.playTime) { //
             judgeRace()
             printRace()
         }
@@ -30,8 +30,8 @@ class RacingCarController(private val view: RacingCarView, private val model: Ra
         model.requestUpdatePlayTime(verifiedPlayTime)
     }
 
-    private fun initializationMoveForward() {
-        model.requestInitializationMoveForward()
+    private fun initializationMoveDistance() {
+        model.requestInitializationMoveDistance()
     }
 
     private fun requestPrintResultText() {
@@ -41,7 +41,7 @@ class RacingCarController(private val view: RacingCarView, private val model: Ra
     private fun judgeRace() {
         val raceMove = RaceMove()
         raceMove.getMoveNumber(model.racerCrew.racerName.size)
-        model.requestUpdateMoveForward(raceMove)
+        model.requestUpdateMoveDistance(raceMove)
     }
 
     private fun printRace() {

@@ -2,12 +2,12 @@ package racingcar
 
 const val INITIALIZATION = 0
 
-const val FIRST_SEQUENCE =0
+const val FIRST_SEQUENCE = 0
 
 const val RACER_MINIMUM = 1
 const val RACER_MAXIMUM = 10
 
-const val RACER_NAME_LENGTH_MAXIMUM =5
+const val RACER_NAME_LENGTH_MAXIMUM = 5
 
 const val PLAYTIME_MINIMUM = 1
 const val PLAYTIME_MAXIMUM = 10

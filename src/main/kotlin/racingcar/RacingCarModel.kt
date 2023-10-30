@@ -8,16 +8,16 @@ class RacingCarModel(
         racerCrew.updateRacerName(racerName)
     }
 
-    fun requestInitializationMoveForward() {
-        racerCrew.initializationMoveForward()
+    fun requestInitializationMoveDistance() {
+        racerCrew.initializationMoveDistance()
     }
 
     fun requestUpdatePlayTime(playTime: Int) {
         racerCrew.updatePlayTime(playTime)
     }
 
-    fun requestUpdateMoveForward(moveForward: RaceMove) {
-        racerCrew.updateMoveForward(moveForward)
+    fun requestUpdateMoveDistance(moveDistance: RaceMove) {
+        racerCrew.updateMoveDistance(moveDistance)
     }
 
     fun requestJudgeChampion() {
