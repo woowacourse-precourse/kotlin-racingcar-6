@@ -55,7 +55,7 @@ fun main() {
 // 자동차의 현재 상태 출력하기
 fun raceStatus(cars: List<RacingCar>) {
     cars.forEach {
-        car -> println("$car.name : ${"-".repeat(car.distance)}")
+        car -> println("${car.name} : ${"-".repeat(car.distance)}")
     }
     println()
 }
@@ -71,7 +71,7 @@ fun carNames(): List<String> {
     return Console.readLine()?.split(",") ?: listOf()
 }
 
-// 사용자가 몇회 게임을 진행할지 설정하기
+// 사용자가 게임 횟수 지정하기
 fun lapCounts(): Int {
     println("시도할 횟수는 몇 회인가요?")
     return Console.readLine()?.toIntOrNull() ?: 0
