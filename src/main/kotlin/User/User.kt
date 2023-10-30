@@ -8,15 +8,17 @@ class User {
         const val MAX_NAME = 5
     }
 
-    fun inputCarName(){
+    fun inputCarName() : Int{
         var userNames = Console.readLine()
         var userNameList = userNames.split(',')
+        var userCount = userNameList.size
 
         try {
             checkUserName(userNameList)
         }catch (e: IllegalArgumentException){
             e.printStackTrace()
         }
+        return userCount
     }
 
     fun checkUserName(userNameList: List<String>){
@@ -29,7 +31,6 @@ class User {
 
     fun inputCycleNumber() : Int{
         var CycleNumber = Console.readLine()
-
         return CycleNumber.toInt()
     }
 }
