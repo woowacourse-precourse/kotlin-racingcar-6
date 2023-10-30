@@ -13,6 +13,7 @@ class RacingGame(carList : List<String>, amount : Int) {
     }
 
     fun initRound(){
+        gameRound++
         cars.forEach { index, car ->
             if (canCarMove()){
                 car.move()
