@@ -2,7 +2,9 @@ package racingcar.model
 
 import racingcar.constants.*
 
-class Try private constructor(val count: Int) {
+class Try private constructor(private val count: Int) {
+    fun iterableTry() = 0 until count
+
     companion object {
         fun of(countString: String): Try {
             validateTry(countString)

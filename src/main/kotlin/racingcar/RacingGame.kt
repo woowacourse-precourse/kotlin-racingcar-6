@@ -27,7 +27,7 @@ class RacingGame {
         println()
         println("실행 결과")
 
-        for (count in 0 until `try`.count) {
+        for (count in `try`.iterableTry()) {
             progressGameStep()
             printCarListResult(carList)
         }
