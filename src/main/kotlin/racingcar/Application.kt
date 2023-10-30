@@ -3,11 +3,18 @@ package racingcar
 import racingcar.game.CarRacingGame
 
 fun main() {
+    startRacingGame()
+}
+
+private fun startRacingGame() {
     val carRaceGame = CarRacingGame()
-        .setUp()
-        .race()
+        .setUp().race()
+//        printRaceResult()
+//        printWinner()
+
+
 
     val raceResult = carRaceGame.racingResult()
-    val winner = carRaceGame.winner(raceResult)
+    println(raceResult)
 }
 
