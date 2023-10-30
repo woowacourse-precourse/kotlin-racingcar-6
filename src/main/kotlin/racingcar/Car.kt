@@ -3,7 +3,7 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 
 class Car(val name: String) {
-    private var position: Int = 0
+    private var position = 0
 
 
     fun move() {
@@ -12,5 +12,7 @@ class Car(val name: String) {
             position++
         }
     }
-
+    fun getPosition(): Int {
+        return position
+    }
 }
