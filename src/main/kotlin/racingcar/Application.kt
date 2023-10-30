@@ -16,5 +16,7 @@ fun main() {
     val userCars:Array<RacingCar> = arrayOf(RacingCar(users[0]), RacingCar(users[1]), RacingCar(users[2]))
 
     println("시도할 횟수는 몇 회인가요?")
-    val cnt = Console.readLine()
+    val cnt = Console.readLine().toInt()
+
+
 }

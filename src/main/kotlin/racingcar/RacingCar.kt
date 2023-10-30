@@ -20,4 +20,8 @@ class RacingCar(_name: String) {
             moveCnt += 1
         }
     }
+
+    fun printResult() {
+        println("${this.name} : "+"-".repeat(moveCnt))
+    }
 }
