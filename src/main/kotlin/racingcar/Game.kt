@@ -2,6 +2,8 @@ package racingcar
 
 class Game(private val cars: List<Car>, private val numberOfMove: Int) {
     fun runGame() {
+        println("")
+        println("실행 결과")
         repeat(numberOfMove) {
             for(car in cars) {
                 car.move()
@@ -15,6 +17,7 @@ class Game(private val cars: List<Car>, private val numberOfMove: Int) {
         for (car in cars) {
             println("${car.name} : ${car.printPosition()}")
         }
+        println("")
     }
 
     private fun printWinners() {
