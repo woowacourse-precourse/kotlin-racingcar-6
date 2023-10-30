@@ -126,6 +126,21 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `시도할 횟수를 입력하지 않은 경우 예외가 발생한다`() {
+        // given
+        val case1 = "123"
+        val case2 = ""
+
+        // when, then
+        assertThatCode { Try.validateTryEmpty(case1) }
+            .doesNotThrowAnyException()
+
+        assertThatThrownBy { Try.validateTryEmpty(case2) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage(TryException.EMPTY.toString())
+    }
+
+    @Test
     fun `시도할 횟수에 숫자가 아닌 문자가 포함된 경우 예외가 발생한다`() {
         // given
         val case1 = "123"
