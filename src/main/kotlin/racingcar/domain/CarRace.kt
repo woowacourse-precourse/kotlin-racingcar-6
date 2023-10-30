@@ -27,13 +27,13 @@ class CarRace(
     }
 
     private fun moveResult(): Int =
-        if (Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE) >= POSSIBLE_FORWARD) FORWARD else STOP
+        if (Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE) >= MOVING_FORWARD) FORWARD else STOP
 
     companion object {
         private const val MIN_VALUE = 0
         private const val MAX_VALUE = 9
 
-        private const val POSSIBLE_FORWARD = 4
+        private const val MOVING_FORWARD = 4
 
         private const val FORWARD = 1
         private const val STOP = 0
