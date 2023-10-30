@@ -1,10 +1,21 @@
+package racingcar
+
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+
 
 data class Car(val name: String, val position: String)
 
 fun main() {
-    vla cars=inputCarNames()
+    val cars = inputCarNames()
+    val numberOfMoves = inputNumberOfMoves()
+
+    race(cars, numberOfMoves)
+
+    println("실행 결과")
+    printRace(cars)
+    val winners = findWinners(cars)
+    displayWinners(winners)
 }
 
 fun inputCarNames(): List<Car> { //자동차 이름 입력받기
@@ -23,7 +34,7 @@ fun inputNumberOfMoves(): Int { //이동 횟수 입력
     val numberOfMoves = input.toIntOrNull()
 
     if (numberOfMoves == null || numberOfMoves <= 0) {
-        throw IllegalArgumentException("유효한 이동 횟수를 입력하세요.")
+        throw IllegalArgumentException()
     }
 
     return numberOfMoves
@@ -47,7 +58,7 @@ fun moving(cars: List<Car>){  //cars배열 속 하나하나 move함수 실행
     }
 }
 
-fun printRace(){ //레이스 하는 과정 print
+fun printRace(cars: List<Car>){ //레이스 하는 과정 print
     for (car in cars) {
         println("${car.name} : ${car.position}")
     }
