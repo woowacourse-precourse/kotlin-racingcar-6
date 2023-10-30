@@ -16,22 +16,18 @@ fun main() {
     if (tryCountInput <= 0) {
         throw IllegalArgumentException("시도 횟수는 0보다 커야 합니다.")
     }
-    val carMove = MutableList(carName.size) { 0 }
+    val carMove = mutableMapOf<String, Int>()
 
     for (i in 1..tryCountInput) {
         println()
-        for (j in carName.indices) {
-            val randomNumber = (0..9).random()
-            if (randomNumber >= 4) {
-                carMove[j] = carMove[j] + 1
+        for (car in carName) {
+            if ((0..9).random() >= 4) {
+                carMove[car] = (carMove[car] ?: 0) + 1
             }
         }
-        for (j in carName.indices) {
-            print("${carName[j]} : ")
-            for (k in 1..carMove[j]) {
-                print("-")
-            }
-            println()
+        for (car in carName) {
+            val distance = carMove[car] ?: 0
+            println("$car : ${"-".repeat(distance)}")
         }
     }
 
