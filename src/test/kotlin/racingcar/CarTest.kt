@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource
 class CarTest{
 
     @ParameterizedTest
-    @ValueSource(strings = ["a", "ab", "abc", "abcd", "abcde"])
+    @ValueSource(strings = ["a", "ab", "abc", "abcd", "tgyuu"])
     fun `자동차의 이름은 1글자 이상 5글자 이하여야 한다`(carName : String){
         //given
 
@@ -24,7 +24,7 @@ class CarTest{
     }
 
     @ParameterizedTest
-    @ValueSource(strings = ["abcdef","abcdefg", ""])
+    @ValueSource(strings = ["abcdef","tgyuuJJang", ""])
     fun `자동차의 이름은 6글자 이상이거나 공백일 수 없다`(carName : String){
         //given
 
