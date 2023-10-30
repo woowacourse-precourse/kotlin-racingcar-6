@@ -43,7 +43,19 @@ internal class UserInputUtilTest {
 
     @Test
     fun `getRacingCars - 이름의 길이가 유효하지 않은 경우 예외처리`() {
-
+        // given
+        val exception = assertThrows<IllegalArgumentException> {
+            try {
+                command("bamin0422,pobi,woni")
+                UserInputUtil.getRacingCars()
+            } finally {
+                Console.close()
+            }
+        }
+        // when
+        val expectedExceptionMessage = "잘못된 입력 값입니다.(이름의 길이가 유효하지 않음)"
+        // then
+        assertEquals(expectedExceptionMessage, exception.message)
     }
 
     @Test
