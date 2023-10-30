@@ -21,6 +21,7 @@ class GameController {
 
         var entireRaceStatus = mutableMapOf<String, List<Boolean>>()
         var oneRoundResults: List<Boolean>
+
         val raceWinner:List<String>
 
         println("\n실행 결과")
@@ -30,7 +31,8 @@ class GameController {
             RaceViewer().roundResultViewer(entireRaceStatus)
         }
 
-        raceWinner=RaceState().raceWinnerSelect(entireRaceStatus)
+        var collectScore=RaceState().compareScore(entireRaceStatus)
+        raceWinner=RaceState().raceWinnerSelect(collectScore)
         RaceViewer().winnerViewer(raceWinner)
 
     }

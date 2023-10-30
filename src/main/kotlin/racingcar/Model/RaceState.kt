@@ -21,7 +21,7 @@ class RaceState {
         return entireRaceStatus
     }
 
-    fun raceWinnerSelect(entireRaceStatus: MutableMap<String, List<Boolean>>):MutableList<String> {
+    fun compareScore(entireRaceStatus: MutableMap<String, List<Boolean>>):MutableMap<String,Int> {
 
         var finalScore=mutableMapOf<String,Int>()
         var personalScore:Int
@@ -30,13 +30,10 @@ class RaceState {
             personalScore=roundResults.count{ it }
             finalScore[carName] = personalScore
         }
-
-        return compareScore(finalScore)
-
-
+        return finalScore
     }
 
-    fun compareScore(finalScore: MutableMap<String,Int>): MutableList<String> {
+    fun raceWinnerSelect(finalScore: MutableMap<String,Int>): MutableList<String> {
         var winners = mutableListOf<String>()
         var maxScore = finalScore.maxBy { it.value }
 
