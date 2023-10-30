@@ -7,4 +7,6 @@ class Car(name : String) {
     fun move(){
         loc++
     }
+
+    fun getName() = name
 }
