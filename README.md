@@ -175,3 +175,6 @@ https://kkh0977.tistory.com/640
 
 개발자 영어 단어
 https://brunch.co.kr/@hopeless/8
+
+객체로 배열 만들기
+https://developer-rooney.tistory.com/49
