@@ -2,7 +2,7 @@ package racingcar.utils
 
 import racingcar.game.Car
 
-object Validator {
+object InputValidator {
 
     private const val MIN_CAR_NAME_LENGTH = 1
     private const val MAX_CAR_NAME_LENGTH = 5
