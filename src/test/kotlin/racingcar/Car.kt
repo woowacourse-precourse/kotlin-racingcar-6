@@ -13,6 +13,18 @@ class Car {
             }
         }
     }
+    private fun checkIsGoToStop() {
+        for (carNum in advanceNum) {
+            val num = when (carNum) {
+                in 0..4 -> STOP
+                else -> GO
+            }
+        }
+    }
 
+    companion object {
+        const val STOP = "STOP"
+        const val GO = "GO"
+    }
 
 }
