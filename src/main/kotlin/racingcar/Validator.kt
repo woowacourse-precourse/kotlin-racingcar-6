@@ -32,6 +32,7 @@ object Validator {
     }
 
     fun validateRange(count: String) {
-        if (count == "0") throw IllegalArgumentException(INVALID_RANGE)
+        val input = count.toInt()
+        if (input == 0) throw IllegalArgumentException(INVALID_RANGE)
     }
 }
