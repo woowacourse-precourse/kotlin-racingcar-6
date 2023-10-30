@@ -50,7 +50,7 @@ class CarTest{
 
         //then
         val actual = car.tryForwardMovement()
-        val expected = Car.CarState.MOVING_FORWARD
+        val expected = CarState.MOVING_FORWARD
         assertThat(actual).isEqualTo(expected)
     }
 
@@ -66,7 +66,7 @@ class CarTest{
 
         //then
         val actual = car.tryForwardMovement()
-        val expected = Car.CarState.STOP
+        val expected = CarState.STOP
         assertThat(actual).isEqualTo(expected)
     }
 }

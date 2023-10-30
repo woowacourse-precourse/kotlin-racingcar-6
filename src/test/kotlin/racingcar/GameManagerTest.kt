@@ -1,5 +1,6 @@
 package racingcar
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -33,5 +34,21 @@ class GameManagerTest {
         assertThrows<IllegalArgumentException> {
             gameManager.setMovementAttemptCount(input)
         }
+    }
+
+    @Test
+    fun `자동차를 추가하면, 해당 자동차의 이름을 key로 하는 entry가 생성된다`() {
+        //given
+        val gameManager = GameManager()
+        val input = Car(name = "tgyuu")
+
+
+        //when
+        gameManager.addCarToGame(input)
+
+
+        //then
+        val actual = gameManager.movedDirection.containsKey(input.name)
+        assertThat(actual).isTrue()
     }
 }

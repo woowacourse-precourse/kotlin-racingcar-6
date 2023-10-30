@@ -1,8 +1,8 @@
 package racingcar
 
 class Car(
-    private val numberGenerator: NumberGenerator = RandomNumberGenerator(),
     val name: String,
+    private val numberGenerator: NumberGenerator = RandomNumberGenerator(),
 ) {
     companion object {
         const val THRESHHOLD_FOR_MOVE_FORWARD = 4

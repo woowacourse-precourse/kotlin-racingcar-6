@@ -12,6 +12,7 @@ class GameManager {
     private var movementAttemptCount: Int = DEFAULT_VALUE
 
     private val _movedDirection: HashMap<String, Int> = hashMapOf()
+    val movedDirection : Map<String, Int> get() = _movedDirection.toMap()
 
     fun addCarToGame(car: Car) {
         _gameCars.add(car)
