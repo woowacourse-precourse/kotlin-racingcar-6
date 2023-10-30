@@ -32,8 +32,6 @@ object UserOutput {
     fun printResultMessage() = println(MSG_OUTPUT_RESULT)
     fun displayRoundResult(name: String, path: String) = print("$name : $path\n")
 
-    fun printWinner(winner: List<String>) {
-        print(MSG_OUTPUT_WINNER)
-        println(winner.joinToString(", "))
-    }
+    fun printWinner(winner: List<String>) =
+        println(MSG_OUTPUT_WINNER + winner.joinToString(", "))
 }
