@@ -15,11 +15,12 @@ class MoveCars(private val nameList: List<String>, private val tryNumber: Int) {
         println()
     }
 
-    fun repeatTryNumber() {
+    fun repeatTryNumber(): MutableList<Int> {
         println("\n실행 결과")
         for (i in 0 until tryNumber) {
             randomNumber()
         }
+        return moveNumList
     }
 
 
