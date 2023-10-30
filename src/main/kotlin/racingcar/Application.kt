@@ -17,6 +17,16 @@ fun main() {
         }
         println()
     }
+
+    //만약 car.position == winPoint 일때
+    //그 car에 대해서 car.name이 출력
+    val winner = mutableListOf<String>()
+    for (car in cars) {
+        if (car.position == winPoint){
+            winner.add(car.name)
+        }
+    }
+    print("최종 우승자: ${winner.joinToString(separator = ", ")}")
 }
 
 private fun inputCarNames() {
@@ -35,3 +45,4 @@ class Cars(carName: String) {
         }
     }
 }
+
