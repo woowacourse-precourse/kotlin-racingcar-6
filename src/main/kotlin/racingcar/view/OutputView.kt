@@ -17,8 +17,14 @@ class OutputView {
         return temp
     }
 
+    fun printMaxDistanceRacingCarName(maxDistanceRacingCarList: List<String>) =
+        println("$FINAL_WINNER_MESSAGE${maxDistanceRacingCarList.joinToString(", ")}")
+
+
     companion object {
         const val RESULT_MESSAGE = "\n실행 결과"
         const val DISTANCE_EXPRESS = "-"
+        const val FINAL_WINNER_MESSAGE = "최종 우승자 : "
+        const val COMMA = ","
     }
 }

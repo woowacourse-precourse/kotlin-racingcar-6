@@ -40,6 +40,7 @@ class RacingCarController {
 
     private fun gameResult(racingCarList: List<RacingCar>) {
         val maxDistanceRacingCarList = findMaxDistanceRacingCar(racingCarList)
+        outputView.printMaxDistanceRacingCarName(maxDistanceRacingCarList)
     }
 
     private fun findMaxDistanceRacingCar(racingCarList: List<RacingCar>): List<String> {
