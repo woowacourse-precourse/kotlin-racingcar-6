@@ -54,4 +54,11 @@ class RacingCarTest {
 
         assertThrows<IllegalArgumentException> { inputView.validateAttemptNumber(attemptNumber) }
     }
+
+    @Test
+    fun `시도 횟수 숫자아닌 값 입력 예외 처리`() {
+        val attemptNumber = "one"
+
+        assertThrows<IllegalArgumentException> { inputView.validateAttemptNumber(attemptNumber) }
+    }
 }
