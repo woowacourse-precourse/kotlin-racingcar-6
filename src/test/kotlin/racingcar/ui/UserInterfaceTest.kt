@@ -18,4 +18,9 @@ class UserInterfaceTest {
     fun `자동차 이름이 5자 이하인지 검사`() {
         assertThrows<IllegalArgumentException> { InputValidator.checkNamesLength(inputNames)}
     }
+
+    @Test
+    fun `시도 횟수가 숫자인지 검사_값 6ab`() {
+        assertThrows<IllegalArgumentException> { InputValidator.checkOnlyDigit("6ab")}
+    }
 }
