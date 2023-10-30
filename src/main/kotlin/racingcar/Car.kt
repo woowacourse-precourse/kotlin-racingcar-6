@@ -1,3 +1,5 @@
+package racingcar
+
 class Car(
     private val name: String,
     private val howAdvanced: Int = 0
