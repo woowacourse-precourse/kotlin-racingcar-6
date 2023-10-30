@@ -20,6 +20,8 @@ fun main() {
 
     val cars = createCars(names)
     runRace(cars, numberOfMoves)
+    val winners = findWinners(cars)
+    printWinners(winners)
 }
 
 // 사용자로부터 자동차 이름들을 입력받는 함수
@@ -71,4 +73,15 @@ fun runRace(cars: List<Car>, numberOfMoves: Int) {
 fun printCurrentPositions(cars: List<Car>) {
     cars.forEach { println("${it.name} : ${"-".repeat(it.position)}") }
     println()
+}
+
+// 우승자 찾는 함수
+fun findWinners(cars: List<Car>): List<String> {
+    val maxPosition = cars.maxOf { it.position }
+    return cars.filter { it.position == maxPosition }.map { it.name }
+}
+
+// 우승자 출력 함수
+fun printWinners(winners: List<String>) {
+    println("최종 우승자: ${winners.joinToString(", ")}")
 }
