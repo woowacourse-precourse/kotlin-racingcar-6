@@ -71,4 +71,11 @@ class RacingCarTest {
         assertThat(racingCarList).contains(RacingCar("woni"), RacingCar("pobi"))
         assertThat(racingCarList).containsExactly(RacingCar("pobi"), RacingCar("woni"))
     }
+
+    @Test
+    fun `무작위 값 구하기`() {
+        val randomNumber = racingCarController.generateRandomNumber()
+
+        assertThat(randomNumber).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(9)
+    }
 }
