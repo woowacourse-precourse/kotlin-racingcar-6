@@ -42,9 +42,7 @@ class RacingGame {
         }
     }
 
-    fun isMovingForward(number: Int): Boolean {
-        return number >= MOVING_MORE_NUMBER
-    }
+    fun isMovingForward(number: Int) = number >= MOVING_MORE_NUMBER
 
     fun pickWinners(cars: List<Car>): List<Car> {
         val winnerCar = cars.sorted()[0]
@@ -52,18 +50,18 @@ class RacingGame {
     }
 
     fun validateCarNameComma(carNames: String) {
-        with(Delimiter.CAR.toString()) {
+        with(Delimiter.CAR.toString()) { // 문자열 구분자 ","
             require(!carNames.contains(this.repeat(2)) &&
                     !carNames.endsWith(this) &&
-                    !carNames.startsWith(this)) {
+                        !carNames.startsWith(this)
+            ) {
                 CarException.COMMA
             }
         }
     }
 
-    fun validateCarNameDuplication(racingCars: List<Car>) {
+    fun validateCarNameDuplication(racingCars: List<Car>) =
         require(racingCars.size == racingCars.distinct().size) { CarException.DUPLICATION }
-    }
 
     companion object {
         private const val RANDOM_START_NUMBER = 0

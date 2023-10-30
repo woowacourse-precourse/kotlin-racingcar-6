@@ -11,5 +11,5 @@ fun printCarsResult(cars: List<Car>) {
 
 fun printWinners(winners: List<Car>) {
     print(Output.WINNER)
-    print(winners.joinToString(Delimiter.WINNER.toString()))
+    print(winners.joinToString(Delimiter.WINNER.toString())) // 문자열 구분자 ", "
 }

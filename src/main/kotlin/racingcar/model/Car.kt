@@ -2,6 +2,7 @@ package racingcar.model
 
 import racingcar.constants.CarException
 import racingcar.constants.Delimiter
+import racingcar.util.isLetter
 
 class Car private constructor(private val name: String) : Comparable<Car> {
     private val racingResult = StringBuilder()
@@ -12,25 +13,22 @@ class Car private constructor(private val name: String) : Comparable<Car> {
         forwardCount++
     }
 
-    // name : result
+    // "name : racingResult"
     fun getRacingResultString() = "$name${Delimiter.RESULT}$racingResult"
 
-    override fun compareTo(other: Car): Int {
-        return other.forwardCount.compareTo(this.forwardCount)
-    }
+    override fun compareTo(other: Car) =
+        other.forwardCount.compareTo(this.forwardCount)
 
-    override fun equals(other: Any?): Boolean {
-        return this.name == (other as Car).name
-    }
+    override fun equals(other: Any?) = this.name == (other as Car).name
 
-    override fun hashCode(): Int {
-        return name.hashCode()
-    }
+    override fun hashCode() = name.hashCode()
 
     override fun toString() = name
 
     companion object {
-        const val FORWARD_CHARACTER = '-'
+        private const val MAX = 5
+        private const val MIN = 1
+        private const val FORWARD_CHARACTER = '-'
 
         fun of(name: String): Car {
             validateName(name)
@@ -42,12 +40,10 @@ class Car private constructor(private val name: String) : Comparable<Car> {
             validateNameLetter(name)
         }
 
-        fun validateNameLength(name: String) {
-            require(name.length in 1..5) { CarException.LENGTH }
-        }
+        fun validateNameLength(name: String) =
+            require(name.length in MIN..MAX) { CarException.LENGTH }
 
-        fun validateNameLetter(name: String) {
-            require(name.all { it.isLetter() }) { CarException.LETTER }
-        }
+        fun validateNameLetter(name: String) =
+            require(name.isLetter()) { CarException.LETTER }
     }
 }
