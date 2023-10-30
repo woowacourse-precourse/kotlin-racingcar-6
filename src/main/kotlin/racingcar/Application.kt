@@ -18,6 +18,9 @@ fun validationCarName(cars: List<String>) {
     for (car in cars) {
         if (car.length > 5) throw IllegalArgumentException("5자 이하만 가능합니다.")
     }
+
+    val deduplicationSize = cars.distinct().size
+    if (cars.size != deduplicationSize) throw IllegalArgumentException("중복된 이름은 사용할 수 없습니다.")
 }
 
 fun enterNumberAttempts(): String {
