@@ -1,10 +1,11 @@
 package racingcar.model
 
+private const val DUPLICATE_NAME_EXCEPTION_MESSAGE = "중복된 이름이 존재합니다!"
 class Cars(private val cars: List<Car>) {
 
     init {
         val distinctByName = cars.distinctBy { it.name.name }
-        require(cars.size == distinctByName.size) { "중복된 이름이 존재합니다!" }
+        require(cars.size == distinctByName.size) { DUPLICATE_NAME_EXCEPTION_MESSAGE }
     }
 
     fun raceCars() {
