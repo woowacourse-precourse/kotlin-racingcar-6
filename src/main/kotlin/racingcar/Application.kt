@@ -17,8 +17,10 @@ fun main() {
 
     outputResultTitle()
 
-    carNames.forEach {
-        if (Randoms.pickNumberInRange(RANDOM_MIN_NUM, RANDOM_MAX_NUM) >= MIN_NUM_TO_FORWARD) it.position++
+    repeat(roundCount) {
+        carNames.forEach {
+            if (Randoms.pickNumberInRange(RANDOM_MIN_NUM, RANDOM_MAX_NUM) >= MIN_NUM_TO_FORWARD) it.position++
+        }
+        outputCurrentCarPositions(carNames)
     }
-    outputCurrentCarPositions(carNames)
 }
