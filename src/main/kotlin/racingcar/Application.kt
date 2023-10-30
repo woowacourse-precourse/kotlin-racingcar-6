@@ -52,3 +52,4 @@ fun printRace(){ //레이스 하는 과정 print
         println("${car.name} : ${car.position}")
     }
 }
+
