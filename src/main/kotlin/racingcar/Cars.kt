@@ -2,7 +2,11 @@ package racingcar
 
 class Cars {
 
-    private val cars = CarsBuilder().create()
+    private var cars = listOf<Car>()
+
+    fun init() {
+        cars = CarsBuilder().create()
+    }
 
     fun getCars(): List<Car> {
         return cars
