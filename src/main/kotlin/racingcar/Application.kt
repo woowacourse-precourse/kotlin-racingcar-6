@@ -18,6 +18,8 @@ fun main() {
         println("실행 결과")
         race(tryCount, cars)
 
+        announceWinner(cars)
+
     } catch (e: IllegalArgumentException) {
         println("에러: ${e.message}")
     }
@@ -56,4 +58,11 @@ fun moveCar(car: RacingCar) {
     if (randomValue >= 4) {
         car.position++
     }
+}
+
+fun announceWinner(cars: List<RacingCar>) {
+    val maxPosition = cars.maxOf { it.position }
+    val winners = cars.filter { it.position == maxPosition }.joinToString(", ") { it.name }
+
+    println("최종 우승자 : $winners")
 }
