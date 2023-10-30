@@ -1,5 +1,10 @@
 package racingcar.view
 
+import racingcar.model.Car
+import racingcar.model.Cars
+
+private const val DISTANCE = "-"
+
 class OutputView {
 
     fun printInputName() {
@@ -8,5 +13,25 @@ class OutputView {
 
     fun printInputRound() {
         println("시도할 횟수는 몇 회인가요?")
+    }
+
+    fun printWinners(cars: List<Car>) {
+        print("최종 우승자 : ")
+        print(cars.joinToString(", ") { it.name.name })
+    }
+
+    fun printResultMessage() {
+        println("\n실행 결과 :")
+    }
+
+    fun printRacing(cars: Cars) {
+        val racingOutput = buildString {
+            cars.getCars().forEach { car ->
+                append("${car.name.name} : ")
+                append(DISTANCE.repeat(car.position))
+                appendLine()
+            }
+        }
+        println(racingOutput)
     }
 }
