@@ -33,7 +33,7 @@ class OutputView {
         println("시도할 횟수는 몇 회인가요?")
     }
 
-    private fun printRacingCarMove(racingCar: RacingCar) {
+    fun printRacingCarMove(racingCar: RacingCar) {
         println("${racingCar.carName} : " + MOVE.repeat(racingCar.totalMove))
     }
 }
