@@ -19,9 +19,9 @@
 
 - 검증
     - 자동차 이름
-        - [ ] 이름이 5자 이하인지?
-        - [ ] 쉼표로 구분되어 있는지?
-        - [ ] false인 경우 IllegalArgumentException
+        - [X] 이름이 5자 이하인지?
+        - [X] 쉼표로 구분되어 있는지?
+        - [X] false인 경우 IllegalArgumentException
     - 시도 횟수
         - [ ] 숫자로 이루어져 있는지?
         - [ ] false인 경우 IllegalArgumentException
