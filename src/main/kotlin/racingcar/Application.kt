@@ -3,7 +3,13 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
-class Car(val name: String, var position: Int = 0)
+class Car(val name: String, var position: Int = 0){
+    fun move() {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            position++
+        }
+    }
+}
 
 fun main() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -13,6 +19,7 @@ fun main() {
     val numberOfMoves = readNumberOfMoves()
 
     val cars = createCars(names)
+    runRace(cars, numberOfMoves)
 }
 
 // 사용자로부터 자동차 이름들을 입력받는 함수
@@ -51,4 +58,17 @@ fun validateMoveCountInput(input: String) {
 // 자동차 객체들을 생성하는 함수
 fun createCars(names: List<String>): List<Car> {
     return names.map { Car(it) }
+}
+// 경주 실행 함수
+fun runRace(cars: List<Car>, numberOfMoves: Int) {
+    repeat(numberOfMoves) {
+        cars.forEach { it.move() }
+        printCurrentPositions(cars)
+    }
+}
+
+// 현재 위치 출력 함수
+fun printCurrentPositions(cars: List<Car>) {
+    cars.forEach { println("${it.name} : ${"-".repeat(it.position)}") }
+    println()
 }
