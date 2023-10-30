@@ -10,13 +10,26 @@ class RacingGame {
         val printer = Printer()
 
         printer.printOutEnteringCarName()
-        val inputString = userInput()
+        val carsInputString = userInput()
 
-        val carsList = inputString.split(",").filter { it.isNotBlank() }.map { Car(it) }
-        requireCompareNumberOfCarAndNumberOfComma(inputString, carsList)
+        val carsList = carsInputString.split(",").filter { it.isNotBlank() }.map { Car(it) }
+        requireValidCarsInput(carsInputString = carsInputString, carsList = carsList)
+
+        printer.printOutEnteringAttemptsNumber()
+        val attemptsNumberInputString = userInput()
+        requirePositiveNumber(attemptsNumberInputString = attemptsNumberInputString)
+        val attemptsNumber = attemptsNumberInputString.toInt()
+
     }
 
-    private fun requireCompareNumberOfCarAndNumberOfComma(inputString: String, carsList: List<Car>) {
-        require(inputString.count { it == ',' } == carsList.size - 1)
+    private fun requireValidCarsInput(carsInputString: String, carsList: List<Car>) {
+        require(carsInputString.count { it == ',' } == carsList.size - 1)
+
     }
+
+    private fun requirePositiveNumber(attemptsNumberInputString: String) {
+        require(attemptsNumberInputString.matches(Regex("^\\d+\$")))
+        require(attemptsNumberInputString.toInt() >= 0)
+    }
+
 }
