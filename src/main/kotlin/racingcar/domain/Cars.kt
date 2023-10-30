@@ -17,4 +17,8 @@ class Cars(name:String) {
         }
     }
 
+    fun changeRepeatPosition() {
+        repeat(carPosition) { print("-") }
+    }
+
 }

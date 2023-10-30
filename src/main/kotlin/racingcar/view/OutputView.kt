@@ -16,12 +16,8 @@ class OutputView {
 
     private fun printCarScore(cars: Cars) {
         print(cars.carName + " : ")
-        printBar(cars.carPosition)
+        cars.changeRepeatPosition()
         println()
-    }
-
-    private fun printBar(carPosition: Int) {
-        repeat(carPosition) { print("-") }
     }
 
     private fun racePointMax(cars: List<Cars>): Int? {
