@@ -33,4 +33,13 @@ class RacingTest {
         assertTrue(position.all { it in 0..5 })
     }
 
+    @Test
+    fun  `우승자 출력 테스트`() {
+        racing.addCar("Car1")
+        racing.addCar("Car2")
+        racing.addCar("Car3")
+        racing.gameCount(7)
+        val winner = racing.getWinner()
+        assertTrue(winner.all { it in listOf("Car1", "Car2", "Car3") })
+    }
 }
