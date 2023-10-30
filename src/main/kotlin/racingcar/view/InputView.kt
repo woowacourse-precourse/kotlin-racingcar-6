@@ -3,6 +3,7 @@ package racingcar.view
 import camp.nextstep.edu.missionutils.Console
 import racingcar.model.RacingCarGenerator
 import racingcar.model.RacingCars
+
 class InputView {
     private val racingCarGenerator = RacingCarGenerator()
     private fun inputCarName(racingCars: RacingCars) {
@@ -15,8 +16,12 @@ class InputView {
     }
 
     private fun inputTryCount(racingCars: RacingCars) {
-        println("시도할 횟수는 몇 회인가요?")
-        racingCars.tryCnt = Console.readLine()!!.toInt()
+        try {
+            println("시도할 횟수는 몇 회인가요?")
+            racingCars.tryCnt = Console.readLine()!!.toInt()
+        } catch (e: Exception) {
+            throw IllegalNumberException()
+        }
     }
 
     fun prepareToPlay(): RacingCars {
