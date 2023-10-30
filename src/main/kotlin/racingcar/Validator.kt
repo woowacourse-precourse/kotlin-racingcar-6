@@ -8,6 +8,7 @@ object Validator {
     private const val INVALID_NAME = "자동차 이름에 널값이 존재합니다."
     private const val INVALID_UNIQUE = "중복된 자동차 이름이 존재합니다."
     private const val INVALID_NUMBER = "사용자의 입력이 숫자가 아닙니다."
+    private const val INVALID_RANGE = "실행 횟수가 1 이상이어야 합니다."
 
     fun validateNameLength(carList: List<String>) {
         carList.forEach {
@@ -28,5 +29,9 @@ object Validator {
 
     fun validateNumber(count: String) {
         count.toIntOrNull() ?: throw IllegalArgumentException(INVALID_NUMBER)
+    }
+
+    fun validateRange(count: String) {
+        if (count == "0") throw IllegalArgumentException(INVALID_RANGE)
     }
 }

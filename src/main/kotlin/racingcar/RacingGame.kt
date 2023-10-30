@@ -6,6 +6,7 @@ import racingcar.Validator.validateDuplicate
 import racingcar.Validator.validateNameLength
 import racingcar.Validator.validateNull
 import racingcar.Validator.validateNumber
+import racingcar.Validator.validateRange
 
 class RacingGame {
     companion object {
@@ -66,6 +67,7 @@ class RacingGame {
         println("시도할 횟수는 몇 회인가요?")
         val input = Console.readLine()
         validateNumber(input)
+        validateRange(input)
 
         return input.toInt()
     }
