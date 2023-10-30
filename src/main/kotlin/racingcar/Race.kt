@@ -13,7 +13,7 @@ class Race(
 
     fun runOnStep() {
         cars.forEach { car ->
-            if (referee.canCarMove(car)) car.move()
+            if (referee.canCarMove(car.score)) car.move()
         }
     }
 }
