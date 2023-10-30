@@ -1,4 +1,7 @@
 package racingcar
+
+import camp.nextstep.edu.missionutils.Console
+
 class RacingCar(val name: String) {
     var position = 0
 }
@@ -19,4 +22,9 @@ fun getCarNames(): List<String> {
         throw IllegalArgumentException("자동차 이름은 알파벳 문자로 이루어져 있고, 1자 이상 5자 이하만 가능합니다.")
     }
     return input
+}
+
+fun getTryCount(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+    return Console.readLine()?.toInt() ?: throw IllegalArgumentException("잘못된 입력입니다.")
 }
