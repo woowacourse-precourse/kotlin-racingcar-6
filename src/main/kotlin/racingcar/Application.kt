@@ -66,7 +66,7 @@ private fun simulateRace(cars: List<Car>, attempts: Int): Int {
     repeat(attempts) {
         cars.forEach { it.move() }
 
-        val max = cars.map { it.position }.maxOrNull()
+        val max = cars.maxOfOrNull { it.position }
 
         if (max != null && max > maxPosition) {
             maxPosition = max
