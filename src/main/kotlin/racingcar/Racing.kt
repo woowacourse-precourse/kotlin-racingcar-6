@@ -12,9 +12,7 @@ class Racing {
 
     fun gameCount(count: Int) {
         repeat(count) {
-            cars.forEach { car ->
-                car.move()
-            }
+            cars.forEach { car -> car.move() }
         }
     }
 
