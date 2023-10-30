@@ -39,4 +39,26 @@ class InputTest {
         val exception = assertThrows<IllegalArgumentException> { validateInputCarNames(stringToList("hi,wow,j y")) }
         assertThat(exception.message).contains("j y")
     }
+
+    @Test
+    fun `이동할 횟수 입력 - 정상 입력`() {
+        val input = stringToInt("10")
+        validateInputRoundCount(input)
+        assertEquals(input, 10)
+    }
+
+    @Test
+    fun `이동할 횟수 입력 - 빈 값 예외 처리`() {
+        assertThrows<IllegalArgumentException> { validateInputRoundCount(stringToInt("")) }
+    }
+
+    @Test
+    fun `이동할 횟수 입력 - 숫자 외 입력 예외 처리`() {
+        assertThrows<IllegalArgumentException> { validateInputRoundCount(stringToInt("hello")) }
+    }
+
+    @Test
+    fun `이동할 횟수 입력 - 1회 미만 예외 처리`() {
+        assertThrows<IllegalArgumentException> { validateInputRoundCount(stringToInt("0")) }
+    }
 }
