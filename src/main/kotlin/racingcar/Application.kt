@@ -62,7 +62,6 @@ fun printRace(cars: List<Car>){ //레이스 하는 과정 print
     for (car in cars) {
         println("${car.name} : ${car.position}")
     }
-    println()
 }
 
 fun findWinners(cars: List<Car>): List<String> { //우승자 검색
