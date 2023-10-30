@@ -1,138 +1,91 @@
 package racingcar.domain
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 
 class RaceGeneratorTest {
 
-  private val myRace = RaceGenerator()
+  private lateinit var myRace: RaceGenerator
 
-  @Test
-  fun `checkCarNames 메서드로 입력 받은 1자 이상, 5자 이하의 올바른 자동차 이름을 쉼표(,)로 구분하여 String 타입의 List에 담기 - 1개인 경우`() {
-    val input = "pobi"
-
-    val result = myRace.checkCarNames(input)
-
-    assertThat(result).isEqualTo(listOf("pobi"))
+  @BeforeEach
+  fun setUp() {
+    myRace = RaceGenerator()
   }
 
-  @Test
-  fun `checkCarNames 메서드로 입력 받은 1자 이상, 5자 이하의, 자동차 이름을 쉼표(,)로 구분하여 String 타입의 List에 담기 - 여러 개인 경우`() {
-    val input = "pobi,woni,jun"
+  @DisplayName("checkCarNames 메서드 테스트 - 정상적인 입력")
+  @ParameterizedTest
+  @MethodSource("goodCarNamesTest")
+  fun goodCarNamesTest(input: String, expected: List<String>) {
+    val actual = myRace.checkCarNames(input)
 
-    val result = myRace.checkCarNames(input)
-
-    assertThat(result).isEqualTo(listOf("pobi", "woni", "jun"))
+    assertThat(actual).isEqualTo(expected)
   }
 
-  @Test
-  fun `checkCarNames 메서드 사용시 자동차 이름으로 '아무것도 입력하지 않은' 경우 IllegalArgumentException 발생`() {
-    // given
-    val input = ""
-
-    // when, then
-    assertThrows<IllegalArgumentException>("자동차 이름을 입력해주세요.") {
+  @DisplayName("checkCarNames 메서드 테스트 - 비정상적인 입력")
+  @ParameterizedTest
+  @MethodSource("badCarNamesTest")
+  fun badCarNamesTest(input: String, message: String) {
+    val exception = assertThrows<IllegalArgumentException>(message) {
       myRace.checkCarNames(input)
     }
+    assertThat(message).isEqualTo(exception.message)
   }
 
-  @Test
-  fun `checkCarNames 메서드 사용시 입력은 있지만 자동차 이름을 입력하지는 않은 경우(",,,") IllegalArgumentException 발생`() {
-    val input = ",,,"
+  @DisplayName("checkNumberOfMoves 메서드 테스트 - 정상적인 입력")
+  @ParameterizedTest
+  @MethodSource("goodNumberOfMovesTest")
+  fun goodNumberOfMovesTest(input: String, expected: Int) {
+    val actual = myRace.checkNumberOfMoves(input)
 
-    assertThrows<IllegalArgumentException>("자동차 이름을 입력해주세요.") {
-      myRace.checkCarNames(input)
-    }
+    assertThat(actual).isEqualTo(expected)
   }
 
-  @Test
-  fun `checkCarNames 메서드 사용시 입력은 있지만 자동차 이름을 '부분적으로만' 입력한 경우("브루스,,") IllegalArgumentException 발생`() {
-    val input = "브루스,,"
-
-    assertThrows<IllegalArgumentException>("자동차 이름을 입력해주세요.") {
-      myRace.checkCarNames(input)
-    }
-  }
-
-  @Test
-  fun `checkCarNames 메서드 사용시 자동차 이름 중에 하나라도 5자를 초과하는 경우 IllegalArgumentException 발생`() {
-    val input = "one,two,and,overFive"
-
-    assertThrows<IllegalArgumentException>("자동차 이름을 5자 이하로 작성해주세요.") {
-      myRace.checkCarNames(input)
-    }
-  }
-
-  @Test
-  fun `checkCarNames 메서드 사용시 '중복된' 자동차 이름을 입력한 경우 IllegalArgumentException 발생`() {
-    val input = "철수,영희,영희"
-
-    assertThrows<IllegalArgumentException>("자동차 이름들을 구별되게 지어주세요.") {
-      myRace.checkCarNames(input)
-    }
-  }
-
-  @Test
-  fun `checkCarNames 메서드 사용시 '공백'도 구분만 된다면 허용`() {
-    val input = "     ,   ,  "  // 공백 5개, 3개, 2개
-
-    val result = myRace.checkCarNames(input)
-
-    assertThat(result).isEqualTo(listOf("     ", "   ", "  "))
-  }
-
-  @Test
-  fun `checkCarNames 메서드 사용시 '공백'이고 구분도 안 된다면 IllegalArgumentException 발생`() {
-    val input = "     ,   ,   "  // 공백 5개, 3개, 3개
-
-    assertThrows<IllegalArgumentException>("자동차 이름들을 구별되게 지어주세요.") {
-      myRace.checkCarNames(input)
-    }
-  }
-
-  @Test
-  fun `checkNumberOfMoves 메서드 사용시 '아무것도 입력하지 않은' 경우 IllegalArgumentException 발생`() {
-    val input = ""
-
-    assertThrows<IllegalArgumentException>("올바른 횟수를 입력해주세요.") {
+  @DisplayName("checkNumberOfMoves 메서드 테스트 - 비정상적인 입력")
+  @ParameterizedTest
+  @MethodSource("badNumberOfMovesTest")
+  fun badNumberOfMovesTest(input: String) {
+    val exception = assertThrows<IllegalArgumentException>("올바른 횟수를 입력해주세요.") {
       myRace.checkNumberOfMoves(input)
     }
+    assertThat(exception.message).isEqualTo("올바른 횟수를 입력해주세요.")
   }
 
-  @Test
-  fun `checkNumberOfMoves 메서드 사용시 숫자가 아닌 것을 입력한 경우 IllegalArgumentException 발생`() {
-    val input = "$"
+  companion object {
+    @JvmStatic
+    fun goodCarNamesTest() = listOf(
+      Arguments.of("pobi", listOf("pobi")),
+      Arguments.of("pobi,woni,jun", listOf("pobi", "woni", "jun")),
+      Arguments.of("     ,   ,  ", listOf("     ", "   ", "  ")), // 공백 5개, 3개, 2개
+    )
 
-    assertThrows<IllegalArgumentException>("올바른 횟수를 입력해주세요.") {
-      myRace.checkNumberOfMoves(input)
-    }
-  }
+    @JvmStatic
+    fun badCarNamesTest() = listOf(
+      Arguments.of("", "자동차 이름을 입력해주세요."),
+      Arguments.of(",,,", "자동차 이름을 입력해주세요."),
+      Arguments.of("브루스,,", "자동차 이름을 입력해주세요."),
+      Arguments.of("one,two,and,overFive", "자동차 이름을 5자 이하로 작성해주세요."),
+      Arguments.of("철수,영희,영희", "자동차 이름들을 구별되게 지어주세요."),
+      Arguments.of("     ,   ,   ", "자동차 이름들을 구별되게 지어주세요."),  // 공백 5개, 3개, 3개
+    )
 
-  @Test
-  fun `checkNumberOfMoves 메서드 사용시 숫자이지만 정수가 아닌 수를 입력한 경우 IllegalArgumentException 발생`() {
-    val input = "5.4"
+    @JvmStatic
+    fun goodNumberOfMovesTest() = listOf(
+      Arguments.of("6", 6),
+      Arguments.of("0099", 99),
+      Arguments.of("0", 0),
+    )
 
-    assertThrows<IllegalArgumentException>("올바른 횟수를 입력해주세요.") {
-      myRace.checkNumberOfMoves(input)
-    }
-  }
-
-  @Test
-  fun `checkNumberOfMoves 메서드 사용시 숫자이고 정수이지만 음수를 입력한 경우 IllegalArgumentException 발생`() {
-    val input = "-3"
-
-    assertThrows<IllegalArgumentException>("올바른 횟수를 입력해주세요.") {
-      myRace.checkNumberOfMoves(input)
-    }
-  }
-
-  @Test
-  fun `checkNumberOfMoves 메서드 사용시 0 이상의 정수를 잘 입력한 경우 숫자로 변환하여 반환`() {
-    val input = "6"
-
-    val result = myRace.checkNumberOfMoves(input)
-
-    assertThat(result).isEqualTo(6)
+    @JvmStatic
+    fun badNumberOfMovesTest() = listOf(
+      Arguments.of(""),
+      Arguments.of("$"),
+      Arguments.of("5.4"),
+      Arguments.of("-3"),
+    )
   }
 }
