@@ -10,4 +10,20 @@ class Cars {
             _list.add(car)
         }
     }
+
+    fun getMaxDistance(): Int {
+        val distanceList = _list.map { it.moveDistance }
+        return distanceList.max()
+    }
+
+    fun getWinners(): List<String> {
+        val maxDistance = getMaxDistance()
+        val winnerList = mutableListOf<String>()
+        _list.forEach { car ->
+            if (car.moveDistance == maxDistance) {
+                winnerList.add(car.name)
+            }
+        }
+        return winnerList
+    }
 }

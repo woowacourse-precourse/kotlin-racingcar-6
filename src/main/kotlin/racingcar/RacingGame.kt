@@ -26,7 +26,7 @@ class RacingGame {
     }
 
     fun gameEnd() {
-        val winnerList = getWinner(cars.list)
+        val winnerList = cars.getWinners()
         printWinner(winnerList)
     }
 
@@ -85,27 +85,7 @@ class RacingGame {
         println("${car.name} : ${"-".repeat(car.moveDistance)}")
     }
 
-    fun getWinner(carModelList: List<Car>): MutableList<String> {
-        val nameList = carModelList.map { it.name }
-        val distanceList = carModelList.map { it.moveDistance }
-
-        return findWinner(nameList, distanceList)
-    }
-
-    fun findWinner(nameList: List<String>, distanceList: List<Int>): MutableList<String> {
-        var winnerList = mutableListOf<String>()
-        val maxDistance = distanceList.max()
-
-        for (i in distanceList.indices) {
-            if (distanceList[i] == maxDistance) {
-                winnerList.add(nameList[i])
-            }
-        }
-
-        return winnerList
-    }
-
-    fun printWinner(winnerList: MutableList<String>) {
+    fun printWinner(winnerList: List<String>) {
         val winner = winnerList.joinToString(", ")
         println("최종 우승자 : $winner")
     }
