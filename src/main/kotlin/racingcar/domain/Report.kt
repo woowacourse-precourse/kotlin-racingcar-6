@@ -8,7 +8,11 @@ class Report {
         }
     }
 
-    fun checkWinner() {}
+    fun checkWinner(racingCars: Map<String, Int>): String {
+        val maxCount = racingCars.values.maxOrNull() ?: return ""
+        val winners = racingCars.filter { it.value == maxCount }.keys
+        return winners.joinToString(", ")
+    }
 
     fun raceResult() {}
 }
