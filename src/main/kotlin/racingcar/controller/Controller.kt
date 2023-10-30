@@ -15,9 +15,7 @@ class Controller {
 
         outputView.printInputNumberOfAttempts()
         val input = Console.readLine()
-
-        require(input.isInt()) { "숫자를 입력해주세요." }
-        val number = input.toInt()
+        val number = input.validateNumber().getOrThrow().toInt()
 
         val judge = Judge(cars)
         repeat(number) {
@@ -26,5 +24,3 @@ class Controller {
         outputView.printWinner(judge.getWinner())
     }
 }
-
-fun String.isInt(): Boolean = toIntOrNull() != null
