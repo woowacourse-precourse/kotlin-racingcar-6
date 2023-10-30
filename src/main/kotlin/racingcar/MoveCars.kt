@@ -2,20 +2,25 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class MoveCars(private val carList: List<String>, private val tryNumber: Int) {
+class MoveCars(private val nameList: List<String>, private val tryNumber: Int) {
 
-    private val number = MutableList(carList.size) { 0 }
-    fun randomNumber() {
-        for (i in carList.indices) {
+    private val moveNumList = MutableList(nameList.size) { 0 }
+    private fun randomNumber() {
+        for (i in nameList.indices) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                number[i]++
+                moveNumList[i]++
             }
-            println("${carList[i]} : "+"-".repeat(number[i]))
+            println("${nameList[i]} : " + "-".repeat(moveNumList[i]))
         }
         println()
     }
 
-
+    fun repeatTryNumber() {
+        println("\n실행 결과")
+        for (i in 0 until tryNumber) {
+            randomNumber()
+        }
+    }
 
 
 }
