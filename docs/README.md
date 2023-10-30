@@ -10,3 +10,7 @@
     1. 입력된 숫자의 수가 0 이하라면 `IllegalArgumentException` 발생
     2. 숫자가 아니라면 `IllegalArgumentException` 발생 (`NumberFormatException`)
 
+3. 입력받은 숫자만큼 반복하여 경주를 진행한다
+    1. Map으로 자동차 이름과 전진 수를 저장한다
+    2. 무작위 값이 4 이상일 경우 전진 수를 ++ 해준다
+
