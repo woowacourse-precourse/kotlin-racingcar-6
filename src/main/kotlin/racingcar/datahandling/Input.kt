@@ -1,11 +1,10 @@
-package racingcar.service
+package racingcar.datahandling
 
 import camp.nextstep.edu.missionutils.Console.*
 import racingcar.exception.CycleValidation
-import racingcar.exception.Exception
 import racingcar.exception.NameValidation
 
-class Input() {
+class Input {
     fun inputName(): List<String> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val name = readLine()
