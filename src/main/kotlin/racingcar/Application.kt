@@ -1,19 +1,44 @@
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
+// 경주용 자동차 정보 클래스
 class RacingCar(val name: String) {
     var distance = 0
 
+    // 자동차의 전진 조건
     fun move() {
-        // Randoms의 pickNumberInRange() 메소드를 사용하여 랜덤값을 생성
+        // 0 ~ 9사이 임의의 값 중에 4이상 이면 전진하기
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
             distance++
         }
     }
-    // 자동차의 현재 상태 출력하기
-    fun printStatus() {
-        println("$name : ${"-".repeat(distance)}")
+}
+
+// 자동차 경주 게임 클래스
+class RacingGame(val cars: List<RacingCar>) {
+    // 게임 진행 메소드
+    fun race() {
+        cars.forEach { it.move() }
     }
+
+    // 우승자 찾기 (가장 멀리간 자동차 찾기)
+    fun racingWinner(): List<String> {
+        val goalDistance = cars.maxByOrNull { it.distance }?.distance ?: 0
+        return cars.filter { it.distance == goalDistance }.map { it.name }
+    }
+}
+
+// 자동차의 현재 상태 출력하기
+fun raceStatus(cars: List<RacingCar>) {
+    cars.forEach {
+        car -> println("$car.name : ${"-".repeat(car.distance)}")
+    }
+    println()
+}
+
+// 최종 결과 출력하기
+fun finalWinner(winners: List<String>) {
+    println("최종 우승자 : ${winners.joinToString()}")
 }
 
 fun main() {
@@ -42,29 +67,15 @@ fun main() {
     for (name in carNames) {
         cars.add(RacingCar(name))
     }
+    val racingGame = RacingGame(cars)
 
     println("\n실행 결과")
     for (i in 0 until counts) {
-        for (car in cars) {
-            car.move()
-            car.printStatus()
-        }
-        println()
+        racingGame.race()
+        raceStatus(cars)
     }
-    // 우승자 찾기 (가장 멀리간 자동차 찾기)
-    var goalDistance = 0
-    for (car in cars) {
-        if (car.distance > goalDistance) {
-            goalDistance = car.distance
-        }
-    }
-    // 우승자가 2명 이상인 경우
-    val winners = mutableListOf<String>()
-    for (car in cars) {
-        if (car.distance == goalDistance) {
-            winners.add(car.name)
-        }
-    }
-    // 최종 결과 출력하기
-    println("최종 우승자 : ${winners.joinToString()}")
+
+    // 최종 우승자 출력하기
+    val winners = racingGame.racingWinner()
+    finalWinner(winners)
 }
