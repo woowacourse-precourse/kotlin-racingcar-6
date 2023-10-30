@@ -5,7 +5,7 @@ import racingcar.model.CarName
 
 class InputView {
     fun inputCarName(): List<CarName> {
-        val cars = Console.readLine().split(",").map { name -> CarName(name) }
+        val cars = Console.readLine().split(",").map { name -> CarName(name.trim()) }
         return cars
     }
 
