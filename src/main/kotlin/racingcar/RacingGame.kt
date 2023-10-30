@@ -10,6 +10,7 @@ import racingcar.Validator.validateNumber
 class RacingGame {
     var gameCount = 0
     private val cars = Cars()
+    private val carManager = CarManager()
 
     fun run() {
         initGame()
@@ -48,21 +49,11 @@ class RacingGame {
 
     private fun inputCarNames(): List<Car> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        val carNameList = separateCarNames(inputCars())
+        val carNameList = carManager.separateCarNames(inputCars())
         validateNameLength(carNameList)
         validateNull(carNameList)
         validateDuplicate(carNameList)
-        return makeCarModelList(carNameList)
-    }
-
-    private fun separateCarNames(carNames: String): List<String> = carNames.split(",")
-
-    private fun makeCarModelList(carNames: List<String>): List<Car> {
-        var modelList = mutableListOf<Car>()
-        carNames.forEach {
-            modelList.add(Car(it))
-        }
-        return modelList.toList()
+        return carManager.makeCarModelList(carNameList)
     }
 
     private fun inputRaceCount(): Int {
