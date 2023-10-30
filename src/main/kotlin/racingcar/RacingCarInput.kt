@@ -11,7 +11,6 @@ object RacingCarInput {
     private const val MIN_CAR_COUNT = 1
     private const val MAX_CAR_NAME_LENGTH = 5
 
-
     fun getCarNames(): List<Car> {
         println(INPUT_RACING_CAR_NAME_MESSAGE)
         val userInput = getUserInput()
