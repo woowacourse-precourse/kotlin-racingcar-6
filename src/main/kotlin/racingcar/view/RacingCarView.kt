@@ -7,7 +7,6 @@ import racingcar.utils.inputHandler
 class RacingCarView {
     fun getUserInputForCarName(): String {
         println(Constants.GAME_START_MESSAGE)
-
         return inputHandler()
     }
 
@@ -27,8 +26,11 @@ class RacingCarView {
         }
     }
 
-    fun printFinalWinner(carNameList: List<String>){
+    fun printFinalWinner(carList: List<Car>) {
         print("${Constants.FINAL_WINNER_MESSAGE}")
+        
+        var carNameList = mutableListOf<String>()
+        carList.map { carNameList.add(it.getCarName()) }
         println(carNameList.joinToString(", "))
     }
 }

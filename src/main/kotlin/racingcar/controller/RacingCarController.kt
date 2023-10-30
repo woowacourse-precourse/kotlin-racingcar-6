@@ -20,17 +20,22 @@ class RacingCarController(racingCarView: RacingCarView) {
         }
 
         var inputForForwardCount = racingCarView.getUserInputForForwardCount()
-/*        if (!InputValidator.validateNumber("1")) {
+        if (!InputValidator.validateNumber(inputForForwardCount)) {
             throw IllegalArgumentException("시도 횟수는 양의 정수민 입력 가능합니다.")
-        }*/
+        }
         var forwardCount: Int = inputForForwardCount.toInt()
 
         racingCarView.printResultMessage()
+
         initializeCars(carNameList)
         for (i in 0 until forwardCount) {
             moveForwardCarList()
             racingCarView.printGameResult(carList)
         }
+
+        var finalWinnerList = selectFinalWinner(carList)
+        racingCarView.printFinalWinner(finalWinnerList)
+
     }
 
     private fun initializeCars(carNames: List<String>) {
@@ -41,14 +46,19 @@ class RacingCarController(racingCarView: RacingCarView) {
     }
 
     private fun moveForwardCarList() {
-        for (car in carList){
+        for (car in carList) {
             moveForwardCar(car)
         }
     }
 
     private fun moveForwardCar(car: Car) {
-        if (randomNumberGenerator(0, 9)>=4){
+        if (randomNumberGenerator(0, 9) >= 4) {
             car.increaseForwardCount()
         }
+    }
+
+    private fun selectFinalWinner(carList: List<Car>): List<Car> {
+        var maxForwardCount = carList.maxByOrNull { it.getForwardCount() }?.getForwardCount()
+        return carList.filter{ it.getForwardCount() == maxForwardCount }
     }
 }
