@@ -10,10 +10,13 @@ class RacingGame {
         return carNum
     }
 
-    fun broadcastRace(){
-        print("%s :",name)
-        for(i in num) {
+    fun broadcastRace(x:Players){
+        val message = "x.name : "
+        val a = x.num
+        print(message)
+        for(i in 1..a) {
             print("-")
         }
+        print("\n")
     }
 }
