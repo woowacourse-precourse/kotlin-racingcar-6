@@ -2,8 +2,8 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class RacingGame(carList : List<String>, amount : Int) {
-    private var gameRound : Int = amount
+class RacingGame(carList : List<String>) {
+    private var gameRound : Int = 0
     private val cars = HashMap<Int, Car>(carList.size)
 
     init {
@@ -22,12 +22,15 @@ class RacingGame(carList : List<String>, amount : Int) {
         displayRoundResult()
     }
 
+    fun getCurrentGameRound() = gameRound
+
     private fun canCarMove() : Boolean = Randoms.pickNumberInRange(1, 9) >= 4
 
     private fun displayRoundResult(){
          cars.forEach{ index, car ->
              car.displayLocation()
          }
+        println()
     }
 
 
