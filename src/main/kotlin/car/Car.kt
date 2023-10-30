@@ -6,10 +6,10 @@ import car.CarConfiguration.MIN_FLAG_VALUE
 import caroption.DashBoard
 import caroption.Engine
 
-class Car(name: String) {
-
-    private val engine = Engine()
-    private val dashBoard = DashBoard(name)
+class Car(
+    private val engine: Engine,
+    private val dashBoard: DashBoard
+) {
 
     fun printCarName() {
         dashBoard.printCarName()
