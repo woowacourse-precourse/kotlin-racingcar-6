@@ -43,7 +43,6 @@ class RacingGame {
                 car.moveForward()
             }
         }
-
     }
 
     fun isMovingForward(number: Int): Boolean {
@@ -60,7 +59,6 @@ class RacingGame {
     }
 
     fun validateCarNameDuplication(racingCars: List<Car>) {
-        print(racingCars)
         require(racingCars.size == racingCars.distinct().size) { EXCEPTION_DUPLICATION }
     }
 }
