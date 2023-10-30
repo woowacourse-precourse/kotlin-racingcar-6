@@ -1,54 +1,36 @@
 package racingcar
 
-class Game {
-    private val input = View()
+class Game(private val view: View) {
     private val cars = mutableListOf<Car>()
 
-    fun startGame() {
-        makeCars()
-        val times = input.enterNumberTimes()
-        numberTimesErrorCheck(times)
-        playGame(times.toInt())
-    }
-
-    private fun playGame(times: Int) {
+    fun playGame(names: List<String>, times: Int) {
+        createCars(names)
         for (i in 1..times) {
             moveCars()
-            input.printPosition(cars)
+            view.printPosition(cars)
         }
-        input.printWinner(makeWinnerList(checkLeadPosition()))
+        val winnerList = makeWinnerList(getLeadPosition())
+        view.printWinner(winnerList)
     }
 
-    private fun moveCars() {
-        for (car in cars) {
-            val num = car.generateRandomNumber()
-            car.updatePosition(car.judgeNumber(num))
-        }
-    }
-
-    private fun splitNames(names: String): List<String> {
-        return names.split(',')
-    }
-
-    private fun makeCars() {
-        val names = splitNames(input.enterNames())
-        redundancyErrorCheck(names)
+    private fun createCars(names: List<String>) {
         names.forEach {
             cars.add(Car(it))
         }
     }
 
-    private fun checkLeadPosition(): Int {
+    private fun moveCars() {
+        cars.forEach { car ->
+            val num = car.generateRandomNumber()
+            car.updatePosition(car.judgeNumber(num))
+        }
+    }
+
+    private fun getLeadPosition(): Int {
         return cars.maxOf { it.getPositionNumber() }
     }
 
     private fun makeWinnerList(leadPosition: Int): List<String> {
-        val winnerList = mutableListOf<String>()
-        for (car in cars) {
-            if (leadPosition == car.getPositionNumber()) {
-                winnerList.add(car.getName())
-            }
-        }
-        return winnerList
+        return cars.filter { it.getPositionNumber() == leadPosition }.map { it.getName() }
     }
 }
