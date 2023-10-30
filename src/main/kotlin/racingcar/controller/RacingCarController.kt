@@ -9,5 +9,7 @@ class RacingCarController {
     fun playGame() {
         inputView.printInputCarName()
         val userList = Console.readLine().split(",")
+        inputView.printInputGameCount()
+        val gameCount = Console.readLine().toInt()
     }
 }
