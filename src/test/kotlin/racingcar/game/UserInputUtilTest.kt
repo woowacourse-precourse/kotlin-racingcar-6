@@ -75,7 +75,18 @@ internal class UserInputUtilTest {
 
     @Test
     fun `getAttempts 메서드 - 시도 횟수에 자연수가 아닌 경우 예외처리`() {
-
+        val exception = assertThrows<IllegalArgumentException> {
+            try {
+                command("bamin")
+                UserInputUtil.getAttempts()
+            } finally {
+                Console.close()
+            }
+        }
+        // when
+        val expectedExceptionMessage = "잘못된 입력 값입니다. (시도횟수에 자연수가 아닌 값 입력)"
+        // then
+        assertEquals(expectedExceptionMessage, exception.message)
     }
 
     private fun command(vararg args: String) {
