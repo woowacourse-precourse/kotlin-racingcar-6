@@ -1,6 +1,12 @@
 package racingcar
 
-data class Car(
-    val name: String,
-    val position: Int = 0
-)
+class Car(
+    val name: String
+) {
+    var position: Int = 0
+        private set
+
+    fun move() {
+        position++
+    }
+}
