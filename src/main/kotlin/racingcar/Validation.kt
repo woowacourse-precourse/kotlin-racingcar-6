@@ -42,16 +42,10 @@ class Validation {
         checkCarNameLength(carList)
     }
 
-    private fun checkNumberOfAttemptOneAndMore(numberOfAttempt: Int) {
+    fun checkNumberOfAttemptOneAndMore(numberOfAttempt: Int) {
         if (numberOfAttempt < 1) {
             throw IllegalArgumentException("1 이상 입력 가능합니다")
         }
-    }
-
-    fun isValidNumberOfAttempt() {
-        val numberOfAttempt = player.inputNumberOfAttempt()
-
-        checkNumberOfAttemptOneAndMore(numberOfAttempt)
     }
 
 }
