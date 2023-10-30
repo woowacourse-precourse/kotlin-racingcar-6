@@ -1,15 +1,18 @@
-package racingcar.service
+package racingcar.controller
 
 import camp.nextstep.edu.missionutils.Console
 import racingcar.domain.Car
+import racingcar.datahandling.Decision
+import racingcar.datahandling.Save
+import racingcar.datahandling.Input
 import racingcar.view.Print
 
-class Racing {
+class RacingController {
     fun startRace() {
-        startRacing(Input(), Winner(), Distance(), Print())
+        startRacing(Input(), Save(), Decision(), Print())
     }
 
-    private fun startRacing(input: Input, winner: Winner, distance: Distance, print: Print) {
+    private fun startRacing(input: Input, save: Save, decision: Decision, print: Print) {
         val playerList = choicePlayer(input)
         val cycle = input.inputCycle()
         val distanceList = MutableList(playerList.size) { "" }
@@ -17,13 +20,13 @@ class Racing {
 
         while (COUNT < cycle) {
             repeat(playerList.size) { index ->
-                val move = distance.decideDistance(playerList[index])
-                distance.saveDistance(move, distanceList, index)
+                val move = decision.decideMovement(playerList[index])
+                save.saveDistance(move, distanceList, index)
             }
             print.printDistance(playerList, distanceList)
             COUNT++
         }
-        val winnerList = winner.decideWinner(playerList, distanceList)
+        val winnerList = decision.decideWinner(playerList, distanceList)
         print.printWinner(winnerList)
         Console.close()
     }
