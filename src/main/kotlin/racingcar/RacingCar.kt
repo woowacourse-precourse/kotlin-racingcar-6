@@ -1,4 +1,4 @@
 package racingcar
 
-class RacingCar {
+class RacingCar(private val name: String) {
 }
