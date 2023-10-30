@@ -30,11 +30,7 @@ class RacingCarController {
 
         for (i in 0 until gameCount) {
             racingCarList.map {
-                val randomNum = Randoms.pickNumberInRange(RANDOM_START_NUM, RANDOM_FINISH_NUM)
-                if (randomNum >= MIN_DISTANCE_NUM) {
-                    it.distance += randomNum
-                }
-                outputView.printRacingCarList(it)
+                addRacingCarDistance(it)
             }
             outputView.printEnter()
         }
@@ -45,6 +41,15 @@ class RacingCarController {
     private fun gameResult(racingCarList: List<RacingCar>) {
         val maxDistanceRacingCarList = findMaxDistanceRacingCar(racingCarList)
         outputView.printMaxDistanceRacingCarName(maxDistanceRacingCarList)
+    }
+
+    private fun addRacingCarDistance(racingCar: RacingCar): RacingCar {
+        val randomNum = Randoms.pickNumberInRange(RANDOM_START_NUM, RANDOM_FINISH_NUM)
+        if (randomNum >= MIN_DISTANCE_NUM) {
+            racingCar.distance += randomNum
+        }
+        outputView.printRacingCarList(racingCar)
+        return racingCar
     }
 
     private fun findMaxDistanceRacingCar(racingCarList: List<RacingCar>): List<String> {
