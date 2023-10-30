@@ -14,7 +14,7 @@ class RaceMove (val moveChanceNumber: MutableList<Int> = mutableListOf()){
         return when (stopOrForwardNumber) {
             in 0..3 -> 0
             in 4..9 -> 1
-            else -> throw IllegalArgumentException("자동차 이동 오류")
+            else -> throw IllegalArgumentException(Message.MoveError.messageText)
         }
     }
 }

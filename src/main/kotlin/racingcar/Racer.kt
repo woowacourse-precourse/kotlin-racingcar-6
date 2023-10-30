@@ -10,7 +10,7 @@ class Racer (
     }
 
     fun initializationMoveForward() {
-        moveForward = MutableList(racerName.size) { 0 }
+        this.moveForward = MutableList(racerName.size) { 0 }
     }
 
     fun updateMoveForward(moveForward: RaceMove) {
