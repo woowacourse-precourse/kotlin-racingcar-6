@@ -26,4 +26,22 @@ fun main() {
             }
         }
     }
+    println("시도할 횟수는 몇 회인가요?")
+    val numberOfMoves = readNumberOfMoves()
+}
+
+// 사용자로부터 이동 횟수를 입력받는 함수
+fun readNumberOfMoves(): Int {
+    val input = Console.readLine()
+
+    validateMoveCountInput(input)
+
+    return input.toInt()
+}
+
+// 이동 횟수의 유효성 검사를 수행하는 함수
+fun validateMoveCountInput(input: String) {
+    if (!input.matches(Regex("\\d+"))) { // 숫자만 포함되어 있는지 확인
+        throw IllegalArgumentException("이동 횟수는 숫자만 가능합니다.")
+    }
 }
