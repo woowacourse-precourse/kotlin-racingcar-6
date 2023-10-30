@@ -6,18 +6,13 @@ import racingcar.model.RacingGameModel
 import racingcar.utils.ErrorMessage
 import racingcar.utils.Values
 import java.lang.NumberFormatException
-import kotlin.properties.Delegates
 
 class RacingGameController(private val view: RacingGameView, private val model: RacingGameModel) {
-    private lateinit var carNameList: List<String>
-    private var playCount by Delegates.notNull<Int>()
-    private var carList: MutableList<Pair<String, Int>> = mutableListOf()
-    private var winnerList: List<String> = listOf()
-    private var bestScore = 0
-
     fun run() {
+        val carList: MutableList<Pair<String, Int>> = mutableListOf()
+        val playCount: Int
         view.requestCarNameInputMessage()
-        carNameList = setCarList()
+        val carNameList: List<String> = setCarList()
         if (isAnyCarNameLengthExceeded(carNameList)) {
             throw IllegalArgumentException("${ErrorMessage.ERRORMESSAGE_CAR_NAME_LENGTH_EXCEEDED} ${Values.MAXIMUM_CAR_NAME_LENGTH}")
         }
@@ -29,28 +24,32 @@ class RacingGameController(private val view: RacingGameView, private val model: 
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException(ErrorMessage.ERRORMESSAGE_PLAY_COUNT_NOT_NATURAL)
         }
-        view.informShowProgressMessage()
-        repeat(playCount) {
-            view.showCarProgress(model.raceTrial(carList))
-            println()
-        }
-        for(i in 0 until carList.count()) {
-            bestScore = getMaxValue(Pair(bestScore, carList[i].second))
-        }
-        for(i in 0 until carList.count()) {
-            if(carList[i].second == bestScore) {
-                winnerList = winnerList.plus(carList[i].first)
-            }
-        }
-        view.showFinalResultMessage()
-        print(winnerList.joinToString(","))
+        view.informShowProgressMessage(carList, playCount)
+        val highScore: Int = setHighScore(carList)
+        val winnerList: List<String> = setWinnerList(carList, highScore)
+        view.showFinalResultMessage(winnerList)
     }
-    @JvmName("callFromString")
     private fun setCarList(): List<String> {
         return listOf(*Console.readLine().split(",").toTypedArray<String>())
     }
     private fun setPlayCount(): String {
         return Console.readLine()
+    }
+    private fun setHighScore(carList: MutableList<Pair<String, Int>>): Int {
+        var highScore = 0
+        for(i in 0 until carList.count()) {
+            highScore = getMaxValue(Pair(highScore, carList[i].second))
+        }
+        return highScore
+    }
+    private fun setWinnerList(carList: List<Pair<String, Int>>, highScore: Int): List<String> {
+        var winnerList: List<String> = listOf()
+        for(i in 0 until carList.count()) {
+            if(carList[i].second == highScore) {
+                winnerList = winnerList.plus(carList[i].first)
+            }
+        }
+        return winnerList
     }
     private fun isAnyCarNameLengthExceeded(carNameList: List<String>): Boolean {
         for (i in carNameList) {
@@ -72,4 +71,5 @@ class RacingGameController(private val view: RacingGameView, private val model: 
             compareValues.second
         }
     }
+
 }
