@@ -3,6 +3,7 @@ package racingcar.views
 class OutputView {
 
     fun printSoloGameRules() {
+        skipLine()
         println("단독 출전 시 2번 게임 진행 후 1회 이상 전진 시 우승입니다.")
     }
 
