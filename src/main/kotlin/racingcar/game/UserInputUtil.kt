@@ -28,7 +28,7 @@ object UserInputUtil {
     }
 
     private fun checkRacingCarsAvailable(racingCars: List<Car>) {
-        if (racingCars.size != racingCars.toSet().size) {
+        if (racingCars.size != racingCars.distinctBy { it.getName() }.size) {
             throw IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE_SAME_NAME)
         }
     }
