@@ -5,11 +5,7 @@ class InputValidator {
         fun validateCarNameString(carNames: String): Boolean {
             val carNamesRegex = "^[0-9a-zA-Z][0-9a-zA-Z,]*[0-9a-zA-Z]\$".toRegex()
 
-            if (!carNamesRegex.matches(carNames)) {
-                return false
-            }
-
-            return true
+            return carNamesRegex.matches(carNames)
         }
 
         fun validateCarName(carNameList: List<String>): Boolean {
@@ -23,13 +19,13 @@ class InputValidator {
             return true
         }
 
-        fun validateNumber(numString: String):Boolean{
-            val checkNumRegex = "^[1-9]\\d*\$\n".toRegex()
-
-            if (!checkNumRegex.matches(numString)) {
+        fun validateNumber(numString: String): Boolean {
+            if (!numString.all { it.isDigit() }) {
                 return false
             }
-            return true
+            val num = numString.toInt()
+
+            return num > 0
         }
     }
 }
