@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     val cars = enterCarName()
+    val numberAttempt = enterNumberAttempts()
 }
 
 fun enterCarName(): List<String> {
@@ -16,5 +17,18 @@ fun enterCarName(): List<String> {
 fun validationCarName(cars: List<String>) {
     for (car in cars) {
         if (car.length > 5) throw IllegalArgumentException("5자 이하만 가능합니다.")
+    }
+}
+
+fun enterNumberAttempts(): String {
+    println("시도할 횟수는 몇 회인가요?")
+    val numberAttempt = Console.readLine()
+    validationNumberAttempts(numberAttempt)
+    return numberAttempt
+}
+
+fun validationNumberAttempts(numberAttempt: String) {
+    for (i in numberAttempt) {
+        if (i < '0' || i > '9') throw IllegalArgumentException("숫자만 입력해주세요.")
     }
 }
