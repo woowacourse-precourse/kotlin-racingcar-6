@@ -20,7 +20,7 @@ class CarGameManager {
         val tryCount = getUserInputString()
         Validator().validateUserTryCount(tryCount)
         println(EXECUTION_RESULT_MESSAGE)
-        val carResultList = MutableList(carListCount){""}
+        val carResultList = MutableList(carListCount) { "" }
         for (countTry in MIN_NUMBER until tryCount.toInt()) {
             printExecutionResult(carResultList, carListCount, carNamesList)
         }
@@ -35,7 +35,11 @@ class CarGameManager {
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
     }
 
-    private fun printExecutionResult(carResultList: MutableList<String>, carListCount: Int, carNamesList: List<String>) {
+    private fun printExecutionResult(
+        carResultList: MutableList<String>,
+        carListCount: Int,
+        carNamesList: List<String>
+    ) {
         for (countList in MIN_NUMBER until carListCount) {
             val randomNumber = generateRandomNumber()
             if (randomNumber >= FORWARD_CONDITION) carResultList[countList] += "-"
@@ -44,7 +48,11 @@ class CarGameManager {
         println()
     }
 
-    private fun determineWinnersAndPrint(carResultList: MutableList<String>, carListCount: Int, carNamesList: List<String>) {
+    private fun determineWinnersAndPrint(
+        carResultList: MutableList<String>,
+        carListCount: Int,
+        carNamesList: List<String>
+    ) {
         val winnersList: MutableList<String> = mutableListOf()
         val winnerListLength = carResultList.max().length
         for (countList in MIN_NUMBER until carListCount) {
