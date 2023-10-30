@@ -1,11 +1,13 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.model.ValidateCarName
 import racingcar.views.InputView
 import racingcar.views.OutputView
 
 private val inputView = InputView()
 private val outputView = OutputView()
+private val validateCarName = ValidateCarName()
 
 fun main() {
     inputView.gameStartMessage()
@@ -15,14 +17,8 @@ fun main() {
 
 fun getCarName() {
     val inputCarName = inputView.inputView()
-    validateInputBlank(inputCarName)
+    validateCarName.validateInputBlank(inputCarName)
     checkSoloCar(inputCarName)
-}
-
-fun validateInputBlank(inputCarName: String) {
-    if (inputCarName.isBlank()) {
-        throw IllegalArgumentException("자동차 이름을 반드시 입력해야 합니다.")
-    }
 }
 
 private fun checkSoloCar(inputCarName: String): Boolean {
@@ -30,49 +26,9 @@ private fun checkSoloCar(inputCarName: String): Boolean {
         soloCarGame(inputCarName)
     } else {
         val multiCarName = inputCarName.split(",")
-        validateInputMultiCarName(multiCarName)
+        validateCarName.validateInputMultiCarName(multiCarName)
     }
     return true
-}
-
-fun validateInputMultiCarName(multiCarName: List<String?>) {
-    when (false) {
-        validateMaxInput5(multiCarName) -> throw IllegalArgumentException("자동차 이름은 5자 이하로만 가능합니다.")
-
-        validateIsBlank(multiCarName) -> throw IllegalArgumentException("자동차 이름은 필수로 입력해야 합니다.")
-
-        validateDuplicateCarName(multiCarName) -> throw IllegalArgumentException("자동차 이름은 중복하지 않아야 합니다.")
-
-        validateRacingCarRange(multiCarName) -> throw IllegalArgumentException("게임에 참여 가능한 자동차 대수는 1대 이상 7대 이하만 가능합니다.")
-
-        else -> inputTryCount(multiCarName)
-    }
-}
-
-fun validateMaxInput5(multiCarName: List<String?>): Boolean {
-    for (element in multiCarName) {
-        if (element == null || element.length > 5) {
-            return false
-        }
-    }
-    return true
-}
-
-fun validateIsBlank(multiCarName: List<String?>): Boolean {
-    for (element in multiCarName) {
-        if (element!!.isBlank()) {
-            return false
-        }
-    }
-    return true
-}
-
-fun validateDuplicateCarName(multiCarName: List<String?>): Boolean {
-    return multiCarName.size == multiCarName.distinct().count()
-}
-
-fun validateRacingCarRange(multiCarName: List<String?>): Boolean {
-    return multiCarName.size <= 7
 }
 
 fun soloCarGame(inputCarName: String) {
