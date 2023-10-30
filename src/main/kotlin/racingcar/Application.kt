@@ -1,5 +1,7 @@
 package racingcar
 
+import race.Race
+
 fun main() {
-    // TODO: 프로그램 구현
+    Race.run()
 }

@@ -1,13 +1,13 @@
 package study
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 import race.Race
+
 class CarTest {
     @Test
     fun testInputCar() {
@@ -32,6 +32,7 @@ class CarTest {
         assertThat(output).contains("경주할 자동차 이름을 입력하세요.")
     }
 }
+
 class InputNumTest {
     @Test
     fun testInputMoveNum() {
@@ -52,6 +53,7 @@ class InputNumTest {
         assertThat(output).contains("시도할 횟수")
     }
 }
+
 class StringTest {
     @Test
     fun `split 메서드로 주어진 값을 구분`() {
