@@ -19,7 +19,7 @@ class RacingCarGame(private val carMap: MutableMap<String, Int>) {
         }
     }
 
-    fun getWinners(): List<String> {
+    private fun getWinners(): List<String> {
         val maxScore = carMap.values.maxOrNull() ?: throw IllegalArgumentException(Constants.EMPTY_INPUT_ERROR_MESSAGE)
         return carMap.filter { it.value == maxScore }.keys.toList()
     }
