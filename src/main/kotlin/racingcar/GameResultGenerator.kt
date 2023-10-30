@@ -25,7 +25,7 @@ class GameResultGenerator(private val cars: List<Car>) {
     private fun getGeneratedRandomNumber() = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
 
     private fun canMove(): Boolean {
-        return getGeneratedRandomNumber() > STANDARD_NUMBER
+        return getGeneratedRandomNumber() >= STANDARD_NUMBER
     }
 
     companion object {
