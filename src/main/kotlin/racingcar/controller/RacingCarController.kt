@@ -18,8 +18,11 @@ class RacingCarController {
     }
 
     private fun gameContinue(racingCarList: List<RacingCar>, gameCount: Int) {
-        racingCarList.map {
-            it.distance += Randoms.pickNumberInRange(0, 9)
+        for (i in 0 until gameCount) {
+            racingCarList.map {
+                it.distance += Randoms.pickNumberInRange(0, 9)
+            }
         }
+
     }
 }
