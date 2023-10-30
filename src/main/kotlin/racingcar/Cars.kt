@@ -18,12 +18,6 @@ class Cars {
 
     fun getWinners(): List<String> {
         val maxDistance = getMaxDistance()
-        val winnerList = mutableListOf<String>()
-        _list.forEach { car ->
-            if (car.isWinner(maxDistance)) {
-                winnerList.add(car.name)
-            }
-        }
-        return winnerList
+        return _list.filter { it.isWinner(maxDistance) }.map { it.name }
     }
 }
