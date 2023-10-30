@@ -1,7 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
-import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import racingcar.Constants.Companion.MAX_NUMBER
@@ -26,8 +26,19 @@ class CarGameManagerTest {
                 carResultListTest[countList] += "-"
             }
             val output = "${carNameListTest[countList]} : ${carResultListTest[countList]}"
-            Assertions.assertEquals(output, outputTestList[countList])
+            assertEquals(output, outputTestList[countList])
         }
     }
+    @Test
+    fun `우승자 출력 테스트`(){
 
+        val carNameListTest: List<String> = listOf("yang", "won", "sik")
+        val carListCountTest = carNameListTest.size
+        val twoWinnerResultTest: MutableList<String> = mutableListOf("-----","----","-----")
+        val oneWinnerResultTest: MutableList<String> = mutableListOf("--","-------","---")
+        val oneWinnerText = "최종 우승자 : won"
+        val twoWinnerText = "최종 우승자 : yang, sik"
+        assertEquals(CarGameManager().determineWinnersAndPrint(oneWinnerResultTest,carListCountTest,carNameListTest),oneWinnerText)
+        assertEquals(CarGameManager().determineWinnersAndPrint(twoWinnerResultTest,carListCountTest,carNameListTest),twoWinnerText)
+    }
 }
