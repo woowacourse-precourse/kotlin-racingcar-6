@@ -3,6 +3,7 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.view.InputView.inputCarNames
 import racingcar.view.InputView.inputRoundCount
+import racingcar.view.OutputView.outputCurrentCarPositions
 import racingcar.view.OutputView.outputResultTitle
 
 private const val RANDOM_MIN_NUM = 0
@@ -19,4 +20,5 @@ fun main() {
     carNames.forEach {
         if (Randoms.pickNumberInRange(RANDOM_MIN_NUM, RANDOM_MAX_NUM) >= MIN_NUM_TO_FORWARD) it.position++
     }
+    outputCurrentCarPositions(carNames)
 }
