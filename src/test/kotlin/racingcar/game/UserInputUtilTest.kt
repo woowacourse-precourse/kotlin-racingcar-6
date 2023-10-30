@@ -23,11 +23,6 @@ internal class UserInputUtilTest {
     }
 
     @Test
-    fun `getRacingCars - 자동차가 없는 경우 예외처리`() {
-
-    }
-
-    @Test
     fun `getRacingCars - 중복된 이름인 경우 예외처리`() {
 
     }
