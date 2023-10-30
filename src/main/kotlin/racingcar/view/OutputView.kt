@@ -1,6 +1,6 @@
 package racingcar.view
 
-import racingcar.Constants
+import racingcar.domain.Constants
 
 object OutputView {
     fun startReadNames() {

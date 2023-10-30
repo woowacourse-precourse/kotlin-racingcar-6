@@ -1,6 +1,6 @@
 package racingcar.view
 
-import racingcar.Constants
+import racingcar.domain.Constants
 import camp.nextstep.edu.missionutils.Console
 import racingcar.domain.car.CarNames
 

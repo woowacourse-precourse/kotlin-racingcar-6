@@ -1,6 +1,6 @@
 package racingcar.domain.game
 
-import racingcar.Constants
+import racingcar.domain.Constants
 import racingcar.domain.computer.Computer
 import racingcar.view.OutputView
 

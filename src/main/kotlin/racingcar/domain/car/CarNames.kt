@@ -1,6 +1,6 @@
 package racingcar.domain.car
 
-import racingcar.Constants
+import racingcar.domain.Constants
 
 
 data class CarNames(val names: List<String>) {
