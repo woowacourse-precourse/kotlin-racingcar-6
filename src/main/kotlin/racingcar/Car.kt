@@ -6,7 +6,7 @@ class Car(
 ) {
 
     companion object{
-        private const val THRESHHOLD_FOR_MOVE_FORWARD = 4
+        const val THRESHHOLD_FOR_MOVE_FORWARD = 4
         private const val MAX_NAME_LENGTH = 5
     }
 
