@@ -1,6 +1,7 @@
 import InputValue.CAR_DELIMITER
 import InputValue.INPUT_NOT_FIRST_VALUE
 import car.CarConfiguration.MAX_NAME_LENGTH
+import car.CarConfiguration.MIN_NAME_LENGTH
 import java.math.BigInteger
 
 object Validator {
@@ -18,7 +19,7 @@ object Validator {
     }
 
     private fun nameLengthCheck(name: String) {
-        if (name.length > MAX_NAME_LENGTH) throw IllegalArgumentException()
+        if (name.length !in MIN_NAME_LENGTH .. MAX_NAME_LENGTH) throw IllegalArgumentException()
     }
 
     private fun castingCheck(input: String) {
