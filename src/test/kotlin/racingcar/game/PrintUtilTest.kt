@@ -25,7 +25,12 @@ internal class PrintUtilTest {
 
     @Test
     fun `printAskAttempts 메서드 출력 테스팅`() {
-
+        // given
+        PrintUtil.printAskAttempts()
+        // when
+        val expectedStartMessage = "시도할 횟수는 몇 회인가요?"
+        // then
+        assertThat(output()).contains(expectedStartMessage)
     }
 
     @Test
