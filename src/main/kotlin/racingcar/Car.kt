@@ -17,7 +17,8 @@ class Car(val name: String) {
         return position
     }
 
-    fun getCurrentPosition() {
+    //한 차수 실행 결과 출력
+    fun printStatus() {
         println("$name : ${"-".repeat(position)}")
     }
     fun getCarName(): String {
