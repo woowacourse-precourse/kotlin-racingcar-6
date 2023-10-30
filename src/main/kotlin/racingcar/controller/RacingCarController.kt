@@ -1,6 +1,8 @@
 package racingcar.controller
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
+import racingcar.model.RacingCar
 import racingcar.view.InputView
 
 class RacingCarController {
@@ -9,7 +11,15 @@ class RacingCarController {
     fun playGame() {
         inputView.printInputCarName()
         val userList = Console.readLine().split(",")
+        val racingCarList = userList.map { RacingCar(it, 0) }
         inputView.printInputGameCount()
         val gameCount = Console.readLine().toInt()
+        gameContinue(racingCarList, gameCount)
+    }
+
+    private fun gameContinue(racingCarList: List<RacingCar>, gameCount: Int) {
+        racingCarList.map {
+            it.distance += Randoms.pickNumberInRange(0, 9)
+        }
     }
 }
