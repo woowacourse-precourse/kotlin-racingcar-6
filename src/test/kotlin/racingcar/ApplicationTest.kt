@@ -26,6 +26,36 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차 이름 입력의 첫 입력이 줄바꿈(엔터)인 경우`() {
+
+    }
+
+    @Test
+    fun `자동차 입력의 시작과 끝이 콤마(,)인 경우`() {
+
+    }
+
+    @Test
+    fun `자동차 이름의 길이가 5이상인 경우`() {
+
+    }
+
+    @Test
+    fun `이동 횟수에 대한 예외 처리`() {
+
+    }
+
+    @Test
+    fun `우승자 한 명 초과일 때, 쉼표 출력`() {
+
+    }
+
+    @Test
+    fun `우승자가 한 명인 경우`() {
+
+    }
+
     public override fun runMain() {
         main()
     }
