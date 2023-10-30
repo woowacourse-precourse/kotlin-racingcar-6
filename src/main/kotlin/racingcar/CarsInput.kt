@@ -9,6 +9,8 @@ class CarsInput {
 
     // TODO 예외처리
     private fun inputCarNames(): List<String> {
-        return Console.readLine().split(",")
+        val input = Console.readLine().split(",")
+        CarValidation().checkNameInputValidation(input)
+        return input
     }
 }
