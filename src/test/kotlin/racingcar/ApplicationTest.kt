@@ -66,9 +66,9 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `이름 문자열 배열로 변환`() {
-        val racingGame = RacingGame()
+        val carManager = CarManager()
         val input = "pobi,javaji"
-        val validation = racingGame.separateCarNames(input)
+        val validation = carManager.separateCarNames(input)
         val result = listOf("pobi", "javaji")
         assertThat(validation).isEqualTo(result)
     }
