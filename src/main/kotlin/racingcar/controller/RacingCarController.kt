@@ -10,19 +10,31 @@ class RacingCarController {
     private val inputView = InputView()
     fun playGame() {
         inputView.printInputCarName()
-        val userList = Console.readLine().split(",")
-        val racingCarList = userList.map { RacingCar(it, 0) }
+        val userList = Console.readLine().split(NAME_DELIMITERS)
+        val racingCarList = userList.map { RacingCar(it, INIT_DISTANCE_NUM) }
         inputView.printInputGameCount()
         val gameCount = Console.readLine().toInt()
         gameContinue(racingCarList, gameCount)
     }
 
     private fun gameContinue(racingCarList: List<RacingCar>, gameCount: Int) {
+
         for (i in 0 until gameCount) {
             racingCarList.map {
-                it.distance += Randoms.pickNumberInRange(0, 9)
+                val randomNum = Randoms.pickNumberInRange(RANDOM_START_NUM, RANDOM_FINISH_NUM)
+                if (randomNum >= MIN_DISTANCE_NUM) {
+                    it.distance += randomNum
+                }
             }
-        }
 
+        }
+    }
+
+    companion object {
+        const val RANDOM_START_NUM = 0
+        const val RANDOM_FINISH_NUM = 9
+        const val MIN_DISTANCE_NUM = 4
+        const val NAME_DELIMITERS = ","
+        const val INIT_DISTANCE_NUM = 0
     }
 }
