@@ -4,8 +4,8 @@ import java.lang.IllegalArgumentException
 
 class Validation {
 
-    fun isValidNumberOfCars(carsName: String) {
-        if (carsName.contains(",")) {
+    fun isValidNumberOfCars(carsNameList: List<String>) {
+        if (carsNameList.size < 2) {
             throw IllegalArgumentException("자동차 이름은 2대 이상 입력해 주세요.")
         }
     }
