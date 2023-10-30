@@ -14,6 +14,11 @@ class RacingCarController {
     fun playGame() {
         inputView.printInputCarName()
         val userList = Console.readLine().split(NAME_DELIMITERS)
+
+        userList.forEach {
+            require(it.length <= MAX_NAME_LENGTH_NUM)
+        }
+
         var racingCarList = userList.map { RacingCar(it, INIT_DISTANCE_NUM) }
         inputView.printInputGameCount()
         val gameCount = Console.readLine().toInt()
@@ -22,7 +27,6 @@ class RacingCarController {
     }
 
     private fun gameContinue(racingCarList: List<RacingCar>, gameCount: Int): List<RacingCar> {
-
         outputView.printResult()
 
         for (i in 0 until gameCount) {
@@ -35,6 +39,7 @@ class RacingCarController {
             }
             outputView.printEnter()
         }
+
         return racingCarList
     }
 
@@ -54,5 +59,6 @@ class RacingCarController {
         const val MIN_DISTANCE_NUM = 4
         const val NAME_DELIMITERS = ","
         const val INIT_DISTANCE_NUM = 0
+        const val MAX_NAME_LENGTH_NUM = 5
     }
 }
