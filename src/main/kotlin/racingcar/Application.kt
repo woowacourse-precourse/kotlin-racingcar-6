@@ -83,5 +83,5 @@ fun findWinners(cars: List<Car>): List<String> {
 
 // 우승자 출력 함수
 fun printWinners(winners: List<String>) {
-    println("최종 우승자: ${winners.joinToString(", ")}")
+    println("최종 우승자 : ${winners.joinToString(", ")}")
 }
