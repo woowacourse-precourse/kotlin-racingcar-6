@@ -30,5 +30,19 @@ fun main() {
             println("$car : ${"-".repeat(distance)}")
         }
     }
+    var maxMove = 0
+    for ((_, distance) in carMove) {
+        if (distance > maxMove) {
+            maxMove = distance
+        }
+    }
+
+    val winners = mutableListOf<String>()
+    for ((car, distance) in carMove) {
+        if (distance == maxMove) {
+            winners.add(car)
+        }
+    }
+    println("\n최종 우승자 : ${winners.joinToString(", ")}")
 
 }
