@@ -8,6 +8,14 @@ class RacingGame(
     private val raceManager: RaceManager,
     private val racePrinter: RacePrinter
 ) {
+    fun start() {
+        val cars = racingCarInput.getCarNames()
+        val count = moveCountInput.getMoveCount()
+        raceManager.setup(cars)
+        runRace(count)
+        val winners = raceManager.findWinners()
+        racePrinter.showWinners(winners)
+    }
 
     private fun runRace(count: Int) {
         println(GAME_RESULT_MESSAGE)
