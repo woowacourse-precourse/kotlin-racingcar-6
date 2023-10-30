@@ -13,7 +13,7 @@ value class CarName(val name: String) {
 
     companion object {
         private const val MAX_NAME_LENGTH = 5
-        private const val CAR_NAME_LENGTH_EXCEPTION = "CarName must be shorter than or equal to 5 characters"
+        const val CAR_NAME_LENGTH_EXCEPTION = "CarName must be shorter than or equal to 5 characters"
     }
 
 }
