@@ -14,7 +14,7 @@ class CarRace(
         repeat(attemptNumber) { setRacingRound(raceMoveResult) }
 
         return raceResult.raceResult(
-            racingRoundResult = raceMoveResult,
+            racingMoveResult = raceMoveResult,
             attemptCount = attemptNumber,
             carNames = carNames
         )

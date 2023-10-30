@@ -2,21 +2,23 @@ package racingcar.domain
 
 class RaceResult(private val winner: Winner = Winner()) {
     fun raceResult(
-        racingRoundResult: HashMap<String, ArrayList<Int>>,
+        racingMoveResult: Map<String, ArrayList<Int>>,
         carNames: List<String>,
         attemptCount: Int,
     ): String {
-        val racingResultFormat = StringBuilder()
-        val racingResult = racingRoundResult.mapValues { (_, moveCount) -> moveCount.sumMoveCount() }
+        val formattedRacingResult = StringBuilder()
+        val racingResult = racingMoveResult.mapValues { (_, moveCount) -> moveCount.sumMoveCount() }
 
         repeat(attemptCount) { count ->
-            val racingRound = carNames.executeRacingRound(
+            val racingRound = carNames.convertRacingRound(
                 index = count,
                 racingResult = racingResult
             )
-            racingResultFormat.append(racingRound).append(NEW_LINE)
+            formattedRacingResult
+                .append(racingRound)
+                .append(NEW_LINE)
         }
-        return racingResultFormat.removeSuffix(NEW_LINE).toString()
+        return formattedRacingResult.removeSuffix(NEW_LINE).toString()
     }
 
     private fun ArrayList<Int>.sumMoveCount(): ArrayList<Int> {
@@ -29,7 +31,7 @@ class RaceResult(private val winner: Winner = Winner()) {
         return moveCountList
     }
 
-    private fun List<String>.executeRacingRound(
+    private fun List<String>.convertRacingRound(
         index: Int,
         racingResult: Map<String, ArrayList<Int>>
     ): String {
@@ -47,8 +49,9 @@ class RaceResult(private val winner: Winner = Winner()) {
         return countSign
     }
 
-    fun raceWinner(racingRoundResult: Map<String, ArrayList<Int>>): String {
-        return winner.raceGameWinner(racingRoundResult.mapValues { (_, moveCount) -> moveCount.sumMoveCount() })
+    fun raceWinner(racingMoveResult: Map<String, ArrayList<Int>>): String {
+        val racingResult = racingMoveResult.mapValues { (_, moveCount) -> moveCount.sumMoveCount() }
+        return winner.raceGameWinner(racingResult)
     }
 
     companion object {
