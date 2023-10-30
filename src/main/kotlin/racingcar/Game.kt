@@ -3,11 +3,26 @@ package racingcar
 class Game {
 
     private val cars: Cars = Cars()
+    private var round: Int = 0
 
     fun start() {
-        println(START_INFO)
+        initGameInfo()
     }
 
+    private fun initGameInfo() {
+        setPlayerCars()
+        setRoundCount()
+    }
+
+    private fun setPlayerCars() {
+        println(START_INFO)
+        cars.init()
+    }
+
+    private fun setRoundCount() {
+        println(ROUND_COUNT_QUESTION)
+        round = RoundInput().result()
+    }
 
     companion object {
         const val START_INFO = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
