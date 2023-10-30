@@ -20,6 +20,28 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `전진 정지 2`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi, woni")
+            },
+            MOVING_FORWARD, MOVING_FORWARD
+        )
+    }
+
+    @Test
+    fun `전진 정지 3`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "2")
+                assertThat(output()).contains("pobi :", "woni : --", "최종 우승자 : woni")
+            },
+            STOP, MOVING_FORWARD, STOP, MOVING_FORWARD
+        )
+    }
+
+    @Test
     fun `이름에 대한 예외 처리`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
