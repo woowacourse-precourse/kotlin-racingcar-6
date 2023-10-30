@@ -1,6 +1,8 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.utils.Validator.validateInputCarNames
+import racingcar.utils.Validator.validateInputRoundCount
 import racingcar.view.InputView.inputCarNames
 import racingcar.view.InputView.inputRoundCount
 import racingcar.view.OutputView.outputCurrentCarPositions
@@ -13,7 +15,10 @@ private const val MIN_NUM_TO_FORWARD = 4
 fun main() {
 
     val carNames = inputCarNames()
+    validateInputCarNames(carNames)
+
     val roundCount = inputRoundCount()
+    validateInputRoundCount(roundCount)
 
     outputResultTitle()
 
