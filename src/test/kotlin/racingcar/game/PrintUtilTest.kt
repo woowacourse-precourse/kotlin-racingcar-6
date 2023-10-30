@@ -35,7 +35,12 @@ internal class PrintUtilTest {
 
     @Test
     fun `printExecutionResult 메서드 출력 테스팅`() {
-
+        // given
+        PrintUtil.printExecutionResult()
+        // when
+        val expectedStartMessage = "실행 결과"
+        // then
+        assertThat(output()).contains(expectedStartMessage)
     }
 
     @Test
