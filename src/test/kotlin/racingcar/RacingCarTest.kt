@@ -40,4 +40,11 @@ class RacingCarTest {
 
         assertThrows<IllegalArgumentException> { inputView.validateRacingCarName(racingCarNameList) }
     }
+
+    @Test
+    fun `자동차 이름 한개 입력 예외 처리`() {
+        val racingCarNameList = "pobi".split(",")
+
+        assertThrows<IllegalArgumentException> { inputView.validateRacingCarName(racingCarNameList) }
+    }
 }
