@@ -1,8 +1,9 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
-class raceCar(private val name: String, private val position: Int = 0) {
+class raceCar(private val name: String, var position: Int = 0) {
     init {
         require((name.length <= 5)) { "Invalid Car Name." }
     }
@@ -10,6 +11,15 @@ class raceCar(private val name: String, private val position: Int = 0) {
     override fun toString(): String {
         return "$name : ${"-".repeat(position)}"
     }
+
+}
+
+fun isMovable(): Int {
+    return (Randoms.pickNumberInRange(0, 9) >= 4)
+}
+
+private fun raceCar.move() {
+    position += isMovable()
 }
 
 fun parseCarName(): List<raceCar> {
@@ -24,11 +34,20 @@ fun isNonnegativeInt(target: String): Boolean {
 fun parseTurnCount(): Int {
     println("시도할 횟수는 몇 회인가요?")
     val turnCountString = Console.readLine()
-    require(isNonnegativeInt(turnCountString), "Invalid Turn Count.")
+    require(isNonnegativeInt(turnCountString)) { "Invalid Turn Count." }
     return turnCountString.toInt()
+}
+
+fun turnProcess(raceCars: List<raceCar>) {
+    for (raceCar in raceCars) {
+        raceCar.move()
+    }
 }
 
 fun main() {
     val raceCars = parseCarName()
     val turnCount = parseTurnCount()
+    for (i in 1..turnCount) {
+        turnProcess(raceCars)
+    }
 }
