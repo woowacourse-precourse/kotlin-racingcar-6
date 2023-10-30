@@ -27,7 +27,7 @@ class RacingcarController {
         return racingcarName
     }
 
-    private fun splitRacingcarName(racingcarName: String): List<String> = racingcarName.split(",")
+    fun splitRacingcarName(racingcarName: String): List<String> = racingcarName.split(",")
 
     private fun inputTryNumber(): Int {
         outputView.printTryNumber()
@@ -38,11 +38,11 @@ class RacingcarController {
 
     private fun callException(): Nothing = throw IllegalArgumentException("잘못된 값을 입력하였습니다.")
 
-    private fun checkCarNameLength(racingcarName: String) {
+    fun checkCarNameLength(racingcarName: String) {
         if (racingcarName.length > 5) callException()
     }
 
-    private fun checkTryNumber(tryNumber: String) {
+    fun checkTryNumber(tryNumber: String) {
         tryNumber.toIntOrNull() ?: callException()
     }
 
