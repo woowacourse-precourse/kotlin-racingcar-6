@@ -9,13 +9,15 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val numberOfMove = Console.readLine()
     checkNumberOfMove(numberOfMove)
+    val numberOfMoveToInt = numberOfMove.toInt()
 
     val cars = arrayListOf<Car>()
     for (car in splitCarList) {
         cars.add(Car(car))
     }
 
-
+    val game = Game(cars, numberOfMoveToInt)
+    game.runGame()
 
 }
 

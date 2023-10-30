@@ -1,8 +1,8 @@
 package racingcar
 
-class Game(private val cars: List<Car>, private val numberOfMoves: Int) {
+class Game(private val cars: List<Car>, private val numberOfMove: Int) {
     fun runGame() {
-        repeat(numberOfMoves) {
+        repeat(numberOfMove) {
             for(car in cars) {
                 car.move()
             }
