@@ -17,8 +17,14 @@ class Cars(name:String) {
         }
     }
 
-    fun changeRepeatPosition() {
-        repeat(carPosition) { print("-") }
+    private fun changeRepeatPosition(): String {
+        var setPosition = ""
+        repeat(carPosition) { setPosition += "-" }
+        return setPosition
+    }
+
+    fun joinNameAndPosition(): String {
+        return carName + " : " + changeRepeatPosition()
     }
 
 }
