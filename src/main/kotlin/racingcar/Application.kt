@@ -11,8 +11,20 @@ fun inputCarNames(): List<Car> { //자동차 이름 입력받기
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val input = Console.readLine()
     val carNames = input.split(",").map { it.trim() }
-
+    if (carNames.any { it.length > 5 }) {
+        throw IllegalArgumentException()
+    }
     return carNames.map { Car(it) }
 }
 
-fun printCarNames():
+fun inputNumberOfMoves(): Int { //이동 횟수 입력
+    println("시도할 횟수는 몇 회인가요?")
+    val input = Console.readLine()
+    val numberOfMoves = input.toIntOrNull()
+
+    if (numberOfMoves == null || numberOfMoves <= 0) {
+        throw IllegalArgumentException("유효한 이동 횟수를 입력하세요.")
+    }
+
+    return numberOfMoves
+}
