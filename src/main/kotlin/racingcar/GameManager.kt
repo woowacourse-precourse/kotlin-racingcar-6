@@ -4,9 +4,17 @@ class GameManager {
     private val _gameCars: MutableList<Car> = mutableListOf()
     val gameCars: List<Car> get() = _gameCars.toList()
 
+    private var movementAttemptCount : Int = 0
+
+    enum class GameState{
+        INIT, INPROGRESS, ENDED
+    }
+
     fun addCarToGame(car : Car){
         _gameCars.add(car)
     }
 
-
+    fun setMovementAttemptCount(input : String){
+        movementAttemptCount = input.toInt()
+    }
 }
