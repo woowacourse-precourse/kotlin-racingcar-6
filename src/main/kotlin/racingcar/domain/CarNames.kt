@@ -13,8 +13,7 @@ class CarNames(
 
     fun inputCarNames() {
         printer.printNextLine(Constants.INPUT_NAME)
-        val nameList = reader.readLine().split(",")
-        inputChecker.checkInputNames(nameList)
+        val nameList = inputChecker.checkInputNames(reader.readLine())
 
         nameList.map { name ->
             if (name != nameList.last()) {

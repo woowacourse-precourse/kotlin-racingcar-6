@@ -10,8 +10,8 @@
   - [x] 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 앱을 종료한다.
 
 ### MoveTimes
-- [ ] 경주에서 m 번의 이동을 할 것인지 입력받는다.
-  - [ ] 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 앱을 종료한다.
+- [x] 경주에서 m 번의 이동을 할 것인지 입력받는다.
+  - [x] 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 앱을 종료한다.
 
 ### RacingGame
 - [ ] 0 에서 9 사이에서 무작위 값을 구한 후 그 값이 4 이상일 때 전진한다.
