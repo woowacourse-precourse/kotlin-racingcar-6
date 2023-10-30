@@ -53,16 +53,8 @@ class RacingCarController(
 
     // 기능 9. 우승자 안내하기
     private fun findWinner(racingCarList: List<RacingCar>): List<RacingCar> {
-        val winnerList = mutableListOf<RacingCar>()
-
         val maxMove = racingCarList.maxBy { racingCar -> racingCar.totalMove }.totalMove
 
-        for (racingCar in racingCarList) {
-            if (racingCar.totalMove == maxMove) {
-                winnerList.add(racingCar)
-            }
-        }
-
-        return winnerList
+        return racingCarList.filter { racingCar -> racingCar.totalMove == maxMove }
     }
 }
