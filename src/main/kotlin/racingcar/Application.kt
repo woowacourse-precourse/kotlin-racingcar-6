@@ -14,8 +14,8 @@ private const val MIN_NUM_TO_FORWARD = 4
 
 fun main() {
 
-    val carNames = inputCarNames()
-    validateInputCarNames(carNames)
+    val cars = inputCarNames()
+    validateInputCarNames(cars)
 
     val roundCount = inputRoundCount()
     validateInputRoundCount(roundCount)
@@ -23,9 +23,9 @@ fun main() {
     outputResultTitle()
 
     repeat(roundCount) {
-        carNames.forEach {
+        cars.forEach {
             if (Randoms.pickNumberInRange(RANDOM_MIN_NUM, RANDOM_MAX_NUM) >= MIN_NUM_TO_FORWARD) it.position++
         }
-        outputCurrentCarPositions(carNames)
+        outputCurrentCarPositions(cars)
     }
 }
