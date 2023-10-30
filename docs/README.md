@@ -33,6 +33,22 @@ Car를 상속받는 레이싱 차
 - [x] 입력값을 읽어온다
 - [x] 잘못된 입력값을 받아올 경우 IllegalArgumentException 발생
 
+## model
+### CarState 
+차의 상태를 나타내는 data class
+- [x] : 차의 이름(name)과 위치(position)가 있다
+- [x] : toString()에 이름(name)과 위치(position)을 반환하도록 overriding
+
+### RaceResult
+레이싱 결과를 나타내는 data class
+- [x] : 레이싱에 참여하는 차들의 CarState를 담는 List(carStateList)가 있다
+- [x] : toString()에 CarState를 `\n`으로 구분되어 반환되도록 overriding
+
+### Winner
+우승자를 나타내는 data class
+- [x] : 우승한 차들을 담은 List(cars)가 있다
+- [x] : toString()에 우승한 차들의 이름을 `, `으로 구분되어 반환되도록 overriding  
+
 ## 기능 요구 사항
 초간단 자동차 경주 게임을 구현한다.
 
