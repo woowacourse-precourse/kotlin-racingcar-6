@@ -11,4 +11,8 @@ class Cars {
     fun getCars(): List<Car> {
         return cars
     }
+
+    fun showRoundResult() {
+        GameResultGenerator(cars).result()
+    }
 }
