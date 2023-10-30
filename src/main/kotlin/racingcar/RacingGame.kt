@@ -32,9 +32,8 @@ class RacingGame {
 
     fun runOneCycle(carModelList: List<Car>) {
         carModelList.forEach { car ->
-            if (moveOrStop()) {
-                car.moveOneStep()
-            }
+            val isMovable = checkMovable(getRandomNumber())
+            car.moveOneStep(isMovable)
             printCarDistance(car)
         }
         println()
@@ -79,9 +78,7 @@ class RacingGame {
 
     fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
 
-
-    fun moveOrStop(): Boolean = getRandomNumber() >= 4
-
+    fun checkMovable(number: Int): Boolean = number >= 4
 
     fun printCarDistance(car: Car) {
         println("${car.name} : ${"-".repeat(car.moveDistance)}")
