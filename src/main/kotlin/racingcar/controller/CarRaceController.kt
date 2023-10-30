@@ -7,7 +7,6 @@ import racingcar.util.Constants.RESULT
 import racingcar.util.Validation.validateName
 import racingcar.util.Validation.validateNum
 import racingcar.view.CarRaceView
-import java.util.Collections
 import kotlin.text.StringBuilder
 
 class CarRaceController(val view: CarRaceView) {
@@ -42,7 +41,7 @@ class CarRaceController(val view: CarRaceView) {
 
             cars.forEach {
                 print("${it.name} : ")
-                showCars(it.position)
+                println(showCars(it.position))
             }
             println()
         }
@@ -51,11 +50,11 @@ class CarRaceController(val view: CarRaceView) {
 
 
     }
-    fun showCars(position : Int){
+    fun showCars(position : Int) : String{
         val sb = StringBuilder()
         repeat(position){
             sb.append("-")
         }
-        println(sb.toString())
+        return sb.toString()
     }
 }
