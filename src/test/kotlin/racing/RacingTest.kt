@@ -2,6 +2,7 @@ package racing
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.Racing
@@ -21,6 +22,15 @@ class RacingTest {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { racing.addCar("pobi,veryLongName") }
         }
+    }
+
+    @Test
+    fun `게임 카운트 테스트`() {
+        racing.addCar("Car1")
+        racing.addCar("Car2")
+        racing.gameCount(5)
+        val position = racing.getCars().map { it.getPosition() }
+        assertTrue(position.all { it in 0..5 })
     }
 
 }
