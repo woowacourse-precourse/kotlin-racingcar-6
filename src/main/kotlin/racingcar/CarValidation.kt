@@ -4,6 +4,7 @@ class CarValidation {
     fun checkNameInputValidation(input: List<String>) {
         isInputWithinFiveChar(input)
         hasWhiteSpaceAtEdge(input)
+        checkAtLeastTwoNames(input)
     }
 
     private fun isInputWithinFiveChar(list: List<String>) {
@@ -17,4 +18,12 @@ class CarValidation {
             throw IllegalArgumentException("이름의 시작과 끝에는 공백 입력이 불가능합니다.")
         }
     }
+
+    private fun checkAtLeastTwoNames(list: List<String>) {
+        if (list.count() < 2) {
+            throw IllegalArgumentException("최소 2대이상의 자동차 이름이 입력되어야 게임 진행이 가능합니다.")
+        }
+    }
+
+
 }
