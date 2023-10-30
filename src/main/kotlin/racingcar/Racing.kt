@@ -22,4 +22,7 @@ class Racing {
         val maxPosition = cars.maxOf { it.getPosition() }
         return cars.filter { it.getPosition() == maxPosition }.map { it.name }
     }
+    fun getCars(): List<Car> {
+        return cars
+    }
 }
