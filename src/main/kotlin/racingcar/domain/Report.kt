@@ -14,5 +14,7 @@ class Report {
         return winners.joinToString(", ")
     }
 
-    fun raceResult() {}
+    fun raceResult(winner: String) {
+        println("최종 우승자 : $winner")
+    }
 }
