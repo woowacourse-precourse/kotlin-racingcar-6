@@ -9,4 +9,5 @@ object Constants {
 
     // Error Messages
     const val EMPTY_INPUT_ERROR_MESSAGE = "입력값이 없습니다."
+    const val LENGTH_ERROR_MESSAGE = "이름은 5자 이하만 가능합니다."
 }
