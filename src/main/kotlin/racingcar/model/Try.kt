@@ -15,9 +15,14 @@ class Try private constructor(private val count: Int) {
         }
 
         private fun validateTry(countString: String) {
+            validateTryEmpty(countString)
             validateTryDigit(countString)
             validateTryMax(countString)
             validateTryMin(countString.toInt())
+        }
+
+        fun validateTryEmpty(countString: String) {
+            require(countString.isNotEmpty()) { TryException.EMPTY }
         }
 
         fun validateTryDigit(countString: String) {

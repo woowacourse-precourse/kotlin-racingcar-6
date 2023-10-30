@@ -10,6 +10,7 @@ enum class CarException(private val phrases: String) {
 }
 
 enum class TryException(private val phrases: String) {
+    EMPTY("시도할 횟수를 입력해 주세요."),
     DIGIT("시도할 횟수는 숫자만 입력할 수 있습니다."),
     MAX("시도할 횟수가 너무 큽니다."),
     MIN("시도할 횟수가 너무 작습니다. 1 이상의 수를 입력해 주세요.");
