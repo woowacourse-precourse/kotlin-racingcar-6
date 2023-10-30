@@ -4,23 +4,34 @@ import camp.nextstep.edu.missionutils.Randoms
 
 // 자동차 경주
 fun raceCars(carNames: List<String>): Map<String, String> {
-    val carNamesAndResults = mutableMapOf<String, String>()
+    val carNamesAndResults = initializeCarResults(carNames)
     val time = getRaceTime()
 
-    for (i in carNames) {
-        carNamesAndResults[i] = "" // 전진 값 초기화
-    }
-
     for (i in 0 until time) {
-        for (j in carNames) {
-            val num = Randoms.pickNumberInRange(0, 9)
-            if (num >= 4) {
-                carNamesAndResults[j] += "-" // 4 이상의 수가 나오면 전진
-            }
-            println("$j : ${carNamesAndResults[j]}")
-        }
-        println()
+        raceRound(carNames, carNamesAndResults)
     }
 
     return carNamesAndResults
+}
+
+private fun initializeCarResults(carNames: List<String>): MutableMap<String, String> {
+    val carNamesAndResults = mutableMapOf<String, String>()
+
+    for (carName in carNames) {
+        carNamesAndResults[carName] = ""
+    }
+
+    return carNamesAndResults
+}
+
+private fun raceRound(carNames: List<String>, carNamesAndResults: MutableMap<String, String>) {
+    for (carName in carNames) {
+        val num = Randoms.pickNumberInRange(0, 9)
+        if (num >= 4) {
+            carNamesAndResults[carName] += "-"
+        }
+        println("$carName : ${carNamesAndResults[carName]}")
+    }
+
+    println()
 }
