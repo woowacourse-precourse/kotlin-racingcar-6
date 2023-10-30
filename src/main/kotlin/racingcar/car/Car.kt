@@ -6,9 +6,9 @@ abstract class Car(
     val name: String = "",
     private val scoreGenerator: RandomNumberGenerator = RandomNumberGenerator()
 ) {
+    val score = scoreGenerator.generate()
     var position = ""
         protected set
-    val score get() = scoreGenerator.generate()
 
     abstract fun move()
 
