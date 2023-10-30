@@ -11,16 +11,10 @@ class CarNames(
     private val inputChecker: InputChecker
 ) {
 
-    fun inputCarNames() {
+    fun inputCarNames(): List<String> {
         printer.printNextLine(Constants.INPUT_NAME)
         val nameList = inputChecker.checkInputNames(reader.readLine())
 
-        nameList.map { name ->
-            if (name != nameList.last()) {
-                printer.printInLine("$name,")
-            } else {
-                printer.printNextLine(name)
-            }
-        }
+        return nameList.split(",").toList()
     }
 }

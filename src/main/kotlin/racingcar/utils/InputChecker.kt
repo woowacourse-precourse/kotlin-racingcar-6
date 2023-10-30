@@ -9,16 +9,16 @@ class InputChecker {
         const val INPUT_ONLY_NUMBER = "숫자만 입력해야 합니다."
     }
 
-    fun checkInputNames(names: String): List<String> {
-        return names.split(",").map { name ->
+    fun checkInputNames(names: String): String {
+        names.split(",").forEach { name ->
             if (name.isEmpty()) throw IllegalArgumentException(INPUT_NAME)
             if (name.length > 5) throw IllegalArgumentException(INPUT_UNDER_FIVE)
-            name
         }
+        return names
     }
 
-    fun checkMoveTimes(moveTimes: String): Int {
+    fun checkMoveTimes(moveTimes: String): String {
         if (!Regex("\\d+").matches(moveTimes)) throw IllegalArgumentException(INPUT_ONLY_NUMBER)
-        return moveTimes.toInt()
+        return moveTimes
     }
 }

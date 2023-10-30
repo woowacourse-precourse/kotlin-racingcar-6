@@ -10,8 +10,10 @@ class MoveTimes(
     private val printer: Printer,
     private val inputChecker: InputChecker
 ) {
-    fun inputMoveTimes() {
+    fun inputMoveTimes(): Int {
         printer.printNextLine(Constants.INPUT_MOVE_TIME)
         val moveTime = inputChecker.checkMoveTimes(reader.readLine())
+
+        return moveTime.toInt()
     }
 }
