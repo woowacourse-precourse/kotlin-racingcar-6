@@ -13,7 +13,7 @@ object RacingCarInput {
 
     fun getCarNameMap(): Map<String, Int> {
         try {
-            print(INPUT_RACING_CAR_NAME_MESSAGE)
+            println(INPUT_RACING_CAR_NAME_MESSAGE)
             return convertStringToMap(Console.readLine()).apply { validate(this) }
         } catch (e: IllegalArgumentException) {
             throw e
