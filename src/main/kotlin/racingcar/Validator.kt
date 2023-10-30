@@ -9,7 +9,7 @@ object Validator {
 
     fun validateInput(input: String) {
         if (isEmptyInput(input)) {
-            throw IllegalArgumentException("잘못 입력했어요.")
+            throw IllegalArgumentException("입력이 잘못되었어요.")
         }
     }
 
