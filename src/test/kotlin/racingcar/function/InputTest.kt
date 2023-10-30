@@ -4,8 +4,10 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.Test
-import racingcar.InputView.stringToList
 import racingcar.InputView.validateInputCarNames
+import racingcar.InputView.validateInputRoundCount
+import racingcar.utils.TypeConverter.stringToInt
+import racingcar.utils.TypeConverter.stringToList
 
 class InputTest {
     @Test

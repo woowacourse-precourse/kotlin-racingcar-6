@@ -1,6 +1,8 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.utils.TypeConverter.stringToInt
+import racingcar.utils.TypeConverter.stringToList
 
 object InputView {
 
@@ -14,7 +16,6 @@ object InputView {
     private const val ERROR_CAR_NAME_LENGTH = "자동차의 이름은 1자 이상, 5자 이하의 길이로 입력할 수 있습니다. %s"
     private const val ERROR_CAR_NAME_DUPLICATE = "중복된 이름이 있습니다. %s"
     private const val ERROR_CAR_NAME_BLANK = "이름에 공백이 포함돼서는 안됩니다. %s"
-    private const val ERROR_ROUND_COUNT_NOT_INT = "시도할 횟수는 숫자로 입력해야 합니다."
     private const val ERROR_ROUND_COUNT_HAVE_TO_OVER_1 = "시도할 횟수는 최소 1회 이상 숫자만 입력 가능합니다."
 
     fun inputCarNames(): List<String> {
@@ -30,10 +31,6 @@ object InputView {
         validateInputRoundCount(inputRoundCount)
         return inputRoundCount
     }
-
-    fun stringToList(input: String): List<String> = input.split(",").map { it.trim() }
-
-    fun stringToInt(input: String): Int = input.toIntOrNull() ?: throw IllegalArgumentException(ERROR_ROUND_COUNT_NOT_INT)
 
     fun validateInputCarNames(inputCarNames: List<String>) {
         checkCarNamesNull(inputCarNames)
