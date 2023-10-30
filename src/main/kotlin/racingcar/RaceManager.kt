@@ -39,7 +39,6 @@ class RaceManager {
             tryForwardMovementAllCars()
             displayAllCarsDirectionMoved()
             movementAttemptCount -= 1
-            println()
         }
         endGame()
     }
@@ -64,13 +63,15 @@ class RaceManager {
         _raceCars.map { car ->
             displayCarDirectionMoved(car)
         }
+        println()
     }
 
     private fun displayCarDirectionMoved(car: Car) {
-        println("${car.name} : ")
+        print("${car.name} : ")
         repeat(movedDirection.getValue(car.name)) {
             print("-")
         }
+        println()
     }
 
     fun endGame() {
