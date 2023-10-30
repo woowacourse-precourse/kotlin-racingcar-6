@@ -87,6 +87,14 @@ class RacingCarTest {
         assertThat(movingCar).isEqualTo(RacingCar("pobi", 1))
     }
 
+    @Test
+    fun `정지 판단하기`() {
+        val stoppedCar = RacingCar("pobi")
+        racingCarController.moveOrStop(stoppedCar, STOP)
+
+        assertThat(stoppedCar).isEqualTo(RacingCar("pobi", 0))
+    }
+
     companion object {
         private const val MOVING_FORWARD = 4
         private const val STOP = 3
