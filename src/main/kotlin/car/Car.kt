@@ -8,12 +8,11 @@ import caroption.Engine
 
 class Car(name: String) {
 
-    private val carName = name
     private val engine = Engine()
-    private val dashBoard = DashBoard()
+    private val dashBoard = DashBoard(name)
 
     fun printCarName() {
-        print(carName)
+        dashBoard.printCarName()
     }
 
     fun start() {
@@ -24,7 +23,7 @@ class Car(name: String) {
     }
 
     fun printDist() {
-        dashBoard.printDist(carName, dashBoard.nowDist())
+        dashBoard.printDist(dashBoard.nowDist())
     }
 
     fun nowDist() = dashBoard.nowDist()
