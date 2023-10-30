@@ -6,12 +6,17 @@ fun main() {
 
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
 
-    val CarList = inputCarList()
-    val distanceList = MutableList(CarList.size) { 0 }
+    val carList = inputCarList()
+    val distanceList = MutableList(carList.size) { 0 }
 
     println("시도할 횟수는 몇 회인가요?")
     val repeatCount = readLine()
     println("\n실행 결과")
+    for (i in 0..repeatCount!!.toInt()-1) { // allCarList.indices는 0 부터 allCarList.size - 1 까지의 범위를 제공합니다.
+        showProcedure(carList, forwardCondition(distanceList))
+    }
+    finalWinner(carList, distanceList)
+
 
 }
 
@@ -34,10 +39,20 @@ fun forwardCondition(distanceList: MutableList<Int>): MutableList<Int>{
     return distanceList
 }
 
-fun showProcedure(allCarList: List<String>, distanceList: MutableList<Int>){
+fun showProcedure(carList: List<String>, distanceList: MutableList<Int>){
     for(i in distanceList.indices){
-        print("${allCarList[i]} : ")
+        print("${carList[i]} : ")
         println("-".repeat(distanceList[i]))
     }
     println()
+}
+
+fun finalWinner(carList: List<String>, distanceList: MutableList<Int>) {
+    val maxDistance = distanceList.maxOrNull() // 리스트에서 가장 큰 값을 찾습니다.
+    if (maxDistance != null) {
+        val winners = distanceList.mapIndexedNotNull { index, value ->
+            if (value == maxDistance) carList[index] else null // 최댓값과 동일하면 해당 차의 이름을 반환하고, 아니면 null을 반환합니다.
+        }
+        println("최종 우승자 : ${winners.joinToString(", ")}")
+    }
 }
