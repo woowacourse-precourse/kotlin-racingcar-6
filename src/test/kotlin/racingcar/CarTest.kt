@@ -5,27 +5,17 @@ import org.junit.jupiter.api.Test
 
 class CarTest{
 
+    val fakeNumberGenerator : NumberGenerator = FakeNumberGenerator()
+    val car = Car(fakeNumberGenerator)
+
     @Test
-    fun `랜덤으로 생성된 숫자가 4미만일 경우 자동차는 전진하지 않는다`(){
+    fun `랜덤으로 생성된 숫자가 4일 경우 자동차는 전진할 수 있다`(){
         //given
-        val car = Car()
 
         //when
 
         //then
-        val actual = car.tryMoveForward()
-        assertThat(actual).isFalse()
-    }
-
-    @Test
-    fun `랜덤으로 생성된 숫자가 4이상일 경우 자동차는 전진한다`(){
-        //given
-        val car = Car()
-
-        //when
-
-        //then
-        val actual = car.tryMoveForward()
+        val actual = car.isPossibleMoveForward()
         assertThat(actual).isTrue()
     }
 }

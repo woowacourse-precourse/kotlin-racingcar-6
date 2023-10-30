@@ -1,4 +1,4 @@
 package racingcar
 
-class Car {
+class Car(numberGenerator: NumberGenerator) {
 }
