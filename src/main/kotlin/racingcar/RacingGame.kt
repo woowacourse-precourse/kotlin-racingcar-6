@@ -17,20 +17,19 @@ class RacingGame {
         gameEnd()
     }
 
-    fun gameStart() {
+    private fun gameStart() {
         println("실행결과")
         repeat(gameCount) {
             runOneCycle(cars.list)
         }
-
     }
 
-    fun gameEnd() {
+    private fun gameEnd() {
         val winnerList = cars.getWinners()
         printWinner(winnerList)
     }
 
-    fun runOneCycle(carModelList: List<Car>) {
+    private fun runOneCycle(carModelList: List<Car>) {
         carModelList.forEach { car ->
             val isMovable = checkMovable(getRandomNumber())
             car.moveOneStep(isMovable)
@@ -39,16 +38,15 @@ class RacingGame {
         println()
     }
 
-    fun initGame() {
+    private fun initGame() {
         val carModelList = inputCarNames()
         cars.addAllList(carModelList)
         gameCount = inputRaceCount()
     }
 
-    fun inputCars(): String = Console.readLine()
+    private fun inputCars(): String = Console.readLine()
 
-
-    fun inputCarNames(): List<Car> {
+    private fun inputCarNames(): List<Car> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val carNameList = separateCarNames(inputCars())
         validateNameLength(carNameList)
@@ -57,19 +55,17 @@ class RacingGame {
         return makeCarModelList(carNameList)
     }
 
-    fun separateCarNames(carNames: String): List<String> = carNames.split(",")
+    private fun separateCarNames(carNames: String): List<String> = carNames.split(",")
 
-
-    fun makeCarModelList(carNames: List<String>): List<Car> {
+    private fun makeCarModelList(carNames: List<String>): List<Car> {
         var modelList = mutableListOf<Car>()
         carNames.forEach {
             modelList.add(Car(it))
         }
-
         return modelList.toList()
     }
 
-    fun inputRaceCount(): Int {
+    private fun inputRaceCount(): Int {
         println("시도할 횟수는 몇 회인가요?")
         val input = Console.readLine()
         validateNumber(input)
@@ -77,15 +73,15 @@ class RacingGame {
         return input.toInt()
     }
 
-    fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
+    private fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
 
-    fun checkMovable(number: Int): Boolean = number >= 4
+    private fun checkMovable(number: Int): Boolean = number >= 4
 
-    fun printCarDistance(car: Car) {
+    private fun printCarDistance(car: Car) {
         println("${car.name} : ${"-".repeat(car.moveDistance)}")
     }
 
-    fun printWinner(winnerList: List<String>) {
+    private fun printWinner(winnerList: List<String>) {
         val winner = winnerList.joinToString(", ")
         println("최종 우승자 : $winner")
     }
