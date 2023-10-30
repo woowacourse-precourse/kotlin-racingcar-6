@@ -25,13 +25,13 @@ Car를 상속받는 레이싱 차
 - [x] : 무작위 숫자 반환하기
 
 ### Referee 
-- 차가 움직일 수 있는지 판정한다.
-- Race의 결과를 판정한다.
-- 게임의 Winner를 판정한다.
+- [x] 차가 움직일 수 있는지 판정한다.
+- [x] Race의 결과를 판정한다.
+- [x] 게임의 Winner를 판정한다.
 
 ### Reader 
-- 입력값을 읽어온다
-- 잘못된 입력값을 받아올 경우 IllegalArgumentException 발생
+- [x] 입력값을 읽어온다
+- [x] 잘못된 입력값을 받아올 경우 IllegalArgumentException 발생
 
 ## 기능 요구 사항
 초간단 자동차 경주 게임을 구현한다.
