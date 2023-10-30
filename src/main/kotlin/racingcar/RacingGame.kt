@@ -50,8 +50,8 @@ class RacingGame {
     }
 
     fun pickWinner(carList: List<Car>): List<Car> {
-        val winnerForwardCount = carList.sorted()[0].forwardCount
-        return carList.filter { car -> car.forwardCount == winnerForwardCount }
+        val winnerCar = carList.sorted()[0]
+        return carList.filter { car -> winnerCar.compareTo(car) == 0 }
     }
 
     fun validateCarNameComma(carNames: String) {

@@ -10,7 +10,6 @@ import racingcar.constants.*
 import racingcar.io.printCarListResult
 import racingcar.io.printWinner
 import racingcar.model.Car
-import racingcar.util.toCarNameList
 import racingcar.model.Try
 import racingcar.util.toCarList
 
@@ -34,45 +33,38 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `문자열을 쉼표 기준으로 분리한다`() {
+    fun `자동차 이름으로 이루어진 문자열을 Car 객체가 담긴 리스트로 변환한다`() {
         // given
-        val case = "pobi,woni,jun"
+        val case1 = "pobi,woni,jun"
+        val case2 = "pobi"
 
         // when
-        val result = case.toCarNameList()
+        val result1 = case1.toCarList()
+        val result2 = case2.toCarList()
 
         // then
-        assertThat(result).containsExactly("pobi", "woni", "jun")
+        result1.forEachIndexed { idx, car ->
+            assertThat(car).isInstanceOf(Car::class.java)
+            assertThat(car.name).isEqualTo(case1.split(",")[idx])
+        }
+
+        result2.forEachIndexed { idx, car ->
+            assertThat(car).isInstanceOf(Car::class.java)
+            assertThat(car.name).isEqualTo(case2.split(",")[idx])
+        }
     }
 
     @Test
-    fun `쉼표가 없는 문자열을 쉼표 기준으로 분리하는 경우 기존 문자열을 반환한다`() {
-        // given
-        val case = "pobi"
-
-        // when
-        val result = case.toCarNameList()
-
-        // then
-        assertThat(result).isEqualTo("pobi")
-    }
-
-    @Test
-    fun `자동차 이름이 1글자 이상 5글자 이하가 아닌 경우 예외가 발생한다`() {
+    fun `자동차 이름이 5글자 이상인 경우 예외가 발생한다`() {
         // given
         val case1 = "pobi"
-        val case2 = ""
-        val case3 = "thunder"
+        val case2 = "thunder"
 
         // when, then
         assertThatCode { Car.validateNameLength(case1) }
             .doesNotThrowAnyException()
 
         assertThatThrownBy { Car.validateNameLength(case2) }
-            .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(EXCEPTION_LENGTH)
-
-        assertThatThrownBy { Car.validateNameLength(case3) }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage(EXCEPTION_LENGTH)
     }
@@ -95,6 +87,42 @@ class ApplicationTest : NsTest() {
         assertThatThrownBy { Car.validateNameLetter(case3) }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage(EXCEPTION_LETTER)
+    }
+
+    @Test
+    fun `자동차 이름을 구분하는 콤마를 입력값 뒤에 붙이는 경우 예외가 발생한다`() {
+        // given
+        val racingGame = RacingGame()
+        val case = "pobi,woni,"
+
+        // when, then
+        assertThatThrownBy { racingGame.validateCarNameComma(case) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage(EXCEPTION_COMMA)
+    }
+
+    @Test
+    fun `자동차 이름을 구분하는 콤마를 입력값 앞에 붙이는 경우 예외가 발생한다`() {
+        // given
+        val racingGame = RacingGame()
+        val case = ",pobi,woni"
+
+        // when, then
+        assertThatThrownBy { racingGame.validateCarNameComma(case) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage(EXCEPTION_COMMA)
+    }
+
+    @Test
+    fun `자동차 이름을 구분하는 콤마를 연속으로 두번 이상 입력하는 경우 예외가 발생한다`() {
+        // given
+        val racingGame = RacingGame()
+        val case = "pobi,,woni"
+
+        // when, then
+        assertThatThrownBy { racingGame.validateCarNameComma(case) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage(EXCEPTION_COMMA)
     }
 
     @Test
@@ -175,8 +203,8 @@ class ApplicationTest : NsTest() {
     fun `자동차 이름이 중복될 경우 예외가 발생한다`() {
         // given
         val racingGame = RacingGame()
-        val case1 = listOf("pobi", "woni")
-        val case2 = listOf("pobi", "pobi")
+        val case1 = listOf(Car.of("pobi"), Car.of("woni"))
+        val case2 = listOf(Car.of("pobi"), Car.of("pobi"))
 
         // when, then
         assertThatCode { racingGame.validateCarNameDuplication(case1) }
@@ -190,29 +218,15 @@ class ApplicationTest : NsTest() {
     @Test
     fun `자동차를 전진시킨다`() {
         // given
-        val car = Car.of("pobi")
+        val case = Car.of("pobi")
 
         // when
-        car.moveForward()
-        car.moveForward()
+        case.moveForward()
+        case.moveForward()
+        val result = case.getRacingResultString()
 
         // then
-        assertThat(car.racingResult.toString()).isEqualTo("--")
-    }
-
-    @Test
-    fun `자동차 이름으로 이루어진 리스트를 Car 객체가 담긴 리스트로 변환한다`() {
-        // given
-        val case = listOf("pobi", "woni", "jun")
-
-        // when
-        val result = case.toCarList()
-
-        // then
-        result.forEachIndexed { idx, car ->
-            assertThat(car).isInstanceOf(Car::class.java)
-            assertThat(car.name).isEqualTo(case[idx])
-        }
+        assertThat(result).isEqualTo("pobi : --")
     }
 
     @Test
@@ -281,7 +295,7 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `차수별 실행 결과를 형식에 맞게 출력한다`() {
-        //given
+        // given
         val case = listOf(
             Car.of("pobi"),
             Car.of("woni").apply {
@@ -307,7 +321,7 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `최종 우승자를 출력한다`() {
-        //given
+        // given
         val case = listOf(Car.of("pobi"))
 
         // when
@@ -318,8 +332,8 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `최종 우승자가 여러명인 경우 이름를 쉼표로 구분하여 출력한다`() {
-        //given
+    fun `최종 우승자가 여러명인 경우 이름을 쉼표로 구분하여 출력한다`() {
+        // given
         val case = listOf(Car.of("pobi"), Car.of("woni"))
 
         // when
