@@ -9,6 +9,21 @@ class RacingGame {
         val cars = initCar()
         val roundCount = readRounds()
         printResult(roundCount, cars)
+        printWinner(cars)
+    }
+
+    private fun printWinner(cars: List<Car>) {
+        var status = "최종 우승자 : "
+        val position = arrayListOf<Int>()
+        cars.forEach { car ->
+            position.add(car.position)
+        }
+        val winnerPosition = position.max()
+        val winner = cars.filter { it.position == winnerPosition }
+        winner.forEach { car ->
+            status += "${car.name}, "
+        }
+        println(status.substring(0, status.length - 2))
     }
 
     private fun printResult(roundCount: Int, cars: List<Car>) {

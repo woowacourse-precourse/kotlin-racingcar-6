@@ -2,7 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class Car(private val name: String, private var position: Int = 0) {
+class Car(val name: String, var position: Int = 0) {
 
     fun moving() {
         val num = Randoms.pickNumberInRange(1, 9)
