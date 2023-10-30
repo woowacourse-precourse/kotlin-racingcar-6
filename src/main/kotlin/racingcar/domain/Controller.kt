@@ -4,10 +4,9 @@ import racingcar.domain.car.Car
 import racingcar.domain.car.Cars
 
 class Controller {
-    fun playRound(cars: Cars): Cars {
-        val numberGenerator = NumberGenerator()
+    fun playRound(cars: Cars, randomNumber:Int): Cars {
         cars.getCars().all {
-            it.move(numberGenerator.createRandomNumber())
+            it.move(randomNumber)
             println(it.printResult())
             cars.compareHighScore(it.getDistance())
             true
@@ -15,22 +14,24 @@ class Controller {
         return cars
     }
 
-    fun printWinner(cars: Cars) {
-        print("최종 우승자 : ")
+    fun printWinner(cars: Cars): String {
+        var result = "최종 우승자 : "
         cars.getCars().all {
-            decideWinner(cars, it)
+            result += decideWinner(cars, it)
             true
         }
-        println()
+        result+="\n"
+        return result
     }
 
-    private fun decideWinner(cars: Cars, it: Car) {
+    private fun decideWinner(cars: Cars, it: Car): String {
         if (cars.isEqualHighScore(it.getDistance())) {
             val name = it.name
             if (cars.isFirst()) {
-                print(name)
-            } else print(", $name")
+                return name
+            } else return ", $name"
         }
+        return ""
     }
 
 }

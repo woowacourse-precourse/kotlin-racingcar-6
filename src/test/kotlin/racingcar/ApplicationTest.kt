@@ -11,9 +11,10 @@ import racingcar.domain.car.Cars
 
 class ApplicationTest : NsTest() {
     @AfterEach
-    fun reset(){
+    fun reset() {
         cars = Cars()
     }
+
     @Test
     fun `전진 정지`() {
         assertRandomNumberInRangeTest(
@@ -30,8 +31,6 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
     }
-
-
 
     @Test
     fun `단독 우승시`() {
