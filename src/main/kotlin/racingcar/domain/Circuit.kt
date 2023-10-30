@@ -11,7 +11,7 @@ class Circuit(carNames: String, private var moveCount: Int) {
 
     fun startRace() {
         repeat(moveCount) {
-            moveAndPrintCarPositions()
+            moveCarsAndPrintPositions()
         }
     }
 
@@ -28,7 +28,7 @@ class Circuit(carNames: String, private var moveCount: Int) {
         }
     }
 
-    private fun moveAndPrintCarPositions() {
+    private fun moveCarsAndPrintPositions() {
         moveOrStayAllCars()
         printCarPositions()
     }

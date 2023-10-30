@@ -2,28 +2,36 @@ package racingcar.domain
 
 class Referee(private val circuit: Circuit) {
     private var maxDistance = 0
-    private var winnerCarNames = mutableListOf<String>()
+    private var winningCarNames = mutableListOf<String>()
 
     init {
-        findMaxDistance()
-        findWinnerCarNames()
+        setMaxDistance()
+        setWinnerCarNames()
     }
 
-    fun getWinnerCarNames() = winnerCarNames
+    fun getWinningCarNames(): MutableList<String> = winningCarNames
 
-    private fun findMaxDistance() {
+    private fun setMaxDistance() {
         circuit.getCarList().forEach {
-            if (it.getPosition() > maxDistance) {
-                maxDistance = it.getPosition()
-            }
+            updateMaxDistance(it)
         }
     }
 
-    private fun findWinnerCarNames(){
+    private fun updateMaxDistance(car: Car) {
+        if (car.getPosition() > maxDistance) {
+            maxDistance = car.getPosition()
+        }
+    }
+
+    private fun setWinnerCarNames() {
         circuit.getCarList().forEach {
-            if (it.isWinnerCar(maxDistance)) {
-                winnerCarNames.add(it.getName())
-            }
+            addWinnerCar(it)
+        }
+    }
+
+    private fun addWinnerCar(car: Car) {
+        if (car.isWinnerCar(maxDistance)) {
+            winningCarNames.add(car.getName())
         }
     }
 }

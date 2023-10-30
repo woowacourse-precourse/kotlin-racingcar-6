@@ -33,7 +33,7 @@ class RacingCarGame {
 
     private fun displayGameOutcome() {
         val referee = Referee(circuit)
-        val winnerCarNames = referee.getWinnerCarNames()
+        val winnerCarNames = referee.getWinningCarNames()
         outputManager.printWinners(winnerCarNames)
     }
 
