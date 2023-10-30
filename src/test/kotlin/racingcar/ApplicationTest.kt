@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class ApplicationTest : NsTest() {
     @Test
@@ -19,10 +21,27 @@ class ApplicationTest : NsTest() {
         )
     }
 
+
+
     @Test
-    fun `이름에 대한 예외 처리`() {
+    fun `이름 5글자 초과에 대한 예외 처리`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
+
+    @Test
+    fun `중복 이름에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi", "1") }
+        }
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["1", "!@#", "Audi"])
+    fun `영어 소문자가 아닌 이름에 대한 예외 처리`(carName: String) {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException(carName, "1") }
         }
     }
 
