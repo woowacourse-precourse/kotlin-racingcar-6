@@ -32,7 +32,7 @@ class RacingGame(val cars: List<RacingCar>) {
 fun main() {
     // 사용자는 자동차 이름 입력하기
     val carName = carNames()
-    val cars = carNames().map { RacingCar(it) }
+    val cars = carName.map { RacingCar(it) }
 
     // 사용자는 레이싱할 횟수 입력하기
     val laps = lapCounts()
