@@ -76,6 +76,6 @@ class RacingCarTest {
     fun `무작위 값 구하기`() {
         val randomNumber = racingCarController.generateRandomNumber()
 
-        assertThat(randomNumber).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(9)
+        assertThat(randomNumber).isBetween(1, 9)
     }
 }
