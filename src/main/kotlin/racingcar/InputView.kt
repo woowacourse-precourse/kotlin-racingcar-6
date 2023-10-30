@@ -20,7 +20,7 @@ object InputView {
         return inputCarNames
     }
 
-    private fun stringToList(input: String): List<String> = input.split(",").map { it.trim() }
+    fun stringToList(input: String): List<String> = input.split(",").map { it.trim() }
 
     fun validateInputCarNames(inputCarNames: List<String>) {
         checkCarNamesNull(inputCarNames)
