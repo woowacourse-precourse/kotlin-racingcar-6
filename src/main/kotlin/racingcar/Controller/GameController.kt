@@ -2,6 +2,7 @@ package racingcar.Controller
 
 import racingcar.Model.RaceState
 import racingcar.Model.UserInputCheck
+import racingcar.Model.WinnerSelect
 import racingcar.View.UserInput
 import racingcar.View.RaceViewer
 
@@ -31,8 +32,8 @@ class GameController {
             RaceViewer().roundResultViewer(entireRaceStatus)
         }
 
-        var collectScore=RaceState().compareScore(entireRaceStatus)
-        raceWinner=RaceState().raceWinnerSelect(collectScore)
+        var collectScore=WinnerSelect().compareScore(entireRaceStatus)
+        raceWinner=WinnerSelect().raceWinnerSelect(collectScore)
         RaceViewer().winnerViewer(raceWinner)
 
     }
