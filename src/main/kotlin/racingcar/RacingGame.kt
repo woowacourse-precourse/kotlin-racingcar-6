@@ -35,7 +35,22 @@ class RacingGame(
             printer.printOutCarsMoveResult(carsList = carsList)
             attempts--
         }
+        chooseWinners(carsList = carsList)
     }
+
+    private fun chooseWinners(carsList: List<Car>) {
+
+        val maxNumber = carsList.maxByOrNull { it.getHowGoForward() }
+        requireNotNull(maxNumber)
+        val maxHowGoForwardCars = carsList.filter { it.getHowGoForward() == maxNumber.getHowGoForward() }
+        if (maxHowGoForwardCars.size > 1) {
+            val names = maxHowGoForwardCars.joinToString(",") { it.getCarName() }
+            printer.printOutRacingWinner(names)
+        } else {
+            printer.printOutRacingWinner(maxHowGoForwardCars[0].getCarName())
+        }
+    }
+
 
     private fun requireValidCarsInput(carsInputString: String, carsList: List<Car>) {
         require(carsInputString.count { it == ',' } == carsList.size - 1)
