@@ -4,6 +4,7 @@ import racingcar.model.Car
 import racingcar.util.Constants.ATTEMPT_NUMBER
 import racingcar.util.Constants.CAR_RACE_NAME
 import racingcar.util.Constants.RESULT
+import racingcar.util.Constants.WINNER
 import racingcar.util.Validation.validateName
 import racingcar.util.Validation.validateNum
 import racingcar.view.CarRaceView
@@ -35,7 +36,7 @@ class CarRaceController(val view: CarRaceView) {
         }
 
         for (idx in 0 until num.toInt()) {
-            for(car in cars){
+            for (car in cars) {
                 car.goOrStop()
             }
 
@@ -47,14 +48,32 @@ class CarRaceController(val view: CarRaceView) {
         }
 
         //최종 우승자 출력
-
+        val winner = choiceWinner(cars)
+        print(WINNER)
+        println(changeListToStr(winner))
 
     }
-    fun showCars(position : Int) : String{
+
+    fun showCars(position: Int): String {
         val sb = StringBuilder()
-        repeat(position){
+        repeat(position) {
             sb.append("-")
         }
         return sb.toString()
+    }
+
+    fun choiceWinner(cars: List<Car>): List<String> {
+        val winner = mutableListOf<String>()
+
+        val firstCar = cars.maxBy { it.position }
+        for (car in cars) {
+            if (firstCar.position == car.position) winner.add(car.name)
+        }
+
+        return winner
+    }
+
+    fun changeListToStr(list: List<String>): String {
+        return list.joinToString (", ")
     }
 }
