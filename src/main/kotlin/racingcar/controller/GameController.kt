@@ -26,7 +26,6 @@ class GameController (private val view: ScreenView){
             val car = Car(name = carName)
             cars.add(car)
         }
-
         return cars
     }
 }

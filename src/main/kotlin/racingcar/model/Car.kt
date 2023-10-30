@@ -2,7 +2,7 @@ package racingcar.model
 
 class Car (name: String){
     private val name: String
-    private var distance: Int = 0
+    var distance: Int = 0
 
     init {
         require(name.length in 1..5) { "5자 이하의 이름이 아닙니다." }
