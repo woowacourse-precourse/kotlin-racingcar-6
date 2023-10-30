@@ -9,6 +9,8 @@ class Printer {
 
     fun printOutResultInformationText() = println(Message.RESULT_INFORMATION_TEXT)
 
+    fun printOutRacingWinner(winners: String) = println("최종 우승자 : ${winners}")
+
     fun printOutCarsMoveResult(carsList: List<Car>) {
         carsList.forEach { car ->
             println("${car.getCarName()} : ${getForwardLineOfCar(car)}")
