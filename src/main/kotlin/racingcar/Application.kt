@@ -17,6 +17,18 @@ fun parseCarName(): List<raceCar> {
     return Console.readLine().split(",").map { raceCar(it.trim()) }
 }
 
+fun isNonnegativeInt(target: String): Boolean {
+    return (target.size >= 1) and (target.all { it.isDigit() })
+}
+
+fun parseTurnCount(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+    val turnCountString = Console.readLine()
+    require(isNonnegativeInt(turnCountString), "Invalid Turn Count.")
+    return turnCountString.toInt()
+}
+
 fun main() {
     val raceCars = parseCarName()
+    val turnCount = parseTurnCount()
 }
