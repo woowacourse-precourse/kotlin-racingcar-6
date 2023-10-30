@@ -1,7 +1,7 @@
 package racingcar
 
 object Converter {
-    fun convertStringToMap(input: String) = input.split(",").map { it.trim() }.associateWith { 0 }
+    fun convertStringToCars(input: String): List<Car> = input.split(",").map { Car(it.trim()) }
 
     fun convertStringToInt(input: String) = input.toInt()
 }

@@ -1,6 +1,6 @@
 package racingcar
 
-import racingcar.Converter.convertStringToMap
+import racingcar.Converter.convertStringToCars
 import racingcar.ErrorMessage.CAR_MINIMUM_COUNT_ERROR
 import racingcar.ErrorMessage.CAR_NAME_LENGTH_OVER_ERROR
 import racingcar.ErrorMessage.DUPLICATE_CAR_NAME_ERROR
@@ -11,38 +11,39 @@ object RacingCarInput {
     private const val MIN_CAR_COUNT = 1
     private const val MAX_CAR_NAME_LENGTH = 5
 
-    fun getCarNameMap(): Map<String, Int> {
+
+    fun getCarNames(): List<Car> {
         println(INPUT_RACING_CAR_NAME_MESSAGE)
         val userInput = getUserInput()
         return runCatching {
-            convertStringToMap(userInput).apply { validate(this) }
+            convertStringToCars(userInput).apply { validate(this) }
         }.getOrElse { throwable ->
             throw IllegalArgumentException(throwable)
         }
     }
 
-    private fun validate(carNameMap: Map<String, Int>) {
-        validateCarNameDuplicate(carNameMap)
-        validateMinimumCarCount(carNameMap)
-        validateCarNameLength(carNameMap)
+    private fun validate(cars: List<Car>) {
+        validateCarNameDuplicate(cars)
+        validateMinimumCarCount(cars)
+        validateCarNameLength(cars)
     }
 
-    private fun validateCarNameDuplicate(carNameMap: Map<String, Int>) {
-        val carNames = carNameMap.keys
+    private fun validateCarNameDuplicate(cars: List<Car>) {
+        val carNames = cars.map { it.name }
         if (carNames.size != carNames.distinct().size) {
             throw IllegalArgumentException(DUPLICATE_CAR_NAME_ERROR)
         }
     }
 
-    private fun validateMinimumCarCount(carNameMap: Map<String, Int>) {
-        if (carNameMap.size <= MIN_CAR_COUNT) {
+    private fun validateMinimumCarCount(cars: List<Car>) {
+        if (cars.size <= MIN_CAR_COUNT) {
             throw IllegalArgumentException(CAR_MINIMUM_COUNT_ERROR)
         }
     }
 
-    private fun validateCarNameLength(carNameMap: Map<String, Int>) {
-        for (carName in carNameMap.keys) {
-            validateLength(carName)
+    private fun validateCarNameLength(cars: List<Car>) {
+        for (car in cars) {
+            validateLength(car.name)
         }
     }
 
@@ -51,4 +52,5 @@ object RacingCarInput {
             throw IllegalArgumentException(CAR_NAME_LENGTH_OVER_ERROR)
         }
     }
+
 }
