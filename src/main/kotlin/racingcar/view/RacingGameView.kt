@@ -18,6 +18,7 @@ class RacingGameView {
         output.printInputGuidePlayCount()
         val playCount = input.inputPlayCount()
         inputValidator.validatePlayCount(playCount = playCount)
+        output.printMessage("") // 예시와 동일하게 출력되기 위해 작성
         return playCount
     }
 
