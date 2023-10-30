@@ -66,27 +66,10 @@ class RacingCarController(private val inputView: InputView, private val outputVi
             throw IllegalArgumentException("0은 입력될 수 없습니다.")
     }
 
-    private fun generateRandomNumber(): Int {
-        return Randoms.pickNumberInRange(0, 9)
-    }
-
-    private fun chooseActionFromRandomNumber(cars: Cars) {
-        val randomNumber = generateRandomNumber()
-        if (randomNumber >= 4){
-            cars.carPosition++
-        }
-    }
-
-    private fun moveCarsBasedOnRandomConditions(cars: List<Cars>) {
-        cars.forEach {
-            chooseActionFromRandomNumber(it)
-        }
-    }
-
     private fun tryRacing(cars: List<Cars>, tryCount: Int) {
         outputView.printHeadResult()
         for (idx in 1..tryCount) {
-            moveCarsBasedOnRandomConditions(cars)
+            cars.map { it.chooseActionFromRandomNumber() }
             outputView.printScore(cars)
         }
     }
