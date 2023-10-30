@@ -4,13 +4,13 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.Test
-import racingcar.Car
+import racingcar.game.Car
 import racingcar.utils.TypeConverter.stringToInt
 import racingcar.utils.TypeConverter.stringToCarList
 import racingcar.utils.Validator.validateInputCarNames
 import racingcar.utils.Validator.validateInputRoundCount
 
-class InputTest {
+class ValidatorTest {
     @Test
     fun `자동차 목록 입력 - 정상 입력`() {
         val input = stringToCarList("jun,pobi,wow")
