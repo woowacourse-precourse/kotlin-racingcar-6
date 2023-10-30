@@ -1,6 +1,7 @@
 package racingcar.model
 
 class ValidateRacingCount {
+
     private val multiRacingGame = MultiRacingGame()
 
     fun validateTryCount(tryCount: String, multiCarName: List<String?>) {

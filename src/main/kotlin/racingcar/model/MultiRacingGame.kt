@@ -4,6 +4,7 @@ import racingcar.randomUtils
 import racingcar.views.OutputView
 
 class MultiRacingGame() {
+
     private val outputView = OutputView()
 
     fun multiRacingGame(tryCount: Int, multiCarName: List<String?>) {

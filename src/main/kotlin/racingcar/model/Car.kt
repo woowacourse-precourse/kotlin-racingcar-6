@@ -4,7 +4,9 @@ import racingcar.inputView
 import racingcar.validateCarName
 
 class Car {
+
     private val soloRacingGame = SoloRacingGame()
+
     fun getCarName() {
         val inputCarName = inputView.inputView()
         validateCarName.validateInputBlank(inputCarName)

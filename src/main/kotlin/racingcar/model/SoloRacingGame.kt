@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 import racingcar.views.OutputView
 
 class SoloRacingGame {
+
     private val outputView = OutputView()
 
     fun soloCarGame(inputCarName: String) {
