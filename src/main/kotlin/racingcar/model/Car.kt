@@ -1,7 +1,7 @@
 package racingcar.model
 
 class Car (name: String){
-    private val name: String
+    val name: String
     var distance: Int = 0
 
     init {

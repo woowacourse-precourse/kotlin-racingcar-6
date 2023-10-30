@@ -3,6 +3,7 @@ package racingcar.controller
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.Car
 import racingcar.model.Cars
+import racingcar.model.Winners
 import racingcar.view.ScreenView
 
 
@@ -27,5 +28,14 @@ class GameController (private val view: ScreenView){
             cars.add(car)
         }
         return cars
+    }
+
+    fun getWinners(cars: Cars) {
+        val carWithMaxDistance = cars.withMaxDistance()
+
+        if (carWithMaxDistance != null) {
+            val winners = Winners(mutableListOf(carWithMaxDistance))
+            println(winners)
+        }
     }
 }
