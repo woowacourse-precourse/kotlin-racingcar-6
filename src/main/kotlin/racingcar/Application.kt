@@ -4,62 +4,63 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    gameStart()
+    val carRacingGame = CarRacingGame()
+    carRacingGame.gameStart()
 }
 
-class Car {
-    var name: String = ""
-    var movementCount: Int = 0
-}
+data class Car (
+    var name: String,
+    var movementCount: Int
+)
 
 class GameStatus {
     var listOfCar = mutableListOf<Car>()
     var countOfTrial: Int = 0
-}
 
-fun gameStart() {
-    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    val inputNames = Console.readLine()
-    val listOfCarName = checkValidName(inputNames)
-
-    println("시도할 횟수는 몇 회인가요?")
-    val inputCount = Console.readLine()
-    val countOfTrial = checkValidNumber(inputCount)
-
-    startRace(listOfCarName, countOfTrial)
-}
-
-fun startRace(listOfCarName: List<String>, count: Int) {
-    var carMovementCount = mutableListOf<Int>()
-    println("실행 결과")
-    for (i in 0..count) {
-        carMovementCount += selectRandomNumber(listOfCarName)
+    fun initStatus(listOfNames: List<String>, count: Int) {
+        addListOfCar(listOfNames)
+        countOfTrial = count
     }
-}
-
-fun selectRandomNumber(listOfCarName: List<String>): List<Int> {
-    var isCarMoved = mutableListOf<Int>(listOfCarName.size)
-    for (i in 0..listOfCarName.size) {
-        val randomNumber = Randoms.pickNumberInRange(0,9)
-        if (randomNumber >= 4) {
-            isCarMoved[i]++
+    fun addListOfCar(listOfNames: List<String>) {
+        for (name in listOfNames) {
+            val newCar = Car(name, 0)
+            listOfCar.add(newCar)
         }
     }
-    return isCarMoved
 }
 
-fun checkValidName(stringOfNames: String): List<String> {
-    val listOfCarName = stringOfNames.split(",")
-    for (name in listOfCarName) {
-        if (name.length > 5)
-            throw IllegalArgumentException("5자 이상인 이름 입력 발생")
+const val INPUT_CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+const val INPUT_TRIAL_NUMBER_MESSAGE = "시도할 횟수는 몇 회인가요?"
+class CarRacingGame {
+    private val gameStatus = GameStatus()
+
+    fun gameStart() {
+        println(INPUT_CAR_NAME_MESSAGE)
+        val inputNames = Console.readLine()
+        val listOfCarName = checkValidName(inputNames)
+
+        println(INPUT_TRIAL_NUMBER_MESSAGE)
+        val inputCount = Console.readLine()
+        val validCount = checkValidNumber(inputCount)
+
+        gameStatus.initStatus(listOfCarName, validCount)
+        //startRace(listOfCarName, countOfTrial)
     }
-    return listOfCarName
+
+    fun checkValidName(stringOfNames: String): List<String> {
+        val listOfCarName = stringOfNames.split(",")
+        for (name in listOfCarName) {
+            if (name.length > 5)
+                throw IllegalArgumentException("5자 이상인 이름 입력 발생")
+        }
+        return listOfCarName
+    }
+
+    fun checkValidNumber(countString: String): Int {
+        if (countString.toIntOrNull() == null) {
+            throw IllegalArgumentException("숫자가 아닌 입력 발생")
+        }
+        return countString.toInt()
+    }
 }
 
-fun checkValidNumber(countString: String): Int {
-    if (countString.toIntOrNull() == null) {
-        throw IllegalArgumentException("숫자가 아닌 횟수 입력 발생")
-    }
-    return countString.toInt()
-}
