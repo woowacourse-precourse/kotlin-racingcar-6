@@ -1,11 +1,22 @@
 package racingcar.domain
 
-class Winner {
-//    fun getWinner():Car{
-//        return Car()
-//    }
-//
-//    override fun toString(): String {
-//        return ""
-//    }
+class Winner(var cars:MutableList<Car>) {
+
+    fun getWinners():MutableList<Car>{
+        var winners:MutableList<Car>
+        var topCount = 0
+
+        for(car in cars){
+            if(car.count >= topCount){
+                topCount = car.count
+            }
+        }
+
+        winners = cars.filter{ it.count == topCount}.toMutableList()
+        return winners
+    }
+
+    override fun toString(): String {
+        return "최종 우승자 : ${getWinners().joinToString(", ")}"
+    }
 }

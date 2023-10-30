@@ -10,8 +10,11 @@ class Car(var name:String) {
         }
     }
 
+    fun print(){
+        println("$name : ${"-".repeat(count)}")
+    }
 
     override fun toString():String{
-        return "$name : ${"-".repeat(count)}"
+        return "$name"
     }
 }
