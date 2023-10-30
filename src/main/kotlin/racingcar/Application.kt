@@ -3,6 +3,7 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.ValidateCarName
 import racingcar.model.ValidateRacingCount
+import racingcar.utils.RandomUtils
 import racingcar.views.InputView
 import racingcar.views.OutputView
 
@@ -10,7 +11,7 @@ private val inputView = InputView()
 private val outputView = OutputView()
 private val validateCarName = ValidateCarName()
 private val validateRacingCount = ValidateRacingCount()
-
+private val randomUtils = RandomUtils()
 fun main() {
     inputView.gameStartMessage()
 
@@ -80,14 +81,10 @@ fun racingEachCar(multiCarName: List<String?>) {
 }
 
 fun racingSingleCar(carName: String?) {
-    val randomNum = getRandomNum()
+    val randomNum = randomUtils.getRandom()
     if (checkPositiveForward(randomNum)) {
         scoreMap[carName!!] = scoreMap.getOrDefault(carName, 0) + 1
     }
-}
-
-fun getRandomNum(): Int {
-    return Randoms.pickNumberInRange(0, 9)
 }
 
 fun checkPositiveForward(randomNum: Int): Boolean {
