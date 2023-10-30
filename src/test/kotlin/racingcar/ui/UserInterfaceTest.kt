@@ -16,6 +16,6 @@ class UserInterfaceTest {
 
     @Test
     fun `자동차 이름이 5자 이하인지 검사`() {
-        assertThrows<IllegalArgumentException> { Validator.checkNamesLength(inputNames)}
+        assertThrows<IllegalArgumentException> { InputValidator.checkNamesLength(inputNames)}
     }
 }
