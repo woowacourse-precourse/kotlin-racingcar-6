@@ -10,6 +10,12 @@ fun main() {
     val numberOfMove = Console.readLine()
     checkNumberOfMove(numberOfMove)
 
+    val cars = arrayListOf<Car>()
+    for (car in splitCarList) {
+        cars.add(Car(car))
+    }
+
+
 
 }
 
