@@ -3,8 +3,11 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 fun main() {
-    askCarNames()
-    askNumber()
+
+    val moveCars = MoveCars(askCarNames(), askNumber())
+    moveCars.randomNumber()
+
+
 }
 
 fun askCarNames(): List<String> {
