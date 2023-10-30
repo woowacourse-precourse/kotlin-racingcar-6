@@ -1,6 +1,5 @@
 package racingcar
 import camp.nextstep.edu.missionutils.Randoms
-
 class RacingCarGame(private val carNames: List<String>) {
 
     private val carPositions = initializeCarPositions()
