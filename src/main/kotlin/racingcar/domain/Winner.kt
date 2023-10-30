@@ -7,7 +7,7 @@ class Winner {
 
         racingResult.forEach { racingRound ->
             val isMaxMoveCountMultiple = racingRound.value.findMaxMoveCount(moveMaxCount)
-            if (isMaxMoveCountMultiple) winner.append(racingRound.key).append(SPACE_COMMA)
+            if (isMaxMoveCountMultiple) winner.append("${racingRound.key}$SPACE_COMMA")
         }
         return winner.toString().removeSuffix(SPACE_COMMA)
     }

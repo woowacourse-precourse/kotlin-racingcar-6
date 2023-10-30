@@ -13,7 +13,7 @@ class CarRace(
     fun racingResult(): String {
         repeat(attemptNumber) { setRacingRound(raceMoveResult) }
 
-        return raceResult.raceResult(
+        return raceResult.formattedRacingResult(
             racingMoveResult = raceMoveResult,
             attemptCount = attemptNumber,
             carNames = carNames

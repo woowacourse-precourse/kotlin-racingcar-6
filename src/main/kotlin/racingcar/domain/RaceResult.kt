@@ -1,13 +1,13 @@
 package racingcar.domain
 
 class RaceResult(private val winner: Winner = Winner()) {
-    fun raceResult(
+    fun formattedRacingResult(
         racingMoveResult: Map<String, ArrayList<Int>>,
         carNames: List<String>,
         attemptCount: Int,
     ): String {
-        val formattedRacingResult = StringBuilder()
         val racingResult = racingMoveResult.mapValues { (_, moveCount) -> moveCount.sumMoveCount() }
+        val formattedRacingResult = StringBuilder()
 
         repeat(attemptCount) { count ->
             val racingRound = carNames.convertRacingRound(
