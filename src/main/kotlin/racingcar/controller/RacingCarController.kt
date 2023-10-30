@@ -14,5 +14,9 @@ class RacingCarController {
         val input = Console.readLine()
         val carNames = input.split(",")
         model.setCarNames(carNames)
+
+        view.inputAttemptsNumber()
+        val attemptsNumber = Console.readLine()
+        model.setAttemptsNumber(attemptsNumber)
     }
 }
