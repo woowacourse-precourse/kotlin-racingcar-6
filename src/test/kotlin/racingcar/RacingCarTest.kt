@@ -20,12 +20,12 @@ class RacingCarTest {
     private val racingCarController = RacingCarController(inputView, outputView)
 
     @BeforeEach
-    fun before() {
+    fun init() {
         System.setOut(PrintStream(outputStream))
     }
 
     @AfterEach
-    fun after() {
+    fun tearDown() {
         System.setOut(System.out)
     }
 
@@ -81,7 +81,9 @@ class RacingCarTest {
 
     @Test
     fun `자동차 리스트 만들기`() {
-        val racingCarList = racingCarController.makeRacingCarList(listOf("pobi", "woni"))
+        val racingCarNameList = listOf("pobi", "woni")
+
+        val racingCarList = racingCarController.makeRacingCarList(racingCarNameList)
 
         assertThat(racingCarList).contains(RacingCar("woni"), RacingCar("pobi"))
         assertThat(racingCarList).containsExactly(RacingCar("pobi"), RacingCar("woni"))
@@ -89,7 +91,9 @@ class RacingCarTest {
 
     @Test
     fun `무작위 값 구하기`() {
-        val randomNumber = racingCarController.generateRandomNumber()
+        val randomNumber: Int
+
+        randomNumber = racingCarController.generateRandomNumber()
 
         assertThat(randomNumber).isBetween(1, 9)
     }
@@ -121,6 +125,14 @@ class RacingCarTest {
         assertThat(outputStream.toString().trim()).isEqualTo("pobi : $MOVE")
     }
 
+    @Test
+    fun `정지 실행 결과 출력하기`() {
+        val racingCar = RacingCar("pobi", 0)
+
+        outputView.printRacingCarMove(racingCar)
+
+        assertThat(outputStream.toString().trim()).isEqualTo("pobi :")
+    }
 
     companion object {
         private const val MOVING_FORWARD = 4
