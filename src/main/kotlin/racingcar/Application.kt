@@ -28,3 +28,10 @@ fun inputNumberOfMoves(): Int { //이동 횟수 입력
 
     return numberOfMoves
 }
+fun move(car: Car) { //자동차 0~9랜덤 추출 후 4이상이면 포지션 증가
+    val randomValue = Randoms.pickNumberInRange(0, 9)
+
+    if (randomValue >= 4) {
+        car.position++
+    }
+}
