@@ -1,10 +1,11 @@
 package racingcar.car
 
+import racingcar.generator.NumberGenerator
 import racingcar.generator.RandomNumberGenerator
 
 abstract class Car(
     val name: String = "",
-    private val scoreGenerator: RandomNumberGenerator = RandomNumberGenerator()
+    scoreGenerator: NumberGenerator = RandomNumberGenerator()
 ) {
     val score = scoreGenerator.generate()
     var position = ""

@@ -2,8 +2,8 @@ package racingcar.generator
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class RandomNumberGenerator {
-    fun generate(): Int = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
+class RandomNumberGenerator : NumberGenerator {
+    override fun generate(): Int = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
 
     companion object {
         const val MIN_NUMBER = 1
