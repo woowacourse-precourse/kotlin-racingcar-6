@@ -7,4 +7,9 @@ class Car(
 ) {
     var location: Int = initLocation
         private set
+
+
+    fun move() {
+        location = moveStrategy.calculateLocation(speed, location)
+    }
 }
