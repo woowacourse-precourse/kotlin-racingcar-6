@@ -6,12 +6,20 @@ class GameResultGenerator(private val cars: List<Car>) {
 
     fun result() {
         moveCars()
+        printCarStatus()
     }
 
     private fun moveCars() {
         cars.forEach {
             if (canMove()) it.scoreSum++
         }
+    }
+
+    private fun printCarStatus() {
+        cars.forEach {
+            println("${it.name} : ${"-".repeat(it.scoreSum)}")
+        }
+        println()
     }
 
     private fun getGeneratedRandomNumber() = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
