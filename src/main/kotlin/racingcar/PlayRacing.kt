@@ -18,7 +18,6 @@ class PlayRacing(
         val attempt = inputAttempt().toInt()
 
         println(GAME_RESULT_COMMENT)
-
         val winner = racingProcess(racingCarList, attempt)
 
         println(winner)
@@ -30,19 +29,12 @@ class PlayRacing(
         repeat(attempt) {
             racingCarState.moveRacingCars()
             val movementResult = racingCarState.getMovementResult()
-            printMovementResult(movementResult)
+            println(movementResult)
+            println()
         }
 
         return racingCarState.getWinner()
     }
-
-    private fun printMovementResult(movementResult: List<String>) {
-        movementResult.forEach { line ->
-            println(line)
-        }
-        println()
-    }
-
 
     private fun inputRacingCarsName(): List<Car> {
         println(ENTER_CAR_NAME_COMMENT)
