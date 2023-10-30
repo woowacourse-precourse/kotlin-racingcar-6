@@ -4,6 +4,8 @@ class CarValidation {
     fun checkNameInputValidation(input: List<String>) {
         isInputWithinFiveChar(input)
         hasWhiteSpaceAtEdge(input)
+        checkIsStartWithComma(input)
+        checkIsEndWithComma(input)
         checkAtLeastTwoNames(input)
     }
 
@@ -25,5 +27,16 @@ class CarValidation {
         }
     }
 
+    private fun checkIsStartWithComma(list: List<String>) {
+        if (list.first().isEmpty()) {
+            throw IllegalArgumentException("처음에 콤마가 추가되었습니다. 콤마로 입력을 시작해서는 안됩니다.")
+        }
+    }
+
+    private fun checkIsEndWithComma(list: List<String>) {
+        if (list.last().isEmpty()) {
+            throw IllegalArgumentException("콤마로 입력이 끝나서는 안됩니다.")
+        }
+    }
 
 }
