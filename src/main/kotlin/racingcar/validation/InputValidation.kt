@@ -1,5 +1,6 @@
 package racingcar.validation
 
+import racingcar.util.INVALID_ATTEMPTS_NUMBER_TYPE
 import racingcar.util.INVALID_CAR_NAME_LENGTH
 import racingcar.util.MAX_CAR_NAME_LENGTH
 import racingcar.util.MIN_CAR_NAME_LENGTH
@@ -17,6 +18,15 @@ class InputValidation {
     private fun validateCarNameLength(name: String) {
         if (name.length !in MIN_CAR_NAME_LENGTH..MAX_CAR_NAME_LENGTH) {
             throw IllegalArgumentException(INVALID_CAR_NAME_LENGTH)
+        }
+    }
+
+    fun validateAttemptsNumber(attempt: String): Int {
+        val attemptsNumber = attempt.toIntOrNull()
+        if (attemptsNumber != null) {
+            return attemptsNumber
+        } else {
+            throw IllegalArgumentException(INVALID_ATTEMPTS_NUMBER_TYPE)
         }
     }
 }

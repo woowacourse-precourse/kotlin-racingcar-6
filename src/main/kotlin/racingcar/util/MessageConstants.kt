@@ -6,3 +6,5 @@ const val INPUT_ATTEMPTS_NUMBER_MESSAGE = "시도할 횟수는 몇 회인가요?
 const val MIN_CAR_NAME_LENGTH: Int = 1
 const val MAX_CAR_NAME_LENGTH: Int = 5
 const val INVALID_CAR_NAME_LENGTH = "자동차의 이름은 5글자를 초과할 수 없습니다."
+
+const val INVALID_ATTEMPTS_NUMBER_TYPE = "시도 횟수는 숫자로 입력되어야 합니다."
