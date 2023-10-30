@@ -12,4 +12,10 @@ class Validation(private val player: Player) {
         }
     }
 
+    fun checkContainsSpace() {
+        if (inputCarsName.contains(" ")) {
+            throw IllegalArgumentException("공백은 들어갈 수 없습니다.")
+        }
+    }
+
 }
