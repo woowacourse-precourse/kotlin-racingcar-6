@@ -1,20 +1,43 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 import racingcar.domain.Car
 import racingcar.domain.Winner
 
-fun main() {
-    var hyundai = Car("현대")
-    var tesla = Car("테슬라")
-    var kia = Car("기아")
-    hyundai.move(5)
-    tesla.move(3)
-    kia.move(5)
 
-    hyundai.move(5)
-    tesla.move(3)
-    kia.move(5)
-    var winners = Winner(mutableListOf(hyundai,tesla,kia))
-    winners.getWinners()
-    println(winners.toString())
+fun main() {
+    var repeat:Int
+
+    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+
+    var carNames = Console.readLine().split(",").toMutableList()
+
+    var cars = mutableListOf<Car>()
+    for(carName in carNames){
+        if(carName.length > 5){
+            throw IllegalArgumentException()
+        }
+        cars.add(Car(carName))
+    }
+
+    println("시도할 회수는 몇 회인가요?")
+    try{
+        repeat = Console.readLine().toInt()
+    }catch (e:IllegalArgumentException){
+        throw e
+    }
+
+
+    println()
+
+    for(i in 0..<repeat){
+        for(car in cars){
+            car.move(Randoms.pickNumberInRange(0,9))
+            car.print()
+        }
+        println()
+    }
+    var winner = Winner(cars)
+    winner.print()
 }

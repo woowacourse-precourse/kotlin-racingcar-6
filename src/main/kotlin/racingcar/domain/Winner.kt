@@ -16,7 +16,7 @@ class Winner(var cars:MutableList<Car>) {
         return winners
     }
 
-    override fun toString(): String {
-        return "최종 우승자 : ${getWinners().joinToString(", ")}"
+    fun print(){
+        println("최종 우승자 : ${getWinners().joinToString(", ")}")
     }
 }
