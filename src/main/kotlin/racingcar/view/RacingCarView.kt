@@ -7,6 +7,7 @@ import racingcar.utils.inputHandler
 class RacingCarView {
     fun getUserInputForCarName(): String {
         println(Constants.GAME_START_MESSAGE)
+
         return inputHandler()
     }
 
@@ -22,7 +23,7 @@ class RacingCarView {
     fun printGameResult(carList: List<Car>) {
         for (i in carList) {
             print("${i.getCarName()} : ")
-            print("${Constants.STEP_SYMBOL}".repeat(i.getForwardCount()))
+            println("${Constants.STEP_SYMBOL}".repeat(i.getForwardCount()))
         }
     }
 
