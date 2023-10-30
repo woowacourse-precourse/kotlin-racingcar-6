@@ -3,6 +3,7 @@ package racingcar.model
 import racingcar.multiRacingGame
 
 class ValidateRacingCount {
+    private val multiRacingGame = MultiRacingGame()
 
     fun validateTryCount(tryCount: String, multiCarName: List<String?>) {
         when (true) {
@@ -12,7 +13,7 @@ class ValidateRacingCount {
 
             validateNotInRange(tryCount) -> throw IllegalArgumentException("시도할 횟수는 1부터 10 사이로만 입력 가능합니다.")
 
-            else -> multiRacingGame(tryCount.toInt(), multiCarName)
+            else -> multiRacingGame.multiRacingGame(tryCount.toInt(), multiCarName)
         }
     }
 
