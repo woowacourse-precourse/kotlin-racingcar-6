@@ -3,14 +3,14 @@ package racingcar
 class Racer (
     var racerName: MutableList<String> = mutableListOf(),
     var moveForward: MutableList<Int> = mutableListOf(),
-    var playTime: Int = 0
+    var playTime: Int = INITIALIZATION
 ) {
     fun updateRacerName(racerName:MutableList<String>) {
         this.racerName = racerName
     }
 
     fun initializationMoveForward() {
-        this.moveForward = MutableList(racerName.size) { 0 }
+        this.moveForward = MutableList(racerName.size) { INITIALIZATION }
     }
 
     fun updateMoveForward(moveForward: RaceMove) {

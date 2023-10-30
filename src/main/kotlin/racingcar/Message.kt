@@ -5,7 +5,7 @@ enum class Message (val messageText: String){
     RequestRacerName("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)"),
     RequestPlayTime("시도할 횟수는 몇 회인가요?"),
 
-    /* 출력 메세지 */
+    /* 사전 메세지 */
     ResultText("실행 결과"),
 
     /* 에러 메세지 */

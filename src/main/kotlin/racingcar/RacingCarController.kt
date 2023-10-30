@@ -8,7 +8,7 @@ class RacingCarController(private val view: RacingCarView, private val model: Ra
         enterPlayTime()
         initializationMoveForward()
         requestPrintResultText()
-        for(sequence in 0 until model.racerCrew.playTime) {
+        for(sequence in INITIALIZATION until model.racerCrew.playTime) {
             judgeRace()
             printRace()
         }

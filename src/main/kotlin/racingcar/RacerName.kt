@@ -7,7 +7,7 @@ class RacerName(private val racerCrew: String = "") {
         return getVerifyRacerNames
     }
 
-    private fun blendRacerName(): MutableList<String>{
+    private fun blendRacerName(): MutableList<String> {
         val personalRacerName = racerCrew.split(",").map { it.trim() }
         return personalRacerName.toMutableList()
     }
@@ -20,20 +20,23 @@ class RacerName(private val racerCrew: String = "") {
 
     private fun checkRacerNameLength(getVerifyRacerNames: MutableList<String>): Boolean {
         for (name in getVerifyRacerNames) {
-            if (name.length > 5) throw IllegalArgumentException(Message.RacerNameLengthError.messageText)
+            if (RACER_NAME_LENGTH_MAXIMUM < name.length)
+                throw IllegalArgumentException(Message.RacerNameLengthError.messageText)
         }
         return true
     }
 
     private fun checkRacerNameBlank(getVerifyRacerNames: MutableList<String>): Boolean {
         for (name in getVerifyRacerNames) {
-            if (name.isBlank()) throw IllegalArgumentException(Message.RacerNameBlankError.messageText)
+            if (name.isBlank())
+                throw IllegalArgumentException(Message.RacerNameBlankError.messageText)
         }
         return true
     }
 
     private fun checkRacerTotalRange(getVerifyRacerNames: MutableList<String>): Boolean {
-        if(getVerifyRacerNames.size !in 1..10) throw IllegalArgumentException(Message.RacerNameRangeError.messageText)
+        if (getVerifyRacerNames.size !in RACER_MINIMUM..RACER_MAXIMUM)
+            throw IllegalArgumentException(Message.RacerNameRangeError.messageText)
         return true
     }
 }

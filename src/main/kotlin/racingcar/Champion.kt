@@ -7,7 +7,7 @@ class Champion(var championName: MutableList<String> = mutableListOf()) {
     }
 
     private fun getMaxDistance(racerCrew: Racer): Int {
-        var maxDistance = 0
+        var maxDistance = INITIALIZATION
         for (index in racerCrew.moveForward.indices) {
             maxDistance = compareMaxDistance(racerCrew, maxDistance, index)
         }
