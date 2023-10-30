@@ -22,7 +22,7 @@ class RacingGame {
         `try` = Try.of(inputTryCount())
 
         println()
-        println("실행 결과")
+        println(Output.RESULT)
 
         for (count in `try`.iterableTry()) {
             progressGameStep()
@@ -52,7 +52,13 @@ class RacingGame {
     }
 
     fun validateCarNameComma(carNames: String) {
-        require(!carNames.contains(",,") && !carNames.endsWith(",") && !carNames.startsWith(",")) { CarException.COMMA }
+        with(Delimiter.CAR.toString()) {
+            require(!carNames.contains(this.repeat(2)) &&
+                    !carNames.endsWith(this) &&
+                    !carNames.startsWith(this)) {
+                CarException.COMMA
+            }
+        }
     }
 
     fun validateCarNameDuplication(racingCars: List<Car>) {

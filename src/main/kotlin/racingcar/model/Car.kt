@@ -1,6 +1,7 @@
 package racingcar.model
 
 import racingcar.constants.CarException
+import racingcar.constants.Delimiter
 
 class Car private constructor(private val name: String) : Comparable<Car> {
     private val racingResult = StringBuilder()
@@ -11,7 +12,8 @@ class Car private constructor(private val name: String) : Comparable<Car> {
         forwardCount++
     }
 
-    fun getRacingResultString() = "$name : $racingResult"
+    // name : result
+    fun getRacingResultString() = "$name${Delimiter.RESULT}$racingResult"
 
     override fun compareTo(other: Car): Int {
         return other.forwardCount.compareTo(this.forwardCount)

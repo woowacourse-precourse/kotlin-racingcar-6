@@ -1,5 +1,7 @@
 package racingcar.io
 
+import racingcar.constants.Delimiter
+import racingcar.constants.Output
 import racingcar.model.Car
 
 fun printCarsResult(cars: List<Car>) {
@@ -8,5 +10,6 @@ fun printCarsResult(cars: List<Car>) {
 }
 
 fun printWinners(winners: List<Car>) {
-    print("최종 우승자 : ${winners.joinToString(", ")}")
+    print(Output.WINNER)
+    print(winners.joinToString(Delimiter.WINNER.toString()))
 }
