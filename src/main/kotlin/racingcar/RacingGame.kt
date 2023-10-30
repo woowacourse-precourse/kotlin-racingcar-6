@@ -55,10 +55,16 @@ class RacingGame {
     }
 
     fun validateCarNameComma(carNames: String) {
-        require(!carNames.contains(",,") && !carNames.endsWith(",") && !carNames.startsWith(",")) { EXCEPTION_COMMA }
+        require(!carNames.contains(",,") && !carNames.endsWith(",") && !carNames.startsWith(",")) { CarException.COMMA }
     }
 
     fun validateCarNameDuplication(racingCars: List<Car>) {
-        require(racingCars.size == racingCars.distinct().size) { EXCEPTION_DUPLICATION }
+        require(racingCars.size == racingCars.distinct().size) { CarException.DUPLICATION }
+    }
+
+    companion object {
+        private const val RANDOM_START_NUMBER = 0
+        private const val RANDOM_END_NUMBER = 9
+        private const val MOVING_MORE_NUMBER = 4
     }
 }

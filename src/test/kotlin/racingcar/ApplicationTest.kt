@@ -66,7 +66,7 @@ class ApplicationTest : NsTest() {
 
         assertThatThrownBy { Car.validateNameLength(case2) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(EXCEPTION_LENGTH)
+            .hasMessage(CarException.LENGTH.toString())
     }
 
     @Test
@@ -82,11 +82,11 @@ class ApplicationTest : NsTest() {
 
         assertThatThrownBy { Car.validateNameLetter(case2) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(EXCEPTION_LETTER)
+            .hasMessage(CarException.LETTER.toString())
 
         assertThatThrownBy { Car.validateNameLetter(case3) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(EXCEPTION_LETTER)
+            .hasMessage(CarException.LETTER.toString())
     }
 
     @Test
@@ -98,7 +98,7 @@ class ApplicationTest : NsTest() {
         // when, then
         assertThatThrownBy { racingGame.validateCarNameComma(case) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(EXCEPTION_COMMA)
+            .hasMessage(CarException.COMMA.toString())
     }
 
     @Test
@@ -110,7 +110,7 @@ class ApplicationTest : NsTest() {
         // when, then
         assertThatThrownBy { racingGame.validateCarNameComma(case) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(EXCEPTION_COMMA)
+            .hasMessage(CarException.COMMA.toString())
     }
 
     @Test
@@ -122,7 +122,7 @@ class ApplicationTest : NsTest() {
         // when, then
         assertThatThrownBy { racingGame.validateCarNameComma(case) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(EXCEPTION_COMMA)
+            .hasMessage(CarException.COMMA.toString())
     }
 
     @Test
@@ -138,11 +138,11 @@ class ApplicationTest : NsTest() {
 
         assertThatThrownBy { Try.validateTryDigit(case2) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(EXCEPTION_DIGIT)
+            .hasMessage(TryException.DIGIT.toString())
 
         assertThatThrownBy { Try.validateTryDigit(case3) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(EXCEPTION_DIGIT)
+            .hasMessage(TryException.DIGIT.toString())
     }
 
     @Test
@@ -152,12 +152,12 @@ class ApplicationTest : NsTest() {
         val case2 = "2147483648"
 
         // when, then
-        assertThatCode { Try.validateTryIntMax(case1) }
+        assertThatCode { Try.validateTryMax(case1) }
             .doesNotThrowAnyException()
 
-        assertThatThrownBy { Try.validateTryIntMax(case2) }
+        assertThatThrownBy { Try.validateTryMax(case2) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(EXCEPTION_INT_MAX)
+            .hasMessage(TryException.MAX.toString())
     }
 
     @Test
@@ -168,16 +168,16 @@ class ApplicationTest : NsTest() {
         val case3 = -1
 
         // when, then
-        assertThatCode { Try.validateTryPositive(case1) }
+        assertThatCode { Try.validateTryMin(case1) }
             .doesNotThrowAnyException()
 
-        assertThatThrownBy { Try.validateTryPositive(case2) }
+        assertThatThrownBy { Try.validateTryMin(case2) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(EXCEPTION_POSITIVE)
+            .hasMessage(TryException.MIN.toString())
 
-        assertThatThrownBy { Try.validateTryPositive(case3) }
+        assertThatThrownBy { Try.validateTryMin(case3) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(EXCEPTION_POSITIVE)
+            .hasMessage(TryException.MIN.toString())
     }
 
     @Test
@@ -212,7 +212,7 @@ class ApplicationTest : NsTest() {
 
         assertThatThrownBy { racingGame.validateCarNameDuplication(case2) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(EXCEPTION_DUPLICATION)
+            .hasMessage(CarException.DUPLICATION.toString())
     }
 
     @Test

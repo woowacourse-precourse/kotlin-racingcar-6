@@ -1,8 +1,6 @@
 package racingcar.model
 
-import racingcar.constants.EXCEPTION_LENGTH
-import racingcar.constants.EXCEPTION_LETTER
-import racingcar.constants.FORWARD_CHARACTER
+import racingcar.constants.CarException
 
 class Car private constructor(val name: String) : Comparable<Car> {
     private val racingResult = StringBuilder()
@@ -30,6 +28,8 @@ class Car private constructor(val name: String) : Comparable<Car> {
     override fun toString() = name
 
     companion object {
+        const val FORWARD_CHARACTER = '-'
+
         fun of(name: String): Car {
             validateName(name)
             return Car(name)
@@ -41,11 +41,11 @@ class Car private constructor(val name: String) : Comparable<Car> {
         }
 
         fun validateNameLength(name: String) {
-            require(name.length in 1..5) { EXCEPTION_LENGTH }
+            require(name.length in 1..5) { CarException.LENGTH }
         }
 
         fun validateNameLetter(name: String) {
-            require(name.all { it.isLetter() }) { EXCEPTION_LETTER }
+            require(name.all { it.isLetter() }) { CarException.LETTER }
         }
     }
 }

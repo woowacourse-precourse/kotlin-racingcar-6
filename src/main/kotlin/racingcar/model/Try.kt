@@ -6,6 +6,9 @@ class Try private constructor(private val count: Int) {
     fun iterableTry() = 0 until count
 
     companion object {
+        private const val MIN_VALUE = 1
+        private const val MAX_VALUE = Int.MAX_VALUE
+
         fun of(countString: String): Try {
             validateTry(countString)
             return Try(countString.toInt())
@@ -13,22 +16,22 @@ class Try private constructor(private val count: Int) {
 
         private fun validateTry(countString: String) {
             validateTryDigit(countString)
-            validateTryIntMax(countString)
-            validateTryPositive(countString.toInt())
+            validateTryMax(countString)
+            validateTryMin(countString.toInt())
         }
 
         fun validateTryDigit(countString: String) {
-            require(countString.all { it.isDigit() }) { EXCEPTION_DIGIT }
+            require(countString.all { it.isDigit() }) { TryException.DIGIT }
         }
 
-        fun validateTryIntMax(countString: String) {
-            with(Int.MAX_VALUE.toString()) {
-                require(this.length > countString.length || this >= countString) { EXCEPTION_INT_MAX }
+        fun validateTryMax(countString: String) {
+            with(MAX_VALUE.toString()) {
+                require(this.length > countString.length || this >= countString) { TryException.MAX }
             }
         }
 
-        fun validateTryPositive(count: Int) {
-            require(count > 0) { EXCEPTION_POSITIVE }
+        fun validateTryMin(count: Int) {
+            require(count >= MIN_VALUE) { TryException.MIN }
         }
     }
 }

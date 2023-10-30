@@ -1,16 +1,18 @@
 package racingcar.constants
 
-const val EXCEPTION_LENGTH = "1글자와 5글자 사의의 자동차 이름을 입력해주세요."
-const val EXCEPTION_LETTER = "자동차 이름은 대소문자의 영어로만 이루어질 수 있습니다."
-const val EXCEPTION_COMMA = "자동차 이름은 하나의 쉼표로만 구분하며, 입력의 처음이나 마지막에 쉼표가 올 수는 없습니다."
-const val EXCEPTION_DUPLICATION = "자동차 이름은 중복되지 않아야 합니다."
+enum class CarException(private val phrases: String) {
+    LENGTH("1글자와 5글자 사의의 자동차 이름을 입력해주세요."),
+    LETTER("자동차 이름은 대소문자의 영어로만 이루어질 수 있습니다."),
+    COMMA("자동차 이름을 구분하기 위해 이름 사이에 하나의 쉼표를 입력해주세요."),
+    DUPLICATION("자동차 이름은 중복되지 않아야 합니다.");
 
-const val EXCEPTION_DIGIT = "시도할 횟수는 숫자만 입력할 수 있습니다."
-const val EXCEPTION_INT_MAX = "시도할 횟수가 너무 큽니다."
-const val EXCEPTION_POSITIVE = "시도할 횟수가 너무 작습니다. 0 이상의 수를 입력해주세요."
+    override fun toString() = phrases
+}
 
-const val RANDOM_START_NUMBER = 0
-const val RANDOM_END_NUMBER = 9
-const val MOVING_MORE_NUMBER = 4
+enum class TryException(private val phrases: String) {
+    DIGIT("시도할 횟수는 숫자만 입력할 수 있습니다."),
+    MAX("시도할 횟수가 너무 큽니다."),
+    MIN("시도할 횟수가 너무 작습니다. 1 이상의 수를 입력해주세요.");
 
-const val FORWARD_CHARACTER = '-'
+    override fun toString() = phrases
+}
