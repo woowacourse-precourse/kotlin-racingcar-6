@@ -9,7 +9,6 @@ fun main() {
 
 }
 
-
 fun generateCars(): List<String> {
     println(INPUT_CAR_NAMES)
     val carNames = Console.readLine().split(",").map { it.trim() }
@@ -17,6 +16,11 @@ fun generateCars(): List<String> {
     return carNames
 }
 
+fun getAttemptTimes(): Int {
+    val attemptTimes = Console.readLine().toInt()
+
+    return  attemptTimes
+}
 
 
 
