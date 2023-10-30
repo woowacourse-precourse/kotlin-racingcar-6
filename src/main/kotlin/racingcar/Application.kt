@@ -74,8 +74,8 @@ public class RacingGame(private var carList: List<String>, private var racingTim
 
 fun userInput(): RacingGame {
     var inputLine: String?
-    var carList: List<String>
-    var racingTime: Int
+    val carList: List<String>
+    val racingTime: Int
 
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     inputLine = readlnOrNull() ?: throw IllegalArgumentException("이름이 입력되지 않았거나 올바르지 않은 형식입니다.")
@@ -97,8 +97,6 @@ fun userInput(): RacingGame {
 
 
 fun main() {
-
-
     val racingGame: RacingGame = userInput()
     racingGame.runRacingGame()
 }
