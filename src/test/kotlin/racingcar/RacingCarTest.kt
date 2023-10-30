@@ -78,4 +78,17 @@ class RacingCarTest {
 
         assertThat(randomNumber).isBetween(1, 9)
     }
+
+    @Test
+    fun `전진 판단하기`() {
+        val movingCar = RacingCar("pobi")
+        racingCarController.moveOrStop(movingCar, MOVING_FORWARD)
+
+        assertThat(movingCar).isEqualTo(RacingCar("pobi", 1))
+    }
+
+    companion object {
+        private const val MOVING_FORWARD = 4
+        private const val STOP = 3
+    }
 }
