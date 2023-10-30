@@ -5,9 +5,12 @@ import camp.nextstep.edu.missionutils.Console
 class RacingCarGenerator {
     private var racingCars = listOf<RacingCar>()
 
-    fun getRacingCars(): List<RacingCar> = racingCars
+    fun getRacingCars(): List<RacingCar> {
+        generateRacingCars()
+        return this.racingCars
+    }
 
-    fun createRacingCars() {
+    private fun generateRacingCars() {
         val racingCars = mutableListOf<RacingCar>()
         val carNames = userEnteredCarNames()
 
