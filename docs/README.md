@@ -33,6 +33,11 @@ Car를 상속받는 레이싱 차
 - [x] 입력값을 읽어온다
 - [x] 잘못된 입력값을 받아올 경우 IllegalArgumentException 발생
 
+### Monitor
+- [x] : 게임의 지시 사항을 출력한다.
+- [x] : 게임의 결과를 출력한다.
+- [x] : 게임의 우승자를 출력한다.
+
 ## model
 ### CarState 
 차의 상태를 나타내는 data class
