@@ -1,5 +1,6 @@
 package racingcar.game
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -14,22 +15,32 @@ internal class PrintUtilTest {
 
     @Test
     fun `printStartMessage 메서드 출력 테스팅`() {
+        // given
+        PrintUtil.printStartMessage()
+        // when
+        val expectedStartMessage = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+        // then
+        assertThat(output()).contains(expectedStartMessage)
     }
 
     @Test
     fun `printAskAttempts 메서드 출력 테스팅`() {
+
     }
 
     @Test
     fun `printExecutionResult 메서드 출력 테스팅`() {
+
     }
 
     @Test
     fun `printRacingCars 메서드 출력 테스팅`() {
+
     }
 
     @Test
     fun `printWinnerList 메서드 출력 테스팅`() {
+
     }
 
     @BeforeEach
