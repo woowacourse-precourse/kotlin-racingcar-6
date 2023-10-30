@@ -1,6 +1,7 @@
 package racingcar.domain
 
 import racingcar.utils.Converter
+import racingcar.utils.RandomGenerator
 
 class Circuit(carNames: String, private var moveCount: Int) {
     private var carList = mutableListOf<Car>()
@@ -34,7 +35,7 @@ class Circuit(carNames: String, private var moveCount: Int) {
     }
 
     private fun moveOrStayAllCars() {
-        carList.forEach { it.moveOrStay() }
+        carList.forEach { it.moveOrStay(RandomGenerator.generateRandomNumber()) }
     }
 
     private fun printCarPositions() {

@@ -8,8 +8,8 @@ import racingcar.utils.Constants.MIN_MOVEMENT_THRESHOLD
 class Car(private val name: String) {
     private var position = 0
 
-    fun moveOrStay() {
-        if (isMovable()) {
+    fun moveOrStay(randomNumber: Int) {
+        if (isMovable(randomNumber)) {
             position++
         }
     }
@@ -24,7 +24,7 @@ class Car(private val name: String) {
 
     fun getName() = name
 
-    private fun isMovable(): Boolean = Randoms.pickNumberInRange(RANGE_START, RANGE_END) >= MIN_MOVEMENT_THRESHOLD
+    private fun isMovable(randomNumber: Int): Boolean = randomNumber >= MIN_MOVEMENT_THRESHOLD
 
     private fun getStringPosition(): String = "-".repeat(position)
 }
