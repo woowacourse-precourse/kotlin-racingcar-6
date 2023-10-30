@@ -11,4 +11,11 @@ fun main() {
             throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.")
         }
     }
+    println("시도할 횟수는 몇 회인가요?")
+    val tryCountInput = readLine()!!.toInt()
+    if (tryCountInput <= 0) {
+        throw IllegalArgumentException("시도 횟수는 0보다 커야 합니다.")
+    }
+    print(tryCountInput)
+
 }
