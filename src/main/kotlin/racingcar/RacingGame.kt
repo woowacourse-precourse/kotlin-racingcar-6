@@ -8,8 +8,8 @@ import racingcar.Validator.validateNull
 import racingcar.Validator.validateNumber
 
 class RacingGame {
-    lateinit var carModelList: List<Car>
     var gameCount = 0
+    private val cars = Cars()
 
     fun run() {
         initGame()
@@ -20,13 +20,13 @@ class RacingGame {
     fun gameStart() {
         println("실행결과")
         repeat(gameCount) {
-            runOneCycle(carModelList)
+            runOneCycle(cars.list)
         }
 
     }
 
     fun gameEnd() {
-        val winnerList = getWinner(carModelList)
+        val winnerList = getWinner(cars.list)
         printWinner(winnerList)
     }
 
@@ -40,7 +40,8 @@ class RacingGame {
     }
 
     fun initGame() {
-        carModelList = inputCarNames()
+        val carModelList = inputCarNames()
+        cars.addAllList(carModelList)
         gameCount = inputRaceCount()
     }
 
