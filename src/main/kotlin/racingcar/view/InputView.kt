@@ -26,8 +26,8 @@ class InputView {
         return splitString
     }
 
-    private fun validateOverFiveName(splitInputName: List<String>) {
-        splitInputName.map { names ->
+    private fun validateOverFiveName(splitString: List<String>) {
+        splitString.map { names ->
             if (names.length > 5) throw IllegalArgumentException("5글자가 넘는 자동차 이름이 있습니다.")
         }
     }
