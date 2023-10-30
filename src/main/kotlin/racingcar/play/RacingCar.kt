@@ -8,7 +8,8 @@ const val CAR_MOVE_BOUNDARY = 4
 
 class RacingCar(val name: String, var distance: Int = 0, var path: String = "") {
 
-    private fun createRandomNumber(): Int = Randoms.pickNumberInRange(RANDOM_LOWER_BOUNDARY, RANDOM_UPPER_BOUNDARY)
+    private fun createRandomNumber(): Int =
+        Randoms.pickNumberInRange(RANDOM_LOWER_BOUNDARY, RANDOM_UPPER_BOUNDARY)
 
     fun move(random: Int = createRandomNumber()) {
         if (random >= CAR_MOVE_BOUNDARY) {
