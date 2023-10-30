@@ -36,10 +36,17 @@ class RacingController(
     }
 
     private fun runRace(cars: Cars) {
-        repeat(inputRound()) {
+        val round = inputRound().value
+        outputView.printResultMessage()
+        repeat(round) {
             cars.raceCars()
             outputView.printRacing(cars)
         }
         val winner = cars.getWinners()
+        printWinner(winner)
+    }
+
+    private fun printWinner(winners: List<Car>) {
+        outputView.printWinners(winners)
     }
 }
