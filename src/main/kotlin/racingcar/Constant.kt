@@ -9,6 +9,7 @@ const val WINNER = "최종 우승자 : "
 const val MIN_RANDOM_NUMBER = 1
 const val MAX_RANDOM_NUMBER = 9
 const val FORWARD_NUMBER = 4
+const val NAME_OVER_LENGTH = 6
 
 const val LENGTH_ERROR = "입력의 길이가 잘못되었습니다."
 const val SAME_ERROR = "똑같은 이름이 있습니다."
