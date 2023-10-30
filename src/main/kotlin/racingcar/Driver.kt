@@ -3,14 +3,12 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 class Driver {
-    lateinit var carList: List<String>
     fun inputCarName(): List<String> {
-        val carName = Console.readLine().split(",")
-        carList = carName
-        return carName
+        return (readLine() ?: throw IllegalArgumentException(ERROR_CAR_PLAY_GAME_NULL)).split(",")
     }
 
-    private fun checkCarNameExeption() {
+    fun checkCarNameExeption() {
+        val carList = inputCarName()
         //자동차의 이름은 5자 이하만 가능, 자동차는 string만
         for (carName in carList) {
             if (carName.length !in 0..5) {

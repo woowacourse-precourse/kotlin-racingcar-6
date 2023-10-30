@@ -3,19 +3,21 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 
 class Car {
-    private val advanceNum = mutableListOf<Int>()
 
-    fun generatorRandomNum(carCount: Int) {
+    fun generatorRandomNum(carCount: Int): MutableList<Int> {
+        val advanceNum = mutableListOf<Int>()
         while (advanceNum.size < carCount) {
             val randomNumber = Randoms.pickNumberInRange(0, 9)
             if (!advanceNum.contains(randomNumber)) {
                 advanceNum.add(randomNumber)
             }
         }
+        return advanceNum
     }
-    private fun checkIsGoToStop() {
-        for (carNum in advanceNum) {
-            val num = when (carNum) {
+
+    fun checkIsGoToStop(advanceNum: List<Int>): List<String> {
+        return advanceNum.map { carNum ->
+            when (carNum) {
                 in 0..4 -> STOP
                 else -> GO
             }
