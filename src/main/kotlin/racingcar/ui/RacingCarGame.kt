@@ -16,9 +16,11 @@ class RacingCarGame {
 
             println(CommonStrings.MESSAGE_INPUT_CAR_NAME)
             val inputCars = Console.readLine()
+
             // 예외처리 추가예정
             println(CommonStrings.MESSAGE_INPUT_NUMBER_OF_ROUNDS)
             val inputRounds = Console.readLine()
+
             // 예외처리 추가예정
             viewModel.setData(inputCars, inputRounds.toInt())
 
@@ -32,7 +34,9 @@ class RacingCarGame {
                     println("${car.carName} : ${car.moveState}")
                 }
             }
+
             val winners = viewModel.findFinalWinners()
+
             if (winners.size == 1) {
                 println(CommonStrings.MESSAGE_FINAL_WINNER + "$winners")
             } else {

@@ -3,9 +3,9 @@ package racingcar.ui.repository
 import racingcar.data.RacingCarModel
 
 interface RacingCarRepository {
-    fun setRounds(round : Int)
-    fun setCarList(list : List<RacingCarModel>)
+    fun setRounds(round: Int)
+    fun setCarList(list: List<RacingCarModel>)
     fun updateRoundState()
-    fun checkRemainingRounds() : Boolean
+    fun checkRemainingRounds(): Boolean
     fun getState(): List<RacingCarModel>
 }

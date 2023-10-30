@@ -6,9 +6,7 @@ data class RacingCarModel(
     val carName: String,
     val moveForward: Int
 )
-fun RacingCarModel.toRoundStateModel() : RoundStateModel{
-    return RoundStateModel(
-        carName = carName,
-        moveState = "-".repeat(moveForward)
-    )
+
+fun RacingCarModel.toRoundStateModel(): RoundStateModel {
+    return RoundStateModel(carName = carName, moveState = "-".repeat(moveForward))
 }

@@ -12,7 +12,7 @@ class RacingCarViewModel(val repository: RacingCarRepository) {
         repository.setCarList(GameUtils.mappingToCarList(cars))
     }
 
-    fun updateRounds(){
+    fun updateRounds() {
         repository.updateRoundState()
     }
 
