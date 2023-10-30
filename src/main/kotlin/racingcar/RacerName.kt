@@ -20,16 +20,14 @@ class RacerName(private val racerCrew: String = "") {
 
     private fun checkRacerNameLength(getVerifyRacerNames: MutableList<String>): Boolean {
         for (name in getVerifyRacerNames) {
-            if (RACER_NAME_LENGTH_MAXIMUM < name.length)
-                throw IllegalArgumentException(Message.RacerNameLengthError.messageText)
+            compareNameLength(name)
         }
         return true
     }
 
     private fun checkRacerNameBlank(getVerifyRacerNames: MutableList<String>): Boolean {
         for (name in getVerifyRacerNames) {
-            if (name.isBlank())
-                throw IllegalArgumentException(Message.RacerNameBlankError.messageText)
+            existNameBlank(name)
         }
         return true
     }
@@ -38,5 +36,15 @@ class RacerName(private val racerCrew: String = "") {
         if (getVerifyRacerNames.size !in RACER_MINIMUM..RACER_MAXIMUM)
             throw IllegalArgumentException(Message.RacerNameRangeError.messageText)
         return true
+    }
+
+    private fun compareNameLength(name: String){
+        if (RACER_NAME_LENGTH_MAXIMUM < name.length)
+            throw IllegalArgumentException(Message.RacerNameLengthError.messageText)
+    }
+
+    private fun existNameBlank(name: String) {
+        if (name.isBlank())
+            throw IllegalArgumentException(Message.RacerNameBlankError.messageText)
     }
 }
