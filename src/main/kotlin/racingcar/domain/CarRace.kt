@@ -7,26 +7,26 @@ class CarRace(
     private val carNames: List<String>,
     private val raceResult: RaceResult = RaceResult()
 ) {
-    private var test: LinkedHashMap<String, ArrayList<Int>> = linkedMapOf()
-    fun winner(): String = raceResult.raceWinner(test)
+    private var raceMoveResult: LinkedHashMap<String, ArrayList<Int>> = linkedMapOf()
+    fun winner(): String = raceResult.raceWinner(raceMoveResult)
 
     fun racingResult(): String {
-        repeat(attemptNumber) { setRacingRound(test) }
+        repeat(attemptNumber) { setRacingRound(raceMoveResult) }
 
         return raceResult.raceResult(
-            racingRoundResult = test,
+            racingRoundResult = raceMoveResult,
             attemptCount = attemptNumber,
             carNames = carNames
         )
     }
 
-    private fun setRacingRound(round: LinkedHashMap<String, ArrayList<Int>>) {
+    private fun setRacingRound(move: LinkedHashMap<String, ArrayList<Int>>) {
         carNames.forEach { carName ->
-            round.getOrPut(carName) { arrayListOf() }.add(setCarMoveState())
+            move.getOrPut(carName) { arrayListOf() }.add(moveResult())
         }
     }
 
-    private fun setCarMoveState(): Int =
+    private fun moveResult(): Int =
         if(Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE) >= POSSIBLE_FORWARD) FORWARD else STOP
 
     companion object {
