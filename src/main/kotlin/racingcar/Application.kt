@@ -5,7 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms
 import kotlin.random.Random
 
 fun main() {
-    showWinners(runCarRace(inputCarNames(), inputNumberOfAttempts()))
+    val carNames = inputCarNames()
+    val numberOfAttempts = inputNumberOfAttempts()
+    val carNameAndScore = runCarRace(carNames, numberOfAttempts)
+    showWinners(carNameAndScore)
 }
 
 fun inputCarNames(): List<String> {
