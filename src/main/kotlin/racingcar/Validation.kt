@@ -2,7 +2,7 @@ package racingcar
 
 import java.lang.IllegalArgumentException
 
-class Validation(private val player: Player) {
+class Validation(player: Player) {
 
     private val inputCarsName = player.inputCarName()
     private val carList = inputCarsName.split(",")
