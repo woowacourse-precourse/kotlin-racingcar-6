@@ -8,6 +8,7 @@ class Game {
     fun start() {
         initGameInfo()
         matchStart()
+        showWinners()
     }
 
     private fun initGameInfo() {
@@ -28,6 +29,11 @@ class Game {
     private fun matchStart() {
         println(MATCH_RESULT)
         repeat(round) { cars.showRoundResult() }
+    }
+
+    private fun showWinners() {
+        print(WINNER_INFO)
+        cars.showWinners()
     }
 
     companion object {
