@@ -25,12 +25,11 @@ fun main() {
     val carNames = readCarNames()
     val cars = createCars(carNames)
 
+    val inputAttempts = readAttempts()
     println("\n실행 결과")
 
-    val inputAttempts = readAttempts()
     val maxPosition = simulateRace(cars, inputAttempts)
     val winners = findWinners(cars, maxPosition)
-
     println("최종 우승자 : $winners")
 }
 
