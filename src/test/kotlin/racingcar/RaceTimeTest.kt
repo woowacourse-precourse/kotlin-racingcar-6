@@ -23,6 +23,17 @@ class RaceTimeTest : NsTest() {
     }
 
     @Test
+    fun `시도 횟수가 양수인 경우`() {
+        assertRandomNumberInRangeTest(
+                {
+                    run("pobi,woni", "1")
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
+                },
+                RaceTimeTest.MOVING_FORWARD, RaceTimeTest.STOP
+        )
+    }
+
+    @Test
     fun `시도 횟수가 숫자가 아닌 경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,woni", "a") }
