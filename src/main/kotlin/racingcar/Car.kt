@@ -4,23 +4,16 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Car {
 
-    fun generatorRandomNum(carCount: Int): MutableList<Int> {
-        val advanceNum = mutableListOf<Int>()
-        while (advanceNum.size < carCount) {
-            val randomNumber = Randoms.pickNumberInRange(0, 9)
-            if (!advanceNum.contains(randomNumber)) {
-                advanceNum.add(randomNumber)
-            }
-        }
-        return advanceNum
+    fun generatorRandomNum(): Int {
+        val randomNumber = Randoms.pickNumberInRange(0, 9)
+        println("내가뽑은 랜덤 값$randomNumber")
+        return randomNumber
     }
 
-    fun checkIsGoToStop(advanceNum: List<Int>): List<String> {
-        return advanceNum.map { carNum ->
-            when (carNum) {
-                in 0..4 -> STOP
-                else -> GO
-            }
+    fun checkIsGoToStop(advanceNum: Int): String {
+        return when (advanceNum) {
+            in 0..4 -> STOP
+            else -> GO
         }
     }
 

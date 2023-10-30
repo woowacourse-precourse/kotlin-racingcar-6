@@ -5,6 +5,7 @@ import racingcar.Car.Companion.STOP
 
 class Game {
     lateinit var carNameList: List<String>
+    val ERROE_GO_TO_STOP = "0~9가 아닌 값"
     var tryGameNum: Int = 0
     fun playGame() {
         playUser()
@@ -34,18 +35,14 @@ class Game {
     }
 
     private fun printPlayLine(): String {
-        val randomNum = Car().generatorRandomNum(tryGameNum)
+        val randomNum = Car().generatorRandomNum()
         val goList = Car().checkIsGoToStop(randomNum)
-        val result = StringBuilder()
 
-        for (line in goList) {
-            when (line) {
-                GO -> result.append("-")
-                STOP -> result.append("")
-            }
+        return when (goList) {
+            GO -> "-"
+            STOP -> ""
+            else -> throw IllegalArgumentException(ERROE_GO_TO_STOP)
         }
-
-        return result.toString()
     }
 
 }
