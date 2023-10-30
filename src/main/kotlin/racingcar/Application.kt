@@ -1,5 +1,11 @@
 package racingcar
 
+import racingcar.domain.Car
+
 fun main() {
-    // TODO: 프로그램 구현
+    var hyundai = Car("현대")
+    hyundai.move(5)
+    hyundai.move(5)
+    hyundai.move(5)
+    println(hyundai.toString())
 }
