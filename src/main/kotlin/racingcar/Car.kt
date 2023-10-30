@@ -3,6 +3,11 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Car (private val name: String){
     private var pos: Int = 0
+    init {
+        if (name.length > 5) {
+            throw IllegalArgumentException("Name '$name' is too long")
+        }
+    }
     fun getRand(): Int {
         return Randoms.pickNumberInRange(0,9)
     }

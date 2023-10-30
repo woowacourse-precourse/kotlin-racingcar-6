@@ -42,16 +42,18 @@ class Game {
         return winners
     }
     fun run() {
+        println("\n실행 결과")
         while(!isEnd()) {
             for(car in carList){
                 // Car class의 move호출시 랜덤값에 따라 전진하는 코드 추가
                 car.move()
                 car.printCar()
             }
+            println()
             currentStep += 1
         }
-        print("최종 우승자 : ")
-        println(findWinner())
+        val winners = findWinner()
+        println("최종 우승자 : "+winners.joinToString(", "))
     }
 
 }
