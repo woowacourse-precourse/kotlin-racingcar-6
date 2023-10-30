@@ -16,28 +16,35 @@ fun startRacingGame() {
 
     printWinners(raceRound, cars)
 }
+
 fun carNamesInput(): List<Cars> {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,)로 구분)")
     val carNames = Console.readLine()
     val cars = carNames.split(',').map { Cars(it) }
-    for (car in cars) {
-        if (car.name.length > 5) {
-            throw IllegalArgumentException("5글자 이하로 이름을 지어주세요")
-        }
-    }
+    validateCarNames(cars)
     return cars
+}
+
+fun validateCarNames(cars: List<Cars>) {
+    if (cars.any { it.name.length > 5 }) {
+        throw IllegalArgumentException("5글자 이하로 이름을 지어주세요")
+    }
 }
 
 fun roundInput(): Int {
     println("시도할 횟수는 몇 회인가요?")
     val raceRound = Console.readLine().toInt()
-    if (raceRound <= 0) {
-        throw IllegalArgumentException("자연수로 입력해주세요")
-    }
+    validateRaceRound(raceRound)
     return raceRound
 }
 
-fun roundResult(inputRound:Int, cars: List<Cars>): Int{
+fun validateRaceRound(raceRound: Int) {
+    if (raceRound <= 0) {
+        throw IllegalArgumentException("자연수로 입력해주세요")
+    }
+}
+
+fun roundResult(inputRound: Int, cars: List<Cars>): Int {
     var raceRound = inputRound
     println("\n실행 결과")
     while (raceRound > 0) {
