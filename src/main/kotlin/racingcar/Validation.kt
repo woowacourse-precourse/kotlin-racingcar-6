@@ -18,4 +18,11 @@ class Validation(private val player: Player) {
         }
     }
 
+    fun checkCarNameDuplication() {
+        val list = inputCarsName.split(",")
+        if (list.distinct().size != list.size) {
+            throw IllegalArgumentException("중복된 이름은 입력할 수 없습니다.")
+        }
+    }
+    
 }
