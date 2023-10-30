@@ -9,4 +9,11 @@ class RacingGame {
 
         return carNum
     }
+
+    fun broadcastRace(){
+        print("%s :",name)
+        for(i in num) {
+            print("-")
+        }
+    }
 }
