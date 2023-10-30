@@ -3,38 +3,40 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 class RacingGame {
+    private val exception = Exception()
 
     fun gameStart() {
         val cars = initCar()
-        val computer = Computer()
+        val roundCount = readRounds()
+        printResult(roundCount, cars)
     }
 
-    private fun initCar(): List<Car> {
+    private fun printResult(roundCount: Int, cars: List<Car>) {
+        println("실행 결과")
+        repeat(roundCount) {
+            cars.forEach { car ->
+                car.moving()
+                car.printPosition()
+            }
+            println()
+        }
+    }
+
+    fun initCar(): List<Car> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val name = readCarNames()
-        name.forEach {
-            if (it.length > 5) {
-                throw IllegalArgumentException("5글자를 초과할 수 없습니다.")
-            }
-            if (it.isEmpty()) {
-                throw IllegalArgumentException("이름이 비어있습니다.")
-            }
-        }
+        exception.nameValidation(name)
         return name.map { Car(it) }
     }
 
-    private fun readCarNames(): List<String> {
+    fun readCarNames(): List<String> {
         val input = Console.readLine()
         return input.split(",")
     }
 
-    private fun readRounds(): Int {
+    fun readRounds(): Int {
         println("시도할 횟수는 몇 회인가요?")
         val input = Console.readLine()
-        val count = input.toIntOrNull() ?: throw IllegalArgumentException("숫자가 아닙니다.")
-        if (count < 0) throw IllegalArgumentException("0보다 작은 수는 입력할 수 없습니다.")
-        return count
+        return exception.roundsValidation(input)
     }
-
-    private fun playGames(car: List<Car>, roundCount: Int) {}
 }
