@@ -1,4 +1,8 @@
 package racingcar
 
-class Car(numberGenerator: NumberGenerator) {
+class Car(
+    private val numberGenerator: NumberGenerator,
+    private val name: String,
+) {
+
 }
