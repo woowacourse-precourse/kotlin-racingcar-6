@@ -39,7 +39,7 @@ class Circuit(carNames: String, private var moveCount: Int) {
     }
 
     private fun printCarPositions() {
-        carList.forEach { it.showCurrentPositionWithName() }
+        carList.forEach { println(it) }
         println()
     }
 }

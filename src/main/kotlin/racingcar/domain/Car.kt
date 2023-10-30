@@ -1,8 +1,5 @@
 package racingcar.domain
 
-import camp.nextstep.edu.missionutils.Randoms
-import racingcar.utils.Constants.RANGE_START
-import racingcar.utils.Constants.RANGE_END
 import racingcar.utils.Constants.MIN_MOVEMENT_THRESHOLD
 
 class Car(private val name: String) {
@@ -14,8 +11,8 @@ class Car(private val name: String) {
         }
     }
 
-    fun showCurrentPositionWithName() {
-        println("$name : ${getStringPosition()}")
+    override fun toString(): String {
+        return "$name : ${getStringPosition()}"
     }
 
     fun isWinnerCar(maxDistance: Int): Boolean = maxDistance == position
