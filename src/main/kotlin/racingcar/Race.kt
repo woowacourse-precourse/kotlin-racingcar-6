@@ -1,5 +1,7 @@
 package racingcar
 
+import racingcar.car.Car
+
 class Race(
     private val attemptCount: Int,
     private val cars: List<Car>,

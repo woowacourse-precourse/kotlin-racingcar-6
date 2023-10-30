@@ -1,6 +1,6 @@
 package racingcar.model
 
-import racingcar.Car
+import racingcar.car.Car
 
 data class Winner(val cars: List<Car>) {
     override fun toString(): String {

@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.car
 
 class RacingCar(
     name: String

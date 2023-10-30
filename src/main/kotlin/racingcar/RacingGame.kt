@@ -1,5 +1,7 @@
 package racingcar
 
+import racingcar.car.Car
+import racingcar.car.RacingCar
 import racingcar.constants.GameInstruction
 
 class RacingGame(

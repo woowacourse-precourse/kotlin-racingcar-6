@@ -1,5 +1,6 @@
 package racingcar
 
+import racingcar.car.Car
 import racingcar.model.CarState
 import racingcar.model.RaceResult
 import racingcar.model.Winner
