@@ -10,5 +10,6 @@ class RacingCarsRepository {
     }
 
 
-    fun loadRacingCars(): RacingCars = racingCars ?: throw NullPointerException(ErrorMessage.EMPTY_RACINGCARS.message)
+    fun loadRacingCars(): RacingCars = racingCars
+        ?: throw NullPointerException(ErrorMessage.EMPTY_RACINGCARS.message)
 }
