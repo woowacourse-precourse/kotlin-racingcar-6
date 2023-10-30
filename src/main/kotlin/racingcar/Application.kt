@@ -1,10 +1,8 @@
 package racingcar
 
+import race.Racing
 import race.RacingManager
 
 fun main() {
-    val racingManager = RacingManager()
-    racingManager.settingRacingCar()
-    racingManager.raceStart()
-    racingManager.printWinner()
+    RacingManager(Racing())
 }
