@@ -5,9 +5,8 @@ import car.CarConfiguration.INIT_DIST
 import race.RacingSystemValues.CAR_DIST_SEPARATOR
 import java.math.BigInteger
 
-class DashBoard(carName: String) {
+class DashBoard(private val carName: String) {
     private var dist = BigInteger(INIT_DIST)
-    private val name = carName
     fun distPlus() {
         dist++
     }
@@ -15,7 +14,7 @@ class DashBoard(carName: String) {
     fun nowDist() = dist
 
     fun printDist(dist: BigInteger) {
-        print("${name}$CAR_DIST_SEPARATOR")
+        print("${carName}$CAR_DIST_SEPARATOR")
         var count = BigInteger(INIT_DIST)
         while (count < dist) {
             print(DIST_SYMBOL)
@@ -25,6 +24,6 @@ class DashBoard(carName: String) {
     }
 
     fun printCarName() {
-        print(name)
+        print(carName)
     }
 }
