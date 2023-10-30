@@ -23,7 +23,7 @@ data class Repetition(
     companion object {
         private const val MIN_REPETITION_COUNT = 1
 
-        private const val ONLY_DIGIT = "숫자만 입력해 주세요"
-        private const val DIGIT_THAN_ONE = "숫자는 1 이상이어야 합니다."
+        internal const val ONLY_DIGIT = "숫자만 입력해 주세요"
+        internal const val DIGIT_THAN_ONE = "숫자는 1 이상이어야 합니다."
     }
 }

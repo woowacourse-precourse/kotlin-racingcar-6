@@ -16,7 +16,7 @@ data class Cars(
         require(inputCars.size == inputCars.distinct().size) { CAR_NAME_DUPLICATE_ERROR }
 
     companion object {
-        private const val CAR_NAME_DUPLICATE_ERROR = "자동차 이름은 중복될 수 없습니다."
+        internal const val CAR_NAME_DUPLICATE_ERROR = "자동차 이름은 중복될 수 없습니다."
 
         internal fun fromNames(names: List<String>): Cars {
             return Cars(names.map {
