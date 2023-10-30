@@ -36,7 +36,6 @@ object RacingGameManager {
             racingCars.forEach {
                 it.move()
                 UserOutput.displayRoundResult(it.name, it.path)
-                println()
             }
             println()
         }
