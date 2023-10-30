@@ -1,7 +1,6 @@
 package racingcar.utils
 
 import racingcar.Car
-import racingcar.InputView
 
 object TypeConverter {
 

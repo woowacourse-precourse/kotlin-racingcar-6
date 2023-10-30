@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.Test
 import racingcar.Car
-import racingcar.InputView.validateInputCarNames
-import racingcar.InputView.validateInputRoundCount
+import racingcar.view.InputView.validateInputCarNames
+import racingcar.view.InputView.validateInputRoundCount
 import racingcar.utils.TypeConverter.stringToInt
 import racingcar.utils.TypeConverter.stringToCarList
 
