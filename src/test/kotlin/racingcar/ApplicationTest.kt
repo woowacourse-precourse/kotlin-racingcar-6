@@ -10,6 +10,7 @@ import racingcar.Validator.validateDuplicate
 import racingcar.Validator.validateNameLength
 import racingcar.Validator.validateNull
 import racingcar.Validator.validateNumber
+import racingcar.Validator.validateRange
 import kotlin.math.max
 
 class ApplicationTest : NsTest() {
@@ -86,6 +87,23 @@ class ApplicationTest : NsTest() {
 
             assertThrows<IllegalArgumentException>("사용자의 입력이 숫자가 아닙니다.") {
                 validateNumber("_@#!1")
+            }
+        }
+    }
+
+    @Test
+    fun `0이면 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>("실행 횟수가 1 이상이어야 합니다.") {
+                validateRange("0")
+            }
+
+            assertThrows<IllegalArgumentException>("실행 횟수가 1 이상이어야 합니다.") {
+                validateRange("00")
+            }
+
+            assertThrows<IllegalArgumentException>("실행 횟수가 1 이상이어야 합니다.") {
+                validateRange("000")
             }
         }
     }
