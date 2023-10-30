@@ -14,6 +14,12 @@ import java.io.PrintStream
 
 
 class RacingCarTest {
+    companion object {
+        private const val MOVING_FORWARD = 4
+        private const val STOP = 3
+        private const val MOVE = "-"
+    }
+
     private val inputView = InputView()
     private val outputView = OutputView()
     private val outputStream = ByteArrayOutputStream()
@@ -134,9 +140,12 @@ class RacingCarTest {
         assertThat(outputStream.toString().trim()).isEqualTo("pobi :")
     }
 
-    companion object {
-        private const val MOVING_FORWARD = 4
-        private const val STOP = 3
-        private const val MOVE = "-"
+    @Test
+    fun `우승자 1명 안내하기`() {
+        val racingCarList = listOf(RacingCar("pobi", 1), RacingCar("woni", 0))
+
+        outputView.printWinner(racingCarController.findWinner(racingCarList))
+
+        assertThat(outputStream.toString().trim()).isEqualTo("최종 우승자 : pobi")
     }
 }
