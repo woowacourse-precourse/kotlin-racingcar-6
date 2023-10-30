@@ -4,8 +4,6 @@ import java.lang.IllegalArgumentException
 
 class Validation {
 
-    private val player = Player()
-
     private fun isValidNumberOfCars(carsNameList: List<String>) {
         if (carsNameList.size < 2) {
             throw IllegalArgumentException("자동차 이름은 2대 이상 입력해 주세요.")
@@ -32,11 +30,8 @@ class Validation {
         }
     }
 
-    fun isValidCarName() {
-        val inputCarsName = player.inputCarName()
-        val carList = inputCarsName.split(",")
-
-        checkContainsSpace(inputCarsName)
+    fun isValidCarName(carsName: String, carList: List<String>) {
+        checkContainsSpace(carsName)
         isValidNumberOfCars(carList)
         checkCarNameDuplication(carList)
         checkCarNameLength(carList)
