@@ -10,12 +10,12 @@ import racingcar.Constants.Companion.MIN_NUMBER
 class CarGameManagerTest {
 
     @Test
-    fun `랜덤값이 0 - 9 사이가 맞는지 확인`() {
+    fun `랜덤값(0 - 9 사이) 부여 확인 테스트 코드`() {
         val randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
         assertTrue(randomNumber in MIN_NUMBER..MAX_NUMBER)
     }
     @Test
-    fun `진행결과 출력`() {
+    fun `진행 결과 출력 확인 테스트 코드`() {
         val carNameListTest: List<String> = listOf("yang", "won", "sik")
         val carListCountTest = carNameListTest.size
         val carResultListTest = MutableList(carListCountTest) { "" }
@@ -30,7 +30,7 @@ class CarGameManagerTest {
         }
     }
     @Test
-    fun `우승자 출력 테스트`() {
+    fun `우승자 판별 후 출력 확인 테스트 코드`() {
 
         val carNameListTest: List<String> = listOf("yang", "won", "sik")
         val carListCountTest = carNameListTest.size
