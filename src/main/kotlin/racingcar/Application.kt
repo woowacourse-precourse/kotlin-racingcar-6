@@ -2,12 +2,14 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.ValidateCarName
+import racingcar.model.ValidateRacingCount
 import racingcar.views.InputView
 import racingcar.views.OutputView
 
 private val inputView = InputView()
 private val outputView = OutputView()
 private val validateCarName = ValidateCarName()
+private val validateRacingCount = ValidateRacingCount()
 
 fun main() {
     inputView.gameStartMessage()
@@ -53,31 +55,7 @@ fun soloCarGame(inputCarName: String) {
 fun inputTryCount(multiCarName: List<String?>) {
     inputView.inputTryCountMessage()
     val tryCount = inputView.inputView()
-    validateTryCount(tryCount, multiCarName)
-}
-
-fun validateTryCount(tryCount: String, multiCarName: List<String?>) {
-    when (true) {
-        validateNullOrBlank(tryCount) -> throw IllegalArgumentException("시도할 횟수를 반드시 입력해야 합니다.")
-
-        validateNotNum(tryCount) -> throw IllegalArgumentException("시도할 횟수는 1부터 10 사이로만 입력 가능합니다.")
-
-        validateNotInRange(tryCount) -> throw IllegalArgumentException("시도할 횟수는 1부터 10 사이로만 입력 가능합니다.")
-
-        else -> multiRacingGame(tryCount.toInt(), multiCarName)
-    }
-}
-
-fun validateNotNum(tryCount: String?): Boolean {
-    return tryCount!!.toIntOrNull() == null
-}
-
-fun validateNotInRange(tryCount: String?): Boolean {
-    return tryCount!!.toInt() !in 1..10
-}
-
-fun validateNullOrBlank(tryCount: String?): Boolean {
-    return tryCount.isNullOrBlank()
+    racingcar.validateRacingCount.validateTryCount(tryCount, multiCarName)
 }
 
 fun multiRacingGame(tryCount: Int, multiCarName: List<String?>) {
