@@ -2,20 +2,20 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.Constants.FORWARD_THRESHOLD
-import racingcar.Constants.LOCATION_STEP
+import racingcar.Constants.POSITION_STEP
 import racingcar.Constants.MAXIMUM_DIGIT
 import racingcar.Constants.MINIMUM_DIGIT
 import racingcar.Constants.PROGRESS_BAR
-import racingcar.Constants.START_LOCATION
+import racingcar.Constants.START_POSITION
 
 data class RacingCar(
     val name: String,
-    var location: Int = START_LOCATION
+    var position: Int = START_POSITION
 ) {
 
     fun moveForward() {
         if (isAbleToMove()) {
-            location += LOCATION_STEP
+            position += POSITION_STEP
         }
     }
 
@@ -24,7 +24,7 @@ data class RacingCar(
         return (FORWARD_THRESHOLD <= random)
     }
 
-    fun printLocation() {
-        println("$name : ${PROGRESS_BAR.repeat(location)}")
+    fun printPosition() {
+        println("$name : ${PROGRESS_BAR.repeat(position)}")
     }
 }

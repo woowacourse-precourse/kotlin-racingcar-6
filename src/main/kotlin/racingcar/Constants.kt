@@ -11,8 +11,8 @@ object Constants {
     const val PROGRESS_BAR = "-"
     const val CAR_NAME_SEPARATOR = ", "
 
-    const val START_LOCATION = 0
-    const val LOCATION_STEP = 1
+    const val START_POSITION = 0
+    const val POSITION_STEP = 1
     const val MINIMUM_DIGIT = 0
     const val MAXIMUM_DIGIT = 9
     const val FORWARD_THRESHOLD = 4
