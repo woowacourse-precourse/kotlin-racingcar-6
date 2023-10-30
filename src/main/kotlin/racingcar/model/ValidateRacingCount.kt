@@ -1,7 +1,5 @@
 package racingcar.model
 
-import racingcar.multiRacingGame
-
 class ValidateRacingCount {
     private val multiRacingGame = MultiRacingGame()
 

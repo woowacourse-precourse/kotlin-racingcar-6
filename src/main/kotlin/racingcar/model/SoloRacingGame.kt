@@ -1,10 +1,10 @@
 package racingcar.model
 
 import camp.nextstep.edu.missionutils.Randoms
-import racingcar.checkPositiveForward
-import racingcar.outputView
+import racingcar.views.OutputView
 
 class SoloRacingGame {
+    private val outputView = OutputView()
 
     fun soloCarGame(inputCarName: String) {
         outputView.printSoloGameRules()
@@ -23,5 +23,9 @@ class SoloRacingGame {
         } else {
             outputView.printNoWinner()
         }
+    }
+
+    private fun checkPositiveForward(randomNum: Int): Boolean {
+        return randomNum >= 4
     }
 }

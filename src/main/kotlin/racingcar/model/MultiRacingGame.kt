@@ -1,21 +1,22 @@
 package racingcar.model
 
-import racingcar.checkPositiveForward
-import racingcar.outputView
 import racingcar.randomUtils
+import racingcar.views.OutputView
 
-class MultiRacingGame {
+class MultiRacingGame() {
+    private val outputView = OutputView()
+
     fun multiRacingGame(tryCount: Int, multiCarName: List<String?>) {
         outputView.printResultMessage()
         repeatRacing(tryCount, multiCarName)
     }
 
-    val scoreMap = mutableMapOf<String, Int>()
+    private val scoreMap = mutableMapOf<String, Int>()
 
     private fun repeatRacing(tryCount: Int, multiCarName: List<String?>) {
         repeat(tryCount) {
             racingEachCar(multiCarName)
-            outputView.printMultiGameResult(multiCarName)
+            outputView.printMultiGameResult(multiCarName, scoreMap)
         }
         multiChampion()
     }
@@ -34,8 +35,12 @@ class MultiRacingGame {
     }
 
     private fun multiChampion() {
-        val highestScore = racingcar.multiRacingGame.scoreMap.values.maxOrNull() ?: 0
-        val winners = racingcar.multiRacingGame.scoreMap.filter { it.value == highestScore && it.key != null }.keys
+        val highestScore = scoreMap.values.maxOrNull() ?: 0
+        val winners = scoreMap.filter { it.value == highestScore && it.key != null }.keys
         outputView.printMultiWinner(winners)
+    }
+
+    private fun checkPositiveForward(randomNum: Int): Boolean {
+        return randomNum >= 4
     }
 }

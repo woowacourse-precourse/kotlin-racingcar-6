@@ -1,9 +1,6 @@
 package racingcar.views
 
-import racingcar.model.MultiRacingGame
-
 class OutputView {
-    val multiRacingGame = MultiRacingGame()
 
     fun printSoloGameRules() {
         println("단독 출전 시 2번 게임 진행 후 1회 이상 전진 시 우승입니다.")
@@ -14,9 +11,9 @@ class OutputView {
         skipLine()
     }
 
-    fun printMultiGameResult(multiCarName: List<String?>) {
+    fun printMultiGameResult(multiCarName: List<String?>, scoreMap: Map<String, Int>) {
         for (carName in multiCarName) {
-            val score = multiRacingGame.scoreMap.getOrDefault(carName, 0)
+            val score = scoreMap.getOrDefault(carName, 0)
             val forward = "-".repeat(score)
             printResultForm(carName!!, forward)
         }
