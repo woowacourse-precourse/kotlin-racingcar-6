@@ -8,7 +8,7 @@ class Car(
 ) {
 
     companion object {
-        const val THRESHHOLD_FOR_MOVE_FORWARD = 4
+        const val THRESHOLD_FOR_MOVE_FORWARD = 4
         private const val MAX_NAME_LENGTH = 5
     }
 
@@ -26,6 +26,6 @@ class Car(
     }
 
     private fun isPossibleMoveForward(): Boolean {
-        return numberGenerator.generateNumber() >= THRESHHOLD_FOR_MOVE_FORWARD
+        return numberGenerator.generateNumber() >= THRESHOLD_FOR_MOVE_FORWARD
     }
 }

@@ -72,4 +72,8 @@ class RaceManager {
             print("-")
         }
     }
+
+    private fun endRace(){
+
+    }
 }
