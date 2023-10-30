@@ -1,21 +1,23 @@
 package racingcar
 
-class GameManager {
+import racingcar.state.CarState
+
+class RaceManager {
 
     companion object {
         const val DEFAULT_VALUE = 0
     }
 
-    private val _gameCars: MutableList<Car> = mutableListOf()
-    val gameCars: List<Car> get() = _gameCars.toList()
+    private val _raceCars: MutableList<Car> = mutableListOf()
+    val raceCars: List<Car> get() = _raceCars.toList()
 
     private var movementAttemptCount: Int = DEFAULT_VALUE
 
     private val _movedDirection: HashMap<String, Int> = hashMapOf()
     val movedDirection : Map<String, Int> get() = _movedDirection.toMap()
 
-    fun addCarToGame(car: Car) {
-        _gameCars.add(car)
+    fun addCarToRace(car: Car) {
+        _raceCars.add(car)
         _movedDirection.put(key = car.name, value = DEFAULT_VALUE)
     }
 
@@ -33,7 +35,7 @@ class GameManager {
         }
     }
 
-    fun startGame() {
+    fun startRace() {
         while (movementAttemptCount > DEFAULT_VALUE) {
             tryForwardMovementAllCars()
             displayAllCarsDirectionMoved()
@@ -43,7 +45,7 @@ class GameManager {
     }
 
     private fun tryForwardMovementAllCars() {
-        _gameCars.map { car ->
+        _raceCars.map { car ->
             val carState = car.tryForwardMovement()
             handleCarState(carState, car.name)
         }
@@ -59,7 +61,7 @@ class GameManager {
     }
 
     private fun displayAllCarsDirectionMoved() {
-        _gameCars.map { car ->
+        _raceCars.map { car ->
             displayCarDirectionMoved(car)
         }
     }

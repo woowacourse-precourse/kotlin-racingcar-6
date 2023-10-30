@@ -1,9 +1,12 @@
 package racingcar
 
+import racingcar.state.CarState
+
 class Car(
     val name: String,
     private val numberGenerator: NumberGenerator = RandomNumberGenerator(),
 ) {
+
     companion object {
         const val THRESHHOLD_FOR_MOVE_FORWARD = 4
         private const val MAX_NAME_LENGTH = 5
