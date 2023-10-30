@@ -9,16 +9,10 @@ import racingcar.views.InputView
 val inputView = InputView()
 val car = Car()
 val validateCarName = ValidateCarName()
-private val validateRacingCount = ValidateRacingCount()
+val validateRacingCount = ValidateRacingCount()
 val randomUtils = RandomUtils()
 fun main() {
     inputView.gameStartMessage()
 
     car.getCarName()
-}
-
-fun inputTryCount(multiCarName: List<String?>) {
-    inputView.inputTryCountMessage()
-    val tryCount = inputView.inputView()
-    validateRacingCount.validateTryCount(tryCount, multiCarName)
 }

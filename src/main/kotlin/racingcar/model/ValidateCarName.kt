@@ -1,8 +1,8 @@
 package racingcar.model
 
-import racingcar.inputTryCount
-
 class ValidateCarName {
+
+    private val multiRacingGame = MultiRacingGame()
 
     fun validateInputBlank(inputCarName: String) {
         if (inputCarName.isBlank()) {
@@ -20,7 +20,7 @@ class ValidateCarName {
 
             validateRacingCarRange(multiCarName) -> throw IllegalArgumentException("게임에 참여 가능한 자동차 대수는 1대 이상 7대 이하만 가능합니다.")
 
-            else -> inputTryCount(multiCarName)
+            else -> multiRacingGame.inputTryCount(multiCarName)
         }
     }
 

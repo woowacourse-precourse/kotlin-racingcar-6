@@ -1,11 +1,19 @@
 package racingcar.model
 
+import racingcar.inputView
 import racingcar.randomUtils
+import racingcar.validateRacingCount
 import racingcar.views.OutputView
 
 class MultiRacingGame() {
 
     private val outputView = OutputView()
+
+    fun inputTryCount(multiCarName: List<String?>) {
+        inputView.inputTryCountMessage()
+        val tryCount = inputView.inputView()
+        validateRacingCount.validateTryCount(tryCount, multiCarName)
+    }
 
     fun multiRacingGame(tryCount: Int, multiCarName: List<String?>) {
         outputView.printResultMessage()
