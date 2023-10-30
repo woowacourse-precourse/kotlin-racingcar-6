@@ -27,6 +27,13 @@ class Input {
         }
     }
 
-    fun attemptNum() {
+    fun attemptNum(): Int {
+        println("시도할 횟수는 몇 회인가요?")
+        try {
+            return Console.readLine().toInt()
+        } catch (e: NumberFormatException) {
+            throw java.lang.IllegalArgumentException("숫자를 입력해주세요")
+        }
+
     }
 }
