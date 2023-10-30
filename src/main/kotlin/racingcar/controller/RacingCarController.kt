@@ -14,13 +14,14 @@ class RacingCarController {
     fun playGame() {
         inputView.printInputCarName()
         val userList = Console.readLine().split(NAME_DELIMITERS)
-        val racingCarList = userList.map { RacingCar(it, INIT_DISTANCE_NUM) }
+        var racingCarList = userList.map { RacingCar(it, INIT_DISTANCE_NUM) }
         inputView.printInputGameCount()
         val gameCount = Console.readLine().toInt()
-        gameContinue(racingCarList, gameCount)
+        racingCarList = gameContinue(racingCarList, gameCount)
+        gameResult(racingCarList)
     }
 
-    private fun gameContinue(racingCarList: List<RacingCar>, gameCount: Int) {
+    private fun gameContinue(racingCarList: List<RacingCar>, gameCount: Int): List<RacingCar> {
 
         outputView.printResult()
 
@@ -34,6 +35,16 @@ class RacingCarController {
             }
             outputView.printEnter()
         }
+        return racingCarList
+    }
+
+    private fun gameResult(racingCarList: List<RacingCar>) {
+        val maxDistanceRacingCarList = findMaxDistanceRacingCar(racingCarList)
+    }
+
+    private fun findMaxDistanceRacingCar(racingCarList: List<RacingCar>): List<String> {
+        return racingCarList.filter { racingCar -> racingCar.distance == racingCarList.maxOf { it.distance } }
+            .map { it.racingCarName }
     }
 
     companion object {
