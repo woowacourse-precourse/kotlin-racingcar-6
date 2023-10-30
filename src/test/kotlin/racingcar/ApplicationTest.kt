@@ -55,6 +55,33 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `정지와 전진이 적절히 반영되어 우승자가 결정되는지 - 다수의차량,다수의 우승자`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,hawai,jae,young,1abc,6789", "8")
+                assertThat(output()).contains(
+                    "pobi : -----",
+                    "woni : ------",
+                    "hawai : -----",
+                    "jae : --------",
+                    "young : --",
+                    "1abc : -----",
+                    "6789 : --------",
+                    "최종 우승자 : jae, 6789"
+                )
+            },
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD,
+            STOP, STOP, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD,
+            STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, STOP, MOVING_FORWARD,
+            STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
+        )
+    }
+
+    @Test
     fun `입력 순서대로 최종 우승자가 결정되는지`() {
         assertRandomNumberInRangeTest(
             {
