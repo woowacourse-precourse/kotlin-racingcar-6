@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import java.lang.IllegalArgumentException
 
 class Player {
-    fun inputCarName(): String {
+    fun inputCarsName(): String {
         return Console.readLine()
     }
 
