@@ -9,6 +9,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.fail
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.params.provider.NullAndEmptySource
+import racingcar.views.CarRaceView
 
 class CarRaceControllerTest: NsTest() {
 
@@ -23,6 +24,14 @@ class CarRaceControllerTest: NsTest() {
     fun `","를 기준으로 잘리는지 확인`() {
         val carNames = carRaceController.splitCarNames("pobi,woni,jun")
         assertThat(carNames).contains("pobi", "woni", "jun")
+    }
+
+    @Test
+    fun `carNameAndScore에 등록된 이름과 점수만큼 잘 작동하는지`() {
+        val carNameAndScore = mapOf("pobi" to 5, "woni" to 2)
+        val result = carRaceController.generateResults(carNameAndScore)
+
+        assertThat(result.joinToString("\n")).isEqualTo("pobi : -----\nwoni : --")
     }
 
     @Test
