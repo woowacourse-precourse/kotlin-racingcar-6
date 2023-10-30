@@ -14,7 +14,15 @@ class RacingCarTest {
 
     @Test
     fun `자동차 이름 5자 초과 예외 처리`() {
-        val racingCarNameList = listOf("pobi", "pobibic")
+        val racingCarNameList = "pobi,pobibic".split(",")
+
+        assertThrows<IllegalArgumentException> { inputView.validateRacingCarName(racingCarNameList) }
+    }
+
+
+    @Test
+    fun `자동차 이름 중복 예외 처리`() {
+        val racingCarNameList = "pobi,pobi".split(",")
 
         assertThrows<IllegalArgumentException> { inputView.validateRacingCarName(racingCarNameList) }
     }
