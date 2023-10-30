@@ -9,15 +9,15 @@ class Car(name: String) {
         this.forwardCount = 0
     }
 
-    private fun increaseForwardCount(){
-        this.forwardCount++
-    }
-
-    public fun getCarName(): String {
+    fun getCarName(): String {
         return carName
     }
 
-    public fun getForwardCount(): Int {
+    fun getForwardCount(): Int {
         return forwardCount
+    }
+
+    fun increaseForwardCount(){
+        this.forwardCount++
     }
 }
