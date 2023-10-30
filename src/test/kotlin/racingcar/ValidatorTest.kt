@@ -8,7 +8,7 @@ class ValidatorTest {
     private val validator = Validator()
 
     @Test
-    fun `validateCarNames 메서드 사용 시 입력값이 쉼표로 구분되어있지 않을 때 예외 발생`() {
+    fun `validateCarNames 메서드 사용 시 carName 이 쉼표로 구분되어있지 않을 때 예외 발생`() {
         val input = "A B"
 
         assertSimpleTest {
@@ -54,6 +54,17 @@ class ValidatorTest {
     @Test
     fun `validateCarNames 메서드 사용 시 carName 에 아무런 값을 입력하지 않았을 때 예외 발생`() {
         val input = ""
+
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                validator.validateCarNames(input)
+            }
+        }
+    }
+
+    @Test
+    fun `validateCarNames 메서드 사용 시 중복되는 carName 이 존재할 때 예외 발생`() {
+        val input = "A,B,A"
 
         assertSimpleTest {
             assertThrows<IllegalArgumentException> {
