@@ -196,3 +196,38 @@ Randoms.pickNumberInRange(0, 9)
 - [ ] 문구 출력
 - [ ] 입력
 
+## 👉 클래스 다이어 그램
+
+```mermaid
+classDiagram
+    InputView <.. Controller
+    OutputView <.. Controller
+    Car <.. Controller
+    RandomNumberGenerator <.. Car
+    Validator <.. InputView
+    class Controller {
+        +startCarRacing()
+    }
+    class InputView {
+        +askNumberOfAttempts()
+        +askCarToRace()
+    }
+    class OutputView {
+        +executionResult()
+        +enterNamesOfCars()
+        +howManyAttempts()
+        +finalWinner()
+    }
+    class RandomNumberGenerator {
+        +gernerateRandomNumber()
+    }
+    class Car {
+        -currentLocation
+        +foward()
+        +stop()
+    }
+    class Validator {
+        +nameLength()
+        +attemptsComponents()
+    }
+```
