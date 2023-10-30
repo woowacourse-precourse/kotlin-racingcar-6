@@ -18,4 +18,8 @@ object OutputView {
     fun runMessage() {
         println(Constants.RUN_MESSAGE)
     }
+
+    fun showWinners(winners: List<String>) {
+        println("${Constants.WINNER_MESSAGE}${winners.joinToString(Constants.NEXT_WINNER)}")
+    }
 }
