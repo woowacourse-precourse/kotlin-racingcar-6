@@ -3,7 +3,13 @@
 ### Player
 - [x] : 경주 할 자동차 이름(이름은 쉼표(,) 기준으로 구분) 입력하기
 - [x] : 사용자는 몇 번의 이동을 할 것인지를 입력하기
-- [x] : 잘못된 값을 입력할 경우 IllegalArgumentException 발생
+
+### StringValidator
+해당 문자열이 유효한지 검증하는 객체
+#### NumericValidator
+- [x] : 해당 문자열이 숫자인지 검증한다.
+#### InputValidator
+- [x] : 해당 문자열을 쉼표(,)로 구분하여 각 문자가 길이 5 이하인지 검증한다.
 
 ### Car
 - [x] : 자동차에 이름(name)이 있다  
