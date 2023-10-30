@@ -30,7 +30,9 @@ class Racing {
     }
 
     fun printWinner() {
-        val winnerList = racingCarList.filter { it.nowDist() == firstCarDist }
+        val winnerList = racingCarList.filter { car ->
+            car.nowDist() == firstCarDist
+        }
         print(FINAL_WINNER)
         winnerList.forEachIndexed { index, car ->
             car.printCarName()
