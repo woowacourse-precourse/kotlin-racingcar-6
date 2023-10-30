@@ -1,7 +1,7 @@
 package racingcar.view
 
 import racingcar.model.Car
-import racingcar.model.CarGroup
+import racingcar.model.RaceParticipants
 
 class OutputView {
 
@@ -14,7 +14,7 @@ class OutputView {
         println(Message.RaceResult)
     }
 
-    fun printCurrentRaceResult(result: CarGroup) {
+    fun printCurrentRaceResult(result: RaceParticipants) {
         val message = buildString {
             result.cars.forEach { car ->
                 appendLine(String.format(Message.RaceResultFormat.toString(), car.name, formatDistance(car)))

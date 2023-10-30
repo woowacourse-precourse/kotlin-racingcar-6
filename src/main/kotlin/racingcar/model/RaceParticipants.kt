@@ -1,6 +1,6 @@
 package racingcar.model
 
-class CarGroup private constructor(val cars: List<Car>) {
+class RaceParticipants private constructor(val cars: List<Car>) {
 
     fun getCarsWithLongestDistance(): List<Car> {
         val maxDistance = cars.maxOfOrNull { car -> car.distance } ?: 0
@@ -10,12 +10,12 @@ class CarGroup private constructor(val cars: List<Car>) {
     companion object {
         private const val NAME_SEPARATOR = ","
 
-        fun from(carNames: String): CarGroup {
+        fun from(carNames: String): RaceParticipants {
             val cars = carNames.split(NAME_SEPARATOR)
                 .validateNoDuplicates()
                 .getOrThrow()
                 .map { name -> Car(name) }
-            return CarGroup(cars)
+            return RaceParticipants(cars)
         }
     }
 }

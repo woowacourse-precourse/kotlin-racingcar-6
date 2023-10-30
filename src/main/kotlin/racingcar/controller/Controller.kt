@@ -1,7 +1,7 @@
 package racingcar.controller
 
-import racingcar.model.CarGroup
 import racingcar.model.Judge
+import racingcar.model.RaceParticipants
 import racingcar.model.validateNumber
 import racingcar.view.InputView
 import racingcar.view.OutputView
@@ -19,9 +19,9 @@ class Controller {
         inputView.terminated()
     }
 
-    private fun getRaceParticipants(): CarGroup {
+    private fun getRaceParticipants(): RaceParticipants {
         outputView.printInputRaceCarNames()
-        return CarGroup.from(inputView.getUserInput())
+        return RaceParticipants.from(inputView.getUserInput())
     }
 
     private fun getAttemptNumber(): Int {
