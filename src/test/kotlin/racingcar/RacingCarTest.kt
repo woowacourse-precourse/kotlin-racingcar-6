@@ -13,7 +13,7 @@ class RacingCarTest {
     private val racingCarController = RacingCarController(inputView, outputView)
 
     @Test
-    fun `자동차 이름 5자 초과 예외 처리`() {
+    fun `자동차 이름 5자 초과 입력 예외 처리`() {
         val racingCarNameList = "pobi,pobibic".split(",")
 
         assertThrows<IllegalArgumentException> { inputView.validateRacingCarName(racingCarNameList) }
@@ -21,7 +21,7 @@ class RacingCarTest {
 
 
     @Test
-    fun `자동차 이름 중복 예외 처리`() {
+    fun `자동차 이름 중복 입력 예외 처리`() {
         val racingCarNameList = "pobi,pobi".split(",")
 
         assertThrows<IllegalArgumentException> { inputView.validateRacingCarName(racingCarNameList) }
@@ -35,16 +35,23 @@ class RacingCarTest {
     }
 
     @Test
-    fun `자동차 이름 첫글자 공백 예외 처리`() {
+    fun `자동차 이름 첫글자 공백 입력 예외 처리`() {
         val racingCarNameList = "pobi, woni".split(",")
 
         assertThrows<IllegalArgumentException> { inputView.validateRacingCarName(racingCarNameList) }
     }
 
     @Test
-    fun `자동차 이름 한개 입력 예외 처리`() {
+    fun `자동차 이름 한개 입력 입력 예외 처리`() {
         val racingCarNameList = "pobi".split(",")
 
         assertThrows<IllegalArgumentException> { inputView.validateRacingCarName(racingCarNameList) }
+    }
+
+    @Test
+    fun `시도 횟수 1미만 입력 예외 처리`() {
+        val attemptNumber = "0"
+
+        assertThrows<IllegalArgumentException> { inputView.validateAttemptNumber(attemptNumber) }
     }
 }
