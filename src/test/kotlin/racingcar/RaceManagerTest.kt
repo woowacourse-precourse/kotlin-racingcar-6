@@ -58,40 +58,43 @@ class RaceManagerTest {
 
     @Test
     fun `경주가 종료되었을 경우, 가장 많이 전진한 자동차가 승리한다`() {
-        // given
+        // Given
         val raceCars = listOf(
             Car(name = "tgyuu", numberGenerator = FakeNumberGenerator(THRESHOLD_FOR_MOVE_FORWARD)),
             Car(name = "pobi", numberGenerator = FakeNumberGenerator(THRESHOLD_FOR_MOVE_FORWARD-1)),
         )
 
-        // when
-        val actual = startRaceAndGetResult(raceCars, movementAttempt = "1")
+        val raceManager = setupRaceManagerWithCars(raceCars, movementAttempt = "1")
 
+        // When
+        val actual = startRaceAndGetResult(raceManager)
 
-        // then
+        // Then
         val expected = "최종 우승자 : tgyuu"
         assertThat(actual).isEqualTo(expected)
     }
 
     @Test
     fun `경주가 종료되었을 경우, 동점자가 존재할 경우 함께 승리한다`() {
-        // given
+        // Given
+        val numberGenerator = FakeNumberGenerator(THRESHOLD_FOR_MOVE_FORWARD)
+
         val raceCars = listOf(
-            Car(name = "tgyuu", numberGenerator = FakeNumberGenerator(THRESHOLD_FOR_MOVE_FORWARD)),
-            Car(name = "pobi", numberGenerator = FakeNumberGenerator(THRESHOLD_FOR_MOVE_FORWARD)),
+            Car(name = "tgyuu", numberGenerator = numberGenerator),
+            Car(name = "pobi", numberGenerator = numberGenerator),
         )
 
+        val raceManager = setupRaceManagerWithCars(raceCars, movementAttempt = "1")
 
-        // when
-        val actual = startRaceAndGetResult(raceCars, movementAttempt = "1")
+        // When
+        val actual = startRaceAndGetResult(raceManager)
 
-
-        //then
+        // Then
         val expected = "최종 우승자 : tgyuu, pobi"
         assertThat(actual).isEqualTo(expected)
     }
 
-    private fun startRaceAndGetResult(raceCars: List<Car>, movementAttempt: String): String {
+    private fun setupRaceManagerWithCars(raceCars: List<Car>, movementAttempt: String): RaceManager {
         val raceManager = RaceManager()
 
         raceCars.forEach { car ->
@@ -99,10 +102,15 @@ class RaceManagerTest {
         }
         raceManager.setMovementAttemptCount(movementAttempt)
 
+        return raceManager
+    }
+
+    private fun startRaceAndGetResult(raceManager: RaceManager): String {
         val outputStream = ByteArrayOutputStream()
         System.setOut(PrintStream(outputStream))
 
         raceManager.startRace()
+
         System.setOut(System.out)
 
         return outputStream.toString().trim()

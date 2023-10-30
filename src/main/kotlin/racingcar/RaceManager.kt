@@ -74,6 +74,6 @@ class RaceManager {
     }
 
     private fun endRace(){
-
+        _movedDirection.ge
     }
 }
