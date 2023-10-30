@@ -10,6 +10,7 @@ import racingcar.Validator.validateDuplicate
 import racingcar.Validator.validateNameLength
 import racingcar.Validator.validateNull
 import racingcar.Validator.validateNumber
+import kotlin.math.max
 
 class ApplicationTest : NsTest() {
     @Test
@@ -87,6 +88,38 @@ class ApplicationTest : NsTest() {
                 validateNumber("_@#!1")
             }
         }
+    }
+
+    @Test
+    fun `최대 이동 거리 반환 검증`() {
+        val cars = Cars()
+        val carList = listOf(Car("lh99j"), Car("pobi"))
+        carList[0].moveOneStep(true)
+        carList[0].moveOneStep(true)
+        carList[0].moveOneStep(true)
+        cars.addAllList(carList)
+        val validation = cars.getMaxDistance()
+        val result = 3
+        assertThat(validation).isEqualTo(result)
+    }
+
+    @Test
+    fun `우승자 확인 함수 검증`() {
+        val cars = Cars()
+        val carList = listOf(Car("lh99j"), Car("pobi"))
+        carList[0].moveOneStep(true)
+        carList[0].moveOneStep(true)
+        carList[0].moveOneStep(true)
+        cars.addAllList(carList)
+        val maxDistance = cars.getMaxDistance()
+
+        val winValidation = carList[0].isWinner(maxDistance)
+        val winResult = true
+        assertThat(winValidation).isEqualTo(winResult)
+
+        val defeatValidation = carList[1].isWinner(maxDistance)
+        val defeatResult = false
+        assertThat(defeatValidation).isEqualTo(false)
     }
 
     @Test
