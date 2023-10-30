@@ -27,6 +27,9 @@ Car를 상속받는 레이싱 차
 ### Referee 
 차가 움직일 수 있는지, Round 와 RacingCarGame 결과를 판정한다.
 
+### Reader 
+- 입력값을 읽어온다
+- 잘못된 입력값을 받아올 경우 IllegalArgumentException 발생
 ## 기능 요구 사항
 
 초간단 자동차 경주 게임을 구현한다.
