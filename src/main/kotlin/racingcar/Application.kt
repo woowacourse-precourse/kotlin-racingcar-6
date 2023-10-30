@@ -7,12 +7,15 @@ fun main() {
     val inputString = readlnOrNull() // 자동차 이름을 입력받음
     val carname = if (inputString.isNullOrBlank()) throw IllegalArgumentException("잘못된 값을 입력하였습니다.") else inputString
     val cars = carname.split(",") // ,를 기준으로 나눔
+    if (cars.any { it.length > 5 }) {
+        throw IllegalArgumentException("잘못된 값을 입력하였습니다.")
+    }
     val numofcars = cars.size
     val moveCar = Array(size = numofcars) {0}
     println("시도할 횟수는 몇 회인가요?")
     val inputnum = readlnOrNull()
     val numoftry = try {
-        if (inputnum.isNullOrBlank()) {
+        if (inputnum.isNullOrBlank()) { // null or blank 체크 후 아니면 int로 변환
             throw IllegalArgumentException("잘못된 값을 입력하였습니다.")
         } else {
             inputnum.toInt()
@@ -29,8 +32,8 @@ fun generateRandomNumber(cars : List<String>, carmove : Array<Int>)
     for (i in cars.indices)
     {
         val randomNumber = Randoms.pickNumberInRange(0, 9)
-        checkMove(randomNumber, i, carmove)
-        val dash = "-".repeat(randomNumber)
+        checkMove(randomNumber, i, carmove) // 이동 조건 체크
+        val dash = "-".repeat(carmove[i])
         val carname = cars[i]
         println("$carname : $dash")
     }
@@ -39,7 +42,7 @@ fun generateRandomNumber(cars : List<String>, carmove : Array<Int>)
 fun checkMove(randomnum : Int, index : Int, carmove : Array<Int>)
 {
     if (randomnum >= 4) {
-        carmove[index] += randomnum
+        carmove[index] += 1
     }
 }
 
