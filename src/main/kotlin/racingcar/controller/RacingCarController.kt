@@ -70,21 +70,16 @@ class RacingCarController(private val inputView: InputView, private val outputVi
         return Randoms.pickNumberInRange(0, 9)
     }
 
-    private fun chooseActionFromRandomNumber(): Boolean {
+    private fun chooseActionFromRandomNumber(cars: Cars) {
         val randomNumber = generateRandomNumber()
-        var move = 0
-        when {
-            randomNumber >= 4 -> move = 1
-            randomNumber < 4 -> move = 0
+        if (randomNumber >= 4){
+            cars.carPosition++
         }
-        return move == 1
     }
 
     private fun moveCarsBasedOnRandomConditions(cars: List<Cars>) {
         cars.forEach {
-            if (chooseActionFromRandomNumber()) {
-                it.carPosition++
-            }
+            chooseActionFromRandomNumber(it)
         }
     }
 
