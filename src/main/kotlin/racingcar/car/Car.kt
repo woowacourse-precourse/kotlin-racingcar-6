@@ -3,15 +3,21 @@ package racingcar.car
 import racingcar.generator.NumberGenerator
 import racingcar.generator.RandomNumberGenerator
 
-abstract class Car(
+class Car(
     val name: String = "",
-    scoreGenerator: NumberGenerator = RandomNumberGenerator()
+    private val scoreGenerator: NumberGenerator = RandomNumberGenerator(),
 ) {
-    val score = scoreGenerator.generate()
+    val score get() = scoreGenerator.generate()
     var position = ""
-        protected set
+        private set
 
-    abstract fun move()
+    fun move() {
+        position += POSITION_UNIT
+    }
 
     override fun toString() = name
+
+    companion object {
+        private const val POSITION_UNIT = "-"
+    }
 }
