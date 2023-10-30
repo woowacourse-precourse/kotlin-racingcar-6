@@ -61,7 +61,10 @@ class RaceManagerTest {
         // Given
         val raceCars = listOf(
             Car(name = "tgyuu", numberGenerator = FakeNumberGenerator(THRESHOLD_FOR_MOVE_FORWARD)),
-            Car(name = "pobi", numberGenerator = FakeNumberGenerator(THRESHOLD_FOR_MOVE_FORWARD-1)),
+            Car(
+                name = "pobi",
+                numberGenerator = FakeNumberGenerator(THRESHOLD_FOR_MOVE_FORWARD - 1)
+            ),
         )
 
         val raceManager = setupRaceManagerWithCars(raceCars, movementAttempt = "1")
@@ -90,11 +93,14 @@ class RaceManagerTest {
         val actual = startRaceAndGetResult(raceManager)
 
         // Then
-        val expected = "최종 우승자 : tgyuu, pobi"
+        val expected = "최종 우승자 : pobi, tgyuu"
         assertThat(actual).isEqualTo(expected)
     }
 
-    private fun setupRaceManagerWithCars(raceCars: List<Car>, movementAttempt: String): RaceManager {
+    private fun setupRaceManagerWithCars(
+        raceCars: List<Car>,
+        movementAttempt: String
+    ): RaceManager {
         val raceManager = RaceManager()
 
         raceCars.forEach { car ->
@@ -107,12 +113,13 @@ class RaceManagerTest {
 
     private fun startRaceAndGetResult(raceManager: RaceManager): String {
         val outputStream = ByteArrayOutputStream()
-        System.setOut(PrintStream(outputStream))
-
         raceManager.startRace()
 
-        System.setOut(System.out)
+        System.setOut(PrintStream(outputStream))
 
+        raceManager.endGame()
+
+        System.setOut(System.out)
         return outputStream.toString().trim()
     }
 }

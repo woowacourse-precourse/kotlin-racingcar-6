@@ -1,6 +1,7 @@
 package racingcar
 
 import racingcar.state.CarState
+import java.util.Collections
 
 class RaceManager {
 
@@ -9,12 +10,11 @@ class RaceManager {
     }
 
     private val _raceCars: MutableList<Car> = mutableListOf()
-    val raceCars: List<Car> get() = _raceCars.toList()
 
     private var movementAttemptCount: Int = DEFAULT_VALUE
 
     private val _movedDirection: HashMap<String, Int> = hashMapOf()
-    val movedDirection : Map<String, Int> get() = _movedDirection.toMap()
+    val movedDirection: Map<String, Int> get() = _movedDirection.toMap()
 
     fun addCarToRace(car: Car) {
         _raceCars.add(car)
@@ -42,6 +42,7 @@ class RaceManager {
             movementAttemptCount -= 1
             println()
         }
+        endGame()
     }
 
     private fun tryForwardMovementAllCars() {
@@ -54,7 +55,7 @@ class RaceManager {
     private fun handleCarState(carState: CarState, carName: String) {
         when (carState) {
             CarState.MOVING_FORWARD ->
-                _movedDirection[carName] = _movedDirection.getValue(carName) + 1
+                _movedDirection[carName] = movedDirection.getValue(carName) + 1
 
             CarState.STOP -> Unit
         }
@@ -68,12 +69,23 @@ class RaceManager {
 
     private fun displayCarDirectionMoved(car: Car) {
         println("${car.name} : ")
-        repeat(_movedDirection.getValue(car.name)) {
+        repeat(movedDirection.getValue(car.name)) {
             print("-")
         }
     }
 
-    private fun endRace(){
-        _movedDirection.ge
+    fun endGame() {
+        val winners = findWinners()
+        printWinners(winners)
+    }
+
+    private fun findWinners(): List<String> {
+        val maxValue = movedDirection.values.max()
+        return movedDirection.filterValues { it == maxValue }.keys.toList()
+    }
+
+    private fun printWinners(winner: List<String>) {
+        val concatenatedString = winner.joinToString(", ")
+        print("최종 우승자 : $concatenatedString")
     }
 }
