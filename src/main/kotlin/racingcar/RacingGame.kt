@@ -2,20 +2,17 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 
-class RacingGame {
+class RacingGame(
+    private val printer: Printer = Printer()
+) {
 
     private fun userInput() = Console.readLine()
 
     fun readyRacing() {
-        val printer = Printer()
-
         printer.printOutEnteringCarName()
         val carsInputString = userInput()
 
-        val carsList = carsInputString.split(",").filter { it.isNotBlank() }.map { name ->
-
-            Car(name)
-        }
+        val carsList = carsInputString.split(",").filter { it.isNotBlank() }.map { Car(it) }
         requireValidCarsInput(carsInputString = carsInputString, carsList = carsList)
         requireCheckingForDuplicateNames(carsList = carsList)
 
@@ -24,14 +21,18 @@ class RacingGame {
         requireValidAttemptsNumberInput(attemptsNumberInputString = attemptsNumberInputString)
         val attemptsNumber = attemptsNumberInputString.toInt()
 
-        startRacing(attemptsNumber = attemptsNumber)
+        startRacing(attemptsNumber = attemptsNumber, carsList = carsList)
     }
 
-    private fun startRacing(attemptsNumber: Int) {
+    private fun startRacing(attemptsNumber: Int, carsList: List<Car>) {
         var attempts = attemptsNumber
+        printer.printOutResultInformationText()
+
         while (attempts > 0) {
-
-
+            carsList.map { car ->
+                car.moveForward()
+            }
+            printer.printOutCarsMoveResult(carsList = carsList)
             attempts--
         }
     }
