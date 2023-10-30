@@ -43,7 +43,7 @@ object RacingGameManager {
     }
 
     fun announceWinner() {
-        val winner = whoIsWinner(racingCars)
+        val winner = createWinnerList(racingCars)
         UserOutput.printWinner(winner)
     }
 
@@ -52,7 +52,7 @@ object RacingGameManager {
      * 2. hasmaxDistance에 RacingCars 리스트와 distance의 최댓값을 넣어
      *    최댓값을 가진 객체들의 name 리스트를 반환한다.
      */
-    private fun whoIsWinner(cars: MutableList<RacingCar>): List<String> {
+    private fun createWinnerList(cars: MutableList<RacingCar>): List<String> {
         return hasMaxDistance(cars, getMaxDistance(cars))
     }
 
