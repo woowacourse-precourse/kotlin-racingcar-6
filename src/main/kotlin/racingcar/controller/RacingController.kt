@@ -3,6 +3,7 @@ package racingcar.controller
 import racingcar.model.Car
 import racingcar.model.CarName
 import racingcar.model.Cars
+import racingcar.model.Round
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -20,7 +21,7 @@ class RacingController(
         return inputView.inputCarName()
     }
 
-    fun inputRound(): Int {
+    private fun inputRound(): Round {
         outputView.printInputRound()
         return inputView.inputRound()
     }

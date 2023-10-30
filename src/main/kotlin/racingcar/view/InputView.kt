@@ -2,6 +2,7 @@ package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
 import racingcar.model.CarName
+import racingcar.model.Round
 
 class InputView {
     fun inputCarName(): List<CarName> {
@@ -9,8 +10,8 @@ class InputView {
         return cars
     }
 
-    fun inputRound(): Int {
-        val round = Console.readLine().toInt()
+    fun inputRound(): Round {
+        val round = Round(Console.readLine().toInt())
         return round
     }
 
