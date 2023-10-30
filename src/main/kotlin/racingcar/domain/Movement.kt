@@ -1,6 +1,6 @@
 package racingcar.domain
 
-interface Move {
+interface Movement {
     fun moveForward(): Int
     fun stop(): Int
 }
