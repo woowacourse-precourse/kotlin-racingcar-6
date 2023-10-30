@@ -10,7 +10,7 @@ class RacingCarService(
     private val racingCarsRepository: RacingCarsRepository
 ) {
 
-    fun initGame(racingCars: RacingCars) {
+    fun saveRacingCars(racingCars: RacingCars) {
         racingCarsRepository.saveRacingCars(racingCars)
     }
 
