@@ -9,23 +9,23 @@ class OutputView {
     fun printHeadResult() {
         println(RUN_RESULT)
     }
-    fun printScore(cars: List<Cars>) {
+    fun displayCarScores(cars: List<Cars>) {
         for (car in cars) {
-            printCarScore(car)
+            printCarNameAndPosition(car)
         }
         println()
     }
 
-    private fun printCarScore(cars: Cars) {
+    private fun printCarNameAndPosition(cars: Cars) {
         println(cars.joinNameAndPosition())
     }
 
-    private fun racePointMax(cars: List<Cars>): Int? {
+    private fun findMaxRacePosition(cars: List<Cars>): Int? {
         return cars.maxOfOrNull { it.carPosition }
     }
 
-    fun raceWinners(cars: List<Cars>) {
-        val maxPosition = racePointMax(cars)
+    fun displayRaceWinners(cars: List<Cars>) {
+        val maxPosition = findMaxRacePosition(cars)
         if (maxPosition != null) {
             val winners = cars.filter { it.carPosition == maxPosition }
             println("최종 우승자 : ${winners.joinToString(", ") { it.carName }}")

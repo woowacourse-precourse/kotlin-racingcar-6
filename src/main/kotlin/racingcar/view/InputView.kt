@@ -4,29 +4,29 @@ import camp.nextstep.edu.missionutils.Console
 
 class InputView {
     companion object {
-        private val INPUT_CAR_NAMES_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-        private val INPUT_TRY_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?"
+        private const val INPUT_CAR_NAMES_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+        private const val INPUT_TRY_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?"
     }
 
     private fun inputCarNamesMessage() {
         println(INPUT_CAR_NAMES_MESSAGE)
     }
 
-    fun inputCarName(): List<String> {
+    fun inputCarNames(): List<String> {
         inputCarNamesMessage()
         val inputName = Console.readLine()
-        validateCommaNotFind(inputName)
-        return splitInputName(inputName.trim())
+        validateNotFindComma(inputName)
+        return splitInputNames(inputName.trim())
     }
 
-    fun splitInputName(inputName: String): List<String> {
+    fun splitInputNames(inputName: String): List<String> {
         val splitString = inputName.split(",")
-        validateInputName(splitString)
+        validateOverFiveName(splitString)
         validateDuplicateCheck(splitString)
         return splitString
     }
 
-    private fun validateInputName(splitInputName: List<String>) {
+    private fun validateOverFiveName(splitInputName: List<String>) {
         splitInputName.map { names ->
             if (names.length > 5) throw IllegalArgumentException("5글자가 넘는 자동차 이름이 있습니다.")
         }
@@ -38,7 +38,7 @@ class InputView {
         }
     }
 
-    private fun validateCommaNotFind(inputName: String) {
+    private fun validateNotFindComma(inputName: String) {
         if (!inputName.contains(",")){
             throw IllegalArgumentException("입력값에 쉼표가 포함되지 않았습니다.")
         }
@@ -56,12 +56,12 @@ class InputView {
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException("숫자가 아닌 다른 값이 입력 되었습니다.")
         }
-        validateInputTryRace(tryCount)
+        validateNotTryZero(tryCount)
 
         return tryCount
     }
 
-    private fun validateInputTryRace(tryCount: Int) {
+    private fun validateNotTryZero(tryCount: Int) {
         if (tryCount == 0)
             throw IllegalArgumentException("0은 입력될 수 없습니다.")
     }

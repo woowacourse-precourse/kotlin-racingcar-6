@@ -6,5 +6,5 @@ import racingcar.view.OutputView
 
 fun main() {
     val racingCarController = RacingCarController(InputView(), OutputView())
-    racingCarController.racingRun()
+    racingCarController.runRacingSimulation()
 }

@@ -4,11 +4,8 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.ValueSource
 import racingcar.view.InputView
 
 
@@ -50,7 +47,7 @@ class ApplicationTest : NsTest() {
     @Test
     fun `자동차 입력을 쉼표로 나누기`() {
         assertThat(
-            inputView.splitInputName("pobi,woni,stone")
+            inputView.splitInputNames("pobi,woni,stone")
         ).containsExactly("pobi", "woni", "stone")
     }
 
