@@ -39,4 +39,5 @@ fun showProcedure(allCarList: List<String>, distanceList: MutableList<Int>){
         print("${allCarList[i]} : ")
         println("-".repeat(distanceList[i]))
     }
+    println()
 }
