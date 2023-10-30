@@ -19,7 +19,7 @@ class InputView {
         return splitInputName(inputName.trim())
     }
 
-    private fun splitInputName(inputName: String): List<String> {
+    fun splitInputName(inputName: String): List<String> {
         val splitString = inputName.split(",")
         validateInputName(splitString)
         validateDuplicateCheck(splitString)
