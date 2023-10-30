@@ -12,6 +12,7 @@ class OutputView {
     }
 
     fun printWinners(winner: List<Car>) { // 최종 우승자가 누구인지 알려줌.
-        println("최종 우승자 : ${winner.joinToString(",")}")
+        val winnerNames = winner.joinToString(",") { it.name }
+        println("최종 우승자 : $winnerNames")
     }
 }
