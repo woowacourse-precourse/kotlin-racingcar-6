@@ -47,11 +47,6 @@ object RacingGameManager {
         UserOutput.printWinner(winner)
     }
 
-    /**
-     * 1. getMaxDistance에 RacingCars 리스트를 넣고, distance의 최댓값을 구한다.
-     * 2. hasmaxDistance에 RacingCars 리스트와 distance의 최댓값을 넣어
-     *    최댓값을 가진 객체들의 name 리스트를 반환한다.
-     */
     private fun createWinnerList(cars: MutableList<RacingCar>): List<String> {
         return findCarNameWithMaxDistance(cars, getMaxDistance(cars))
     }
