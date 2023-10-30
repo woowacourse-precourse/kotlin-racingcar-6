@@ -12,7 +12,8 @@ class Car(private val name: String, private var howGoForward: Int = 0) {
 
     fun moveForwardIfRandomNumberIsGreaterThanStandard() {
         val randomNumber = createRandomNumber()
-
+        require(randomNumber in 0..9)
+        
         if (randomNumber >= CAR_FORWARD_STANDARD) {
             howGoForward++
         }
