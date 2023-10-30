@@ -148,4 +148,13 @@ class RacingCarTest {
 
         assertThat(outputStream.toString().trim()).isEqualTo("최종 우승자 : pobi")
     }
+
+    @Test
+    fun `우승자 여러명 안내하기`() {
+        val racingCarList = listOf(RacingCar("pobi", 1), RacingCar("woni", 1))
+
+        outputView.printWinner(racingCarController.findWinner(racingCarList))
+
+        assertThat(outputStream.toString().trim()).isEqualTo("최종 우승자 : pobi, woni")
+    }
 }
