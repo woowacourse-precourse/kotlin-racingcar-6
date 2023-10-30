@@ -2,7 +2,7 @@ package racingcar.manager
 
 class OutputManager {
     fun racingCarNames() = println(INPUT_RACING_CAR_NAMES)
-    fun attemptCount()  = println(INPUT_ATTEMPT_COUNT)
+    fun attemptCount() = println(INPUT_ATTEMPT_COUNT)
     fun racingResult() = println(RACING_RESULT)
     fun racingRoundResult(racingRoundResult: String) = println(racingRoundResult)
     fun winner(winner: String) = println(winner)
