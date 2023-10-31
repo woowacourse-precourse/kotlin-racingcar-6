@@ -21,6 +21,20 @@ class CarRaceControllerTest: NsTest() {
     }
 
     @Test
+    fun `우승자가 2명일때 잘 반환되는지`() {
+        val carNameAndScore = mapOf("pobi" to 5, "woni" to 2, "tobi" to 5)
+        val splitWinners = carRaceController.splitWinners(carNameAndScore)
+        assertThat(splitWinners).contains("pobi, tobi")
+    }
+
+    @Test
+    fun `우승자가 1명일때 잘 반환되는지`() {
+        val carNameAndScore = mapOf("pobi" to 5, "woni" to 2, "tobi" to 3)
+        val splitWinners = carRaceController.splitWinners(carNameAndScore)
+        assertThat(splitWinners).contains("pobi")
+    }
+
+    @Test
     fun `","를 기준으로 잘리는지 확인`() {
         val carNames = carRaceController.splitCarNames("pobi,woni,jun")
         assertThat(carNames).contains("pobi", "woni", "jun")
