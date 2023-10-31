@@ -12,8 +12,8 @@ class InputView {
         require(carNameList.isNotEmpty()) { "이름을 입력해야합니다." }
         for (carName in carNameList) {
             require (carName.length <= 5) { "이름은 5글자 이하만 가능합니다." }
-            require (carName.isNotEmpty()) { "이름이 제대로 입력되지 않았습니다." }
-            require(carName[0] != ' ') { "이름의 첫글자가 공백입니다." }
+            require (carName.isNotEmpty()) { "입력되지 않은 이름이 있습니다." }
+            require(carName.all { it.isLetter() }) { "글자로 된 이름만 입력 가능합니다." }
         }
         return carNameList
     }

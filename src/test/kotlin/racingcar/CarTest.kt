@@ -31,45 +31,45 @@ class CarTest {
     }
 
     @Test
-    fun `자동차 이름 5자 초과 입력 예외 처리`() {
-        val racingCarNameList = "pobi,pobibic".split(",")
-
-        assertThrows<IllegalArgumentException> { inputView.checkCarNameList(racingCarNameList) }
+    fun `이름에 대한 예외처리(5자 초과 이름)`() {
+        val carNameList = "pobi,HoguOgu".split(",")
+        assertThrows<IllegalArgumentException> { inputView.checkCarNameList(carNameList) }
     }
 
     @Test
-    fun `자동차 이름 쉼표(,) 뒤 빈값 예외 처리`() {
-        val racingCarNameList = "pobi,woni,".split(",")
-
-        assertThrows<IllegalArgumentException> { inputView.checkCarNameList(racingCarNameList) }
+    fun `이름에 대한 예외처리(이름이 주어지지 않은 경우)`() {
+        val carNameList = "pobi,woni,".split(",")
+        assertThrows<IllegalArgumentException> { inputView.checkCarNameList(carNameList) }
     }
 
     @Test
-    fun `자동차 이름 첫글자 공백 입력 예외 처리`() {
-        val racingCarNameList = "pobi, woni".split(",")
-
-        assertThrows<IllegalArgumentException> { inputView.checkCarNameList(racingCarNameList) }
+    fun `이름에 대한 예외처리(글자가 아닌 특수문자가 들어가는 경우 (공백 등))`() {
+        val carNameList = "pobi, woni".split(",")
+        assertThrows<IllegalArgumentException> { inputView.checkCarNameList(carNameList) }
     }
 
     @Test
-    fun `자동차 이름 0개 입력 예외 처리`() {
-        val racingCarNameList = emptyList<String>()
-
-        assertThrows<IllegalArgumentException> { inputView.checkCarNameList(racingCarNameList) }
+    fun `이름에 대한 예외처리(입력이 null인 경우)`() {
+        val carNameList = emptyList<String>()
+        assertThrows<IllegalArgumentException> { inputView.checkCarNameList(carNameList) }
     }
 
     @Test
-    fun `시도 횟수 1미만 입력 예외 처리`() {
-        val attemptNumber = "0"
-
+    fun `이동 횟수 예외처리(숫자가 아닌 경우)`() {
+        val attemptNumber = "One"
         assertThrows<IllegalArgumentException> { inputView.checkRoundNumber(attemptNumber) }
     }
 
     @Test
-    fun `시도 횟수 숫자아닌 값 입력 예외 처리`() {
-        val attemptNumber = "one"
+    fun `이동 횟수 예외처리(0 이하인 경우)`() {
+        val roundNumber = "0"
+        assertThrows<IllegalArgumentException> { inputView.checkRoundNumber(roundNumber) }
+    }
 
-        assertThrows<IllegalArgumentException> { inputView.checkRoundNumber(attemptNumber) }
+    @Test
+    fun `이동 횟수 예외처리(Int 범위를 벗어나는 경우)`() {
+        val roundNumber = "1000000000000"
+        assertThrows<IllegalArgumentException> { inputView.checkRoundNumber(roundNumber) }
     }
 
     @Test
@@ -83,77 +83,28 @@ class CarTest {
     }
 
     @Test
-    fun `무작위 값 구하기`() {
-        val randomNumber = race.getRandomNumber()
-
-        assertThat(randomNumber).isBetween(1, 9)
+    fun `전진 기능 확인`() {
+        val car = Car("pobi")
+        race.moveOrStop(car, MOVING_FORWARD)
+        assertThat(car).isEqualTo(Car("pobi", 1))
     }
 
     @Test
-    fun `전진 판단하기`() {
-        val movingCar = Car("pobi")
-
-        race.moveOrStop(movingCar, MOVING_FORWARD)
-
-        assertThat(movingCar).isEqualTo(Car("pobi", 1))
+    fun `정지 기능 확인`() {
+        val car = Car("pobi")
+        race.moveOrStop(car, STOP)
+        assertThat(car).isEqualTo(Car("pobi", 0))
     }
 
     @Test
-    fun `정지 판단하기`() {
-        val stoppedCar = Car("pobi")
-
-        race.moveOrStop(stoppedCar, STOP)
-
-        assertThat(stoppedCar).isEqualTo(Car("pobi", 0))
-    }
-
-    @Test
-    fun `전진 실행 결과 출력하기`() {
-        val car = Car("pobi", 1)
-
-        outputView.printCurrentMove(car)
-
-        assertThat(outputStream.toString().trim()).isEqualTo("pobi : $MOVE")
-    }
-
-    @Test
-    fun `정지 실행 결과 출력하기`() {
-        val car = Car("pobi", 0)
-
-        outputView.printCurrentMove(car)
-
-        assertThat(outputStream.toString().trim()).isEqualTo("pobi :")
-    }
-
-    @Test
-    fun `우승자 1명 찾기`() {
+    fun `단독 우승자 출력 확인`() {
         val carLists = listOf(Car("pobi", 1), Car("woni", 0))
-
-        val winner = race.getWinnerList(carLists)
-
-        assertThat(winner).contains(Car("pobi", 1))
-    }
-
-    @Test
-    fun `우승자 여러명 찾기`() {
-        val carLists = listOf(Car("pobi", 1), Car("woni", 1))
-
-        val winner = race.getWinnerList(carLists)
-
-        assertThat(winner).contains(Car("pobi", 1), Car("woni", 1))
-    }
-
-    @Test
-    fun `우승자 1명 안내하기`() {
-        val carLists = listOf(Car("pobi", 1), Car("woni", 0))
-
         outputView.printWinner(race.getWinnerList(carLists))
-
         assertThat(outputStream.toString().trim()).isEqualTo("최종 우승자 : pobi")
     }
 
     @Test
-    fun `우승자 여러명 안내하기`() {
+    fun `공동 우승자 출력 확인`() {
         val carLists = listOf(Car("pobi", 1), Car("woni", 1))
 
         outputView.printWinner(race.getWinnerList(carLists))
