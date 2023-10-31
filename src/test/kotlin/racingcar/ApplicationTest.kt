@@ -1,5 +1,6 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
@@ -17,6 +18,16 @@ class ApplicationTest : NsTest() {
             },
             MOVING_FORWARD, STOP
         )
+    }
+
+    @Test
+    fun `한명을 입력했을때, 실행 결과 테스트`() {
+        val randomNumber = Randoms.pickNumberInRange(0, 9).toString()
+        val name = "pobi"
+        assertSimpleTest {
+            run(name, randomNumber)
+            assertThat(output()).contains(name)
+        }
     }
 
     @Test
