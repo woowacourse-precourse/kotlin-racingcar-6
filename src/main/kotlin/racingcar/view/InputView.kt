@@ -27,4 +27,29 @@ class InputView {
         }
         return racingCarNames
     }
+
+    fun printAskTryNumberMessage() = println("시도할 횟수는 몇 회인가요?")
+
+    fun inputTryNumber() : Int = validateInputTryNumber(Console.readLine())
+
+    fun validateInputTryNumber(inputNumber: String) : Int {
+        validateInputTryNumberEmpty(inputNumber)
+        validateInputTryNumberZero(inputNumber)
+        validateInputTryNumberString(inputNumber)
+        return inputNumber.toInt()
+    }
+
+    fun validateInputTryNumberEmpty(inputNumber: String) {
+        if (inputNumber.isEmpty()) throw NullPointerException("아무것도 입력하지 않으셨습니다.")
+    }
+
+    fun validateInputTryNumberZero(inputNumber: String) {
+        if (inputNumber == "0") throw IllegalArgumentException("0보다 큰 수를 입력 해야 합니다.")
+    }
+
+    fun validateInputTryNumberString(inputNumber: String) {
+        for (c in inputNumber.toCharArray()) {
+            if (!c.isDigit()) throw IllegalArgumentException("숫자가 아닌 문자열을 입력했습니다.")
+        }
+    }
 }

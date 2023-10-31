@@ -9,10 +9,10 @@
   - [x] 중복된 이름이 있는 경우, 중복 제거
 
 ### 시도할 횟수 입력받기
-- [ ] 시도할 횟수 입력 받는 문구 출력하기
-- [ ] 시도할 횟수를 Console.readLine()으로 입력받기
-  - [ ] 입력하지 않은 경우 NullException 예외 발생
-  - [ ] 문자가 있거나 0인 경우 IllegalArgumentException 예외 발생
+- [x] 시도할 횟수 입력 받는 문구 출력하기
+- [x] 시도할 횟수를 Console.readLine()으로 입력받기
+  - [x] 입력하지 않은 경우 NullException 예외 발생
+  - [x] 문자가 있거나 0인 경우 IllegalArgumentException 예외 발생
 
 ### 자동차 이동하기
 - [ ] for문을 사용해 입력한 만큼의 이동을 진행
