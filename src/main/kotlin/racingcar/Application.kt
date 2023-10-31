@@ -18,19 +18,36 @@ fun main() {
 
     val cars = createCars(carNames)
 
-    for(i in 1..tryNum){
+    for (i in 1..tryNum) {
         println("실행결과")
         tryOne(cars)
     }
+
+    val winners = getCarWithMaxDistance(cars)
+    finalWinner(winners)
 }
 
-fun tryOne(cars: List<Car>){
-    for(car in cars){
-        val randomNum = generateNum()
-        if(randomNum >= 4) car.movingFoward()
+fun finalWinner(winners: List<Car>) {
+    val winnerList = mutableListOf<String>()
+    for (car in winners) {
+        winnerList.add(car.name)
     }
-    for(car in cars){
-        println("${car.name} : "+"-".repeat(car.distance))
+    val result = winnerList.joinToString(", ")
+    println("최종 우승자 : $result")
+}
+
+fun getCarWithMaxDistance(cars: List<Car>): List<Car> {
+    val maxDistance = cars.maxOf { it.distance }
+    return cars.filter { it.distance == maxDistance }
+}
+
+fun tryOne(cars: List<Car>) {
+    for (car in cars) {
+        val randomNum = generateNum()
+        if (randomNum >= 4) car.movingFoward()
+    }
+    for (car in cars) {
+        println("${car.name} : " + "-".repeat(car.distance))
     }
     println()
 }
