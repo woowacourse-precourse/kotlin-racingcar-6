@@ -19,11 +19,11 @@ class Game {
     }
 
     private fun input() {
-        var carname = Console.readLine()
-        var names = carname.split(',')
+        val carname = Console.readLine()
+        val names = carname.split(',')
         error.checkName(names)
         for (name in names) {
-            cars?.add(Car(name))
+            cars.add(Car(name))
         }
     }
 
@@ -49,7 +49,7 @@ class Game {
     }
 
     private fun winner() {
-        var winners = mutableListOf<String>()
+        val winners = mutableListOf<String>()
         val maxPosition = findMaxPos()
         for (car in cars) {
             if (car.getPosition() == maxPosition) {
