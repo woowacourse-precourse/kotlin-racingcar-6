@@ -18,4 +18,11 @@ class RacingCarTest {
         assertThat(testCar.distance).isEqualTo(1)
         assertThat(testCar.path).isEqualTo("-")
     }
+
+    @Test
+    fun `참가하는 자동차가 1대인 경우 컴퓨터 자동차 생성`() {
+        RacingGameManager.racingCars.add(testCar)
+        RacingGameManager.singleModeOn()
+        assertThat(RacingGameManager.racingCars.size).isEqualTo(2)
+    }
 }

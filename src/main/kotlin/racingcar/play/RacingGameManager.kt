@@ -7,7 +7,7 @@ import racingcar.ui.UserOutput
 
 object RacingGameManager {
     private var carNames: List<String> = listOf()
-    private var racingCars: MutableList<RacingCar> = mutableListOf()
+    internal var racingCars: MutableList<RacingCar> = mutableListOf()
     private var attemptCount: Int = 0
 
     fun registerCarNames(): RacingGameManager {
@@ -17,10 +17,14 @@ object RacingGameManager {
         for (carName in carNames) {
             racingCars.add(RacingCar(carName))
         }
-        if(racingCars.size == 1) racingCars.add(RacingCar("com"))
+        if(racingCars.size == 1) singleModeOn() // 경주 참가자가 1명일 때, 컴퓨터와 시합한다.
         return this
     }
 
+    fun singleModeOn() {
+        println("Single Mode On")
+        racingCars.add(RacingCar("com"))
+    }
     fun getAttemptCount(): RacingGameManager {
         val input = UserInput.readAttemptCount()
         InputValidator.checkOnlyDigit(input)
