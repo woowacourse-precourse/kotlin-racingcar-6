@@ -37,6 +37,46 @@ class ApplicationTest : NsTest() {
         Console.close()
         System.setOut(standardOut)
     }
+    
+    @Test
+    fun `숫자 0을 이동 횟수 검증 함수인 checkMoveCountValid 함수에 입력하면 true를 반환한다`() {
+        // given
+        val countOfMove = 0
+        
+        // when
+        val actual = validator.checkMoveCountValid(countOfMove)
+        
+        // then
+        val expected = true
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `숫자 100을 이동 횟수 검증 함수인 checkMoveCountValid 함수에 입력하면 true를 반환한다`() {
+        // given
+        val countOfMove = 100
+
+        // when
+        val actual = validator.checkMoveCountValid(countOfMove)
+
+        // then
+        val expected = true
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `숫자 -1을 이동 횟수 검증 함수인 checkMoveCountValid 함수에 입력하면 false를 반환한다`() {
+        // given
+        val countOfMove = -1
+
+        // when
+        val actual = validator.checkMoveCountValid(countOfMove)
+
+        // then
+        val expected = false
+        assertThat(actual).isEqualTo(expected)
+    }
+
 
     @Test
     fun `숫자 0이 나오면 움직일 수 없다는 의미의 false를 반환한다`() {
