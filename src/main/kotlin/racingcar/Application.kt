@@ -10,6 +10,32 @@ fun main() {
 
     val playCount= Console.readLine()
     processExceptionCount(playCount)
+
+    val resList = MutableList(carList.size) {0}
+    var count = playCount.toInt()
+
+    while (count != 0) {
+        for (i in 0..<resList.size) {
+            val randomNum = Randoms.pickNumberInRange(0,9)
+            if (randomNum >= 4) {
+                resList[i] += 1
+            }
+            val location = "-".repeat(resList[i])
+            println(String.format("%s : %s", carList[i], location))
+        }
+        count--
+        println()
+    }
+
+    val maxRes = resList.max()
+    val winners = mutableListOf<String>()
+    for ((index, value) in resList.withIndex()) {
+        if (value == maxRes) {
+            winners.add(carList[index])
+        }
+    }
+    print("최종 우승자 : ")
+    println(winners.joinToString(", "))
 }
 
 fun processExceptionCar(carInput: String, carList: List<String>) {
