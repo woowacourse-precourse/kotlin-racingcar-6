@@ -7,9 +7,11 @@ class RacingCars private constructor(private val cars: List<RacingCar>) {
         require(cars.size >= MINIMUM_NUMBER_OF_CARS) { "자동차는 최소 ${MINIMUM_NUMBER_OF_CARS}대 이상이어야 합니다." }
     }
 
-    fun move() {
-        cars.forEach { it.move(Randoms.pickNumberInRange(0, 9)) }
     fun move() = cars.forEach { it.move(Randoms.pickNumberInRange(0, 9)) }
+
+    fun findWinners(): List<RacingCar> {
+        val maxPosition = cars.maxOf { it.getPosition() }
+        return cars.filter { it.getPosition() == maxPosition }
     }
 
     companion object {

@@ -15,8 +15,9 @@
     - [X] 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
     - [X] 자동차가 전진할 경우 자동차의 위치를 1 증가시킨다.
     - [X] 자동차가 멈출 경우 자동차의 위치를 그대로 유지한다.
-- [ ] 우승자를 판단할 수 있다. - RacingGame#findWinners()
-  - [ ] 우승자는 한 명 이상일 수 있다. - RacingGame#findWinners()
+- [X] 우승자를 판단할 수 있다. - RacingCars#findWinners()
+  - [X] 위치가 가장 큰 자동차가 우승자이다.
+  - [X] 우승자는 한 명 이상일 수 있다.
 - [ ] 우승자를 출력할 수 있다. - DisplayBoard#displayWinners()
   - [ ] 단독 우승자를 출력할 수 있다. - DisplayBoard#displayWinners()
     - ```최종 우승자 : pobi```

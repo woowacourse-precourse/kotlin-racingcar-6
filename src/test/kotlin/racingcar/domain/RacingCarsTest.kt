@@ -12,8 +12,6 @@ class RacingCarsTest {
     }
 
     @Test
-    fun 생성성공() {
-        assertDoesNotThrow { RacingCars(mutableListOf("pobi", "woni")) }
     fun `이름들로 생성성공`() {
         assertDoesNotThrow { RacingCars.fromNames(mutableListOf("pobi", "woni")) }
     }
@@ -27,5 +25,26 @@ class RacingCarsTest {
     fun `차들로 생성성공`() {
         assertDoesNotThrow { RacingCars.fromCars(mutableListOf(RacingCar("pobi"), RacingCar("woni"))) }
     }
+
+    @Test
+    fun `우승자찾기_단독우승자임`() {
+        val firstPlace = RacingCar("pobi", 1)
+        val secondPlace = RacingCar("woni", 0)
+        val racingCars = RacingCars.fromCars(listOf(firstPlace, secondPlace))
+
+        val winners = racingCars.findWinners()
+
+        assertThat(winners).isEqualTo(listOf(firstPlace))
+    }
+
+    @Test
+    fun 우승자찾기_공동우승자임() {
+        val firstPlace = RacingCar("pobi", 1)
+        val secondPlace = RacingCar("woni", 1)
+        val racingCars = RacingCars.fromCars(listOf(firstPlace, secondPlace))
+
+        val winners = racingCars.findWinners()
+
+        assertThat(winners).isEqualTo(listOf(firstPlace, secondPlace))
     }
 }

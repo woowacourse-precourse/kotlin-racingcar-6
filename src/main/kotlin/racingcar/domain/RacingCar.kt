@@ -1,8 +1,7 @@
 package racingcar.domain
 
-class RacingCar(name: String) {
+class RacingCar(name: String, private var position: Int = 0) {
     private val name: String
-    private var position: Int = 0
 
     init {
         val trimmedName = name.trim()
