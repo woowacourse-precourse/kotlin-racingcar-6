@@ -35,7 +35,11 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `자동차 입력의 시작과 끝이 콤마(,)인 경우`() {
-
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                runException(",pobi,javaji", "pobi,javaji,")
+            }
+        }
     }
 
     @Test
