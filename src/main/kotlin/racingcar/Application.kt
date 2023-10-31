@@ -18,5 +18,7 @@ fun main() {
     val tryCount = machine.tryMove()
 
     println("실행 결과")
-    racing.playRacing(tryCount,carsClass)
+    racing.playRacing(tryCount, carsClass)
+
+
 }

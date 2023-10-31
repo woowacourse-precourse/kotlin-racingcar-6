@@ -1,15 +1,11 @@
 package racingcar
 
-import java.lang.NumberFormatException
-
 class InputMachine {
 
     // 자동차 이름 입력↓
     fun makeCars(): List<String> {
 
-        val cars = readln().split(",")
-
-        return cars
+        return readln().split(",")
 
     }
 
