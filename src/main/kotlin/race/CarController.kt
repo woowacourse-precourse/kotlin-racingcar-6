@@ -8,7 +8,9 @@ import kotlin.IllegalArgumentException
 class CarController(private val carModel: CarModel, private val printResult: PrintResult) {
     fun runRace() {
         printResult.printMessage(Constant.CAR_INPUT_STRING)
+        println()
         val carString = inputString()
+        println()
         validateCarInput(carString)
         processCarInput(carString)
         printResult.printMessage(Constant.TRY_NUMBER_INPUT_STRING)
