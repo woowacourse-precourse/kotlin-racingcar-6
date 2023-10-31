@@ -37,9 +37,9 @@ class RacingCarGame {
         val winners = viewModel.findFinalWinners()
 
         if (winners.size == 1) {
-            println(CommonStrings.MESSAGE_FINAL_WINNER + winners.joinToString())
+            println(CommonStrings.MESSAGE_FINAL_WINNER +" : "+ winners.joinToString())
         } else {
-            println(CommonStrings.MESSAGE_FINAL_WINNER + winners.joinToString(","))
+            println(CommonStrings.MESSAGE_FINAL_WINNER +" : "+ winners.joinToString(","))
         }
     }
 }
