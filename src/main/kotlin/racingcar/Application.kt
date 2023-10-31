@@ -22,6 +22,9 @@ class RacingCarGame {
             if (carName.isBlank()) {
                 throw IllegalArgumentException("자동차 이름을 입력해주세요.")
             }
+            if (carName.length > 5) {
+                throw IllegalArgumentException("자동차 이름은 5자 이하로 입력해주세요.")
+            }
         }
     }
 }
