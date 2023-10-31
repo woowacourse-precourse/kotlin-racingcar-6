@@ -17,7 +17,7 @@ class OutputView {
 
     fun printWinners(cars: List<Car>) {
         print("최종 우승자 : ")
-        print(cars.joinToString(", ") { it.name.name })
+        print(cars.joinToString(", ") { it.name.value })
     }
 
     fun printResultMessage() {
@@ -27,7 +27,7 @@ class OutputView {
     fun printRacing(cars: Cars) {
         val racingOutput = buildString {
             cars.getCars().forEach { car ->
-                append("${car.name.name} : ")
+                append("${car.name.value} : ")
                 append(DISTANCE.repeat(car.position))
                 appendLine()
             }

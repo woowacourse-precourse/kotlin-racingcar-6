@@ -30,7 +30,7 @@ class RacingController(
         val cars = mutableListOf<Car>()
         inputCarName().forEach {
             // 원시값 포장을 풀어서 Model에 전달
-            cars.add(Car(it.name))
+            cars.add(Car(it.value))
         }
         runRace(Cars(cars))
     }

@@ -4,7 +4,7 @@ private const val DUPLICATE_NAME_EXCEPTION_MESSAGE = "중복된 이름이 존재
 class Cars(private val cars: List<Car>) {
 
     init {
-        val distinctByName = cars.distinctBy { it.name.name }
+        val distinctByName = cars.distinctBy { it.name.value }
         require(cars.size == distinctByName.size) { DUPLICATE_NAME_EXCEPTION_MESSAGE }
     }
 
