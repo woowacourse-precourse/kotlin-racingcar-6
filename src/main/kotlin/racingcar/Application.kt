@@ -22,9 +22,21 @@ fun move(record:IntArray):IntArray{
     return record
 }
 
+fun try_count():Int{
+    println("시도할 횟수는 몇 회인가요?")
+    val number = Console.readLine().toIntOrNull() //정수로 변환시도해서 실패시 null을 반환
+//    if (number == null || !number.all { it.isDigit()} || number.toInt() < 0){ //isDigit시 null이면 오류 따라서 먼저 체크
+    if (number == null || number < 0){
+        throw IllegalArgumentException()
+    }
+    return number
+}
+
 fun main() {
     val cars = make_frame()
     val record = IntArray(cars.size){0}
-    move(record)
-    println(record.joinToString(","))
+    for (idx in 0 until try_count()) {
+        move(record)
+        println(record.joinToString(","))
+    }
 }
