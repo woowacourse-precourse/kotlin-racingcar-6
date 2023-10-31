@@ -28,7 +28,7 @@ private fun inputRacingCarName() {
     val readLine = readLine()
     val racingCarNameList = readLine.split(",")
     racingCarNameList.forEach { car ->
-        if (car.length <= 5) {
+        if (car.length >= 5) {
             throw IllegalArgumentException()
         }
 
