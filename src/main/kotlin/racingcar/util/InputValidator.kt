@@ -1,7 +1,9 @@
 package racingcar.util
 
 object InputValidator {
+
     private const val LIMIT_USERNAME = 5
+
     fun validateUserName(users: List<String>): UserNameValidation {
         if (users.isEmpty()) {
             return UserNameValidation.LEAST_ONE

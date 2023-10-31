@@ -3,6 +3,7 @@ package racingcar.data
 import camp.nextstep.edu.missionutils.Randoms
 
 object CarFactory {
+
     fun makeCarList(playerList: List<String>, gameCount: Int): List<Car> =
         playerList.map { Car(it, makeRandomList(gameCount)) }
 
