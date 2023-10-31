@@ -3,8 +3,7 @@ package racingcar
 class Car(carname: String) {
     var position = 0
     var name = carname
-
-    fun step(){
+    fun plus(){
         position++
     }
 }
