@@ -20,4 +20,10 @@ class ValidatorTest {
     fun `자동차 이름이 5글자 이하가 아닐 때 예외를 던지는지`(carName: String) {
         assertThrows<IllegalArgumentException> { validator.nameLength(carName) }
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["1번", "백번", "ten time"])
+    fun `시도 횟수가 숫자가 아닐 때 예외를 던지는지`(attempts: String) {
+        assertThrows<IllegalArgumentException> { validator.attemptsComponents(attempts) }
+    }
 }
