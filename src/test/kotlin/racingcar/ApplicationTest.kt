@@ -39,12 +39,25 @@ class ApplicationTest : NsTest() {
 
     @ParameterizedTest
     @MethodSource("RandomNumbersSingleWinner")
-    @DisplayName("OutputView: printRoundResult()")
-    fun `라운드 자동차 경주 점수 출력`(randomNumbers: IntArray) {
+    @DisplayName("OutputView: printRoundResult() - Winner Single Case")
+    fun `우승자가 한 명인 경우) 라운드 자동차 경주 점수 출력`(randomNumbers: IntArray) {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni,jun", "5")
                 assertThat(output()).contains("pobi : ----", "woni : ---", "jun : ---", "최종 우승자 : pobi")
+            },
+            randomNumbers[0], *randomNumbers.copyOfRange(1, randomNumbers.size).toTypedArray()
+        )
+    }
+
+    @ParameterizedTest
+    @MethodSource("RandomNumbersMultiWinners")
+    @DisplayName("OutputView: printRoundResult() - Winner Multi Case")
+    fun `우승자가 여러 명인 경우) 라운드 자동차 경주 점수 출력`(randomNumbers: IntArray) {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,jun", "5")
+                assertThat(output()).contains("pobi : ----", "woni : ----", "jun : ---", "최종 우승자 : pobi, woni")
             },
             randomNumbers[0], *randomNumbers.copyOfRange(1, randomNumbers.size).toTypedArray()
         )
@@ -61,6 +74,10 @@ class ApplicationTest : NsTest() {
         @JvmStatic
         fun RandomNumbersSingleWinner() = listOf(
             intArrayOf(6, 4, 3, 8, 0, 6, 4, 7, 4, 5, 8, 5, 3, 0, 3), // 4, 3, 3
+        )
+        @JvmStatic
+        fun RandomNumbersMultiWinners() = listOf(
+            intArrayOf(6, 4, 3, 8, 0, 6, 4, 7, 4, 5, 8, 5, 3, 5, 3), // 4, 4, 3
         )
     }
 }

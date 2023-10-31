@@ -15,7 +15,8 @@ data class Winner(
     private fun bestScoreCalculate(scoreList: List<Int>) = scoreList.maxOf { it }
 
     private fun winnerNameListSet(carList: List<Car>, bestScore: Int) {
-        _winnerNameList = carList.filter { it.score == bestScore }
-            .map { it.name }
+        _winnerNameList = carList.filter {
+            it.score == bestScore
+        }.map { it.name }
     }
 }
