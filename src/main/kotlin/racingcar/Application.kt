@@ -1,6 +1,6 @@
 package racingcar
 
-import racingcar.view_model.GameManager
+import racingcar.controller.GameManager
 
 fun main() {
     GameManager().start()
