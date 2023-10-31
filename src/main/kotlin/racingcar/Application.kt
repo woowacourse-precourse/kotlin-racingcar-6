@@ -19,5 +19,11 @@ fun parsingInput(): List<String> {
 fun validateNameLength(input: List<String>) {
     for (name in input) {
         if (name.length > 4) throw IllegalArgumentException("${name}의 길이가 5이상 입니다.")
+        validateNameIsNotInt(name)
     }
 }
+
+fun validateNameIsNotInt(input: String) {
+    if (input.toIntOrNull() != null) throw IllegalArgumentException("${input}은 숫자입니다.")
+}
+
