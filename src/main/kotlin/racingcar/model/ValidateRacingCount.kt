@@ -1,5 +1,7 @@
 package racingcar.model
 
+import racingcar.views.OutputView
+
 class ValidateRacingCount {
 
     companion object {
@@ -11,11 +13,11 @@ class ValidateRacingCount {
 
     fun validateTryCount(tryCount: String, multiCarName: List<String?>) {
         when (true) {
-            validateNullOrBlank(tryCount) -> throw IllegalArgumentException() // NO_TRY_COUNT
+            validateNullOrBlank(tryCount) -> throw IllegalArgumentException(OutputView.NO_TRY_COUNT_ERROR)
 
-            validateNotInRange(tryCount) -> throw IllegalArgumentException() // TRY_COUNT_RANGE
+            validateNotInRange(tryCount) -> throw IllegalArgumentException(OutputView.TRY_COUNT_RANGE_ERROR)
 
-            validateNotNum(tryCount) -> throw IllegalArgumentException() // NOT_DIGIT_COUNT
+            validateNotNum(tryCount) -> throw IllegalArgumentException(OutputView.NOT_DIGIT_TRY_COUNT_ERROR)
 
             else -> multiRacingGame.multiRacingGame(tryCount.toInt(), multiCarName)
         }

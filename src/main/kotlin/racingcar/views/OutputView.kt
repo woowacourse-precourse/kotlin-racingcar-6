@@ -22,10 +22,6 @@ class OutputView {
         println(SOLO_GAME_RULE)
     }
 
-    fun printError(e: Exception) {
-        println(e.message)
-    }
-
     fun printSoloGameResult(inputCarName: String, forward: String) {
         printResultForm(inputCarName, forward)
         skipLine()

@@ -1,5 +1,7 @@
 package racingcar.model
 
+import racingcar.views.OutputView
+
 class ValidateCarName {
 
     companion object {
@@ -11,19 +13,19 @@ class ValidateCarName {
 
     fun validateInputBlank(inputCarName: String) {
         if (inputCarName.isBlank()) {
-            throw IllegalArgumentException() // 여기에 NO_CAR_NAM
+            throw IllegalArgumentException(OutputView.NO_CAR_NAME_ERROR)
         }
     }
 
     fun validateInputMultiCarName(multiCarName: List<String?>) {
         when (false) {
-            validateMaxInput5(multiCarName) -> throw IllegalArgumentException() // CAR_NAME_CO
+            validateMaxInput5(multiCarName) -> throw IllegalArgumentException(OutputView.CAR_NAME_COUNT_ERROR)
 
-            validateIsBlank(multiCarName) -> throw IllegalArgumentException() // NO_ALL_CAR
+            validateIsBlank(multiCarName) -> throw IllegalArgumentException(OutputView.NO_ALL_CAR_NAME_ERROR)
 
-            validateDuplicateCarName(multiCarName) -> throw IllegalArgumentException() // DUPLICATE
+            validateDuplicateCarName(multiCarName) -> throw IllegalArgumentException(OutputView.DUPLICATE_CAR_NAME_ERROR)
 
-            validateRacingCarRange(multiCarName) -> throw IllegalArgumentException() //CAR_COUNT_ERROR
+            validateRacingCarRange(multiCarName) -> throw IllegalArgumentException(OutputView.CAR_COUNT_ERROR)
 
             else -> multiRacingGame.inputTryCount(multiCarName)
         }
