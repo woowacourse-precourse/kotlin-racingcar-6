@@ -18,7 +18,7 @@ fun race(racingCars: List<RacingCar>, tryCount: Int?) {
     repeat(tryCount!!) {
         racingCars.forEach {
             it.move()
-            it.print()
+            println(it.nameAndMileage())
         }
         println()
     }
