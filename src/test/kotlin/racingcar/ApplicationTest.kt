@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
-    private val cars: List<Car> = listOf(Car("A", 3), Car("B", 9), Car("C", 7))
-    private val racing: Racing = Racing(cars)
+    private val racing: Racing = Racing()
 
     @Test
     fun `전진 정지`() {
@@ -78,10 +77,11 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `우승자 판별`() {
+    fun `단일 우승자 판별`() {
         assertSimpleTest {
-            val results = racing.getWinner()
-            assertThat(results).isEqualTo("B")
+            val cars: List<Car> = listOf(Car("T1", 10), Car("KT", 2), Car("Gen.G", 7))
+            val results = racing.getWinner(cars)
+            assertThat(results).isEqualTo("T1")
         }
     }
 
