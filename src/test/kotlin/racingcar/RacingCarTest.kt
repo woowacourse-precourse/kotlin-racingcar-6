@@ -8,6 +8,13 @@ import org.junit.jupiter.api.assertThrows
 class RacingCarTest {
 
     @Test
+    fun `이름이 공백이면 예외 발생`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { RacingCar.createOrThrow("") }
+        }
+    }
+
+    @Test
     fun `이름이 5자 이하면 정상정으로 생성`() {
         assertSimpleTest {
             assertDoesNotThrow { RacingCar.createOrThrow("hello") }

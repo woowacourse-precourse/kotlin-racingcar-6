@@ -15,7 +15,7 @@ class RacingCar private constructor(
         private const val MAX_NAME_LENGTH = 5
 
         fun createOrThrow(name: String): RacingCar {
-            require(name.length <= MAX_NAME_LENGTH)
+            require(name.length in 1..MAX_NAME_LENGTH)
             return RacingCar(name = name)
         }
     }
