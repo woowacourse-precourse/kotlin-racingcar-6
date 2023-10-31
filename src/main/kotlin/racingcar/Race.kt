@@ -1,3 +1,5 @@
+package racingcar
+
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.Model.Car
 import racingcar.View.InputView
