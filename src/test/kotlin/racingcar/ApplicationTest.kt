@@ -1,11 +1,13 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.RepeatedTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
@@ -13,13 +15,24 @@ import org.junit.jupiter.params.provider.ValueSource
 
 class ApplicationTest : NsTest() {
     @Test
-    fun `전진 정지`() {
+    fun `자동차 하나 전진 나머지 하나 정지`() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni", "1")
                 assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
             },
             MOVING_FORWARD, STOP
+        )
+    }
+
+    @Test
+    fun `우승자 여러 명`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "2")
+                assertThat(output()).contains("최종 우승자 : pobi, woni")
+            },
+            MOVING_FORWARD, MOVING_FORWARD
         )
     }
 
