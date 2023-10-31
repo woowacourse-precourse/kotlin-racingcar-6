@@ -5,11 +5,7 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.controllers.CarRaceController
-import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.fail
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.params.provider.NullAndEmptySource
-import racingcar.views.CarRaceView
 
 class CarRaceControllerTest: NsTest() {
 
@@ -21,84 +17,56 @@ class CarRaceControllerTest: NsTest() {
     }
 
     @Test
-    fun `우승자가 2명일때 잘 반환되는지`() {
-        val carNameAndScore = mapOf("pobi" to 5, "woni" to 2, "tobi" to 5)
-        val splitWinners = carRaceController.splitWinners(carNameAndScore)
-        assertThat(splitWinners).contains("pobi, tobi")
-    }
-
-    @Test
-    fun `우승자가 1명일때 잘 반환되는지`() {
-        val carNameAndScore = mapOf("pobi" to 5, "woni" to 2, "tobi" to 3)
-        val splitWinners = carRaceController.splitWinners(carNameAndScore)
-        assertThat(splitWinners).contains("pobi")
-    }
-
-    @Test
-    fun `","를 기준으로 잘리는지 확인`() {
-        val carNames = carRaceController.splitCarNames("pobi,woni,jun")
-        assertThat(carNames).contains("pobi", "woni", "jun")
-    }
-
-    @Test
-    fun `carNameAndScore에 등록된 이름과 점수만큼 잘 작동하는지`() {
-        val carNameAndScore = mapOf("pobi" to 5, "woni" to 2)
-        val result = carRaceController.generateResults(carNameAndScore)
-
-        assertThat(result.joinToString("\n")).isEqualTo("pobi : -----\nwoni : --")
-    }
-
-    @Test
-    fun `사용자가 중복된 이름을 넣은경우`() {
+    fun `inputCarNames에서 사용자가 중복된 이름을 넣은경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,pobi", "3") }
         }
     }
 
     @Test
-    fun `사용자가 공백의 이름을 넣은경우`() {
+    fun `inputCarNames에서 사용자가 공백의 이름을 넣은경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("", "3") }
         }
     }
 
     @Test
-    fun `사용자가 중간에 공백의 이름을 넣은경우`() {
+    fun `inputCarNames에서 사용자가 중간에 공백의 이름을 넣은경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,,tobi", "3") }
         }
     }
 
     @Test
-    fun `사용자가 한명만 입력한경우`() {
+    fun `inputCarNames에서 사용자가 한명만 입력한경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi", "3") }
         }
     }
 
     @Test
-    fun `사용자가 5자 이상 입력한경우`() {
+    fun `inputCarNames에서 사용자가 5자 이상 입력한경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,woniiii", "3") }
         }
     }
 
     @Test
-    fun `사용자가 횟수를 음수를 넣은경우`() {
+    fun `inputNumberOfAttempts에서 사용자가 횟수를 음수를 넣은경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
         }
     }
 
     @Test
-    fun `사용자가 횟수를 넣지 않은경우`() {
+    fun `inputNumberOfAttempts에서 사용자가 횟수를 넣지 않은경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,woni", " ") }
         }
     }
 
     @Test
-    fun `사용자가 횟수에 숫자를 넣지 않은경우`() {
+    fun `inputNumberOfAttempts에서 사용자가 횟수에 숫자를 넣지 않은경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,woni", "asdfasdf") }
         }
