@@ -37,8 +37,8 @@
       ```
 
 
-- [ ] 최종 우승자를 출력한다.(`OutputResult.showResult`)
-  - [ ] 공동 우승자가 있다면 여러 우승자를 출력할 수 있다.
+- [x] 최종 우승자를 출력한다.(`OutputResult.showResult`)
+  - [x] 공동 우승자가 있다면 여러 우승자를 출력할 수 있다.
 
 
 ![img.png](racingcar_uml_ver1.png)

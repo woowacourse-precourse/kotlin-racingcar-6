@@ -1,9 +1,7 @@
 package racingcar.view
 
-import racingcar.model.Cars
-
 class OutputResult {
-    fun showResult(cars: Cars) {
-
+    fun showResult(cars: List<String>) {
+        print("최종 우승자 : ${cars.joinToString(", ")}")
     }
 }
