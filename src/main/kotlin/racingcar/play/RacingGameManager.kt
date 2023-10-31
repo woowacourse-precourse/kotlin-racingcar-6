@@ -20,7 +20,6 @@ object RacingGameManager {
     }
 
     fun singleModeOn() {
-        println("Single Mode On")
         racingCars.add(RacingCar("[computer]"))
     }
 
