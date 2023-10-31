@@ -2,13 +2,16 @@ package racingcar
 
 
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.model.Car
+import racingcar.view.InputView
+import racingcar.view.OutputView
 
 class Race() {
     private val inputView = InputView()
     private val outputView = OutputView()
     fun run() {
         outputView.printCarNameInputMention()
-        val carList = getRacingCarList(inputView.inputCarName())
+        val carList = getCarList(inputView.inputCarName())
 
         outputView.printRoundNumberInputMention()
         for (attemptNumber in 0 until inputView.inputRoundNumber()) {
@@ -24,9 +27,9 @@ class Race() {
         inputView.closeConsole()
     }
 
-    fun getRacingCarList(carNameList: List<String>): List<Car> = carNameList.map { name -> Car(name) }
+    fun getCarList(carNameList: List<String>): List<Car> = carNameList.map { name -> Car(name) }
 
-    fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
+    private fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
 
     fun moveOrStop(car : Car, randomNumber: Int) {
         if (randomNumber >= 4) {
@@ -36,7 +39,6 @@ class Race() {
 
     fun getWinnerList(carList: List<Car>): List<Car> {
         val maxMove = carList.maxBy { car -> car.moves }.moves
-
         return carList.filter { car -> car.moves == maxMove }
     }
 }

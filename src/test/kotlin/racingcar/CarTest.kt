@@ -5,6 +5,9 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.model.Car
+import racingcar.view.InputView
+import racingcar.view.OutputView
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
@@ -12,7 +15,6 @@ class CarTest {
     companion object {
         private const val MOVING_FORWARD = 4
         private const val STOP = 3
-        private const val MOVE = "-"
     }
 
     private val inputView = InputView()
@@ -74,12 +76,12 @@ class CarTest {
 
     @Test
     fun `자동차 리스트 만들기`() {
-        val racingCarNameList = listOf("pobi", "woni")
+        val carNameList = listOf("pobi", "woni")
 
-        val racingCarList = race.getRacingCarList(racingCarNameList)
+        val carList = race.getCarList(carNameList)
 
-        assertThat(racingCarList).contains(Car("woni"), Car("pobi"))
-        assertThat(racingCarList).containsExactly(Car("pobi"), Car("woni"))
+        assertThat(carList).contains(Car("woni"), Car("pobi"))
+        assertThat(carList).containsExactly(Car("pobi"), Car("woni"))
     }
 
     @Test
@@ -104,7 +106,7 @@ class CarTest {
     }
 
     @Test
-    fun `공동 우승자 출력 확인`() {
+    fun `공동 우승자 출력 확`() {
         val carLists = listOf(Car("pobi", 1), Car("woni", 1))
 
         outputView.printWinner(race.getWinnerList(carLists))
