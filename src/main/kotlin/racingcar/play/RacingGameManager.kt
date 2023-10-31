@@ -24,6 +24,7 @@ object RacingGameManager {
         val input = UserInput.readAttemptCount()
         InputValidator.checkOnlyDigit(input)
         attemptCount = input.toInt()
+        InputValidator.isPositive(attemptCount)
         return this
     }
 

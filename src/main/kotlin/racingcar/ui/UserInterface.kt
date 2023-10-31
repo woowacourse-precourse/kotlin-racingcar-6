@@ -9,7 +9,7 @@ private const val MSG_OUTPUT_RESULT = "실행 결과"
 private const val MSG_OUTPUT_WINNER = "최종 우승자 : "
 
 private const val MSG_EXCEPTION_NAME_LENGTH = "이름은 1자 이상 5자 이하만 가능합니다."
-private const val MSG_EXCEPTION_ONLY_DIGIT = "시도 횟수는 숫자만 가능합니다."
+private const val MSG_EXCEPTION_ONLY_DIGIT = "시도 횟수는 1 이상의 숫자만 가능합니다."
 
 object UserInput {
 
@@ -50,4 +50,6 @@ object InputValidator {
         require(input.isNotEmpty()) { MSG_EXCEPTION_ONLY_DIGIT }
         input.forEach { require(it in '0'..'9') { MSG_EXCEPTION_ONLY_DIGIT } }
     }
+
+    fun isPositive(input: Int) = require(input > 0) { MSG_EXCEPTION_ONLY_DIGIT }
 }

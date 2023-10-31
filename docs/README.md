@@ -10,6 +10,7 @@
 
 - [x] 자동차의 이동 횟수를 입력받는다. // UserInput.readAttemptCount()
   - [x] 입력을 정수로 변환한다.
+  - [ ] 입력이 
   - [x] 입력이 숫자로만 되어있는지 검사한다. // InputValidator.checkOnlyDigit
 
 
