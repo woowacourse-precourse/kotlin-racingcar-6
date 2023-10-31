@@ -43,6 +43,7 @@ class Car(val name: String) : Comparable<Car> {
 
 object InputManager {
     fun getCarNames() : List<String> {
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val input = Console.readLine()
         return input.split(",").map {
             require(it.length <= 5) {"Wrong Car name! Car name must be 5 characters or less"}
@@ -66,5 +67,4 @@ object OutputManager {
 }
 
 fun main() {
-    // TODO: 프로그램 구현
 }
