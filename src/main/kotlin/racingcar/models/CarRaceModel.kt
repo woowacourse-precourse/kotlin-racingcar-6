@@ -1,6 +1,7 @@
 package racingcar.models
 
 import camp.nextstep.edu.missionutils.Randoms
+import org.assertj.core.util.VisibleForTesting
 
 class CarRaceModel {
     private val carNameAndScore = mutableMapOf<String, Int>()
@@ -40,6 +41,7 @@ class CarRaceModel {
         return carNameAndScore
     }
 
+    @VisibleForTesting
     fun setTestCodeDummy(pobiScore: Int, woniScore: Int, tobiScore: Int) {
         carNameAndScore["pobi"] = pobiScore
         carNameAndScore["woni"] = woniScore
