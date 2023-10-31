@@ -1,29 +1,37 @@
 package racingcar.View
 
-import camp.nextstep.edu.missionutils.Console
 import racingcar.Model.Car
-import racingcar.Utils.Constans.EXECUTION_RESULT_MENTION
 
 class OutputView {
     companion object {
-        fun printExecutionResultMention() = println(EXECUTION_RESULT_MENTION)
-
-        fun printExecutionResult(list: List<Car>) {
-            val sb = StringBuilder()
-            list.forEach {
-                sb.append("${it.name} : ${printCurrentPosition(it.getPosition())}\n")
-            }
-            println(sb)
+        private const val MOVE = "-"
+    }
+    fun printResult(carList: List<Car>) {
+        for (car in carList) {
+            printCurrentMove(car)
         }
+        println()
+    }
 
-        private fun printCurrentPosition(position: Long): String {
-            var curPosition = ""
-            for (i in 0 until position) curPosition += "-"
-            return curPosition
-        }
+    fun printWinner(winnerList: List<Car>) {
+        val winnerNameList = winnerList.joinToString(", ") { winner -> winner.name }
+        println("최종 우승자 : $winnerNameList")
+    }
 
-        fun printWinners(nameList: List<String>) {
-            print("최종 우승자 : ${nameList.joinToString(", ")}")
-        }
+    fun printResultMention() {
+        println()
+        println("실행 결과")
+    }
+
+    fun printCarNameInputMention() {
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    }
+
+    fun printRoundNumberInputMention() {
+        println("시도할 횟수는 몇 회인가요?")
+    }
+
+    fun printCurrentMove(car: Car) {
+        println("${car.name} : " + MOVE.repeat(car.moves))
     }
 }

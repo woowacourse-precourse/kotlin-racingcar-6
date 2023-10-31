@@ -1,4 +1,4 @@
-package racingcar.Utils
+package Legacies
 
 object Constans {
     //Exceptions
