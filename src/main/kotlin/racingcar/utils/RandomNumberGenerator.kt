@@ -10,6 +10,7 @@ class RandomNumberGenerator {
     }
 
     fun createNumber(): Int {
+
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
     }
 }

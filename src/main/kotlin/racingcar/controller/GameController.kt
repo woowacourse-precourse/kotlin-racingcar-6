@@ -12,15 +12,19 @@ class GameController(
     private val racingGame: RacingGame
 ) {
     fun run() {
+        // 이름 입력
         gameView.printNameInput()
         carNames.inputCarNames()
 
+        // 횟수 입력
         gameView.printMoveTimesInput()
         moveTimes.inputMoveTimes()
 
+        // 횟수 만큼 이동
         gameView.printRacingStart()
         raceLoop()
 
+        // 결과 출력
         gameView.printResult(racingGame.result())
     }
 

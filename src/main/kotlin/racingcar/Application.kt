@@ -17,7 +17,6 @@ fun main() {
     val moveTimes = MoveTimes(reader, inputChecker)
     val racingGame = RacingGame(RandomNumberGenerator())
     val gameView = GameView(Printer())
-
     val gameController = GameController(gameView, carNames, moveTimes, racingGame)
 
     gameController.run()
