@@ -36,7 +36,7 @@ class MultiRacingGame(
             racingEachCar(multiCarName)
             outputView.printMultiGameResult(multiCarName, scoreMap)
         }
-        multiChampion()
+        multiRacingWinner()
     }
 
     private fun racingEachCar(multiCarName: List<String?>) {
@@ -52,14 +52,14 @@ class MultiRacingGame(
         }
     }
 
-    private fun multiChampion() {
+    private fun multiRacingWinner() {
         val highestScore = scoreMap.values.maxOrNull() ?: 0
-        noWinner(highestScore)
+        noMultiRacingWinner(highestScore)
         val winners = scoreMap.filter { it.value == highestScore }.keys
         outputView.printMultiWinner(winners)
     }
 
-    private fun noWinner(highestScore: Int) {
+    private fun noMultiRacingWinner(highestScore: Int) {
         if (highestScore == DEFAULT_SCORE) {
             outputView.printNoWinner()
         }

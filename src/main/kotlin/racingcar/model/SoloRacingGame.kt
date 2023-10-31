@@ -37,17 +37,17 @@ class SoloRacingGame(private val randomUtils: RandomUtils, private val outputVie
 
     private fun checkSoloWinner(inputCarName: String, soloCount: Int) {
         if (soloCount >= SOLO_GAME_MIN_WIN_COUNT) {
-            soloWinner(inputCarName)
+            soloRacingWinner(inputCarName)
         } else {
-            noWinner()
+            noSoloRacingWinner()
         }
     }
 
-    private fun soloWinner(inputCarName: String) {
+    private fun soloRacingWinner(inputCarName: String) {
         println(OutputView.WINNER_MESSAGE + inputCarName)
     }
 
-    private fun noWinner() {
+    private fun noSoloRacingWinner() {
         OutputView.NO_WINNER_MESSAGE
     }
 }
