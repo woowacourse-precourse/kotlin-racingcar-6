@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms
 import kotlin.math.max
 
 
-class RacingGame(private var carList: List<String>, private var racingTime: Int) {
-    private var racingGame: LinkedHashMap<String, Int> = LinkedHashMap()
+class RacingGame(var carList: List<String>, var racingTime: Int) {
+    var racingGame: LinkedHashMap<String, Int> = LinkedHashMap()
+    var winnerPos: Int = 0
 
     init {
         makeCarPosMap()
@@ -38,7 +39,6 @@ class RacingGame(private var carList: List<String>, private var racingTime: Int)
     }
 
     fun onRoundPlay(): Int {
-        var winnerPos = 0
         for (car in this.racingGame.keys) {
             if (isCarMove()) {
                 this.racingGame[car] = (this.racingGame[car] ?: 0) + 1
@@ -50,9 +50,9 @@ class RacingGame(private var carList: List<String>, private var racingTime: Int)
         return winnerPos
     }
 
-    private fun printGameResult(winnerPos: Int) {
+    private fun getGameWinnerList(winnerPos: Int): String {
         val sb = StringBuilder()
-        sb.append("최종 우승자 : ")
+
         for (car in carList) {
             if (racingGame[car] == winnerPos) {
                 sb.append(car)
@@ -62,10 +62,12 @@ class RacingGame(private var carList: List<String>, private var racingTime: Int)
         sb.deleteAt(sb.length - 2)
 
         print(sb.toString())
+
+        return sb.toString()
     }
 
 
-    fun runRacingGame() {
+    fun runRacingGame(): String {
 
         var winnerPos = 0
 
@@ -73,7 +75,9 @@ class RacingGame(private var carList: List<String>, private var racingTime: Int)
         repeat(racingTime) {
             winnerPos = onRoundPlay()
         }
-        printGameResult(winnerPos)
+        val winner = getGameWinnerList(winnerPos)
+        println("최종 우승자 : ${winner}")
+        return winner.strip()
     }
 
 
