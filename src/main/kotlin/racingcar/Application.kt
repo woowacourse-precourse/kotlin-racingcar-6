@@ -1,13 +1,15 @@
 package racingcar
+
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val carNames = inputCarNames()
     val trynum = inputTryCount()
-    val goCount = raceCar(carNames, trynum)
-    printRaceResults(carNames, goCount)
-    printWinners(carNames, goCount)
+    val goCounts = simulateRace(carNames, trynum)
+    printRaceResults(carNames, goCounts)
+    val winners = determineWinners(carNames, goCounts)
+    printWinners(winners)
 }
 
 fun inputCarNames(): List<String> {
@@ -27,30 +29,38 @@ fun inputTryCount(): Int {
     return Console.readLine().toInt()
 }
 
-fun raceCar(carNames: List<String>, trynum: Int): Array<Int> {
-    val goCount = Array(carNames.size) { 0 }
-    for (i in 1..trynum) {
-        for (j in carNames.indices) {
-            if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                goCount[j]++
-            }
+fun simulateRace(carNames: List<String>, trynum: Int): List<Int> {
+    val goCounts = MutableList(carNames.size) { 0 }
+
+    repeat(trynum) {
+        val moveCounts = move(carNames)
+        for (i in carNames.indices) {
+            goCounts[i] += moveCounts[i]
         }
     }
-    return goCount
+
+    return goCounts
 }
 
-fun printRaceResults(carNames: List<String>, goCount: Array<Int>) {
+fun move(carNames: List<String>): List<Int> {
+    return carNames.map {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) 1 else 0
+    }
+}
+
+fun printRaceResults(carNames: List<String>, goCounts: List<Int>) {
     println("\n실행 결과")
     for (i in carNames.indices) {
-        val distance = "-".repeat(goCount[i])
+        val distance = "-".repeat(goCounts[i])
         println("${carNames[i]} : $distance")
     }
 }
 
-
-fun printWinners(carNames: List<String>, goCount: Array<Int>) {
-    val maxCount = goCount.max()
-    val winners = carNames.filterIndexed { index, _ -> goCount[index] == maxCount }
-    println("최종 우승자 : ${winners.joinToString(",")}")
+fun determineWinners(carNames: List<String>, goCounts: List<Int>): List<String> {
+    val maxCount = goCounts.maxOrNull()
+    return carNames.filterIndexed { index, _ -> goCounts[index] == maxCount }
 }
 
+fun printWinners(winners: List<String>) {
+    println("최종 우승자 : ${winners.joinToString(", ")}")
+}
