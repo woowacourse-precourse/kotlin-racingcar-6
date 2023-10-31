@@ -6,15 +6,18 @@ import org.junit.jupiter.api.Test
 import racingcar.controller.RacingcarController
 import racingcar.model.GenerateRandomNumber
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.`when`
 import racingcar.model.MoveCar
 import racingcar.model.Winner
+import org.junit.jupiter.api.BeforeEach
 
 
 class RacingcarGameTest {
     private val racingcarController = RacingcarController()
-    private val generateRandomNumber = GenerateRandomNumber()
-    private val moveCar = MoveCar()
     private val winner = Winner()
+    private lateinit var moveCar: MoveCar
+    private lateinit var generateRandomNumber: GenerateRandomNumber
     @Test
     fun `입력한 자동차 이름이 쉼표 기준으로 구분 검증`() {
         val input = "test1,test2,test3"
@@ -49,5 +52,34 @@ class RacingcarGameTest {
         )
         val result = winner.calculateWinner(input)
         Assertions.assertThat(result).containsExactly("test1", "test3")
+    }
+
+    @BeforeEach
+    fun setUp() {
+        generateRandomNumber = mock(GenerateRandomNumber::class.java)
+        moveCar = MoveCar(generateRandomNumber)
+    }
+
+    @Test
+    fun testCalculateScore() {
+        val carScore = mutableMapOf("test1" to 0, "test2" to 0, "test3" to 0)
+        `when`(generateRandomNumber.generate()).thenReturn(5) // 무작위 숫자를 5로 설정
+
+        moveCar.calculateScore(carScore)
+
+        assertEquals(1, carScore["test1"])
+        assertEquals(1, carScore["test2"])
+        assertEquals(1, carScore["test3"])
+    }
+    @Test
+    fun testCalculateScore_NoMove() {
+        val carScore = mutableMapOf("test1" to 0, "test2" to 0, "test3" to 0)
+        `when`(generateRandomNumber.generate()).thenReturn(2) // 무작위 숫자를 2로 설정
+
+        moveCar.calculateScore(carScore)
+
+        assertEquals(0, carScore["test1"])
+        assertEquals(0, carScore["test2"])
+        assertEquals(0, carScore["test3"])
     }
 }

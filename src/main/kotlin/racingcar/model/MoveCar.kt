@@ -1,7 +1,6 @@
 package racingcar.model
 
-class MoveCar {
-    private val generateRandomNumber = GenerateRandomNumber()
+class MoveCar(private val generateRandomNumber: GenerateRandomNumber) {
 
     fun calculateScore(carScore: MutableMap<String, Int>) {
         carScore.forEach { (name, score) ->

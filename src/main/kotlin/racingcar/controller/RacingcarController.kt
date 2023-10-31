@@ -8,7 +8,7 @@ import racingcar.model.Winner
 
 class RacingcarController {
     private val outputView = OutputView()
-    private val moveCar = MoveCar()
+    private val moveCar = MoveCar(GenerateRandomNumber())
     private val winner = Winner()
 
     fun startRacing() {
