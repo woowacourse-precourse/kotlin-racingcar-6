@@ -1,4 +1,3 @@
-import InputValue.CAR_DELIMITER
 import Validator.nameCheck
 import Validator.roundCheck
 import camp.nextstep.edu.missionutils.Console
