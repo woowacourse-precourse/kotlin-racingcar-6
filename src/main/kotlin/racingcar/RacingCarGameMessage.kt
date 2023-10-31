@@ -19,7 +19,7 @@ class RacingCarGameMessage {
         println(RESULT_MESSAGE)
     }
 
-    fun printWinnerMessage(winners: MutableList<String>) {
+    fun printWinnerMessage(winners: List<String>) {
         print("최종 우승자 : ${winners.joinToString(", ")}")
     }
 }

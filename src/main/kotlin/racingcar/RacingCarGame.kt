@@ -1,7 +1,6 @@
 package racingcar
 
 class RacingCarGame {
-    private val cars = mutableListOf<RacingCar>()
     private val userInputManager = UserInputManager()
     private val racingCarGameMessage = RacingCarGameMessage()
     private val racingCarGameResultEvaluator = RacingCarGameResultEvaluator()
@@ -10,11 +9,15 @@ class RacingCarGame {
     fun gamePlay() {
         racingCarGameMessage.printCarNameInputMessage()
         val names = userInputManager.userNameInput()
-        racingCarFactory.createCars(cars, names)
+
+        val cars = racingCarFactory.createCars(names)
+
         racingCarGameMessage.printTryCountInputMessage()
         val tryCount = userInputManager.userTryCountInput()
+
         racingCarGameMessage.printResultMessage()
         racingCarMovementRecorder.racingCarMovementRecordByTryCount(cars, tryCount)
+
         val winners = racingCarGameResultEvaluator.racingCarGameJudge(cars)
         racingCarGameMessage.printWinnerMessage(winners)
     }

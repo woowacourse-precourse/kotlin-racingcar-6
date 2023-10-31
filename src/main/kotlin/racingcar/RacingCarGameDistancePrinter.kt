@@ -13,7 +13,7 @@ class RacingCarGameDistancePrinter {
         println("${car.name} : $sb")
     }
 
-    fun printAllCarsDistance(cars: MutableList<RacingCar>) {
+    fun printAllCarsDistance(cars: List<RacingCar>) {
         for(car in cars) {
             printCarDistance(car)
         }

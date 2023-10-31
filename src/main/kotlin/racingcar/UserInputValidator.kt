@@ -9,7 +9,7 @@ class UserInputValidator {
         const val NAME_MAX_LENGTH = 5
     }
 
-    fun userNameInputValidator(nameList: MutableList<String>) {
+    fun userNameInputValidator(nameList: List<String>) {
         for(name in nameList) {
             when {
                 isNotCorrectLength(name) -> invokeIllegalArgumentException(USER_NAME_INPUT_LENGTH_EXCEPTION_MESSAGE)
@@ -30,7 +30,7 @@ class UserInputValidator {
     private fun isMinusNumber(str: String) = str.toInt() < 0
 
 
-    private fun hasDuplicateName(target: String, nameList: MutableList<String>): Boolean {
+    private fun hasDuplicateName(target: String, nameList: List<String>): Boolean {
         var count = 0
         for(name in nameList) {
             if(name == target) {

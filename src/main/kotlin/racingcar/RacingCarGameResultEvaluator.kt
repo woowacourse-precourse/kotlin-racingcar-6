@@ -1,7 +1,7 @@
 package racingcar
 
 class RacingCarGameResultEvaluator {
-    fun racingCarGameJudge(cars: MutableList<RacingCar>) : MutableList<String> {
+    fun racingCarGameJudge(cars: List<RacingCar>) : List<String> {
         val winners = mutableListOf<String>()
         var max = Int.MIN_VALUE
         for(car in cars) {
@@ -12,6 +12,6 @@ class RacingCarGameResultEvaluator {
                 winners.add(car.name)
             }
         }
-        return winners
+        return winners.toList()
     }
 }
