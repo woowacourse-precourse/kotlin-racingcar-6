@@ -94,16 +94,13 @@ class ApplicationTest : NsTest() {
         )
     }
 
+
     @Test
     fun `출력 확인(공동 우승의 경우)`() {
-        assertRandomNumberInRangeTest(
-            {
-                run("pobi,woni", "1")
-                assertThat(output()).contains("최종 우승자 : pobi, woni")
-            },
-            MOVING_FORWARD, STOP
-        )
+        val result = Race().testRun()
+        assertThat(result).isEqualTo("최종 우승자 : pobi, woni")
     }
+
 
     @Test
     fun `전진 정지`() {

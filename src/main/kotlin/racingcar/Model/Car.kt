@@ -10,6 +10,9 @@ class Car(val name : String) {
     //outputview로 이동 예정
     fun getCurrentPosition() = "$name : " + lengthToPrint(position)
 
+    //For test Code
+    fun addPosition() { position += 1 }
+
     private fun lengthToPrint(length : Int) : String {
         var position = ""
         for(i in 0 until length) position += "-"

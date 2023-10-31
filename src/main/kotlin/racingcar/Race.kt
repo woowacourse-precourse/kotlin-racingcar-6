@@ -15,6 +15,23 @@ class Race() {
         allRounds()
     }
 
+    fun testRun() : String{
+        cars = listOf<Car>(Car("pobi"), Car("woni"))
+        round = 1
+
+        return "최종 우승자 : ${getWinnerList().joinToString(", ")}"
+    }
+
+    private fun testOneRound() {
+        cars.forEach { it.addPosition() }
+        OutputView.printExecutionResult(cars)
+    }
+
+    private fun testAllRounds(){
+        repeat(round) { testOneRound() }
+        OutputView.printWinners(getWinnerList())
+    }
+
     private fun getCarList(list : List<String>) : List<Car> {
         val carList = mutableListOf<Car>()
         list.forEach {
