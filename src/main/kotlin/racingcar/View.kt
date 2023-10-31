@@ -21,8 +21,7 @@ class View {
     }
 
     fun printWinner(winnerList: List<String>) {
-        print(WINNER)
         val winner = winnerList.joinToString(", ")
-        print(winner)
+        print("$WINNER$winner")
     }
 }
