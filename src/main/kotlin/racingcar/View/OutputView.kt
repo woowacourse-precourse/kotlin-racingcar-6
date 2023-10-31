@@ -24,7 +24,6 @@ class OutputView {
 
         fun printWinners(nameList: List<String>) {
             print("최종 우승자 : ${nameList.joinToString(", ")}")
-            Console.close()
         }
     }
 }
