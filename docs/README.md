@@ -49,9 +49,9 @@ Repository 객체 대신 List로 간소화한다.
 
 - [x] 사용할 텍스트들을 상수로 정의
 
-#### RacingViewModel
+#### RacingGameViewModel
 
-- [ ] savePlayer(): 사용자 입력 받아서 플레이어 저장
+- [x] savePlayer(): 사용자 입력 받아서 플레이어 저장
 - [ ] saveRound(): 사용자 입력 받아서 라운드 저장
 - [ ] playRound(): 각 라운드 플레이해줄 함수
 - [ ] getRoundResult(): 현재 라운드 결과 리턴
@@ -62,7 +62,7 @@ Repository 객체 대신 List로 간소화한다.
 
 - [ ] startGame(): 사용자의 입력을 받아서 viewModel에게 일 시키고, 결과들을 받아서 출력
 
-#### RacingViewModelTest
+#### RacingGameViewModelTest
 
 비즈니스 로직을 처리하는 ViewModel 클래스에 대한 테스트만 진행하면 된다.
 
