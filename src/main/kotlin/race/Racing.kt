@@ -18,7 +18,7 @@ class Racing {
         return roundResult.appendLine()
     }
 
-    fun printWinner(racingCarList: List<Car>): StringBuilder {
+    fun findWinner(racingCarList: List<Car>): StringBuilder {
         val winnerList = racingCarList.filter { car ->
             car.nowDist() == firstCarDist
         }
