@@ -4,5 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 object RandomGenerator {
 
-    fun makeRandomNumber() = Randoms.pickNumberInRange(0, 9)
+    private const val moveConditionStart = 0
+    private const val moveConditionEnd = 9
+    fun makeRandomNumber() = Randoms.pickNumberInRange(moveConditionStart, moveConditionEnd)
 }
