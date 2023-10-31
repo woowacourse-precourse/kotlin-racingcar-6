@@ -1,7 +1,4 @@
-package racingcar
-
-import racingcar.Constants.POSITION_STEP
-import racingcar.Constants.START_POSITION
+package model
 
 class RacingCar(
     val name: String,
@@ -13,5 +10,10 @@ class RacingCar(
         if (moveStrategy.canMove()) {
             position += POSITION_STEP
         }
+    }
+
+    companion object {
+        const val START_POSITION = 0
+        const val POSITION_STEP = 1
     }
 }

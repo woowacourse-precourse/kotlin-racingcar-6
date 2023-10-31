@@ -1,19 +1,19 @@
-package racingcar
+package controller
 
-import racingcar.Constants.MESSAGE_CAR_MINIMUM_REQUIRED
-import racingcar.Constants.MESSAGE_DUPLICATE_CAR_NAME
-import racingcar.Constants.MINIMUM_CAR_NUMBER
-import racingcar.GameConsole.printCarNamePrompt
-import racingcar.GameConsole.printMoveCountPrompt
-import racingcar.GameConsole.printPosition
-import racingcar.GameConsole.printWinnerNames
-import racingcar.PlayerConsole.getValidCarNames
-import racingcar.PlayerConsole.getValidMoveCount
+import model.RacingCar
+import model.RandomMoveStrategy
+import view.GameConsole.printCarNamePrompt
+import view.GameConsole.printMoveCountPrompt
+import view.GameConsole.printPosition
+import view.GameConsole.printWinnerNames
+import view.PlayerConsole.getValidCarNames
+import view.PlayerConsole.getValidMoveCount
 
 class RacingCarController {
 
     private val carList: List<RacingCar>
     private val moveCount: Int
+
 
     init {
         printCarNamePrompt()
@@ -59,4 +59,9 @@ class RacingCarController {
         return winnerList.map { it.name }
     }
 
+    companion object {
+        const val MINIMUM_CAR_NUMBER = 2
+        const val MESSAGE_CAR_MINIMUM_REQUIRED = "2대 이상의 자동차가 필요합니다."
+        const val MESSAGE_DUPLICATE_CAR_NAME = "자동차 이름은 서로 중복될 수 없습니다."
+    }
 }
