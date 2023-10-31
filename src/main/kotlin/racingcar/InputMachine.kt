@@ -9,11 +9,7 @@ class InputMachine {
 
     }
 
-    fun divisionComma(cars: String) : List<String>{
-        return arrayOf<String>().toList()
-    }
-
-    fun checkCarNameUnder5(car: String) : Boolean{
+    fun checkCarNameUnder5(cars: List<String>) : Boolean{
         return true
     }
     //
