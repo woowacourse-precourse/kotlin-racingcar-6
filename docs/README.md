@@ -1,7 +1,7 @@
 ## 기능 목록
 - [O] 자동차를 생성한다.  - InputMachine#makeCars()
-  - [] 조건 - 자동차의 이름은 5자 이하이다. - InputMachine#checkCarNameUnder5()
-- [] 만들어진 각각의 자동차의 정보를 저장한다. - Car#
+  - [O] 조건 - 자동차의 이름은 5자 이하이다. - InputMachine#checkCarNameUnder5()
+- [O] 만들어진 각각의 자동차의 정보를 저장한다. - Car#
 - [] 몇 번 이동할 것인지 입력 - InputMachine#tryMove()
   - [] 조건 - 양의 정수만 입력되어야 한다. - InputMachine#checkOnlyNatural()
 - [] 0~9 중 무작위 값을 구한다. - Racing#random09()
