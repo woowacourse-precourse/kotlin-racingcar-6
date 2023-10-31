@@ -11,7 +11,7 @@ class Output(private val cars: Cars) {
 
     fun printResult() {
         val maxState = cars.getAdvanceStateList().max()
-        val winnerList = cars.carList.filter { it.advanceState == maxState }
+        val winnerList = cars.carList.filter { it.advanceState == maxState }.map { it.name }
 
         print("최종 우승자 : ${winnerList.joinToString(", ")}")
     }
