@@ -15,6 +15,7 @@ class Game {
         input()
         processGame(inputRepeat())
         winner()
+        Console.close()
     }
 
     private fun input() {
