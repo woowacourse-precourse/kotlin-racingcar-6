@@ -2,8 +2,8 @@ package racingcar.domain
 
 import racingcar.validator.CarNameValidator
 import racingcar.validator.MoveCountValidator
-import racingcar.utils.InputManager
-import racingcar.utils.OutputManager
+import racingcar.InputManager
+import racingcar.OutputManager
 
 class RacingCarGame {
     private val inputManager = InputManager()
