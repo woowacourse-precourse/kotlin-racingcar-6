@@ -1,10 +1,12 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val cars = enterCarName()
     val numberAttempt = enterNumberAttempts()
+    result(cars, numberAttempt)
 }
 
 fun enterCarName(): List<String> {
@@ -34,4 +36,28 @@ fun validationNumberAttempts(numberAttempt: String) {
     for (i in numberAttempt) {
         if (i < '0' || i > '9') throw IllegalArgumentException("숫자만 입력해주세요.")
     }
+}
+
+fun result(cars: List<String>, numberAttempt: String) {
+    println("실행 결과")
+    val raceProgress = MutableList(cars.size) { "" }
+    repeat(numberAttempt.toInt()) {
+        printEachResult(cars, raceProgress)
+    }
+}
+
+fun printEachResult(
+    cars: List<String>,
+    raceProgress: MutableList<String>
+) {
+    for (i in cars.indices) {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            raceProgress[i] += "-"
+        }
+    }
+
+    for (i in cars.indices) {
+        println("${cars[i]} : ${raceProgress[i]}")
+    }
+    println()
 }
