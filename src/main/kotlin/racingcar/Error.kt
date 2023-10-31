@@ -24,13 +24,11 @@ class Error {
         }
     }
 
-    fun checkName(cars: List<String>) {
-        for (i in cars.indices) {
-            checkError(cars[i])
-            checkSpace(cars[i])
-        }
-        checkDuplicate(cars)
-        checkSize(cars)
+    fun checkName(car: String) {
+        checkError(car)
+        checkSpace(car)
+        //checkDuplicate(car)
+        //checkSize(car)
     }
 
     private fun checkError(input: String) {
