@@ -2,10 +2,13 @@ package racingcar
 
 class Validation {
 
-    fun nameValid(name:String){
-        if(name.length>5) throw IllegalArgumentException()
-        requireNotNull(name)
+    object GlobalVariables{
+        var nameNum: Int = 5
     }
 
+    fun nameValid(name: String): Boolean {
+        if (name.length >GlobalVariables.nameNum) return true
+        return false
+    }
 
 }
