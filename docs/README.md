@@ -1,6 +1,6 @@
 # 초간단 자동차 경주 게임
 ## 기능 목록
-- [ ] 이름을 붙인 n개의 자동차 생성. - Car#createCar
+- [x] 이름을 붙인 n개의 자동차 생성. - Car#createCar
   - [ ] 이름이 5자 이하인지 확인 - Car#validateCarNameLength
   - [ ] 이름이 중복되지 않는지 확인 - Car#validateDuplicateName
   - [ ] 이름이 공백이 아닌지 확인 - Car#validateBlnakName
