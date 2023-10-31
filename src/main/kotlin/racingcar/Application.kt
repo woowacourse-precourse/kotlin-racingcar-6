@@ -9,4 +9,5 @@ fun main() {
     val gameCount = Input.getGameCount()
     val carList = CarFactory.makeCarList(playerList, gameCount)
     Output.printResult(carList)
+    Input.close()
 }

@@ -25,7 +25,7 @@ object InputValidator {
                 GameCountValidation.VALID
             }
         } catch (nfe: NumberFormatException) {
-            return GameCountValidation.NOT_DIGIT
+            return GameCountValidation.NOT_INTEGER
         }
     }
 
@@ -36,7 +36,7 @@ object InputValidator {
     }
 
     enum class GameCountValidation(val message: String) {
-        NOT_DIGIT("숫자만 입력해주세요."),
+        NOT_INTEGER("4Byte 점수 범위에서 입력해주세요.(-2,147,483,648 ~ 2,147,483,647)"),
         OUT_RANGE("0 이상의 수를 입력해주세요"),
         VALID("유효한 입력입니다.")
     }

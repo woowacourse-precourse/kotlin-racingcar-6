@@ -30,9 +30,13 @@ object Input {
         val input = Console.readLine()
         return when (val result = InputValidator.validateGameCount(input)) {
             InputValidator.GameCountValidation.OUT_RANGE,
-            InputValidator.GameCountValidation.NOT_DIGIT -> throw IllegalArgumentException(result.message)
+            InputValidator.GameCountValidation.NOT_INTEGER -> throw IllegalArgumentException(result.message)
 
             InputValidator.GameCountValidation.VALID -> input.toInt()
         }
+    }
+
+    fun close() {
+        Console.close()
     }
 }
