@@ -18,10 +18,11 @@ class GameController {
     private val soloRacingCount = SoloRacingGame(randomUtils, outputView)
     private val multiRacingGame = MultiRacingGame(inputView, randomUtils, validateRacingCount, outputView)
     private val validateCarName = ValidateCarName()
-    private val car = Car(inputView, validateCarName, soloRacingCount, multiRacingGame)
+    private val car = Car(validateCarName, soloRacingCount, multiRacingGame)
 
     fun gameStart() {
         inputView.gameStartMessage()
-        car.getCarName()
+        val inputCarName = inputView.inputView()
+        car.getCarName(inputCarName)
     }
 }
