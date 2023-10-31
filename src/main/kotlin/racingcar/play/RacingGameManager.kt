@@ -32,6 +32,10 @@ object RacingGameManager {
         return this
     }
 
+    private fun userInputToInt(input: String): Int {
+        return 0
+    }
+
     fun startRace(): RacingGameManager {
         UserOutput.printResultMessage()
         for (i in 1..attemptCount) {
