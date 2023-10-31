@@ -15,7 +15,7 @@ class OutputView {
             println(sb)
         }
 
-        private fun printCurrentPosition(position: Int): String {
+        private fun printCurrentPosition(position: Long): String {
             var curPosition = ""
             for (i in 0 until position) curPosition += "-"
             return curPosition
