@@ -7,7 +7,7 @@ import racingcar.Constants.MINIMUM_DIGIT
 import racingcar.Constants.POSITION_STEP
 import racingcar.Constants.START_POSITION
 
-data class RacingCar(
+class RacingCar(
     val name: String,
     var position: Int = START_POSITION
 ) {
