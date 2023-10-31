@@ -23,7 +23,7 @@ class Cars(private val determineMove: DetermineMove) {
         return _carStateList
     }
 
-    fun moveCars(){
+    fun moveCars() {
         _carList.forEach { car ->
             if (determineMove.isMove())
                 car.moveForward()
