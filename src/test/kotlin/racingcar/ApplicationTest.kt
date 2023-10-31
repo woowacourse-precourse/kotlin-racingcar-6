@@ -20,6 +20,90 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `정지와 전진이 적절히 반영되어 우승자가 결정되는지 - 여러명일때`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,hawai", "3")
+                assertThat(output()).contains("pobi : -", "woni : ---", "hawai : ---", "최종 우승자 : woni, hawai")
+            },
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            STOP, MOVING_FORWARD, MOVING_FORWARD,
+            STOP, MOVING_FORWARD, MOVING_FORWARD
+        )
+    }
+
+    @Test
+    fun `정지와 전진이 적절히 반영되어 우승자가 결정되는지 - 다수의차량`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,hawai,jae,young", "5")
+                assertThat(output()).contains(
+                    "pobi : ----",
+                    "woni : ---",
+                    "hawai : ---",
+                    "jae : -----",
+                    "young : -",
+                    "최종 우승자 : jae"
+                )
+            },
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            STOP, STOP, STOP, MOVING_FORWARD, STOP,
+            MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP,
+            MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP,
+        )
+    }
+
+    @Test
+    fun `정지와 전진이 적절히 반영되어 우승자가 결정되는지 - 다수의차량,다수의 우승자`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,hawai,jae,young,1abc,6789", "8")
+                assertThat(output()).contains(
+                    "pobi : -----",
+                    "woni : ------",
+                    "hawai : -----",
+                    "jae : --------",
+                    "young : --",
+                    "1abc : -----",
+                    "6789 : --------",
+                    "최종 우승자 : jae, 6789"
+                )
+            },
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD,
+            STOP, STOP, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD,
+            STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, STOP, MOVING_FORWARD,
+            STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
+        )
+    }
+
+    @Test
+    fun `입력 순서대로 최종 우승자가 결정되는지`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,hawai,jae,young", "5")
+                assertThat(output()).contains(
+                    "pobi : -----",
+                    "woni : -----",
+                    "hawai : -----",
+                    "jae : -----",
+                    "young : -----",
+                    "최종 우승자 : pobi, woni, hawai, jae, young"
+                )
+            },
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+        )
+    }
+
+    @Test
     fun `이름에 대한 예외 처리`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
