@@ -1,119 +1,106 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
-private const val NOT_INT_OR_NULL = "숫자가 아니거나 null입니다."
-private const val INPUT_UNDER_ZERO = "입력 값에 음수가 있습니다."
-private const val INPUT_OVER_FIVE_OR_NULL = "이름이 5자가 넘어가거나 값이 없습니다."
-private const val INPUT_HAVE_SPACE = ",뒤에 공백이 있습니다."
-private const val INPUT_DUPLICATE = "중복된 수가 있습니다."
-private const val INPUT_SIZE = "2대 이상 입력해야 합니다."
-private const val SPACE = " "
-private const val MAX_LENGTH = 5
-private const val INPUT_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-private const val INPUT_REPEAT = "시도할 횟수는 몇 회인가요?"
-private var cars = mutableListOf<Car>()
+val CAR_NAME_LIST = mutableListOf<String>()
+val CAR_LIST = mutableListOf<Car>()
+var MAX_DISTANCE = 0
+val WINNER_LIST = mutableListOf<String>()
+
 fun main() {
-    println(INPUT_NAME)
-    input()
-    processGame(inputRepeat())
-    winner()
-}
-private fun input() {
-    val carname = Console.readLine()
-    val names = carname.split(',')
-    checkName(names)
-    for (name in names) {
-        cars.add(Car(name))
-    }
-}
+    initialize()
 
-private fun processGame(repeat: Int) {
+    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    val carsName = Console.readLine()
+    val names = carsName.split(',')
+    for (name in names) {
+        checkName(name)
+    }
+
+    println("시도할 횟수는 몇 회인가요?")
+    val count = Console.readLine()
+    checkCount(count)
+
+    Console.close()
+
+    // CAR_NAME_LIST에 들어있는 이름으로 Car 객체를 만들어준다.
+    for (name in CAR_NAME_LIST) {
+        CAR_LIST.add(Car(name))
+    }
+
     println()
     println("실행 결과")
-    var rep = repeat
-    while (rep > 0) {
-        for (car in cars) {
-            car.play()
-        }
-        println()
-        rep--
+
+    // count만큼 경주 게임을 시작한다.
+    for (i in 0 until count.toInt()) {
+        startGame()
+    }
+
+    // 최대 거리값을 구한다.
+    for (item in CAR_LIST) {
+        checkMaxDistance(item)
+    }
+
+    for (item in CAR_LIST) {
+        checkisMaximum(item)
+    }
+
+    println("최종 우승자 : ${WINNER_LIST.joinToString()}")
+}
+
+fun initialize() {
+    CAR_NAME_LIST.clear()
+    CAR_LIST.clear()
+    MAX_DISTANCE = 0
+    WINNER_LIST.clear()
+}
+
+// 경주할 자동차 이름 글자 수 체크
+fun checkName(name: String) {
+    if (name.length > 5) {
+        throw IllegalArgumentException()
+    } else {
+        CAR_NAME_LIST.add(name)
     }
 }
 
-private fun inputRepeat(): Int {
-    println(INPUT_REPEAT)
-    val repeat = Console.readLine()
-    checkNum(repeat)
-    Console.close()
-    return repeat.toInt()
-}
-
-private fun winner() {
-    val winners = mutableListOf<String>()
-    val maxPosition = findMaxPos()
-    for (car in cars) {
-        if (car.getPosition() == maxPosition) {
-            winners.add(car.getName())
-        }
-    }
-    printWinner(winners)
-}
-
-private fun findMaxPos(): Int {
-    var max = 0
-    for (car in cars) {
-        if (car.getPosition() >= max) {
-            max = car.getPosition()
-        }
-    }
-    return max
-}
-private fun printWinner(winners: MutableList<String>) {
-    print("최종 우승자 : ${winners.joinToString(", ")}")
-}
-fun checkNum(repeat: String) {
-    if (repeat.toIntOrNull() == null) {
-        throw IllegalArgumentException(NOT_INT_OR_NULL)
-    }
-    checkNumMinus(repeat)
-}
-
-private fun checkNumMinus(repeat: String) {
-    if (repeat.toInt() < 1) {
-        throw IllegalArgumentException(INPUT_UNDER_ZERO)
+// 시도 횟수 Int형 체크
+fun checkCount(count: String) {
+    try {
+        count.toInt()
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException()
     }
 }
 
-fun checkName(cars: List<String>) {
-    for (i in cars.indices) {
-        checkError(cars[i])
-        checkSpace(cars[i])
+// 경주 게임 시작
+fun startGame() {
+    for (item in CAR_LIST) {
+        val random = Randoms.pickNumberInRange(0, 9)
+        checkGo(item, random)
     }
-    checkDuplicate(cars)
-    checkSize(cars)
+    println()
 }
 
-private fun checkError(input: String) {
-    if (input.length > MAX_LENGTH || input.isEmpty()) {
-        throw IllegalArgumentException(INPUT_OVER_FIVE_OR_NULL)
+// random 값을 확인하여 질주 체크
+fun checkGo(item: Car, random: Int) {
+    if (random >= 4) {
+        item.goStraight()
     }
+    println("${item.name} : ${"-".repeat(item.go)}")
 }
 
-private fun checkSpace(input: String) {
-    if (input.contains(SPACE)) {
-        throw IllegalArgumentException(INPUT_HAVE_SPACE)
-    }
-}
-
-private fun checkDuplicate(input: List<String>) {
-    if (input.toSet().size != input.size) {
-        throw IllegalArgumentException(INPUT_DUPLICATE)
+// 거리 최대값을 구함
+fun checkMaxDistance(item: Car) {
+    if (item.go >= MAX_DISTANCE) {
+        MAX_DISTANCE = item.go
     }
 }
 
-private fun checkSize(input: List<String>) {
-    if (input.size < 2) {
-        throw IllegalArgumentException(INPUT_SIZE)
+// 최대값과 객체의 go가 일치함 확인
+fun checkisMaximum(item: Car) {
+    if (item.go == MAX_DISTANCE) {
+        WINNER_LIST.add(item.name)
     }
 }
