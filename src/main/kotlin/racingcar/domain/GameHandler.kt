@@ -24,13 +24,9 @@ class GameHandler(
     private fun setCar()  {
         io.show(SENTENCE_FOR_GETTING_NAME, true)
 
-        val result = mutableListOf<Car>()
-
-        val names = io.getCarNames()
-        for (name in names) {
-            result.add(Car(name))
+        cars = io.getCarNames().map { name ->
+            Car(name)
         }
-        cars = result.toList()
     }
 
     private fun setMoveCount() {
