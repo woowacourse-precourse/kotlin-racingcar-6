@@ -47,7 +47,9 @@ class RacingGameManager {
         }
     }
 
-    private fun printWinners(winners: List<Car>) = println("최종 우승자 : ${winners.joinToString(", ")}")
+    private fun printWinners(winners: List<Car>) {
+        println(Message.OUTPUT_GAME_WINNER_PREFIX.message.plus(winners.joinToString()))
+    }
 
     private fun createCars(input: String): List<Car> {
         val cars = mutableListOf<Car>()
