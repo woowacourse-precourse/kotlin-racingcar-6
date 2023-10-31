@@ -12,7 +12,7 @@ class RacingGame {
 
     fun broadcastRace(numOfCar:Int,carList:MutableList<Players>){
 
-        for(i in 1..numOfCar) {
+        for(i in 0 until numOfCar) {
             var car = carList[i].name
             var score = carList[i].num
 

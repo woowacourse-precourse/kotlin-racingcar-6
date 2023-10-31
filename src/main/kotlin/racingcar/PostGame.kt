@@ -10,7 +10,7 @@ class PostGame {
 
     fun printWinner(carList:List<Players>){
         print("최종 우승자 : ")
-        for( i in 1..carList.size){
+        for( i in carList.indices){
             print(carList[i].name)
             if(i!=carList.size){
                 print(", ")
