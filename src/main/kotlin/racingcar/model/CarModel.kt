@@ -1,5 +1,6 @@
 package racingcar.model
 
+import racingcar.util.MOVE_CONDITION
 import racingcar.validation.InputValidation
 
 class CarModel {
@@ -12,5 +13,24 @@ class CarModel {
 
     fun setAttemptsNumber(attempts: String) {
         attemptsNumber = InputValidation().validateAttemptsNumber(attempts)
+        attemptsByRound()
+    }
+
+    fun attemptsByRound() {
+        for (i in 1..attemptsNumber) {
+            moveCar()
+        }
+    }
+
+    fun moveCar() {
+        val randomNumber = RandomNumber()
+        for (carName in carNames) {
+            val random = randomNumber.randomNumberGenerator()
+            if (random >= MOVE_CONDITION) {
+
+            } else {
+
+            }
+        }
     }
 }

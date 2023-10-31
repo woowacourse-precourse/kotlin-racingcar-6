@@ -19,7 +19,6 @@ class RacingCarController {
         view.inputAttemptsNumber()
         val attemptsNumber = Console.readLine()
         model.setAttemptsNumber(attemptsNumber)
-
     }
 
 }

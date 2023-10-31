@@ -11,3 +11,5 @@ const val INVALID_ATTEMPTS_NUMBER_TYPE = "시도 횟수는 숫자로 입력되�
 
 const val START_RANDOM_RANGE: Int = 0
 const val END_RANDOM_RANGE: Int = 9
+
+const val MOVE_CONDITION: Int = 4
