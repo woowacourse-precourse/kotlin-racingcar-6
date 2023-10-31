@@ -45,16 +45,8 @@ class OutputView {
         println(RESULT_MESSAGE)
     }
 
-    fun printSoloWinner(carName: String) {
-        println(WINNER_MESSAGE + carName)
-    }
-
     fun printMultiWinner(winners: Set<String>) {
         println(WINNER_MESSAGE + winners.joinToString(","))
-    }
-
-    fun printNoWinner() {
-        println(NO_WINNER_MESSAGE)
     }
 
     private fun skipLine() {

@@ -48,6 +48,6 @@ class SoloRacingGame(private val randomUtils: RandomUtils, private val outputVie
     }
 
     private fun noSoloRacingWinner() {
-        OutputView.NO_WINNER_MESSAGE
+        println(OutputView.NO_WINNER_MESSAGE)
     }
 }

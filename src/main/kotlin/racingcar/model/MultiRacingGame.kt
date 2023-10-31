@@ -61,7 +61,7 @@ class MultiRacingGame(
 
     private fun noMultiRacingWinner(highestScore: Int) {
         if (highestScore == DEFAULT_SCORE) {
-            outputView.printNoWinner()
+            println(OutputView.NO_WINNER_MESSAGE)
         }
     }
 
