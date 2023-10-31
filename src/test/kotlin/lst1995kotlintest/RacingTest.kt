@@ -15,8 +15,8 @@ class RacingTest {
 
     @BeforeEach
     fun setUp() {
-        carList = nameCheck(listOf<String>("유재석", "하하", "김종국", "송지효", "전소민"))
-        car = nameCheck(listOf<String>("유재석"))
+        carList = nameCheck("유재석,하하,김종국,송지효,전소민")
+        car = nameCheck("유재석")
         singleRacing.start(car)
     }
 

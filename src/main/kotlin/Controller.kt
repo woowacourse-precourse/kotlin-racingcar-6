@@ -11,7 +11,7 @@ object Controller {
     fun inputCarInformation(): List<Car> {
         println(CAR_INPUT_MESSAGE)
         val input = Console.readLine()
-        return nameCheck(input.split(CAR_DELIMITER))
+        return nameCheck(input)
     }
 
     fun inputRacingRoundInformation(): BigInteger {
