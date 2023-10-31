@@ -15,10 +15,10 @@ class Controller(val inputView: InputView, val outputView: OutputView) {
         outputView.printResultMessage()
         val racingCars = makeRacingCars(carNames)
         for (index in 1..tryNumber)
-            outputView.printResult(moveOrStop(racingCars))
+            println(outputView.printResult(moveOrStop(racingCars)))
 
         outputView.printWinnerMessage()
-        outputView.printWinner(getWinnerForward(racingCars))
+        println(outputView.printWinner(getWinnerForward(racingCars)))
     }
 
     fun makeRacingCars(carNames: List<String>) : List<RacingCar> {
@@ -44,9 +44,12 @@ class Controller(val inputView: InputView, val outputView: OutputView) {
     fun getWinnerForward(racingCars: List<RacingCar>) : List<String> {
         val sortedRacingCars = racingCars.sortedByDescending { it.forward }
         val winnerForward = sortedRacingCars[0].forward
+        return getWinnerCars(winnerForward, sortedRacingCars)
+    }
 
+    fun getWinnerCars(winnerForward: Int, sortedRacingCars: List<RacingCar>) : List<String> {
         val winnerCars = mutableListOf<String>()
-        for (car in racingCars) {
+        for (car in sortedRacingCars) {
             if(car.forward == winnerForward) winnerCars.add(car.name)
         }
         return winnerCars
