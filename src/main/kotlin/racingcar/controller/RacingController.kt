@@ -26,6 +26,7 @@ class RacingController {
             print.printDistance(playerList, distanceList)
             COUNT++
         }
+
         val winnerList = decision.decideWinner(playerList, distanceList)
         print.printWinner(winnerList)
         Console.close()
