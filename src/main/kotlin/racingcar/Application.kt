@@ -15,6 +15,42 @@ fun main() {
     println("$tryNum")
 
     tryNumValidator(tryNum)
+
+    val cars = createCars(carNames)
+
+    for(car in cars){
+        val randomNum = generateNum()
+        if(randomNum >= 4) car.movingFoward()
+    }
+    for(car in cars){
+        println("${car.name},${car.distance}")
+    }
+}
+
+fun createCars(carNames: List<String>): List<Car> {
+    val cars = mutableListOf<Car>()
+
+    for (name in carNames) {
+        val car = Car(name)
+        cars.add(car)
+    }
+
+    return cars
+}
+
+fun generateNum(): Int {
+    val randomNumber = Randoms.pickNumberInRange(0, 9)
+
+    return randomNumber
+}
+
+class Car(name: String) {
+    val name: String = name
+    var distance = 0
+
+    fun movingFoward() {
+        distance++
+    }
 }
 
 fun carNamesValidator(carNames: List<String>) {
@@ -22,6 +58,7 @@ fun carNamesValidator(carNames: List<String>) {
         if (car.length > 5) throw IllegalArgumentException("이름은 5자 이하만 가능합니다")
     }
 }
-fun tryNumValidator(tryNum: Int){
+
+fun tryNumValidator(tryNum: Int) {
     if (tryNum <= 0) throw IllegalArgumentException("시도 횟수는 자연수만 가능합니다")
 }
