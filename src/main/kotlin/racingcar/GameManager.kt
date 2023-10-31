@@ -10,6 +10,6 @@ class GameManager {
         }.toList()
 
         val racingGame = Race(carList, roundCnt)
-        racingGame.startRound()
+        racingGame.startRace()
     }
 }
