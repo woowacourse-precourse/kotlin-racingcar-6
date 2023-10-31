@@ -53,9 +53,7 @@ class InputView {
         try {
             val validAttemptNumber = attemptNumber.toInt()
 
-            if (validAttemptNumber < 1) {
-                throw IllegalArgumentException("시도할 횟수는 1보다 커야합니다.")
-            }
+
 
             return validAttemptNumber
         } catch (exception: NumberFormatException) {
