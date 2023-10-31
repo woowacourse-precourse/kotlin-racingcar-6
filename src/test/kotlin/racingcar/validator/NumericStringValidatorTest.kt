@@ -8,7 +8,7 @@ class NumericStringValidatorTest {
     @Test
     fun `문자열의 모든 문자가 숫자여야함`() {
         val numericString = "123"
-        val numericWithLetterString= "123a"
+        val numericWithLetterString = "123a"
         val validator: StringValidator = NumericStringValidator()
 
         val result1 = runCatching { validator.validate(numericString) }.exceptionOrNull()

@@ -6,15 +6,15 @@ import org.junit.jupiter.api.Test
 class StringLengthValidatorTest {
     @Test
     fun `문자열을 ,로 split 하였을 때 모든 문자열의 길이가 1이상 5이하여야 한다`() {
-        val validString = "murjune,pobi"
-        val inValidString = "june,pobi"
+        val inValidString = "murjune,pobi"
+        val validString = "june,pobi"
         val stringLengthValidator: StringValidator = StringLengthValidator()
 
-        val result1 = runCatching { stringLengthValidator.validate(validString) }.exceptionOrNull()
-        val result2 = runCatching { stringLengthValidator.validate(inValidString) }.exceptionOrNull()
+        val inValidResult = runCatching { stringLengthValidator.validate(inValidString) }.exceptionOrNull()
+        val validResult = runCatching { stringLengthValidator.validate(validString) }.exceptionOrNull()
 
-        assertThat(result1).isInstanceOf(IllegalArgumentException::class.java)
-        assertThat(result1!!.message).isEqualTo("Car 이름의 길이가 1글자 이상 5글자 이하여야 합니다")
-        assertThat(result2).isNull()
+        assertThat(inValidResult).isInstanceOf(IllegalArgumentException::class.java)
+        assertThat(inValidResult!!.message).isEqualTo("문자열의 길이가 1글자 이상 5글자 이하여야 합니다")
+        assertThat(validResult).isNull()
     }
 }
