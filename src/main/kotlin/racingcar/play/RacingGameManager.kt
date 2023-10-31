@@ -17,6 +17,7 @@ object RacingGameManager {
         for (carName in carNames) {
             racingCars.add(RacingCar(carName))
         }
+        if(racingCars.size == 1) racingCars.add(RacingCar("com"))
         return this
     }
 
