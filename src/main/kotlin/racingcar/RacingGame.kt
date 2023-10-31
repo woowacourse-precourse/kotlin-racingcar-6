@@ -6,25 +6,27 @@ class RacingGame(
     private val printer: Printer = Printer()
 ) {
 
+    private lateinit var carsList: List<Car>
+
     private fun userInput() = Console.readLine()
 
     fun readyRacing() {
         printer.printOutEnteringCarName()
         val carsInputString = userInput()
 
-        val carsList = carsInputString.split(",").filter { it.isNotBlank() }.map { Car(it) }
-        requireValidCarsInput(carsInputString = carsInputString, carsList = carsList)
-        requireCheckingForDuplicateNames(carsList = carsList)
+        carsList = carsInputString.split(",").filter { it.isNotBlank() }.map { Car(it) }
+        requireValidCarsInput(carsInputString = carsInputString)
+        requireCheckingForDuplicateNames()
 
         printer.printOutEnteringAttemptsNumber()
         val attemptsNumberInputString = userInput()
         requireValidAttemptsNumberInput(attemptsNumberInputString = attemptsNumberInputString)
         val attemptsNumber = attemptsNumberInputString.toInt()
 
-        startRacing(attemptsNumber = attemptsNumber, carsList = carsList)
+        startRacing(attemptsNumber = attemptsNumber)
     }
 
-    private fun startRacing(attemptsNumber: Int, carsList: List<Car>) {
+    private fun startRacing(attemptsNumber: Int) {
         var attempts = attemptsNumber
         printer.printOutResultInformationText()
 
@@ -35,29 +37,29 @@ class RacingGame(
             printer.printOutCarsMoveResult(carsList = carsList)
             attempts--
         }
-        chooseWinners(carsList = carsList)
+        chooseWinners()
     }
 
-    private fun chooseWinners(carsList: List<Car>) {
+    private fun chooseWinners() {
 
-        val maxNumber = carsList.maxByOrNull { it.getHowGoForward() }
-        requireNotNull(maxNumber)
-        val maxHowGoForwardCars = carsList.filter { it.getHowGoForward() == maxNumber.getHowGoForward() }
-        if (maxHowGoForwardCars.size > 1) {
-            val names = maxHowGoForwardCars.joinToString(",") { it.getCarName() }
-            printer.printOutRacingWinner(names)
+        val maxHowGoForwardCars = carsList.maxByOrNull { it.getHowGoForward() }
+        requireNotNull(maxHowGoForwardCars)
+        val winners = carsList.filter { it.getHowGoForward() == maxHowGoForwardCars.getHowGoForward() }
+        if (winners.size > 1) {
+            val winnersName = winners.joinToString(",") { it.getCarName() }
+            printer.printOutRacingWinner(winnersName)
         } else {
-            printer.printOutRacingWinner(maxHowGoForwardCars[0].getCarName())
+            printer.printOutRacingWinner(winners[0].getCarName())
         }
     }
 
 
-    private fun requireValidCarsInput(carsInputString: String, carsList: List<Car>) {
+    private fun requireValidCarsInput(carsInputString: String) {
         require(carsInputString.count { it == ',' } == carsList.size - 1)
         require(carsInputString.length <= carsList.size * CARS_MAX_LENGTH + carsInputString.count { it == ',' })
     }
 
-    private fun requireCheckingForDuplicateNames(carsList: List<Car>) {
+    private fun requireCheckingForDuplicateNames() {
         val nameSet = mutableSetOf<String>()
         for (car in carsList) {
             require(car.getCarName() !in nameSet)
