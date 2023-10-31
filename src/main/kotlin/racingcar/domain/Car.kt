@@ -14,9 +14,9 @@ class Car(val carName: String) {
     get() = _record
 
   fun moveOrNot(number: Int): Boolean {
-    if (number >= 4) {
+    return if (number >= 4) {
       this._record += "-"
-      return true
-    } else return false
+      true
+    } else false
   }
 }
