@@ -24,6 +24,7 @@ class RacingCarController(private val inputView: InputView, private val outputVi
         }
 
         outputView.printWinner(findWinner(racingCarList))
+
         inputView.closeConsole()
     }
 
