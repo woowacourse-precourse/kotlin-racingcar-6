@@ -1,5 +1,7 @@
 package racingcar
 
+import racingcar.presentation.RacingBoard
+
 fun main() {
-    // TODO: 프로그램 구현
+    val playerList = RacingBoard().getPlayerList()
 }
