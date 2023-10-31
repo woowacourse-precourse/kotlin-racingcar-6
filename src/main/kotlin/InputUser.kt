@@ -26,7 +26,6 @@ class InputUser {
         for(name in carName.indices){
             if(carName[name].length>=5) {
                 throw IllegalArgumentException("5글자를 초과하는 이름은 입력불가합니다.")
-                return false
             }
         }
         return true
