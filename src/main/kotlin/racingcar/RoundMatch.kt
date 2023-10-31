@@ -1,9 +1,9 @@
 package racingcar
 
-class GameMatch {
+class RoundMatch {
     fun start(cars: Cars, round: Round) {
         println(MATCH_RESULT)
-        repeat(round.getRound()) { cars.showRoundResult() }
+        repeat(round.getRound()) { RoundPlayer(cars.getCars()).play() }
     }
 
     companion object {

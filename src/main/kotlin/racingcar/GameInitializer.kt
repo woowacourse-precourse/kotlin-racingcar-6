@@ -1,7 +1,6 @@
 package racingcar
 
 class GameInitializer {
-
     fun init(cars: Cars, round: Round) {
         setPlayerCars(cars)
         setRoundCount(round)
