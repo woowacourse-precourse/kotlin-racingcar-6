@@ -1,6 +1,6 @@
 package racingcar.car
 
-class CarImpl : Car {
+class CarImpl(override val name: String) : Car {
     private var _currentPosition: String = ""
     override val currentPosition: String
         get() = _currentPosition
