@@ -16,8 +16,8 @@ class NumericStringValidatorTest {
 
         assertThat(result1).isNull()
         assertThat(result2).hasSameClassAs(IllegalArgumentException())
-        assertThat(result2!!.message).isEqualTo("시도 횟수는 숫자여야 합니다")
-        assertThrows<IllegalArgumentException>("시도 횟수는 숫자여야 합니다") {
+        assertThat(result2!!.message).isEqualTo("문자열은 숫자여야 합니다")
+        assertThrows<IllegalArgumentException>("문자열은 숫자여야 합니다") {
             validator.validate(numericWithLetterString)
         }
     }
