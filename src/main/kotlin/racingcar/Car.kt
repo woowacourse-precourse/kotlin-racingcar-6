@@ -10,6 +10,8 @@ class Car(name : String) {
 
     fun getName() = name
 
+    fun getLocation() = loc
+
     fun displayLocation() {
         print("$name : ")
         repeat(loc){
