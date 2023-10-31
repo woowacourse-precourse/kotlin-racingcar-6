@@ -1,7 +1,6 @@
 package racingcar.View
 
 import camp.nextstep.edu.missionutils.Console
-import kotlin.text.*
 
 // 자동차의 이름 입력할 수 있는 함수 작성
 // 시도할 횟수 적을 수 있는 함수 작성

@@ -2,7 +2,7 @@ package racingcar.Model
 
 import racingcar.View.OutputView
 
-class Race(private val carNames: List<String>, val tries: Int) {
+open class Race(private val carNames: List<String>, val tries: Int) {
     // 게임이 시작해서 어떻게 동작하는지 작성해야 함.
     // 게임의 승자를 어떻게 고를 것인지 작성해야 함.
 
