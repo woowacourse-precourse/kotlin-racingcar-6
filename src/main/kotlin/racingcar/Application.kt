@@ -2,7 +2,7 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
-class Refree(
+class Referee(
     private val namesOfParticipants: List<String>,
     private val roundNum: Int,
     val doSomethingWithCarsAfterRound: (List<Car>) -> Unit
