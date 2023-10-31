@@ -3,11 +3,13 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
-val CARS = mutableListOf<Car>()
-val WINNERS = mutableListOf<String>()
+val cars = mutableListOf<Car>()
+val winners = mutableListOf<String>()
 var MAX = 0
 
 fun main() {
+    cars.clear()
+    winners.clear()
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     input()
     val repeat = inputRepeat()
@@ -15,18 +17,17 @@ fun main() {
     findMaxPos()
     winner()
 }
-
 private fun winner() {
-    for (car in CARS) {
+    for (car in cars) {
         if (car.position == MAX) {
-            WINNERS.add(car.name)
+            winners.add(car.name)
         }
     }
-    printWinner(WINNERS)
+    printWinner(winners)
 }
 
 private fun findMaxPos() {
-    for (car in CARS) {
+    for (car in cars) {
         if (car.position >= MAX) {
             MAX = car.position
         }
@@ -43,8 +44,8 @@ private fun processGame(repeat: Int) {
     }
 }
 fun gamePlay(){
-    for(car in CARS){
-        val random = Randoms.pickNumberInRange(0, 9)
+    for(car in cars){
+        var random = Randoms.pickNumberInRange(0, 9)
         step(random,car)
     }
     println()
@@ -66,7 +67,7 @@ fun checkName(input: String) {
     if (input.length > 5 || input.isEmpty()) {
         throw IllegalArgumentException("이름이 5자가 넘어가거나 값이 없습니다.")
     } else {
-        CARS.add(Car(input))
+        cars.add(Car(input))
     }
 }
 fun inputRepeat(): Int {
@@ -77,10 +78,8 @@ fun inputRepeat(): Int {
     return repeat.toInt()
 }
 fun checkNum(repeat: String) {
-    try {
-        repeat.toInt()
-    } catch (e: NumberFormatException){
-        throw IllegalArgumentException("숫자가 아닙니다.")
+    if (repeat.toIntOrNull() == null) {
+        throw IllegalArgumentException("숫자가 아니거나 null입니다.")
     }
     if (repeat.toInt() < 1) {
         throw IllegalArgumentException("입력 값에 음수가 있습니다.")
