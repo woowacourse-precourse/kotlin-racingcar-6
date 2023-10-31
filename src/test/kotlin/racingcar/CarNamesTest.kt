@@ -1,6 +1,5 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
@@ -9,7 +8,6 @@ import org.junit.jupiter.api.assertThrows
 
 class CarNamesTest : NsTest() {
 
-    // 5자 초과
     @Test
     fun `이름 5자 초과 예외 처리`() {
         assertSimpleTest {
@@ -67,10 +65,5 @@ class CarNamesTest : NsTest() {
 
     public override fun runMain() {
         main()
-    }
-
-    companion object {
-        private const val MOVING_FORWARD = 4
-        private const val STOP = 3
     }
 }
