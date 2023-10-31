@@ -34,6 +34,8 @@ class RaceController(
     }
 
     private fun getWinnerNames(cars: List<Car>): List<CarName> {
+        if (cars.isEmpty()) return emptyList()
+
         val maxDistance = cars.maxOf { it.distance }
         return cars.filter { it.distance == maxDistance }.map { it.name }
     }
