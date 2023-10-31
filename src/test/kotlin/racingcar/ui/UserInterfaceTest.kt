@@ -23,4 +23,9 @@ class UserInterfaceTest {
     fun `시도 횟수가 숫자인지 검사_값 6ab`() {
         assertThrows<IllegalArgumentException> { InputValidator.checkOnlyDigit("6ab")}
     }
+
+    @Test
+    fun `시도 횟수가 숫자인지 검사_값 빈문자열`() {
+        assertThrows<IllegalArgumentException> { InputValidator.checkOnlyDigit("")}
+    }
 }
