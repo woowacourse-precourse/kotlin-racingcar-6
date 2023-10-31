@@ -21,7 +21,6 @@ class CarControllerTest {
         carController = CarController(carModel, printResult)
     }
 
-
     @Test
     fun testValidateCarInput() {
         assertDoesNotThrow { carController.validateCarInput("Car1,Car2,Car3") }
