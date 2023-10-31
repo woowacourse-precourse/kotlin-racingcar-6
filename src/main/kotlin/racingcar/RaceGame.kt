@@ -3,6 +3,7 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import racingcar.car.Car
 import racingcar.car.MoveStrategyImpl
+import racingcar.game.Round
 
 class RaceGame {
     private var cars = listOf<Car>()
@@ -33,23 +34,11 @@ class RaceGame {
 
     fun start() {
         println(RESULT_ROUND_MESSAGE)
+        val round = Round(cars)
         repeat(rounds) {
-            startRound(cars)
-            printRoundResult(cars)
+            round.start()
+            round.printResult()
         }
-    }
-
-    private fun startRound(cars: List<Car>) {
-        cars.forEach {
-            it.moveForward()
-        }
-    }
-
-    private fun printRoundResult(cars: List<Car>) {
-        cars.forEach { car ->
-            println(car)
-        }
-        println()
     }
 
     fun printGameWinners() {
