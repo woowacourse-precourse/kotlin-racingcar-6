@@ -1,10 +1,13 @@
 package racingcar.car
 
-import racingcar.randomnumbergenerator.RandomNumberGenerator
-import racingcar.randomnumbergenerator.RandomNumberGeneratorImpl
+import org.junit.jupiter.api.BeforeEach
 
 class CarTest {
 
-    private var randomNumberGenerator: RandomNumberGenerator = RandomNumberGeneratorImpl()
-    private var car: Car = CarImpl()
+    private lateinit var car: Car
+
+    @BeforeEach
+    fun setUp() {
+        car = CarImpl()
+    }
 }
