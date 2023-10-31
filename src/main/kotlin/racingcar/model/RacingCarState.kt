@@ -23,8 +23,10 @@ class RacingCarState(
         }
     }
 
-    private fun getMovementState(): MovementState {
-        return if (generateRandomNumbers() >= MOVEMENT_THRESHOLD_VALUE) {
+    private fun getMovementState(
+        randomNumber : Int = generateRandomNumbers()
+    ): MovementState {
+        return if (randomNumber >= MOVEMENT_THRESHOLD_VALUE) {
             MovementState.MOVE
         } else {
             MovementState.STOP
