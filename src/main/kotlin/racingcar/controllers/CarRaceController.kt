@@ -19,7 +19,7 @@ class CarRaceController {
             view.showResults(generateResults(model.getScores()))
         }
 
-        view.showWinners(model.getScores())
+        view.showWinners(splitWinners(model.getScores()))
     }
 
     private fun inputCarNames(): List<String> {
@@ -34,6 +34,10 @@ class CarRaceController {
             carNames.toSet().size != carNames.size -> throw IllegalArgumentException("중복된 이름은 불가합니다")
             else -> return validNames
         }
+    }
+
+    fun splitWinners(carNameAndScore: Map<String, Int>): String  {
+        return carNameAndScore.filter { it.value == carNameAndScore.values.maxOrNull() }.keys.joinToString(", ")
     }
 
     fun splitCarNames(readLine: String): List<String> {

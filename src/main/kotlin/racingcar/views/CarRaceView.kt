@@ -5,9 +5,8 @@ class CarRaceView {
         println(allResult.joinToString("\n"))
     }
 
-    fun showWinners(carNameAndScore: Map<String, Int>) {
-        val winners = carNameAndScore.filter { it.value == carNameAndScore.values.maxOrNull() }.keys
-        println("최종 우승자 : ${winners.joinToString(", ")}")
+    fun showWinners(winners: String) {
+        println("최종 우승자 : $winners")
     }
 
     fun printSentenceWriteCarName() {
