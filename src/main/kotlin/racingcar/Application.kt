@@ -15,13 +15,9 @@ fun main() {
     var count = playCount.toInt()
 
     while (count != 0) {
-        for (i in 0..<resList.size) {
-            val randomNum = Randoms.pickNumberInRange(0,9)
-            if (randomNum >= 4) {
-                resList[i] += 1
-            }
-            val location = "-".repeat(resList[i])
-            println(String.format("%s : %s", carList[i], location))
+        val locationList = movingCar(resList)
+        for (i in 0..<locationList.size) {
+            println(String.format("%s : %s", carList[i], locationList[i]))
         }
         count--
         println()
@@ -60,4 +56,17 @@ fun processExceptionCount(playCount: String) {
     if (playCount.toList().any { !it.isDigit() }) {
         throw IllegalArgumentException(Const.EXCEPTION_NOT_NUMBER)
     }
+}
+
+fun movingCar(resList: MutableList<Int>): MutableList<String> {
+    val resultList = mutableListOf<String>()
+    for (i in 0..<resList.size) {
+        val randomNum = Randoms.pickNumberInRange(0,9)
+        if (randomNum >= 4) {
+            resList[i] += 1
+        }
+        val result = "-".repeat(resList[i])
+        resultList.add(result)
+    }
+    return resultList
 }
