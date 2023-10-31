@@ -5,5 +5,8 @@ class GameManager {
         val userInputReader = UserInputReader()
         val carNameList = userInputReader.getCarName()
         val roundCnt = userInputReader.getRoundCount()
+        val carList = carNameList.map { carName ->
+            Car(carName)
+        }.toList()
     }
 }
