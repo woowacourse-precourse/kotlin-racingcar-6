@@ -23,7 +23,7 @@ class PlayRacing(
         println(GAME_RESULT_COMMENT)
         val winner = racingProcess(carList, attempt)
 
-        println(winner)
+        print(winner)
     }
 
     private fun racingProcess(carList: List<Car>, attempt: Int): String {
