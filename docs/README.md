@@ -8,9 +8,9 @@
 - [O] 4 이상일 경우 전진한다. - Racing#forwardOver4()
 - [O] 무작위 값이 나온만큼 "-"을 출력한다. - Racing#printHyphen()
 - [O] 입력한 이동 횟수만큼 반복 시도 - Racing#playRacing()
-- [] 자동차 경주 게임을 완료 후 누가 우승했는지 알려준다. 여러명 가능 - Referee#notifyWhoWin()
+- [O] 자동차 경주 게임을 완료 후 누가 우승했는지 알려준다. 여러명 가능 - Referee#notifyWhoWin()
   - [O] 가장 멀리간 자동차의 수를 체크한다. - Referee#checkMaxForward()
-  - [] ","쉼표를 이용해서 구분한다.
+  - [O] ","쉼표를 이용해서 구분한다.
 
 ## 기능 요구 사항
 
