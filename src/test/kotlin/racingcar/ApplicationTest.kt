@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.Constants.NUMBER_ATTEMPTS_MSG
+import racingcar.Constants.RACE_START_MSG
 
 class ApplicationTest : NsTest() {
     private val racing: Racing = Racing()
