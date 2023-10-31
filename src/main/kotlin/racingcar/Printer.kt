@@ -25,7 +25,6 @@ class Printer {
             stringBuilder.append(it.name + ", ")
         }
         stringBuilder.trim()
-        stringBuilder.removeSuffix(",")
-        println(Const.WINNER_MSG + stringBuilder)
+        println(Const.WINNER_MSG + stringBuilder.substring(0,stringBuilder.lastIndex-1))
     }
 }
