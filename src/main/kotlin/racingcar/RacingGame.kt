@@ -7,14 +7,14 @@ class RacingGame {
     private lateinit var carList :List<Car>
     fun gameStart(){
         carList = userClient.inputCarNames()
-        val countMove = userClient.inputCountMove()
+        val countRound = userClient.inputRoundCount()
         userClient.printResultMessage()
-        runCars(countMove)
+        runCars(countRound)
         userClient.printResult(carList)
     }
 
-    private fun runCars(countMove: Int) {
-        repeat(countMove){
+    private fun runCars(countRound: Int) {
+        repeat(countRound){
             startOneRound()
             userClient.printCarStatus(carList)
         }
@@ -22,11 +22,11 @@ class RacingGame {
 
     private fun startOneRound() {
         carList.forEach { car->
-            runOrStopCar(car)
+            runOrStop(car)
         }
     }
 
-    private fun runOrStopCar(car: Car) {
+    private fun runOrStop(car: Car) {
         val randomNumber = Randoms.pickNumberInRange(0,9)
         if(randomNumber>=4){
             car.runOneTime()

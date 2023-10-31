@@ -5,7 +5,7 @@ class UserClient {
     private val underFiveCharRegex = Regex("^.{1,5}\$")
     private val numberRegex = Regex("\\d+\$")
 
-    fun inputCountMove(): Int {
+    fun inputRoundCount(): Int {
         println("시도할 횟수는 몇 회인가요?")
         val input = readln().trim()
         checkIsNumber(input)
@@ -21,7 +21,7 @@ class UserClient {
     fun inputCarNames(): List<Car> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val input = readln().trim()
-        checkRestPoint(input)
+        checkContainRestPoint(input)
         checkUnderFiveCharRegex(input)
 
         return convertInputToCarList(input)
@@ -40,7 +40,7 @@ class UserClient {
         }
     }
 
-    private fun checkRestPoint(input: String) {
+    private fun checkContainRestPoint(input: String) {
         if ("," !in input) {
             throw IllegalArgumentException("잘못된 입력")
         }
