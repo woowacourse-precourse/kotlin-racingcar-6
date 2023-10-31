@@ -33,7 +33,7 @@ class Racing() {
         return winners.joinToString { it.name }
     }
 
-    private fun printWinner(winnerNames:String){
+    fun printWinner(winnerNames:String){
         println("최종 우승자 : $winnerNames")
     }
 }

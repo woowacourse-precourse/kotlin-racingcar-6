@@ -99,9 +99,21 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             val attempts = 5
             val cars: List<Car> = listOf(Car("Bear", 0), Car("Dog", 0), Car("Cat", 0), Car("Tiger", 0))
-            racing.getRacingDistances(attempts,cars)
+            racing.getRacingDistances(attempts, cars)
         }
     }
+
+    @Test
+    fun `최종 우승자 출력`() {
+        assertSimpleTest {
+            run {
+                val cars: List<Car> = listOf(Car("Bear", 3), Car("Dog", 6), Car("Cat", 7), Car("Tiger", 7))
+                racing.printWinner(racing.getWinner(cars))
+            }
+            assertThat(output()).isEqualTo("최종 우승자 : Cat, Tiger")
+        }
+    }
+
 
     public override fun runMain() {
         main()
