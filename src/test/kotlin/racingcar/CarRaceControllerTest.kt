@@ -8,14 +8,7 @@ import racingcar.controllers.CarRaceController
 import org.junit.jupiter.api.BeforeEach
 
 class CarRaceControllerTest: NsTest() {
-
-    private lateinit var carRaceController: CarRaceController
-
-    @BeforeEach
-    fun setUp() {
-        carRaceController = CarRaceController()
-    }
-
+    
     @Test
     fun `inputCarNames에서 사용자가 중복된 이름을 넣은경우`() {
         assertSimpleTest {
