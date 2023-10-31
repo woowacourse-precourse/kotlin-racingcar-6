@@ -16,7 +16,6 @@ class Round(
         cars.forEach { car ->
             stringBuilder.appendLine(car)
         }
-        stringBuilder.appendLine()
 
         return stringBuilder.toString()
     }
