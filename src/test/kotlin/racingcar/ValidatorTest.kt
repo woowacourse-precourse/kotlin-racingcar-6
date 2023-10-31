@@ -52,6 +52,17 @@ class ValidatorTest {
     }
 
     @Test
+    fun `validateCarNames 메서드 사용 시 중복되는 carName 이 존재할 때 예외 발생`() {
+        val input = "A,B,A"
+
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                validator.validateCarNames(input)
+            }
+        }
+    }
+
+    @Test
     fun `validateCarNames 메서드 사용 시 carName 에 아무런 값을 입력하지 않았을 때 예외 발생`() {
         val input = ""
 
@@ -63,12 +74,45 @@ class ValidatorTest {
     }
 
     @Test
-    fun `validateCarNames 메서드 사용 시 중복되는 carName 이 존재할 때 예외 발생`() {
-        val input = "A,B,A"
+    fun `validateTotalRoundNumber 메서드 사용 시 totalRoundNumber 가 문자일 때 예외 발생`() {
+        val input = "abc"
 
         assertSimpleTest {
             assertThrows<IllegalArgumentException> {
-                validator.validateCarNames(input)
+                validator.validateTotalRoundNumber(input)
+            }
+        }
+    }
+
+    @Test
+    fun `validateTotalRoundNumber 메서드 사용 시 totalRoundNumber 가 정수 타입이 아닐 때 예외 발생`() {
+        val input = "1.5"
+
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                validator.validateTotalRoundNumber(input)
+            }
+        }
+    }
+
+    @Test
+    fun `validateTotalRoundNumber 메서드 사용 시 totalRoundNumber 가 1 이상의 값이 아닐 때 예외 발생`() {
+        val input = "0"
+
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                validator.validateTotalRoundNumber(input)
+            }
+        }
+    }
+
+    @Test
+    fun `validateTotalRoundNumber 메서드 사용 시 totalRoundNumber 에 아무런 값을 입력하지 않았을 때 예외 발생`() {
+        val input = ""
+
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                validator.validateTotalRoundNumber(input)
             }
         }
     }
