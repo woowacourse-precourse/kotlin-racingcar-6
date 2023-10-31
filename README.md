@@ -174,6 +174,14 @@ Randoms.pickNumberInRange(0, 9)
   - [ ] 단독 우승자 안내 문구 출력
   - [ ] 공동 우승자 안내 문구 출력(쉼표를 이용하여 구분)
 
+### Attempts
+
+- [ ] 시도 횟수 저장
+
+### AttemptComparator
+
+- [ ] 시도 횟수와 전진 횟수 비교
+
 ### RandomNumberGenerator
 
 - [ ] 0~9 사이 랜덤 값 설정
