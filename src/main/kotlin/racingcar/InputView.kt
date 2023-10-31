@@ -43,4 +43,7 @@ class InputView {
         }
     }
 
+    fun closeConsole() {
+        Console.close()
+    }
 }

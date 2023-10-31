@@ -21,6 +21,7 @@ class Race {
             outputView.printResult(carList)
         }
         outputView.printWinner(getWinnerList(carList))
+        inputView.closeConsole()
     }
 
     fun getCarList(carNameList: List<String>): List<Car> = carNameList.map { name -> Car(name) }
