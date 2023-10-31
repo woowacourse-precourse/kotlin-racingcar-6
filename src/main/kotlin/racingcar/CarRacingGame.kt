@@ -13,6 +13,7 @@ class CarRacingGame {
         println(INPUT_TRIAL_NUMBER_MESSAGE)
         val inputCount = Console.readLine()
         val validCount = checkValidNumber(inputCount)
+        println()
 
         gameStatus.initStatus(listOfCarName, validCount)
         startRacing()
