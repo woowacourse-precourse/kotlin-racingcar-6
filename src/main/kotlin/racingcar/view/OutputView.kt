@@ -10,21 +10,21 @@ class OutputView {
     }
 
     private fun printDistance(distance: Int): String {
-        var temp = ""
-        for (i in 0 until distance) {
-            temp += DISTANCE_EXPRESS
+        val builder = StringBuilder()
+        repeat(distance) {
+            builder.append(DISTANCE_EXPRESS)
         }
-        return temp
+        return builder.toString()
     }
 
     fun printMaxDistanceRacingCarName(maxDistanceRackingCars: List<String>) =
-        println("$FINAL_WINNER_MESSAGE${maxDistanceRackingCars.joinToString(", ")}")
+        println("$FINAL_WINNER_MESSAGE${maxDistanceRackingCars.joinToString(COMMA)}")
 
 
     companion object {
         private const val RESULT_MESSAGE = "\n실행 결과"
         private const val DISTANCE_EXPRESS = "-"
         private const val FINAL_WINNER_MESSAGE = "최종 우승자 : "
-        private const val COMMA = ","
+        private const val COMMA = ", "
     }
 }
