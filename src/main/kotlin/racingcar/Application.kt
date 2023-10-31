@@ -7,8 +7,8 @@ fun main() {
    val gamePlaying = Racing()
    val carNames = inputUser.inputCarName()
    var gameInfo = emptyMap<String, Int>()
-   inputUser.printlnGameCountMent()
    if (inputUser.validName(carNames)) {
+      inputUser.printlnGameCountMent()
       val gameCount = inputUser.tryGameCount()
       gamePlaying.outputStartMent()
          for (round in 1..gameCount) {
