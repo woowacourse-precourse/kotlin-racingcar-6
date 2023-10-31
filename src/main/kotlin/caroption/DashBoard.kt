@@ -11,19 +11,19 @@ class DashBoard(private val carName: String) {
         dist++
     }
 
-    fun nowDist() = dist
-
-    fun printDist() {
-        print("${carName}$CAR_DIST_SEPARATOR")
+    fun printDist(): StringBuilder {
+        val distInput = StringBuilder()
+        distInput.append("${carName}$CAR_DIST_SEPARATOR")
         var count = BigInteger(INIT_DIST)
         while (count < dist) {
-            print(DIST_SYMBOL)
+            distInput.append(DIST_SYMBOL)
             count++
         }
-        println()
+        distInput.appendLine()
+        return distInput
     }
 
-    fun printCarName() {
-        print(carName)
-    }
+    fun carName() = carName
+
+    fun nowDist() = dist
 }
