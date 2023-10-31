@@ -88,7 +88,7 @@ fun checkNum(repeat: String) {
     try {
         repeat.toInt()
     } catch (e: NumberFormatException){
-        throw IllegalArgumentException("숫자가 아니거나 null입니다.")
+        throw IllegalArgumentException("숫자가 아닙니다.")
     }
     if (repeat.toInt() < 1) {
         throw IllegalArgumentException("입력 값에 음수가 있습니다.")
