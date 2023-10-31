@@ -1,6 +1,6 @@
 package racingcar
 
 fun main() {
-    val racing = Racing()
-    racing.run()
+    val race = Race()
+    race.run()
 }
