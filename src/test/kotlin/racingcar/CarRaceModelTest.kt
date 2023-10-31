@@ -25,9 +25,9 @@ class CarRaceModelTest {
                 carRaceModel.updateScores(listOf("pobi", "woni", "tobi"))
 
                 val result = carRaceModel.getScores()
-                assert(result.contains("pobi") && result["pobi"] == 1)
-                assert(result.contains("woni") && result["woni"] == 0)
-                assert(result.contains("tobi") && result["tobi"] == 1)
+                assertThat(result.contains("pobi") && result["pobi"] == 1)
+                assertThat(result.contains("woni") && result["woni"] == 0)
+                assertThat(result.contains("tobi") && result["tobi"] == 1)
 
             },
             MOVING_FORWARD, STOP, MOVING_FORWARD
@@ -63,9 +63,9 @@ class CarRaceModelTest {
         carRaceModel.setTestCodeDummy(1, 2, 3)
 
         val result = carRaceModel.getScores()
-        assert(result.contains("pobi") && result["pobi"] == 1)
-        assert(result.contains("woni") && result["woni"] == 2)
-        assert(result.contains("tobi") && result["tobi"] == 3)
+        assertThat(result.contains("pobi") && result["pobi"] == 1)
+        assertThat(result.contains("woni") && result["woni"] == 2)
+        assertThat(result.contains("tobi") && result["tobi"] == 3)
     }
 
     companion object {
