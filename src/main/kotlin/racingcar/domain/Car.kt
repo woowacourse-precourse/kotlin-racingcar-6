@@ -1,7 +1,7 @@
 package racingcar.domain
 
 
-class Car(private var name: String) {
+class Car(var name: String) {
     var count = 0
     fun move(number: Int) {
         if (number >= 4) {

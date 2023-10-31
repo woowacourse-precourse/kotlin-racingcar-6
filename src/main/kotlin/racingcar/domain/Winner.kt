@@ -1,6 +1,6 @@
 package racingcar.domain
 
-class Winner(private var cars: MutableList<Car>) {
+class Winner(var cars: MutableList<Car>) {
     fun getWinners(): MutableList<Car> {
         var winners: MutableList<Car>
         var topCount = 0
