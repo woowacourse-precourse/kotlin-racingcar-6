@@ -1,9 +1,6 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
-import java.util.LinkedList
-import java.util.Stack
-import kotlin.math.max
 
 class RacingGame(carList: List<String>) {
     private var gameRound: Int = 0

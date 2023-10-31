@@ -1,8 +1,4 @@
 package racingcar
-
-import camp.nextstep.edu.missionutils.Console
-import java.lang.IllegalArgumentException
-
 object RacingGameManager {
     private lateinit var racingGame: RacingGame
     private var racingGameTotalRounds = 0
