@@ -28,7 +28,9 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `자동차 이름 입력의 첫 입력이 줄바꿈(엔터)인 경우`() {
-
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("\n") }
+        }
     }
 
     @Test
