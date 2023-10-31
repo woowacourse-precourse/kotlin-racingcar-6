@@ -5,6 +5,7 @@ import kotlin.system.exitProcess
 
 fun main() {
     val carNames = getCarNames()
+    val tryCount = getTryCount()
 }
 
 fun getCarNames(): List<String> {
@@ -19,4 +20,11 @@ fun checkCarNames(carNames: String) {
     if (names.any { it.isEmpty() || it.length > 5 }) {
         exitProcess(0)
     }
+}
+
+fun getTryCount(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+    val tryCountInput = Console.readLine()
+
+    return tryCountInput.toIntOrNull() ?: exitProcess(0)
 }
