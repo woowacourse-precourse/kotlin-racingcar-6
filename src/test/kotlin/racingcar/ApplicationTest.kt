@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class ApplicationTest : NsTest() {
     @Test
@@ -24,6 +26,42 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["", " ", "pobi,,java", "pobi,java,"])
+    fun `공백 이름에 대한 예외 처리`(name: String) {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException(name, "1") }
+        }
+    }
+
+    @Test
+    fun `중복 이름에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,java,pobi", "1") }
+        }
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["one", "0", " ", ""])
+    fun `시도 횟수에 대한 예외 처리`(tryNum: String) {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,java", tryNum) }
+        }
+    }
+
+    @Test
+    fun `중복 우승자`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("a,b,c,d", "3")
+                assertThat(output()).contains("a : ---", "b : -", "c : -", "d : ---", "최종 우승자 : a, d")
+            },
+            MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD,
+            MOVING_FORWARD, STOP, STOP, MOVING_FORWARD,
+        )
     }
 
     public override fun runMain() {

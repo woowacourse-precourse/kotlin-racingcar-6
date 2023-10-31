@@ -1,5 +1,10 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
+
 fun main() {
-    // TODO: 프로그램 구현
+    val nameList = Ask().carNames()
+    val moveNumList = MoveCars(nameList, Ask().tryNum()).repeatMove()
+    Winner(nameList, moveNumList).who()
 }
+
