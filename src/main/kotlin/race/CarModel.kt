@@ -41,9 +41,8 @@ class CarModel {
     }
 
     private fun generateRandomNum(): Int {
-        val ranNum = Randoms.pickNumberInRange(Constant.RANDOM_START_NUMBER, Constant.RANDOM_END_NUMBER)
-        print(ranNum) // 결과 확인용
-        return ranNum
+        //print(ranNum) 결과 확인용
+        return Randoms.pickNumberInRange(Constant.RANDOM_START_NUMBER, Constant.RANDOM_END_NUMBER)
     }
 
     fun getWinners(): List<String> {
