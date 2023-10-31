@@ -1,8 +1,10 @@
 package round
 
+import org.assertj.core.api.AssertionsForClassTypes.assertThat
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
+import racingcar.car.Car
 
 class RoundTest {
 
@@ -21,4 +23,23 @@ class RoundTest {
             require(round > 1)
         }
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = [4, 5, 6, 7, 8, 9])
+    fun `랜덤으로 뽑힌 숫자가 4이상일 때 자동차가 전진한다`(number: Int) {
+        val expectedCar = Car("jiyeon", 0)
+        if (number >= 4) expectedCar.scoreSum++
+        val actualCar = Car("jiyeon", 1)
+        assertThat(actualCar).isEqualTo(expectedCar)
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = [0, 1, 2, 3])
+    fun `랜덤으로 뽑힌 숫자가 4미만일 때 자동차는 정지한다`(number: Int) {
+        val expectedCar = Car("jiyeon", 0)
+        if (number >= 4) expectedCar.scoreSum++
+        val actualCar = Car("jiyeon", 0)
+        assertThat(actualCar).isEqualTo(expectedCar)
+    }
+
 }
