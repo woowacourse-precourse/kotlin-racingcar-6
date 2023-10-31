@@ -6,4 +6,7 @@ object Constants {
     const val FORWARD_STEP = 1
     const val ROUND_RESULT_MSG = "실행 결과"
     const val WINNER_RESULT_TITLE = "최종 우승자 : "
+    const val STRING_LENGTH_ERR_MSG = "자동차 이름은 5자 이하만 가능합니다."
+    const val EMPTY_STRING_ERR_MSG = "자동차 이름을 입력해주세요."
+    const val NOT_NUMBER_ERR_MSG = "숫자를 입력해주세요."
 }
