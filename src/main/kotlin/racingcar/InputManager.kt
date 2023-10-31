@@ -17,6 +17,8 @@ class InputManager {
     fun readRepeatNum(): Int {
         println("시도할 횟수는 몇 회인가요?")
         val input = Console.readLine()
+        exceptionManager.repeatException(input)
+
         println()
         println("실행 결과")
         return input.toInt()

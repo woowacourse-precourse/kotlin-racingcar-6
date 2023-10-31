@@ -9,4 +9,9 @@ class ExceptionManager {
 
         }
     }
+    fun repeatException(num : String){
+        if (num.toIntOrNull() == null) {
+            throw IllegalArgumentException("숫자를 입력해주세요.")
+        }
+    }
 }
