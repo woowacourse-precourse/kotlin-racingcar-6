@@ -14,8 +14,7 @@ val MOVE = "-"
 fun main() {
     println(INPUT_NAME)
     input()
-    val repeat = inputRepeat()
-    processGame(repeat)
+    processGame(inputRepeat())
     findMaxPos()
     winner()
 }
