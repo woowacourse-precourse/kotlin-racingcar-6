@@ -3,8 +3,10 @@ package racingcar
 class InputMachine {
 
     // 자동차 이름 입력↓
-    fun makeCars(cars: String) : List<String> {
-        return arrayOf<String>().toList()
+    fun makeCars(): List<String> {
+
+        return readln().split(",")
+
     }
 
     fun divisionComma(cars: String) : List<String>{
