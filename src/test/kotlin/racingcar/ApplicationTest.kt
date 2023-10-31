@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
-
     @Test
     fun `전진 정지`() {
         assertRandomNumberInRangeTest(
