@@ -59,17 +59,17 @@ fun show_move(move_chance: Int, car_array: List<String>): IntArray {
 }
 
 fun caculate_move(cars: Int): IntArray {
-    var count_array = IntArray(cars)
+    var move_array = IntArray(cars)
 
     for (i in 1..cars) {
         var r_number = Randoms.pickNumberInRange(0, 9)//0~9 까지의 랜덤한 수를 변수에 저장
         if (r_number >= 4) {//랜덤 값이 4보다 클 시 한칸 전진할 수 있으므로 배열을 1로 만듦
-            count_array[i - 1] = 1
+            move_array[i - 1] = 1
         } else {//랜덤 값이 4보다 작을 시 전진할 수 없으므로 배열을 0으로 만듦
-            count_array[i - 1] = 0
+            move_array[i - 1] = 0
         }
     }
-    return count_array//move_array에 반환
+    return move_array//move_array에 반환
 }
 
 fun plus_move(count_array: IntArray, move_array: IntArray, cars: Int): IntArray {
