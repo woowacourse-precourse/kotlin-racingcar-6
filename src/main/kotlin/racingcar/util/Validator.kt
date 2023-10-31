@@ -7,12 +7,12 @@ import racingcar.constant.Constants.MIN_NAME_LENGTH
 class Validator(carNames: ArrayList<String>, attemptCount: String) {
 
     init {
-        isValidLengthAndAlphabetic(carNames)
+        isValidLengthAndLetter(carNames)
         checkIfDuplicateNameExists(carNames)
         isPositiveInteger(attemptCount)
     }
 
-    private fun isValidLengthAndAlphabetic(carNames: ArrayList<String>) {
+    private fun isValidLengthAndLetter(carNames: ArrayList<String>) {
         carNames.forEach { carName ->
             if (carName.length !in MIN_NAME_LENGTH..MAX_NAME_LENGTH || !carName.all { it.isLetter() }) {
                 throw IllegalArgumentException("Car names must be alphabetic and have a length of 1 to 5 characters.")
