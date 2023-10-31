@@ -1,9 +1,11 @@
 package racingcar
 
 class Validator {
-    fun containsComma(inputString: String) {
+    fun validateInputString(inputString: String) {
         if (!inputString.contains(','))
             throw IllegalArgumentException("invalid input string, there is no comma")
+        if (inputString.contains(' '))
+            throw IllegalArgumentException("invalid input string, it contains blank")
     }
 
     fun validateNames(carsNames: List<String>) {
