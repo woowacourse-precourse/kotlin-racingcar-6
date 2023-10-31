@@ -1,6 +1,7 @@
-package racingcar
+package racingcar.round
 
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.car.Car
 
 class Movement(private val cars: List<Car>) {
     fun moveCars() = cars.filter { canMove() }.forEach { it.scoreSum++ }

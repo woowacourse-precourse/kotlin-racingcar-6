@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.round
 
 class RoundValidation {
     fun checkRoundInputValidation(input: String) {

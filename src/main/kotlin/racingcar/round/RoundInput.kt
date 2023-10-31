@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.round
 
 import camp.nextstep.edu.missionutils.Console
 class RoundInput {

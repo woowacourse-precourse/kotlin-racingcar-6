@@ -1,4 +1,6 @@
-package racingcar
+package racingcar.result
+
+import racingcar.car.Cars
 
 class GameResult {
     fun showWinners(cars: Cars) {

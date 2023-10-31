@@ -1,4 +1,6 @@
-package racingcar
+package racingcar.result
+
+import racingcar.car.Car
 
 class Winner(private val cars: List<Car>) {
     fun getWinners(): List<String> {

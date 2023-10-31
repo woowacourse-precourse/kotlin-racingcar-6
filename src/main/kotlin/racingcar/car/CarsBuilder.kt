@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.car
 
 class CarsBuilder {
     fun create(): List<Car> {

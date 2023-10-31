@@ -1,5 +1,10 @@
 package racingcar
 
+import racingcar.car.Cars
+import racingcar.result.GameResult
+import racingcar.round.Round
+import racingcar.round.RoundMatch
+
 class Game(
     private val gameInitializer: GameInitializer = GameInitializer(),
     private val roundMatch: RoundMatch = RoundMatch(),

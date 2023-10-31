@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.car
 
 class CarValidation {
     fun checkNameInputValidation(input: List<String>) {
@@ -38,5 +38,4 @@ class CarValidation {
             throw IllegalArgumentException("콤마로 입력이 끝나서는 안됩니다.")
         }
     }
-
 }
