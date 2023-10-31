@@ -1,15 +1,22 @@
 package racingcar.domain
 
-import camp.nextstep.edu.missionutils.Randoms
+import racingcar.utils.getRandomNumber
 
 class Car(val carName: String) {
-  var record: String = ""
+  private var _record: String = ""
     get() {
-      val randomNumber = Randoms.pickNumberInRange(0, 9)
-      if (randomNumber >= 4) {
-        field += "-"
-      }
+      moveOrNot(getRandomNumber())
 
       return field
     }
+
+  val record: String
+    get() = _record
+
+  fun moveOrNot(number: Int): Boolean {
+    if (number >= 4) {
+      this._record += "-"
+      return true
+    } else return false
+  }
 }
