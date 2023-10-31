@@ -3,7 +3,7 @@ package racingcar.randomnumbergenerator
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.RepeatedTest
 
 class RandomNumberGeneratorTest {
 
@@ -14,7 +14,7 @@ class RandomNumberGeneratorTest {
         randomNumberGenerator = RandomNumberGeneratorImpl()
     }
 
-    @Test
+    @RepeatedTest(100)
     fun `랜덤으로 생성한 숫자가 0~9사이 숫자를 반환`() {
         val result = randomNumberGenerator.generateRandomNumber()
 
