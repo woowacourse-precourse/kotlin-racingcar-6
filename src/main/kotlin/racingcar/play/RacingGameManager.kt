@@ -13,6 +13,7 @@ object RacingGameManager {
     fun registerCarNames(): RacingGameManager {
         carNames = UserInput.readCarName()
             .createNameList()
+            .distinct()  // 자동차 이름의 중복을 삭제한다.
         InputValidator.checkNamesLength(carNames) // 이름이 1자 이상 5자 이하인지 검사한다.
         for (carName in carNames) {
             racingCars.add(RacingCar(carName))
@@ -23,13 +24,13 @@ object RacingGameManager {
 
     fun singleModeOn() {
         println("Single Mode On")
-        racingCars.add(RacingCar("com"))
+        racingCars.add(RacingCar("[computer]"))
     }
     fun getAttemptCount(): RacingGameManager {
         val input = UserInput.readAttemptCount()
-        InputValidator.checkOnlyDigit(input)
+        InputValidator.checkOnlyDigit(input) // 입력이 숫자로만 되있는지 검사한다.
         attemptCount = input.toInt()
-        InputValidator.isPositive(attemptCount)
+        InputValidator.isPositive(attemptCount) // 1이상의 수인지 검사한다.
         return this
     }
 

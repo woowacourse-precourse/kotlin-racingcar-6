@@ -7,7 +7,7 @@
   - [x] 입력받은 이름을 리스트에 저장한다. // String.createNameList()
   - [x] 쉼표(,)를 기준으로 이름을 구분한다. // String.split(",") 사용
   - [x] 이름이 1자 이상 5글자 이하인지 검사한다. // InputValidator.checkNamesLength
-  - [ ] 중복된 자동차 이름 입력 시, (예: pobi, pobi) 하나로 처리한다.
+  - [x] 중복된 자동차 이름 입력 시, (예: pobi, pobi) 하나로 처리한다. // distinct() 사용
 
 - [x] 자동차의 이동 횟수를 입력받는다. // UserInput.readAttemptCount()
   - [x] 입력을 정수로 변환한다. // String.toInt() 사용
