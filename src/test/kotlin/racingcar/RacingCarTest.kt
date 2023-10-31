@@ -30,4 +30,17 @@ class RacingCarTest {
             invalidTryCountCheck("-2".toIntOrNull())
         }
     }
+
+    @Test
+    fun `자동차 생성`() {
+        val racingCar = RacingCar("pobi")
+        assertThat(racingCar.name).isEqualTo("pobi")
+    }
+
+    @Test
+    fun `자동차 전진`() {
+        val racingCar = RacingCar("pobi")
+        racingCar.move()
+        assertThat(racingCar.mileage).isBetween(0, 1)
+    }
 }
