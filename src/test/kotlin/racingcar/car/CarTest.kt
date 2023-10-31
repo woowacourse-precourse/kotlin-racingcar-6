@@ -11,7 +11,7 @@ class CarTest {
 
     @BeforeEach
     fun setUp() {
-        car = CarImpl()
+        car = CarImpl(TEST)
     }
 
     @ParameterizedTest
@@ -35,5 +35,6 @@ class CarTest {
     companion object {
         private const val STOP = ""
         private const val FORWARD = "-"
+        private const val TEST = "test"
     }
 }
