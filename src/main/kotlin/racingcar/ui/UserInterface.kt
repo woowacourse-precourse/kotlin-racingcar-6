@@ -46,6 +46,8 @@ object InputValidator {
     fun checkNamesLength(names: List<String>) =
         names.forEach { require(it.length in MIN_NAME_LENGTH..MAX_NAME_LENGTH) { MSG_EXCEPTION_NAME_LENGTH } }
 
-    fun checkOnlyDigit(input: String) =
+    fun checkOnlyDigit(input: String) {
+        require(input.isNotEmpty()) { MSG_EXCEPTION_ONLY_DIGIT }
         input.forEach { require(it in '0'..'9') { MSG_EXCEPTION_ONLY_DIGIT } }
+    }
 }
