@@ -23,8 +23,12 @@ class CarRaceModelTest {
         Assertions.assertRandomNumberInRangeTest(
             {
                 carRaceModel.updateScores(listOf("pobi", "woni", "tobi"))
-                println(carRaceModel.getScores())
-                assertThat(carRaceModel.getScores().toString()).contains("{pobi=1, woni=0, tobi=1}")
+
+                val result = carRaceModel.getScores()
+                assert(result.contains("pobi") && result["pobi"] == 1)
+                assert(result.contains("woni") && result["woni"] == 0)
+                assert(result.contains("tobi") && result["tobi"] == 1)
+
             },
             MOVING_FORWARD, STOP, MOVING_FORWARD
         )
@@ -51,13 +55,17 @@ class CarRaceModelTest {
     @Test
     fun `generateResults 점수에 맞게 -를 출력하는지 확인 테스트`() {
         carRaceModel.setTestCodeDummy(3, 2, 3)
-        assertEquals("pobi : ---\nwoni : --\ntobi : ---", carRaceModel.generateResults().joinToString("\n"))
+        assertEquals("pobi : ---\nwoni : --\ntobi : ---", carRaceModel.generateResults())
     }
 
     @Test
     fun `getScore이 제대로 작동되는지 테스트`() {
         carRaceModel.setTestCodeDummy(1, 2, 3)
-        assertEquals(carRaceModel.getScores().toString(), "{pobi=1, woni=2, tobi=3}")
+
+        val result = carRaceModel.getScores()
+        assert(result.contains("pobi") && result["pobi"] == 1)
+        assert(result.contains("woni") && result["woni"] == 2)
+        assert(result.contains("tobi") && result["tobi"] == 3)
     }
 
     companion object {
