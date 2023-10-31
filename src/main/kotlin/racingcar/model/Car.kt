@@ -2,7 +2,7 @@ package racingcar.model
 
 data class Car(
     val name: String,
-    var position: Int = 0
+    var position: Int = 0,
 ) {
     fun moveForward() {
         if (isMove()) {
@@ -11,8 +11,12 @@ data class Car(
     }
 
     private fun isMove(): Boolean {
-        // TODO: NumberGenerator 에게 메시지 보내기
-        return true
+        val numberGenerator = NumberGenerator()
+        val randomNumber = numberGenerator.generateRandomNumber()
+        if (randomNumber >= 4) {
+            return true
+        }
+        return false
     }
 }
 
