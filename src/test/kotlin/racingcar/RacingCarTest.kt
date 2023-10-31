@@ -14,7 +14,7 @@ class RacingCarTest {
     @Test
     fun `자동차 이름을 잘 입력 했는지 체크`() {
         assertThrows<IllegalArgumentException>("자동차 이름은 5자 이하만 가능합니다.") {
-            invalidRacingCarsCheck(listOf("pobi", "woni", "junjunjunjunjun"))
+            invalidRacingCarNamesCheck(listOf("pobi", "woni", "junjunjunjunjun"))
         }
     }
 
