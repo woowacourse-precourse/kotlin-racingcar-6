@@ -27,6 +27,7 @@ class CircuitController(
             CircuitState.Racing -> {
                 outputView.printGameInputAttemptMessage()
                 val attempt = inputView.inputAttempt()
+                println()
                 outputView.printGameResultMessage()
                 circuit.moveCars(attempt)
             }
