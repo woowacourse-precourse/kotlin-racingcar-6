@@ -11,4 +11,10 @@ class OutputView {
         }
         println()
     }
+
+    fun printWinnerMessage() = print("최종 우승자 : ")
+
+    fun printWinner(winnerCars: List<String>) {
+        println(winnerCars.joinToString(", "))
+    }
 }
