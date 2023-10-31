@@ -1,5 +1,7 @@
 package racingcar.domain
 
+import racingcar.utils.getRandomNumber
+
 class Commentator(private val cars: List<Car>, private val numberOfMoves: Int) {
   fun commentRace() {
     println()
@@ -7,6 +9,7 @@ class Commentator(private val cars: List<Car>, private val numberOfMoves: Int) {
 
     repeat(numberOfMoves) {
       for (car in cars) {
+        car.moveOrNot(getRandomNumber())
         println("${car.carName} : ${car.record}")
       }
       println()
