@@ -208,11 +208,14 @@ Randoms.pickNumberInRange(0, 9)
 
 ```mermaid
 classDiagram
+    Attempt <.. Controller
     InputView <.. Controller
     OutputView <.. Controller
-    Car <.. Controller
+    AttemptComparator <.. Controller
     RandomNumberGenerator <.. Car
     Validator <.. InputView
+    Attempt <.. AttemptComparator
+    Car <.. AttemptComparator
     class Controller {
         +startCarRacing()
     }
@@ -230,9 +233,16 @@ classDiagram
         +gernerateRandomNumber()
     }
     class Car {
-        -currentLocation
+        -currentPosition
         +foward()
         +stop()
+    }
+    class Attempt {
+        -attmepts
+        +setAttempt()
+    }
+    class AttemptComparator {
+        +compareAttemptAndPosition()
     }
     class Validator {
         +nameLength()
