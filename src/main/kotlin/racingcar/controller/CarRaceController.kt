@@ -49,8 +49,7 @@ class CarRaceController(val view: CarRaceView) {
 
         //최종 우승자 출력
         val winner = choiceWinner(cars)
-        print(WINNER)
-        println(changeListToStr(winner))
+        view.outputWinner(changeListToStr(winner))
 
     }
 
@@ -74,6 +73,6 @@ class CarRaceController(val view: CarRaceView) {
     }
 
     fun changeListToStr(list: List<String>): String {
-        return list.joinToString (", ")
+        return list.joinToString(", ")
     }
 }

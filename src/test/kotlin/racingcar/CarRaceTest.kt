@@ -30,7 +30,7 @@ class CarRaceTest : NsTest() {
     }
 
     @Test
-    fun `자동차들의 위치 출력 결과`() {
+    fun `자동차 위치 출력 결과`() {
         val position = 5
         val result = carRaceController.showCars(position)
         assertThat(result).isEqualTo("-----")

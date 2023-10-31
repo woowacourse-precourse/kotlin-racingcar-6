@@ -1,7 +1,7 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
-import racingcar.util.Constants.CAR_RACE_NAME
+import racingcar.util.Constants.WINNER
 
 class CarRaceView {
 
@@ -16,5 +16,11 @@ class CarRaceView {
 
         return num
     }
+
+    fun outputWinner(winner : String) {
+        println(WINNER + winner)
+    }
+
+
 
 }
