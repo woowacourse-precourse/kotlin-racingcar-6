@@ -46,4 +46,9 @@ class UserInterfaceTest {
     fun `시도 횟수가 100 이하인지 검사_값 1000`() {
         assertThrows<IllegalArgumentException> { InputValidator.isUnderHundred(1000)}
     }
+
+    @Test
+    fun `시도 횟수가 Int 범위 인지 검사_값 2147483648`() {
+        assertThrows<IllegalArgumentException> { InputValidator.checkIntRange("2147483648")}
+    }
 }
