@@ -2,19 +2,15 @@ package racingcar
 
 class Game {
     private val gameInitializer = GameInitializer()
+    private val gameMatch = GameMatch()
 
     private val cars: Cars = Cars()
     private var round: Round = Round()
 
     fun start() {
         gameInitializer.init(cars, round)
-        matchStart()
+        gameMatch.start(cars, round)
         showWinners()
-    }
-
-    private fun matchStart() {
-        println(MATCH_RESULT)
-        repeat(round.getRound()) { cars.showRoundResult() }
     }
 
     private fun showWinners() {
@@ -23,7 +19,6 @@ class Game {
     }
 
     companion object {
-        const val MATCH_RESULT = "실행 결과"
         const val WINNER_INFO = "최종 우승자 : "
     }
 }

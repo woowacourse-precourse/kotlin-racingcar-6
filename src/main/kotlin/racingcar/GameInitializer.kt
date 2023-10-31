@@ -1,6 +1,6 @@
 package racingcar
 
-class GameInitializer() {
+class GameInitializer {
 
     fun init(cars: Cars, round: Round) {
         setPlayerCars(cars)
