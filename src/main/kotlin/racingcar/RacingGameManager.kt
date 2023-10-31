@@ -8,18 +8,25 @@ object RacingGameManager {
     private var racingGameTotalRounds = 0
 
     fun startGame() {
-        racingGame = RacingGame(carList = InputHandler.getCarName())
-        racingGameTotalRounds = InputHandler.getAmount()
+        setUpGame()
+
         println("실행 결과")
         while (!isGameOver()){
             racingGame.initRound()
         }
+
         endGame()
     }
 
-    fun endGame(){
+    private fun setUpGame(){
+        racingGame = RacingGame(carList = InputHandler.getCarName())
+        racingGameTotalRounds = InputHandler.getAmount()
+    }
+
+    private fun endGame(){
         print("최종 우승자 : ${racingGame.getWinnerName().joinToString(", ")}")
     }
+
     private fun isGameOver() = racingGame.getCurrentGameRound() == racingGameTotalRounds
 
 }
