@@ -12,7 +12,6 @@ class RacingCar(val name: String) {
     }
 
     fun print() {
-        TODO("Not yet implemented")
+        println("$name : ${"-".repeat(mileage)}")
     }
-
 }
