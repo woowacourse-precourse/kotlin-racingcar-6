@@ -23,4 +23,15 @@ class Racing {
             }
         }
     }
+
+    fun findWinner(carResult: MutableList<Int>): MutableList<Int> {
+        val maxNumber = carResult.max()
+        val maxIndexList = mutableListOf<Int>()
+        for (i in carResult.indices) {
+            if (carResult[i] == maxNumber) {
+                maxIndexList.add(i)
+            }
+        }
+        return maxIndexList
+    }
 }
