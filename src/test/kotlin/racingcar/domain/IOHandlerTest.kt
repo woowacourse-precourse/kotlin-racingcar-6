@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.mockito.Mockito
+import org.mockito.Mockito.mock
 import racingcar.data.Car
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
@@ -15,13 +17,13 @@ import java.io.PrintStream
 class IOHandlerTest {
 
     private val standardOut = System.out
-    private lateinit var validator: Validator
+    private lateinit var mockedValidator: Validator
     private lateinit var ioHandler: IOHandler
 
     @BeforeEach
     fun setUp() {
-        validator = Validator()
-        ioHandler = IOHandler(validator)
+        mockedValidator = mock(Validator::class.java)
+        ioHandler = IOHandler(mockedValidator)
     }
 
     @AfterEach
@@ -126,6 +128,9 @@ class IOHandlerTest {
         // given
         val names = "ppoBi,영수,철수"
         setInput(names)
+        Mockito.`when`(mockedValidator.checkCarNameValid("ppoBi")).thenReturn(true)
+        Mockito.`when`(mockedValidator.checkCarNameValid("영수")).thenReturn(true)
+        Mockito.`when`(mockedValidator.checkCarNameValid("철수")).thenReturn(true)
 
         // when
         val actual = ioHandler.getCarNames()
@@ -140,9 +145,11 @@ class IOHandlerTest {
         // given
         val name = "가\"나\"다"
         setInput(name)
+        Mockito.`when`(mockedValidator.checkCarNameValid("가\"나\"다")).thenReturn(true)
 
         // when
         val actual = ioHandler.getCarNames()
+
 
         // then
         val expected = listOf("""가"나"다""")
@@ -154,6 +161,8 @@ class IOHandlerTest {
         // given
         val name = "이\\n름, 정상이름"
         setInput(name)
+        Mockito.`when`(mockedValidator.checkCarNameValid("이\\n름")).thenReturn(true)
+        Mockito.`when`(mockedValidator.checkCarNameValid(" 정상이름")).thenReturn(true)
 
         // when
         val actual = ioHandler.getCarNames()
@@ -168,6 +177,8 @@ class IOHandlerTest {
         // given
         val name = "\n"
         setInput(name)
+        Mockito.`when`(mockedValidator.checkCarNameValid("")).thenReturn(false)
+
 
         // when
         val actual: java.lang.IllegalArgumentException = assertThrows(IllegalArgumentException::class.java) {
@@ -183,10 +194,11 @@ class IOHandlerTest {
     }
 
     @Test
-    fun `"  "을 자동차 이름으로 입력하면 " "를 리턴한다`() {
+    fun `"  "을 자동차 이름으로 입력하면 "  "를 리턴한다`() {
         // given
         val name = "  "
         setInput(name)
+        Mockito.`when`(mockedValidator.checkCarNameValid("  ")).thenReturn(true)
 
         // when
         val actual = ioHandler.getCarNames()
@@ -201,6 +213,7 @@ class IOHandlerTest {
         // given
         val name = "김 치"
         setInput(name)
+        Mockito.`when`(mockedValidator.checkCarNameValid("김 치")).thenReturn(true)
 
         // when
         val actual = ioHandler.getCarNames()
@@ -215,6 +228,7 @@ class IOHandlerTest {
         // given
         val name = "김 치 "
         setInput(name)
+        Mockito.`when`(mockedValidator.checkCarNameValid("김 치 ")).thenReturn(true)
 
         // when
         val actual = ioHandler.getCarNames()
@@ -229,6 +243,9 @@ class IOHandlerTest {
         // given
         val name = " ,   ,  "
         setInput(name)
+        Mockito.`when`(mockedValidator.checkCarNameValid(" ")).thenReturn(true)
+        Mockito.`when`(mockedValidator.checkCarNameValid("   ")).thenReturn(true)
+        Mockito.`when`(mockedValidator.checkCarNameValid("  ")).thenReturn(true)
 
         // when
         val actual = ioHandler.getCarNames()
@@ -243,6 +260,9 @@ class IOHandlerTest {
         // given
         val names = ",  , "
         setInput(names)
+        Mockito.`when`(mockedValidator.checkCarNameValid("")).thenReturn(false)
+        Mockito.`when`(mockedValidator.checkCarNameValid("  ")).thenReturn(true)
+        Mockito.`when`(mockedValidator.checkCarNameValid(" ")).thenReturn(true)
 
         // when
         val actual: java.lang.IllegalArgumentException = assertThrows(IllegalArgumentException::class.java) {
@@ -261,6 +281,8 @@ class IOHandlerTest {
         // given
         val names = "아우디, 아우지,아우디"
         setInput(names)
+        Mockito.`when`(mockedValidator.checkCarNameValid("아우디")).thenReturn(true)
+        Mockito.`when`(mockedValidator.checkCarNameValid(" 아우지")).thenReturn(true)
 
         // when
         val actual = ioHandler.getCarNames()
@@ -275,6 +297,7 @@ class IOHandlerTest {
         // given
         val input = "5"
         setInput(input)
+        Mockito.`when`(mockedValidator.checkMoveCountValid(5)).thenReturn(true)
 
         // when
         val actual = ioHandler.getMoveCount()
@@ -325,6 +348,7 @@ class IOHandlerTest {
         // given
         val input = "-1"
         setInput(input)
+        Mockito.`when`(mockedValidator.checkMoveCountValid(-1)).thenReturn(false)
 
         // when
         val actual: java.lang.IllegalArgumentException = assertThrows(IllegalArgumentException::class.java) {
@@ -343,6 +367,7 @@ class IOHandlerTest {
         // given
         val input = "0"
         setInput(input)
+        Mockito.`when`(mockedValidator.checkMoveCountValid(0)).thenReturn(true)
 
         // when
         val actual = ioHandler.getMoveCount()
@@ -357,6 +382,7 @@ class IOHandlerTest {
         // given
         val input = "1000000"
         setInput(input)
+        Mockito.`when`(mockedValidator.checkMoveCountValid(1_000_000)).thenReturn(true)
 
         // when
         val actual = ioHandler.getMoveCount()
