@@ -4,12 +4,12 @@ package racingcar
 class RunGame {
 
     fun startRace(){
-        val pG = PrepareGame()
-        var racingCars : MutableList<Players> = pG.makingPlayerList(pG.racingCarName())
-        var racingNum: Int = pG.racingNumber()
+        val preG = PrepareGame()
+        var racingCars : MutableList<Players> = preG.makingPlayerList(preG.racingCarName())
+        var racingNum: Int = preG.racingNumber()
 
         for( i in 1..racingNum){
-            repeatRace(racingCars.size,racingCars)
+            racingCars = repeatRace(racingCars.size,racingCars)
         }
 
 
