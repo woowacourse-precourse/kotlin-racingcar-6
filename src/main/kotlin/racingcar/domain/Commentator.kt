@@ -7,7 +7,7 @@ class Commentator(private val cars: List<Car>, private val numberOfMoves: Int) {
 
     repeat(numberOfMoves) {
       for (car in cars) {
-        println("${car.carName} : ${car.moveOrNot()}")
+        println("${car.carName} : ${car.record}")
       }
       println()
     }
