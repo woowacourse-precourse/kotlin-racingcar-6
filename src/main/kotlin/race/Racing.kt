@@ -1,5 +1,6 @@
 package race
 
+import car.Car
 import car.CarConfiguration.INIT_DIST
 import race.RacingSystemValues.FINAL_WINNER
 import race.RacingSystemValues.WINNER_SEPARATOR
@@ -7,27 +8,28 @@ import java.math.BigInteger
 
 class Racing {
     private var firstCarDist = BigInteger(INIT_DIST)
-    fun start() {
+    fun start(racingCarList: List<Car>): StringBuilder {
+        val roundResult = StringBuilder()
         for (car in racingCarList) {
             car.start()
-            car.printDist()
+            roundResult.append(car.printDist())
             if (car.nowDist() > firstCarDist) {
                 firstCarDist = car.nowDist()
             }
         }
-        println()
+        return roundResult.appendLine()
     }
 
-    fun printWinner() {
+    fun printWinner(racingCarList: List<Car>): StringBuilder {
         val winnerList = racingCarList.filter { car ->
             car.nowDist() == firstCarDist
         }
-        print(FINAL_WINNER)
+        val raceResult = StringBuilder()
+        raceResult.append(FINAL_WINNER)
         winnerList.forEachIndexed { index, car ->
-            car.printCarName()
-            if (index != winnerList.lastIndex) {
-                print(WINNER_SEPARATOR)
-            }
+            raceResult.append(car.carName())
+            if (index != winnerList.lastIndex) raceResult.append(WINNER_SEPARATOR)
         }
+        return raceResult
     }
 }

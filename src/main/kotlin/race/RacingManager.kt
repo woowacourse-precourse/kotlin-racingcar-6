@@ -10,9 +10,11 @@ import java.math.BigInteger
 class RacingManager(private val racing: Racing) {
 
     private lateinit var racingCarList: List<Car>
+    private lateinit var round: BigInteger
 
     init {
         settingRacingCar()
+        settingRaceRound()
         raceStart()
         printWinner()
     }
@@ -21,16 +23,20 @@ class RacingManager(private val racing: Racing) {
         racingCarList = inputCarInformation()
     }
 
+    private fun settingRaceRound() {
+        round = inputRacingRoundInformation()
+    }
+
     private fun raceStart() {
         var nowRound = BigInteger(INIT_RACING_ROUND)
         println(COMPUTATION_OUTCOME)
         while (nowRound < round) {
-            racing.start()
+            print(racing.start(racingCarList))
             nowRound++
         }
     }
 
     private fun printWinner() {
-        racing.printWinner()
+        print(racing.printWinner(racingCarList))
     }
 }
