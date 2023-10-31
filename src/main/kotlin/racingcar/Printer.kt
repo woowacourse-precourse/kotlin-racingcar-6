@@ -13,14 +13,14 @@ class Printer {
 
     fun printOutCarsMoveResult(carsList: List<Car>) {
         carsList.forEach { car ->
-            println("${car.getCarName()} : ${getForwardLineOfCar(car)}")
+            println("${car.name} : ${getForwardLineOfCar(car)}")
         }
         println()
     }
 
     private fun getForwardLineOfCar(car: Car): String {
         var line = ""
-        for (i in 1..car.getHowGoForward()) {
+        for (i in 1..car.howGoForwardCount) {
             line += "-"
         }
         return line

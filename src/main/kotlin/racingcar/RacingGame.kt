@@ -37,19 +37,20 @@ class RacingGame(
             printer.printOutCarsMoveResult(carsList = carsList)
             attempts--
         }
+
         chooseWinners()
     }
 
     private fun chooseWinners() {
-
-        val maxHowGoForwardCars = carsList.maxByOrNull { it.getHowGoForward() }
+        val maxHowGoForwardCars = carsList.maxByOrNull { it.howGoForwardCount }
         requireNotNull(maxHowGoForwardCars)
-        val winners = carsList.filter { it.getHowGoForward() == maxHowGoForwardCars.getHowGoForward() }
+
+        val winners = carsList.filter { it.howGoForwardCount == maxHowGoForwardCars.howGoForwardCount }
         if (winners.size > 1) {
-            val winnersName = winners.joinToString(",") { it.getCarName() }
+            val winnersName = winners.joinToString(",") { it.name }
             printer.printOutRacingWinner(winnersName)
         } else {
-            printer.printOutRacingWinner(winners[0].getCarName())
+            printer.printOutRacingWinner(winners[0].name)
         }
     }
 
@@ -62,8 +63,8 @@ class RacingGame(
     private fun requireCheckingForDuplicateNames() {
         val nameSet = mutableSetOf<String>()
         for (car in carsList) {
-            require(car.getCarName() !in nameSet)
-            nameSet.add(car.getCarName())
+            require(car.name !in nameSet)
+            nameSet.add(car.name)
         }
     }
 
