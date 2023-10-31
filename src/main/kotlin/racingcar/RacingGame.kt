@@ -18,4 +18,13 @@ class RacingGame {
 
         return carList
     }
+
+    fun getNumberOfAttempt(): Int {
+        host.printQuestionNumberOfAttempt()
+        val numberOfAttempt = player.inputNumberOfAttempt()
+        validation.checkNumberOfAttemptOneAndMore(numberOfAttempt)
+
+        return numberOfAttempt
+    }
+    
 }
