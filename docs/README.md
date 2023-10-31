@@ -35,7 +35,7 @@ Repository 객체 대신 List로 간소화한다.
 
 #### NumberGenerator
 
-- [ ] NumberGenerator 인터페이스 구현
+- [x] NumberGenerator 인터페이스 구현
 - [ ] 0 ~ 9 랜덤값 생성 클래스 구현
 - [ ] 직진값(5) 생성 클래스 구현
 - [ ] 멈춤값(0) 생성 클래스 구현
