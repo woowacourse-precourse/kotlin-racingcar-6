@@ -26,6 +26,16 @@ fun main() {
         count--
         println()
     }
+
+    val maxRes = resList.max()
+    val winners = mutableListOf<String>()
+    for ((index, value) in resList.withIndex()) {
+        if (value == maxRes) {
+            winners.add(carList[index])
+        }
+    }
+    print("최종 우승자 : ")
+    println(winners.joinToString(", "))
 }
 
 fun processExceptionCar(carInput: String, carList: List<String>) {
