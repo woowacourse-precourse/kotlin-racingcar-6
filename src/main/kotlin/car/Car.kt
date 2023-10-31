@@ -12,7 +12,7 @@ class Car(
 ) {
 
     fun printCarName() {
-        dashBoard.printCarName()
+        print(dashBoard.carName())
     }
 
     fun start() {
@@ -23,7 +23,7 @@ class Car(
     }
 
     fun printDist() {
-        dashBoard.printDist()
+        print(dashBoard.printDist())
     }
 
     fun nowDist() = dashBoard.nowDist()
