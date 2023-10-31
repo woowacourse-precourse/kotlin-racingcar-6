@@ -13,8 +13,8 @@ object InputManager {
 
     fun inputExecutionNumber(): Int {
         println(INPUT_EXECUTION_NUMBER)
-
         val executionNumberString = readLine()
+        ExceptionManager.executionNumberException(executionNumberString)
         return executionNumberString.toInt()
     }
 }

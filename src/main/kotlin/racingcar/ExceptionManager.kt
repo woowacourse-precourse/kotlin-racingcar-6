@@ -10,10 +10,8 @@ object ExceptionManager {
     }
 
     fun executionNumberException(numberString: String){
-        try {
-            val number = numberString.toInt()
-            if (number < 0 ) throw IllegalArgumentException()
-        } catch (e: NumberFormatException) {
+        val number = numberString.toIntOrNull()
+        if (number == null || number < 0) {
             throw IllegalArgumentException()
         }
     }
