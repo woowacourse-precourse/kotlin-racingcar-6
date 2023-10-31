@@ -8,6 +8,8 @@ fun main() {
     val carList = carInput.split(",")
     processExceptionCar(carInput, carList)
 
+    val playCount= Console.readLine()
+    processExceptionCount(playCount)
 }
 
 fun processExceptionCar(carInput: String, carList: List<String>) {
@@ -22,5 +24,14 @@ fun processExceptionCar(carInput: String, carList: List<String>) {
         if (name.length > 5) {
             throw  IllegalArgumentException(Const.EXCEPTION_NAME_LENGTH)
         }
+    }
+}
+
+fun processExceptionCount(playCount: String) {
+    if (playCount.isNullOrBlank() || playCount == "0") {
+        throw IllegalArgumentException(Const.EXCEPTION_WRONG_NUMBER)
+    }
+    if (playCount.toList().any { !it.isDigit() }) {
+        throw IllegalArgumentException(Const.EXCEPTION_NOT_NUMBER)
     }
 }
