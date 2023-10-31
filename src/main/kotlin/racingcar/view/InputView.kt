@@ -1,17 +1,14 @@
-package racingcar.View
+package racingcar.view
 
-import Legacies.Constans
-import Legacies.InputView
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
     fun inputCarName(): List<String> {
-        println(Constans.CAR_NAME_INPUT_MENTION)
         val carNameList = Console.readLine().split(",")
 
         return checkCarNameList(carNameList)
     }
-    private fun checkCarNameList(carNameList: List<String>): List<String> {
+    fun checkCarNameList(carNameList: List<String>): List<String> {
         var result = mutableListOf<String>()
 
         require(carNameList.isNotEmpty()) { "이름을 입력해야합니다." }
@@ -33,7 +30,7 @@ class InputView {
         return checkRoundNumber(roundNumber)
     }
 
-    private fun checkRoundNumber(roundNumber: String): Int {
+    fun checkRoundNumber(roundNumber: String): Int {
         try {
             val validAttemptNumber = roundNumber.toInt()
 

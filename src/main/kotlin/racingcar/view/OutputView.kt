@@ -1,19 +1,19 @@
-package racingcar.View
+package racingcar.view
 
-import racingcar.Model.Car
+import racingcar.model.RacingCar
 
 class OutputView {
     companion object {
         private const val MOVE = "-"
     }
-    fun printResult(carList: List<Car>) {
-        for (car in carList) {
+    fun printResult(racingCarList: List<RacingCar>) {
+        for (car in racingCarList) {
             printCurrentMove(car)
         }
         println()
     }
 
-    fun printWinner(winnerList: List<Car>) {
+    fun printWinner(winnerList: List<RacingCar>) {
         val winnerNameList = winnerList.joinToString(", ") { winner -> winner.name }
         println("최종 우승자 : $winnerNameList")
     }
@@ -31,7 +31,7 @@ class OutputView {
         println("시도할 횟수는 몇 회인가요?")
     }
 
-    fun printCurrentMove(car: Car) {
-        println("${car.name} : " + MOVE.repeat(car.moves))
+    fun printCurrentMove(racingCar: RacingCar) {
+        println("${racingCar.name} : " + MOVE.repeat(racingCar.moves))
     }
 }
