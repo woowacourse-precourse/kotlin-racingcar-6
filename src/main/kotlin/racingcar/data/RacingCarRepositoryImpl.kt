@@ -21,7 +21,7 @@ class RacingCarRepositoryImpl : RacingCarRepository {
         gameRound--
     }
 
-    override fun checkRemainingRounds(): Boolean {
+    override fun checkRoundsEnded(): Boolean {
         return GameUtils.checkRoundEnded(gameRound)
     }
 

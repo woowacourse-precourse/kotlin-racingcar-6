@@ -1,7 +1,5 @@
 package racingcar.util
 
-import camp.nextstep.edu.missionutils.Console
-
 object Exceptions {
 
     // 5자 이하, 두대 이상의 이름이 들어오지 않았을 경우 예외처리
@@ -26,7 +24,7 @@ object Exceptions {
 
     // IllegalArgumentException
     private fun throwIllegalArgumentException(){
-        throw IllegalArgumentException(CommonStrings.ILLEGAL_ARGUMENT_EXEPTION)
+        throw IllegalArgumentException(CommonStrings.ILLEGAL_ARGUMENT_EXCEPTION)
     }
 
 }

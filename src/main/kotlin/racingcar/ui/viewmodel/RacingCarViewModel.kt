@@ -16,7 +16,7 @@ class RacingCarViewModel(val repository: RacingCarRepository) {
         repository.updateRoundState()
     }
 
-    fun checkRounds(): Boolean = repository.checkRemainingRounds()
+    fun checkRounds(): Boolean = repository.checkRoundsEnded()
 
     fun getRoundState(): List<RoundStateModel> {
         return repository.getState().map {
