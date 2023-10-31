@@ -44,8 +44,16 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `자동차 이름의 길이가 5이상인 경우`() {
-
+        val carNamesList: List<String> = listOf("poby", "jiwon", "java","kotlin")
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                carNamesList.forEach { carNames ->
+                    if(carNames.length >= 5) throw IllegalArgumentException()
+                }
+            }
+        }
     }
+
 
     @Test
     fun `이동 횟수에 대한 예외 처리`() {
