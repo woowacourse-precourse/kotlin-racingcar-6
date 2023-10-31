@@ -12,6 +12,7 @@ const val INPUT_CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세�
 const val INPUT_TRIAL_NUMBER_MESSAGE = "시도할 횟수는 몇 회인가요?"
 const val INITIAL_CAR_MOVEMENT_COUNT = 0
 const val RACING_START_MESSAGE = "실행 결과"
+const val PRINT_RACING_RESULT_MESSAGE = "최종 우승자 : "
 
 data class Car (
     var name: String,
@@ -51,6 +52,18 @@ class GameStatus {
         }
         println()
     }
+    fun printBeatPlayer() {
+        val bestPlayers = chooseBestPlayer()
+        var playerNameList = mutableListOf<String>()
+        for (player in bestPlayers)
+            playerNameList.add(player.name)
+        println(playerNameList.joinToString())
+    }
+    private fun chooseBestPlayer(): List<Car> {
+        val sortedList = listOfCar.sortedByDescending { it.movementCount }
+        val maximumOfMovement = sortedList[0].movementCount
+        return sortedList.filter { it.movementCount == maximumOfMovement }
+    }
 }
 
 
@@ -68,7 +81,7 @@ class CarRacingGame {
 
         gameStatus.initStatus(listOfCarName, validCount)
         startRacing()
-        //endRacing()
+        endRacing()
     }
     fun startRacing() {
         println(RACING_START_MESSAGE)
@@ -77,6 +90,10 @@ class CarRacingGame {
             gameStatus.raceAllCarInList()
             gameStatus.printCurrentCarMovement()
         }
+    }
+    fun endRacing() {
+        print(PRINT_RACING_RESULT_MESSAGE)
+        gameStatus.printBeatPlayer()
     }
     fun checkValidName(stringOfNames: String): List<String> {
         val listOfCarName = stringOfNames.split(",")
