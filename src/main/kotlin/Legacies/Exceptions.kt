@@ -1,8 +1,8 @@
-package racingcar.Utils
+package Legacies
 
-import racingcar.Utils.Constans.EXCEPTION_EXCEED_FIVE_LETTERS
-import racingcar.Utils.Constans.EXCEPTION_NAME_CONTAINS_NON_LETTER
-import racingcar.Utils.Constans.EXCEPTION_NUMBER_UNVALID
+import Legacies.Constans.EXCEPTION_EXCEED_FIVE_LETTERS
+import Legacies.Constans.EXCEPTION_NAME_CONTAINS_NON_LETTER
+import Legacies.Constans.EXCEPTION_NUMBER_UNVALID
 import java.lang.IllegalArgumentException
 import java.lang.NumberFormatException
 

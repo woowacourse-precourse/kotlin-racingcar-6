@@ -1,8 +1,6 @@
-package racingcar
+package Legacies
 
-import racingcar.Model.Car
-import racingcar.View.InputView
-import racingcar.View.OutputView
+
 
 class Race() {
     private var round = 0L
