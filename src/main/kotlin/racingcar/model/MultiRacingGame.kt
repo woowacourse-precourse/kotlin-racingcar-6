@@ -20,7 +20,7 @@ class MultiRacingGame(
     fun inputTryCount(multiCarName: List<String?>) {
         inputView.inputTryCountMessage()
         val tryCount = inputView.inputView()
-        val validateTryCount = validateRacingCount.validateTryCount(tryCount, multiCarName)
+        val validateTryCount = validateRacingCount.validateTryCount(tryCount)
         multiRacingGame(validateTryCount, multiCarName)
     }
 
