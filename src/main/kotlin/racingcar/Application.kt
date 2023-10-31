@@ -5,12 +5,14 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     var carNameList = mutableListOf<String>()
+    var carNameMap = mutableMapOf<String, Int>()
     var inputCount = 0
 
     gameStart()
     carNameList = inputCarName()
-    inputCount = inputRoundCount()
-    racingPlay(carNameList, inputCount)
+    carNameMap = carNameListCheck(carNameList)
+    inputCount = inputRoundCount(carNameMap)
+    racingPlay(carNameMap, inputCount)
 }
 
 fun gameStart() {
@@ -24,8 +26,9 @@ fun inputCarName(): MutableList<String> {
     var afterText = ""
     //패턴 비교후 텍스트
     val stringPattern = Regex("[^A-Za-z0-9,]")
-    // 텍스트 비교용 패턴, 영문/숫자/쉼표만, 이름중복 때문에 숫자 허용, 5자 제한 & 중복일 경우 추가처리 필요
-    // 끝자리 쉼표만 있는경우 처리필요
+    // 텍스트 비교용 패턴, 영문/숫자/쉼표만, 이름중복 때문에 숫자 허용,
+    //★★★★★★★중복일 경우 추가처리 필요, 끝자리 쉼표만 있는경우 처리필요★★★★★★★
+    var carNameList = mutableListOf<String>()
 
     inputText = Console.readLine().replace(" ", "")
     //맨 왼쪽, 맨 오른쪽 공백은 편의상 제외처리
@@ -35,32 +38,68 @@ fun inputCarName(): MutableList<String> {
     println("변환 후 : ${afterText}")
 
     if (inputText != afterText) {
-        throw IllegalArgumentException()
-        // 예외발생후 처리 안됨 버그수정필요
         try {
+            throw IllegalArgumentException()
         } catch (e: IllegalArgumentException) {
             println("잘못된 문자가 입력되어 게임종료")
             System.out
+            afterText = ""
+            carNameList = afterText.split(" ", "").toMutableList()
+            carNameList.clear()
+            return carNameList
         }
     }
-
-    var carNameList = afterText.toString().split(",").toMutableList()
-
-    print("자동차 이름은 : ")
-    for ((index, value) in carNameList.withIndex()) {
-        print("${value}")
-        if (carNameList.size == 1) {
-            break
-            // 자동차 이름이 1개만 있을때 처리필요
-        } else if (carNameList.size > 1) {
-            print(",")
-
-        }
-    }
-    return carNameList
+    return afterText.split(",").toMutableList()
 }
 
-fun inputRoundCount(): Int {
+fun carNameListCheck(carNameList: MutableList<String>): MutableMap<String, Int> {
+    var carNameMap = mutableMapOf<String, Int>()
+    var carNameDanger = false
+
+    if (carNameList.isEmpty()) {
+        return carNameMap
+    } else if (carNameList.size == 1) {
+        try {
+            throw IllegalArgumentException()
+        } catch (e: IllegalArgumentException) {
+            println("자동차만 1대만 확인되어 게임종료")
+            System.out
+            return carNameMap
+        }
+    }
+
+    for (carName in carNameList) {
+        carNameDanger = getCarNameLengthCheck(carName)
+        if (!carNameDanger) {
+            carNameMap.put(carName, carName.length)
+            // 카네임맵을 키값 : 카네임 / 밸류값 : 글자수로 추가
+        } else {
+            carNameMap.clear()
+            return carNameMap
+        }
+        println("${carName} : ${carNameMap[carName]}")
+    }
+    return carNameMap
+}
+
+fun getCarNameLengthCheck(carName: String): Boolean {
+    if (carName.length > 5) {
+        try {
+            throw IllegalArgumentException()
+        } catch (e: IllegalArgumentException) {
+            println("글자수가 5자를 초과하여 게임종료")
+            System.out
+            return true
+        }
+    }
+    return false
+}
+
+fun inputRoundCount(carNameMap: MutableMap<String, Int>): Int {
+    if (carNameMap.isEmpty()) {
+        return 0
+    }
+
     var inputCount = 0
     print("진행할 라운드 횟수 입력(최대 10) : ")
 
@@ -72,40 +111,70 @@ fun inputRoundCount(): Int {
     }
 
     if (inputCount < 1 || inputCount > 10) {
-        throw IllegalArgumentException()
-        // 예외발생후 처리 안됨 버그수정필요
         try {
+            throw IllegalArgumentException()
         } catch (e: IllegalArgumentException) {
             println("해당 범위가 아닌 숫자가 입력되어 게임종료")
             System.out
+            inputCount = 0
         }
     }
     return inputCount
 }
 
-fun racingPlay(carNameList: MutableList<String>, inputCount: Int) {
-    var racingResultList = mutableMapOf<String, String>()
-    var racingProgress = ""
+fun racingPlay(carNameMap: MutableMap<String, Int>, inputCount: Int) {
+    if (inputCount != 0 && inputCount <= 10) {
+        var racingResultMap = mutableMapOf<String, String>()
 
-    for (carName in carNameList) {
-        racingResultList.put(carName, racingProgress)
-        // 레이싱 결과리스트 Map을 임시로 채워둠
+        for ((carKey, carValue) in carNameMap) {
+            racingResultMap.put(carKey, "")
+            // 레이싱 결과리스트 Map을 임시로 채워둠
+        }
+        racingResultMap = getRacingPlayLog(inputCount, racingResultMap)
+        carNameMap.clear()
+        for ((resultKey, resultValue) in racingResultMap) {
+            carNameMap[resultKey] = resultValue.length
+            println("키 : ${resultKey} / 최종숫자 : ${resultValue.length}")
+        }
+
+        var WinnerList = mutableListOf<String>()
+        var maxProgress = 0
+        var index = 0
+        var userCount = 1
+        maxProgress = carNameMap.values.maxOf { it }.toInt()
+        println("최대값 : ${maxProgress}")
+
+
+        print("최종 우승자 : ")
+        for ((carKey, carValue) in carNameMap) {
+            if (carValue == maxProgress) {
+                print(getUserCountCheck(userCount))
+                print("${carKey}")
+                userCount++
+            }
+        }
     }
+}
 
-
+fun getRacingPlayLog(
+    inputCount: Int,
+    racingResultMap: MutableMap<String, String>
+): MutableMap<String, String> {
+    var racingProgress = ""
     for (i in 1..inputCount) {
         println("")
         println("[${i} 라운드]")
-        for (carName in carNameList) {
-            racingProgress = racingResultList[carName].toString()
+        println("--------------------------")
+        for ((resultKey, resultValue) in racingResultMap) {
+            racingProgress = racingResultMap[resultKey].toString()
             // 진행상태를 누적할 수 있도록, 결과리스트에 저장되어있던 값을 변수에 다시 저장
             racingProgress += getRanmdomNumber()
-            println("--------------------------")
-            println("${carName} : ${racingProgress}")
-            racingResultList.put(carName, racingProgress)
+            println("${resultKey} : ${racingProgress}")
+            racingResultMap.put(resultKey, racingProgress)
             racingProgress = ""
         }
     }
+    return racingResultMap
 }
 
 fun getRanmdomNumber(): String {
@@ -116,10 +185,15 @@ fun getRanmdomNumber(): String {
 
     if (randomNumber >= 4) {
         racingProgress += "-"
-    } else {
-        racingProgress += ""
     }
     return racingProgress
+}
+
+fun getUserCountCheck(userCount: Int): String{
+    if(userCount > 1) {
+        return ","
+    }
+    return ""
 }
 
 
