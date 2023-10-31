@@ -47,7 +47,7 @@ Repository 객체 대신 List로 간소화한다.
 
 #### Constants
 
-- [ ] 사용할 텍스트들을 상수로 정의
+- [x] 사용할 텍스트들을 상수로 정의
 
 #### RacingViewModel
 
