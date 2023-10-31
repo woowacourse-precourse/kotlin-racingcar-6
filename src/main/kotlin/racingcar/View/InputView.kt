@@ -19,9 +19,8 @@ class InputView {
         }
 
         // '.' 줄이기 위해 input함수 따로 작성
-        private fun getInput() : String {
-            val result = Console.readLine()
-            return result
+        private fun getInput(): String {
+            return Console.readLine()
         }
 
         fun getRoundNumber(): Long {
