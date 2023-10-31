@@ -69,7 +69,7 @@ class Game {
         return max
     }
     private fun printWinner(winners: MutableList<String>) {
-        print("최종 우승자 : " + winners.joinToString(", "))
+        println("최종 우승자 : " + winners.joinToString(", "))
     }
 
 }
