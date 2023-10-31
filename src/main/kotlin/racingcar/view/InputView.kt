@@ -8,7 +8,7 @@ class InputView {
     fun printInputCarName(): List<RacingCar> {
         println(INPUT_CAR_NAME_MESSAGE)
         val users = Console.readLine().split(NAME_DELIMITERS)
-        checkSize(users)
+        checkRacingCarNameSize(users)
         return users.map { RacingCar(it, INIT_DISTANCE_NUM) }
     }
 
@@ -19,7 +19,7 @@ class InputView {
         return gameCount.toInt()
     }
 
-    private fun checkSize(users: List<String>) {
+    private fun checkRacingCarNameSize(users: List<String>) {
         users.forEach {
             require(it.length <= RacingCarController.MAX_NAME_LENGTH_NUM)
         }
