@@ -8,7 +8,7 @@ import racingcar.resources.ValidationValue.MAX_NAME_VALUE
 import racingcar.resources.ValidationValue.MIN_CAR_COUNT_VALUE
 import racingcar.resources.ValidationValue.MIN_NAME_VALUE
 
-object CarList {
+object CarListBuilder {
 
     fun userInputToCarList(userInput: String): List<Car> {
         return userInput.split(",").map { name ->

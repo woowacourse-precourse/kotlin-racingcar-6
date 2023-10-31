@@ -1,8 +1,8 @@
 package racingcar
 
-import racingcar.domain.CarList
+import racingcar.domain.CarListBuilder
 
 fun main() {
-    val carList = CarList
+    val carList = CarListBuilder
     PlayRacing(carList).start()
 }

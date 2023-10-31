@@ -1,7 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
-import racingcar.domain.CarList
+import racingcar.domain.CarListBuilder
 import racingcar.domain.attemptValidation
 import racingcar.model.Car
 import racingcar.domain.RacingState
@@ -10,12 +10,12 @@ import racingcar.resources.Comments.GAME_RESULT_COMMENT
 import racingcar.resources.Comments.NUMBER_OF_ATTEMPT_COMMENT
 
 class PlayRacing(
-    private val carList: CarList,
+    private val carListBuilder: CarListBuilder,
 ) {
 
     fun start() {
         println(ENTER_CAR_NAME_COMMENT)
-        val carList = inputRacingCarsName()
+        val carList = inputCarNames()
 
         println(NUMBER_OF_ATTEMPT_COMMENT)
         val attempt = inputAttempt()
@@ -37,9 +37,9 @@ class PlayRacing(
         return racingState.getWinner()
     }
 
-    private fun inputRacingCarsName(): List<Car> {
+    private fun inputCarNames(): List<Car> {
         val userInput = Console.readLine()
-        return carList.userInputToCarList(userInput)
+        return carListBuilder.userInputToCarList(userInput)
     }
 
     private fun inputAttempt(): Int {
