@@ -49,8 +49,13 @@ internal class PrintUtilTest {
     }
 
     @Test
-    fun `printWinnerList 메서드 출력 테스팅`() {
-
+    fun `printWinnerList 메서드 출력 테스팅 - 우승자가 한명일 때`() {
+        // given
+        PrintUtil.printWinnerList(mutableListOf(Car("bamin")))
+        // when
+        val expectedWinnerMessageSole = "최종 우승자 : bamin"
+        // then
+        assertThat(output()).contains(expectedWinnerMessageSole)
     }
 
     @BeforeEach
