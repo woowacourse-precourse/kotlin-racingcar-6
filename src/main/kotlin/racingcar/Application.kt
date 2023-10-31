@@ -63,8 +63,8 @@ object OutputManager {
         println("${it.name} : $distanceBar")
     }
 
-    fun printWinners(winners:List<String>) {
-        val winnersString = winners.joinToString { ", " }
+    fun printWinners(winners:List<Car>) {
+        val winnersString = winners.map{it.name}.joinToString { ", " }
         println("최종 우승자 : $winnersString")
     }
 }
