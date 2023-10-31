@@ -1,5 +1,6 @@
 package racingcar.controller
 
+import racingcar.constant.Constants.EXECUTION_RESULT_STRING
 import racingcar.domain.CarStatusUpdater
 import racingcar.util.Validator
 import racingcar.view.InputView
@@ -24,7 +25,7 @@ class GameController {
     }
 
     private fun play(carNames: ArrayList<String>, attemptCount: Int) {
-        println("실행 결과")
+        println(EXECUTION_RESULT_STRING)
         val carStatusUpdater = CarStatusUpdater()
         val RaceView = RaceView()
 
