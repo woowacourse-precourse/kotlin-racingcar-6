@@ -16,6 +16,7 @@ fun main() {
     processGame(inputRepeat())
     winner()
 }
+
 private fun winner() {
     val maxPos = findMaxPos()
     for (car in cars) {
@@ -42,15 +43,11 @@ private fun processGame(repeat: Int) {
     println()
     println("실행 결과")
     for(i in 0 until repeat){
-        gamePlay()
+        for(car in cars){
+            step(Randoms.pickNumberInRange(0, 9),car)
+        }
+        println()
     }
-}
-fun gamePlay(){
-    for(car in cars){
-        var random = Randoms.pickNumberInRange(0, 9)
-        step(random,car)
-    }
-    println()
 }
 fun step(random: Int, car: Car) {
     if(random >= 4){
