@@ -9,7 +9,7 @@ class Car(private val name: String) {
     fun move(num: Int) {
         if (num > 3) {
             moveCount++
-            distance += "_"
+            distance += "-"
             println("$carName : $distance")
         } else
             println("$carName : $distance")
