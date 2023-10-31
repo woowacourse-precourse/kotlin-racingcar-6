@@ -11,7 +11,7 @@ class DashBoard(private val carName: String) {
         dist++
     }
 
-    fun printDist(): StringBuilder {
+    fun distInfo(): StringBuilder {
         val distInput = StringBuilder()
         distInput.append("${carName}$CAR_DIST_SEPARATOR")
         var count = BigInteger(INIT_DIST)
