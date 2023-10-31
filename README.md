@@ -178,7 +178,7 @@ Randoms.pickNumberInRange(0, 9)
 
 ### Attempts
 
-- [ ] 시도 횟수 저장
+- [x] 시도 횟수 저장
 
 ### AttemptComparator
 
