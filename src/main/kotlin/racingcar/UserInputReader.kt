@@ -7,7 +7,7 @@ import utils.InputValidator.checkCarName
 import utils.InputValidator.checkRoundCnt
 
 class UserInputReader {
-    
+
     fun getCarName(): List<String> {
         println(CAR_NAME_INPUT_MSG)
         val input = Console.readLine()
