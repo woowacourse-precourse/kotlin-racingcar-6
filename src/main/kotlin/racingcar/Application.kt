@@ -23,15 +23,9 @@ fun main() {
         println()
     }
 
-    val maxRes = resList.max()
-    val winners = mutableListOf<String>()
-    for ((index, value) in resList.withIndex()) {
-        if (value == maxRes) {
-            winners.add(carList[index])
-        }
-    }
+    val winnerList = finalWinner(carList, resList)
     print("최종 우승자 : ")
-    println(winners.joinToString(", "))
+    println(winnerList.joinToString(", "))
 }
 
 fun processExceptionCar(carInput: String, carList: List<String>) {
@@ -69,4 +63,15 @@ fun movingCar(resList: MutableList<Int>): MutableList<String> {
         resultList.add(result)
     }
     return resultList
+}
+
+fun finalWinner(carList: List<String>, resList: MutableList<Int>): MutableList<String> {
+    val maxRes = resList.max()
+    val winners = mutableListOf<String>()
+    for ((index, value) in resList.withIndex()) {
+        if (value == maxRes) {
+            winners.add(carList[index])
+        }
+    }
+    return winners
 }
