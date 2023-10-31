@@ -12,7 +12,7 @@ class UserClient {
         return input.toInt()
     }
 
-    private fun checkIsNumber(input: String) {
+    fun checkIsNumber(input: String) {
         if (!numberRegex.matches(input)) {
             throw IllegalArgumentException("잘못된 입력")
         }
@@ -27,11 +27,11 @@ class UserClient {
         return convertInputToCarList(input)
     }
 
-    private fun convertInputToCarList(input: String): List<Car> {
+    fun convertInputToCarList(input: String): List<Car> {
         return restPointRegex.findAll(input).map { Car(it.value) }.toList()
     }
 
-    private fun checkUnderFiveCharRegex(input: String) {
+    fun checkUnderFiveCharRegex(input: String) {
         val cars = restPointRegex.findAll(input)
         for (car in cars) {
             if (!underFiveCharRegex.matches(car.value)) {
@@ -40,7 +40,7 @@ class UserClient {
         }
     }
 
-    private fun checkContainRestPoint(input: String) {
+    fun checkContainRestPoint(input: String) {
         if ("," !in input) {
             throw IllegalArgumentException("잘못된 입력")
         }
