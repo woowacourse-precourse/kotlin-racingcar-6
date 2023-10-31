@@ -8,7 +8,7 @@ import racingcar.resources.GameValue.MOVEMENT_VALUE
 import racingcar.utils.generateRandomNumbers
 
 class RacingCarState(
-    private var carList: List<Car>
+    private var carList: List<Car>,
 ) {
 
     fun moveRacingCars() {
@@ -24,7 +24,7 @@ class RacingCarState(
     }
 
     private fun getMovementState(
-        randomNumber : Int = generateRandomNumbers()
+        randomNumber : Int = generateRandomNumbers(),
     ): MovementState {
         return if (randomNumber >= MOVEMENT_THRESHOLD_VALUE) {
             MovementState.MOVE
@@ -44,7 +44,7 @@ class RacingCarState(
 
         val winners = carList.filter { car ->
             car.movement == maxMovement
-        }.map { it.name }.joinToString(", ")
+        }.map { it.name }.joinToString()
 
         return FINAL_WINNER_COMMENT + winners
     }
