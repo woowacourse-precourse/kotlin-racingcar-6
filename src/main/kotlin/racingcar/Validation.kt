@@ -12,13 +12,13 @@ class Validation {
 
     private fun checkContainsSpace(carsName: String) {
         if (carsName.contains(" ")) {
-            throw IllegalArgumentException("공백은 들어갈 수 없습니다.")
+            throw IllegalArgumentException("자동차 이름은 쉼표(,)로 구분해 주세요.")
         }
     }
 
     private fun checkCarNameDuplication(carsNameList: List<String>) {
         if (carsNameList.distinct().size != carsNameList.size) {
-            throw IllegalArgumentException("자동차 이름은 쉼표(,)로 구분해 주세요.")
+            throw IllegalArgumentException("중복된 이름은 작성할 수 없습니다.")
         }
     }
 
