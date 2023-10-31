@@ -24,7 +24,17 @@ class CarTest {
         assertThat(STOP).isEqualTo(result)
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = [4, 5, 6, 7, 8, 9])
+    fun `랜덤 숫자가 4~9일 경우 자동차가 진행하는지`(randomNumber: Int) {
+        car.forwardOrStop(randomNumber)
+        val result = car.currentPosition
+
+        assertThat(FORWARD).isEqualTo(result)
+    }
+
     companion object {
         private const val STOP = ""
+        private const val FORWARD = "-"
     }
 }
