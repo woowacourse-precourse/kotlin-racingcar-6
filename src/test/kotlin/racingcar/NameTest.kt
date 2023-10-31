@@ -9,12 +9,16 @@ class NameTest {
     @Test
     fun `이름의 길이 예외 테스트`() {
         val input1 = "aaaaaa"
-        val input2 = ""
-
         val test1 = input1.split(",")
-        val test2 = input2.split(",")
 
         assertThrows<IllegalArgumentException> { exception.nameValidation(test1) }
+    }
+
+    @Test
+    fun `입력이 비어있을 경우`() {
+        val input2 = ""
+        val test2 = input2.split(",")
+
         assertThrows<IllegalArgumentException> { exception.nameValidation(test2) }
     }
 }
