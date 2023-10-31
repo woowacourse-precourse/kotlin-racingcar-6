@@ -15,7 +15,11 @@ class RacingCarGame {
 
     private fun playRound() {
         racingCarGameManager.getRacingCars().map { racingCar ->
-            racingNumberGenerator.get()
+            if (racingNumberGenerator.get() >= MIN_MOVING_NUMBER) racingCar.move()
         }
+    }
+
+    companion object {
+        private const val MIN_MOVING_NUMBER = 4
     }
 }
