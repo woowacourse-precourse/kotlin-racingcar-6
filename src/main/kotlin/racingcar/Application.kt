@@ -15,7 +15,7 @@ fun main() {
 
 fun race(racingCars: List<RacingCar>, tryCount: Int?) {
     println("\n실행 결과")
-    for (i in 1..tryCount!!) {
+    repeat(tryCount!!) {
         racingCars.forEach {
             it.move()
             it.print()
