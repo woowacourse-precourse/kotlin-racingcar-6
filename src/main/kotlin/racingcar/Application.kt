@@ -76,7 +76,6 @@ fun input(){
         cars.add(Car(name))
     }
 }
-
 fun inputRepeat(): Int {
     println(INPUT_REPEAT)
     val repeat = Console.readLine()
