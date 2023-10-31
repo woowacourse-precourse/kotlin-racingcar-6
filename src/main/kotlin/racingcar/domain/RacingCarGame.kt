@@ -1,5 +1,6 @@
 package racingcar.domain
 
+import racingcar.utils.Converter
 import racingcar.validator.CarNameValidator
 import racingcar.validator.RaceRoundValidator
 import racingcar.InputManager
@@ -11,7 +12,6 @@ class RacingCarGame {
     private val carNameValidator = CarNameValidator()
     private val raceRoundValidator = RaceRoundValidator()
 
-    private lateinit var carNames: String
     private lateinit var circuit: Circuit
 
     fun startGame() {
@@ -21,8 +21,8 @@ class RacingCarGame {
     }
 
     private fun init() {
-        carNames = getValidatedCarNames()
-        val raceRound = getValidatedRaceRound().toInt()
+        val carNames = getValidatedCarNames()
+        val raceRound = getValidatedRaceRound()
         circuit = Circuit(carNames, raceRound)
     }
 
@@ -40,14 +40,12 @@ class RacingCarGame {
     private fun getValidatedCarNames(): String {
         val names = inputManager.getCarNameFromUser()
         carNameValidator.validate(names)
-
         return names
     }
 
-    private fun getValidatedRaceRound(): String {
+    private fun getValidatedRaceRound(): Int {
         val raceRound = inputManager.getRaceRoundFromUser()
         raceRoundValidator.validate(raceRound)
-
-        return raceRound
+        return Converter.convertStringToInt(raceRound)
     }
 }

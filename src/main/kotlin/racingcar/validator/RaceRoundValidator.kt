@@ -10,7 +10,7 @@ class RaceRoundValidator {
     }
 
     private fun requireNumericString(string: String) {
-        require(string.all { it.isDigit() }) { NON_NUMERIC_INPUT_ERROR_MESSAGE }
+        require(string.isNotBlank() && string.all { it.isDigit() }) { NON_NUMERIC_INPUT_ERROR_MESSAGE }
     }
 
     private fun requirePositiveNumber(raceRound: Int) {
