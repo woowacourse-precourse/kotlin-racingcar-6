@@ -8,7 +8,7 @@ class Race() {
     private var round = 0
     private lateinit var cars : List<Car>
     fun run(){
-        cars = getCarList(InputView.getNameList())
+        cars = getCarList(InputView.getNameList(InputView.getNameInput()))
         round = InputView.getRoundNumber()
 
         OutputView.printExecutionResultMention()

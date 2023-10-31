@@ -7,11 +7,15 @@ import racingcar.Utils.Exceptions
 
 class InputView {
     companion object {
-        fun getNameList(): List<String> {
-            println(CAR_NAME_INPUT_MENTION)
-            val list = getInput().split(',')
+        fun getNameList(nameInput : String): List<String> {
+            val list = nameInput.split(',')
             Exceptions.checkNameListInput(list)
             return list
+        }
+
+        fun getNameInput() : String {
+            println(CAR_NAME_INPUT_MENTION)
+            return getInput()
         }
 
         // '.' 줄이기 위해 input함수 따로 작성
