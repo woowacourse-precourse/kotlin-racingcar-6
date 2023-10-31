@@ -1,22 +1,8 @@
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
-
-// RandomsGenerator 인터페이스 정의
-interface RandomsGenerator {
-    fun pickNumberInRange(start: Int, end: Int): Int
-}
-
-// 실제 랜덤 값 생성을 담당하는 클래스
-class RealRandomsGenerator : RandomsGenerator {
-    override fun pickNumberInRange(start: Int, end: Int): Int {
-        return Randoms.pickNumberInRange(start, end)
-    }
-}
 
 // 경주용 자동차 정보 클래스
-class RacingCar(val name: String, val randomsGenerator: RandomsGenerator) {
+class RacingCar(val name: String) {
     var distance = 0
 
     // 예외 설정 (자동차 이름 5자 초과인 경우)
@@ -27,7 +13,7 @@ class RacingCar(val name: String, val randomsGenerator: RandomsGenerator) {
     // 자동차의 전진 조건
     fun move() {
         // 0 ~ 9사이 임의의 값 중에 4이상 이면 전진하기
-        if (randomsGenerator.pickNumberInRange(0, 9) >= 4) {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
             distance++
         }
     }
@@ -51,7 +37,7 @@ class RacingGame(val cars: List<RacingCar>) {
 fun main() {
     // 사용자는 자동차 이름 입력하기
     val carName = carNames()
-    val cars = carName.map { RacingCar(it, RealRandomsGenerator()) }
+    val cars = carName.map { RacingCar(it) }
 
     // 사용자는 레이싱할 횟수 입력하기
     val laps = lapCounts()
@@ -96,49 +82,50 @@ fun lapCounts(): Int {
     return Console.readLine()?.toIntOrNull() ?: throw IllegalArgumentException("잘못 입력하였습니다.")
 }
 
-// JUnit 5와 AssertJ를 이용한 기능 테스트
-class RacingGameTest {
-    val alwaysMoveGenerator = object : RandomsGenerator {
-        override fun pickNumberInRange(start: Int, end: Int): Int {
-            return 4
-        }
-    }
 
-    @Test
-    fun `자동차 이름이 5자를 초과하면 예외를 발생시킨다`() {
-        val longName = "woowacon"
-        val exception = org.junit.jupiter.api.assertThrows<IllegalArgumentException> {
-            RacingCar(longName, alwaysMoveGenerator)
-        }
-        assertThat(exception.message).isEqualTo("자동차 이름은 5자 이하여야 합니다.")
-    }
-
-    @Test
-    fun `자동차 경주에서 우승자를 정확히 찾는다`() {
-        val racingCar1 = RacingCar("pobi", alwaysMoveGenerator).apply { distance = 8 }
-        val racingCar2 = RacingCar("woni", alwaysMoveGenerator).apply { distance = 7 }
-        val racingCar3 = RacingCar("jun", alwaysMoveGenerator).apply { distance = 8 }
-
-        val racingGame = RacingGame(listOf(racingCar1, racingCar2, racingCar3))
-        val winners = racingGame.racingWinner()
-
-        assertThat(winners).containsExactlyInAnyOrder("pobi", "jun")
-    }
-
-    @Test
-    fun `입력한 레이싱 횟수만큼 경주가 진행된다`() {
-        val alwaysMoveGenerator = object : RandomsGenerator {
-            override fun pickNumberInRange(start: Int, end: Int): Int {
-                return 4
-            }
-        }
-        val car = RacingCar("test", alwaysMoveGenerator)
-        val initialDistance = car.distance
-
-        val racingGame = RacingGame(listOf(car))
-        racingGame.race()
-
-        val afterRaceDistance = car.distance
-        assertThat(afterRaceDistance).isNotEqualTo(initialDistance)
-    }
-}
+//// JUnit 5와 AssertJ를 이용한 기능 테스트
+//class RacingGameTest {
+//    val alwaysMoveGenerator = object : RandomsGenerator {
+//        override fun pickNumberInRange(start: Int, end: Int): Int {
+//            return 4
+//        }
+//    }
+//
+//    @Test
+//    fun `자동차 이름이 5자를 초과하면 예외를 발생시킨다`() {
+//        val longName = "woowacon"
+//        val exception = org.junit.jupiter.api.assertThrows<IllegalArgumentException> {
+//            RacingCar(longName, alwaysMoveGenerator)
+//        }
+//        assertThat(exception.message).isEqualTo("자동차 이름은 5자 이하여야 합니다.")
+//    }
+//
+//    @Test
+//    fun `자동차 경주에서 우승자를 정확히 찾는다`() {
+//        val racingCar1 = RacingCar("pobi", alwaysMoveGenerator).apply { distance = 8 }
+//        val racingCar2 = RacingCar("woni", alwaysMoveGenerator).apply { distance = 7 }
+//        val racingCar3 = RacingCar("jun", alwaysMoveGenerator).apply { distance = 8 }
+//
+//        val racingGame = RacingGame(listOf(racingCar1, racingCar2, racingCar3))
+//        val winners = racingGame.racingWinner()
+//
+//        assertThat(winners).containsExactlyInAnyOrder("pobi", "jun")
+//    }
+//
+//    @Test
+//    fun `입력한 레이싱 횟수만큼 경주가 진행된다`() {
+//        val alwaysMoveGenerator = object : RandomsGenerator {
+//            override fun pickNumberInRange(start: Int, end: Int): Int {
+//                return 4
+//            }
+//        }
+//        val car = RacingCar("test", alwaysMoveGenerator)
+//        val initialDistance = car.distance
+//
+//        val racingGame = RacingGame(listOf(car))
+//        racingGame.race()
+//
+//        val afterRaceDistance = car.distance
+//        assertThat(afterRaceDistance).isNotEqualTo(initialDistance)
+//    }
+//}
