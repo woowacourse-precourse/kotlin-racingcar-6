@@ -23,10 +23,6 @@ class Car(var name: String) {
     }
 
     private fun printResult() {
-        var go = ""
-        for(i in 0..<position){
-            go+= MOVE
-        }
         println("$name : ${MOVE.repeat(position)}")
     }
 
