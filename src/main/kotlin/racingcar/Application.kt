@@ -4,9 +4,18 @@ import camp.nextstep.edu.missionutils.Randoms
 import kotlin.math.max
 
 
-public class RacingGame(private var carList: List<String>, private var racingTime: Int) {
-    private var racingGame: LinkedHashMap<String, Int> = LinkedHashMap<String, Int>()
+class RacingGame(private var carList: List<String>, private var racingTime: Int) {
+    private var racingGame: LinkedHashMap<String, Int> = LinkedHashMap()
 
+    init {
+        makeCarPosMap()
+    }
+
+    private fun makeCarPosMap() {
+        for (car in this.carList) {
+            racingGame[car] = 0
+        }
+    }
 
     fun isCarMove(): Boolean {
         val dice = Randoms.pickNumberInRange(0, 9)
@@ -55,13 +64,11 @@ public class RacingGame(private var carList: List<String>, private var racingTim
         print(sb.toString())
     }
 
+
     fun runRacingGame() {
 
         var winnerPos = 0
 
-        for (car in this.carList) {
-            racingGame.put(car, 0)
-        }
 
         repeat(racingTime) {
             winnerPos = onRoundPlay()
