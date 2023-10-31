@@ -11,6 +11,6 @@ class RacingCarValidation {
     }
 
     companion object {
-        private const val MAX_NAME_LEN = 5
+        const val MAX_NAME_LEN = 5
     }
 }
