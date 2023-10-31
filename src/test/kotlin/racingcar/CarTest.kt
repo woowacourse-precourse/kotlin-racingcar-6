@@ -77,7 +77,6 @@ class CarTest {
     @Test
     fun `자동차 리스트 만들기`() {
         val carNameList = listOf("pobi", "woni")
-
         val carList = race.getCarList(carNameList)
 
         assertThat(carList).contains(Car("woni"), Car("pobi"))
@@ -106,11 +105,9 @@ class CarTest {
     }
 
     @Test
-    fun `공동 우승자 출력 확`() {
+    fun `공동 우승자 출력 확인`() {
         val carLists = listOf(Car("pobi", 1), Car("woni", 1))
-
         outputView.printWinner(race.getWinnerList(carLists))
-
         assertThat(outputStream.toString().trim()).isEqualTo("최종 우승자 : pobi, woni")
     }
 }
