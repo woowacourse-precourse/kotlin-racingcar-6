@@ -98,9 +98,10 @@ class RacingGameManager {
     private fun inputDataFromUser(): String {
         val inputData = Console.readLine()
 
-        Validator.let {
-            it.checkInputNonBlank(inputData)
-            it.checkInputOverSize(inputData.split(",").size)
+        with(Validator) {
+            checkInputNonBlank(inputData)
+            checkInputOverSize(inputData.split(",").size)
+            checkCarMinSize(inputData)
         }
 
         return inputData

@@ -24,4 +24,10 @@ object Validator {
             Message.VALID_INPUT_LENGTH.message
         }
     }
+
+    fun checkCarMinSize(input: String) {
+        require(input.split(",").size != 1) {
+            Message.VALID_INPUT_MIN_SIZE.message
+        }
+    }
 }
