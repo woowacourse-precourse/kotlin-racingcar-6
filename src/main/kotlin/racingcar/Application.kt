@@ -13,6 +13,14 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     inputTryCount()
 
+    println("실행 결과")
+    repeat(tryCount) { _ ->
+        racingCar.forEach { (carName, score) ->
+            scoreUpdate(carName, score)
+        }
+        println()
+    }
+
 }
 
 private fun inputRacingCarName() {
@@ -36,6 +44,24 @@ private fun inputTryCount() {
     }
 }
 
+private fun scoreUpdate(carName: String, score: Int) {
+    val number = generateRandomNumber()
+
+    if (canForward(number)) {
+        racingCar[carName] = score + 1
+    }
+    progressBar(carName)
+}
+
 private fun generateRandomNumber(): Int {
     return Randoms.pickNumberInRange(0, 9)
+}
+
+private fun canForward(value: Int): Boolean {
+    return value >= 4
+}
+
+private fun progressBar(carName: String) {
+    val score = racingCar[carName] ?: 0
+    println("$carName : ${"-".repeat(score)}")
 }
