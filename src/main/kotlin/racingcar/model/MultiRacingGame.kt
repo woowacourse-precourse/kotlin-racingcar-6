@@ -20,10 +20,11 @@ class MultiRacingGame(
     fun inputTryCount(multiCarName: List<String?>) {
         inputView.inputTryCountMessage()
         val tryCount = inputView.inputView()
-        validateRacingCount.validateTryCount(tryCount, multiCarName)
+        val validateTryCount = validateRacingCount.validateTryCount(tryCount, multiCarName)
+        multiRacingGame(validateTryCount, multiCarName)
     }
 
-    fun multiRacingGame(tryCount: Int, multiCarName: List<String?>) {
+    private fun multiRacingGame(tryCount: Int, multiCarName: List<String?>) {
         outputView.printResultMessage()
         repeatRacing(tryCount, multiCarName)
     }

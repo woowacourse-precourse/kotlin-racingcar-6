@@ -2,16 +2,14 @@ package racingcar.model
 
 import racingcar.views.OutputView
 
-class ValidateRacingCount {
+class ValidateRacingCount() {
 
     companion object {
         const val MIN_RACING_COUNT = 1
         const val MAX_RACING_COUNT = 10
     }
 
-    private val multiRacingGame = MultiRacingGame()
-
-    fun validateTryCount(tryCount: String, multiCarName: List<String?>) {
+    fun validateTryCount(tryCount: String, multiCarName: List<String?>): Int {
         when (true) {
             validateNullOrBlank(tryCount) -> throw IllegalArgumentException(OutputView.NO_TRY_COUNT_ERROR)
 
@@ -19,7 +17,7 @@ class ValidateRacingCount {
 
             validateNotNum(tryCount) -> throw IllegalArgumentException(OutputView.NOT_DIGIT_TRY_COUNT_ERROR)
 
-            else -> multiRacingGame.multiRacingGame(tryCount.toInt(), multiCarName)
+            else -> return tryCount.toInt()
         }
     }
 
