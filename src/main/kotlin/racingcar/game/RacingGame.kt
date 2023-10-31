@@ -33,16 +33,16 @@ object RacingGame {
         outputFinalWinners(winners)
     }
 
-    private fun moveCarsRandomly(cars: List<Car>) {
+    internal fun moveCarsRandomly(cars: List<Car>) {
         cars.forEach {
             if (isCarMovable()) it.position++
         }
     }
 
-    private fun isCarMovable(): Boolean =
+    internal fun isCarMovable(): Boolean =
         Randoms.pickNumberInRange(RANDOM_MIN_NUM, RANDOM_MAX_NUM) >= MIN_NUM_TO_FORWARD
 
-    private fun chooseWinners(cars: List<Car>): List<Car> {
+    internal fun chooseWinners(cars: List<Car>): List<Car> {
         val maxPosition = cars.maxOf { it.position }
         return cars.filter { it.position == maxPosition }
     }
