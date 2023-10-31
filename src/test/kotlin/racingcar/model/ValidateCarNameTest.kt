@@ -21,6 +21,24 @@ class ValidateCarNameTest : NsTest() {
         assertThrows<IllegalArgumentException> { validateCarName.validateInputSingleCarName(carName) }
     }
 
+    @Test
+    fun `자동차 이름이 중복될 경우 예외처리`() {
+        val carName = listOf("son", "son", "mm")
+        assertThrows<IllegalArgumentException> { validateCarName.validateInputMultiCarName(carName) }
+    }
+
+    @Test
+    fun `자동차 이름이 한 자동차라도 비어있을 경우 예외처리`() {
+        val carName = listOf("", "son", "MM")
+        assertThrows<IllegalArgumentException> { validateCarName.validateInputMultiCarName(carName) }
+    }
+
+    @Test
+    fun `출전 자동차 수가 7대 초과될 경우 예외처리`() {
+        val carName = listOf("1", "2", "3", "4", "5", "6", "7", "8")
+        assertThrows<IllegalArgumentException> { validateCarName.validateInputMultiCarName(carName) }
+    }
+
     override fun runMain() {
         main()
     }
