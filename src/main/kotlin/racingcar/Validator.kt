@@ -4,46 +4,41 @@ import java.lang.IllegalArgumentException
 
 class Validator {
 
-    fun validateCarNames(input: String) {
-        checkCarNameBlank(input)
-        checkCarNameSeparator(input)
-        checkCarNameLength(input)
-        checkCarNameCount(input)
-        checkCarNameDistinction(input)
-    }
-
-    private fun checkCarNameBlank(input: String) {
+    private fun checkInputHasNoBlank(input: String) {
         if (input.contains(BLANK)) throw IllegalArgumentException()
     }
 
-    private fun checkCarNameSeparator(input: String) {
-        if (!input.contains(COMMA)) throw IllegalArgumentException()
+    private fun checkInputHasSeparator(input: String, separator: String) {
+        if (!input.contains(separator)) throw IllegalArgumentException()
     }
 
-    private fun checkCarNameLength(input: String) {
-        val carNames = input.split(COMMA)
-        val isCarNameInRange = carNames.map { name -> name.length in MIN_NAME_LENGTH..MAX_NAME_LENGTH }
-
-        if (isCarNameInRange.contains(false)) throw IllegalArgumentException()
+    private fun checkInputLengthIsInBoundary(input: String, minLength: Int = 0, maxLength: Int = 100) {
+        if (input.length !in minLength..maxLength) throw IllegalArgumentException()
     }
 
-    private fun checkCarNameCount(input: String) {
-        val carNames = input.split(COMMA)
-
-        if (carNames.size < MIN_NAME_COUNT) throw IllegalArgumentException()
+    private fun <T> checkItemCountsAreInBoundary(items: List<T>, minLength: Int = 0, maxLength: Int = 100) {
+        if (items.size !in minLength..maxLength) throw  IllegalArgumentException()
     }
 
-    private fun checkCarNameDistinction(input: String) {
-        val carNames = input.split(COMMA)
-
-        if (carNames.toSet().size != carNames.size) throw IllegalArgumentException()
+    private fun <T> checkItemsHasNoDuplication(items: List<T>) {
+        if (items.toSet().size != items.size) throw IllegalArgumentException()
     }
 
+    fun validateCarNames(input: String) {
+        checkInputHasNoBlank(input)
+        checkInputHasSeparator(input, COMMA)
+        input.split(COMMA).map { name ->
+            checkInputLengthIsInBoundary(name, MIN_CAR_NAME_LENGTH, MAX_CAR_NAME_LENGTH)
+        }
+        checkItemCountsAreInBoundary(input.split(COMMA), MIN_CAR_NAME_COUNT)
+        checkItemsHasNoDuplication(input.split(COMMA))
+    }
+    
     companion object {
         private const val BLANK = " "
         private const val COMMA = ","
-        private const val MIN_NAME_LENGTH = 1
-        private const val MAX_NAME_LENGTH = 5
-        private const val MIN_NAME_COUNT = 2
+        private const val MIN_CAR_NAME_LENGTH = 1
+        private const val MAX_CAR_NAME_LENGTH = 5
+        private const val MIN_CAR_NAME_COUNT = 2
     }
 }
