@@ -9,6 +9,10 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val tryCount = Console.readLine().toIntOrNull()
     invalidTryCountCheck(tryCount)
+    race(racingCarNames, tryCount)
+}
+
+fun race(racingCarNames: List<String>, tryCount: Int?) {
     println("\n실행 결과")
     val racingCars = racingCarNames.map { RacingCar(it) }
     for (i in 1..tryCount!!) {
