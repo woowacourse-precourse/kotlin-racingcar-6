@@ -12,7 +12,7 @@ class ResultsTest : NsTest() {
                     run("pobi,woni", "1")
                     assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
                 },
-                ResultsTest.MOVING_FORWARD, ResultsTest.STOP
+                MOVING_FORWARD, STOP
         )
     }
 
@@ -23,7 +23,7 @@ class ResultsTest : NsTest() {
                     run("pobi,woni", "1")
                     assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi, woni")
                 },
-                ResultsTest.MOVING_FORWARD, ResultsTest.MOVING_FORWARD
+                MOVING_FORWARD, MOVING_FORWARD
         )
     }
 
@@ -34,7 +34,7 @@ class ResultsTest : NsTest() {
                     run("pobi,woni", "1")
                     assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : pobi, woni")
                 },
-                ResultsTest.STOP, ResultsTest.STOP
+                STOP, STOP
         )
     }
 
