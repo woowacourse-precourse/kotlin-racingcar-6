@@ -12,24 +12,24 @@ class Game {
     }
 
     fun gameStart() {
+        println(INPUT_NAME)
         input()
         processGame(inputRepeat())
         winner()
     }
 
     private fun input() {
-        println(INPUT_NAME)
         var carname = Console.readLine()
         var names = carname.split(',')
         error.checkName(names)
         for (name in names) {
             cars?.add(Car(name.trim()))
         }
+        Console.close()
     }
 
     private fun processGame(repeat: Int) {
         var rep = repeat
-        println("\n실행 결과")
         while (rep > 0) {
             for (car in cars) {
                 car.play()
@@ -43,6 +43,7 @@ class Game {
         println(INPUT_REPEAT)
         val repeat = Console.readLine()
         error.checkNum(repeat)
+        Console.close()
         return repeat.toInt()
     }
 
@@ -68,7 +69,6 @@ class Game {
     }
     private fun printWinner(winners: MutableList<String>) {
         print("최종 우승자 : " + winners.joinToString(", "))
-        Console.close()
     }
 
 }
