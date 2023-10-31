@@ -32,8 +32,14 @@ class RunGame {
             }
         }
 
-        RacingGame().broadcastRace(carList)
+        RacingGame().broadcastRace(carList.size, carList)
 
+    }
+
+    fun ifGoForward(randomNum:Int):Boolean{
+
+        if(randomNum>=4){return true}
+        return false
     }
 
 
