@@ -9,6 +9,7 @@ object Constants {
     const val MESSAGE_INVALID_NAME_LENGTH = "자동차 이름은 한 글자 이상, 5글자 이하로 입력해 주세요."
     const val MESSAGE_INVALID_NAME_FORMAT = "문자와 숫자만 입력해 주세요."
     const val MESSAGE_INVALID_NUMBER_FORMAT = "숫자만 입력해 주세요."
+    const val MESSAGE_INVALID_NUMBER_RANGE = "1 이상의 시도 횟수를 입력해주세요."
 
     const val PROGRESS_BAR = "-"
     const val CAR_NAME_SEPARATOR = ", "

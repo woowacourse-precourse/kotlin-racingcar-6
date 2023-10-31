@@ -1,9 +1,10 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console.readLine
+import racingcar.Constants.MESSAGE_INVALID_NAME_FORMAT
 import racingcar.Constants.MESSAGE_INVALID_NAME_LENGTH
 import racingcar.Constants.MESSAGE_INVALID_NUMBER_FORMAT
-import racingcar.Constants.MESSAGE_INVALID_NAME_FORMAT
+import racingcar.Constants.MESSAGE_INVALID_NUMBER_RANGE
 import racingcar.Constants.MINIMUM_CAR_NAME_LENGTH
 
 object PlayerConsole {
@@ -23,6 +24,7 @@ object PlayerConsole {
 
     private fun String.toNumberOrException(): Int {
         require(this.all { it.isDigit() }) { MESSAGE_INVALID_NUMBER_FORMAT }
+        require(0 < this.toInt()) { MESSAGE_INVALID_NUMBER_RANGE }
         return this.toInt()
     }
 }
