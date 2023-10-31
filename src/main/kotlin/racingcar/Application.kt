@@ -55,6 +55,12 @@ object OutputManager {
         val distanceBar = "-".repeat(it.position)
         println("${it.name} : $distanceBar")
     }
+
+    //- [ ] 누가 우승했는지 출력해야 한다. OutputManager#printWinner()
+    fun printWinners(winners:List<String>) {
+        val winnersString = winners.joinToString { ", " }
+        println("최종 우승자 : $winnersString")
+    }
 }
 
 fun main() {
