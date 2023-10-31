@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 val cars = mutableListOf<Car>()
 val winners = mutableListOf<String>()
+val error = Error()
 var MAX = 0
 val INPUT_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
 val INPUT_REPEAT = "시도할 횟수는 몇 회인가요?"
@@ -70,17 +71,12 @@ fun step(random: Int, car: Car) {
 fun input(){
     val carname = Console.readLine()
     val names = carname.split(',')
+    error.checkName(names)
     for (name in names) {
-        checkName(name)
+        cars.add(Car(name))
     }
 }
-fun checkName(input: String) {
-    if (input.length > MAX_LENGTH || input.isEmpty()) {
-        throw IllegalArgumentException(INPUT_OVER_FIVE_OR_NULL)
-    } else {
-        cars.add(Car(input))
-    }
-}
+
 fun inputRepeat(): Int {
     println(INPUT_REPEAT)
     val repeat = Console.readLine()

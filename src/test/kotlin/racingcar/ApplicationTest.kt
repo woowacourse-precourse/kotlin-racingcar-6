@@ -51,6 +51,18 @@ class ApplicationTest : NsTest() {
         }
     }
     @Test
+    fun `차 이름이 중복일 경우 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi,kim", "1") }
+        }
+    }
+    @Test
+    fun `이름 사이에 공백이 있을 경우 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi, pobi,kim", "1") }
+        }
+    }
+    @Test
     fun `자동차 이름이 1글자 미만일 경우 예외 처리`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,kim,,lee", "1") }
