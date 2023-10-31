@@ -3,16 +3,20 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
+
 const val PROMPT_CAR_NAMES = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
 const val PROMPT_ATTEMPTS = "시도할 횟수는 몇 회인가요?"
+const val RESULT = "\n실행 결과"
+const val WINNER_MESSAGE = "최종 우승자 : "
+
 const val MAX_CAR_NAME_LENGTH = 5
 const val START_IDX = 0
+const val INITIAL_IDX = 0
 const val END_IDX = 9
 const val CONDITION = 4
-const val RESULT = "\n실행 결과"
 
 data class Car(val name: String) {
-    private var position: Int = START_IDX
+    private var position: Int = INITIAL_IDX
 
     fun move() {
         if (Randoms.pickNumberInRange(START_IDX, END_IDX) >= CONDITION) {
@@ -34,7 +38,7 @@ fun main() {
 
     val maxPosition = simulateRace(cars, inputAttempts)
     val winners = findWinners(cars, maxPosition)
-    println("최종 우승자 : $winners")
+    println(WINNER_MESSAGE+winners)
 }
 
 private fun readCarNames(): List<String> {
@@ -64,7 +68,7 @@ private fun createCars(names: List<String>): List<Car> {
 }
 
 private fun simulateRace(cars: List<Car>, attempts: Int): Int {
-    var maxPosition = START_IDX
+    var maxPosition = INITIAL_IDX
 
     repeat(attempts) {
         cars.forEach { it.move() }
