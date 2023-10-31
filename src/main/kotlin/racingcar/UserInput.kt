@@ -1,0 +1,3 @@
+package racingcar
+
+class UserInput
