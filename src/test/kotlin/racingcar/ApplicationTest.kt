@@ -20,11 +20,11 @@ class ApplicationTest : NsTest() {
     @BeforeEach
     fun setUp() {
         val input = listOf(
-                RacingCar("kmkim", 3),
-                RacingCar("kmk", 2),
-                RacingCar("kkm", 1),
-                RacingCar("km", 2),
-                RacingCar("kkk", 3),
+            RacingCar("kmkim", 3),
+            RacingCar("kmk", 2),
+            RacingCar("kkm", 1),
+            RacingCar("km", 2),
+            RacingCar("kkk", 3),
         )
 
         resultManager = ResultManager(input)
@@ -138,7 +138,6 @@ class ApplicationTest : NsTest() {
             RacingCar(name = "kk", 2),
             RacingCar(name = "kkk", 5),
         )
-
         val numbers = listOf(3, 4, 5)
 
         val actualOutput = RacingGame.determineMoves(racingCars, numbers)
@@ -149,7 +148,6 @@ class ApplicationTest : NsTest() {
         )
 
         assertThat(actualOutput).isEqualTo(expectedOutput)
-
     }
     //============================================== 최종 결과 산출 ======================================================
     @Test
