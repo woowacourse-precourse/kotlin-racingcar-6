@@ -1,6 +1,6 @@
 package racingcar
 
-class CarNameException : ExceptionCheckerInterface {
+class CarNameExceptionChecker : ExceptionCheckerInterface {
     override fun check(input: String) {
         val inputCharList = input.toList()
         val nameChecker = inputCharList.all {
