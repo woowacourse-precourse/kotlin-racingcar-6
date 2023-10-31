@@ -1,5 +1,6 @@
 package racingcar.domain
 
+import camp.nextstep.edu.missionutils.Randoms
 import racingcar.data.Car
 
 class GameHandler(
@@ -49,16 +50,21 @@ class GameHandler(
 
     private fun moveCars(cars: List<Car>) {
         for (car in cars) {
-            if (analyzer.isMoveAllowed()) {
+            if (analyzer.isMoveAllowed(getRandomNum())) {
                 car.move()
             }
         }
     }
+
+    private fun getRandomNum(): Int = Randoms.pickNumberInRange(MIN_RANDOM_NUM, MAX_RANDOM_NUM)
+
 
     companion object {
         const val NOT_YET_SET = Int.MIN_VALUE
         private const val SENTENCE_FOR_GETTING_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
         private const val SENTENCE_FOR_GETTING_MOVEMENT = "시도할 횟수는 몇 회인가요?"
         private const val SENTENCE_FOR_RESULT = "실행 결과"
+        private const val MIN_RANDOM_NUM = 0
+        private const val MAX_RANDOM_NUM = 9
     }
 }

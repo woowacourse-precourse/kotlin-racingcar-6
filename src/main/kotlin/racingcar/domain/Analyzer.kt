@@ -1,6 +1,5 @@
 package racingcar.domain
 
-import camp.nextstep.edu.missionutils.Randoms
 import racingcar.data.Car
 
 class Analyzer {
@@ -21,13 +20,10 @@ class Analyzer {
         return winners
     }
 
-    fun isMoveAllowed(): Boolean = getRandomNum() >= MIN_PASSING_NUM
-
-    private fun getRandomNum(): Int = Randoms.pickNumberInRange(MIN_RANDOM_NUM, MAX_RANDOM_NUM)
+    fun isMoveAllowed(num: Int): Boolean = num >= MIN_PASSING_NUM
 
     companion object {
         private const val MIN_PASSING_NUM = 4
-        private const val MIN_RANDOM_NUM = 0
-        private const val MAX_RANDOM_NUM = 9
+
     }
 }
