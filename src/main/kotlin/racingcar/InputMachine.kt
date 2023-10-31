@@ -21,7 +21,10 @@ class InputMachine {
 
                 throw IllegalArgumentException("자동차 이름이 5자를 초과합니다.")
 
+            } else if (car.isEmpty()) {
+                throw IllegalArgumentException("자동차 이름이 없습니다.")
             }
+
         }
     }
     //
