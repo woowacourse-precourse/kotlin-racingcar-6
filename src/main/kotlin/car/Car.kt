@@ -8,12 +8,8 @@ import caroption.Engine
 
 class Car(
     private val engine: Engine,
-    private val dashBoard: DashBoard
+    private val dashBoard: DashBoard,
 ) {
-
-    fun printCarName() {
-        print(dashBoard.carName())
-    }
 
     fun start() {
         val startFlag = Randoms.pickNumberInRange(MIN_FLAG_VALUE, MAX_FLAG_VALUE)
@@ -22,9 +18,9 @@ class Car(
         }
     }
 
-    fun printDist() {
-        print(dashBoard.printDist())
-    }
+    fun carName() = dashBoard.carName()
+
+    fun printDist() = dashBoard.printDist()
 
     fun nowDist() = dashBoard.nowDist()
 }
