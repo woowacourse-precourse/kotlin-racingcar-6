@@ -1,6 +1,10 @@
 package racingcar
 
-class Racing() {
+import racingcar.Model.Car
+import racingcar.View.InputView
+import racingcar.View.OutputView
+
+class Race() {
     private var round = 0
     private lateinit var cars : List<Car>
     fun run(){
@@ -29,7 +33,7 @@ class Racing() {
         OutputView.printExecutionResult(cars)
     }
 
-    fun getWinnerList() : List<String> {
+    private fun getWinnerList() : List<String> {
         val nameList = mutableListOf<String>()
         val farthest = getFarthestPosition()
 
@@ -47,7 +51,4 @@ class Racing() {
         }
         return farthest
     }
-
-
-
 }
