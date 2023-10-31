@@ -52,6 +52,7 @@ class InputViewTest {
     fun `시도 횟수 입력에 숫자가 입력된 경우`(){
         val input = "3"
         val result = inputView.validateInputTryNumber(input)
+        assertThat(input).containsOnlyDigits()
         assertThat(result).isEqualTo(3)
     }
 
