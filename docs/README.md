@@ -11,7 +11,11 @@
   - [x] 각 자동차에 중복이 있으면 안된다.(`Cars.validateDuplicate`)
 - [x] 시도할 횟수를 자연수로 입력한다.(`InputTry`)
   - [x] 시도에 대한 유효성을 판단한다. 
-- [ ] 자동차가 전진한다.(`Car.moveForward`)
+- [ ] 전진 조건을 판별한다.
+  - [ ] 0에서 9 까지의 무작위 수를 구한다. (`NumberGenerator.createRandomNumber`)
+  - [ ] 무작위 수가 4 이상인지 판별한다. (`Car.isMove`)
+- [ ] 자동차가 전진한다.
+  - [ ] 자동차가 전진하면 Car 의 위치가 1 증가한다. (`Car.moveForward`)
   - [ ] 자동차의 전진은 '-' 로 표시한다.
   - [ ] 자동차들이 전진했을 때 모습은 아래처럼 출력한다. (`OutputResult.showRace`)
       ```
@@ -20,9 +24,7 @@
       jun : ---
       ```
 
-- [ ] 전진 조건을 판별한다. 
-  - [ ] 0에서 9 까지의 무작위 수를 구한다. (`NumberGenerator.createRandomNumber`)
-  - [ ] 무작위 수가 4 이상인지 판별한다. (`Car.isMove`)
+
 - [ ] 최종 우승자를 출력한다.(`OutputResult.showResult`)
   - [ ] 공동 우승자가 있다면 여러 우승자를 출력할 수 있다.
 
