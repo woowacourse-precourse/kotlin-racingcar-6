@@ -22,7 +22,7 @@ class RacingCarController {
         outputView.printResult()
 
         for (i in 0 until gameCount) {
-            racingCarList.map {
+            racingCarList.forEach {
                 addRacingCarDistance(it)
             }
             outputView.printEnter()
