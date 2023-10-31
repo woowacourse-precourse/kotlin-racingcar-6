@@ -114,6 +114,16 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `경기 과정 출력`() {
+        assertSimpleTest {
+            run {
+                val cars: List<Car> = listOf(Car("Cat", 1),  Car("Dog", 3))
+                racing.printMatchProgress(cars)
+            }
+            assertThat(output()).isEqualTo("Cat : -\n" + "Dog : ---" )
+        }
+    }
 
     public override fun runMain() {
         main()

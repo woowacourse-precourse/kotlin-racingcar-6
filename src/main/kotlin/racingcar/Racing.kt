@@ -22,7 +22,7 @@ class Racing() {
         printMatchProgress(cars)
     }
 
-    private fun printMatchProgress(cars: List<Car>) {
+    fun printMatchProgress(cars: List<Car>) {
         cars.forEach { car -> println("${car.name} : ${"-".repeat(car.distance)}") }
         println()
     }
