@@ -5,7 +5,7 @@
 - [O] 몇 번 이동할 것인지 입력 - InputMachine#tryMove()
   - [O] 조건 - 양의 정수만 입력되어야 한다. - InputMachine#checkOnlyNatural()
 - [O] 0~9 중 무작위 값을 구한다. - Racing#random09()
-- [] 4 이상일 경우 전진한다. - Racing#forwardOver4()
+- [O] 4 이상일 경우 전진한다. - Racing#forwardOver4()
 - [] 무작위 값이 나온만큼 "-"을 출력한다. - Racing#printHyphen()
 - [] 자동차 경주 게임을 완료 후 누가 우승했는지 알려준다. 여러명 가능 - Referee#notifyWhoWin()
   - [] ","쉼표를 이용해서 구분한다.
