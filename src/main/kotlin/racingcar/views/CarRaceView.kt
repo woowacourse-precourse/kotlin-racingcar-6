@@ -1,8 +1,8 @@
 package racingcar.views
 
 class CarRaceView {
-    fun showResults(allResult: List<String>) {
-        println(allResult.joinToString("\n"))
+    fun showResults(result: String) {
+        println(result)
     }
 
     fun showWinners(winners: String) {

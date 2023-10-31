@@ -27,13 +27,13 @@ class CarRaceModel {
         return readLine.split(",")
     }
 
-    fun generateResults(): List<String> {
+    fun generateResults(): String {
         val allResult = getScores().map { (carName, score) ->
             val scoreResult = "-".repeat(score)
             "$carName : $scoreResult"
         }
 
-        return allResult
+        return allResult.joinToString("\n")
     }
 
     fun getScores(): Map<String, Int> {
