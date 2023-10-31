@@ -12,9 +12,9 @@ class RacingGameManager {
     }
 
     fun run() {
-        printGameStart()
+        println(Message.INPUT_CAR_NAME.message)
         carController.createCars()
-        printGameRoundQuestion()
+        println(Message.INPUT_GAME_ROUND.message)
 
         handleGameRounds(gameRound)
 
@@ -35,14 +35,10 @@ class RacingGameManager {
     private fun printGameResultOverview(round: Int) {
         if (round == 0) {
             println()
-            printGameEnd()
+            println(Message.OUTPUT_GAME_END.message)
         }
     }
 
-    private fun printGameStart() = println(Message.INPUT_CAR_NAME.message)
-
-    private fun printGameRoundQuestion() = println(Message.INPUT_GAME_ROUND.message)
-    private fun printGameEnd() = println(Message.OUTPUT_GAME_END.message)
     private fun printGameResultPerGameRound(cars: List<Car>) {
         val stringBuilder = StringBuilder()
 
