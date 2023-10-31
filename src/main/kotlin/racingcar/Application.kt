@@ -19,7 +19,7 @@ private fun makeCar(): MutableList<Car> {
 }
 
 private fun printProcess(car: MutableList<Car>){
-    car.map {
+    car.forEach {
         it.forwardCar()
         print("${it.name} : ")
         println("-".repeat(it.forwardCount))
