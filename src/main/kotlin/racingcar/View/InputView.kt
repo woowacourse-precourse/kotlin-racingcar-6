@@ -21,7 +21,6 @@ class InputView {
         // '.' 줄이기 위해 input함수 따로 작성
         private fun getInput() : String {
             val result = Console.readLine()
-            Console.close()
             return result
         }
 
@@ -29,6 +28,7 @@ class InputView {
             println(TIME_INPUT_MENTION)
             val number = getInput()
             Exceptions.checkNumber(number)
+            Console.close()
             return number.toLong()
         }
     }
