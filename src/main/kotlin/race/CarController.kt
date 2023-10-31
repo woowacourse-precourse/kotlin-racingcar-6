@@ -22,7 +22,7 @@ class CarController(private val carModel: CarModel, private val printResult: Pri
         return Console.readLine()
     }
 
-    private fun validateCarInput(carString: String) {
+    fun validateCarInput(carString: String) {
         if (carString.isEmpty()) {
             throw IllegalArgumentException(ErrorString.NO_INPUT_ERROR)
         } else if (carString.contains(",,") || carString.startsWith(',') || carString.endsWith(',')) {
@@ -30,19 +30,28 @@ class CarController(private val carModel: CarModel, private val printResult: Pri
         }
     }
 
-    private fun processCarInput(carString: String) {
+    fun checkRepeatCar(cars: List<String>): Boolean {
+        val set = HashSet<String>()
+        for (car in cars) {
+            if (!set.add(car)) {
+                return true
+            }
+        }
+        return false
+    }
+
+    fun processCarInput(carString: String) {
         val cars = carString.split(',')
+        if (checkRepeatCar(cars)) {
+            throw IllegalArgumentException(ErrorString.INPUT_REPEAT_ERROR)
+        }
         for (car in cars) {
             if (car.trim().isEmpty() || car.contains(" ")) {
                 throw IllegalArgumentException(ErrorString.INPUT_VALUE_ERROR)
             } else if (car.length > Constant.CAR_NAME_MAX_LENGTH) {
                 throw IllegalArgumentException(ErrorString.INPUT_LENGTH_ERROR)
-            } else {
-                if (carModel.checkCar(car)) {
-                    throw IllegalArgumentException(ErrorString.INPUT_REPEAT_ERROR)
-                }
-                carModel.addCar(car)
             }
+            carModel.addCar(car)
         }
     }
 
@@ -51,7 +60,7 @@ class CarController(private val carModel: CarModel, private val printResult: Pri
         return checkMoveNum(moveNumber)
     }
 
-    private fun checkMoveNum(inputNumber: String): Int {
+    fun checkMoveNum(inputNumber: String): Int {
         if (inputNumber.isEmpty()) {
             throw IllegalArgumentException(ErrorString.NO_INPUT_ERROR)
         } else if (isInteger(inputNumber)) {
@@ -61,7 +70,7 @@ class CarController(private val carModel: CarModel, private val printResult: Pri
         }
     }
 
-    private fun isInteger(checkString: String): Boolean {
+    fun isInteger(checkString: String): Boolean {
         return try {
             checkString.toInt()
             true
