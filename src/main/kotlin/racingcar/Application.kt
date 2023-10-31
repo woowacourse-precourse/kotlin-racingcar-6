@@ -15,6 +15,7 @@ fun findWinner(cars: Array<RacingCar>): ArrayList<String>{
     val winner = ArrayList<RacingCar>()
 
     winner.add(cars[0])
+    println("test")
 
     for (i in 1..cars.size-1){
         if (winner[0].getMoveCnt() < cars[i].getMoveCnt()){
@@ -41,7 +42,10 @@ fun main() {
         if (users[i].length > 5) throw IllegalArgumentException("잘못된 값을 입력하였습니다.")
     }
 
-    val userCars:Array<RacingCar> = arrayOf(RacingCar(users[0]), RacingCar(users[1]), RacingCar(users[2]))
+    val userCars = Array<RacingCar>(users.size){RacingCar("")}
+    for (i in 0..users.size-1){
+        userCars[i] = RacingCar(users[i])
+    }
 
     println("시도할 횟수는 몇 회인가요?")
     val cnt = Console.readLine().toInt()
