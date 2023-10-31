@@ -2,10 +2,10 @@ package racingcar.Controller
 
 class GameController {
     fun startGame() {
-        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        val carName = readLine()?.split(",") ?: throw IllegalArgumentException("올바르게 다시 입력해주세요")
 
-        for (car in carName) {
+        val carNameInput = carName()
+
+        for (car in carNameInput) {
             if (car.length > 5) {
                 throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.")
             }
@@ -19,12 +19,12 @@ class GameController {
 
         for (i in 1..tryCountInput) {
             println()
-            for (car in carName) {
+            for (car in carNameInput) {
                 if ((0..9).random() >= 4) {
                     carMove[car] = (carMove[car] ?: 0) + 1
                 }
             }
-            for (car in carName) {
+            for (car in carNameInput) {
                 val distance = carMove[car] ?: 0
                 println("$car : ${"-".repeat(distance)}")
             }
@@ -43,5 +43,9 @@ class GameController {
             }
         }
         println("\n최종 우승자 : ${winners.joinToString(", ")}")
+    }
+    private fun carName(): List<String> {
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        val carName = readLine()?.split(",") ?: throw IllegalArgumentException("올바르게 다시 입력해주세요")
     }
 }
