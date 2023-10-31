@@ -1,6 +1,11 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.Constants.Companion.CAR_DELIMITER
+import racingcar.Constants.Companion.MAX_RANDOM_NUMBER
+import racingcar.Constants.Companion.MIN_RANDOM_NUMBER
+import racingcar.Constants.Companion.MIN_NUMBER_TO_MOVE
+import racingcar.Constants.Companion.MOVE_SIGN
 
 class Racing {
 
@@ -9,7 +14,7 @@ class Racing {
         val attempt = Input().attemptInput()
         val carResult = MutableList(carList.size) { "" }
         printStart()
-        for (i in 0 until attempt) {
+        for (i in 1..attempt) {
             race(carList, carResult)
         }
         printResult(carList, carResult)
@@ -21,21 +26,20 @@ class Racing {
     }
     private fun makeCar(): List<String> {
         val inputString = Input().carInput()
-        val delim = ","
-        val carList = inputString.split(delim)
+        val carList = inputString.split(CAR_DELIMITER)
         Validation().carNameValidation(carList)
         return carList
     }
 
     private fun makeRandomNumber(): Int {
-        val randomNumber = Randoms.pickNumberInRange(0, 9)
+        val randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)
         return randomNumber
     }
 
     private fun raceCar(carResult: MutableList<String>) {
         for (i in carResult.indices) {
-            if (makeRandomNumber() >= 4) {
-                carResult[i] += "-"
+            if (makeRandomNumber() >= MIN_NUMBER_TO_MOVE) {
+                carResult[i] += MOVE_SIGN
             }
         }
     }
