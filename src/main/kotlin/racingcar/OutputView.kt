@@ -1,6 +1,4 @@
-package racingcar.view
-
-import racingcar.model.RacingCar
+package racingcar
 
 class OutputView {
     companion object {
