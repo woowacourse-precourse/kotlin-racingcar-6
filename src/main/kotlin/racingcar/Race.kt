@@ -21,4 +21,10 @@ class Race(private val carList: List<Car>, private val roundCnt: Int) {
             }
         }
     }
+    fun findWinner(): List<Car> {
+        val maxDistance = carList.maxOfOrNull { it.distance }
+        return carList.filter { car ->
+            car.distance == maxDistance
+        }
+    }
 }
