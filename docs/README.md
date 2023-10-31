@@ -3,7 +3,7 @@
 ### Base
 - [x] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현
 - [x] 함수는 한 가지 기능만 하도록 최대한 작게 만들기
-- [ ] JUnit 5와 AssertJ를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인
+- [x] JUnit 5와 AssertJ를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인
 
 ### 기능 목록
 - [x] 경주 할 자동차 이름 입력 구현 (`camp.nextstep.edu.missionutils Console` 라이브러리 사용)
