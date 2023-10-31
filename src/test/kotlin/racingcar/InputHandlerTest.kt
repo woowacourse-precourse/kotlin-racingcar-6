@@ -13,7 +13,7 @@ class InputHandlerTest {
     @DisplayName("차 이름 입력 테스트")
     inner class CarNameTest{
         @ParameterizedTest
-        @ValueSource(strings = ["honda", "toyota", "bmw"])
+        @ValueSource(strings = ["honda", "toyo", "bmw"])
         fun `차이름 모든 입력값이 알파벳 소문자`(carName: String) {
             assertTrue(InputHandler.isValidCarName(listOf(carName)))
         }
@@ -29,6 +29,8 @@ class InputHandlerTest {
         fun `차이름 입력값에 숫자 포함`(carName: String) {
             assertFalse(InputHandler.isValidCarName(listOf(carName)))
         }
+
+
     }
 
     @Nested
