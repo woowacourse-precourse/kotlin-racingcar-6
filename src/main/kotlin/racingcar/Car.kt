@@ -7,8 +7,11 @@ class Car (private val name: String){
         if (name.length > 5) {
             throw IllegalArgumentException("Name '$name' is too long")
         }
+        if (name.isEmpty()) {
+            throw IllegalArgumentException("Empty name")
+        }
     }
-    fun getRand(): Int {
+    private fun getRand(): Int {
         return Randoms.pickNumberInRange(0,9)
     }
     fun move() {
