@@ -20,7 +20,7 @@ class Car(
 
     fun carName() = dashBoard.carName()
 
-    fun printDist() = dashBoard.printDist()
+    fun distInfo() = dashBoard.distInfo()
 
     fun nowDist() = dashBoard.nowDist()
 }

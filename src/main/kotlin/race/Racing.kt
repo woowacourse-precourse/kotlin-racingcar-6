@@ -12,7 +12,7 @@ class Racing {
         val roundResult = StringBuilder()
         for (car in racingCarList) {
             car.start()
-            roundResult.append(car.printDist())
+            roundResult.append(car.distInfo())
             if (car.nowDist() > firstCarDist) {
                 firstCarDist = car.nowDist()
             }
