@@ -1,6 +1,9 @@
 package racingcar.view
 
-import racingcar.model.*
+import racingcar.model.Attempt
+import racingcar.model.Board
+import racingcar.model.CarName
+import racingcar.model.Score
 
 class OutputView {
 
@@ -9,26 +12,28 @@ class OutputView {
     fun printInputNumberOfAttempts() = println(Message.NumberOfAttempts)
 
     fun printCurrentRaceResult(board: Board, lastAttempt: Attempt) {
-        println()
         val message = buildString {
+            appendLine()
             appendLine(Message.RaceResult)
-            repeat(lastAttempt) { currentAttempt ->
-                board.getResultByAttempt(currentAttempt).forEach { (carName, score) ->
-                    appendLine(String.format(Message.RaceResultFormat.toString(), carName, formatDistance(score)))
-                }
+            (1..lastAttempt).forEach { currentAttempt ->
+                val carNameAndScoreList = board.getResultByAttempt(currentAttempt)
+                appendLine(formatRaceResults(carNameAndScoreList))
             }
         }
         println(message)
     }
 
     fun printWinner(winners: List<CarName>) {
-        print(String.format(Message.WinnerFormat.toString(), formatWinner(winners)))
+        val winnersMessage = Message.WinnerFormat.toString().format(formatWinner(winners))
+        print(winnersMessage)
     }
 
-    private fun formatDistance(score: Score): String =
-        buildString {
-            repeat(score) { append(ONE_STEP) }
+    private fun formatRaceResults(carNameAndScoreList: List<Pair<CarName, Score>>): String =
+        carNameAndScoreList.joinToString("\n") { (carName, score) ->
+            Message.RaceResultFormat.toString().format(carName, formatScore(score))
         }
+
+    private fun formatScore(score: Score): String = ONE_STEP.repeat(score)
 
     private fun formatWinner(names: List<CarName>): String = names.joinToString(", ")
 
@@ -41,8 +46,10 @@ class OutputView {
         NumberOfAttempts("시도할 횟수는 몇 회인가요?"),
         RaceResult("실행 결과"),
         WinnerFormat("최종 우승자 : %s"),
-        RaceResultFormat("%s : %s");
+        RaceResultFormat("%s : %s"); // todo: ~TEMPLETE 네이밍 변경
 
         override fun toString() = message
     }
 }
+
+//fun Enum<*>.format(vararg args: Any?): String = this.toString().format(args)
