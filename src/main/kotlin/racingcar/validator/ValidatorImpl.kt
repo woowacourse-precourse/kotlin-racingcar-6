@@ -6,11 +6,15 @@ class ValidatorImpl : Validator {
     }
 
     override fun attemptsComponents(attempts: String) {
-        TODO("Not yet implemented")
+        for (char in attempts) {
+            require(char in MINIMUM_NUMBER..MAXIMUM_NUMBER)
+        }
     }
 
     companion object {
         private const val MINIMUM_NAME_LENGTH = 1
         private const val MAXIMUM_NAME_LENGTH = 5
+        private const val MINIMUM_NUMBER = '0'
+        private const val MAXIMUM_NUMBER = '9'
     }
 }
