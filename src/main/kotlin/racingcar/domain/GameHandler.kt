@@ -39,11 +39,13 @@ class GameHandler(
     }
 
     private fun play() {
+        io.show(EMPTY_SENTENCE_FOR_LINE_BREAK, true)
         io.show(SENTENCE_FOR_RESULT, true)
 
         repeat(moveCount) {
             moveCars(cars)
             io.showLocation(cars)
+            io.show(EMPTY_SENTENCE_FOR_LINE_BREAK, true)
         }
         io.showWinner(analyzer.judgeWinner(cars))
     }
@@ -64,6 +66,7 @@ class GameHandler(
         private const val SENTENCE_FOR_GETTING_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
         private const val SENTENCE_FOR_GETTING_MOVEMENT = "시도할 횟수는 몇 회인가요?"
         private const val SENTENCE_FOR_RESULT = "실행 결과"
+        private const val EMPTY_SENTENCE_FOR_LINE_BREAK = ""
         private const val MIN_RANDOM_NUM = 0
         private const val MAX_RANDOM_NUM = 9
     }
