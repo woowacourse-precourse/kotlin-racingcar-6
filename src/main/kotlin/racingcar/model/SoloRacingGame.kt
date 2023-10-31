@@ -13,6 +13,15 @@ class SoloRacingGame(private val randomUtils: RandomUtils, private val outputVie
     }
 
     fun soloCarGame(inputCarName: String) {
+        val soloCount = soloRacingGame(inputCarName)
+        checkSoloWinner(inputCarName, soloCount)
+    }
+
+    private fun checkPositiveForward(randomNum: Int): Boolean {
+        return randomNum >= ADVANCE_MINIMUM
+    }
+
+    private fun soloRacingGame(inputCarName: String): Int {
         outputView.printSoloGameRules()
         var soloCount = DEFAULT_SCORE
         repeat(SOLO_GAME_COUNT) {
@@ -23,15 +32,22 @@ class SoloRacingGame(private val randomUtils: RandomUtils, private val outputVie
             val forward = "-".repeat(soloCount)
             outputView.printSoloGameResult(inputCarName, forward)
         }
+        return soloCount
+    }
 
+    private fun checkSoloWinner(inputCarName: String, soloCount: Int) {
         if (soloCount >= SOLO_GAME_MIN_WIN_COUNT) {
-            outputView.printSoloWinner(inputCarName)
+            soloWinner(inputCarName)
         } else {
-            outputView.printNoWinner()
+            noWinner()
         }
     }
 
-    private fun checkPositiveForward(randomNum: Int): Boolean {
-        return randomNum >= ADVANCE_MINIMUM
+    private fun soloWinner(inputCarName: String) {
+        println(OutputView.WINNER_MESSAGE + inputCarName)
+    }
+
+    private fun noWinner() {
+        OutputView.NO_WINNER_MESSAGE
     }
 }
