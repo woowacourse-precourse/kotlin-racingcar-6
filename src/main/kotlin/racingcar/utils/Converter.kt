@@ -2,7 +2,7 @@ package racingcar.utils
 
 object Converter {
     fun splitByCommaToStringList(string: String): List<String> {
-        return string.split(Constants.COMMA).toList()
+        return string.split(",").toList()
     }
 
     fun convertStringToInt(string: String): Int {

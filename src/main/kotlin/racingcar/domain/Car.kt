@@ -23,5 +23,10 @@ class Car(private val name: String) {
 
     private fun isMovable(randomNumber: Int): Boolean = randomNumber >= MIN_MOVEMENT_THRESHOLD
 
-    private fun getStringPosition(): String = "-".repeat(position)
+    private fun isMovable(randomNumber: Int): Boolean = randomNumber >= MIN_MOVEMENT_VALUE
+
+    companion object {
+        private const val MIN_MOVEMENT_VALUE = 4
+        private const val DEFAULT_POSITION = 0
+    }
 }
