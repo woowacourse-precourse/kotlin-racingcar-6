@@ -328,9 +328,7 @@ class ApplicationTest : NsTest() {
         // then
         assertThat(output())
             .isEqualTo(
-                "pobi : \r\n" +
-                        "woni : --\r\n" +
-                        "jun : -"
+                "pobi : \r\n" + "woni : --\r\n" + "jun : -"
             )
     }
 
