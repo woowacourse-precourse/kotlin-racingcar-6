@@ -17,4 +17,17 @@ class RacingCarTest {
             invalidRacingCarsCheck(listOf("pobi", "woni", "junjunjunjunjun"))
         }
     }
+
+    @Test
+    fun `횟수 입력 체크`() {
+        assertThrows<IllegalArgumentException>("정수를 입력하세요.") {
+            invalidTryCountCheck("abc".toIntOrNull())
+        }
+        assertThrows<IllegalArgumentException>("정수를 입력하세요.") {
+            invalidTryCountCheck((Int.MAX_VALUE.toLong() + 1).toString().toIntOrNull())
+        }
+        assertThrows<IllegalArgumentException>("1 이상의 숫자를 입력하세요.") {
+            invalidTryCountCheck("-2".toIntOrNull())
+        }
+    }
 }
