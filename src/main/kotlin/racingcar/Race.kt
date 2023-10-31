@@ -2,6 +2,8 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.Car
+import racingcar.view.InputView
+import racingcar.view.OutputView
 
 class Race {
     private val inputView = InputView()
@@ -11,12 +13,12 @@ class Race {
         val carList = getCarList(inputView.inputCarName())
 
         outputView.printRoundNumberInputMention()
-        for (attemptNumber in 0 until inputView.inputRoundNumber()) {
+        for (roundNumber in 0 until inputView.inputRoundNumber()) {
             for (car in carList) {
                 moveOrStop(car, getRandomNumber())
             }
 
-            if (attemptNumber == 0) outputView.printResultMention()
+            if (roundNumber == 0) outputView.printResultMention()
 
             outputView.printResult(carList)
         }
