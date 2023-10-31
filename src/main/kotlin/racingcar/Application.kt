@@ -4,5 +4,7 @@ import racingcar.Controller.GameController
 
 
 fun main() {
+
     GameController().gameStarter()
+
 }

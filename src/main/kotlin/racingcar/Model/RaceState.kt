@@ -12,7 +12,6 @@ class RaceState {
         }
         return roundScore
     }
-
     fun updateEntireRaceScore(carNames: List<String>,
                               oneRoundResults: List<Boolean>,
                               entireRaceStatus: MutableMap<String,

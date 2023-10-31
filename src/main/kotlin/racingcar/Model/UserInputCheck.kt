@@ -11,7 +11,6 @@ class UserInputCheck {
         return carNames
     }
 
-
     fun roundNumberErrorController(userRoundInput: String): Int {
 
         if (userRoundInput.toIntOrNull() == null || userRoundInput.toInt() <= 0) {

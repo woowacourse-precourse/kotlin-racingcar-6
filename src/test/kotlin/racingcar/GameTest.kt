@@ -35,6 +35,7 @@ class GameTest {
         var userInput="차1,차1"
         assertThrows<IllegalArgumentException> {
             UserInputCheck().carNameErrorController(userInput)
+
         }
     }
 
