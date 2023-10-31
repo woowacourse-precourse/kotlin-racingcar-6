@@ -47,7 +47,6 @@ class CarRaceTest : NsTest() {
         assertThat(carRaceController.changeListToStr(winner)).isEqualTo("b")
     }
 
-
     override fun runMain() {
         main()
     }
