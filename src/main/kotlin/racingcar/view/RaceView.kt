@@ -30,6 +30,8 @@ class RaceView(
     }
 
     fun displayRaceResult(cars: List<Car>) {
+        if (cars.isEmpty()) return
+
         cars.forEach { car -> car.showResult() }
         outputView.displayText("") // 한줄 띄우기
     }
