@@ -39,4 +39,15 @@ class RacingcarGameTest {
         val result = winner.calculateWinner(input)
         Assertions.assertThat(result).containsExactly("test3")
     }
+
+    @Test
+    fun `최종 우승자가 2명 이상일 때 검증`() {
+        val input = mutableMapOf(
+            "test1" to 4,
+            "test2" to 2,
+            "test3" to 4
+        )
+        val result = winner.calculateWinner(input)
+        Assertions.assertThat(result).containsExactly("test1", "test3")
+    }
 }
