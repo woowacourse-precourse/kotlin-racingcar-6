@@ -2,7 +2,7 @@ package racingcar.model
 
 import racingcar.views.OutputView
 
-class ValidateCarName(private val multiRacingGame: MultiRacingGame) {
+class ValidateCarName() {
 
     companion object {
         const val MAX_CAR_NAME_COUNT = 5
@@ -17,7 +17,7 @@ class ValidateCarName(private val multiRacingGame: MultiRacingGame) {
         return true
     }
 
-    fun validateInputMultiCarName(multiCarName: List<String?>) {
+    fun validateInputMultiCarName(multiCarName: List<String?>): Boolean {
         for (element in multiCarName) {
             when (false) {
                 validateMaxInput5(element) -> throw IllegalArgumentException(OutputView.CAR_NAME_COUNT_ERROR)
@@ -30,8 +30,7 @@ class ValidateCarName(private val multiRacingGame: MultiRacingGame) {
                 else -> {}
             }
         }
-
-        multiRacingGame.inputTryCount(multiCarName)
+        return true
     }
 
     private fun validateInputBlank(inputCarName: String): Boolean {

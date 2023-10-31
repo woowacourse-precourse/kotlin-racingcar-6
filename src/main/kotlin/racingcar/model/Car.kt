@@ -6,6 +6,7 @@ class Car(
     private val inputView: InputView,
     private val validateCarName: ValidateCarName,
     private val soloRacingGame: SoloRacingGame,
+    private val multiRacingGame: MultiRacingGame
 ) {
 
     fun getCarName() {
@@ -30,5 +31,6 @@ class Car(
     private fun validateAndStartMultiRace(inputCarName: String) {
         val multiCarName = inputCarName.split(",")
         validateCarName.validateInputMultiCarName(multiCarName)
+        multiRacingGame.inputTryCount(multiCarName)
     }
 }
