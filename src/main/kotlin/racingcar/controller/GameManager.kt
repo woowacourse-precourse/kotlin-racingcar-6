@@ -9,12 +9,11 @@ class GameManager {
         OutputView().carInputMassage()
         val carNames = InputView().carNameInput()
         val carNamesSeparated = CarNameSeparator().separator(carNames) // 자동차 이름 입력
+        Validation().carName(carNamesSeparated)
 
         OutputView().tryInputMassage()
         val tryNum = InputView().tryNameInput() // 시도 횟수 입력
-
-        Validation().carName(carNamesSeparated)
-        val num = Validation().tryNum(tryNum) // 유효성 검사
+        val num = Validation().tryNum(tryNum)
 
         OutputView().racingResult()
         var carProgress: List<String> = CarProgressInit().progress(carNamesSeparated.size)
