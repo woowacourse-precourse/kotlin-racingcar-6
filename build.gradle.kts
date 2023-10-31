@@ -9,6 +9,8 @@ repositories {
 
 dependencies {
     implementation("com.github.woowacourse-projects:mission-utils:1.1.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.0")
+    testImplementation("org.assertj:assertj-core:3.21.0")
 }
 
 java {
