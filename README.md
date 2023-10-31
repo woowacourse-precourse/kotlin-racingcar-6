@@ -195,9 +195,9 @@ Randoms.pickNumberInRange(0, 9)
 
 ### Validator
 
-- [ ] 잘못된 값을 입력할 경우 IllegalArgumentException 발생시키기
-  - [ ] 경주할 자동차 이름이 5자이하만 가능
-  - [ ] 시도 입력은 수만 가능
+- [x] 잘못된 값을 입력할 경우 IllegalArgumentException 발생시키기
+  - [x] 경주할 자동차 이름이 5자이하만 가능
+  - [x] 시도 입력은 수만 가능
 
 ### Controller
 
