@@ -70,7 +70,7 @@ fun printProgress(carName: List<String>, carForwardCount: MutableList<Int>) {
 }
 
 fun printProgressForwardCount(forwardCount: Int) {
-    for(i in 1..forwardCount) {
+    for(i in 1 .. forwardCount) {
         print("-")
     }
     println("")
@@ -92,7 +92,7 @@ fun printRunningResult(carName: List<String>, carForwardCount: MutableList<Int>,
     println("")
     println("실행 결과")
 
-    for(gameCount in 0..(tryCount-1)) {
+    for(gameCount in 0 .. (tryCount-1)) {
         saveForwardCountEachGame(carForwardCount)
         printProgress(carName, carForwardCount)
     }
