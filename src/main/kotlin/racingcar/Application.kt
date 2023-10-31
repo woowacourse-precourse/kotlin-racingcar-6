@@ -18,6 +18,7 @@ fun main() {
 
 //    val tryCount = machine.tryMove()
 
-    racing.forwardOver4(carsClass)
+//    racing.forwardOver4(carsClass)
 
+    racing.playRacing(machine.tryMove(),carsClass)
 }
