@@ -40,5 +40,19 @@ class FunctionTest {
         assertEquals(expectedOutput, outputStreamCaptor.toString().trim())
     }
 
+    @Test
+    fun `우승자 반환 테스트`() {
+        val cars = listOf("bmw", "lexus")
+
+        OutputView().winner(cars)
+
+        val expectedOutput = """
+            최종 우승자 : bmw, lexus
+        """.trimIndent()
+
+
+        assertEquals(expectedOutput, outputStreamCaptor.toString().trim())
+    }
+
 
 }
