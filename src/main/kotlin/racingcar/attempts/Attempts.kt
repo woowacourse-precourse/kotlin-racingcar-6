@@ -1,7 +1,7 @@
 package racingcar.attempts
 
 interface Attempts {
-    val attempts: Int
+    val attempt: Int
 
-    fun setAttempts(attempts: Int)
+    fun setAttempt(attempt: Int)
 }
