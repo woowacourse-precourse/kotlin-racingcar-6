@@ -22,6 +22,7 @@ fun main() {
     repeat = Console.readLine().toInt()
 
     println()
+    println("실행 결과")
 
     for (i in 0..<repeat) {
 //        for (car in cars) {
