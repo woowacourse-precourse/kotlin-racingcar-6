@@ -93,7 +93,7 @@ class RacingGameManager {
 
     private fun generateRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
 
-    private fun setGameRound(): Int = inputDataFromUser().toInt()
+    private fun setGameRound(): Int = inputGameRoundFromUser()
 
     private fun inputDataFromUser(): String {
         val inputData = Console.readLine()
@@ -107,6 +107,12 @@ class RacingGameManager {
         }
 
         return inputData
+    }
+
+    private fun inputGameRoundFromUser(): Int {
+        val gameRound = Console.readLine()
+
+        return gameRound.toInt()
     }
 
     private fun closeConsole() = Console.close()
