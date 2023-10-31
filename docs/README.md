@@ -7,10 +7,11 @@
   - [x] 입력받은 이름을 리스트에 저장한다. // String.createNameList()
   - [x] 쉼표(,)를 기준으로 이름을 구분한다. // String.split(",") 사용
   - [x] 이름이 1자 이상 5글자 이하인지 검사한다. // InputValidator.checkNamesLength
+  - [ ] 중복된 자동차 이름 입력 시, (예: pobi, pobi) 하나로 처리한다.
 
 - [x] 자동차의 이동 횟수를 입력받는다. // UserInput.readAttemptCount()
-  - [x] 입력을 정수로 변환한다.
-  - [x] 입력이 1 이상인지 확인한다.
+  - [x] 입력을 정수로 변환한다. // String.toInt() 사용
+  - [x] 입력이 1 이상인지 확인한다. // InputValidator.isPositive
   - [x] 입력이 숫자로만 되어있는지 검사한다. // InputValidator.checkOnlyDigit
 
 
@@ -23,10 +24,10 @@
 ### 출력
 
 - [x] 실행 결과를 출력한다. // UserOutput.displayRoundResult()
-  - [x] 각 차수별 결과(전진, 멈춤)와 자동차의 이동을 같이 출력한다.  
+  - [x] 각 차수별 결과(전진, 멈춤)와 자동차의 이동을 같이 출력한다.
   
 
-- [x] 최종 우승자를 출력한다. 
+- [x] 최종 우승자를 출력한다. // UserOutput.printWinner
   - [x] 자동차 리스트에서 distance의 최댓값을 구한다.
   - [x] 최댓값을 가진 자동차들의 name을 찾아 리스트로 만든다.
   - [x] 2명 이상의 우승자가 있을 경우, 쉼표로 구분하여 출력한다.
@@ -34,12 +35,12 @@
 ### 게임 기능
 - [x] 0에서 9 사이의 무작위 값을 구한다. // createRandomNumber()
   - [x] 값이 4 이상인 경우, 자동차가 전진한다. // RacingCar.move()
-- [x] 경주에 참가하는 자동차가 1대인 경우, 컴퓨터 자동차(com)와 시합한다.
+- [x] 경주에 참가하는 자동차가 1대인 경우, 컴퓨터 자동차(com)와 시합한다. // singleModeOn()
 
 📖 무작위 값은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
 
 ### 게임 관리(RaicingGameManager)
-- [x] 게임을 실행한다. // play()
+- [x] 게임을 실행한다.
   - [x] 차량 등록 => 입력 객체에게 입력을 사용자 정보를 요청하고, 자동차 객체(RacingCar)를 생성한다. // registerCarNames()
   - [x] 입력받은 사용자 정보로 게임을 진행한다. // startRace()
     - [x] 시도 횟수만큼 반복한다.
