@@ -15,7 +15,6 @@ class Game {
         input()
         processGame(inputRepeat())
         winner()
-        Console.close()
     }
 
     private fun input() {
@@ -69,6 +68,7 @@ class Game {
     }
     private fun printWinner(winners: MutableList<String>) {
         print("최종 우승자 : " + winners.joinToString(", "))
+        Console.close()
     }
 
 }
