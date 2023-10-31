@@ -9,25 +9,22 @@ object RacingGameManager {
     private var carNames: List<String> = listOf()
     private var racingCars: MutableList<RacingCar> = mutableListOf()
     private var attemptCount: Int = 0
-    fun init(): RacingGameManager {
-        registerCarNames()
-        getAttemptCount()
-        return this
-    }
 
-    private fun registerCarNames() {
+    fun registerCarNames(): RacingGameManager {
         carNames = UserInput.readCarName()
             .createNameList()
         InputValidator.checkNamesLength(carNames) // 이름이 1자 이상 5자 이하인지 검사한다.
         for (carName in carNames) {
             racingCars.add(RacingCar(carName))
         }
+        return this
     }
 
-    private fun getAttemptCount() {
+    fun getAttemptCount(): RacingGameManager {
         val input = UserInput.readAttemptCount()
         InputValidator.checkOnlyDigit(input)
         attemptCount = input.toInt()
+        return this
     }
 
     fun startRace(): RacingGameManager {

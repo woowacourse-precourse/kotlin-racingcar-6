@@ -3,7 +3,8 @@ package racingcar
 import racingcar.play.RacingGameManager
 
 fun main() {
-    RacingGameManager.init()
+    RacingGameManager.registerCarNames()
+        .getAttemptCount()
         .startRace()
         .announceWinner()
 }
