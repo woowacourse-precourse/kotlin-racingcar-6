@@ -18,7 +18,7 @@ class Controller(val inputView: InputView, val outputView: OutputView) {
             println(outputView.printResult(moveOrStop(racingCars)))
 
         outputView.printWinnerMessage()
-        println(outputView.printWinner(getWinnerForward(racingCars)))
+        println(outputView.printWinner(getWinnerCars(racingCars)))
     }
 
     fun makeRacingCars(carNames: List<String>) : List<RacingCar> {
@@ -41,15 +41,15 @@ class Controller(val inputView: InputView, val outputView: OutputView) {
 
     fun validateMoreThanFour(randomNumber: Int) : Boolean = randomNumber >= 4
 
-    fun getWinnerForward(racingCars: List<RacingCar>) : List<String> {
+    fun getWinnerForward(racingCars: List<RacingCar>) : Int {
         val sortedRacingCars = racingCars.sortedByDescending { it.forward }
-        val winnerForward = sortedRacingCars[0].forward
-        return getWinnerCars(winnerForward, sortedRacingCars)
+        return sortedRacingCars[0].forward
     }
 
-    fun getWinnerCars(winnerForward: Int, sortedRacingCars: List<RacingCar>) : List<String> {
+    fun getWinnerCars(racingCars: List<RacingCar>) : List<String> {
+        val winnerForward = getWinnerForward(racingCars)
         val winnerCars = mutableListOf<String>()
-        for (car in sortedRacingCars) {
+        for (car in racingCars) {
             if(car.forward == winnerForward) winnerCars.add(car.name)
         }
         return winnerCars
