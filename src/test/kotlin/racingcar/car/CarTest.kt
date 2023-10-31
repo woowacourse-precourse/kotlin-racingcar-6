@@ -6,27 +6,25 @@ import racingcar.generator.NumberGenerator
 
 class CarTest {
     @Test
-    fun `car의 score를 생성하는 방법을 바꿀 수 있다`() {
-        val car = Car("june", object : NumberGenerator {
+    fun `move()는 score가 4이상이면 position에 "-" 가 더해진다`() {
+        val movableCar = Car("june", object : NumberGenerator {
             override fun generate() = 5
         })
+        val immovableCar = Car("june", object : NumberGenerator {
+            override fun generate() = 3
+        })
 
-        assertThat(car.score).isEqualTo(5)
+        movableCar.move()
+        immovableCar.move()
+
+        assertThat(movableCar.position).isEqualTo("-")
+        assertThat(immovableCar.position).isEqualTo("")
     }
 
     @Test
-    fun `car의 toString 값은 차 이름이다`() {
+    fun `car의 toString 은 name을 반환`() {
         val car = Car("june")
 
         assertThat(car.toString()).isEqualTo("june")
-    }
-
-    @Test
-    fun `car가 움직이면 position에 "-" 가 더해진다`() {
-        val car = Car("june")
-
-        car.move()
-
-        assertThat(car.position).isEqualTo("-")
     }
 }
