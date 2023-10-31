@@ -43,4 +43,13 @@ class RacingCarTest {
         racingCar.move()
         assertThat(racingCar.mileage).isBetween(0, 1)
     }
+
+    @Test
+    fun `자동차 주행거리 출력`() {
+        val racingCar = RacingCar("pobi")
+        racingCar.move()
+        racingCar.move()
+        assertThat(racingCar.nameAndMileage().split(" : ").first()).isEqualTo("pobi")
+        assertThat(racingCar.nameAndMileage().split(" : ").last().length).isBetween(0, 2)
+    }
 }
