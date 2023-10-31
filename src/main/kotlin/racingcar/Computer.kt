@@ -16,7 +16,7 @@ class Computer() {
         println(status.substring(0, status.length - 2))
     }
 
-    fun printResult(roundCount: Int, cars: List<Car>) {
+    fun playGame(roundCount: Int, cars: List<Car>) {
         printResultMessage()
         repeat(roundCount) {
             moveCar(cars)

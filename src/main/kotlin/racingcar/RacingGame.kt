@@ -10,7 +10,7 @@ class RacingGame {
         printGameStartMessage()
         val cars = initCar()
         val roundCount = readRounds()
-        computer.printResult(roundCount, cars)
+        computer.playGame(roundCount, cars)
         computer.printWinner(cars)
     }
 
