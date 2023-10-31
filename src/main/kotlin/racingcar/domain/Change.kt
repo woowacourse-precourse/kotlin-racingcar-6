@@ -1,4 +1,4 @@
-package racingcar.datahandling
+package racingcar.domain
 
 import racingcar.domain.Car
 

@@ -1,4 +1,4 @@
-package racingcar.datahandling
+package racingcar.domain
 
 class Save {
     fun saveDistance(move: Int, distance: MutableList<String>, index: Int) {
