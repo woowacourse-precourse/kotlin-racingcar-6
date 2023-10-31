@@ -13,7 +13,7 @@ class Car {
         for (i in 0 until carCnt) {
             val cars = Cars(carNameList[i], 0)  // 차 이름, 전진 횟수 초기화
             carList[i] = cars
-            println("${i + 1}번째 차: ${carList[i]!!.name}")
+            //println("${i + 1}번째 차: ${carList[i]!!.name}")
         }
 
         return carList
