@@ -19,7 +19,7 @@ data class Car(
 internal fun Car.validateCar() {
     when {
         name.isBlank() -> {
-            throw IllegalArgumentException("올바른 이름을 입력해주세요")
+            throw IllegalArgumentException("올바른 이름을 입력해주세요.")
         }
 
         name.length > 5 -> {
