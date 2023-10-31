@@ -26,19 +26,19 @@ class InputView {
         return splitString
     }
 
-    private fun validateOverFiveName(splitString: List<String>) {
+    fun validateOverFiveName(splitString: List<String>) {
         splitString.map { names ->
             if (names.length > 5) throw IllegalArgumentException("5글자가 넘는 자동차 이름이 있습니다.")
         }
     }
 
-    private fun validateDuplicateCheck(splitInputName: List<String>) {
+    fun validateDuplicateCheck(splitInputName: List<String>) {
         for (x in splitInputName) {
             require(splitInputName.count { it == x } <= 1) { "중복된 자동차 이름이 있습니다." } // 같은 수가 1개 이상인 경우
         }
     }
 
-    private fun validateNotFindComma(inputName: String) {
+    fun validateNotFindComma(inputName: String) {
         if (!inputName.contains(",")) {
             throw IllegalArgumentException("입력값에 쉼표가 포함되지 않았습니다.")
         }
