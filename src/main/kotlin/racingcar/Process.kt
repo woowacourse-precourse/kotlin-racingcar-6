@@ -13,8 +13,7 @@ object Process {
         round = Round(carNames)
     }
 
-    fun getAttemptTimes(input: String) {
-        val input = Console.readLine()
+    fun setAttemptTimes(input: String) {
         attemptTimes = validation.getAttemptTimes(input)
     }
 
@@ -38,14 +37,14 @@ class Validation {
     fun validateCarNames(carNamesInput: List<String>): List<String> {
         return carNamesInput.apply {
             forEach {
-                require(it.isNotBlank())
-                require(it.length <= 5)
+                require(it.isNotBlank()) { "자동차 이름을 입력해주세요." }
+                require(it.length <= 5) { "이름은 5자 이하로 입력해주세요."}
             }
         }
     }
 
     fun getAttemptTimes(attemptTimes: String): Int =
-        attemptTimes.toIntOrNull() ?: throw IllegalArgumentException()
+        attemptTimes.toIntOrNull() ?: throw IllegalArgumentException("시도 횟수를 입력해주세요.")
 }
 
 
