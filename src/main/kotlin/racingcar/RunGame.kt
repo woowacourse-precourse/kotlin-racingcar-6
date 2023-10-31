@@ -4,9 +4,9 @@ package racingcar
 class RunGame {
 
     fun startRace(){
-        var racingCars : MutableList<Players>
-
-        var racingNum: Int = PrepareGame().racingNumber()
+        val pG = PrepareGame()
+        var racingCars : MutableList<Players> = pG.makingPlayerList(pG.racingCarName())
+        var racingNum: Int = pG.racingNumber()
 
         for( i in 1..racingNum){ // 전체 경주 실행 횟수 반복
             repeatRace(racingCars.size)
