@@ -24,6 +24,7 @@ class RacingCarController(private val inputView: InputView, private val outputVi
         }
 
         outputView.printWinner(findWinner(racingCarList))
+        inputView.closeConsole()
     }
 
     // 기능 3. 자동차 리스트 만들기
