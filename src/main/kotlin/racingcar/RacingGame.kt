@@ -15,7 +15,7 @@ class RacingGame {
         private const val END_NUMBER = 9
     }
 
-    var gameCount = 0
+    private var gameCount = 0
     private val cars = Cars()
     private val carManager = CarManager()
 
