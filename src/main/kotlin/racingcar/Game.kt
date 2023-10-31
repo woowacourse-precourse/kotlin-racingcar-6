@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 class Game {
     private val error = Error()
-    private var cars: ArrayList<Car> = ArrayList()
+    private var cars = ArrayList<Car>()
 
     companion object {
         private const val INPUT_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
@@ -19,8 +19,8 @@ class Game {
 
     private fun input() {
         println(INPUT_NAME)
-        val carname = Console.readLine()
-        val names = carname.split(',')
+        var carname = Console.readLine()
+        var names = carname.split(',')
         error.checkName(names)
         for (name in names) {
             cars?.add(Car(name.trim()))
@@ -47,7 +47,7 @@ class Game {
     }
 
     private fun winner() {
-        val winners: ArrayList<String> = ArrayList()
+        var winners = mutableListOf<String>()
         val maxPosition = findMaxPos()
         for (car in cars) {
             if (car.getPosition() == maxPosition) {
@@ -66,7 +66,7 @@ class Game {
         }
         return max
     }
-    private fun printWinner(winners: ArrayList<String>) {
+    private fun printWinner(winners: MutableList<String>) {
         print("최종 우승자 : " + winners.joinToString(", "))
     }
 
