@@ -3,7 +3,7 @@ package racingcar.domain.car
 class Car(val name: String) {
     private var distance = 0
 
-    fun move(num : Int) {
+    fun move(num: Int) {
         if (num >= 4) {
             distance++
         }
@@ -13,7 +13,7 @@ class Car(val name: String) {
         return distance
     }
 
-    fun printResult() : String{
+    fun printResult(): String {
         var result = "$name : "
         for (i in 1..distance)
             result += "-"

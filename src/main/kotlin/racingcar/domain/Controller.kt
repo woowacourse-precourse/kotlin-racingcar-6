@@ -1,14 +1,12 @@
 package racingcar.domain
 
-import racingcar.cars
 import racingcar.domain.car.Car
 import racingcar.domain.car.Cars
 
 class Controller {
-    fun playRound(car: Car, randomNumber:Int): Car {
+    fun playRound(car: Car, randomNumber: Int){
         car.move(randomNumber)
         println(car.printResult())
-        return car
     }
 
     fun printWinner(cars: Cars): String {

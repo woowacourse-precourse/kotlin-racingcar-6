@@ -7,6 +7,7 @@ import racingcar.domain.car.Cars
 
 class UserTest {
     val user = User()
+
     @Test
     fun `askCarName 메서드 사용시 이름이 5자 이상일 때 예외 발생`() {
         //given

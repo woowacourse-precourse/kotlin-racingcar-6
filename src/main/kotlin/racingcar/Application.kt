@@ -16,7 +16,7 @@ fun main() {
     val count = user.askNumber(Console.readLine())
     for (i in 1..count) {
         cars.getCars().all {
-            controller.playRound(it,numberGenerator.createRandomNumber())
+            controller.playRound(it, numberGenerator.createRandomNumber())
             cars.compareHighScore(it.getDistance())
             true
         }

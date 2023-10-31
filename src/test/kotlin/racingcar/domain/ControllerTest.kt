@@ -10,9 +10,10 @@ import racingcar.controller
 
 class ControllerTest {
     @AfterEach
-    fun reset(){
+    fun reset() {
         cars = Cars()
     }
+
     @Test
     fun `printWinner 메서드 사용시 단독 우승일 때`() {
         //given
@@ -25,6 +26,7 @@ class ControllerTest {
         //then
         assertThat(controller.printWinner(cars)).isEqualTo("최종 우승자 : pobi")
     }
+
     @Test
     fun `printWinner 메서드 사용시 공동 우승일 때`() {
         //given
@@ -42,7 +44,7 @@ class ControllerTest {
         val car = Car("pobi")
 
         //when
-        controller.playRound(car,5)
+        controller.playRound(car, 5)
 
         //then
         assertThat(car.printResult()).isEqualTo("pobi : -")
