@@ -12,7 +12,7 @@ class RoundNumber {
         return Console.readLine()
     }
 
-    fun validateInput(input: String) {
+    fun validateInput(input: String): Int {
         if (input.isEmpty()) {
             throw IllegalArgumentException(RoundNumberConstants.INPUT_IS_EMPTY)
         }
@@ -27,5 +27,6 @@ class RoundNumber {
             throw IllegalArgumentException(RoundNumberConstants.ROUND_NUMBER_IS_NOT_POSITIVE)
         }
 
+        return inputInt
     }
 }

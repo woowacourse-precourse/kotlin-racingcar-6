@@ -12,7 +12,7 @@ class CarName {
         return readLine()
     }
 
-    fun validateInput(input: String) {
+    fun validateInput(input: String): List<String> {
         if (input.isEmpty()) {
             throw IllegalArgumentException(CarNameConstants.INPUT_IS_EMPTY)
         }
@@ -38,5 +38,7 @@ class CarName {
         if (splitInput.toSet().size != splitInput.size) {
             throw IllegalArgumentException(CarNameConstants.CAR_NAME_HAS_DUPLICATE)
         }
+
+        return splitInput
     }
 }
