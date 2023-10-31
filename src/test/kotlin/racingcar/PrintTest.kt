@@ -43,13 +43,14 @@ class PrintTest {
     fun `실행 결과 출력이 올바른지 검증`() {
         System.setOut(PrintStream(outputStreamCaptor))
 
-        val input = mutableMapOf(
+        val carScore = mutableMapOf(
             "Car1" to 3,
             "Car2" to 2,
             "Car3" to 4
         )
-        outputView.printCarScore(input)
+        outputView.printCarScore(carScore)
         val output = outputStreamCaptor.toString()
+
         AssertionsForClassTypes.assertThat(output).contains(
             "Car1 : ---\n" +
             "Car2 : --\n" +
@@ -60,6 +61,7 @@ class PrintTest {
     @Test
     fun `최종 우승자 출력`() {
         System.setOut(PrintStream(outputStreamCaptor))
+
         val carScore = mutableMapOf(
             "Car1" to 3,
             "Car2" to 2,

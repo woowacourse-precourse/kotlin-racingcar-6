@@ -18,6 +18,7 @@ class RacingcarGameTest {
     private val winner = Winner()
     private lateinit var moveCar: MoveCar
     private lateinit var generateRandomNumber: GenerateRandomNumber
+
     @Test
     fun `입력한 자동차 이름이 쉼표 기준으로 구분 검증`() {
         val input = "test1,test2,test3"
@@ -61,7 +62,7 @@ class RacingcarGameTest {
     }
 
     @Test
-    fun testCalculateScore() {
+    fun `무작위 값이 4이상 일 때 전진 검증`() {
         val carScore = mutableMapOf("test1" to 0, "test2" to 0, "test3" to 0)
         `when`(generateRandomNumber.generate()).thenReturn(5) // 무작위 숫자를 5로 설정
 
@@ -71,8 +72,9 @@ class RacingcarGameTest {
         assertEquals(1, carScore["test2"])
         assertEquals(1, carScore["test3"])
     }
+
     @Test
-    fun testCalculateScore_NoMove() {
+    fun `무작위 값이 4미만 일 때 전진하지 않음을 검증`() {
         val carScore = mutableMapOf("test1" to 0, "test2" to 0, "test3" to 0)
         `when`(generateRandomNumber.generate()).thenReturn(2) // 무작위 숫자를 2로 설정
 
