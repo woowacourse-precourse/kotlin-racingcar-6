@@ -29,3 +29,15 @@ fun isValidateInput(carNames:String,attemptTimes:Int): Boolean{
     if(attemptTimes.equals(" ")) throw IllegalArgumentException ("공백 없이 입력해주세요")
     return true
 }
+
+fun move(): Int {
+    if(Randoms.pickNumberInRange(0,9) >= 4) moveForward()
+}
+
+
+fun moveForward() :Int {
+    var position: Int = 0
+    position++
+    return position
+}
+
