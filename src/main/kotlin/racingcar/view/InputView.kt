@@ -62,4 +62,8 @@ class InputView {
             throw IllegalArgumentException("시도할 횟수는 숫자여야 합니다.")
         }
     }
+
+    fun closeConsole() {
+        Console.close()
+    }
 }
