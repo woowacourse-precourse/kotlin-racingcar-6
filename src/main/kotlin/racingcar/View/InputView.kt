@@ -19,7 +19,11 @@ class InputView {
         }
 
         // '.' 줄이기 위해 input함수 따로 작성
-        private fun getInput(): String = Console.readLine()
+        private fun getInput() : String {
+            val result = Console.readLine()
+            Console.close()
+            return result
+        }
 
         fun getRoundNumber(): Long {
             println(TIME_INPUT_MENTION)
