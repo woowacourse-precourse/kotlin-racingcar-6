@@ -29,19 +29,19 @@ class CarTest {
     }
 
     @Test
-    fun `Engine START_FLAG 보다 큰 경계값 검사`() {
-        val input = START_FLAG + 1
-        val result = true
-        assertThat(result).isEqualTo(Engine().start(input))
+    fun `DashBoard 반환값 검사`() {
+        assertThat("${dashBoard.printDist()}").isEqualTo("테스트차량 : ----------\n")
     }
 
     @Test
-    fun `DashBoard 반환값 검사`() {
-        val testDashBoard = DashBoard("테스트차량")
-        val result = "테스트차량 : ----------\n"
-        repeat(10) {
-            testDashBoard.distPlus()
-        }
-        assertThat("${testDashBoard.printDist()}").isEqualTo(result)
+    fun `DashBoard 자동차 이름 검사`() {
+        val result = "테스트차량"
+        assertThat(dashBoard.carName()).isEqualTo(result)
+    }
+
+    @Test
+    fun `DashBoard 주행거리 반환 검사`() {
+        val result = BigInteger("10")
+        assertThat(dashBoard.nowDist()).isEqualTo(result)
     }
 }
