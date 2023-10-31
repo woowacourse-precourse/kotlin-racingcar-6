@@ -2,6 +2,11 @@ package racingcar.model
 
 class ValidateRacingCount {
 
+    companion object {
+        const val MIN_RACING_COUNT = 1
+        const val MAX_RACING_COUNT = 10
+    }
+
     private val multiRacingGame = MultiRacingGame()
 
     fun validateTryCount(tryCount: String, multiCarName: List<String?>) {
@@ -21,7 +26,7 @@ class ValidateRacingCount {
     }
 
     private fun validateNotInRange(tryCount: String?): Boolean {
-        return tryCount!!.toInt() !in 1..10
+        return tryCount!!.toInt() !in MIN_RACING_COUNT..MAX_RACING_COUNT
     }
 
     private fun validateNullOrBlank(tryCount: String?): Boolean {

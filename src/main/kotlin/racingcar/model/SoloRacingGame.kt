@@ -1,17 +1,24 @@
 package racingcar.model
 
-import camp.nextstep.edu.missionutils.Randoms
+import racingcar.controller.randomUtils
 import racingcar.views.OutputView
 
 class SoloRacingGame {
+
+    companion object {
+        const val DEFAULT_SCORE = 0
+        const val SOLO_GAME_COUNT = 2
+        const val SOLO_GAME_MIN_WIN_COUNT = 1
+        const val ADVANCE_MINIMUM = 4
+    }
 
     private val outputView = OutputView()
 
     fun soloCarGame(inputCarName: String) {
         outputView.printSoloGameRules()
-        var soloCount = 0
-        repeat(2) {
-            val randomNum = Randoms.pickNumberInRange(0, 9)
+        var soloCount = DEFAULT_SCORE
+        repeat(SOLO_GAME_COUNT) {
+            val randomNum = randomUtils.getRandom()
             if (checkPositiveForward(randomNum)) {
                 soloCount++
             }
@@ -19,7 +26,7 @@ class SoloRacingGame {
             outputView.printSoloGameResult(inputCarName, forward)
         }
 
-        if (soloCount >= 1) {
+        if (soloCount >= SOLO_GAME_MIN_WIN_COUNT) {
             outputView.printSoloWinner(inputCarName)
         } else {
             outputView.printNoWinner()
@@ -27,6 +34,6 @@ class SoloRacingGame {
     }
 
     private fun checkPositiveForward(randomNum: Int): Boolean {
-        return randomNum >= 4
+        return randomNum >= ADVANCE_MINIMUM
     }
 }

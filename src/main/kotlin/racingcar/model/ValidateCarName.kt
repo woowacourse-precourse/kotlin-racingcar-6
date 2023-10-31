@@ -2,6 +2,11 @@ package racingcar.model
 
 class ValidateCarName {
 
+    companion object {
+        const val MAX_CAR_NAME_COUNT = 5
+        const val MAX_CAR_COUNT = 7
+    }
+
     private val multiRacingGame = MultiRacingGame()
 
     fun validateInputBlank(inputCarName: String) {
@@ -26,7 +31,7 @@ class ValidateCarName {
 
     private fun validateMaxInput5(multiCarName: List<String?>): Boolean {
         for (element in multiCarName) {
-            if (element == null || element.length > 5) {
+            if (element == null || element.length > MAX_CAR_NAME_COUNT) {
                 return false
             }
         }
@@ -47,6 +52,6 @@ class ValidateCarName {
     }
 
     private fun validateRacingCarRange(multiCarName: List<String?>): Boolean {
-        return multiCarName.size <= 7
+        return multiCarName.size <= MAX_CAR_COUNT
     }
 }

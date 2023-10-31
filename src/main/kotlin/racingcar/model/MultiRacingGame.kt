@@ -7,6 +7,12 @@ import racingcar.views.OutputView
 
 class MultiRacingGame() {
 
+    companion object {
+        const val DEFAULT_SCORE = 0
+        const val INCREMENT_SCORE = 1
+        const val ADVANCE_MINIMUM = 4
+    }
+
     private val outputView = OutputView()
 
     fun inputTryCount(multiCarName: List<String?>) {
@@ -39,7 +45,7 @@ class MultiRacingGame() {
     private fun racingSingleCar(carName: String?) {
         val randomNum = randomUtils.getRandom()
         if (checkPositiveForward(randomNum)) {
-            scoreMap[carName!!] = scoreMap.getOrDefault(carName, 0) + 1
+            scoreMap[carName!!] = scoreMap.getOrDefault(carName, DEFAULT_SCORE) + INCREMENT_SCORE
         }
     }
 
@@ -51,12 +57,12 @@ class MultiRacingGame() {
     }
 
     private fun noWinner(highestScore: Int) {
-        if (highestScore == 0) {
+        if (highestScore == DEFAULT_SCORE) {
             outputView.printNoWinner()
         }
     }
 
     private fun checkPositiveForward(randomNum: Int): Boolean {
-        return randomNum >= 4
+        return randomNum >= ADVANCE_MINIMUM
     }
 }
