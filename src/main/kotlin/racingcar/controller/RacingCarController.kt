@@ -1,5 +1,6 @@
 package racingcar.controller
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.RacingCar
 import racingcar.view.InputView
@@ -24,6 +25,7 @@ class RacingCarController(private val inputView: InputView, private val outputVi
         }
 
         outputView.printWinner(findWinner(racingCarList))
+        Console.close()
     }
 
     // 기능 3. 자동차 리스트 만들기
