@@ -8,12 +8,8 @@ class Car(var name: String) {
             count += 1
         }
     }
-
-
-
     fun print() {
         println("$name : ${"-".repeat(count)}")
     }
-
     override fun toString(): String = "$name"
 }
