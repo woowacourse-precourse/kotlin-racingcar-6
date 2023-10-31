@@ -15,8 +15,10 @@ class GameManager {
         println("시도할 횟수는 몇 회인가요?")
         trial = inputManager.getTrial()
         // 입력된 정보를 기반으로 자동차 경주 게임 진행
+        println("실행 결과")
         for (num in 1..trial) {
             proceedRacingGame()
+            printRacingGameResultPerTrial()
         }
     }
 
@@ -40,5 +42,14 @@ class GameManager {
                 racingCar.distance++
             }
         }
+    }
+
+    // 각 차수별 실행 결과 출력
+    private fun printRacingGameResultPerTrial() {
+        for (racingCar in racingCarList) {
+            val distance = "-".repeat(racingCar.distance)
+            println("${racingCar.name} : $distance")
+        }
+        println()
     }
 }
