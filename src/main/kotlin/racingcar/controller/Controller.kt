@@ -27,7 +27,7 @@ class Controller {
 
     private fun getAttemptNumber(): Int {
         outputView.printInputNumberOfAttempts()
-        return inputView.getUserInput().validateNumber().getOrThrow().toInt()
+        return inputView.getUserInput().validateNumber(containsDigit = false).getOrThrow().toInt()
     }
 
     private fun displayRaceResult(judge: Judge, lastAttempt: Attempt) {
