@@ -1,5 +1,7 @@
-package racingcar.model
+package racingcar.domain
 
+import racingcar.model.Car
+import racingcar.model.MovementState
 import racingcar.resources.Comments.FINAL_WINNER_COMMENT
 import racingcar.resources.Comments.MOVEMENT
 import racingcar.resources.Comments.SEPARATOR
@@ -7,24 +9,25 @@ import racingcar.resources.GameValue.MOVEMENT_THRESHOLD_VALUE
 import racingcar.resources.GameValue.MOVEMENT_VALUE
 import racingcar.utils.generateRandomNumbers
 
-class RacingCarState(
+class RacingState(
     private var carList: List<Car>,
 ) {
 
-    fun moveRacingCars() {
+    fun moveCarsOnetime(): String {
         carList = carList.map { car ->
-            when (getMovementState()) {
+            when (determineMovement()) {
                 MovementState.MOVE -> car.copy(
                     movement = car.movement + MOVEMENT_VALUE
                 )
-
                 MovementState.STOP -> car
             }
         }
+
+        return getMovementResult()
     }
 
-    private fun getMovementState(
-        randomNumber : Int = generateRandomNumbers(),
+    private fun determineMovement(
+        randomNumber: Int = generateRandomNumbers(),
     ): MovementState {
         return if (randomNumber >= MOVEMENT_THRESHOLD_VALUE) {
             MovementState.MOVE
@@ -33,10 +36,10 @@ class RacingCarState(
         }
     }
 
-    fun getMovementResult(): String {
-        return carList.map { (name, movement) : Car ->
+    private fun getMovementResult(): String {
+        return carList.map { (name, movement): Car ->
             name + SEPARATOR + MOVEMENT.repeat(movement)
-        }.joinToString("\n")
+        }.joinToString("\n") + "\n"
     }
 
     fun getWinner(): String {
