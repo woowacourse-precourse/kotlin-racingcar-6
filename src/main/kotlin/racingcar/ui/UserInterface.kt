@@ -22,6 +22,7 @@ object UserInput {
     fun String.createNameList(): List<String> =
         this.split(',')
             .map { it.trim() }
+            .distinct()
 
     fun readAttemptCount(): String {
         println(MSG_INPUT_ATTEMPT_COUNT)
