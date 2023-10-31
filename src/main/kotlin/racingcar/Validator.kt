@@ -15,6 +15,13 @@ class Validator {
         }
     }
 
+    fun isNumber(inputString: String) {
+        val regex = "\\d+".toRegex()
+        if (!inputString.matches(regex)){
+            throw IllegalArgumentException("invalid input string, input is not number")
+        }
+    }
+
     private fun isNull(name: String) {
         if (name.isNullOrEmpty()) {
             throw IllegalArgumentException("invalid car's name, name is null or empty")
