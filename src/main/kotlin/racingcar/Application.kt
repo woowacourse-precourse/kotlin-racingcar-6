@@ -12,6 +12,7 @@ fun main() {
     input()
     val repeat = inputRepeat()
     processGame(repeat)
+    findMaxPos()
     winner()
 }
 private fun winner() {
