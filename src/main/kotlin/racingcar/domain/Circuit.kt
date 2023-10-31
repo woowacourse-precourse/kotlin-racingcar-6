@@ -4,7 +4,7 @@ import racingcar.utils.Converter
 import racingcar.utils.RandomGenerator
 
 class Circuit(carNames: String, private var moveCount: Int) {
-    private var carList = mutableListOf<Car>()
+    private var cars = mutableListOf<Car>()
 
     init {
         createCarList(carNames)
@@ -16,8 +16,8 @@ class Circuit(carNames: String, private var moveCount: Int) {
         }
     }
 
-    fun getCarList(): MutableList<Car> {
-        return carList
+    fun getCarList(): List<Car> {
+        return cars.toList()
     }
 
     private fun createCarList(carNames: String) {
@@ -25,7 +25,7 @@ class Circuit(carNames: String, private var moveCount: Int) {
 
         carNameList.forEach {
             val car = Car(it)
-            carList.add(car)
+            cars.add(car)
         }
     }
 
@@ -35,11 +35,11 @@ class Circuit(carNames: String, private var moveCount: Int) {
     }
 
     private fun moveOrStayAllCars() {
-        carList.forEach { it.moveOrStay(RandomGenerator.generateRandomNumber()) }
+        cars.forEach { it.moveOrStay(RandomGenerator.generateRandomNumber()) }
     }
 
     private fun printCarPositions() {
-        carList.forEach { println(it) }
+        cars.forEach { println(it) }
         println()
     }
 }

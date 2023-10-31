@@ -1,11 +1,15 @@
 package racingcar.validator
 
 import racingcar.utils.Converter
-import racingcar.utils.Constants
 
 class CarNameValidator {
     fun validate(carNames: String) {
-        val carNameList = Converter.splitByCommaToStringList(carNames)
+        val nameList = Converter.splitByCommaToStringList(carNames)
+
+        requireNoBlankName(nameList)
+        requireNameLengthInRange(nameList)
+        requireNoDuplicatedName(nameList)
+    }
 
     private fun requireNoBlankName(names: List<String>) {
         require(names.all { it.isNotBlank() }) { NAME_CONTAINS_WHITESPACE_ERROR_MESSAGE }

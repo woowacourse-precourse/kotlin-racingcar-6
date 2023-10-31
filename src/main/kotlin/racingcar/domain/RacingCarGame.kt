@@ -11,7 +11,7 @@ class RacingCarGame {
     private val carNameValidator = CarNameValidator()
     private val moveCountValidator = MoveCountValidator()
 
-    private lateinit var carName: String
+    private lateinit var carNames: String
     private lateinit var circuit: Circuit
 
     fun startGame() {
@@ -21,33 +21,33 @@ class RacingCarGame {
     }
 
     private fun initGame() {
-        carName = getValidatedCarNames()
+        carNames = getValidatedCarNames()
         val moveCount = getValidatedMoveCount().toInt()
-        circuit = Circuit(carName, moveCount)
+        circuit = Circuit(carNames, moveCount)
     }
 
     private fun processGame() {
-        outputManager.printRaceResult()
+        outputManager.printRaceStartResult()
         circuit.startRace()
     }
 
     private fun displayGameOutcome() {
-        val referee = Referee(circuit)
+        val referee = Referee(circuit.getCarList())
         val winnerCarNames = referee.getWinningCarNames()
         outputManager.printWinners(winnerCarNames)
     }
 
     private fun getValidatedCarNames(): String {
-        val carName = inputManager.getCarNameFromUser()
-        carNameValidator.validate(carName)
+        val names = inputManager.getCarNameFromUser()
+        carNameValidator.validate(names)
 
-        return carName
+        return names
     }
 
     private fun getValidatedMoveCount(): String {
-        val moveCount = inputManager.getMoveCountFromUser()
-        moveCountValidator.validate(moveCount)
+        val count = inputManager.getMoveCountFromUser()
+        moveCountValidator.validate(count)
 
-        return moveCount
+        return count
     }
 }

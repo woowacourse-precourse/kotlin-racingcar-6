@@ -1,10 +1,9 @@
 package racingcar.domain
 
-import racingcar.utils.Constants.MIN_MOVEMENT_THRESHOLD
-
-class Car(private val name: String) {
-    private var position = 0
-
+class Car(
+    private val name: String,
+    private var position: Int = DEFAULT_POSITION,
+) {
     fun moveOrStay(randomNumber: Int) {
         if (isMovable(randomNumber)) {
             position++
@@ -12,16 +11,16 @@ class Car(private val name: String) {
     }
 
     override fun toString(): String {
-        return "$name : ${getStringPosition()}"
+        return "$name : ${getVisualPosition()}"
     }
 
-    fun isWinnerCar(maxDistance: Int): Boolean = maxDistance == position
+    fun isWinner(maxDistance: Int): Boolean = maxDistance == position
 
     fun getPosition() = position
 
     fun getName() = name
 
-    private fun isMovable(randomNumber: Int): Boolean = randomNumber >= MIN_MOVEMENT_THRESHOLD
+    private fun getVisualPosition(): String = "-".repeat(position)
 
     private fun isMovable(randomNumber: Int): Boolean = randomNumber >= MIN_MOVEMENT_VALUE
 
