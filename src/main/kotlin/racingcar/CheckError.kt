@@ -23,7 +23,7 @@ fun redundancyErrorCheck(names: List<String>) {
 
 fun numberTimesErrorCheck(number: String) {
     numberTimesEmptyCheck(number)
-    numberTimesCharCheck(number)
+    numberTimesDigitCheck(number)
 }
 
 fun numberTimesEmptyCheck(number: String) {
@@ -32,10 +32,8 @@ fun numberTimesEmptyCheck(number: String) {
     }
 }
 
-fun numberTimesCharCheck(number: String) {
-    for (i in number.indices) {
-        if (number[i] > '9' || number[i] < '0') {
-            throw IllegalArgumentException(NUMBER_ERROR)
-        }
+fun numberTimesDigitCheck(number: String) {
+    if (!number.all { it.isDigit() }) {
+        throw IllegalArgumentException(NUMBER_ERROR)
     }
 }
