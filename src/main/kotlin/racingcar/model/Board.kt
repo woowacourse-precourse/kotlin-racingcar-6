@@ -4,16 +4,16 @@ typealias Attempt = Int
 typealias Score = Int
 
 class Board private constructor(
-    private val _scoresByCarName: MutableMap<CarName, Scores>,
+    private val scoresByCarName: MutableMap<CarName, Scores>,
 ) {
 
     fun addScore(carName: CarName, attempt: Attempt, score: Score) {
-        val scores = _scoresByCarName[carName]
-        scores?.addCurrentScore(attempt, score)
+        val scores = scoresByCarName[carName] ?: throw IllegalArgumentException(Error.InvalidName.message)
+        scores.addCurrentScore(attempt, score)
     }
 
     fun getResultByAttempt(attempt: Attempt): List<Pair<CarName, Score>> =
-        _scoresByCarName.flatMap { (carName, scores) ->
+        scoresByCarName.flatMap { (carName, scores) ->
             val score = scores.scoreByCarName[attempt]!!
             listOf(carName to score)
         }
@@ -23,6 +23,10 @@ class Board private constructor(
             val scoresByCarName = nameOfParticipants.associateWith { Scores.create(attempt) }.toMutableMap()
             return Board(scoresByCarName)
         }
+    }
+
+    internal enum class Error(val message: String) {
+        InvalidName("대회에 참여한 자동차가 아닙니다. 자동차 이름을 확인해주세요.");
     }
 }
 
