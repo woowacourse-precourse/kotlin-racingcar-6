@@ -8,19 +8,17 @@ object Process {
     private var attemptTimes: Int = 0
     private lateinit var round: Round
 
-    fun generateCars() {
-        val input = Console.readLine()
+    fun generateCars(input: String) {
         carNames = validation.validateCarNames(input.split(",").map { it.trim() })
         round = Round(carNames)
     }
 
-    fun getAttemptTimes() {
+    fun getAttemptTimes(input: String) {
         val input = Console.readLine()
         attemptTimes = validation.getAttemptTimes(input)
     }
 
-    fun createRound(carNames: List<String>): Round {
-        round = Round(carNames)
+    fun getRound(): Round {
         return round
     }
 
@@ -28,7 +26,7 @@ object Process {
         return Round.getWinner()
     }
 
-    fun roundCount() {
+    fun playRound() {
         for (i in 1..attemptTimes) {
             Round.move()
             Round.printRound()
