@@ -1,6 +1,5 @@
 package racingcar.controller
 
-import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.RacingCar
 import racingcar.view.InputView
@@ -21,7 +20,7 @@ class RacingCarController {
     private fun gameContinue(racingCarList: List<RacingCar>, gameCount: Int): List<RacingCar> {
         outputView.printResult()
 
-        for (i in 0 until gameCount) {
+        repeat(gameCount) {
             racingCarList.forEach {
                 addRacingCarDistance(it)
             }
