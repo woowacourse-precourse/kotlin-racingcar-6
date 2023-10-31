@@ -3,6 +3,7 @@ package racingcar
 fun main() {
 
     val machine = InputMachine()
+    val racing = Racing()
 
 //    val carsList : List<String> = machine.makeCars()
 //
@@ -15,6 +16,8 @@ fun main() {
 //
 //    machine.checkCarNameUnder5(carsClass)
 
-    val tryCount = machine.tryMove()
+//    val tryCount = machine.tryMove()
+
+    println(racing.random09())
 
 }
