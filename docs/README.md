@@ -7,6 +7,7 @@
 - [O] 0~9 중 무작위 값을 구한다. - Racing#random09()
 - [O] 4 이상일 경우 전진한다. - Racing#forwardOver4()
 - [O] 무작위 값이 나온만큼 "-"을 출력한다. - Racing#printHyphen()
+- [] 입력한 이동 횟수만큼 반복 시도 - InputMachine#playRacing()
 - [] 자동차 경주 게임을 완료 후 누가 우승했는지 알려준다. 여러명 가능 - Referee#notifyWhoWin()
   - [] ","쉼표를 이용해서 구분한다.
 
