@@ -10,11 +10,26 @@ class Host {
         println("시도할 횟수는 몇 회인가요?")
     }
 
-    fun printRaceResults(cars: List<Car>) {
+    fun printRaceResults(cars: List<Car>): List<Int> {
+        val playerPosition = mutableListOf<Int>()
         cars.forEach {
-            it.move()
+            val currentPosition = it.move()
             println()
+            playerPosition.add(currentPosition)
         }
+        return playerPosition
+    }
+
+    fun printWinner(playersFinalPosition: List<Int>, carList: List<Car>) {
+        val winners = mutableListOf<String>()
+        val winnersPosition = playersFinalPosition.max()
+
+        playersFinalPosition.forEachIndexed { index, value ->
+            if (value == winnersPosition) {
+                winners.add(carList[index].name)
+            }
+        }
+        println("최종 우승자 : ${winners.joinToString(", ")}")
     }
 
 }

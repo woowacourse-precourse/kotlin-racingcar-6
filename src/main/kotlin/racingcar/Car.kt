@@ -10,11 +10,13 @@ class Car(val name: String) {
         return Randoms.pickNumberInRange(0, 9) > 3
     }
 
-    fun move() {
+    fun move(): Int {
         if (findForwardCondition()) {
             position++
         }
         print("$name : ${"-".repeat(position)}")
+
+        return position
     }
 
 }

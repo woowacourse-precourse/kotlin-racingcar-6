@@ -9,7 +9,8 @@ class RacingGame {
     fun start() {
         val carNamesList = getCarNames()
         val numberOfAttempt = getNumberOfAttempt()
-        printResult(numberOfAttempt, carNamesList)
+        val maxPosition = printResult(numberOfAttempt, carNamesList)
+        host.printWinner(maxPosition, carNamesList)
     }
 
     private fun getCarNames(): List<Car> {
@@ -33,12 +34,16 @@ class RacingGame {
         return numberOfAttempt
     }
 
-    private fun printResult(numberOfAttempt: Int, carList: List<Car>) {
+    private fun printResult(numberOfAttempt: Int, carList: List<Car>): List<Int> {
+        var playersFinalPosition = mutableListOf<Int>()
+
         println("\n실행 결과")
         for (i in 0 until numberOfAttempt) {
-            host.printRaceResults(carList)
+            playersFinalPosition = host.printRaceResults(carList).toMutableList()
             println()
         }
+
+        return playersFinalPosition
     }
 
 }
