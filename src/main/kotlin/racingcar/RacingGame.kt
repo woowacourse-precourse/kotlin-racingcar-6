@@ -6,7 +6,12 @@ class RacingGame {
     private val player = Player()
     private val validation = Validation()
 
-    fun getCarNames(): List<Car> {
+    fun start() {
+        getCarNames()
+        getNumberOfAttempt()
+    }
+
+    private fun getCarNames(): List<Car> {
         host.printRequestEnterCarName()
         val inputCarNames = player.inputCarsName()
         val carNames = inputCarNames.split(",")
@@ -19,12 +24,12 @@ class RacingGame {
         return carList
     }
 
-    fun getNumberOfAttempt(): Int {
+    private fun getNumberOfAttempt(): Int {
         host.printQuestionNumberOfAttempt()
         val numberOfAttempt = player.inputNumberOfAttempt()
         validation.checkNumberOfAttemptOneAndMore(numberOfAttempt)
 
         return numberOfAttempt
     }
-    
+
 }
