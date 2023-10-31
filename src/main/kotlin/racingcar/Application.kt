@@ -60,4 +60,16 @@ fun printEachResult(
         println("${cars[i]} : ${raceProgress[i]}")
     }
     println()
+    guideWinners(cars, raceProgress)
+}
+
+fun guideWinners(cars: List<String>, raceProgress: MutableList<String>) {
+    val max = raceProgress.maxByOrNull { it.length }?.length ?: 0
+    val winner = mutableListOf<String>()
+    for (i in raceProgress.indices) {
+        if (raceProgress[i].length == max) {
+            winner.add(cars[i])
+        }
+    }
+    println("최종 우승자 : ${winner.joinToString(", ")}")
 }
