@@ -3,8 +3,8 @@ import racingcar.InputManager
 import racingcar.RandomNumCreator
 
 class Cars() {
-    val inputMana = InputManager()
-    fun makeCar() {
+
+    fun makeCar()  :List<Car>{
         val inputManager = InputManager()
 
         // Car 객체 생성 및 이름 설정
@@ -14,6 +14,7 @@ class Cars() {
             val car = Car(trimmedName)
             cars.add(car)
         }
+        return cars
     }
 }
 
