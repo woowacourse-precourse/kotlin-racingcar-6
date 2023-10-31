@@ -19,9 +19,9 @@ class Car(val name : String) {
         return position
     }
 
-    private fun goOrStopDetermine() : Int {
-        return if(getRandomNumber() in 0..< 4) 0
-        else 1
+    private fun goOrStopDetermine() : Long {
+        return if(getRandomNumber() in 0..< 4) 0L
+        else 1L
     }
 
     private fun getRandomNumber() : Int = Randoms.pickNumberInRange(0,9)

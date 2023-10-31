@@ -4,7 +4,7 @@ import racingcar.Model.Car
 import racingcar.View.InputView
 import racingcar.View.OutputView
 
-class Race() {
+class Race {
     private var round = 0L
     private lateinit var cars : List<Car>
     fun run(){
