@@ -14,4 +14,12 @@ object InputView {
 
         return cars
     }
+
+    fun askNumberOfAttempts(validator: Validator): Int {
+        val numberOfAttempts = Console.readLine()
+
+        validator.attemptsComponents(numberOfAttempts)
+
+        return numberOfAttempts.toInt()
+    }
 }
