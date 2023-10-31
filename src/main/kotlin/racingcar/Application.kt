@@ -25,7 +25,7 @@ fun main() {
     carNames.forEachIndexed { idx, name -> cars[idx].name = name }
 
     val racing = Racing()
-    racing.getRacingDistances(numberAttempts.toInt(), cars)
+    racing.doRacing(numberAttempts.toInt(), cars)
 }
 
 fun getCarList() = Console.readLine().split(",")

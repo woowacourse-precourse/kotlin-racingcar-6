@@ -101,7 +101,7 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             val attempts = 5
             val cars: List<Car> = listOf(Car("Bear", 0), Car("Dog", 0), Car("Cat", 0), Car("Tiger", 0))
-            racing.getRacingDistances(attempts, cars)
+            racing.doRacing(attempts, cars)
         }
     }
 
