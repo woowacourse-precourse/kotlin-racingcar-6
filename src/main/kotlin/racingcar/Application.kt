@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 fun main() {
     gameStart()
     inputCarName()
+    inputRoundCount()
 }
 
 fun gameStart() {
@@ -17,8 +18,8 @@ fun inputCarName() {
     var inputText = ""
     var afterText = ""
     //패턴 비교후 텍스트
-    val stringPattern = Regex("[^A-Za-z0-9,]")
-    // 텍스트 비교용 패턴, 영문/숫자/쉼표만
+    val stringPattern = Regex("[^A-Za-z,]")
+    // 텍스트 비교용 패턴, 영문/쉼표만
     var carNameList = mutableListOf<String>()
 
     inputText = Console.readLine().replace(" ", "")
@@ -51,4 +52,17 @@ fun inputCarName() {
 
         }
     }
+}
+
+fun inputRoundCount(){
+    var inputCount = 0
+    print("진행할 라운드 횟수 입력 : ")
+
+    try {
+        inputCount = Console.readLine().replace(" ","").toInt()
+    } catch (e: IllegalArgumentException){
+        println("숫자가 아닌 문자가 입력되어 게임종료")
+        System.out
+    }
+
 }
