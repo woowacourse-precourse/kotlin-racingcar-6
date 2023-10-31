@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 class RefereeTest {
     @Test
-    fun `자동차의 위치를 비교하여 우승자 이름 반환 테스트`() {
+    fun `우승자 이름 반환 테스트 - 우승자가 한 명일 경우`() {
         val carList = listOf(
             Car("pobi", 3),
             Car("woni", 0),
@@ -17,7 +17,7 @@ class RefereeTest {
     }
 
     @Test
-    fun `자동차의 위치를 비교하여 우승자 이름 반환 테스트 2`() {
+    fun `우승자 이름 반환 테스트 - 우승자가 복수일 경우`() {
         val carList = listOf(
             Car("pobi", 2),
             Car("woni", 2),

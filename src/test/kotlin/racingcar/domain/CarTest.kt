@@ -22,7 +22,7 @@ class CarTest {
     }
 
     @Test
-    fun `자동차 전진 혹은 정지 테스트 1`() {
+    fun `자동차 전진`() {
         val car = Car("test")
         car.moveOrStay(MOVING_FORWARD)
         val expectedPosition = 1
@@ -30,7 +30,7 @@ class CarTest {
     }
 
     @Test
-    fun `자동차 전진 혹은 정지 테스트 2`() {
+    fun `자동차 정지`() {
         val car = Car("test")
         car.moveOrStay(STOP)
         val expectedPosition = 0
@@ -38,8 +38,8 @@ class CarTest {
     }
 
     @Test
-    fun `자동차 위치 출력 테스트 1`() {
-        val car = Car("test")
+    fun `자동차 이름 및 위치 출력 - 위치가 0일 경우`() {
+        val car = Car("test", 0)
         System.setOut(PrintStream(outputStreamCaptor))
 
         println(car)
@@ -50,31 +50,28 @@ class CarTest {
     }
 
     @Test
-    fun `자동차 위치 출력 테스트 2`() {
-        val car = Car("test")
-        car.moveOrStay(MOVING_FORWARD)
+    fun `자동차 이름 및 위치 출력 - 위치가 0보다 클 경우`() {
+        val car = Car("test", 3)
         System.setOut(PrintStream(outputStreamCaptor))
 
         println(car)
 
         System.setOut(originalOut)
         val expectedOutPut = outputStreamCaptor.toString().trim()
-        assertEquals(expectedOutPut, "test : -")
+        assertEquals(expectedOutPut, "test : ---")
     }
 
     @Test
-    fun `자동차 우승 확인 테스트 1`() {
+    fun `자동차 우승 확인 테스트 - 위치가 최댓값과 다를 경우`() {
         val car = Car("test")
-        car.moveOrStay(STOP)
         val expected = car.isWinner(1)
         assertThat(expected).isFalse()
     }
 
     @Test
-    fun `자동차 우승 확인 테스트 2`() {
-        val car = Car("test")
-        car.moveOrStay(MOVING_FORWARD)
-        val expected = car.isWinner(1)
+    fun `자동차 우승 확인 테스트 - 위치가 최댓값과 같을 경우`() {
+        val car = Car("test", 3)
+        val expected = car.isWinner(3)
         assertThat(expected).isTrue()
     }
 
