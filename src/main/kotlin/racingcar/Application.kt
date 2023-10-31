@@ -13,31 +13,44 @@ fun generateCars(): List<String> {
     println(INPUT_CAR_NAMES)
     val carNames = Console.readLine().split(",").map { it.trim() }.requireNoNulls()
     carNames.forEach {
-        if(it.length <= 5) return carNames
+        if (it.length <= 5) return carNames
         else throw IllegalArgumentException("이름은 1자이상 5자 이하로 입력해주세요.")
     }
     return carNames
 }
 
 fun getAttemptTimes(): Int {
-    val attemptTimes = Console.readLine().toIntOrNull() ?: throw IllegalArgumentException("숫자를 입력해주세요.")
-    return  attemptTimes
+    val attemptTimes =
+        Console.readLine().toIntOrNull() ?: throw IllegalArgumentException("숫자를 입력해주세요.")
+    return attemptTimes
 }
-fun isValidateInput(carNames:String,attemptTimes:Int): Boolean{
-    if(carNames.isBlank()) throw IllegalArgumentException ("이름을 입력해주세요")
-    if(carNames.isEmpty() && carNames.length > 5) throw IllegalArgumentException ("이름은 1자 이상 5자 이하로 입력해주세요.")
-    if(attemptTimes.equals(" ")) throw IllegalArgumentException ("공백 없이 입력해주세요")
+
+fun isValidateInput(carNames: String, attemptTimes: Int): Boolean {
+    if (carNames.isBlank()) throw IllegalArgumentException("이름을 입력해주세요")
+    if (carNames.isEmpty() && carNames.length > 5) throw IllegalArgumentException("이름은 1자 이상 5자 이하로 입력해주세요.")
+    if (attemptTimes.equals(" ")) throw IllegalArgumentException("공백 없이 입력해주세요")
     return true
 }
 
-fun move(): Int {
-    if(Randoms.pickNumberInRange(0,9) >= 4) moveForward()
+fun move(car: generateCars): Int {
+    if (Randoms.pickNumberInRange(0, 9) >= 4) moveForward()
 }
 
-
-fun moveForward() :Int {
+fun moveForward(randomNumber: Int): Boolean {
     var position: Int = 0
     position++
     return position
+
+}
+
+fun race() {
+    val roundTimes = getAttemptTimes()
+    repeat(roundTimes) { playRound() }
+}
+
+fun playRound(cars: List<generateCars>) {
+    cars.forEach {
+        move(it)
+    }
 }
 
