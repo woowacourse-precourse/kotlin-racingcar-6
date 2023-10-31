@@ -14,6 +14,10 @@ class InputView {
     fun validateRacingCarName(racingCarNameList: List<String>): List<String> {
         val validRacingCarNameList = mutableListOf<String>()
 
+        if (racingCarNameList.size < 2) {
+            throw IllegalArgumentException("자동차 이름은 2개 이상 입력받아야 한다.")
+        }
+
         for (racingCarName in racingCarNameList) {
             if (racingCarName.length > 5) {
                 throw IllegalArgumentException("자동차 이름은 이름은 5자 이하만 가능하다.")
@@ -34,17 +38,13 @@ class InputView {
             validRacingCarNameList.add(racingCarName)
         }
 
-        if (racingCarNameList.size < 2) {
-            throw IllegalArgumentException("자동차 이름은 2개 이상 입력받아야 한다.")
-        }
-
         return validRacingCarNameList
     }
 
     // 기능 4. 시도할 횟수 정하기
     fun inputAttemptNumber(): Int {
         val attemptNumber = Console.readLine()
-        
+
         return validateAttemptNumber(attemptNumber)
     }
 
