@@ -5,6 +5,8 @@ import Validator.roundCheck
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
 
 class InputValueTest {
 
@@ -56,17 +58,9 @@ class InputValueTest {
         }
     }
 
-    @Test
-    fun `진행할 라운드의 값에 숫자가 아닌 다른 값이 포함되어 있을 경우`() {
-        val input = "65-1"
-        assertThrows<IllegalArgumentException> {
-            roundCheck(input)
-        }
-    }
-
-    @Test
-    fun `진행할 라운드의 값을 입력하지 않았을 경우`() {
-        val input = ""
+    @ParameterizedTest
+    @CsvSource("65-1", "asd", "ㄱㄴㄷ")
+    fun `진행할 라운드의 값을 정확하게 입력하지 않았을 경우`(input: String) {
         assertThrows<IllegalArgumentException> {
             roundCheck(input)
         }
