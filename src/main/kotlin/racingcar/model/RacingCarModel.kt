@@ -6,7 +6,7 @@ class RacingCarModel(val name: String) {
     var place = 0
         set(value) {
             if (value < place) return
-            else place = value
+            else field = value
         }
 
 
