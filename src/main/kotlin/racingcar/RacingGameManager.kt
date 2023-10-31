@@ -38,7 +38,7 @@ class RacingGameManager {
         val stringBuilder = StringBuilder()
 
         cars.forEach { car ->
-            stringBuilder.append(car.toString())
+            stringBuilder.append(car.name).append(" : ")
             (1..car.distance).forEach { _ ->
                 stringBuilder.append("-")
             }
