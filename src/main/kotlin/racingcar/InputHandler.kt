@@ -12,8 +12,8 @@ object InputHandler {
             throw IllegalArgumentException("")
         }
 
-        val inputData = inputReadLine.split(",")
-        return if (isValidCarName(inputData)) inputData else throw IllegalArgumentException("")
+        val inputSplitList = inputReadLine.split(",")
+        return if (isValidCarName(inputSplitList)) inputSplitList else throw IllegalArgumentException("")
     }
 
     fun getAmount(): Int {
