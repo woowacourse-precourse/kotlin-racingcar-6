@@ -13,7 +13,6 @@ class CarController(private val carModel: CarModel, private val printResult: Pri
         processCarInput(carString)
         printResult.printMessage(Constant.TRY_NUMBER_INPUT_STRING)
         val moveNum = inputMoveNum()
-        println()
         carModel.moveCars(moveNum)
         printWinner()
     }
