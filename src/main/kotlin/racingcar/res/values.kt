@@ -1,9 +1,10 @@
 package racingcar.res
 
 object CarMovement {
-  const val GO = true
+  const val MOVING_FORWARD = true
   const val STOP = false
-  const val GO_RECORD = "-"
+  const val MOVING_FORWARD_RECORD = "-"
+  const val STOP_RECORD = ""
 }
 
 object GuideMessage {
