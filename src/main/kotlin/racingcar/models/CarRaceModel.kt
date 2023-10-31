@@ -19,7 +19,30 @@ class CarRaceModel {
         }
     }
 
+    fun splitWinners(): String {
+        return getScores().filter { it.value == carNameAndScore.values.maxOrNull() }.keys.joinToString(", ")
+    }
+
+    fun splitCarNames(readLine: String): List<String> {
+        return readLine.split(",")
+    }
+
+    fun generateResults(): List<String> {
+        val allResult = getScores().map { (carName, score) ->
+            val scoreResult = "-".repeat(score)
+            "$carName : $scoreResult"
+        }
+
+        return allResult
+    }
+
     fun getScores(): Map<String, Int> {
         return carNameAndScore
+    }
+
+    fun setTestCodeDummy(pobiScore: Int, woniScore: Int, tobiScore: Int) {
+        carNameAndScore["pobi"] = pobiScore
+        carNameAndScore["woni"] = woniScore
+        carNameAndScore["tobi"] = tobiScore
     }
 }
