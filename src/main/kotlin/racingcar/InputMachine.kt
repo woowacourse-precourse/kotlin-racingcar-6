@@ -9,7 +9,6 @@ class InputMachine {
 
         val cars = readln().split(",")
 
-
         return cars
 
     }

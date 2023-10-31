@@ -29,6 +29,8 @@ class Racing {
 
         }
 
+        println()
+
     }
 
     private fun printHyphen(carName: String, forward: Int) {
