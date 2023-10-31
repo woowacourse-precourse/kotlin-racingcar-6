@@ -28,9 +28,12 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("", "1") }
         }
+
+        //자동차 입력값이 공백만 있을 경우
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException(" ", "1") }
         }
+        
         //쉼표만 입력이 되어 자동차 이름이 공백인 경우
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException(",", "1") }
@@ -41,19 +44,29 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("eddy,eddy", "1") }
         }
 
-
-        //playTime 값이 제대로 입력이 안된 경우
+        //playTime 값 == null
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "") }
         }
 
+        //playTime이 공백인 경우
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", " ") }
         }
 
-        //playTime 값이 정수가 아닌 값이 입력이 된 경우
+        //playTime 값이 숫자가 아닌 값이 입력이 된 경우
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "행복") }
+        }
+
+        //playTime 값에 음수가 입력된 경우
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "-1") }
+        }
+
+        //playTime 값에 정수가 아닌 숫자가 입력된 경우
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1.5") }
         }
 
     }
