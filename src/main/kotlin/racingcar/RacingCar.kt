@@ -8,7 +8,7 @@ class RacingCar(_name: String) {
     private var moveCnt = 0
 
     fun getRandomNum() {
-        this.randomNum = Randoms.pickNumberInRange(1, 9)
+        this.randomNum = Randoms.pickNumberInRange(0, 9)
     }
 
     private fun isMove(): Boolean {
