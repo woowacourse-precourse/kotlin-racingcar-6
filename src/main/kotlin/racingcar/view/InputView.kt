@@ -14,8 +14,8 @@ class InputView {
     fun validateRacingCarName(racingCarNameList: List<String>): List<String> {
         val validRacingCarNameList = mutableListOf<String>()
 
-        if (racingCarNameList.size < 2) {
-            throw IllegalArgumentException("자동차 이름은 2개 이상 입력받아야 한다.")
+        if (racingCarNameList.isEmpty()) {
+            throw IllegalArgumentException("자동차 이름은 1개 이상 입력받아야 한다.")
         }
 
         for (racingCarName in racingCarNameList) {
