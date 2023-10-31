@@ -1,10 +1,12 @@
 package racingcar.model
 
 import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EmptySource
@@ -56,12 +58,30 @@ class CarsTest {
 
     @ParameterizedTest
     @MethodSource("duplicationTestdataGenerate")
-    @DisplayName("Cars(init): fromNames()")
-    fun `차 이름이 중복되지 않았는지 검증`(carInstance: List<String>) {
+    @DisplayName("Cars(init): fromNames() - Fail Case")
+    fun `차 이름이 중복되지 않았는지 검증`(inputName: List<String>) {
         val exception = assertThrows<IllegalArgumentException> {
-            Cars.fromNames(carInstance)
+            Cars.fromNames(inputName)
         }
-        assertEquals(Cars.CAR_NAME_DUPLICATE_ERROR, exception.message)
+
+        assertEquals(Cars.CAR_NAME_DUPLICATE_ERROR, exception.message) // JUnit
+        assertThat(Cars.CAR_NAME_DUPLICATE_ERROR).isEqualTo(exception.message) // AssertJ
+    }
+
+    @ParameterizedTest
+    @MethodSource("CarsInstanceGenerateData")
+    @DisplayName("Cars(init): fromNames() - Success Case")
+    fun `Cars 객체(List(Car)) 생성한 뒤, size 및 carName 검증`(inputName: List<String>) {
+        val cars = assertDoesNotThrow {
+            Cars.fromNames(inputName)
+        }
+
+        assertThat(cars.carList.size).isEqualTo(inputName.size) // 사이즈 검증
+
+        for ((index, carName) in inputName.withIndex()) {
+            val carsInstanceCarName = cars.carList[index].name
+            assertThat(carsInstanceCarName).isEqualTo(carName) // carName 검증
+        }
     }
 
     companion object {
@@ -70,6 +90,12 @@ class CarsTest {
             listOf("1", "01", "1", "2"),
             listOf("010", "020", "010"),
             listOf("101", "102", "101"),
+        )
+
+        @JvmStatic
+        private fun CarsInstanceGenerateData() = listOf(
+            listOf("1", "2", "1232", "2123"),
+            listOf("asd", "125s", "sd21"),
         )
     }
 }

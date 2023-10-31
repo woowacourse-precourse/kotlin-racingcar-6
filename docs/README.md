@@ -4,17 +4,22 @@
 **1. 경주 할 자동차 이름 - model/`Cars`(List<`Car`>), `Car`(name, score: Int)**
 - [x] 입력 - view/InputView
 - [x] 검증 : `5자리 이하 문자열들이 쉼표로 구분되어 있는지` - Car.init -> Cars.init
+- [x] test
 
 **2. 시도할 횟수 - model/Repetition**
 - [x] 입력 - view/InputView -> Repetition()
-- [x] 검증 : `자연수` - Repetition.Validation -> Set
+- [x] 검증 : `자연수` - Repetition.init -> set
+- [x] test
 
 **3. 자동차 전진 조건 - model/Round**
 - [x] 0 ~ 9 사이의 `랜덤값 구하는 기능` model/Round.generateRandomNumber()
 - [x] 랜덤값이 `4이상인지 판단`하는 기능 - model/Round.isForward()
+- [ ] test
 
 **4. 라운드 별 자동차 경주 점수 출력 - view/OutputView**
 - [x] 라운드의 진행 결과를 출력하는 기능 - view/OutputView.printRoundResult()
+- [ ] test
+
 
 **5. 자동차 경주 우승자  - model/Winner(Race)**
 - [X] 참가자 중 `최고 Score를 계산`하는 기능 - model/Winner.init
@@ -22,9 +27,11 @@
 - [X] 우승자를 `출력`하는 기능 - view/OutputView.printWinner()
     - [X] 한 명
     - [X] 여러 명 : 쉼표로 구분
+- [ ] test
 
 **6. 반복 - controller.GameController**
 - [X] 경주가 N번 반복 가능하도록 확장 - Controller
+- [ ] test
   <br><br>
 
 
@@ -91,7 +98,7 @@
 
 ### 7. 최종 체크리스트
 - [ ] 1. `모든 변수와 메소드에 접근제한자를 지정` 했는가?
-- [ ] 2. `모든 메서드를 class로 wraping` 했는가?
+- [x] 2. `모든 메서드를 class로 wraping` 했는가?
 - [ ] 3. `불변성을 고려한 컬렉션의 다양한 API`를 사용 했는가?
          <br><br>
 
@@ -106,7 +113,7 @@ ___
 > 1주차 : **git, 교육 분야별 언어, 그리고 미션 사이클**`에 익숙해지는 것이었습니다.` <br><br>
 > 2주차 : `(1주 차에서 학습한 것에 더해)` **함수를 분리**하고, **각 함수별로 테스트를 작성**`하는 것에 익숙해지는 것`
 
-- [ ] 1. `언어별 테스트 도구 학습`
+- [x] 1. `언어별 테스트 도구 학습`
 - [ ] 2. `작은 단위의 기능부터` 테스트를 작성
          <br><br>
 
