@@ -4,7 +4,7 @@ import racingcar.util.RandomGenerator
 import racingcar.view.OutputView
 
 class Circuit(private val outputView: OutputView = OutputView()) {
-    private var _state: CircuitState = CircuitState.Start
+    private var _state: CircuitState = CircuitState.START
     val state get() = _state
     private val _cars: MutableList<Car> = mutableListOf()
     val cars: List<Car> get() = _cars
@@ -13,7 +13,7 @@ class Circuit(private val outputView: OutputView = OutputView()) {
         for (name in names) {
             _cars.add(Car(name))
         }
-        _state = CircuitState.Racing
+        _state = CircuitState.RACING
     }
 
     fun moveCars(attempt: Int) {
@@ -23,12 +23,12 @@ class Circuit(private val outputView: OutputView = OutputView()) {
             }
             outputView.printGameStatusMessage(cars)
         }
-        _state = CircuitState.End
+        _state = CircuitState.END
     }
 
     fun findWinner(): List<Car> {
         val maxPosition = cars.maxOf { it.move.position }
-        _state = CircuitState.Exit
+        _state = CircuitState.EXIT
         return cars.filter { it.move.position == maxPosition }
     }
 }
