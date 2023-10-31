@@ -23,6 +23,6 @@ fun main() {
         println()
     }
 
-
+    print("최종 우승자 : " + user.printCarNameOfMaxDistance(carDistanceList, carNameList))
 
 }
