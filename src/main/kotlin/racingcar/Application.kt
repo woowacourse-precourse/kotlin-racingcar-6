@@ -49,6 +49,7 @@ object InputManager {
             it
         }
     }
+    fun getRoundNum() = Console.readLine().toInt()
 }
 
 object OutputManager {
@@ -58,7 +59,6 @@ object OutputManager {
         println("${it.name} : $distanceBar")
     }
 
-    //- [ ] 누가 우승했는지 출력해야 한다. OutputManager#printWinner()
     fun printWinners(winners:List<String>) {
         val winnersString = winners.joinToString { ", " }
         println("최종 우승자 : $winnersString")
