@@ -41,7 +41,7 @@ object InputHandler {
 
     private fun isAllLowerCase(string: String): Boolean = string.all { it.isLowerCase() }
 
-    private fun isLengthLessThanOrEqualTo5(string: String) : Boolean = if (string.length <= 5) true else false
+    private fun isLengthLessThanOrEqualTo5(string: String): Boolean = if (string.length <= 5) true else false
 
     private fun isPositiveNumber(int: Int): Boolean = if (int > 0) true else false
 

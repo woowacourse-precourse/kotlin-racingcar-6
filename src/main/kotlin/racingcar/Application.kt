@@ -4,6 +4,6 @@ fun main() {
     startCarRacing()
 }
 
-private fun startCarRacing(){
+private fun startCarRacing() {
     RacingGameManager.startGame()
 }

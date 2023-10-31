@@ -1,10 +1,10 @@
 package racingcar
 
-class Car(name : String) {
-    private val name : String = name
+class Car(name: String) {
+    private val name: String = name
     private var loc = 0
 
-    fun move(){
+    fun move() {
         loc++
     }
 
@@ -14,7 +14,7 @@ class Car(name : String) {
 
     fun displayLocation() {
         print("$name : ")
-        repeat(loc){
+        repeat(loc) {
             print("-")
         }
         println()
