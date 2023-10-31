@@ -46,7 +46,7 @@ class Racing {
 
     private fun findWinner(carResult: MutableList<String>): MutableList<Int> {
         val maxLength = carResult.max()
-        if (maxLength == "") {
+        if (maxLength.isEmpty()) {
             return mutableListOf<Int>()
         }
         val maxIndexList = mutableListOf<Int>()
