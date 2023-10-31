@@ -12,7 +12,7 @@
 - [x] 시도할 횟수를 자연수로 입력한다.(`InputTry`)
   - [x] 시도에 대한 유효성을 판단한다. 
 - [ ] 전진 조건을 판별한다.
-  - [ ] 0에서 9 까지의 무작위 수를 구한다. (`NumberGenerator.createRandomNumber`)
+  - [x] 0에서 9 까지의 무작위 수를 구한다. (`NumberGenerator.createRandomNumber`)
   - [ ] 무작위 수가 4 이상인지 판별한다. (`Car.isMove`)
 - [ ] 자동차가 전진한다.
   - [ ] 자동차가 전진하면 Car 의 위치가 1 증가한다. (`Car.moveForward`)

@@ -1,7 +1,9 @@
 package racingcar.model
 
+import camp.nextstep.edu.missionutils.Randoms
+
 class NumberGenerator {
     fun generateRandomNumber(): Int {
-        return 0
+        return Randoms.pickNumberInRange(0, 9)
     }
 }
