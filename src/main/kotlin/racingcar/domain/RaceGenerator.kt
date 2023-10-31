@@ -1,13 +1,19 @@
 package racingcar.domain
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.res.GuideMessage.ENTER_CAR_NAMES_GUIDEMESSAGE
+import racingcar.res.GuideMessage.ENTER_NUMBER_OF_MOVES_GUIDEMESSAGE
+import racingcar.res.ErrorMessage.EMPTY_CAR_NAME_ERRORMESSAGE
+import racingcar.res.ErrorMessage.INDISTINCTIVE_CAR_NAME_ERRORMESSAGE
+import racingcar.res.ErrorMessage.NOT_PROPER_NUMBER_OF_MOVES_ERRORMESSAGE
+import racingcar.res.ErrorMessage.UNDER_5_LETTERS_CAR_NAME_ERRORMESSAGE
 
 class RaceGenerator {
   private val cars: MutableList<Car> = mutableListOf()
   private var numberOfMoves: Int = -1
 
   fun generateCars(): List<Car> {
-    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    println(ENTER_CAR_NAMES_GUIDEMESSAGE)
     val input: String = Console.readLine()
     val carNames = checkCarNames(input)
 
@@ -19,7 +25,7 @@ class RaceGenerator {
   }
 
   fun askNumberOfMoves(): Int {
-    println("시도할 횟수는 몇 회인가요?")
+    println(ENTER_NUMBER_OF_MOVES_GUIDEMESSAGE)
     val input: String = Console.readLine()
     numberOfMoves = checkNumberOfMoves(input)
 
@@ -31,16 +37,16 @@ class RaceGenerator {
 
     for (carName in carNames) {
       if (carName.isEmpty()) {
-        throw IllegalArgumentException("자동차 이름을 입력해주세요.")
+        throw IllegalArgumentException(EMPTY_CAR_NAME_ERRORMESSAGE)
       }
 
       if (carName.length > 5) {
-        throw IllegalArgumentException("자동차 이름을 5자 이하로 작성해주세요.")
+        throw IllegalArgumentException(UNDER_5_LETTERS_CAR_NAME_ERRORMESSAGE)
       }
     }
 
     if (carNames.size != carNames.toSet().size) {
-      throw IllegalArgumentException("자동차 이름들을 구별되게 지어주세요.")
+      throw IllegalArgumentException(INDISTINCTIVE_CAR_NAME_ERRORMESSAGE)
     }
 
     return carNames
@@ -48,10 +54,9 @@ class RaceGenerator {
 
   fun checkNumberOfMoves(input: String): Int {
     val result = input.toIntOrNull()
-      ?: throw IllegalArgumentException("올바른 횟수를 입력해주세요.")
 
-    if (result < 0) {
-      throw IllegalArgumentException("올바른 횟수를 입력해주세요.")
+    if ((result == null) || (result < 0)) {
+      throw IllegalArgumentException(NOT_PROPER_NUMBER_OF_MOVES_ERRORMESSAGE)
     }
 
     return result
