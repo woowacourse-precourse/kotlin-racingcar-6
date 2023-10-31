@@ -18,7 +18,7 @@ object RacingGameManager {
     private fun registerCarNames() {
         carNames = UserInput.readCarName()
             .createNameList()
-        InputValidator.checkNamesLength(carNames)
+        InputValidator.checkNamesLength(carNames) // 이름이 1자 이상 5자 이하인지 검사한다.
         for (carName in carNames) {
             racingCars.add(RacingCar(name = carName))
         }
