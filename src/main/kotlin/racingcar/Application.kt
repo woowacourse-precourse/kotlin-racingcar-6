@@ -4,28 +4,18 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 val CARS = mutableListOf<Car>()
-val CARSNAME = mutableListOf<String>()
 val WINNERS = mutableListOf<String>()
 var MAX = 0
 
 fun main() {
-    clear()
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     input()
     val repeat = inputRepeat()
-    for(i in CARSNAME){
-        CARS.add(Car(i))
-    }
     processGame(repeat)
     findMaxPos()
     winner()
 }
-fun clear(){
-    CARS.clear()
-    WINNERS.clear()
-    MAX = 0
-    CARSNAME.clear()
-}
+
 private fun winner() {
     for (car in CARS) {
         if (car.position == MAX) {
@@ -65,13 +55,6 @@ fun step(random: Int, car: Car) {
     }
     println("${car.name} : ${"-".repeat(car.position)}")
 }
-//fun printStep(car: Car) {
-//    var go = ""
-//    for(i in 0..<car.position){
-//        go += "-"
-//    }
-//    println("${car.name} : $go")
-//}
 fun input(){
     val carname = Console.readLine()
     val names = carname.split(',')
@@ -83,7 +66,7 @@ fun checkName(input: String) {
     if (input.length > 5 || input.isEmpty()) {
         throw IllegalArgumentException("이름이 5자가 넘어가거나 값이 없습니다.")
     } else {
-        CARSNAME.add(input)
+        CARS.add(Car(input))
     }
 }
 fun inputRepeat(): Int {
