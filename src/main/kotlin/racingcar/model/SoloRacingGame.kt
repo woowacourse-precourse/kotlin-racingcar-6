@@ -13,7 +13,7 @@ class SoloRacingGame(private val randomUtils: RandomUtils, private val outputVie
     }
 
     fun soloCarGame(inputCarName: String) {
-        val soloCount = soloRacingGame(inputCarName)
+        val soloCount = soloRacingGameLogic(inputCarName)
         checkSoloWinner(inputCarName, soloCount)
     }
 
@@ -21,7 +21,7 @@ class SoloRacingGame(private val randomUtils: RandomUtils, private val outputVie
         return randomNum >= ADVANCE_MINIMUM
     }
 
-    private fun soloRacingGame(inputCarName: String): Int {
+    private fun soloRacingGameLogic(inputCarName: String): Int {
         outputView.printSoloGameRules()
         var soloCount = DEFAULT_SCORE
         repeat(SOLO_GAME_COUNT) {

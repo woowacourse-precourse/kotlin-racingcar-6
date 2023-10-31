@@ -12,7 +12,7 @@ class ValidateCarName {
     fun validateInputSingleCarName(inputCarName: String): Boolean {
         when {
             validateMaxInput5(inputCarName) -> throw IllegalArgumentException(OutputView.CAR_NAME_COUNT_ERROR)
-            validateInputBlank(inputCarName) -> throw IllegalArgumentException(OutputView.NO_CAR_NAME_ERROR)
+            validateIsBlank(inputCarName) -> throw IllegalArgumentException(OutputView.NO_CAR_NAME_ERROR)
         }
         return true
     }
@@ -30,10 +30,6 @@ class ValidateCarName {
             }
         }
         return true
-    }
-
-    private fun validateInputBlank(inputCarName: String): Boolean {
-        return inputCarName.isBlank()
     }
 
     private fun validateMaxInput5(inputCarName: String?): Boolean {
