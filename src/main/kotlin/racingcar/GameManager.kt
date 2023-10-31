@@ -12,6 +12,9 @@ class GameManager {
         makeRacingCarList(inputManager.getRacingCarNameList())
         println("시도할 횟수는 몇 회인가요?")
         trial = inputManager.getTrial()
+        for (num in 1..trial) {
+            proceedRacingGame()
+        }
     }
 
     private fun makeRacingCarList(racingCarNameList: List<String>) {
@@ -22,5 +25,14 @@ class GameManager {
 
     private fun generateRandomNumber(): Int {
         return Randoms.pickNumberInRange(0, 9)
+    }
+
+    private fun proceedRacingGame() {
+        for (racingCar in racingCarList) {
+            val randomNumber = generateRandomNumber()
+            if (randomNumber >= 4) {
+                racingCar.distance++
+            }
+        }
     }
 }
