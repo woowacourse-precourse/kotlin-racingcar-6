@@ -16,13 +16,16 @@ class CarLaneDemo {
         private val standardOut = System.out
         private val outputStreamCaptor = ByteArrayOutputStream()
         private var output = outputStreamCaptor.toString().trim()
+
         @BeforeAll
+        @JvmStatic
         fun setUpStream() {
             System.setOut(PrintStream(outputStreamCaptor))
         }
 
         @AfterAll
-        fun tearDown() {
+        @JvmStatic
+        fun tearDown(): Unit {
             System.setOut(standardOut)
         }
     }

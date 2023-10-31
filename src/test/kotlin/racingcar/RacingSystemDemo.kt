@@ -15,11 +15,13 @@ class RacingSystemDemo {
         private val outputStreamCaptor = ByteArrayOutputStream()
         private var output = outputStreamCaptor.toString().trim()
         @BeforeAll
+        @JvmStatic
         fun setUpStream() {
             System.setOut(PrintStream(outputStreamCaptor))
         }
 
         @AfterAll
+        @JvmStatic
         fun tearDown() {
             System.setOut(standardOut)
         }
