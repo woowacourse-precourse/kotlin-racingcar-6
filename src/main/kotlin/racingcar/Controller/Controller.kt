@@ -1,0 +1,46 @@
+package racingcar.Controller
+
+import camp.nextstep.edu.missionutils.Randoms
+import racingcar.model.RacingCar
+import racingcar.view.InputView
+import racingcar.view.OutputView
+
+class Controller(val inputView: InputView, val outputView: OutputView) {
+    fun startGame(){
+        inputView.printStartGameMessage()
+        val carNames : List<String> = inputView.inputRacingCarName()
+        inputView.printAskTryNumberMessage()
+        val tryNumber = inputView.inputTryNumber()
+
+        outputView.printResultMessage()
+        val racingCars = makeRacingCars(carNames)
+        for (index in 1..tryNumber) {
+            moveOrStop(racingCars)
+            outputView.printResult(racingCars)
+        }
+    }
+
+    fun makeRacingCars(carNames: List<String>) : List<RacingCar> {
+        val racingCars = mutableListOf<RacingCar>()
+        for (car in carNames.indices) {
+            racingCars.add(RacingCar(carNames[car]))
+        }
+        return racingCars
+    }
+
+    fun moveOrStop(racingCars: List<RacingCar>) : List<RacingCar> {
+        for (car in racingCars.indices) {
+            if (getRandomNumber()) racingCars[car].forward++
+        }
+        return racingCars
+    }
+
+    fun getRandomNumber() : Boolean {
+        val randomNumber = Randoms.pickNumberInRange(0, 9)
+        return validateMoreThanFour(randomNumber)
+    }
+
+    fun validateMoreThanFour(randomNumber: Int) : Boolean {
+        return randomNumber >= 4
+    }
+}
