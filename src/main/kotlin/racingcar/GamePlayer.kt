@@ -1,25 +1,23 @@
 package racingcar
 
-class GamePlayer(gameNum : Int?, carList : List<String>?) {
+class GamePlay(gameNum : Int?, carList : List<String>?) {
 
 
     private var carScore = HashMap<String,Int>()
     private var _winnerList : MutableList<String> = mutableListOf()
     val winnerList =  _winnerList
-
+    var gameOrder  = 1
 
     init {
 
-        carList?.forEach {
-            carName ->
-            carScore[carName] = 0
-        }
 
-        var gameOrder  = 1
+        makeListToHash(carList)
 
-        while(gameOrder<= gameNum!!) {
+
+        while(gameOrder <= gameNum!!) {
 
             carScore = playGame(carScore)
+
             print("\n")
 
             gameOrder ++
@@ -31,7 +29,14 @@ class GamePlayer(gameNum : Int?, carList : List<String>?) {
 
     }
 
+    fun makeListToHash(list : List<String>?) : HashMap<String,Int>{
 
+        list?.forEach {
+                carName ->
+            carScore[carName] = 0
+        }
+        return carScore
+    }
 
     fun playGame(carScore : HashMap<String,Int>) : HashMap<String,Int> {
 
