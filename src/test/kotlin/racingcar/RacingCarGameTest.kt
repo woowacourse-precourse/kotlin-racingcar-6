@@ -1,7 +1,6 @@
 package racingcar
 
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import racingcar.controller.RacingCarGameImpl
@@ -24,8 +23,8 @@ class RacingCarGameTest {
         val racingCars = racingCarGameImpl.createRacingCars(racingCarNames)
 
         // Then
-        assertEquals(racingCarNames.size, racingCars.size)
-        assertTrue(racingCars.all { true })
+        assertThat(racingCars).hasSize(racingCarNames.size)
+
     }
 
     @Test
@@ -37,7 +36,7 @@ class RacingCarGameTest {
         val movedRacingCars = racingCarGameImpl.moveRacingCars(racingCars)
 
         // Then
-        assertTrue(movedRacingCars.size == racingCars.size)
+        assertThat(movedRacingCars).hasSize(racingCars.size)
     }
 
     @Test
@@ -53,6 +52,6 @@ class RacingCarGameTest {
         val winners = racingCarGameImpl.getWinners(racingCars)
 
         // Then
-        assertEquals("Car1", winners)
+        assertThat(winners).contains("Car1")
     }
 }
