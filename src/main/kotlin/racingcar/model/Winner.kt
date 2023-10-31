@@ -7,7 +7,14 @@ data class Winner(
     val winnerList: List<String> get() = _winnerNameList
 
     init {
-        val bestScore = carList.maxOf { it.score }
+        val scoreList = carList.map { it.score }
+        val bestScore = bestScoreCalculate(scoreList)
+        winnerNameListSet(carList, bestScore)
+    }
+
+    private fun bestScoreCalculate(scoreList: List<Int>) = scoreList.maxOf { it }
+
+    private fun winnerNameListSet(carList: List<Car>, bestScore: Int) {
         _winnerNameList = carList.filter { it.score == bestScore }
             .map { it.name }
     }

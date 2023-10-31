@@ -2,9 +2,10 @@ package racingcar.model
 
 data class Car(
     private val inputName: String,
+    private val scoreForTest: Int = CAR_SCORE_DEFAULT,
 ) {
     private var _name: String
-    private var _score: Int = CAR_SCORE_DEFAULT
+    private var _score: Int
 
     val name: String get() = _name
     val score: Int get() = _score
@@ -14,6 +15,9 @@ data class Car(
         checkNameLength(inputName)
         checkNameLetter(inputName)
         _name = inputName
+
+        require(scoreForTest >= 0) { CAR_SCORE_IS_NEGATIVE }
+        _score = scoreForTest
     }
 
     // TODO : 최종 테스트 후, 가시성 제한하기
@@ -35,5 +39,7 @@ data class Car(
         const val CAR_NAME_LENGTH_ERROR =
             "자동차 이름은 ${CAR_NAME_MIN}자 이상 ${CAR_NAME_MAX}자 이하로 입력해주세요."
         const val CAR_NAME_FORMAT_ERROR = "자동차 이름은 한글, 영문, 숫자만 사용할 수 있습니다."
+
+        const val CAR_SCORE_IS_NEGATIVE = "테스트를 위해 입력된 숫자가 음수입니다."
     }
 }
