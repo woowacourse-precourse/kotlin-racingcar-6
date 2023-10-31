@@ -44,7 +44,7 @@
 **12. 테스트 코드 작성**
     - JUnit 5와 AssertJ를 사용하여 구현한 기능이 정상 동작하는지 확인하는 테스트 코드 작성
 
-
+<br/>
 
 
 ## ⚙️ Architecture
@@ -52,7 +52,35 @@
 ### MVVM
 #### View와 Model 사이의 의존성을 낮춰주는 패턴으로 온보딩, 확장성, 유지보수성, 테스트 용이성 등 다양한 이점이 있는 MVVM 패턴 채택
 
+<br/>
 
+##  📑 File Structure
+
+##### dataLayer
+
+- Model
+  - **RacingCarModel** : 자동차의 이름, 전전 횟수에 대한 정보를 쉽게 관리하고 넘겨주기 위한 Data Class
+    - uiLayer의  RoundStateModel로 매핑해주는 확장함수를 가지고있다.
+- repository
+  - **RacingCarRepositoryImpl** : 레이싱 게임 데이터를 관리하는 repository 구현부 클래스
+
+##### uiLayer
+
+- model
+  - **RoundStateModel** : RacingCarModel과 유사하나, view에서 사용할 전진횟수를 String으로 바꿔 관리하는 Data Class
+- repository
+  - **RacingCarRepository** : Facade 패턴을 사용해 view에세 단순한 인터페이스를 제공하는 repository interface
+- viewmodel
+  - **RacingCarViewModel** : 레이 게임과 관련된 비즈니스 로직을 처리하는 ViewModel 클래스/ 게임 로직과 UI를 분리하여 유지보수성, 확장성, 테스트 용이성 등을 높임
+- **RacingCarGame** : 사용자와 상호작용하며 레이싱 게임의 플로우를 제어하는 View의 역할을 하는 클래스
+
+##### utils
+
+- **CommonStrings** : 게임에서 사용되는 공통 문자열 상수를 정의한 클래스로, 화면에 표시되는 메시지나 문자열 값들을 관리
+- **Exceptions** : Exceptions는 예외 처리를 담당하는 클래스로, 잘못된 입력이나 예외 상황을 처리하기 위한 함수들을 제공
+- **GameUtils** : 게임에서 사용되는 유틸리티 함수들을 제공하는 객체
+
+<br/>
 
 ## 📌 Convention
 ### Commit Message Convention
