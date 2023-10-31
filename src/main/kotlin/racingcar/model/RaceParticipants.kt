@@ -1,6 +1,10 @@
 package racingcar.model
 
-class RaceParticipants private constructor(val cars: List<Car>) {
+class RaceParticipants private constructor(private val cars: List<Car>) {
+
+    fun moveCar(carName: CarName) = cars.first { car -> car.name == carName }.moveForward()
+
+    fun getNamesOfParticipants(): List<CarName> = cars.map { car -> car.name }
 
     fun getCarsWithLongestDistance(): List<Car> {
         val maxDistance = cars.maxOfOrNull { car -> car.distance } ?: 0
@@ -14,7 +18,7 @@ class RaceParticipants private constructor(val cars: List<Car>) {
             val cars = carNames.split(NAME_SEPARATOR)
                 .validateNoDuplicates()
                 .getOrThrow()
-                .map { name -> Car(name) }
+                .map { name -> Car(CarName(name)) }
             return RaceParticipants(cars)
         }
     }

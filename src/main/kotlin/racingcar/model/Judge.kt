@@ -2,20 +2,34 @@ package racingcar.model
 
 import racingcar.RandomGenerator
 
-class Judge(private val raceParticipants: RaceParticipants) {
+class Judge(
+    private val raceParticipants: RaceParticipants,
+    private val attempt: Attempt
+) {
 
-    fun play(): RaceParticipants {
-        raceParticipants.cars.forEach(::calculate)
-        return raceParticipants
+    private val board = Board.create(raceParticipants.getNamesOfParticipants(), attempt)
+
+    fun play(): Board {
+        repeat(attempt) {
+            executeMove(attempt)
+        }
+        return board
     }
 
     fun getWinner(): List<Car> = raceParticipants.getCarsWithLongestDistance()
 
-    private fun calculate(car: Car) {
-        val score = RandomGenerator.pickNumber(RANDOM_START_NUMBER, RANDOM_END_NUMBER)
-        if (score >= MOVING_POINT) {
-            car.moveForward()
+    private fun executeMove(attempt: Attempt) {
+        raceParticipants.getNamesOfParticipants().forEach { carName ->
+            if (isAvailableMove()) {
+                val score = raceParticipants.moveCar(carName)
+                board.addScore(carName, attempt, score)
+            }
         }
+    }
+
+    private fun isAvailableMove(): Boolean {
+        val score = RandomGenerator.pickNumber(RANDOM_START_NUMBER, RANDOM_END_NUMBER)
+        return score >= MOVING_POINT
     }
 
     companion object {

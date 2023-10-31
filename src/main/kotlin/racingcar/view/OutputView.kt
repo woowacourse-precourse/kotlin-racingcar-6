@@ -1,7 +1,6 @@
 package racingcar.view
 
-import racingcar.model.Car
-import racingcar.model.RaceParticipants
+import racingcar.model.*
 
 class OutputView {
 
@@ -9,15 +8,14 @@ class OutputView {
 
     fun printInputNumberOfAttempts() = println(Message.NumberOfAttempts)
 
-    fun printResult() {
+    fun printCurrentRaceResult(board: Board, lastAttempt: Attempt) {
         println()
-        println(Message.RaceResult)
-    }
-
-    fun printCurrentRaceResult(result: RaceParticipants) {
         val message = buildString {
-            result.cars.forEach { car ->
-                appendLine(String.format(Message.RaceResultFormat.toString(), car.name, formatDistance(car)))
+            appendLine(Message.RaceResult)
+            repeat(lastAttempt) { currentAttempt ->
+                board.getResultByAttempt(currentAttempt).forEach { (carName, score) ->
+                    appendLine(String.format(Message.RaceResultFormat.toString(), carName, formatDistance(score)))
+                }
             }
         }
         println(message)
@@ -28,12 +26,12 @@ class OutputView {
         print(String.format(Message.WinnerFormat.toString(), formatWinner(nameOfWinners)))
     }
 
-    private fun formatDistance(car: Car): String =
+    private fun formatDistance(score: Score): String =
         buildString {
-            repeat(car.distance) { append(ONE_STEP) }
+            repeat(score) { append(ONE_STEP) }
         }
 
-    private fun formatWinner(names: List<String>): String = names.joinToString(", ")
+    private fun formatWinner(names: List<CarName>): String = names.joinToString(", ")
 
     companion object {
         private const val ONE_STEP = "-"
