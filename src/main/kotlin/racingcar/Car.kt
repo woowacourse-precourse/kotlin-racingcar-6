@@ -2,7 +2,8 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class Car(private var name: String) {
+class Car(named: String) {
+    private var name: String = named
     private var position: Int = 0
 
     companion object {
