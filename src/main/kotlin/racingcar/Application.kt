@@ -9,13 +9,9 @@ val error = Error()
 var MAX = 0
 val INPUT_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
 val INPUT_REPEAT = "시도할 횟수는 몇 회인가요?"
-val NOT_INT_OR_NULL = "숫자가 아니거나 null입니다."
-val INPUT_UNDER_ZERO = "입력 값에 음수가 있습니다."
 val MOVE = "-"
 
 fun main() {
-    cars.clear()
-    winners.clear()
     println(INPUT_NAME)
     input()
     val repeat = inputRepeat()
