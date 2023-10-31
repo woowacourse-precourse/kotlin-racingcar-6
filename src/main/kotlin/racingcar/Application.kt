@@ -1,5 +1,8 @@
 package racingcar
+import camp.nextstep.edu.missionutils.*
 
 fun main() {
-    // TODO: 프로그램 구현
+
+    CarRacingGame().carInit()
+
 }
