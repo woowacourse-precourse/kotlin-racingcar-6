@@ -21,7 +21,7 @@ object RacingGameController {
         ConsoleView.printWinner(winners)
     }
 
-    private fun getWinners(results: Map<String, Int>): Set<String> {
+    fun getWinners(results: Map<String, Int>): Set<String> {
         val maxDistance = results.values.maxOrNull()
         return results.filterValues { it == maxDistance }.keys
     }
