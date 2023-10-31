@@ -2,14 +2,14 @@ package racingcar.ui
 
 import camp.nextstep.edu.missionutils.Console
 
-const val MSG_INPUT_CAR_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-const val MSG_INPUT_ATTEMPT_COUNT = "시도할 횟수는 몇 회인가요?"
+private const val MSG_INPUT_CAR_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+private const val MSG_INPUT_ATTEMPT_COUNT = "시도할 횟수는 몇 회인가요?"
 
-const val MSG_OUTPUT_RESULT = "실행 결과"
-const val MSG_OUTPUT_WINNER = "최종 우승자 : "
+private const val MSG_OUTPUT_RESULT = "실행 결과"
+private const val MSG_OUTPUT_WINNER = "최종 우승자 : "
 
-const val MSG_EXCEPTION_NAME_LENGTH = "이름은 5자 이하만 가능합니다."
-const val MSG_EXCEPTION_ONLY_DIGIT = "시도 횟수는 숫자만 가능합니다."
+private const val MSG_EXCEPTION_NAME_LENGTH = "이름은 5자 이하만 가능합니다."
+private const val MSG_EXCEPTION_ONLY_DIGIT = "시도 횟수는 숫자만 가능합니다."
 
 object UserInput {
 
