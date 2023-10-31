@@ -33,5 +33,11 @@ class RacingGameViewModel(private val numberGenerator: NumberGenerator) {
         }
     }
 
+    fun getRoundResult(): String {
+        val roundResult = StringBuilder()
+        for (player in _playerList) roundResult.append(player.toString())
+        return roundResult.toString() + "\n"
+    }
+
     private fun canMoveForward() = numberGenerator.generate() >= 4
 }

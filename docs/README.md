@@ -54,7 +54,7 @@ Repository 객체 대신 List로 간소화한다.
 - [x] savePlayer(): 사용자 입력 받아서 플레이어 저장
 - [x] saveRound(): 사용자 입력 받아서 라운드 저장
 - [x] playRound(): 각 라운드 플레이 해줄 함수
-- [ ] getRoundResult(): 현재 라운드 결과 리턴
+- [x] getRoundResult(): 현재 라운드 결과 리턴
 - [ ] getWinners(): 우승자 담아서 리턴
 - [x] canMoveForward(): 이동할 수 있는지 여부
 
