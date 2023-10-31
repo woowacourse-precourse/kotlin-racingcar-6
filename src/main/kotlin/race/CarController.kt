@@ -8,12 +8,10 @@ import kotlin.IllegalArgumentException
 class CarController(private val carModel: CarModel, private val printResult: PrintResult) {
     fun runRace() {
         printResult.printMessage(Constant.CAR_INPUT_STRING)
-        println()
         val carString = inputString()
         validateCarInput(carString)
         processCarInput(carString)
         printResult.printMessage(Constant.TRY_NUMBER_INPUT_STRING)
-        println()
         val moveNum = inputMoveNum()
         carModel.moveCars(moveNum)
         printWinner()
@@ -65,6 +63,10 @@ class CarController(private val carModel: CarModel, private val printResult: Pri
         if (inputNumber.isEmpty()) {
             throw IllegalArgumentException(ErrorString.NO_INPUT_ERROR)
         } else if (isInteger(inputNumber)) {
+            val number = inputNumber.toInt()
+            if (number !in Constant.MIN_TRY_NUMBER..Constant.MAX_TRY_NUMBER) {
+                throw IllegalArgumentException(ErrorString.INTEGER_RANGE_ERROR)
+            }
             return inputNumber.toInt()
         } else {
             throw IllegalArgumentException(ErrorString.INTEGER_INPUT_ERROR)
