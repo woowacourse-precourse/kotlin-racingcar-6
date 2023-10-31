@@ -2,7 +2,7 @@ package racingcar.model
 
 import racingcar.constants.*
 import racingcar.util.isDigit
-import racingcar.util.isGreater
+import racingcar.util.isLessThan
 
 class Try private constructor(private val count: Int) {
     fun iterableTry() = 0 until count
@@ -31,7 +31,7 @@ class Try private constructor(private val count: Int) {
             require(countString.isDigit()) { TryException.DIGIT }
 
         fun validateTryMax(countString: String) =
-            require(countString.isGreater(MAX.toString())) { TryException.MAX }
+            require(countString.isLessThan(MAX.toString())) { TryException.MAX }
 
         fun validateTryMin(count: Int) =
             require(count >= MIN) { TryException.MIN }

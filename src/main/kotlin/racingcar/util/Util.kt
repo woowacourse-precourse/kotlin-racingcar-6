@@ -11,4 +11,4 @@ fun String.isLetter() = this.all { it.isLetter() }
 
 fun String.isDigit() = this.all { it.isDigit() }
 
-fun String.isGreater(other: String) = this.length > other.length || this >= other
+fun String.isLessThan(other: String) = this.length < other.length || this < other
