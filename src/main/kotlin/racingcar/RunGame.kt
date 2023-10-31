@@ -13,7 +13,7 @@ class RunGame {
         }
 
 
-        var winnerList:ArrayList<String> = PostGame().getWinner()
+        var winnerList:List<Players> = PostGame().getWinner(racingCars)
         PostGame().printWinner(winnerList)
 
     }
