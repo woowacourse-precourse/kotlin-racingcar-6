@@ -6,6 +6,8 @@ class Refree(
     private val roundNum: Int
 ) {
     val cars: List<Car> = namesOfParticipants.map{Car(it)}
+
+    fun runRound() = cars.forEach{it.goForwardOrStop()}
 }
 
 class Car(val name: String) : Comparable<Car> {
