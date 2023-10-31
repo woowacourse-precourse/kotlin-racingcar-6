@@ -6,11 +6,6 @@ import camp.nextstep.edu.missionutils.Randoms
 class Logic {
     val user = User()
 
-    fun makeRandomNumber() : Int{
-        var moveNumber = Randoms.pickNumberInRange(0,9)
-        return moveNumber
-    }
-
     fun makeCarDistanceList(userCount: Int) : MutableList<String>{
         var carDistanceList: MutableList<String> = MutableList(userCount) {""}
         return carDistanceList
@@ -18,8 +13,11 @@ class Logic {
 
     fun moveCar(carDistanceList: MutableList<String>) : MutableList<String>{
         for(i in 0..carDistanceList.size-1) {
-            if(makeRandomNumber() > 4){
+            var moveNumber = Randoms.pickNumberInRange(0,9)
+            if(moveNumber >= 4){
                 carDistanceList[i] += "-"
+            }else{
+                carDistanceList += ""
             }
         }
         return carDistanceList

@@ -31,7 +31,7 @@ class User {
 
     fun printCarInfo(carDistanceList: MutableList<String>, carNameList: List<String>){
         for (i in 0..carNameList.size-1){
-            println(carNameList[i] + ":"  + carDistanceList[i])
+            println(carNameList[i] + " : "  + carDistanceList[i])
         }
     }
 
