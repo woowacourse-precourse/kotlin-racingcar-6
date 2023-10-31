@@ -27,7 +27,7 @@ class Racing(private val cars: List<Car>) {
         println()
     }
 
-    private fun getWinner(): String {
+    fun getWinner(): String {
         val maxDistance = cars.maxOfOrNull { it.distance }
         val winners = cars.filter { it.distance == maxDistance }
         return winners.joinToString { it.name }

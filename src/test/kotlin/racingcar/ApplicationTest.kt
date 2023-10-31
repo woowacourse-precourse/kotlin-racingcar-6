@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
-    private val cars: List<Car> = listOf(Car("A", 0), Car("B", 0), Car("C", 0))
+    private val cars: List<Car> = listOf(Car("A", 3), Car("B", 9), Car("C", 7))
     private val racing: Racing = Racing(cars)
 
     @Test
@@ -74,6 +74,14 @@ class ApplicationTest : NsTest() {
             val results: MutableList<Boolean> = MutableList<Boolean>(5) { false }
             randomNumbers.forEachIndexed { idx, i -> results[idx] = racing.determineMoveOrStop(i) }
             assertThat(results).isEqualTo(listOf(false, true, true, false, true))
+        }
+    }
+
+    @Test
+    fun `우승자 판별`() {
+        assertSimpleTest {
+            val results = racing.getWinner()
+            assertThat(results).isEqualTo("B")
         }
     }
 
