@@ -1,9 +1,13 @@
 package racingcar
 
 class RacingCarGame {
-    private val racingCarGenerator = RacingCarGenerator()
+    private val racingCarGameManager = RacingCarGameManager()
+
+    init {
+        racingCarGameManager.setConfiguration()
+    }
 
     fun run() {
-        racingCarGenerator.getRacingCars()
+
     }
 }

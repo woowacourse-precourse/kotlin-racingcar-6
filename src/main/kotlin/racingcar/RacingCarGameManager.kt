@@ -2,33 +2,33 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 
-class RacingCarGenerator {
+class RacingCarGameManager {
     private var racingCars = listOf<RacingCar>()
 
-    fun getRacingCars(): List<RacingCar> {
-        generateRacingCars()
-        return this.racingCars
+    fun setConfiguration() {
+        setRacingCars()
     }
 
-    private fun generateRacingCars() {
+    private fun setRacingCars() {
         val racingCars = mutableListOf<RacingCar>()
-        val carNames = userEnteredCarNames()
+        val carNames = validatedCarNames()
 
         carNames.map { name -> racingCars.add(RacingCar(name)) }
 
         this.racingCars = racingCars
     }
 
-    private fun userEnteredCarNames(): List<String> {
-        println(CAR_NAME_MESSAGE)
-        return validatedCarNames(Console.readLine())
+    private fun validatedCarNames(): List<String> {
+        val validator = Validator()
+        val carNames = userEnteredCarNames()
+
+        validator.validateCarNames(carNames)
+        return carNames.split(COMMA)
     }
 
-    private fun validatedCarNames(input: String): List<String> {
-        val validator = Validator()
-
-        validator.validateCarNames(input)
-        return input.split(COMMA)
+    private fun userEnteredCarNames(): String {
+        println(CAR_NAME_MESSAGE)
+        return Console.readLine()
     }
 
     companion object {
