@@ -54,4 +54,6 @@ object InputValidator {
     }
 
     fun isPositive(input: Int) = require(input > 0) { MSG_EXCEPTION_ONLY_DIGIT_AND_POSITIVE }
+
+    fun isUnderHundred(input: Int) = require(input <= 100) { MSG_EXCEPTION_ONLY_DIGIT_AND_POSITIVE }
 }

@@ -13,6 +13,7 @@
   - [x] 입력을 정수로 변환한다. // String.toInt() 사용
   - [x] 입력이 1 이상인지 확인한다. // InputValidator.isPositive
   - [x] 입력이 숫자로만 되어있는지 검사한다. // InputValidator.checkOnlyDigit
+  - [x] 입력이 100 이하인지 확인한다. // InputValidator.isUnderHundred
 
 
 ❗️ 사용자가 잘못된 값을 입력할 경우, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.
