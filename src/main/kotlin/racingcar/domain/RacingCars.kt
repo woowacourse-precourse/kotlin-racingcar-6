@@ -6,19 +6,17 @@ import racingcar.constant.PrintText
 
 
 class RacingCars(names: List<String>) {
-    private val racingCars = mutableListOf<RacingCar>()
+    private var racingCars: List<RacingCar>? = null
 
     init {
         validateNameListSize(names)
         validateNameLength(names)
-        names.forEach {
-            racingCars.add(RacingCar(it))
-        }
+        racingCars = names.map { RacingCar(it) }
     }
 
     fun toRacingCarsAttemptResult(): String {
         val racingCarsResult = StringBuilder()
-        racingCars.forEach {
+        racingCars!!.forEach {
             racingCarsResult.append(it.readRacingCarName() + PrintText.SEPARATE_CAR_NAME_AND_FORWARD_COUNT.text)
             repeat(it.readForwardCount()) {
                 racingCarsResult.append(PrintText.PRINT_FORWARD_MARK.text)
@@ -29,20 +27,20 @@ class RacingCars(names: List<String>) {
     }
 
     fun moveRacingCars(randomNumbers: List<Int>) {
-        racingCars.forEachIndexed { index, racingCar ->
+        racingCars!!.forEachIndexed { index, racingCar ->
             racingCar.moveRacingCar(randomNumbers[index])
         }
     }
 
     fun calculateWinner(): RacingGameWinners {
-        val fastestPosition: Int = racingCars.maxOf { it.readForwardCount() }
-        val winners = racingCars.filter { it.readForwardCount() == fastestPosition }
+        val fastestPosition: Int = racingCars!!.maxOf { it.readForwardCount() }
+        val winners = racingCars!!.filter { it.readForwardCount() == fastestPosition }
         val winnerNames = mutableListOf<String>()
         winners.forEach { winnerNames.add(it.readRacingCarName()) }
         return RacingGameWinners(winnerNames)
     }
 
-    fun racingCarsSize() = racingCars.size
+    fun racingCarsSize() = racingCars!!.size
 
     private fun validateNameListSize(names: List<String>) {
         require(names.size >= MIN_RACING_CAR_COUNT) { ErrorMessage.RACING_CAR_LESS_THAN_TWO.message }
