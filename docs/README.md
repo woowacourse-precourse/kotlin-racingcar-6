@@ -25,37 +25,50 @@
 7) 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 앱 종료
 
 # 2. 필요한 기능 목록 작성
-- [ ] 경주할 자동차 접수 // CarName
-  - [ ] 입력을 요청한다. // CarName#inputRequester
-  - [ ] 입력을 받는다. // CarName#inputReceiver
-  - [ ] 입력을 검증한다. // CarName#inputValidator
+- [x] 경주할 자동차 접수 // CarName
+  - [x] 입력을 요청한다. // requestInput
+  - [x] 입력을 받는다. // getInput
+  - [x] 입력을 검증한다. // validateInput
 
-- [ ] 시도할 횟수를 받는다. // RoundNumber
-  - [ ] 입력을 요청한다. // RoundNumber#inputRequester
-  - [ ] 입력을 받는다. // RoundNumber#inputReceiver
-  - [ ] 입력을 검증한다. // RoundNumber#inputValidator
+- [x] 시도 횟수 접수 // RoundNumber
+  - [x] 입력을 요청한다. // requestInput
+  - [x] 입력을 받는다. // getInput
+  - [x] 입력을 검증한다. // validateInput
 
-- [ ] 자동차 경주를 실행 // CarRace
-  - [ ] 0~9 사이 랜덤 값을 생성한다. // CarRace#numberGenerator
-  - [ ] 4이상이면 전진한다. // CarRace#Go
+- [x] 자동차 경주를 실행 // CarRace
+  - [x] 0~9 사이 랜덤 값을 생성한다. // generateNumber
+  - [x] 실행 결과 문구를 출력한다. // startFlag
+  - [x] 라운드 마다 호출 시 각 자동차가 전진할지 멈출지 결정한다. // runRound
+  - [x] 라운드 마다 호출 시 전진한 자동차를 출력한다. // printRound
 
-- [ ] 우승자 선정 // Referee
-  - [ ] 가장 많이 전진한 자동차를 알 수 있다. Referee#compare
-  - [ ] 최종 우승자를 출력한다. // Referee#winner
+- [x] 우승자 선정 // Referee
+  - [x] 가장 많이 전진한 점수를 찾는다. // findMaxScore
+  - [x] 우승자를 찾는다. // findWinner
+  - [x] 최종 우승자를 출력한다. // printWinner
 
 
 # 3. 명확히 기재되지 않은 내용
 - 아무도 전진안하면 출력안해야 되나? -> 공동 우승으로 출력한다.
 - 공동 우승자 발생 시 순서는? -> 입력된 자동차 이름의 순서 대로, (예시에서 p,j가 알파벳순이 아님)
+- 시도할 횟수를 입력받을 때 2147483647이 넘어가면(int가 아니면) double로 받아야하나? -> 21억 이상은 비 정상적인 범위로, int값 범위 내에서만 체크한다.
+- 라운드가 남았는데, 이미 승부가 결정난 상황이라면? -> 라운드 끝까지 진행한다.
 
 # 4. 예외 케이스
-- 자동차 이름 5자 초과
-- 자동차 이름 입력값이 빈 문자열일 때 -> 오류
-- 자동차 이름 중 빈 문자열이 포함 될 때 (pobi,,woni,jun) -> 오류
-- 자동차 이름이 space일 떄 (pobi, ,woni,jun) -> 오류
-- 자동차 이름 입력값에 space가 포함 될 떄 (pobi,wo ni,jun) -> 정상
-- 자동차 이름에 특수문자가 포함 될 때 -> 정상
+[자동차 이름 오류]
+  - 자동차 이름 입력값이 없을 때 -> 오류
+  - 자동차 이름이 하나만 입력 됐을 때 (,가 없으면) -> 오류 (경주를 할 수 없음)
+  - 자동차 이름 중 빈값이 있을 때(pobi,,jason) -> 오류
+  - 자동차 이름 중 공백(space)이 있을 떄 (pobi, ,woni,jun) -> 오류
+  - 자동차 이름 5자 초과 (woowahan) -> 오류
+  - 자동차 이름이 중복일 때 (pobi,pobi) -> 오류
 
-- 시도할 횟수 입력값이 빈 문자열일 때 -> 오류
-- 시도할 횟수 입력값이 숫자가 아닐 때 -> 오류
-- 시도할 횟수 입력값이 0일 때 -> 오류
+[자동차 이름 정상]
+  - 자동차 이름 중 이름에 공백(space)이 포함 될 떄 (pobi,wo ni,jun) -> 정상
+  - 자동차 이름에 특수문자가 포함 될 때 -> 정상
+
+[시도할 횟수 오류]
+  - 시도할 횟수 입력값이 없을 때 -> 오류
+  - 시도할 횟수 입력값이 숫자가 아닐 때 -> 오류
+  - 시도할 횟수 입력값이 int범위를 초과할 때 (2147483647보다 클 때) -> 오류
+  - 시도할 회숫 입력값이 음수 일 때 -> 오류
+  - 시도할 횟수 입력값이 0일 때 -> 오류
