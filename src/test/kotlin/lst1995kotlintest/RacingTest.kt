@@ -1,7 +1,7 @@
 package lst1995kotlintest
 
-import Validator.nameCheck
 import car.Car
+import car.CarFactory.makeCar
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -15,8 +15,8 @@ class RacingTest {
 
     @BeforeEach
     fun setUp() {
-        carList = nameCheck("유재석,하하,김종국,송지효,전소민")
-        car = nameCheck("유재석")
+        carList = makeCar("유재석,하하,김종국,송지효,전소민")
+        car = makeCar("유재석")
         singleRacing.start(car)
     }
 
