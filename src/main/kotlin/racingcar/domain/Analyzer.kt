@@ -5,18 +5,19 @@ import racingcar.data.Car
 class Analyzer {
 
     fun judgeWinner(cars: List<Car>): List<Car> {
-        var maxNum = Int.MIN_VALUE
+        val winners = mutableListOf<Car>()
+        var maxLocation = Int.MIN_VALUE
 
-        return cars.fold(mutableListOf()) { winners: MutableList<Car>, car ->
-            if (car.location < maxNum) {
-                return@fold winners
-            } else if (car.location > maxNum) {
+        for (car in cars) {
+            if (car.location > maxLocation) {
                 winners.clear()
-                maxNum = car.location
+                winners.add(car)
+                maxLocation = car.location
+            } else if (car.location == maxLocation) {
+                winners.add(car)
             }
-            winners.add(car)
-            winners
-        }.toList()
+        }
+        return winners.toList()
     }
 
     fun isMoveAllowed(num: Int): Boolean = num >= MIN_PASSING_NUM
