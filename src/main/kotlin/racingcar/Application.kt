@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main(arge: Array<String>) {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
 
-    val car = Console.readLine()!!.split(",")
+    val car = Console.readLine()!!.split(",").map { it.trim() }
     val cars = car.map { Car(it) }
 
     println("시도할 횟수는 몇 회인가요?")
@@ -17,7 +17,7 @@ fun main(arge: Array<String>) {
     race.run()
 
     val winners = race.winners()
-    println("최종 우승자 : ${winners.joinToString { it.name }}")
+    println("최종 우승자 : ${winners.joinToString(", ")}")
 }
 
 
@@ -48,8 +48,8 @@ fun main(arge: Array<String>) {
             for (track in 0 until rounds) {
                 cars.forEach {
                     it.move(Randoms.pickNumberInRange(0, 9))
-                    result()
                 }
+                result()
             }
         }
 
