@@ -3,7 +3,7 @@
 ## 기능 목록
 
 ### 심판
-- [ ] 게임에 참여할 자동차들의 이름 리스트를 받아, 자동차들을 초기화한다. Refree#initCars()
+- [X] 게임에 참여할 자동차들의 이름 리스트를 받아, 자동차들을 초기화한다. Refree#initCars()
 - [ ] 게임 시작 전 몇 라운드만큼 자동차들이 이동할 지 정한다. Refree#setRoundNumber()
 - [ ] 한 라운드 동안, 모든 자동차들은 한 번 전진하거나 멈춘다. Refree#runRound()
 - [ ] 게임의 현황을 알 수 있어야 한다. Refree#getGameStatus()

@@ -1,6 +1,12 @@
 package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 
+class Refree(
+    private val namesOfParticipants: List<String>
+) {
+    val cars: List<Car> = namesOfParticipants.map{Car(it)}
+}
+
 class Car(val name: String) : Comparable<Car> {
     var position = 0
         private set
