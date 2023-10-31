@@ -94,6 +94,15 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `움직인 거리 출력`() {
+        assertSimpleTest {
+            val attempts = 5
+            val cars: List<Car> = listOf(Car("Bear", 0), Car("Dog", 0), Car("Cat", 0), Car("Tiger", 0))
+            racing.getRacingDistances(attempts,cars)
+        }
+    }
+
     public override fun runMain() {
         main()
     }
