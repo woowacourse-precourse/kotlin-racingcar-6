@@ -112,5 +112,6 @@ jun : -----
 - 시도할 횟수가 숫자가 아닌 경우, `IllegalArgumentException`을 사용하여 프로그램 종료
 - JUnit 5와 AssertJ를 이용한 기능 테스트(자동차 이름 입력)
 - JUnit 5와 AssertJ를 이용한 기능 테스트(최종 우승자 찾기)
+- JUnit 5와 AssertJ를 이용한 기능 테스트(레이싱 횟수 설정하기)
 
 ---
