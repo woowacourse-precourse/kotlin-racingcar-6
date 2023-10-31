@@ -48,12 +48,11 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> {
                 carNamesList.forEach { carNames ->
-                    if(carNames.length >= 5) throw IllegalArgumentException()
+                    if(carNames.length >= CAR_NAME_MAX_LENGTH) throw IllegalArgumentException()
                 }
             }
         }
     }
-
 
     @Test
     fun `이동 횟수에 대한 예외 처리`() {
@@ -77,5 +76,7 @@ class ApplicationTest : NsTest() {
     companion object {
         private const val MOVING_FORWARD = 4
         private const val STOP = 3
+
+        private const val CAR_NAME_MAX_LENGTH = 5
     }
 }
