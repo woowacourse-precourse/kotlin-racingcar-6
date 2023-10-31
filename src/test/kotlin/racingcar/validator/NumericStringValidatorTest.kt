@@ -21,4 +21,14 @@ class NumericStringValidatorTest {
             validator.validate(numericWithLetterString)
         }
     }
+
+    @Test
+    fun `0은 유효하지 않다`() {
+        val zeroString = "0"
+        val validator: StringValidator = NumericStringValidator()
+
+        assertThrows<IllegalArgumentException>("0은 유효하지 않습니다") {
+            validator.validate(zeroString)
+        }
+    }
 }
