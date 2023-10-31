@@ -4,21 +4,28 @@ import car.CarConfiguration.START_FLAG
 import caroption.DashBoard
 import caroption.Engine
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
+import java.math.BigInteger
 
 class CarTest {
-    @Test
-    fun `Engine START_FLAG 입력 시 작동 검사`() {
-        val input = START_FLAG
-        val result = true
-        assertThat(result).isEqualTo(Engine().start(input))
+
+    private val dashBoard = DashBoard("테스트차량")
+    private val engine = Engine()
+
+    @BeforeEach
+    fun setUp() {
+        repeat(10) {
+            dashBoard.distPlus()
+        }
     }
 
-    @Test
-    fun `Engine START_FLAG 보다 작은 경계값 검사`() {
-        val input = START_FLAG - 1
-        val result = false
-        assertThat(result).isEqualTo(Engine().start(input))
+    @ParameterizedTest
+    @CsvSource("$START_FLAG,true", "${START_FLAG + 1},true", "${START_FLAG - 1},false")
+    fun `Engine 입력값에 따른 반환값 검사`(input: Int, result: Boolean) {
+        assertThat(result).isEqualTo(engine.start(input))
     }
 
     @Test
