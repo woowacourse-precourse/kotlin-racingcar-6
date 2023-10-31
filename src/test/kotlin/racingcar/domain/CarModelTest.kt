@@ -6,12 +6,7 @@ import org.assertj.core.api.Assertions.assertThat
 import race.CarModel
 
 class CarModelTest {
-    private lateinit var carModel: CarModel
-
-    @BeforeEach
-    fun setUp() {
-        carModel = CarModel()
-    }
+    val carModel = CarModel()
 
     @Test
     fun testAddCar() {

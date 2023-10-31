@@ -1,7 +1,6 @@
 package racingcar.domain
 
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.BeforeEach
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -10,19 +9,9 @@ import race.CarModel
 import race.PrintResult
 
 class CarControllerTest {
-    private lateinit var carModel: CarModel
-    private lateinit var printResult: PrintResult
-    private lateinit var carController: CarController
-
-    @BeforeEach
-    fun setUp() {
-        carModel = CarModel()
-        printResult = object : PrintResult() {
-            override fun printMessage(message: String) {
-            }
-        }
-        carController = CarController(carModel, printResult)
-    }
+    val printResult = PrintResult()
+    val carModel = CarModel()
+    val carController = CarController(carModel, printResult)
 
     @Test
     fun testValidateCarInput() {
