@@ -8,6 +8,7 @@ class RunGame {
         var racingCars : MutableList<Players> = preG.makingPlayerList(preG.racingCarName())
         var racingNum: Int = preG.racingNumber()
 
+        println("\n실행 결과")
         for( i in 1..racingNum){
             racingCars = repeatRace(racingCars.size,racingCars)
         }
