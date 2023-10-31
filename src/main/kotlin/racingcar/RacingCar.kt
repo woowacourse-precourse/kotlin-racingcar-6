@@ -11,7 +11,7 @@ class RacingCar(val name: String) {
         }
     }
 
-    fun print() {
-        println("$name : ${"-".repeat(mileage)}")
+    fun nameAndMileage(): String {
+        return "$name : ${"-".repeat(mileage)}"
     }
 }
