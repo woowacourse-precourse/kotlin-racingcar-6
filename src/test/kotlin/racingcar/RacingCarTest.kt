@@ -5,6 +5,10 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.model.InputView
+import racingcar.model.OutputView
+import racingcar.model.RacingCar
+import racingcar.model.RacingCarController
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
