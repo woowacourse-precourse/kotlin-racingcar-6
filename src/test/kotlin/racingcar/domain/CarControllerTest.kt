@@ -1,10 +1,13 @@
-package race
+package racingcar.domain
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.BeforeEach
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.assertDoesNotThrow
+import race.CarController
+import race.CarModel
+import race.PrintResult
 
 class CarControllerTest {
     private lateinit var carModel: CarModel

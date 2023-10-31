@@ -11,6 +11,6 @@ fun main() {
 fun run() {
     val carModel = CarModel()
     val printResult = PrintResult()
-    val carController = CarController(carModel,printResult)
+    val carController = CarController(carModel, printResult)
     carController.runRace()
 }
