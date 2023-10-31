@@ -17,6 +17,7 @@ class RacingCarGame {
     }
 
     private fun validateCarName(carNameList: List<String>) {
+        val uniqueCarNames = HashSet<String>()
 
         carNameList.forEach { carName ->
             if (carName.isBlank()) {
@@ -24,6 +25,9 @@ class RacingCarGame {
             }
             if (carName.length > 5) {
                 throw IllegalArgumentException("자동차 이름은 5자 이하로 입력해주세요.")
+            }
+            if (!uniqueCarNames.add(carName)) {
+                throw IllegalArgumentException("중복된 자동차 이름 : $carName")
             }
         }
     }
