@@ -7,23 +7,22 @@ class InputMachine {
 
         val cars = readln().split(",")
 
+        checkCarNameUnder5(cars)
+
         return cars
 
     }
 
-    fun checkCarNameUnder5(cars: List<String>): Boolean {
+    private fun checkCarNameUnder5(cars: List<String>) {
 
         for (car in cars) {
 
             if (car.length > 5) {
 
-                return false
+                throw IllegalArgumentException("자동차 이름이 5자를 초과합니다.")
 
             }
         }
-
-        return true
-
     }
     //
 
@@ -33,20 +32,15 @@ class InputMachine {
         val tryCount: Int
 
         try {
-
             tryCount = readln().toInt()
-
         } catch (e: NumberFormatException) {
-
-            return -1
-
+            throw IllegalArgumentException("숫자를 입력하세요")
         }
 
         if (!checkOnlyNatural(tryCount)) {
-
-            return -2
-
+            throw IllegalArgumentException("양의 정수를 입력하세요")
         }
+        println()
 
         return tryCount
 
