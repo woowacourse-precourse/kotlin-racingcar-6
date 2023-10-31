@@ -3,7 +3,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class RacingCarController(private val inputView: InputView, private val outputView: OutputView) {
+class Race(private val inputView: InputView, private val outputView: OutputView) {
     fun run() {
         outputView.printCarNameInputMention()
         val carList = getRacingCarList(inputView.inputCarName())
@@ -22,19 +22,19 @@ class RacingCarController(private val inputView: InputView, private val outputVi
         inputView.closeConsole()
     }
 
-    fun getRacingCarList(carNameList: List<String>): List<RacingCar> = carNameList.map { name -> RacingCar(name) }
+    fun getRacingCarList(carNameList: List<String>): List<Car> = carNameList.map { name -> Car(name) }
 
     fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
 
-    fun moveOrStop(racingCar : RacingCar, randomNumber: Int) {
+    fun moveOrStop(car : Car, randomNumber: Int) {
         if (randomNumber >= 4) {
-            racingCar.move()
+            car.move()
         }
     }
 
-    fun getWinnerList(racingCarList: List<RacingCar>): List<RacingCar> {
-        val maxMove = racingCarList.maxBy { car -> car.moves }.moves
+    fun getWinnerList(carList: List<Car>): List<Car> {
+        val maxMove = carList.maxBy { car -> car.moves }.moves
 
-        return racingCarList.filter { car -> car.moves == maxMove }
+        return carList.filter { car -> car.moves == maxMove }
     }
 }

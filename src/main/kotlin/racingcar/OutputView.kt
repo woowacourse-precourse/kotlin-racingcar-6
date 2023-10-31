@@ -4,14 +4,14 @@ class OutputView {
     companion object {
         private const val MOVE = "-"
     }
-    fun printResult(racingCarList: List<RacingCar>) {
-        for (car in racingCarList) {
+    fun printResult(carList: List<Car>) {
+        for (car in carList) {
             printCurrentMove(car)
         }
         println()
     }
 
-    fun printWinner(winnerList: List<RacingCar>) {
+    fun printWinner(winnerList: List<Car>) {
         val winnerNameList = winnerList.joinToString(", ") { winner -> winner.name }
         println("최종 우승자 : $winnerNameList")
     }
@@ -29,7 +29,7 @@ class OutputView {
         println("시도할 횟수는 몇 회인가요?")
     }
 
-    fun printCurrentMove(racingCar: RacingCar) {
-        println("${racingCar.name} : " + MOVE.repeat(racingCar.moves))
+    fun printCurrentMove(car: Car) {
+        println("${car.name} : " + MOVE.repeat(car.moves))
     }
 }
