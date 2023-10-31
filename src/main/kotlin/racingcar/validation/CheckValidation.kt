@@ -7,7 +7,10 @@ class CheckValidation {
     fun checkCarName(
         carName: String
     ) {
-        require(checkNameLength(carName)) {
+        require(
+            checkNameLength(carName) &&
+                    checkNameIsBlank(carName)
+        ) {
             "자동차 이름은 5자 이하만 가능합니다."
         }
     }
@@ -43,6 +46,16 @@ class CheckValidation {
     private fun checkNameLength(
         carName: String
     ): Boolean {
-        return carName.length <= 5 && carName.isNotBlank()
+        return carName.length <= CAR_MAX_LENGTH
+    }
+
+    private fun checkNameIsBlank(
+        carName: String
+    ): Boolean {
+        return carName.isNotBlank()
+    }
+
+    companion object {
+        private const val CAR_MAX_LENGTH = 5
     }
 }
