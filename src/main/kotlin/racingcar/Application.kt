@@ -27,3 +27,7 @@ fun validateNameIsNotInt(input: String) {
     if (input.toIntOrNull() != null) throw IllegalArgumentException("${input}은 숫자입니다.")
 }
 
+fun validateNumber(input:String){
+    if (input.toIntOrNull()== null) throw IllegalArgumentException("${input}은 숫자가 아닙니다.")
+}
+
