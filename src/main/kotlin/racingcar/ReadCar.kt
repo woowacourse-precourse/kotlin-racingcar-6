@@ -8,7 +8,11 @@ class ReadCar {
     }
     private fun readNumberOfTry(): String {
         println("시도할 횟수는 몇 회인가요?")
-        return Console.readLine()
+        val numberOfTry = Console.readLine()
+        if (numberOfTry.toInt() == 0){
+            throw IllegalArgumentException("1 이상의 자연수를 입력하세요")
+        }
+        return numberOfTry
     }
 
     val carInput = readCarNames()

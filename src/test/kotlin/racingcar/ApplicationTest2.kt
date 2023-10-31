@@ -22,7 +22,7 @@ class ApplicationTest2 : NsTest() {
     @Test
     fun `이름에 대한 예외 처리`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("asasas,jasasdf", "1") }
+            assertThrows<IllegalArgumentException> { runException("asas   ,jasasdf", "1") }
         }
     }
 
