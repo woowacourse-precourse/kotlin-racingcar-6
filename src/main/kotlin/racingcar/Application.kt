@@ -12,8 +12,12 @@ fun main() {
 
 fun parsingInput(): List<String> {
     val inputText: String = Console.readLine()
-
+    validateNameLength(inputText.split(","))
     return inputText.split(",")
 }
 
-
+fun validateNameLength(input: List<String>) {
+    for (name in input) {
+        if (name.length > 4) throw IllegalArgumentException("${name}의 길이가 5이상 입니다.")
+    }
+}
