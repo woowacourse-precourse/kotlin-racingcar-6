@@ -94,5 +94,17 @@ class RacingGameTest {
         }
         assertThat(exception.message).isEqualTo("자동차 이름은 5자 이하여야 합니다.")
     }
+
+    @Test
+    fun `자동차 경주에서 우승자를 정확히 찾는다`() {
+        val carA = RacingCar("pobi").apply { distance = 8 }
+        val carB = RacingCar("woni").apply { distance = 7 }
+        val carC = RacingCar("jun").apply { distance = 8 }
+
+        val racingGame = RacingGame(listOf(carA, carB, carC))
+        val winners = racingGame.racingWinner()
+
+        assertThat(winners).containsExactlyInAnyOrder("pobi", "jun")
+    }
 }
 
