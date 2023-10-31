@@ -19,20 +19,36 @@ object Process {
         attemptTimes = validation.getAttemptTimes(input)
     }
 
+    fun createRound(carNames: List<String>): Round {
+        round = Round(carNames)
+        return round
+    }
 
-    class Validation {
-        fun validateCarNames(carNamesInput: List<String>): List<String> {
-            return carNamesInput.apply {
-                forEach {
-                    require(it.isNotBlank())
-                    require(it.length <= 5)
-                }
-            }
+    fun getWinners(): List<String> {
+        return Round.getWinner()
+    }
+
+    fun roundCount() {
+        for (i in 1..attemptTimes) {
+            Round.move()
+            Round.printRound()
         }
-
-        fun getAttemptTimes(attemptTimes: String): Int =
-            attemptTimes.toIntOrNull() ?: throw IllegalArgumentException()
     }
 }
+
+class Validation {
+    fun validateCarNames(carNamesInput: List<String>): List<String> {
+        return carNamesInput.apply {
+            forEach {
+                require(it.isNotBlank())
+                require(it.length <= 5)
+            }
+        }
+    }
+
+    fun getAttemptTimes(attemptTimes: String): Int =
+        attemptTimes.toIntOrNull() ?: throw IllegalArgumentException()
+}
+
 
 
