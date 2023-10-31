@@ -1,7 +1,5 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.test.NsTest
-import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import racingcar.model.CarNameSeparator
