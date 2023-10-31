@@ -10,6 +10,26 @@ fun main() {
     val turn = getTurnNumber()
 
     playRaceGame(turn, cars)
+
+    val winners = findWinners(cars)
+    val winnersName = createWinnersName(winners)
+    announceWinners(winnersName)
+}
+
+fun announceWinners(winnersName: String) {
+    println("최종 우승자 : $winnersName")
+}
+
+fun createWinnersName(winners: List<Car>) = winners.joinToString(", ") { it.name }
+
+fun findWinners(cars: List<Car>): List<Car> {
+    val maxPosition = cars.maxOf { car ->
+        car.position
+    }
+    val winners = cars.filter { car ->
+        car.position == maxPosition
+    }
+    return winners
 }
 
 fun playRaceGame(turn: Int, cars: List<Car>) {
