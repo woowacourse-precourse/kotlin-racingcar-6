@@ -18,6 +18,8 @@ val MOVE = "-"
 val cars = mutableListOf<Car>()
 val winners = mutableListOf<String>()
 fun main() {
+    cars.clear()
+    winners.clear()
     println(INPUT_NAME)
     input()
     val repeat = inputRepeat()
