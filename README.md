@@ -169,10 +169,12 @@ Randoms.pickNumberInRange(0, 9)
 
 ### OutputView
 
-- [ ] 각 차수별 실행 결과와 함께 자동차 이름 출력(입력 한 자동차 이름 순서대로 출력)
-- [ ] 자동차 경주 게임 우승자 출력
-  - [ ] 단독 우승자 안내 문구 출력
-  - [ ] 공동 우승자 안내 문구 출력(쉼표를 이용하여 구분)
+- [x] 자동차 이름 입력 문구 출력
+- [x] 시도 횟수 입력 문구 출력
+- [x] 각 차수별 실행 결과와 함께 자동차 이름 출력(입력 한 자동차 이름 순서대로 출력)
+- [x] 자동차 경주 게임 우승자 출력
+  - [x] 단독 우승자 안내 문구 출력
+  - [x] 공동 우승자 안내 문구 출력(쉼표를 이용하여 구분)
 
 ### Attempts
 
@@ -225,9 +227,9 @@ classDiagram
         +askCarToRace()
     }
     class OutputView {
-        +executionResult()
         +enterNamesOfCars()
         +howManyAttempts()
+        +executionResult()
         +finalWinner()
     }
     class RandomNumberGenerator {
