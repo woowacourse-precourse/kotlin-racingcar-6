@@ -21,7 +21,7 @@ class RaceGame {
         .split(",")
         .toCarList()
 
-    private fun generateRounds(): Int = Console.readLine().toIntOrNull() ?: throw IllegalArgumentException()
+    private fun generateRounds(): Int = Console.readLine().toPositiveIntOrNull() ?: throw IllegalArgumentException()
 
     private fun List<String>.toCarList(): List<Car> {
         return this.map { name ->
@@ -30,6 +30,11 @@ class RaceGame {
 
             Car(name, MoveStrategyImpl())
         }
+    }
+
+    private fun String.toPositiveIntOrNull(): Int? {
+        val num = this.toIntOrNull()
+        return if(num != null && num < 0) null else num
     }
 
     fun start() {
