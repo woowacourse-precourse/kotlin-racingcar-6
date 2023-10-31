@@ -8,6 +8,10 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.Constants.NUMBER_ATTEMPTS_MSG
 import racingcar.Constants.RACE_START_MSG
+import racingcar.Validator.isCarNameLengthValid
+import racingcar.Validator.isCarNameNotEmpty
+import racingcar.Validator.isCarNameUnique
+import racingcar.Validator.isNumberAttemptsValid
 
 class ApplicationTest : NsTest() {
     private val racing: Racing = Racing()
