@@ -1,11 +1,11 @@
 package racingcar.manager
 
-import camp.nextstep.edu.missionutils.Console.readLine
+import camp.nextstep.edu.missionutils.Console
 
 
 class InputManager(private val validationManager: ValidationManager = ValidationManager()) {
     fun carNames(): List<String> =
-        validationManager.getValidCarNames(readLine()).split(",").map { it.trim() }
+        validationManager.getValidCarNames(Console.readLine()).split(",").map { it.trim() }
 
-    fun attemptCount() = validationManager.getAttemptCount(readLine())
+    fun attemptCount() = validationManager.getAttemptCount(Console.readLine())
 }
