@@ -47,7 +47,7 @@ class ValidatorTest {
 
         assertSimpleTest {
             assertThrows<IllegalArgumentException> {
-                validator.checkItemsHasNoDuplication(input)
+                validator.checkHasNoDuplication(input)
             }
         }
     }
@@ -58,7 +58,7 @@ class ValidatorTest {
 
         assertSimpleTest {
             assertThrows<IllegalArgumentException> {
-                validator.checkNumericValueIsInBoundary(input, 10, 15)
+                validator.checkIsInBoundary(input, 10, 15)
             }
         }
     }
