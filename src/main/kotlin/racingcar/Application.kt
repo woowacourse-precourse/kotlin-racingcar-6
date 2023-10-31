@@ -10,6 +10,13 @@ fun main() {
     val tryCount = Console.readLine().toIntOrNull()
     invalidTryCountCheck(tryCount)
     println("\n실행 결과")
+    val racingCars = racingCarNames.map { RacingCar(it) }
+    for (i in 1..tryCount!!) {
+        racingCars.forEach {
+            it.move()
+            it.print()
+        }
+    }
 }
 
 fun invalidTryCountCheck(tryCount: Int?) {
