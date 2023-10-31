@@ -2,6 +2,7 @@ package racingcar
 
 import racingcar.domain.CarName
 import racingcar.domain.CarRace
+import racingcar.domain.Referee
 import racingcar.domain.RoundNumber
 
 fun main() {
@@ -23,4 +24,9 @@ fun main() {
         carRace.runRound(carScore)
         carRace.printRound(carScore)
     }
+
+    val referee = Referee()
+    val maxScore = referee.findMaxScore(carScore)
+    val winnerName = referee.findWinner(carScore, maxScore)
+    referee.printWinner(winnerName)
 }
