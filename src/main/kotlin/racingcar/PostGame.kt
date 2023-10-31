@@ -12,7 +12,7 @@ class PostGame {
         print("최종 우승자 : ")
         for( i in carList.indices){
             print(carList[i].name)
-            if(i!=carList.size){
+            if(i!=carList.size-1){
                 print(", ")
             }
         }
