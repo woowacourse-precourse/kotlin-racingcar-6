@@ -15,26 +15,26 @@ class RacingCarGame {
     private lateinit var circuit: Circuit
 
     fun startGame() {
-        initGame()
-        processGame()
-        displayGameOutcome()
+        init()
+        process()
+        displayResult()
     }
 
-    private fun initGame() {
+    private fun init() {
         carNames = getValidatedCarNames()
         val moveCount = getValidatedMoveCount().toInt()
         circuit = Circuit(carNames, moveCount)
     }
 
-    private fun processGame() {
+    private fun process() {
         outputManager.printRaceStartResult()
         circuit.startRace()
     }
 
-    private fun displayGameOutcome() {
+    private fun displayResult() {
         val referee = Referee(circuit.getCarList())
-        val winnerCarNames = referee.getWinningCarNames()
-        outputManager.printWinners(winnerCarNames)
+        val winningCarNames = referee.getWinningCarNames()
+        outputManager.printWinners(winningCarNames)
     }
 
     private fun getValidatedCarNames(): String {

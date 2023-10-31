@@ -1,7 +1,6 @@
 package racingcar
 
 class OutputManager {
-
     fun printRaceStartResult() {
         println()
         println(EXECUTION_RESULT_MESSAGE)
