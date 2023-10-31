@@ -8,6 +8,8 @@ class RoundInput {
 
     // TODO 예외처리
     private fun inputRound(): Int {
-        return Console.readLine().toInt()
+        val input = Console.readLine()
+        RoundValidation().checkRoundInputValidation(input)
+        return input.toInt()
     }
 }
