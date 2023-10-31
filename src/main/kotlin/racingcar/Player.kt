@@ -1,6 +1,6 @@
 package racingcar
 
-import racingcar.validator.InputValidator
+import racingcar.validator.StringLengthValidator
 import racingcar.validator.NumericStringValidator
 import racingcar.validator.StringValidator
 
@@ -10,7 +10,7 @@ class Player(
 ) {
     fun determineCarNames(
         input: String = reader.read(),
-        validator: StringValidator = InputValidator()
+        validator: StringValidator = StringLengthValidator()
     ): List<String> {
         validator.validate(input)
         return input.toCarNames()
