@@ -6,7 +6,10 @@ const val RANDOM_LOWER_BOUNDARY = 0
 const val RANDOM_UPPER_BOUNDARY = 9
 const val CAR_MOVE_BOUNDARY = 4
 
-class RacingCar(val name: String, var distance: Int = 0, var path: String = "") {
+class RacingCar(val name: String) {
+
+    internal var distance = 0;
+    internal var path = ""
 
     private fun createRandomNumber(): Int =
         Randoms.pickNumberInRange(RANDOM_LOWER_BOUNDARY, RANDOM_UPPER_BOUNDARY)
