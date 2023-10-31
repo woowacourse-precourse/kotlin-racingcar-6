@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.model
 
 class OutputView {
     companion object {
