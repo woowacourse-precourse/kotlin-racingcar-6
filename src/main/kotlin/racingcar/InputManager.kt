@@ -30,11 +30,11 @@ object InputManager {
         val nameList = names.split(",")
 
         if (nameList.size < 2) throw IllegalArgumentException(EXCEPTION_CAR_NUM)
+        if (nameList.size != nameList.distinct().count()) throw IllegalArgumentException(EXCEPTION_CAR_NAME_DUPLICATION)
 
         val carList = nameList.map { carName ->
             if (carName.length > 5 || carName.isEmpty()) throw IllegalArgumentException(EXCEPTION_CAR_NAME_LENGTH)
             if (carName.startsWith(" ")) throw IllegalArgumentException(EXCEPTION_CAR_NAME_STARTS_WITH_BLANK)
-            if (carName.count() >= 2) throw IllegalArgumentException(EXCEPTION_CAR_NAME_DUPLICATION)
 
             RacingCar(name = carName, moves = 0)
         }

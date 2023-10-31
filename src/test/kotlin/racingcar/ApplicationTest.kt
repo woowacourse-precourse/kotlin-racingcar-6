@@ -131,7 +131,26 @@ class ApplicationTest : NsTest() {
     }
 
     //============================================ 자동차 경주 1회 실행 ===================================================
+    @Test
+    fun `1세트의 경주에 대한 결과 반환`() {
+        val racingCars = listOf(
+            RacingCar(name = "kmk", 1),
+            RacingCar(name = "kk", 2),
+            RacingCar(name = "kkk", 5),
+        )
 
+        val numbers = listOf(3, 4, 5)
+
+        val actualOutput = RacingGame.determineMoves(racingCars, numbers)
+        val expectedOutput = listOf(
+            RacingCar(name = "kmk", 1),
+            RacingCar(name = "kk", 3),
+            RacingCar(name = "kkk", 6),
+        )
+
+        assertThat(actualOutput).isEqualTo(expectedOutput)
+
+    }
     //============================================== 최종 결과 산출 ======================================================
     @Test
     fun `RacingCar의 리스트 형태 투입에 대한 우승자 반환`() {

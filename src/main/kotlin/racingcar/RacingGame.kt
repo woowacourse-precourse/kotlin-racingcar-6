@@ -7,16 +7,11 @@ object RacingGame {
 
     fun getResult(racingCars: List<RacingCar>): List<RacingCar> {
         val numbers = pickNumbers(racingCars.size)
+        val result = determineMoves(racingCars = racingCars, numbers = numbers)
 
-        racingCars.zip(numbers) { car, number ->
-            if (number >= 4) {
-                car.moves += 1
-            }
-        }
+        logResult(result)
 
-        logResult(racingCars)
-
-        return racingCars
+        return result
     }
 
     private fun logResult(racingCars: List<RacingCar>) {
@@ -26,6 +21,18 @@ object RacingGame {
         }
 
         println()
+    }
+
+    fun determineMoves(
+        racingCars: List<RacingCar>, numbers: List<Int>
+    ): List<RacingCar> {
+        racingCars.zip(numbers) { car, number ->
+            if (number >= 4) {
+                car.moves += 1
+            }
+        }
+
+        return racingCars
     }
 
     private fun pickNumbers(players: Int): List<Int> {
