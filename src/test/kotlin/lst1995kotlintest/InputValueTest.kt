@@ -1,5 +1,6 @@
 package lst1995kotlintest
 
+import InputValue.CAR_DELIMITER
 import Validator.nameCheck
 import Validator.roundCheck
 import org.junit.jupiter.api.Test
@@ -12,7 +13,7 @@ class InputValueTest {
     fun `자동차들의 이름을 정확하게 입력하였을 경우`() {
         val input = "가나다,마바사,자동차1번,123,asd,qwe,1q2wr"
         assertDoesNotThrow {
-            nameCheck(input)
+            nameCheck(input.split(CAR_DELIMITER))
         }
     }
 
@@ -20,7 +21,7 @@ class InputValueTest {
     fun `최대 길이보다 긴 이름이 포함되어 있을 경우`() {
         val input = "가나다,마바사,자동차1번,123456,asd,qwe,1q2wr"
         assertThrows<IllegalArgumentException> {
-            nameCheck(input)
+            nameCheck(input.split(CAR_DELIMITER))
         }
     }
 
@@ -28,7 +29,7 @@ class InputValueTest {
     fun `이름을 입력하지 않았을 경우`() {
         val input = ""
         assertThrows<IllegalArgumentException> {
-            nameCheck(input)
+            nameCheck(input.split(CAR_DELIMITER))
         }
     }
 
@@ -36,7 +37,7 @@ class InputValueTest {
     fun `입력하지 않은 이름이 포함되어 있을 경우`() {
         val input = "asdm,123,asdc,,sd"
         assertThrows<IllegalArgumentException> {
-            nameCheck(input)
+            nameCheck(input.split(CAR_DELIMITER))
         }
     }
 
