@@ -37,4 +37,15 @@ class Controller(val inputView: InputView, val outputView: OutputView) {
     fun getRandomNumber() : Int = Randoms.pickNumberInRange(0, 9)
 
     fun validateMoreThanFour(randomNumber: Int) : Boolean = randomNumber >= 4
+
+    fun getWinnerForward(racingCars: List<RacingCar>) : List<String> {
+        val sortedRacingCars = racingCars.sortedByDescending { it.forward }
+        val winnerForward = sortedRacingCars[0].forward
+
+        val winnerCars = mutableListOf<String>()
+        for (car in racingCars) {
+            if(car.forward == winnerForward) winnerCars.add(car.name)
+        }
+        return winnerCars
+    }
 }
