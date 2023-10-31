@@ -3,42 +3,48 @@ package racingcar
 import java.lang.IllegalArgumentException
 
 class Validator {
+    fun validateCarNames(carNames: String) {
+        checkHasNoBlank(carNames)
+        checkHasSeparator(carNames, COMMA)
+        checkItemsHasNoDuplication(carNames.split(COMMA))
+        checkNumericValueIsInBoundary(carNames.split(COMMA).size, MIN_CAR_NAME_COUNT)
+        carNames.split(COMMA).map { carName ->
+            checkNumericValueIsInBoundary(carName.length, MIN_CAR_NAME_LENGTH, MAX_CAR_NAME_LENGTH)
+        }
+    }
 
-    private fun checkInputHasNoBlank(input: String) {
+    private fun checkHasNoBlank(input: String) {
         if (input.contains(BLANK)) throw IllegalArgumentException()
     }
 
-    private fun checkInputHasSeparator(input: String, separator: String) {
+    private fun checkHasSeparator(input: String, separator: String) {
         if (!input.contains(separator)) throw IllegalArgumentException()
-    }
-
-    private fun checkInputLengthIsInBoundary(input: String, minLength: Int = 0, maxLength: Int = 100) {
-        if (input.length !in minLength..maxLength) throw IllegalArgumentException()
-    }
-
-    private fun <T> checkItemCountsAreInBoundary(items: List<T>, minLength: Int = 0, maxLength: Int = 100) {
-        if (items.size !in minLength..maxLength) throw  IllegalArgumentException()
     }
 
     private fun <T> checkItemsHasNoDuplication(items: List<T>) {
         if (items.toSet().size != items.size) throw IllegalArgumentException()
     }
 
-    fun validateCarNames(input: String) {
-        checkInputHasNoBlank(input)
-        checkInputHasSeparator(input, COMMA)
-        input.split(COMMA).map { name ->
-            checkInputLengthIsInBoundary(name, MIN_CAR_NAME_LENGTH, MAX_CAR_NAME_LENGTH)
-        }
-        checkItemCountsAreInBoundary(input.split(COMMA), MIN_CAR_NAME_COUNT)
-        checkItemsHasNoDuplication(input.split(COMMA))
+    private fun checkNumericValueIsInBoundary(number: Int, minNumber: Int = 0, maxNumber: Int = 100) {
+        if (number !in minNumber..maxNumber) throw IllegalArgumentException()
     }
-    
+
+    fun validateTotalRoundNumber(totalRoundNumber: String) {
+        checkHasNoBlank(totalRoundNumber)
+        checkHasOnlyDigit(totalRoundNumber)
+        checkNumericValueIsInBoundary(Integer.parseInt(totalRoundNumber), MIN_TOTAL_ROUND)
+    }
+
+    private fun checkHasOnlyDigit(input: String) {
+        if (input.map { data -> Character.isDigit(data) }.contains(false)) throw IllegalArgumentException()
+    }
+
     companion object {
         private const val BLANK = " "
         private const val COMMA = ","
         private const val MIN_CAR_NAME_LENGTH = 1
         private const val MAX_CAR_NAME_LENGTH = 5
         private const val MIN_CAR_NAME_COUNT = 2
+        private const val MIN_TOTAL_ROUND = 1
     }
 }
