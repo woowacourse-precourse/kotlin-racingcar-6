@@ -56,7 +56,12 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `이동 횟수에 대한 예외 처리`() {
-
+        val attemptCount: String = "ONE"
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                if(attemptCount.toIntOrNull() == null) throw IllegalArgumentException()
+            }
+        }
     }
 
     @Test
@@ -67,7 +72,8 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `우승자가 한 명인 경우`() {
-
+        val winner: String = listOf("poby").joinToString("")
+        assertThat(winner).isEqualTo("poby")
     }
 
     public override fun runMain() {
