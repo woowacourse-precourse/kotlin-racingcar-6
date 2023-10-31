@@ -9,8 +9,13 @@ import java.lang.NumberFormatException
 class Exceptions {
     companion object {
         fun checkNameListInput(list : List<String>){
+            checkMorethanOnePlayer(list)
             checkAllNameInFiveLetters(list)
             checkPossibleNames(list)
+        }
+
+        fun checkMorethanOnePlayer(list : List<String>){
+            require(list.isNotEmpty()) { "자동차의 수는 1보다 커야합니다." }
         }
         private fun checkAllNameInFiveLetters(list : List<String>) {
             require(list.all { it.length <= 5 }) { EXCEPTION_EXCEED_FIVE_LETTERS }
