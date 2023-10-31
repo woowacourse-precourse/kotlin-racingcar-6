@@ -6,6 +6,7 @@ import racingcar.Constants.MESSAGE_INVALID_NAME_LENGTH
 import racingcar.Constants.MESSAGE_INVALID_NUMBER_FORMAT
 import racingcar.Constants.MESSAGE_INVALID_NUMBER_RANGE
 import racingcar.Constants.MINIMUM_CAR_NAME_LENGTH
+import racingcar.Constants.MINIMUM_MOVE_COUNT
 
 object PlayerConsole {
 
@@ -13,7 +14,6 @@ object PlayerConsole {
 
     private fun parseInputByComma() = readLine().split(",")
 
-    //확장함수로 짠 이유 : getValidCarNames에서 메서드 체이닝으로 코드의 흐름을 한눈에 파악
     private fun List<String>.validateCarNames(): List<String> {
         require(this.all { it.length <= MINIMUM_CAR_NAME_LENGTH && it.isNotEmpty() }) { MESSAGE_INVALID_NAME_LENGTH }
         require(this.all { playerName -> playerName.all { it.isLetter() || it.isDigit() } }) { MESSAGE_INVALID_NAME_FORMAT }
@@ -24,7 +24,7 @@ object PlayerConsole {
 
     private fun String.toNumberOrException(): Int {
         require(this.all { it.isDigit() }) { MESSAGE_INVALID_NUMBER_FORMAT }
-        require(0 < this.toInt()) { MESSAGE_INVALID_NUMBER_RANGE }
+        require(MINIMUM_MOVE_COUNT <= this.toInt()) { MESSAGE_INVALID_NUMBER_RANGE }
         return this.toInt()
     }
 }

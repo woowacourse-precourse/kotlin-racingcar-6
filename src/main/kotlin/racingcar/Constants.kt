@@ -19,6 +19,7 @@ object Constants {
     const val MINIMUM_DIGIT = 0
     const val MAXIMUM_DIGIT = 9
     const val FORWARD_THRESHOLD = 4
+    const val MINIMUM_MOVE_COUNT = 1
     const val MINIMUM_CAR_NUMBER = 2
     const val MINIMUM_CAR_NAME_LENGTH = 5
 }
