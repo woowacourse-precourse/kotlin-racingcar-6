@@ -9,31 +9,38 @@ import racingcar.Validator.isCarNameUnique
 import racingcar.Validator.isNumberAttemptsValid
 
 fun main() {
-
     printRaceStart(RACE_START_MSG)
+    val carNames = getValidCarList()
+
+    val cars = initializeCars(carNames)
+    printNumberAttempts(NUMBER_ATTEMPTS_MSG)
+
+    val numberAttempts = getNumberAttempts()
+    isNumberAttemptsValid(numberAttempts)
+
+    val racing = Racing()
+    racing.doRacing(numberAttempts.toInt(), cars)
+}
+
+fun getValidCarList(): List<String> {
     val carNames = getCarList()
     isCarNameUnique(carNames)
     carNames.forEach { name ->
         isCarNameLengthValid(name)
         isCarNameNotEmpty(name)
     }
-
-    printNumberAttempts(NUMBER_ATTEMPTS_MSG)
-
-    val numberAttempts = getNumberAttempts()
-    isNumberAttemptsValid(numberAttempts)
-
-
-    val cars: List<Car> = carNames.indices.map { Car(name = "", distance = 0) }
-    carNames.forEachIndexed { idx, name -> cars[idx].name = name }
-
-    val racing = Racing()
-    racing.doRacing(numberAttempts.toInt(), cars)
+    return carNames
 }
 
 fun getCarList() = Console.readLine().split(",")
 
 fun getNumberAttempts(): String = Console.readLine().trim()
+
+fun initializeCars(carNames: List<String>): List<Car> {
+    val cars: List<Car> = carNames.indices.map { Car(name = "", distance = 0) }
+    carNames.forEachIndexed { idx, name -> cars[idx].name = name }
+    return cars
+}
 
 fun printRaceStart(raceStartMsg: String) {
     println(raceStartMsg)
