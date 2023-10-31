@@ -63,15 +63,15 @@ fun step(random: Int, car: Car) {
     if(random >= 4){
         car.step()
     }
-    printStep(car)
+    println("${car.name} : ${"-".repeat(car.position)}")
 }
-fun printStep(car: Car) {
-    var go = ""
-    for(i in 0..<car.position){
-        go += "-"
-    }
-    println("${car.name} : $go")
-}
+//fun printStep(car: Car) {
+//    var go = ""
+//    for(i in 0..<car.position){
+//        go += "-"
+//    }
+//    println("${car.name} : $go")
+//}
 fun input(){
     val carname = Console.readLine()
     val names = carname.split(',')
