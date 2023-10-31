@@ -1,6 +1,9 @@
 package racingcar.domain
 
 import racingcar.utils.getRandomNumber
+import racingcar.res.CarMovement.GO
+import racingcar.res.CarMovement.GO_RECORD
+import racingcar.res.CarMovement.STOP
 
 class Car(val carName: String) {
   private var _record: String = ""
@@ -15,8 +18,10 @@ class Car(val carName: String) {
 
   fun moveOrNot(number: Int): Boolean {
     return if (number >= 4) {
-      this._record += "-"
-      true
-    } else false
+      this._record += GO_RECORD
+      GO
+    } else {
+      STOP
+    }
   }
 }
