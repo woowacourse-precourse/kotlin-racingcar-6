@@ -1,9 +1,6 @@
 package racingcar.attemptcomparator
 
-import racingcar.attempts.Attempts
-import racingcar.car.Car
-
 fun interface AttemptComparator {
 
-    fun compareAttemptAndCarPosition(attempts: Attempts, car: Car): Boolean
+    fun compareAttemptAndCarPosition(attempts: Int, carPosition: String): Boolean
 }
