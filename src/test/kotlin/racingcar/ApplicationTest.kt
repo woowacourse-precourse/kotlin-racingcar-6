@@ -15,12 +15,15 @@ import racingcar.domain.Analyzer
 import racingcar.domain.IOHandler
 import racingcar.domain.Validator
 import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import java.io.PrintStream
 
 class ApplicationTest : NsTest() {
 
     private lateinit var validator: Validator
     private lateinit var ioHandler: IOHandler
     private lateinit var anaylazer: Analyzer
+    private val standardOut = System.out
 
     @BeforeEach
     fun setUp() {
@@ -32,16 +35,17 @@ class ApplicationTest : NsTest() {
     @AfterEach
     fun tearDown() {
         Console.close()
+        System.setOut(standardOut)
     }
-    
+
     @Test
     fun `숫자 0이 나오면 움직일 수 없다는 의미의 false를 반환한다`() {
         // given
         val pickedNum = 0
-        
+
         // when
         val actual = anaylazer.isMoveAllowed(pickedNum)
-        
+
         // then
         val expected = false
         assertThat(actual).isEqualTo(expected)
@@ -187,6 +191,97 @@ class ApplicationTest : NsTest() {
 
         // then
         val expected = listOf(a, b, c)
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `2칸 전진한 A, 0칸 전진한 B, 3칸 전진한 C의 현재 위치를 보여준다`() {
+        // given
+        val a = Car("A")
+        repeat(2) {
+            a.move()
+        }
+        val b = Car("B")
+        val c = Car("C")
+        repeat(3) {
+            c.move()
+        }
+        val candidates = listOf(a, b, c)
+        val outputStream = ByteArrayOutputStream()
+        setOutput(outputStream)
+
+        // when
+        ioHandler.showLocation(candidates)
+        val actual = outputStream.toString().replace("\r\n", "\n")
+
+        // then
+        val expected = """
+            A : --
+            B : 
+            C : ---
+            
+        """.trimIndent()
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `0칸 전진한 A, 0칸 전진한 B, 0칸 전진한 C의 현재 위치를 보여준다`() {
+        // given
+        val a = Car("A")
+        val b = Car("B")
+        val c = Car("C")
+        val candidates = listOf(a, b, c)
+        val outputStream = ByteArrayOutputStream()
+        setOutput(outputStream)
+
+        // when
+        ioHandler.showLocation(candidates)
+        val actual = outputStream.toString().replace("\r\n", "\n")
+
+        // then
+        val expected = """
+            A : 
+            B : 
+            C : 
+            
+        """.trimIndent()
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `우승자 A를 보여준다`() {
+        // given
+        val a = Car("A")
+        val winner = listOf(a)
+
+        val outputStream = ByteArrayOutputStream()
+        setOutput(outputStream)
+
+        // when
+        ioHandler.showWinner(winner)
+        val actual = outputStream.toString().replace("\r\n", "\n")
+
+        // then
+        val expected = "최종 우승자 : A"
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `우승자 A, B를 보여준다`() {
+        // given
+        val a = Car("A")
+        val b = Car("B")
+        val winner = listOf(a, b)
+
+        val outputStream = ByteArrayOutputStream()
+        setOutput(outputStream)
+
+        // when
+        ioHandler.showWinner(winner)
+        val actual = outputStream.toString().replace("\r\n", "\n")
+
+        // then
+        val expected = "최종 우승자 : A, B"
         assertThat(actual).isEqualTo(expected)
     }
 
@@ -462,7 +557,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `이동 횟수로 "1_000_000"을 입력 받으면 1_000_000을 리턴한다`() {
+    fun `이동 횟수로 "1,000,000"을 입력 받으면 1,000,000을 리턴한다`() {
         // given
         val input = "1000000"
         setInput(input)
@@ -493,13 +588,17 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    public override fun runMain() {
+        main()
+    }
+
     private fun setInput(input: String) {
         val inputStream = ByteArrayInputStream(input.toByteArray())
         System.setIn(inputStream)
     }
 
-    public override fun runMain() {
-        main()
+    private fun setOutput(output: ByteArrayOutputStream) {
+        System.setOut(PrintStream(output))
     }
 
     companion object {
