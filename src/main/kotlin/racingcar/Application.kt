@@ -8,13 +8,20 @@ fun main() {
     val carNames = Console.readLine().split(',')
     println("$carNames")
 
-    for (car in carNames) {
-        if (car.length > 5) throw IllegalArgumentException("이름은 5자 이하만 가능합니다")
-    }
+    carNamesValidator(carNames)
 
     println("시도할 횟수는 몇 회인가요?")
     val tryNum = Console.readLine().toInt()
     println("$tryNum")
 
+    tryNumValidator(tryNum)
+}
+
+fun carNamesValidator(carNames: List<String>) {
+    for (car in carNames) {
+        if (car.length > 5) throw IllegalArgumentException("이름은 5자 이하만 가능합니다")
+    }
+}
+fun tryNumValidator(tryNum: Int){
     if (tryNum <= 0) throw IllegalArgumentException("시도 횟수는 자연수만 가능합니다")
 }
