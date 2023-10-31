@@ -4,11 +4,14 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 class Game {
-    val cars = mutableListOf<Car>()
-    val error = Error()
-    val INPUT_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-    val INPUT_REPEAT = "시도할 횟수는 몇 회인가요?"
-    val MOVE = "-"
+
+    private val cars = mutableListOf<Car>()
+    private val error = Error()
+    companion object {
+        const val INPUT_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+        const val INPUT_REPEAT = "시도할 횟수는 몇 회인가요?"
+        const val MOVE = "-"
+    }
 
     fun gameStart() {
         println(INPUT_NAME)
@@ -17,7 +20,7 @@ class Game {
         winner()
     }
 
-    fun input(){
+    private fun input(){
         val carname = Console.readLine()
         val names = carname.split(',')
         error.checkName(names)
@@ -25,7 +28,7 @@ class Game {
             cars.add(Car(name))
         }
     }
-    fun inputRepeat(): Int {
+    private fun inputRepeat(): Int {
         println(INPUT_REPEAT)
         val repeat = Console.readLine()
         error.checkNum(repeat)
@@ -43,7 +46,7 @@ class Game {
             println()
         }
     }
-    fun step(random: Int, car: Car) {
+    private fun step(random: Int, car: Car) {
         if(random >= 4){
             car.plus()
         }
