@@ -3,13 +3,13 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
-val cars = mutableListOf<Car>()
-val winners = mutableListOf<String>()
+val CARS = mutableListOf<Car>()
+val WINNERS = mutableListOf<String>()
 var MAX = 0
 
 fun main() {
-    cars.clear()
-    winners.clear()
+    CARS.clear()
+    WINNERS.clear()
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     input()
     val repeat = inputRepeat()
@@ -18,16 +18,16 @@ fun main() {
     winner()
 }
 private fun winner() {
-    for (car in cars) {
+    for (car in CARS) {
         if (car.position == MAX) {
-            winners.add(car.name)
+            WINNERS.add(car.name)
         }
     }
-    printWinner(winners)
+    printWinner(WINNERS)
 }
 
 private fun findMaxPos() {
-    for (car in cars) {
+    for (car in CARS) {
         if (car.position >= MAX) {
             MAX = car.position
         }
@@ -44,7 +44,7 @@ private fun processGame(repeat: Int) {
     }
 }
 fun gamePlay(){
-    for(car in cars){
+    for(car in CARS){
         var random = Randoms.pickNumberInRange(0, 9)
         step(random,car)
     }
@@ -74,7 +74,7 @@ fun checkName(input: String) {
     if (input.length > 5 || input.isEmpty()) {
         throw IllegalArgumentException("이름이 5자가 넘어가거나 값이 없습니다.")
     } else {
-        cars.add(Car(input))
+        CARS.add(Car(input))
     }
 }
 fun inputRepeat(): Int {
