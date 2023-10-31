@@ -26,6 +26,11 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `사용자 입력값에 대한 예외 처리`() {
+        assertThrows<IllegalArgumentException> { runException("pobi,newbi,vonvolous", "3") }
+    }
+
     public override fun runMain() {
         main()
     }
