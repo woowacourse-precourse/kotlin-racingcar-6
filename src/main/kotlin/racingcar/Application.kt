@@ -20,7 +20,7 @@ fun race(cars: List<Car>, tryCount: Int) {
     repeat(tryCount) {
         println("\n시도 ${it + 1}")
         cars.forEach { car ->
-
+            car.move()
             println("${car.name} : ${"-".repeat(car.position)}")
         }
     }
@@ -31,4 +31,8 @@ fun race(cars: List<Car>, tryCount: Int) {
     println("\n최종 우승자 : ${winners.joinToString(", ")}")
 }
 
-
+fun Car.move() {
+    if (Random.nextInt(10) >= 4) {
+        position++
+    }
+}
