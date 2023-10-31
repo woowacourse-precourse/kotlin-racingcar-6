@@ -1,5 +1,7 @@
 package racingcar
 
+import javax.swing.text.Caret
+
 class GameManager {
 
     private val gameConsole = GameConsole()
@@ -7,15 +9,18 @@ class GameManager {
 
     fun runGame() {
         val userInputReader = UserInputReader()
-        val carNameList = userInputReader.getCarName()
+        val carList = initializeCarList(userInputReader.getCarName())
         val roundCnt = userInputReader.getRoundCount()
-        val carList = carNameList.map { carName ->
-            Car(carName)
-        }.toList()
 
         racingGame = Race(carList)
         startRace(roundCnt)
         setWinner()
+    }
+
+    private fun initializeCarList(carNameList: List<String>): List<Car> {
+        return carNameList.map { carName ->
+            Car(carName)
+        }.toList()
     }
 
     private fun startRace(roundCnt: Int) {
