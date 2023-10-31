@@ -159,3 +159,31 @@ Randoms.pickNumberInRange(0, 9)
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
   - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+### racingcar 구현기능
+1) 패키지 분리
+  *User package
+    : Interface
+  * Logic package
+    : 게임을 진핼할 때 사용될 Logic 저장
+  * racingcar package
+    : main function
+2) 패키지별 기능 분리
+  * User package : 자동차 이름 입력, 진행 횟수 입력, 최종 우승자 출력
+  * Logic package : 자동차 수 저장, 자동차 수에 맞는 진행도 저장, 입력된 횟수만큼 반복, 0~9의 숫자를 통해 진행여부 결정
+  *  racingcar package : main
+
+
+### racingcar flowchart
+* 시작 안내문구 출력
+* 사용자로부터 자동차의 이름을 입력받는 기능
+  - 5글자 이상 입력시 예외 발생
+  - 자동차 이름의 입력 값에 대한 예외 처리
+* 입력된 자동차를 ',' 단위로 구분해 리스트에 저장
+  - 입력된 자동차의 수와 동일한 진행도 리스트 생성
+* 진행 횟수 입력
+  - 진행 횟수 입력 값에 대한 예외 처리
+* 0~9 사이의 랜덤 숫자를 통한 자동차 이동 여부 결정
+* 진행 여부에 따라서 4이상일 경우 '-', 4미만일 경우 ''를 진행도 리스트에 대입
+* 입력받은 진행 횟수만큼 진행 후 최종적으로 '-'가 가장 많은 자동차의 이름 출력
