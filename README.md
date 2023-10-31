@@ -184,7 +184,7 @@ Randoms.pickNumberInRange(0, 9)
 
 ### RandomNumberGenerator
 
-- [ ] 0~9 사이 랜덤 값 설정
+- [x] 0~9 사이 랜덤 값 반환
 
 ### Car
 
