@@ -13,9 +13,18 @@ class ScreenView {
         return inputUserCarForWait()
     }
 
-    fun inputGameCount(): Int{
+    fun inputGameCount(): Int {
         println(inputGameCountMessage)
-        return Console.readLine()?.toInt() ?: throw IllegalArgumentException("0 이상의 정수를 입력해주세요.")
+        val gameCount = Console.readLine()?.toInt()
+        if (gameCount != null) {
+            if (gameCount < 0) {
+                throw IllegalArgumentException("0 이상의 정수를 입력해주세요.")
+            } else {
+                return gameCount
+            }
+        } else {
+            throw IllegalArgumentException("횟수를 입력해주세요.")
+        }
     }
 
     private fun inputUserCarForWait(): String {
