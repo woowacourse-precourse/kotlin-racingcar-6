@@ -5,7 +5,7 @@ import racingcar.ui.model.RoundStateModel
 import racingcar.ui.repository.RacingCarRepository
 import racingcar.utils.GameUtils
 
-class RacingCarViewModel(val repository: RacingCarRepository) {
+class RacingCarViewModel(private val repository: RacingCarRepository) {
 
     fun setData(cars: String, round: Int) {
         repository.setRounds(round)

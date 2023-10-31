@@ -22,8 +22,7 @@ object GameUtils {
 
     private fun checkMoveForward(): Boolean {
         val randomValue = Randoms.pickNumberInRange(0, 9)
-        val isMoving = randomValue >= 4
-        return isMoving
+        return randomValue >= 4
     }
 
     fun checkRoundEnded(isRoundEnded: Int): Boolean {
@@ -32,8 +31,7 @@ object GameUtils {
 
     fun findWinners(cars: List<RacingCarModel>): List<String> {
         val maxDistance = cars.maxBy { it.moveForward }.moveForward
-        val winners = cars.filter { it.moveForward == maxDistance }.map { it.carName }
-        return winners
+        return cars.filter { it.moveForward == maxDistance }.map { it.carName }
     }
 
     // 입력값(carNames)을 List의 형태로 Parsing & Mapping
