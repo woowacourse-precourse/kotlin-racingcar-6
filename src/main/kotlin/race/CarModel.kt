@@ -10,10 +10,6 @@ class CarModel {
         garage[name] = 0
     }
 
-    fun checkCar(name: String): Boolean {
-        return garage.contains(name)
-    }
-
     fun moveCars(moveNum: Int) {
         println(Constant.RESULT_STRING)
         for (i in 0..<moveNum) {
