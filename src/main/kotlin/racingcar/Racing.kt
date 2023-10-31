@@ -18,6 +18,6 @@ class Racing {
 
     fun presentWinner() {
         val winners = RacingSystem.getWinners().joinToString(separator = ", ")
-        println("\n최종 우승자 : ${winners}")
+        println("\n최종 우승자 : $winners")
     }
 }

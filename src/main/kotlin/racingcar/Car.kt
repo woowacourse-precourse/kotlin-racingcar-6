@@ -2,15 +2,9 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class Car {
-    private var name:String
+class Car(private var name: String) {
     private var distance = 0
-    private var cluster:Cluster
-
-    constructor(name:String){
-        this.name = name
-        cluster = Cluster()
-    }
+    private var cluster:Cluster = Cluster()
 
     fun getName():String{
         return name
@@ -32,9 +26,8 @@ class Car {
         }
     }
 
-    fun getNameAndCluster():String {
-        var result = "${name} : ${cluster.getDistanceLine()}"
+    fun getNameAndCluster(): String {
 
-        return result
+        return "$name : ${cluster.getDistanceLine()}"
     }
 }

@@ -1,10 +1,11 @@
 package racingcar
 
-class CarLane {
+class CarLane(carNames: List<String>) {
     private var cars:MutableList<Car> = arrayListOf()
-    constructor(carNames:List<String>){
+
+    init {
         carNames.forEach{
-            var car = Car(it)
+            val car = Car(it)
             cars.add(car)
         }
     }
@@ -28,12 +29,12 @@ class CarLane {
     }
 
     fun judgeWinner(): List<String>{
-        var maxDistance = getMaxDistance()
+        val maxDistance = getMaxDistance()
         return cars.filter { it.getDistance() == maxDistance }.map { it.getName() }
     }
 
-    fun getMaxDistance():Int{
-        var winnerCar = cars.maxBy{ it.getDistance() }
+    private fun getMaxDistance():Int{
+        val winnerCar = cars.maxBy{ it.getDistance() }
         return winnerCar.getDistance()
     }
 

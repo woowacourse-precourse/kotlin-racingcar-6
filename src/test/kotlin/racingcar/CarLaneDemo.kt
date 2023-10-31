@@ -25,7 +25,7 @@ class CarLaneDemo {
 
         @AfterAll
         @JvmStatic
-        fun tearDown(): Unit {
+        fun tearDown() {
             System.setOut(standardOut)
         }
     }

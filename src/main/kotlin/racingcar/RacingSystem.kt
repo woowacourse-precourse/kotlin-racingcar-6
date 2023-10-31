@@ -5,7 +5,7 @@ object RacingSystem {
     private var attemptNumber:Int = 0
     private lateinit var carLane:CarLane
     fun setCarNames(carNamesInput:String){
-        var splitedCarNameInput = splitCarNameInput(carNamesInput)
+        val splitedCarNameInput = splitCarNameInput(carNamesInput)
         require(checkCarNameLength(splitedCarNameInput))
         carNames = splitedCarNameInput
     }
@@ -37,7 +37,7 @@ object RacingSystem {
     }
 
     private fun splitCarNameInput(carNamesInput:String):List<String>{
-        var result:MutableList<String> = arrayListOf()
+        val result:MutableList<String> = arrayListOf()
         carNamesInput.split(',').forEach{
             result.add(it.trim())
         }
@@ -47,14 +47,13 @@ object RacingSystem {
     private fun checkCarNameLength(carNamesInput:List<String>):Boolean{
         carNamesInput.forEach{
             require(it.length < 6 )
-            require(it.length > 0)
+            require(it.isNotEmpty())
         }
         return true
     }
 
-    fun getWinners():List<String>{
-        val winners = carLane.judgeWinner()
-        return winners
+    fun getWinners(): List<String> {
+        return carLane.judgeWinner()
     }
 
     fun startAttemptCarLane(){
