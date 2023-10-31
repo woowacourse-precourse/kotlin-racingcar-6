@@ -15,4 +15,13 @@ class PrepareGame {
         return raceNum
     }
 
+    fun makingPlayerList(carNames: List<String>):MutableList<Players> {
+        var playerList:MutableList<Players> = mutableListOf<Players>()
+
+        for(i in 1..carNames.size){
+            playerList[i]=Players(carNames[i],0)
+        }
+        return playerList
+    }
+
 }
