@@ -8,3 +8,6 @@ const val MAX_CAR_NAME_LENGTH: Int = 5
 const val INVALID_CAR_NAME_LENGTH = "자동차의 이름은 5글자를 초과할 수 없습니다."
 
 const val INVALID_ATTEMPTS_NUMBER_TYPE = "시도 횟수는 숫자로 입력되어야 합니다."
+
+const val START_RANDOM_RANGE: Int = 0
+const val END_RANDOM_RANGE: Int = 9

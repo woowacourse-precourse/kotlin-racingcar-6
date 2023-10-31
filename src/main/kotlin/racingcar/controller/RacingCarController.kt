@@ -3,6 +3,7 @@ package racingcar.controller
 import racingcar.model.CarModel
 import racingcar.view.InputView
 import camp.nextstep.edu.missionutils.Console
+import racingcar.model.RandomNumber
 
 
 class RacingCarController {
@@ -18,5 +19,7 @@ class RacingCarController {
         view.inputAttemptsNumber()
         val attemptsNumber = Console.readLine()
         model.setAttemptsNumber(attemptsNumber)
+
     }
+
 }
