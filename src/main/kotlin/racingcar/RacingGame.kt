@@ -23,5 +23,6 @@ class RacingGame {
             }
             print("\n")
         }
+        print("\n")
     }
 }
