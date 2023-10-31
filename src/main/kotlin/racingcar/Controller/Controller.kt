@@ -5,7 +5,7 @@ import racingcar.model.RacingCar
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
-class Controller(val inputView: InputView, val outputView: OutputView) {
+class Controller(private val inputView: InputView, private val outputView: OutputView) {
     fun startGame(){
         inputView.printStartGameMessage()
         val carNames : List<String> = inputView.inputRacingCarName()
@@ -29,7 +29,7 @@ class Controller(val inputView: InputView, val outputView: OutputView) {
         return racingCars
     }
 
-    fun moveOrStop(racingCars: List<RacingCar>) : List<RacingCar> {
+    private fun moveOrStop(racingCars: List<RacingCar>) : List<RacingCar> {
         for (car in racingCars.indices) {
             val randomNumber = getRandomNumber()
             if (validateMoreThanFour(randomNumber)) racingCars[car].forward++
@@ -37,9 +37,9 @@ class Controller(val inputView: InputView, val outputView: OutputView) {
         return racingCars
     }
 
-    fun getRandomNumber() : Int = Randoms.pickNumberInRange(0, 9)
+    private fun getRandomNumber() : Int = Randoms.pickNumberInRange(0, 9)
 
-    fun validateMoreThanFour(randomNumber: Int) : Boolean = randomNumber >= 4
+    private fun validateMoreThanFour(randomNumber: Int) : Boolean = randomNumber >= 4
 
     fun getWinnerForward(racingCars: List<RacingCar>) : Int {
         val sortedRacingCars = racingCars.sortedByDescending { it.forward }
