@@ -17,7 +17,7 @@ class InputValueTest {
     }
 
     @Test
-    fun `자동차의 이름이 MAX_NAME_LENGTH 값보다 길 경우`() {
+    fun `최대 길이보다 긴 이름이 포함되어 있을 경우`() {
         val input = "가나다,마바사,자동차1번,123456,asd,qwe,1q2wr"
         assertThrows<IllegalArgumentException> {
             nameCheck(input)
@@ -25,8 +25,16 @@ class InputValueTest {
     }
 
     @Test
-    fun `자동차의 이름이 MIN_NAME_LENGTH 값보다 짧을 경우`() {
-        val input = "가나다,마바사,자동차1번,,asd,qwe,1q2wr"
+    fun `이름을 입력하지 않았을 경우`() {
+        val input = ""
+        assertThrows<IllegalArgumentException> {
+            nameCheck(input)
+        }
+    }
+
+    @Test
+    fun `입력하지 않은 이름이 포함되어 있을 경우`() {
+        val input = "asdm,123,asdc,,sd"
         assertThrows<IllegalArgumentException> {
             nameCheck(input)
         }
