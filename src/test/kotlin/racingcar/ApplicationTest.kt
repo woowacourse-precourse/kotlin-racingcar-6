@@ -137,7 +137,7 @@ class ApplicationTest : NsTest() {
 
         val defeatValidation = carList[1].isWinner(maxDistance)
         val defeatResult = false
-        assertThat(defeatValidation).isEqualTo(false)
+        assertThat(defeatValidation).isEqualTo(defeatResult)
     }
 
     @Test
