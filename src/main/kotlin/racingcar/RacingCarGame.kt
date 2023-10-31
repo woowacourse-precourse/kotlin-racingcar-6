@@ -18,7 +18,7 @@ class RacingCarGame {
     }
 
     private fun setMoveCount() {
-        for (carName in carList){
+        for (carName in carList) {
             moveCount[carName] = 0
         }
     }
@@ -45,38 +45,48 @@ class RacingCarGame {
         }
     }
 
-    fun gameStart() {
-        isNameNotExceed5Letters()
-        setProgress()
-        setMoveCount()
-
-        try{
+    private fun notIntException(){
+        try {
             numberOfTryStr.toInt()
-        } catch(ex: NumberFormatException){
+        } catch (ex: NumberFormatException) {
             throw IllegalArgumentException("정수만 입력")
         }
+    }
 
-        println("\n실행 결과")
-        for (i in 0..< numberOfTryStr.toInt()) {
-            goOrNot()
-            for (carName in carList) {
-                println(gameProgress[carName])
-            }
-            println()
+    private fun printGameProgress(){
+        for (carName in carList) {
+            println(gameProgress[carName])
         }
+    }
 
+    private fun printWinner(){
         val moveCountList = moveCount.toList()
         val sortedMoveCountList = moveCountList.sortedWith(compareByDescending { it.second })
         print("최종 우승자 : ")
-        for (i in carList.indices){
+        for (i in carList.indices) {
             print(sortedMoveCountList[i].first)
-            if (i == carList.size-1){
+            if (i == carList.size - 1) {
                 break
             }
-            if(sortedMoveCountList[i].second != sortedMoveCountList[i+1].second){
+            if (sortedMoveCountList[i].second != sortedMoveCountList[i + 1].second) {
                 break
             }
             print(", ")
         }
+    }
+
+    fun gameStart() {
+        isNameNotExceed5Letters()
+        setProgress()
+        setMoveCount()
+        notIntException()
+
+        println("\n실행 결과")
+        for (i in 0..<numberOfTryStr.toInt()) {
+            goOrNot()
+            printGameProgress()
+            println()
+        }
+        printWinner()
     }
 }
