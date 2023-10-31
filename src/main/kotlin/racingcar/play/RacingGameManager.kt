@@ -25,15 +25,12 @@ object RacingGameManager {
 
     fun getAttemptCount(): RacingGameManager {
         val input = UserInput.readAttemptCount()
-        InputValidator.checkOnlyDigit(input) // 입력이 숫자로만 되있는지 검사한다.
+        InputValidator.checkOnlyDigit(input)
+        InputValidator.checkIntRange(input)
         attemptCount = input.toInt()
         InputValidator.isPositive(attemptCount) // 1이상의 수인지 검사한다.
-        InputValidator.isUnderHundred(attemptCount) // 100이하의 수인지 검사한다.
+        InputValidator.isUnderHundred(attemptCount)
         return this
-    }
-
-    private fun userInputToInt(input: String): Int {
-        return 0
     }
 
     fun startRace(): RacingGameManager {

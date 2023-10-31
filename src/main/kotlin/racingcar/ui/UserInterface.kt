@@ -9,8 +9,7 @@ private const val MSG_OUTPUT_RESULT = "실행 결과"
 private const val MSG_OUTPUT_WINNER = "최종 우승자 : "
 
 private const val MSG_EXCEPTION_NAME_LENGTH = "이름은 1자 이상 5자 이하만 가능합니다."
-private const val MSG_EXCEPTION_ONLY_DIGIT_AND_POSITIVE = "시도 횟수는 1 이상의 숫자만 가능합니다."
-private const val MSG_EXCEPTION_UNDER_HUNDRED = "시도 횟수는 100 이하의 숫자만 가능합니다."
+private const val MSG_EXCEPTION_NUMBER_RANGE = "시도 횟수는 1 이상 100이하의 숫자만 가능합니다."
 
 object UserInput {
 
@@ -50,11 +49,19 @@ object InputValidator {
         names.forEach { require(it.length in MIN_NAME_LENGTH..MAX_NAME_LENGTH) { MSG_EXCEPTION_NAME_LENGTH } }
 
     fun checkOnlyDigit(input: String) {
-        require(input.isNotEmpty()) { MSG_EXCEPTION_ONLY_DIGIT_AND_POSITIVE }
-        input.forEach { require(it in '0'..'9') { MSG_EXCEPTION_ONLY_DIGIT_AND_POSITIVE } }
+        require(input.isNotEmpty()) { MSG_EXCEPTION_NUMBER_RANGE }
+        input.forEach { require(it in '0'..'9') { MSG_EXCEPTION_NUMBER_RANGE } }
     }
 
-    fun isPositive(input: Int) = require(input > 0) { MSG_EXCEPTION_ONLY_DIGIT_AND_POSITIVE }
+    fun checkIntRange(input: String) {
+        try {
+            input.toInt()
+        } catch (_: NumberFormatException) {
+            throw IllegalArgumentException(MSG_EXCEPTION_NUMBER_RANGE)
+        }
+    }
 
-    fun isUnderHundred(input: Int) = require(input <= 100) { MSG_EXCEPTION_UNDER_HUNDRED }
+    fun isPositive(input: Int) = require(input > 0) { MSG_EXCEPTION_NUMBER_RANGE }
+
+    fun isUnderHundred(input: Int) = require(input <= 100) { MSG_EXCEPTION_NUMBER_RANGE }
 }
