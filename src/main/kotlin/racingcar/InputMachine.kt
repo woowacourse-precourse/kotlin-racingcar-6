@@ -5,21 +5,24 @@ class InputMachine {
     // 자동차 이름 입력↓
     fun makeCars(): List<String> {
 
-        return readln().split(",")
+        val cars = readln().split(",")
+
+        checkCarNameUnder5(cars)
+
+        return cars
 
     }
 
-    fun checkCarNameUnder5(cars: MutableList<Car>) {
+    private fun checkCarNameUnder5(cars: List<String>) {
 
         for (car in cars) {
-            if (car.name.length > 5) {
-                println("실패")
+
+            if (car.length > 5) {
+
                 throw IllegalArgumentException("자동차 이름이 5자를 초과합니다.")
+
             }
         }
-
-        println("통과")
-
     }
     //
 
