@@ -1,6 +1,8 @@
 package racingcar
 
 object Constants {
+    const val MESSAGE_ASK_CAR_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+    const val MESSAGE_ASK_MOVE_COUNT = "시도할 횟수는 몇 회인가요?"
     const val MESSAGE_CAR_MINIMUM_REQUIRED = "2대 이상의 자동차가 필요합니다."
     const val MESSAGE_DUPLICATE_CAR_NAME = "자동차 이름은 서로 중복될 수 없습니다."
     const val MESSAGE_FINAL_WINNER = "최종 우승자 : "
