@@ -10,13 +10,18 @@ class RacingGame {
         return carNum
     }
 
-    fun broadcastRace(x:Players){
-        val message = "x.name : "
-        val a = x.num
-        print(message)
-        for(i in 1..a) {
-            print("-")
+    fun broadcastRace(numOfCar:Int,carList:MutableList<Players>){
+
+        for(i in 1..numOfCar) {
+            var car = carList[i].name
+            var score = carList[i].num
+
+            var message:String = "$car : "
+            print(message)
+            for (i in 1..score) {
+                print("-")
+            }
+            print("\n")
         }
-        print("\n")
     }
 }
