@@ -36,9 +36,9 @@ class CarsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = [" ", "    ", "Pobi12", "123456"])
+    @ValueSource(strings = ["1234  ", "  1234", "Pobi12", "123456"])
     @DisplayName("Car(init): checkNameLength()")
-    fun `(좌우 공백 제거된) 차 이름이 1~5 이내 인지 검증`(inputName: String) {
+    fun `차 이름이 1~5 이내 인지 검증`(inputName: String) {
         val exception = assertThrows<IllegalArgumentException> { // JUnit5 lib : assertThrows
             Car(inputName)
         }
@@ -48,7 +48,7 @@ class CarsTest {
     @ParameterizedTest
     @ValueSource(strings = ["Car!", "Car@2", "My!!!", "!! !!", "! !", "()_+"])
     @DisplayName("Car(init): checkNameLetter()")
-    fun `(좌우 공백 제거된) 차 이름이 한글, 영문, 숫자로 구성되어 있는지 검증`(inputName: String) {
+    fun `차 이름이 한글, 영문, 숫자로 구성되어 있는지 검증`(inputName: String) {
         assertThatThrownBy { Car(inputName) } // AssertJ lib : assertThatThrownBy
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessageContaining(Car.CAR_NAME_FORMAT_ERROR)

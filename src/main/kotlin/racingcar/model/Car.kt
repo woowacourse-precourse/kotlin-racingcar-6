@@ -10,10 +10,10 @@ data class Car(
     val score: Int get() = _score
 
     init {
-        val inputNameTrim = inputName.trim()
-        checkNameLength(inputNameTrim)
-        checkNameLetter(inputNameTrim)
-        _name = inputNameTrim
+        // val inputNameTrim = inputName.trim()
+        checkNameLength(inputName)
+        checkNameLetter(inputName)
+        _name = inputName
     }
 
     // TODO : 최종 테스트 후, 가시성 제한하기
