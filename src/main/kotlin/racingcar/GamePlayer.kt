@@ -4,14 +4,17 @@ class GamePlayer(gameNum : Int?, carList : List<String>?) {
 
 
     private var carScore = HashMap<String,Int>()
-    private var winnerList : MutableList<String> = mutableListOf()
+    private var _winnerList : MutableList<String> = mutableListOf()
+    val winnerList =  _winnerList
 
 
     init {
+
         carList?.forEach {
             carName ->
             carScore[carName] = 0
         }
+
         var gameOrder  = 1
 
         while(gameOrder<= gameNum!!) {
@@ -22,8 +25,10 @@ class GamePlayer(gameNum : Int?, carList : List<String>?) {
             gameOrder ++
         }
 
-        val maxScore = carScore.maxByOrNull { it.value }
-        println(maxScore?.value)
+        _winnerList = selectWinner(carScore)
+
+
+
     }
 
 
@@ -52,13 +57,15 @@ class GamePlayer(gameNum : Int?, carList : List<String>?) {
 
     }
 
-    fun selectWinner(carScore: HashMap<String, Int>){
+    fun selectWinner(carScore: HashMap<String, Int>): MutableList<String> {
 
         val maxScore = carScore.maxByOrNull { it.value }?.value
         carScore.forEach {
             map ->
-            if(map.value == maxScore) winnerList.add(map.key)
+            if(map.value == maxScore) _winnerList.add(map.key)
         }
+
+        return _winnerList
     }
 
 

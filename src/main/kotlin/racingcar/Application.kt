@@ -18,6 +18,12 @@ fun main() {
 
     val gamePlayer = GamePlayer(gameNum,carArray)
 
+    print("최종 우승자 : ")
+
+    val separator = ", "
+    val winner = gamePlayer.winnerList.joinToString(separator)
+    print(winner)
+
 
 
 }
