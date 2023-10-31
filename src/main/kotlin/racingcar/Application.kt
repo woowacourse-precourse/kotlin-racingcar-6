@@ -18,13 +18,21 @@ fun main() {
 
     val cars = createCars(carNames)
 
+    for(i in 1..tryNum){
+        println("실행결과")
+        tryOne(cars)
+    }
+}
+
+fun tryOne(cars: List<Car>){
     for(car in cars){
         val randomNum = generateNum()
         if(randomNum >= 4) car.movingFoward()
     }
     for(car in cars){
-        println("${car.name},${car.distance}")
+        println("${car.name} : "+"-".repeat(car.distance))
     }
+    println()
 }
 
 fun createCars(carNames: List<String>): List<Car> {
