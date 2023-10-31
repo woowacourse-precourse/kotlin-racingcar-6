@@ -2,8 +2,8 @@ package model
 
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
-import racingcar.data.RacingCarModel
-import racingcar.data.toRoundStateModel
+import racingcar.data.model.RacingCarModel
+import racingcar.data.model.toRoundStateModel
 
 class RacingCarModelTest {
     @Test

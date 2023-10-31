@@ -1,6 +1,6 @@
-package racingcar.util
+package racingcar.utils
 
-import racingcar.data.RacingCarModel
+import racingcar.data.model.RacingCarModel
 import camp.nextstep.edu.missionutils.Randoms
 
 object GameUtils {

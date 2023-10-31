@@ -1,8 +1,8 @@
 package util
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import racingcar.data.RacingCarModel
-import racingcar.util.GameUtils
+import racingcar.data.model.RacingCarModel
+import racingcar.utils.GameUtils
 
 class GameUtilsTest {
     @Test

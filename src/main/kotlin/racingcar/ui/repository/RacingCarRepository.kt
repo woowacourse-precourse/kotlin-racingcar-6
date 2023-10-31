@@ -1,6 +1,6 @@
 package racingcar.ui.repository
 
-import racingcar.data.RacingCarModel
+import racingcar.data.model.RacingCarModel
 
 interface RacingCarRepository {
     fun setRounds(round: Int)

@@ -1,4 +1,4 @@
-package racingcar.util
+package racingcar.utils
 
 object Exceptions {
 

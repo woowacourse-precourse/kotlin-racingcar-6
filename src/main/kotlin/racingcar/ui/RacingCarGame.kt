@@ -1,11 +1,11 @@
 package racingcar.ui
 
 import camp.nextstep.edu.missionutils.Console
-import racingcar.data.RacingCarRepositoryImpl
+import racingcar.data.repository.RacingCarRepositoryImpl
 import racingcar.ui.repository.RacingCarRepository
 import racingcar.ui.viewmodel.RacingCarViewModel
-import racingcar.util.CommonStrings
-import racingcar.util.Exceptions
+import racingcar.utils.CommonStrings
+import racingcar.utils.Exceptions
 
 class RacingCarGame {
 

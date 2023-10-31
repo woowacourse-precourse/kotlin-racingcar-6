@@ -3,7 +3,7 @@ package util
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
-import racingcar.util.Exceptions
+import racingcar.utils.Exceptions
 
 class ExceptionsTest {
     @Test

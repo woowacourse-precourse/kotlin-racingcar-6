@@ -1,7 +1,8 @@
-package racingcar.data
+package racingcar.data.repository
 
+import racingcar.data.model.RacingCarModel
 import racingcar.ui.repository.RacingCarRepository
-import racingcar.util.GameUtils
+import racingcar.utils.GameUtils
 import kotlin.properties.Delegates
 
 class RacingCarRepositoryImpl : RacingCarRepository {

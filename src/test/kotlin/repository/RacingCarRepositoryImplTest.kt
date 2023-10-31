@@ -2,8 +2,8 @@ package repository
 
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
-import racingcar.data.RacingCarModel
-import racingcar.data.RacingCarRepositoryImpl
+import racingcar.data.model.RacingCarModel
+import racingcar.data.repository.RacingCarRepositoryImpl
 import racingcar.ui.repository.RacingCarRepository
 
 class RacingCarRepositoryImplTest {

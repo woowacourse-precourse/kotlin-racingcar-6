@@ -1,4 +1,4 @@
-package racingcar.data
+package racingcar.data.model
 
 import racingcar.ui.model.RoundStateModel
 
