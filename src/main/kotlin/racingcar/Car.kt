@@ -10,4 +10,8 @@ class Car {
 
         return (Console.readLine() ?: "").split(",")
     }
+
+    fun validateCarNameLength(carNames : List<String>) {
+        if (carNames.any { it.length > 5 }) throw IllegalArgumentException("자동차 이름의 길이가 5가 넘습니다.")
+    }
 }
