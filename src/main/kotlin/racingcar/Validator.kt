@@ -12,4 +12,10 @@ object Validator {
             Message.VALID_INPUT_OVER_SIZE.message
         }
     }
+
+    fun checkInputWhitespace(input: String) {
+        require(input != "") {
+            Message.VALID_INPUT_WHITESPACE.message
+        }
+    }
 }

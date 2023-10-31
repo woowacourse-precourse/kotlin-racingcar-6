@@ -64,7 +64,9 @@ class RacingGameManager {
             }
         }
 
-        return cars
+    private fun hasNotCarNameWhitespace(name: String): Boolean {
+        Validator.checkInputWhitespace(name.trim())
+        return true
     }
 
     private fun moveCarsForward(cars: List<Car>) {

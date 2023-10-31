@@ -8,4 +8,5 @@ enum class Message(val message: String) {
 
     VALID_INPUT_NOT_BLANK("경주할 자동차의 이름이 입력되지 않았습니다."),
     VALID_INPUT_OVER_SIZE("경주할 자동차의 수가 최대 개수인 10대를 초과하였습니다."),
+    VALID_INPUT_WHITESPACE("올바르지 않은 자동차의 이름이 존재합니다.")
 }
