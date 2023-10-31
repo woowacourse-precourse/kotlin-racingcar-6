@@ -9,7 +9,7 @@ import racingcar.utils.Exceptions
 
 class RacingCarGame {
 
-    val repository: RacingCarRepository = RacingCarRepositoryImpl()
+    private val repository: RacingCarRepository = RacingCarRepositoryImpl()
     private val viewModel = RacingCarViewModel(repository)
     fun start() {
         println(CommonStrings.MESSAGE_INPUT_CAR_NAME)
