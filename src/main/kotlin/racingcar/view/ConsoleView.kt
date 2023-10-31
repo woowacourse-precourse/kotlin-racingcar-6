@@ -30,9 +30,9 @@ object ConsoleView {
 
     fun printWinner(winners: Set<String>) {
         if (winners.size == 1) {
-            println("\n최종 우승자 : ${winners.first()}")
+            println("\n" + Strings.MESSAGE_WINNER + winners.first())
         } else {
-            println("\n최종 우승자 : ${winners.joinToString(", ")}")
+            println("\n" + Strings.MESSAGE_WINNER + winners.joinToString(", "))
         }
     }
 }
