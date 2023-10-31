@@ -1,10 +1,10 @@
 package racingcar.domain
 
+import java.io.ByteArrayOutputStream
+import java.io.PrintStream
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import java.io.ByteArrayOutputStream
-import java.io.PrintStream
 
 class CarTest {
     private val originalOut = System.out
@@ -24,7 +24,7 @@ class CarTest {
     @Test
     fun `자동차 전진 혹은 정지 테스트 1`() {
         val car = Car("test")
-        car.moveOrStay(7)
+        car.moveOrStay(MOVING_FORWARD)
         val expected = 1
         assertThat(expected).isEqualTo(car.getPosition())
     }
@@ -32,7 +32,7 @@ class CarTest {
     @Test
     fun `자동차 전진 혹은 정지 테스트 2`() {
         val car = Car("test")
-        car.moveOrStay(3)
+        car.moveOrStay(STOP)
         val expected = 0
         assertThat(expected).isEqualTo(car.getPosition())
     }
@@ -53,7 +53,7 @@ class CarTest {
     @Test
     fun `자동차 위치 출력 테스트 2`() {
         val car = Car("test")
-        car.moveOrStay(7)
+        car.moveOrStay(MOVING_FORWARD)
         System.setOut(PrintStream(outputStreamCaptor))
 
         println(car)
@@ -65,18 +65,23 @@ class CarTest {
     }
 
     @Test
-    fun `자동차 우승 확인 기능 테스트 1`() {
+    fun `자동차 우승 확인 테스트 1`() {
         val car = Car("test")
-        car.moveOrStay(2)
-        val expected = car.isWinnerCar(1)
+        car.moveOrStay(STOP)
+        val expected = car.isWinner(1)
         assertThat(expected).isFalse()
     }
 
     @Test
-    fun `자동차 우승 확인 기능 테스트 2`() {
+    fun `자동차 우승 확인 테스트 2`() {
         val car = Car("test")
-        car.moveOrStay(7)
-        val expected = car.isWinnerCar(1)
+        car.moveOrStay(MOVING_FORWARD)
+        val expected = car.isWinner(1)
         assertThat(expected).isTrue()
+    }
+
+    companion object {
+        private const val MOVING_FORWARD = 4
+        private const val STOP = 3
     }
 }

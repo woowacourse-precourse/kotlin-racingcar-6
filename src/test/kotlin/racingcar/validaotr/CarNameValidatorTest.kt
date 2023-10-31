@@ -6,6 +6,7 @@ import racingcar.validator.CarNameValidator
 
 class CarNameValidatorTest {
     private val validator = CarNameValidator()
+
     @Test
     fun `이름에 공백을 입력 시 예외 발생 테스트 1`() {
         val input = ""
