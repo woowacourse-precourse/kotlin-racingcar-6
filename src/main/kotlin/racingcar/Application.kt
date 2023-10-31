@@ -85,7 +85,9 @@ fun inputRepeat(): Int {
     return repeat.toInt()
 }
 fun checkNum(repeat: String) {
-    if (repeat.toIntOrNull() == null) {
+    try {
+        repeat.toInt()
+    } catch (e: NumberFormatException){
         throw IllegalArgumentException("숫자가 아니거나 null입니다.")
     }
     if (repeat.toInt() < 1) {
