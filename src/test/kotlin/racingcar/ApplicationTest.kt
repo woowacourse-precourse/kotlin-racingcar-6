@@ -31,6 +31,17 @@ class ApplicationTest : NsTest() {
         assertThrows<IllegalArgumentException> { runException("pobi,newbi,vonvolous", "3") }
     }
 
+    @Test
+    fun `자동차 클래스 및 출력 기능 확인`() {
+        assertRandomNumberInRangeTest(
+                {
+                    run("pobi,woni,vonvo", "1")
+                    assertThat(output()).contains("pobi : -", "woni : ", "vonvo : -", "최종 우승자 : pobi,vonvo")
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD
+        )
+    }
+
     public override fun runMain() {
         main()
     }
