@@ -3,7 +3,6 @@ package racingcar.controller
 import racingcar.model.CarModel
 import racingcar.view.InputView
 import camp.nextstep.edu.missionutils.Console
-import racingcar.model.RandomNumber
 
 
 class RacingCarController {
@@ -20,8 +19,14 @@ class RacingCarController {
         val attemptsNumber = Console.readLine()
         model.setAttemptsNumber(attemptsNumber)
 
+        model.initProgressList()
+
         for (i in 1..attemptsNumber.toInt()) {
             model.moveCar()
+        }
+
+        for (i in carNames.indices) {
+            val progress = model.getCarProgress(i)
         }
     }
 
