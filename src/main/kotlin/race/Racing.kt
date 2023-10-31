@@ -13,9 +13,7 @@ class Racing {
         for (car in racingCarList) {
             car.start()
             roundResult.append(car.distInfo())
-            if (car.nowDist() > firstCarDist) {
-                firstCarDist = car.nowDist()
-            }
+            if (car.nowDist() > firstCarDist) firstCarDist = car.nowDist()
         }
         return roundResult.appendLine()
     }
