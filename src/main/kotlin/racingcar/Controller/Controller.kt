@@ -16,6 +16,9 @@ class Controller(val inputView: InputView, val outputView: OutputView) {
         val racingCars = makeRacingCars(carNames)
         for (index in 1..tryNumber)
             outputView.printResult(moveOrStop(racingCars))
+
+        outputView.printWinnerMessage()
+        outputView.printWinner(getWinnerForward(racingCars))
     }
 
     fun makeRacingCars(carNames: List<String>) : List<RacingCar> {
