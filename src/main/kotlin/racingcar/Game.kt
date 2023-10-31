@@ -31,7 +31,7 @@ class Game {
         var rep = repeat
         println("\n실행 결과")
         while (rep > 0) {
-            for (car in cars!!) {
+            for (car in cars) {
                 car.play()
             }
             println()
@@ -47,7 +47,7 @@ class Game {
     }
 
     private fun winner() {
-        val winners: MutableList<String> = ArrayList()
+        val winners: ArrayList<String> = ArrayList()
         val maxPosition = findMaxPos()
         for (car in cars) {
             if (car.getPosition() == maxPosition) {
