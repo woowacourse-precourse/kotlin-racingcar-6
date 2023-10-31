@@ -31,6 +31,8 @@ class GameController {
     fun inputRepetition() = inputView.promptRepetition()
 
     fun playRounds(count: Int, carList: List<Car>) {
+        outputView.printResultInfo()
+
         repeat(count) {
             advanceCarsInRound(carList)
             outputView.printRoundResult(carList)

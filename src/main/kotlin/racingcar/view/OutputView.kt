@@ -4,6 +4,8 @@ import racingcar.model.Car
 import racingcar.view.Constants.COMMA_DELIMITERS
 
 class OutputView {
+    fun printResultInfo() = println("\n$EXECUTION_RESULT_TEXT")
+
     fun printRoundResult(carList: List<Car>) {
         for (currentCar in carList) {
             println("${currentCar.name} : ${DASH.repeat(currentCar.score)}")
@@ -12,13 +14,14 @@ class OutputView {
     }
 
     fun printWinner(winnerList: List<String>) {
-        println(
+        print(
             "$FINAL_WINNER ${winnerList.joinToString("${COMMA_DELIMITERS} ")}"
         )
     }
 
     companion object {
         private const val DASH = "-"
+        private const val EXECUTION_RESULT_TEXT = "실행 결과"
         private const val FINAL_WINNER = "최종 우승자 :"
     }
 }
