@@ -20,6 +20,7 @@ fun race(racingCars: List<RacingCar>, tryCount: Int?) {
             it.move()
             it.print()
         }
+        println()
     }
 }
 
