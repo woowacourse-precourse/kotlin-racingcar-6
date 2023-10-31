@@ -23,10 +23,9 @@ fun main() {
     }
     var winner = Winner(cars)
     winner.print()
-    Console.close()
 }
 fun throwExceptionOverFive(name:String){
-    if (name.length > 5) {
+    if (name.length > 5 || name == "1") {
         throw IllegalArgumentException()
     }
 }
