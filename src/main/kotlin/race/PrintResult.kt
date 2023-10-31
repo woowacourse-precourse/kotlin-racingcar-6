@@ -1,7 +1,7 @@
 package race
 
-class PrintResult {
-    fun printMessage(message: String) {
+open class PrintResult {
+    open fun printMessage(message: String) {
         println(message)
     }
 }
