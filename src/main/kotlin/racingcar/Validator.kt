@@ -48,4 +48,10 @@ object Validator {
             Message.VALID_ROUND_SIZE.message
         }
     }
+
+    fun checkIntType(round: String) {
+        require(round.none { it.isLetter() }) {
+            Message.VALID_ROUND_NOT_INTEGER.message
+        }
+    }
 }

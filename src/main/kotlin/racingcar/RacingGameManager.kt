@@ -113,6 +113,7 @@ class RacingGameManager {
         val gameRound = Console.readLine()
 
         with(Validator) {
+            checkIntType(gameRound)
             checkGameRoundSize(gameRound.toInt())
         }
 
