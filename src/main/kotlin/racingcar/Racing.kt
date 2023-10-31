@@ -32,7 +32,7 @@ class Racing {
         return scoreList
     }
     fun findTopScoreList(scoreList: List<Pair<String, Int>>): List<String> {
-        val maxScore = scoreList.maxBy { it.second }?.second
+        val maxScore = scoreList.maxBy { it.second }.second
         return scoreList.filter { it.second == maxScore }.map { it.first }
     }
     fun printlnTopScore(topScore:List<String>){

@@ -19,6 +19,9 @@ class RacingController {
             val topScore = gamePlaying.findTopScoreList(scoreList)
             gamePlaying.printlnTopScore(topScore)
         }
+        if(!inputUser.validName(carNames)){
+            throw IllegalArgumentException("5글자를 초과한 이름은 입력 불가합니다.")
+        }
     }
     private fun inputControl(){
        if(inputUser.validName(carNames)) {
