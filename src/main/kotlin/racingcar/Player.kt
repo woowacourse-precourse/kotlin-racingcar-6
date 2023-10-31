@@ -1,7 +1,7 @@
 package racingcar
 
-import racingcar.validator.StringLengthValidator
 import racingcar.validator.NumericStringValidator
+import racingcar.validator.StringLengthValidator
 import racingcar.validator.StringValidator
 
 
