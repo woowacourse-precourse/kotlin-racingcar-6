@@ -53,7 +53,7 @@ class ValidationTest {
     }
 
     @Test
-    fun `사용자가 정수가 아는 시도 횟수 입력`() {
+    fun `사용자가 정수가 아닌 시도 횟수 입력`() {
         Assertions.assertThatIllegalArgumentException().isThrownBy {
             "!!".attemptValidation()
             "cat".attemptValidation()
