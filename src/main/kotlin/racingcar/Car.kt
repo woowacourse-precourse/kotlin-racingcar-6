@@ -1,6 +1,6 @@
 package racingcar
 
-data class Cars(var name: String, var go: Int)
+data class Cars(var name: String, var go: Int)  // 객체 배열
 
 class Car {
     fun makeCars(): Array<Cars?> {
@@ -13,7 +13,6 @@ class Car {
         for (i in 0 until carCnt) {
             val cars = Cars(carNameList[i], 0)  // 차 이름, 전진 횟수 초기화
             carList[i] = cars
-            //println("${i + 1}번째 차: ${carList[i]!!.name}")
         }
 
         return carList

@@ -178,3 +178,6 @@ https://brunch.co.kr/@hopeless/8
 
 객체로 배열 만들기
 https://developer-rooney.tistory.com/49
+
+'.indices' call
+https://kkangsnote.tistory.com/65
