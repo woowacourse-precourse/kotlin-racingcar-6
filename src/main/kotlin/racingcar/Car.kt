@@ -1,14 +1,7 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Randoms
-
-class Car {
-
-    fun generatorRandomNum(): Int {
-        val randomNumber = Randoms.pickNumberInRange(0, 9)
-        println("내가뽑은 랜덤 값$randomNumber")
-        return randomNumber
-    }
+class Car(val carName: String, val randomNum: Int) {
+    var distance = ""
 
     fun checkIsGoToStop(advanceNum: Int): String {
         return when (advanceNum) {
@@ -17,9 +10,25 @@ class Car {
         }
     }
 
+    private fun printPlayLine(randomNum: Int): String {
+
+        return when (checkIsGoToStop(randomNum)) {
+            GO -> "-"
+            STOP -> ""
+            else -> throw IllegalArgumentException(ERROE_GO_TO_STOP)
+        }
+    }
+
+    fun carMove() {
+        val progress = printPlayLine(randomNum)
+        distance += progress
+        print(distance)
+    }
+
+
     companion object {
         const val STOP = "STOP"
         const val GO = "GO"
+        const val ERROE_GO_TO_STOP = "0~9가 아닌 값"
     }
-
 }

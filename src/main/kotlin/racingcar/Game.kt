@@ -1,11 +1,7 @@
 package racingcar
 
-import racingcar.Car.Companion.GO
-import racingcar.Car.Companion.STOP
-
 class Game {
     lateinit var carNameList: List<String>
-    val ERROE_GO_TO_STOP = "0~9가 아닌 값"
     var tryGameNum: Int = 0
     fun playGame() {
         playUser()
@@ -22,27 +18,7 @@ class Game {
 
     private fun playCar() {
         println("실행 결과")
-        playResult()
 
-    }
-
-    private fun playResult() {
-        for (carName in carNameList) {
-            print("$carName : ")
-            print("${printPlayLine()}")
-            println()
-        }
-    }
-
-    private fun printPlayLine(): String {
-        val randomNum = Car().generatorRandomNum()
-        val goList = Car().checkIsGoToStop(randomNum)
-
-        return when (goList) {
-            GO -> "-"
-            STOP -> ""
-            else -> throw IllegalArgumentException(ERROE_GO_TO_STOP)
-        }
     }
 
 }
