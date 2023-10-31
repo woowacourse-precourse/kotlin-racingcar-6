@@ -1,20 +1,18 @@
 package racingcar.domain
 
-import racingcar.constants.Constants
-import racingcar.io.Printer
 import racingcar.io.Reader
 import racingcar.utils.InputChecker
 
 class CarNames(
     private val reader: Reader,
-    private val printer: Printer,
-    private val inputChecker: InputChecker
+    private val inputChecker: InputChecker,
+    private var nameList: List<String> = emptyList()
 ) {
-
     fun inputCarNames(): List<String> {
-        printer.printNextLine(Constants.INPUT_NAME)
-        val nameList = inputChecker.checkInputNames(reader.readLine())
+        nameList = inputChecker.checkInputNames(reader.readLine()).split(",")
 
-        return nameList.split(",").toList()
+        return nameList
     }
+
+    fun getNameList(): List<String> = nameList
 }

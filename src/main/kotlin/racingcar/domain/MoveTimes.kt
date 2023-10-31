@@ -1,19 +1,18 @@
 package racingcar.domain
 
-import racingcar.constants.Constants
-import racingcar.io.Printer
 import racingcar.io.Reader
 import racingcar.utils.InputChecker
 
 class MoveTimes(
     private val reader: Reader,
-    private val printer: Printer,
-    private val inputChecker: InputChecker
+    private val inputChecker: InputChecker,
+    private var moveTime: Int = 0
 ) {
     fun inputMoveTimes(): Int {
-        printer.printNextLine(Constants.INPUT_MOVE_TIME)
-        val moveTime = inputChecker.checkMoveTimes(reader.readLine())
+        moveTime = inputChecker.checkMoveTimes(reader.readLine()).toInt()
 
-        return moveTime.toInt()
+        return moveTime
     }
+
+    fun getMoveTime(): Int = moveTime
 }
