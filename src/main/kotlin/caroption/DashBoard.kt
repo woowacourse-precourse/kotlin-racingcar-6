@@ -13,7 +13,7 @@ class DashBoard(private val carName: String) {
 
     fun nowDist() = dist
 
-    fun printDist(dist: BigInteger) {
+    fun printDist() {
         print("${carName}$CAR_DIST_SEPARATOR")
         var count = BigInteger(INIT_DIST)
         while (count < dist) {
