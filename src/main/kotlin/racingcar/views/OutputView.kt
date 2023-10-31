@@ -50,7 +50,7 @@ class OutputView {
     }
 
     fun printMultiWinner(winners: Set<String>) {
-        println(WINNER_MESSAGE + { winners.joinToString(",") })
+        println(WINNER_MESSAGE + winners.joinToString(","))
     }
 
     fun printNoWinner() {
