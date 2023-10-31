@@ -10,7 +10,7 @@ class ValidateRacingCount {
     }
 
     fun validateTryCount(tryCount: String): Int {
-        when (true) {
+        when {
             validateNullOrBlank(tryCount) -> throw IllegalArgumentException(OutputView.NO_TRY_COUNT_ERROR)
 
             validateNotInRange(tryCount) -> throw IllegalArgumentException(OutputView.TRY_COUNT_RANGE_ERROR)
