@@ -13,7 +13,7 @@ class ApplicationTest2 : NsTest() {
         assertRandomNumberInRangeTest(
             {
                 run("song,je", "3")
-                assertThat(output()).contains("song : ---", "je : --", "최종 우승자 : song")
+                assertThat(output()).contains("song : ---", "je : -", "최종 우승자 : song")
             },
             MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD
         )
