@@ -19,12 +19,24 @@ class InputView {
                 throw IllegalArgumentException("자동차 이름은 이름은 5자 이하만 가능하다.")
             }
 
+            if (validRacingCarNameList.contains(racingCarName)) {
+                throw IllegalArgumentException("자동차 이름은 중복이 허용되지 않는다.")
+            }
 
+            if (racingCarName.isEmpty()) {
+                throw IllegalArgumentException("쉼표(,) 뒤에 자동차 이름이 입력되지 않았다.")
+            }
+
+            if (racingCarName[0] == ' ') {
+                throw IllegalArgumentException("자동차 이름의 첫글자는 공백이 아니다.")
+            }
 
             validRacingCarNameList.add(racingCarName)
         }
 
-
+        if (racingCarNameList.size < 2) {
+            throw IllegalArgumentException("자동차 이름은 2개 이상 입력받아야 한다.")
+        }
 
         return validRacingCarNameList
     }
