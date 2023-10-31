@@ -50,9 +50,8 @@ class RacingCarController {
     }
 
     companion object {
-        const val RANDOM_START_NUM = 0
-        const val RANDOM_FINISH_NUM = 9
+        private const val RANDOM_START_NUM = 0
+        private const val RANDOM_FINISH_NUM = 9
         const val MIN_DISTANCE_NUM = 4
-        const val MAX_NAME_LENGTH_NUM = 5
     }
 }
