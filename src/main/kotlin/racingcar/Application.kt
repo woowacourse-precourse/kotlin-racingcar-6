@@ -1,21 +1,17 @@
 package racingcar
 
-// import kotlin.collections.mutableMapOf
-import java.util.Random
-import kotlin.text.toInt
-
-// import camp.nextstep.edu.missionutils.Randoms //pickNumberInRange
-// import camp.nextstep.edu.missionutils.Console //readLine
+import camp.nextstep.edu.missionutils.Randoms 
+import camp.nextstep.edu.missionutils.Console 
 
 fun main() {
     
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     
-    val inputNames = readLine()
-    val nameList = inputNames?.split(",") 
+    val inputNames = Console.readLine()
+    val nameList = inputNames.split(",") 
     var carMap = mutableMapOf<String, Int>()
     
-    for (name in nameList!!) {
+    for (name in nameList) {
         if (name.trim().length <= 5) {
             carMap.put(name.trim(), 0)
         } else {
@@ -25,11 +21,11 @@ fun main() {
     
     println("시도할 횟수는 몇 회인가요?")
     
-    val moveConut = readLine()
+    val moveConut = Console.readLine()
     
-    println("실행결과\n")
+    println("\n실행결과\n")
     
-    for (i in 0 until moveConut!!.toInt()) {
+    for (i in 0 until moveConut.toInt()) {
         playGames(carMap)
         printResult(carMap)
         println("")
@@ -44,15 +40,13 @@ fun main() {
     }
     
     val winners = winnerList.joinToString(", ")
-    println("최종우승자 : $winners")
+    println("최종 우승자 : $winners")
 }
 
 fun playGames(carMap : MutableMap<String, Int>){
-    
-    val random = Random()
 
     for (car in carMap) {
-        if (random.nextInt(10) >= 4) {
+        if (Randoms.pickNumberInRange(1, 9) >= 4) {
             carMap.put(car.key, car.value + 1)
         }    
     }
