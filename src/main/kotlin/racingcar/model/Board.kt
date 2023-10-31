@@ -39,7 +39,10 @@ class Scores private constructor(private val _scoreByAttempt: MutableMap<Attempt
     }
 
     companion object {
+        private const val SCORE_INITIAL = 0
+        private const val FIRST_ATTEMPT = 1
+
         fun create(attempt: Attempt): Scores =
-            (1..attempt).associateWith { 0 }.toMutableMap().run { Scores(this) }
+            (FIRST_ATTEMPT..attempt).associateWith { SCORE_INITIAL }.toMutableMap().run { Scores(this) }
     }
 }
