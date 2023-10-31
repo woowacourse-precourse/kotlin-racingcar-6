@@ -1,5 +1,7 @@
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Test
 
 // 경주용 자동차 정보 클래스
 class RacingCar(val name: String) {
@@ -59,8 +61,8 @@ fun main() {
 
 // 자동차의 현재 상태 출력하기
 fun raceStatus(cars: List<RacingCar>) {
-    cars.forEach {
-        car -> println("${car.name} : ${"-".repeat(car.distance)}")
+    cars.forEach { car ->
+        println("${car.name} : ${"-".repeat(car.distance)}")
     }
     println()
 }
@@ -81,3 +83,16 @@ fun lapCounts(): Int {
     println("시도할 횟수는 몇 회인가요?")
     return Console.readLine()?.toIntOrNull() ?: throw IllegalArgumentException("잘못 입력하였습니다.")
 }
+
+// JUnit 5와 AssertJ를 이용한 기능 테스트
+class RacingGameTest {
+    @Test
+    fun `자동차 이름이 5자를 초과하면 예외를 발생시킨다`() {
+        val longName = "woowacon"
+        val exception = org.junit.jupiter.api.assertThrows<IllegalArgumentException> {
+            RacingCar(longName)
+        }
+        assertThat(exception.message).isEqualTo("자동차 이름은 5자 이하여야 합니다.")
+    }
+}
+
