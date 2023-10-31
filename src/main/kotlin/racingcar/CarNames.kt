@@ -1,13 +1,9 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Console.readLine
-
 class CarNames {
     private var carNamesInput: String = ""
     private lateinit var carNames: List<String>
     fun getCarNames(input: String): List<String> {
-//    println("경주할 자동차 이름을 입력하세요.")
-//    val carNamesInput = readLine()
         carNamesInput = input
         carNames = carNamesInput.split(',').map { it.trim() } // 쉼표로 나눈 후 앞뒤 공백 제거
 

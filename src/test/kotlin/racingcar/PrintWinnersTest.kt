@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class ResultsTest : NsTest() {
+class PrintWinnersTest : NsTest() {
     @Test
     fun `우승자 정상 출력 (전진, 정지)`() {
         camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest(

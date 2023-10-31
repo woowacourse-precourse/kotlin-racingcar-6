@@ -1,6 +1,6 @@
 package racingcar
 
-class Winners {
+class FindWinners {
     private lateinit var longDistance: String
 
     // 우승 자동차 찾기

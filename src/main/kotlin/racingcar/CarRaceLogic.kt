@@ -5,10 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms
 class CarRaceLogic {
     private lateinit var carNamesAndResults: MutableMap<String, String>
     private lateinit var carNamesAndInitalizedResults: MutableMap<String, String>
-    private var time: Int = 0
-    private var num: Int = 0
+    private var time: Int = 0 // 시도 횟수
+    private var randomNum: Int = 0 // 랜덤 숫자
 
-    // 자동차 경주
     fun raceCars(carNames: List<String>): Map<String, String> {
         carNamesAndResults = initializeCarResults(carNames)
         time = RaceTime().getRaceTime()
@@ -33,8 +32,8 @@ class CarRaceLogic {
 
     private fun raceRound(carNames: List<String>, carNamesAndResults: MutableMap<String, String>) {
         for (carName in carNames) {
-            num = Randoms.pickNumberInRange(0, 9)
-            if (num >= 4) {
+            randomNum = Randoms.pickNumberInRange(0, 9)
+            if (randomNum >= 4) {
                 carNamesAndResults[carName] += "-"
             }
             println("$carName : ${carNamesAndResults[carName]}")
