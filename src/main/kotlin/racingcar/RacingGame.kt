@@ -69,7 +69,7 @@ class RacingGame(
     }
 
     private fun requireValidAttemptsNumberInput(attemptsNumberInput: String) {
-        require(attemptsNumberInput.matches(Regex("^\\d+\$")))
+        require(attemptsNumberInput.matches(Regex(Message.ONLY_NUMBER_PATTERN)))
         require(attemptsNumberInput.toInt() >= 0)
     }
 

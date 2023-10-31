@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 class Car(name: String) {
     init {
         require(name.length <= NAME_MAX_LENGTH)
-        require(name.matches(Regex("^[A-Za-z가-힣]*\$")))
+        require(name.matches(Regex(Message.NOT_ONLY_NUMBER_PATTERN)))
     }
 
     var name: String = name
