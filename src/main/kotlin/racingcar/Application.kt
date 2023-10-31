@@ -1,9 +1,18 @@
 package racingcar
 
 fun main() {
-    try {
         val carNames = CarRace.getCarNames()
         val moveCount = CarRace.getMoveCount()
+        val moveCountResult = runCatching { moveCount }
+
+        if (carNames is IllegalArgumentException) {
+            println("${(carNames as IllegalArgumentException).message} 애플리케이션을 종료합니다.")
+            return
+        }
+        moveCountResult.onFailure { e ->
+            println("오류: ${e.message}\n프로그램을 종료합니다.")
+        }
+
 
         val carPositions = IntArray(carNames.size)
 
@@ -16,7 +25,4 @@ fun main() {
 
         val winners = CarResults.findWinners(carNames, carPositions)
         CarResults.printWinners(winners)
-    } catch (e: IllegalArgumentException) {
-        println("오류: 유효하지 않은 입력입니다. 게임을 종료합니다.")
-    }
 }
