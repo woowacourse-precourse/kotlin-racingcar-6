@@ -13,14 +13,14 @@ class Game(
         presenter.createRacingCarsOrThrow(nameInput)
     }
 
-    private fun inputTryTime(): Int {
+    private fun inputTryTime(): TryTime {
         printer.printInputTryTimeMessage()
         val input = Console.readLine()
-        return input.toIntOrNull() ?: throw IllegalArgumentException()
+        return TryTime.createOrThrow(input)
     }
 
-    private fun runGame(tryTime: Int) {
-        repeat(tryTime) {
+    private fun runGame(tryTime: TryTime) {
+        repeat(tryTime.count) {
             presenter.moveRacingCars()
             val cars = presenter.racingCars
             printer.printRacingCarStates(cars)
