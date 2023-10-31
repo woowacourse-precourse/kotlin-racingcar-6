@@ -10,7 +10,7 @@ const val BASE_NUMBER = 4
 
 fun main() {
 
-    println(RACE_START_MSG)
+    printRaceStart(RACE_START_MSG)
     val carNames = getCarList()
     isCarNameUnique(carNames)
     carNames.forEach { name ->
@@ -18,7 +18,7 @@ fun main() {
         isCarNameNotEmpty(name)
     }
 
-    println(NUMBER_ATTEMPTS_MSG)
+    printNumberAttempts(NUMBER_ATTEMPTS_MSG)
 
     val numberAttempts = getNumberAttempts()
     isNumberAttemptsValid(numberAttempts)
@@ -49,5 +49,7 @@ fun getNumberAttempts(): String = Console.readLine().trim()
 fun isNumberAttemptsValid(numberAttempts: String) {
     if(! (numberAttempts.all { it.isDigit() }) || numberAttempts.toInt() < 1) throw  IllegalArgumentException("Invalid format for number of attempts. Please use the specified format.")
 }
+fun printRaceStart(raceStartMsg:String){ println(raceStartMsg) }
+fun printNumberAttempts(numberAttemptsMsg:String){ println(numberAttemptsMsg) }
 
 
