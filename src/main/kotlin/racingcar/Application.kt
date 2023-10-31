@@ -21,6 +21,7 @@ fun main() {
         println()
     }
 
+    finish()
 }
 
 private fun inputRacingCarName() {
@@ -64,4 +65,12 @@ private fun canForward(value: Int): Boolean {
 private fun progressBar(carName: String) {
     val score = racingCar[carName] ?: 0
     println("$carName : ${"-".repeat(score)}")
+}
+
+private fun finish() {
+    val maxScore = racingCar.maxOf { it.value }
+    val maxScoreMap = racingCar.filterValues { it == maxScore }
+    val winnerKeys = maxScoreMap.keys
+
+    println("최종 우승자 : ${winnerKeys.joinToString(separator = ", ")}")
 }
