@@ -1,12 +1,13 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
-import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
 
 /* TestInstance : 변수가 하나의 인스턴스를 공유하여, 각각의 테스트 메소드에서 사용됨.
 JUnit은 개별 테스트의 독립성 보장과 테스트 사이의 Side Effect를 최소화 하기 위해,
@@ -36,11 +37,17 @@ class ApplicationTest : NsTest() {
         )
     }
 
-    @Test
-    fun `이름에 대한 예외 처리`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
-        }
+    @ParameterizedTest
+    @MethodSource("RandomNumbersSingleWinner")
+    @DisplayName("OutputView: printRoundResult()")
+    fun `라운드 자동차 경주 점수 출력`(randomNumbers: IntArray) {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,jun", "5")
+                assertThat(output()).contains("pobi : ----", "woni : ---", "jun : ---", "최종 우승자 : pobi")
+            },
+            randomNumbers[0], *randomNumbers.copyOfRange(1, randomNumbers.size).toTypedArray()
+        )
     }
 
     public override fun runMain() {
@@ -50,5 +57,10 @@ class ApplicationTest : NsTest() {
     companion object {
         const val MOVING_FORWARD = 4
         const val STOP = 3
+
+        @JvmStatic
+        fun RandomNumbersSingleWinner() = listOf(
+            intArrayOf(6, 4, 3, 8, 0, 6, 4, 7, 4, 5, 8, 5, 3, 0, 3), // 4, 3, 3
+        )
     }
 }

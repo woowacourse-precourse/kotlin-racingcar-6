@@ -64,7 +64,6 @@ class CarsTest {
         val exception = assertThrows<IllegalArgumentException> {
             Cars.fromNames(inputName)
         }
-
         assertEquals(Cars.CAR_NAME_DUPLICATE_ERROR, exception.message) // JUnit
         assertThat(Cars.CAR_NAME_DUPLICATE_ERROR).isEqualTo(exception.message) // AssertJ
     }

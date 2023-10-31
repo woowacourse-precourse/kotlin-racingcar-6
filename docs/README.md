@@ -18,7 +18,7 @@
 
 **4. 라운드 별 자동차 경주 점수 출력 - view/OutputView**
 - [x] 라운드의 진행 결과를 출력하는 기능 - view/OutputView.printRoundResult()
-- [ ] test
+- [x] test
 
 
 **5. 자동차 경주 우승자  - model/Winner(Race)**
