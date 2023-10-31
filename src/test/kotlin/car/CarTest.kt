@@ -53,4 +53,12 @@ class CarTest {
         }
     }
 
+    @Test
+    fun `중복된 이름이 존재할 때 예외를 던진다`() {
+        val names = listOf("james", "james", "lea")
+        assertThrows<IllegalArgumentException>("중복된 이름이 있으면 안됩니다.") {
+            require(names.toSet().size == names.size)
+        }
+    }
+
 }
