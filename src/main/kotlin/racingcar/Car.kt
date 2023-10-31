@@ -1,6 +1,7 @@
 package racingcar
 
 class Car(
+    val name: String,
     private val moveStrategy: MoveStrategyInterface = BasicMoveStrategy(),
     private val speed: Int = 1,
     initLocation: Int = 0
