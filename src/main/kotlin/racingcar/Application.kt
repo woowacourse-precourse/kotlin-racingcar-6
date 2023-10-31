@@ -48,6 +48,7 @@ fun inputCarName() {
             break
         } else if (carNameList.size > 1) {
             print(",")
+
         }
     }
 }
