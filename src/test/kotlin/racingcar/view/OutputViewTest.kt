@@ -20,4 +20,18 @@ class OutputViewTest {
                     "jun : ---\n")
     }
 
+    @Test
+    fun `최종 우승자가 단독인 경우 `() {
+        val winnerCars = listOf("pobi")
+        val result = outputView.printWinner(winnerCars)
+        assertThat(result).isEqualTo("pobi")
+    }
+
+    @Test
+    fun `최종 우승자가 공동인 경우`() {
+        val winnerCars = listOf("pobi","jon")
+        val result = outputView.printWinner(winnerCars)
+        assertThat(result).isEqualTo("pobi, jon")
+    }
+
 }
