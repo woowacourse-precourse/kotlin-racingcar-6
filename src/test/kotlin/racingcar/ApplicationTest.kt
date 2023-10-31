@@ -51,6 +51,19 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `중복 우승자`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("a,b,c,d", "3")
+                assertThat(output()).contains("a : ---", "b : -", "c : -", "d : ---", "최종 우승자 : a, d")
+            },
+            MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD,
+            MOVING_FORWARD, STOP, STOP, MOVING_FORWARD,
+        )
+    }
+
     public override fun runMain() {
         main()
     }
