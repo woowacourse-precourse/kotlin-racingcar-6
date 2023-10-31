@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 data class Car(val name: String) {
      var distance: Int = 0
     fun checkMove() {
-        if (Randoms.pickNumberInRange(0, 9) > 4) {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
             distance++
             println("여기 name $name")
             println("distance $distance")
