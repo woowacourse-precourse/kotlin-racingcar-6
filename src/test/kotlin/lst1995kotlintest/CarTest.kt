@@ -30,7 +30,7 @@ class CarTest {
 
     @Test
     fun `DashBoard 반환값 검사`() {
-        assertThat("${dashBoard.printDist()}").isEqualTo("테스트차량 : ----------\n")
+        assertThat("${dashBoard.distInfo()}").isEqualTo("테스트차량 : ----------\n")
     }
 
     @Test
