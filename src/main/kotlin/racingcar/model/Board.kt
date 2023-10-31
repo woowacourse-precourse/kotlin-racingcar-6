@@ -7,14 +7,14 @@ class Board private constructor(
     private val scoresByCarName: MutableMap<CarName, Scores>,
 ) {
 
-    fun addScore(carName: CarName, attempt: Attempt, score: Score) {
+    fun writeResult(carName: CarName, attempt: Attempt, score: Score) {
         val scores = scoresByCarName[carName] ?: throw IllegalArgumentException(Error.InvalidName.message)
         scores.addCurrentScore(attempt, score)
     }
 
     fun getResultByAttempt(attempt: Attempt): List<Pair<CarName, Score>> =
         scoresByCarName.flatMap { (carName, scores) ->
-            val score = scores.scoreByCarName[attempt]!!
+            val score = scores.scoreByAttempt[attempt]!!
             listOf(carName to score)
         }
 
@@ -32,9 +32,10 @@ class Board private constructor(
 
 class Scores private constructor(private val _scoreByAttempt: MutableMap<Attempt, Score>) {
 
-    val scoreByCarName get() = _scoreByAttempt.toMap()
+    val scoreByAttempt: Map<Attempt, Score> get() = _scoreByAttempt
 
     fun addCurrentScore(attempt: Attempt, score: Score) {
+        require(_scoreByAttempt.contains(attempt)) { Error.OverflowAttempt.message }
         _scoreByAttempt[attempt] = score
     }
 
@@ -42,7 +43,13 @@ class Scores private constructor(private val _scoreByAttempt: MutableMap<Attempt
         private const val SCORE_INITIAL = 0
         private const val FIRST_ATTEMPT = 1
 
-        fun create(attempt: Attempt): Scores =
-            (FIRST_ATTEMPT..attempt).associateWith { SCORE_INITIAL }.toMutableMap().run { Scores(this) }
+        fun create(attempt: Attempt): Scores {
+            val scoreByAttempt = (FIRST_ATTEMPT..attempt).associateWith { SCORE_INITIAL }
+            return Scores(scoreByAttempt.toMutableMap())
+        }
+    }
+
+    internal enum class Error(val message: String) {
+        OverflowAttempt("입력한 차수를 넘겼습니다. ")
     }
 }

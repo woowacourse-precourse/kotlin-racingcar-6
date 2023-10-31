@@ -18,9 +18,10 @@ class OutputView {
             (1..lastAttempt).forEach { currentAttempt ->
                 val carNameAndScoreList = board.getResultByAttempt(currentAttempt)
                 appendLine(formatRaceResults(carNameAndScoreList))
+                appendLine()
             }
         }
-        println(message)
+        print(message)
     }
 
     fun printWinner(winners: List<CarName>) {
@@ -46,10 +47,8 @@ class OutputView {
         NumberOfAttempts("시도할 횟수는 몇 회인가요?"),
         RaceResult("실행 결과"),
         WinnerFormat("최종 우승자 : %s"),
-        RaceResultFormat("%s : %s"); // todo: ~TEMPLETE 네이밍 변경
+        RaceResultFormat("%s : %s");
 
         override fun toString() = message
     }
 }
-
-//fun Enum<*>.format(vararg args: Any?): String = this.toString().format(args)

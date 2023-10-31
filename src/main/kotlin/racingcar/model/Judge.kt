@@ -10,7 +10,7 @@ class Judge(
     private val board = Board.create(raceParticipants.getNamesOfParticipants(), attempt)
 
     fun play(): Board {
-        repeat(attempt) { executeMove(attempt) }
+        (1..attempt).forEach { executeMove(it) }
         return board
     }
 
@@ -19,9 +19,9 @@ class Judge(
     private fun executeMove(attempt: Attempt) {
         raceParticipants.getNamesOfParticipants().forEach { carName ->
             if (isAvailableMove()) {
-                val score = raceParticipants.moveCar(carName)
-                board.addScore(carName, attempt, score)
+                raceParticipants.moveCar(carName)
             }
+            board.writeResult(carName, attempt, raceParticipants.getDistance(carName))
         }
     }
 
