@@ -44,7 +44,7 @@ class ApplicationTest : NsTest() {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = ["one", "0", " "])
+    @ValueSource(strings = ["one", "0", " ", ""])
     fun `시도 횟수에 대한 예외 처리`(tryNum: String) {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,java", tryNum) }
