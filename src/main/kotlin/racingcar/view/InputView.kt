@@ -7,13 +7,13 @@ object InputView {
     private const val COMMA = ","
 
     fun askCarToRace(validator: Validator): List<String> {
-        val cars = Console.readLine().split(COMMA)
+        val carsName = Console.readLine().split(COMMA)
 
-        for (car in cars) {
-            validator.nameLength(car)
+        for (name in carsName) {
+            validator.nameLength(name)
         }
 
-        return cars
+        return carsName
     }
 
     fun askNumberOfAttempts(validator: Validator): Int {
