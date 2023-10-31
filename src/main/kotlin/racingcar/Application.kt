@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 
-fun main(arge: Array<String>) {
+fun main(args: Array<String>) {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
 
     val car = Console.readLine()!!.split(",").map { it.trim() }
@@ -33,8 +33,8 @@ fun main(arge: Array<String>) {
             }
         }
 
-        fun move(raceNums: Int) {
-            if (raceNums >= 4) {
+        fun move() {
+            if (Randoms.pickNumberInRange(0,9) >= 4) {
                 position++
             }
         }
@@ -47,10 +47,8 @@ fun main(arge: Array<String>) {
     class Race(val cars: List<Car>, val rounds: Int) {
         fun run() {
             for (track in 0 until rounds) {
-                cars.forEach {
-                    it.move(Randoms.pickNumberInRange(0, 9))
-                }
-                result()
+                    cars.forEach { it.move() }
+                    result()
             }
         }
 
