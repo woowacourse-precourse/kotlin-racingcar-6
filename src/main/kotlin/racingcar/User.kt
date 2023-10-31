@@ -17,6 +17,10 @@ class User {
     }
 
     fun getTryCount(): Int {
-        
+        var inputString: String = Console.readLine()
+        // validator로 올바른 정수 문자열인지 확인
+        validator.isNumber(inputString)
+        val tryCount: Int = inputString.toInt()
+        return tryCount
     }
 }
