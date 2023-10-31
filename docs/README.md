@@ -1,5 +1,8 @@
 ## 기능 목록
 
+### RacingGame
+- Racing 게임이 시작하는 장소 
+
 ### Player
 - [x] : 경주 할 자동차 이름(이름은 쉼표(,) 기준으로 구분) 결정하기
 - [x] : 시도할 횟수 결정하기
@@ -17,10 +20,13 @@
 - [x] : 차를 전진시킨다 - move()
 - [x] : toString()에 이름(name)을 반환하도록 overriding
 
-### RacingCarAggregate
-Car를 상속받는 레이싱 차 집합
-- [x] : Car 객체를 담는 List(cars) 생성
-- [x] : move() 함수 호출 시 전진 가능한 car만 move()
+### Race
+cars와 referee가 협력하여 진행되는 레이싱
+- [x] : Car 객체를 담는 List(cars) 가 있다
+- [x] : 전진 가능한 car만 move하는 runOnStep() 함수
+- [x] : 현재 레이싱의 결과를 반환하는 result getter()
+- [x] : 현재 레이싱의 우승자를 반환하는 winner getter()
+- [x] : 현재 레이싱이 진행하고 있는지 반환하는 isRunning getter()
 
 ### RacingCar : Car
 Car를 상속받는 레이싱 차
