@@ -7,7 +7,7 @@ class InputView {
     fun inputRacingCarName(): List<String> {
         val racingCarNameList = Console.readLine().split(",")
 
-        return validateRacingCarName(racingCarNameList)
+        return racingCarNameList
     }
 
     // 기능 2. 자동차 이름 입력 값 유효성 검사하기
@@ -45,7 +45,7 @@ class InputView {
     fun inputAttemptNumber(): Int {
         val attemptNumber = Console.readLine()
 
-        return validateAttemptNumber(attemptNumber)
+        return attemptNumber.toInt()
     }
 
     // 기능 5. 시도할 횟수 입력값 유효성 검사하기
