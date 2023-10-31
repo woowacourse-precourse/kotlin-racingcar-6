@@ -1,12 +1,13 @@
 package racingcar
 
-import utils.Constants
+import utils.Constants.WINNER_RESULT_TITLE
+import utils.Constants.ROUND_RESULT_MSG
 
 class GameConsole {
 
     fun printRoundResultTitle() {
         println()
-        println(Constants.ROUND_RESULT_MSG)
+        println(ROUND_RESULT_MSG)
     }
 
     fun printRoundResult(carList: List<Car>) {
@@ -15,7 +16,7 @@ class GameConsole {
     }
 
     fun printWinner(winnerList: List<Car>) {
-        print(Constants.WINNER_RESULT_TITLE)
+        print(WINNER_RESULT_TITLE)
         print(winnerList.joinToString(", ") { it.name })
     }
 }
