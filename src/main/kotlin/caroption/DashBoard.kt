@@ -7,9 +7,6 @@ import java.math.BigInteger
 
 class DashBoard(private val carName: String) {
     private var dist = BigInteger(INIT_DIST)
-    fun distPlus() {
-        dist++
-    }
 
     fun distInfo(): StringBuilder {
         val distInput = StringBuilder()
@@ -21,6 +18,10 @@ class DashBoard(private val carName: String) {
         }
         distInput.appendLine()
         return distInput
+    }
+
+    fun distPlus() {
+        dist++
     }
 
     fun carName() = carName
