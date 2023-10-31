@@ -9,8 +9,9 @@ class StringTest {
     fun `split 메서드로 주어진 값을 구분`() {
         val input = "1,2"
         val result = input.split(",")
-        assertThat(result).contains("2", "1")
-        assertThat(result).containsExactly("1", "2")
+        assertThat(result).contains("2", "1") // 일치하는 값이 존재하기만 하면 됨
+        assertThat(result).containsExactly("1", "2") // 순서와 값 모두 일치해야 함
+        // + containsExactlyInAnyOrder -> 값이 모두 일치해야 함. 순서는 상관 없음
     }
 
     @Test
@@ -23,14 +24,14 @@ class StringTest {
     @Test
     fun `substring 메서드로 특정 구간 값을 반환`() {
         val input = "(1,2)"
-        val result = input.substring(1, 4)
+        val result = input.substring(1, 4) // 문자열의 1번 인덱스부터 4번 인덱스까지 잘라 새로운 문자열을 만듦
         assertThat(result).isEqualTo("1,2")
     }
 
     @Test
     fun `get 메서드로 특정 위치의 문자 찾기`() {
         val input = "abc"
-        val getElement = input[0]
+        val getElement = input[0] // input[0] == input.get(0) 코틀린에서는 전자를 추천함.
         assertThat(getElement).isEqualTo('a')
     }
 
@@ -40,5 +41,7 @@ class StringTest {
         assertThrows<StringIndexOutOfBoundsException>("String index out of range: 5") {
             input[5]
         }
+        // <>에서 설정한 예외타입이 throw됨을 감지함.
+        // message는 달라도 상관 없음을 확인.
     }
 }
