@@ -8,6 +8,7 @@ class Refree(
     val cars: List<Car> = namesOfParticipants.map{Car(it)}
 
     fun runRound() = cars.forEach{it.goForwardOrStop()}
+    fun getGameStatus(): List<Int> = cars.map{it.position}
 }
 
 class Car(val name: String) : Comparable<Car> {
