@@ -9,40 +9,48 @@ class ValidateCarName(private val multiRacingGame: MultiRacingGame) {
         const val MAX_CAR_COUNT = 7
     }
 
-    fun validateInputBlank(inputCarName: String) {
-        if (inputCarName.isBlank()) {
-            throw IllegalArgumentException(OutputView.NO_CAR_NAME_ERROR)
-        }
-    }
-
-    fun validateInputMultiCarName(multiCarName: List<String?>) {
-        when (false) {
-            validateMaxInput5(multiCarName) -> throw IllegalArgumentException(OutputView.CAR_NAME_COUNT_ERROR)
-
-            validateIsBlank(multiCarName) -> throw IllegalArgumentException(OutputView.NO_ALL_CAR_NAME_ERROR)
-
-            validateDuplicateCarName(multiCarName) -> throw IllegalArgumentException(OutputView.DUPLICATE_CAR_NAME_ERROR)
-
-            validateRacingCarRange(multiCarName) -> throw IllegalArgumentException(OutputView.CAR_COUNT_ERROR)
-
-            else -> multiRacingGame.inputTryCount(multiCarName)
-        }
-    }
-
-    private fun validateMaxInput5(multiCarName: List<String?>): Boolean {
-        for (element in multiCarName) {
-            if (element == null || element.length > MAX_CAR_NAME_COUNT) {
-                return false
-            }
+    fun validateInputSingleCarName(inputCarName: String): Boolean {
+        when {
+            validateMaxInput5(inputCarName) -> throw IllegalArgumentException(OutputView.CAR_NAME_COUNT_ERROR)
+            validateInputBlank(inputCarName) -> throw IllegalArgumentException(OutputView.NO_CAR_NAME_ERROR)
         }
         return true
     }
 
-    private fun validateIsBlank(multiCarName: List<String?>): Boolean {
+    fun validateInputMultiCarName(multiCarName: List<String?>) {
         for (element in multiCarName) {
-            if (element!!.isBlank()) {
-                return false
+            when (false) {
+                validateMaxInput5(element) -> throw IllegalArgumentException(OutputView.CAR_NAME_COUNT_ERROR)
+
+                validateIsBlank(element) -> throw IllegalArgumentException(OutputView.NO_ALL_CAR_NAME_ERROR)
+
+                validateDuplicateCarName(multiCarName) -> throw IllegalArgumentException(OutputView.DUPLICATE_CAR_NAME_ERROR)
+
+                validateRacingCarRange(multiCarName) -> throw IllegalArgumentException(OutputView.CAR_COUNT_ERROR)
+                else -> {}
             }
+        }
+
+        multiRacingGame.inputTryCount(multiCarName)
+    }
+
+    fun validateInputBlank(inputCarName: String): Boolean {
+        if (inputCarName.isBlank()) {
+            return false
+        }
+        return true
+    }
+
+    private fun validateMaxInput5(inputCarName: String?): Boolean {
+        if (inputCarName == null || inputCarName.length > MAX_CAR_NAME_COUNT) {
+            return false
+        }
+        return true
+    }
+
+    private fun validateIsBlank(inputCarName: String?): Boolean {
+        if (inputCarName!!.isBlank()) {
+            return false
         }
         return true
     }
