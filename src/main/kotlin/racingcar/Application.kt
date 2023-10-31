@@ -19,7 +19,9 @@ class RacingCarGame {
 
     fun inputAttemptsCount(): Int {
         println("시도할 횟수는 몇 회인가요?")
-        return Console.readLine().toInt()
+        val attemptsCount = Console.readLine()
+        validateAttemptsCount(attemptsCount)
+        return attemptsCount.toInt()
     }
 
     private fun validateCarName(carNameList: List<String>) {
@@ -35,6 +37,15 @@ class RacingCarGame {
             if (!uniqueCarNames.add(carName)) {
                 throw IllegalArgumentException("중복된 자동차 이름 : $carName")
             }
+        }
+    }
+
+    private fun validateAttemptsCount(count: String) {
+        if (count.isBlank()) {
+            throw IllegalArgumentException("시도할 횟수를 입력해주세요.")
+        }
+        if (!count.matches(Regex("^-?\\d+\$")) || count.toInt() <= 0) {
+            throw IllegalArgumentException("1 이상의 숫자를 입력해주세요.")
         }
     }
 }
