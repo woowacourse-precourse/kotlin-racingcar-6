@@ -23,12 +23,18 @@ class CarRacingGame {
 
         println("시도할 횟수는 몇 회인가요?")
         val cnt_play = readLine()!!.toInt()
-        var cnt_lap = 0
+        println(cnt_play)
 
-        while (cnt_lap < cnt_play) {
-
+        for (i in 1 .. cnt_play) {
+            gamePlay(list_car)
         }
 
+    }
+
+    private fun gamePlay(list_car: MutableList<CarStatus>) {
+        for (i in list_car) {
+            if (movingForward()) i.count++
+        }
     }
 
     private fun carInit(): MutableList<CarStatus> {
