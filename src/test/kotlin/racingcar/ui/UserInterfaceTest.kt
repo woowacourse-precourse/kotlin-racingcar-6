@@ -17,6 +17,10 @@ class UserInterfaceTest {
     fun `자동차 이름이 5자 이하인지 검사`() {
         assertThrows<IllegalArgumentException> { InputValidator.checkNamesLength("choi, gerrard, mint".createNameList())}
     }
+    @Test
+    fun `자동차 이름이 1자 이상인지 검사`() {
+        assertThrows<IllegalArgumentException> { InputValidator.checkNamesLength("".createNameList())}
+    }
 
     @Test
     fun `중복된 자동차 이름 입력 시, 하나로 처리`() {
