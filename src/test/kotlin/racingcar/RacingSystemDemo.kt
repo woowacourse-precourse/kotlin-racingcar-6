@@ -1,10 +1,30 @@
 package racingcar
 
+import org.assertj.core.api.Assertions
+import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import java.io.ByteArrayOutputStream
+import java.io.PrintStream
 
 class RacingSystemDemo {
+    companion object {
+        private val standardOut = System.out
+        private val outputStreamCaptor = ByteArrayOutputStream()
+        private var output = outputStreamCaptor.toString().trim()
+        @BeforeAll
+        fun setUpStream() {
+            System.setOut(PrintStream(outputStreamCaptor))
+        }
+
+        @AfterAll
+        fun tearDown() {
+            System.setOut(standardOut)
+        }
+    }
+
     @Test
     fun `콤마를 기준으로_CarName이 나뉘었는지 테스트`() {
         val input = "a,b,c"
@@ -57,5 +77,16 @@ class RacingSystemDemo {
         RacingSystem.getCarLane().getCars().forEach { result.add(it.getName())}
 
         assertEquals(listOf("람보르기니","레드불","맥라렌"),result)
+    }
+
+    @Test
+    fun `입력한 시도횟수만큼 자동차경주 결과가 나오는지 확인` () {
+        RacingSystem.setCarNames("a, b, c")
+        RacingSystem.setAttemptNumber("3")
+        RacingSystem.createCarLane()
+        RacingSystem.startAttemptCarLane()
+        val expect = "a :\nb :\nc :\n" + "a :\nb :\nc :\n" +"a :\nb :\nc :\n"
+
+        Assertions.assertThat(output.contains(expect))
     }
 }
