@@ -14,10 +14,11 @@ fun main(arge: Array<String>) {
     val rounds = Console.readLine()!!.toInt()
 
     val race = Race(cars, rounds)
+    println("실행 결과")
     race.run()
 
     val winners = race.winners()
-    println("최종 우승자 : ${winners.joinToString(", ")}")
+    println("최종 우승자 : ${winners.joinToString(", ") { it.name }}")
 }
 
 
