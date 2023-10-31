@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 val cars = mutableListOf<Car>()
-val winners = mutableListOf<String>()
 val error = Error()
 val INPUT_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
 val INPUT_REPEAT = "시도할 횟수는 몇 회인가요?"
@@ -60,6 +59,7 @@ private fun findMaxPos() : Int{
 }
 
 private fun winner() {
+    val winners = mutableListOf<String>()
     val maxPos = findMaxPos()
     for (car in cars) {
         if (car.position == maxPos) {
