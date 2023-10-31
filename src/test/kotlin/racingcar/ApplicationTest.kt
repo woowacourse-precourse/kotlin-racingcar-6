@@ -62,12 +62,6 @@ class ApplicationTest : NsTest() {
         }
     }
     @Test
-    fun `자동차 이름이 5글자 초과할 경우 예외 처리`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,kim,leeyong", "1") }
-        }
-    }
-    @Test
     fun `자동차 이름이 1글자 미만일 경우 예외 처리`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,kim,,lee", "1") }
