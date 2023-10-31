@@ -39,15 +39,15 @@ class InputView {
         return inputNumber.toInt()
     }
 
-    fun validateInputTryNumberEmpty(inputNumber: String) {
+    private fun validateInputTryNumberEmpty(inputNumber: String) {
         if (inputNumber.isEmpty()) throw NullPointerException("아무것도 입력하지 않으셨습니다.")
     }
 
-    fun validateInputTryNumberZero(inputNumber: String) {
+    private fun validateInputTryNumberZero(inputNumber: String) {
         if (inputNumber == "0") throw IllegalArgumentException("0보다 큰 수를 입력 해야 합니다.")
     }
 
-    fun validateInputTryNumberString(inputNumber: String) {
+    private fun validateInputTryNumberString(inputNumber: String) {
         for (c in inputNumber.toCharArray()) {
             if (!c.isDigit()) throw IllegalArgumentException("숫자가 아닌 문자열을 입력했습니다.")
         }
