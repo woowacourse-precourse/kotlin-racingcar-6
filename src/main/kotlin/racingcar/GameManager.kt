@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class GameManager {
     private val racingCarList = ArrayList<RacingCar>()
+    private val winnerRacingCarList = ArrayList<RacingCar>()
     private var trial = 0
     fun runRacingGame() {
         val inputManager = InputManager()
@@ -20,6 +21,9 @@ class GameManager {
             proceedRacingGame()
             printRacingGameResultPerTrial()
         }
+        // 경주 결과 비교 및 출력
+        setGameResult()
+        printGameResult()
     }
 
     // 경주 자동차 이름을 기반으로 자동차 객체를 리스트에 추가
@@ -51,5 +55,34 @@ class GameManager {
             println("${racingCar.name} : $distance")
         }
         println()
+    }
+
+    // 경주 결과 비교
+    private fun setGameResult() {
+        // 경주 결과 집계 및 최고 거리 선정
+        val distanceList = ArrayList<Int>()
+        for (racingCar in racingCarList) {
+            distanceList.add(racingCar.distance)
+        }
+        val winnerDistance = distanceList.max()
+
+        // 최고 거리에 해당하는 경주 자동차 선정
+        for (racingCar in racingCarList) {
+            if (racingCar.distance == winnerDistance) {
+                winnerRacingCarList.add(racingCar)
+            }
+        }
+    }
+
+    // 경주 결과 출력
+    private fun printGameResult() {
+        print("최종 우승자 : ")
+        for (racingCar in winnerRacingCarList) {
+            if (winnerRacingCarList.indexOf(racingCar) == 0) {
+                print(racingCar.name)
+            } else {
+                print(", ${racingCar.name}")
+            }
+        }
     }
 }
