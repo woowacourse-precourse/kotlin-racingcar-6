@@ -3,7 +3,7 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
-class RaceCar(private val name: String, var position: Int = 0) {
+class RaceCar(val name: String, var position: Int = 0) {
     init {
         require((name.length <= 5)) { "Invalid Car Name." }
     }
@@ -14,8 +14,15 @@ class RaceCar(private val name: String, var position: Int = 0) {
 
 }
 
+fun filterNegative(target: Int): Int {
+    if (target < 0) {
+        return 0
+    }
+    return target
+}
+
 fun moveDistance(): Int {
-    return (Randoms.pickNumberInRange(0, 9).compareTo(4)).compareTo(-1)
+    return filterNegative(Randoms.pickNumberInRange(0, 9).compareTo(4))
 }
 
 private fun RaceCar.move() {
