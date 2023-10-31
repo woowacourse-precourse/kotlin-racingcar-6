@@ -52,7 +52,7 @@ Repository 객체 대신 List로 간소화한다.
 #### RacingGameViewModel
 
 - [x] savePlayer(): 사용자 입력 받아서 플레이어 저장
-- [ ] saveRound(): 사용자 입력 받아서 라운드 저장
+- [x] saveRound(): 사용자 입력 받아서 라운드 저장
 - [ ] playRound(): 각 라운드 플레이해줄 함수
 - [ ] getRoundResult(): 현재 라운드 결과 리턴
 - [ ] getWinners(): 우승자 담아서 리턴
