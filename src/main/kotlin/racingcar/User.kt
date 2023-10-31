@@ -21,6 +21,9 @@ class User {
         // validator로 올바른 정수 문자열인지 확인
         validator.isNumber(inputString)
         val tryCount: Int = inputString.toInt()
-        return tryCount
+        return when (tryCount) {
+            0 -> throw IllegalArgumentException("invalid input string, it contains blank")
+            else -> tryCount
+        }
     }
 }
