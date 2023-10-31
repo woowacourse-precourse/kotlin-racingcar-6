@@ -36,7 +36,7 @@ class IOHandler(private val validator: Validator) {
     }
 
     fun showWinner(winners: List<Car>) {
-        val sentence = winners.joinToString(", ") {
+        val sentence = winners.joinToString(SEPARATOR_FOR_WINNER) {
             it.name
         }
         show("$SENTENCE_FOR_WINNER$sentence")
@@ -66,6 +66,7 @@ class IOHandler(private val validator: Validator) {
         const val NOT_ALLOWED_COUNT = "허용되지 않는 이동 횟수를 입력했습니다."
         private const val INPUT_SPLITTER = ","
         private const val SENTENCE_FOR_WINNER = "최종 우승자 : "
+        private const val SEPARATOR_FOR_WINNER = ", "
     }
 
 }
