@@ -20,7 +20,6 @@ class RacingCarGame {
         val inputRounds = Console.readLine()
         Exceptions.validateRoundsInput(inputRounds)
 
-        // 예외처리 추가예정
         viewModel.setData(inputCars, inputRounds.toInt())
 
         while (true) {

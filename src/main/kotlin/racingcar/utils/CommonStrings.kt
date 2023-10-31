@@ -6,5 +6,4 @@ object CommonStrings {
     const val MESSAGE_EXECUTION_RESULT = "실행 결과"
     const val MESSAGE_FINAL_WINNER = "최종 우승자"
     const val ILLEGAL_ARGUMENT_EXCEPTION = "유효하지 않은 입력입니다. 게임이 종료됩니다."
-
 }

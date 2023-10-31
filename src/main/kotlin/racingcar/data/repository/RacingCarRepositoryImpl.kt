@@ -27,5 +27,4 @@ class RacingCarRepositoryImpl : RacingCarRepository {
     }
 
     override fun getState(): List<RacingCarModel> = carList
-
 }

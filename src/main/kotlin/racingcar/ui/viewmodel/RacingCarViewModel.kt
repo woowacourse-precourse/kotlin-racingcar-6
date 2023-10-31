@@ -19,14 +19,10 @@ class RacingCarViewModel(val repository: RacingCarRepository) {
     fun checkRounds(): Boolean = repository.checkRoundsEnded()
 
     fun getRoundState(): List<RoundStateModel> {
-        return repository.getState().map {
-            it.toRoundStateModel()
-        }
+        return repository.getState().map { it.toRoundStateModel() }
     }
 
     fun findFinalWinners(): List<String> {
         return GameUtils.findWinners(repository.getState())
     }
-
-
 }

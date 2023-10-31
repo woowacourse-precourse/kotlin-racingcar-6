@@ -20,32 +20,28 @@ object GameUtils {
         return updatedCars
     }
 
-    // 전진 여부
     private fun checkMoveForward(): Boolean {
         val randomValue = Randoms.pickNumberInRange(0, 9)
         val isMoving = randomValue >= 4
         return isMoving
     }
 
-    // 라운드 횟수가 끝났는지 확인
     fun checkRoundEnded(isRoundEnded: Int): Boolean {
         return isRoundEnded == 0
     }
 
-    // 게임 종료 후 우승자를 판단해줄 함수
     fun findWinners(cars: List<RacingCarModel>): List<String> {
         val maxDistance = cars.maxBy { it.moveForward }.moveForward
         val winners = cars.filter { it.moveForward == maxDistance }.map { it.carName }
         return winners
     }
 
-    // 입력값(carNames) Parsing & Mapping
+    // 입력값(carNames)을 List의 형태로 Parsing & Mapping
     fun mappingToCarList(input: String): List<RacingCarModel> {
         return input.split(",").map {
             RacingCarModel(carName = it.trim(), moveForward = 0)
         }
     }
-
 
 }
 
