@@ -14,10 +14,8 @@ class Controller(val inputView: InputView, val outputView: OutputView) {
 
         outputView.printResultMessage()
         val racingCars = makeRacingCars(carNames)
-        for (index in 1..tryNumber) {
-            moveOrStop(racingCars)
-            outputView.printResult(racingCars)
-        }
+        for (index in 1..tryNumber)
+            outputView.printResult(moveOrStop(racingCars))
     }
 
     fun makeRacingCars(carNames: List<String>) : List<RacingCar> {
@@ -30,17 +28,13 @@ class Controller(val inputView: InputView, val outputView: OutputView) {
 
     fun moveOrStop(racingCars: List<RacingCar>) : List<RacingCar> {
         for (car in racingCars.indices) {
-            if (getRandomNumber()) racingCars[car].forward++
+            val randomNumber = getRandomNumber()
+            if (validateMoreThanFour(randomNumber)) racingCars[car].forward++
         }
         return racingCars
     }
 
-    fun getRandomNumber() : Boolean {
-        val randomNumber = Randoms.pickNumberInRange(0, 9)
-        return validateMoreThanFour(randomNumber)
-    }
+    fun getRandomNumber() : Int = Randoms.pickNumberInRange(0, 9)
 
-    fun validateMoreThanFour(randomNumber: Int) : Boolean {
-        return randomNumber >= 4
-    }
+    fun validateMoreThanFour(randomNumber: Int) : Boolean = randomNumber >= 4
 }
