@@ -67,7 +67,7 @@ class CarController(private val carModel: CarModel, private val printResult: Pri
             if (number !in Constant.MIN_TRY_NUMBER..Constant.MAX_TRY_NUMBER) {
                 throw IllegalArgumentException(ErrorString.INTEGER_RANGE_ERROR)
             }
-            return inputNumber.toInt()
+            return number
         } else {
             throw IllegalArgumentException(ErrorString.INTEGER_INPUT_ERROR)
         }
