@@ -133,7 +133,7 @@ class RaceControllerTest {
         }
 
         // then
-        assertThat(exception.message).isEqualTo(TurnNumber.LESS_THAN_MIN_TURN_NUMBER)
+        assertThat(exception.message).isEqualTo(TurnNumber.LESS_THAN_MIN_TURN_NUMBER_EXCEPTION)
     }
 
     @Test
