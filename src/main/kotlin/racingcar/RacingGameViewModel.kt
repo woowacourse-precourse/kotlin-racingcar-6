@@ -27,5 +27,11 @@ class RacingGameViewModel(private val numberGenerator: NumberGenerator) {
         if (_round < 1) throw IllegalArgumentException(Constants.EXCEPTION_ROUND_NOT_POSITIVE)
     }
 
+    fun playRound() {
+        for (player in _playerList) {
+            if (canMoveForward()) player.move()
+        }
+    }
+
     private fun canMoveForward() = numberGenerator.generate() >= 4
 }
