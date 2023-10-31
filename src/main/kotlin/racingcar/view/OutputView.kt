@@ -1,6 +1,6 @@
 package racingcar.view
 
-import racingcar.domain.Cars
+import racingcar.model.Cars
 
 class OutputView {
     companion object {
