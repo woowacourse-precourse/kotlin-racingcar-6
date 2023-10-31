@@ -11,21 +11,21 @@ class RacingCar(_name: String) {
         this.randomNum = Randoms.pickNumberInRange(1, 9)
     }
 
-    private fun isMove(): Boolean{
-        return this.randomNum>=4
+    private fun isMove(): Boolean {
+        return this.randomNum >= 4
     }
 
     fun updateMoveCnt() {
-        if (isMove()){
+        if (isMove()) {
             moveCnt += 1
         }
     }
 
     fun printResult() {
-        println("${this.name} : "+"-".repeat(moveCnt))
+        println("${this.name} : " + "-".repeat(moveCnt))
     }
 
-    fun getMoveCnt() : Int {
+    fun getMoveCnt(): Int {
         return this.moveCnt
     }
 }
