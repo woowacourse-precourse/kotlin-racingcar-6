@@ -1,11 +1,38 @@
 package racingcar
 
-class Car(named: String) {
-    var name: String = named
-    var position: Int = 0
+import camp.nextstep.edu.missionutils.Randoms
 
-    fun goPos(){
-        position++
+class Car(private var name: String) {
+    private var position: Int = 0
+
+    companion object {
+        private const val MOVE = "-"
     }
 
+    fun getName(): String {
+        return name
+    }
+
+    fun play() {
+        makeRandom()
+        printResult()
+    }
+
+    fun getPosition(): Int {
+        return position
+    }
+
+    private fun printResult() {
+        var go = ""
+        for(i in 0..<position){
+            go+= MOVE
+        }
+        println("$name : $go")
+    }
+
+    private fun makeRandom() {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            position++
+        }
+    }
 }
