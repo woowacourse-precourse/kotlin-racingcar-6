@@ -11,10 +11,10 @@ fun main() {
       inputUser.printlnGameCountMent()
       val gameCount = inputUser.tryGameCount()
       gamePlaying.outputStartMent()
-         for (round in 1..gameCount) {
-            gameInfo = gamePlaying.generateNumber(carNames)
-            gamePlaying.printPerExecutionResult(gameInfo)
-         }
+      for (round in 1..gameCount) {
+         gameInfo = gamePlaying.generateNumber(carNames)
+         gamePlaying.printPerExecutionResult(gameInfo)
+      }
    }
 
    val scoreList = gamePlaying.calculateScore(gameInfo)

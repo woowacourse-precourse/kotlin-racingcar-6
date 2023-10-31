@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Racing {
     fun outputStartMent(){
-        println(game.executionResult)
+        println(Game.executionResult)
     }
     fun generateNumber(carName: List<String>): Map<String, Int> {
             val gameInfo = mutableMapOf<String, Int>()
@@ -15,7 +15,7 @@ class Racing {
             return gameInfo
     }
 
-        fun printPerExecutionResult(gameInfo: Map<String, Int>) {
+    fun printPerExecutionResult(gameInfo: Map<String, Int>) {
             for ((name, number) in gameInfo) {
                 println("$name : ${"-".repeat(number)}")
             }
@@ -24,7 +24,7 @@ class Racing {
     fun calculateScore(gameInfo:Map<String,Int>):List<Pair<String,Int>>{
         var scoreList= mutableListOf<Pair<String,Int>>()
         for((name,number)in gameInfo){
-            if(number>=game.forwardStep){
+            if(number>=Game.forwardStep){
                 val score = gameInfo.count { it.value >= number }
                 scoreList.add(Pair(name, score))
             }
@@ -36,10 +36,10 @@ class Racing {
         return scoreList.filter { it.second == maxScore }.map { it.first }
     }
     fun printlnTopScore(topScore:List<String>){
-        val topScoreMessage =game.resultPlayer+topScore.joinToString(", ")
+        val topScoreMessage =Game.resultPlayer+topScore.joinToString(", ")
         println(topScoreMessage)
     }
-    object game{
+    object Game{
     const val executionResult: String = "실행 결과"
     const val forwardStep:Int=4
     const val resultPlayer:String="최종 우승자 : "}
