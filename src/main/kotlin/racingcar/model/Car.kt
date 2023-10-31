@@ -1,11 +1,12 @@
 package racingcar.model
 
-import racingcar.controller.inputView
-import racingcar.controller.validateCarName
+import racingcar.views.InputView
 
-class Car {
-
-    private val soloRacingGame = SoloRacingGame()
+class Car(
+    private val inputView: InputView,
+    private val validateCarName: ValidateCarName,
+    private val soloRacingGame: SoloRacingGame,
+) {
 
     fun getCarName() {
         val inputCarName = inputView.inputView()

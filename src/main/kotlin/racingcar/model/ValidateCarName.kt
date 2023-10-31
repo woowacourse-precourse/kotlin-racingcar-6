@@ -2,14 +2,12 @@ package racingcar.model
 
 import racingcar.views.OutputView
 
-class ValidateCarName {
+class ValidateCarName(private val multiRacingGame: MultiRacingGame) {
 
     companion object {
         const val MAX_CAR_NAME_COUNT = 5
         const val MAX_CAR_COUNT = 7
     }
-
-    private val multiRacingGame = MultiRacingGame()
 
     fun validateInputBlank(inputCarName: String) {
         if (inputCarName.isBlank()) {

@@ -1,19 +1,21 @@
 package racingcar.model
 
-import racingcar.controller.inputView
-import racingcar.controller.randomUtils
-import racingcar.controller.validateRacingCount
+import racingcar.utils.RandomUtils
+import racingcar.views.InputView
 import racingcar.views.OutputView
 
-class MultiRacingGame() {
+class MultiRacingGame(
+    private val inputView: InputView,
+    private val randomUtils: RandomUtils,
+    private val validateRacingCount: ValidateRacingCount,
+    private val outputView: OutputView,
+) {
 
     companion object {
         const val DEFAULT_SCORE = 0
         const val INCREMENT_SCORE = 1
         const val ADVANCE_MINIMUM = 4
     }
-
-    private val outputView = OutputView()
 
     fun inputTryCount(multiCarName: List<String?>) {
         inputView.inputTryCountMessage()

@@ -1,9 +1,9 @@
 package racingcar.model
 
-import racingcar.controller.randomUtils
+import racingcar.utils.RandomUtils
 import racingcar.views.OutputView
 
-class SoloRacingGame {
+class SoloRacingGame(private val randomUtils: RandomUtils, private val outputView: OutputView) {
 
     companion object {
         const val DEFAULT_SCORE = 0
@@ -11,8 +11,6 @@ class SoloRacingGame {
         const val SOLO_GAME_MIN_WIN_COUNT = 1
         const val ADVANCE_MINIMUM = 4
     }
-
-    private val outputView = OutputView()
 
     fun soloCarGame(inputCarName: String) {
         outputView.printSoloGameRules()
