@@ -18,35 +18,32 @@ private fun makeCar(): MutableList<Car> {
     return car
 }
 
-private fun printProcess(car: MutableList<Car>){
-    car.forEach {
-        it.forwardCar()
-        print("${it.name} : ")
-        println("-".repeat(it.forwardCount))
+private fun printProcess(cars: List<Car>){
+    cars.forEach { car ->
+        car.forwardCar()
+        print("${car.name} : ${"-".repeat(car.forwardCount)}")
     }
     println()
 }
 
-private fun printResult(car: MutableList<Car>){
-    val maxCount = car.maxOf { it.forwardCount }
-    val maxCar = car.filter { it.forwardCount == maxCount }
-    val maxCarName = maxCar.map { it.name }
-    val maxCarString = maxCarName.joinToString(", ")
+private fun printResult(cars: List<Car>){
+    val maxCount = cars.maxOf { it.forwardCount }
+    val maxCar = cars.filter { it.forwardCount == maxCount }
+    val maxCarNames = maxCar.joinToString(", ") { it.name }
 
-//    val maxCarName = maxCar.name
-    println("$winner $maxCarString")
+    println("$winner $maxCarNames")
 }
 
 private fun playGame() {
-    val car: MutableList<Car> = makeCar()
+    val cars: MutableList<Car> = makeCar()
     val executionNumber = InputManager.inputExecutionNumber()
 
     println(result)
     repeat(executionNumber) {
-        printProcess(car)
+        printProcess(cars)
     }
 
-    printResult(car)
+    printResult(cars)
 }
 
 fun main() {
