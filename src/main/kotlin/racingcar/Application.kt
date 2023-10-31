@@ -1,5 +1,7 @@
 package racingcar
 
+import kotlin.collections.mutableMapOf
+
 // import camp.nextstep.edu.missionutils.Randoms //pickNumberInRange
 // import camp.nextstep.edu.missionutils.Console //readLine
 
@@ -13,7 +15,7 @@ fun main() {
     
     for (name in nameList!!) {
         if (name.trim().length <= 5) {
-            carMap.put(name.trim(), 0)
+            carMap.put(name.trim(), 3)
         } else {
             throw IllegalArgumentException()
         }
@@ -23,5 +25,18 @@ fun main() {
     
     val moveConut = readLine()
     
+    println("실행결과\n")
+    printResult(carMap)
+    println("")
     
 }
+
+fun printResult(carMap : MutableMap<String, Int>) {
+    
+    for (car in carMap) {
+        print("${car.key} : ")
+        repeat(car.value) {print("-")}
+        println("")
+    }
+
+} 
