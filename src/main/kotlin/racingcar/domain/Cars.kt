@@ -16,4 +16,11 @@ class Cars(private val determineMove: DetermineMove) {
         }
     }
 
+    fun getAdvanceStateList(): List<Int> {
+        _carList.forEachIndexed { index, car ->
+            _carStateList[index] = car.advanceState
+        }
+        return _carStateList
+    }
+
 }
