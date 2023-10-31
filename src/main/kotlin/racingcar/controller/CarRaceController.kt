@@ -9,7 +9,7 @@ import racingcar.util.Validation.validateNum
 import racingcar.view.CarRaceView
 import kotlin.text.StringBuilder
 
-class CarRaceController(val view: CarRaceView) {
+class CarRaceController(private val view: CarRaceView) {
 
     private val cars = mutableListOf<Car>()
 
@@ -18,22 +18,16 @@ class CarRaceController(val view: CarRaceView) {
     }
 
     fun run() {
-        //이름 입력
         val carsName = view.inputCarName()
-        validateName(carsName)
 
-        //시도 횟수 입력
         println(ATTEMPT_NUMBER)
         val attemptNum = view.inputAttemptNumber()
-        validateNum(attemptNum)
         println()
 
-        //결과 출력
         println(RESULT)
         addCars(carsName)
-        showCarRace(attemptNum.toInt())
+        showRaceResult(attemptNum.toInt())
 
-        //최종 우승자 출력
         val winner = choiceWinner(cars)
         view.outputWinner(changeListToStr(winner))
 
@@ -45,21 +39,18 @@ class CarRaceController(val view: CarRaceView) {
         }
     }
 
-    private fun showCarRace(attemptNum: Int) {
-        for (idx in 0 until attemptNum) {
+    private fun showRaceResult(attemptNum: Int) {
+        repeat(attemptNum) {
             for (car in cars) {
                 car.goOrStop()
+                print("${car.name} : ")
+                view.outputCarsPosition(car.position)
             }
 
-            cars.forEach {
-                print("${it.name} : ")
-                view.outputCarsPosition(it.position)
-            }
             println()
         }
     }
 
-    //우승자 선별
     fun choiceWinner(cars: List<Car>): List<String> {
         val winner = mutableListOf<String>()
 
@@ -71,7 +62,6 @@ class CarRaceController(val view: CarRaceView) {
         return winner
     }
 
-    //문자열 변환
     fun changeListToStr(list: List<String>): String {
         return list.joinToString(", ")
     }
