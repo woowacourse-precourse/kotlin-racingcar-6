@@ -32,4 +32,31 @@ class InputValidatorTest {
         var result = InputValidator.validateCarName(str)
         assertThat(result).isEqualTo(false);
     }
+
+    fun validateNumber(numString: String): Boolean {
+        if (!numString.all { it.isDigit() }) {
+            return false
+        }
+        val num = numString.toInt()
+
+        return num > 0
+    }
+    @Test
+    fun `전진 횟수가 양의 숫자인 경우`(){
+        val str = "23"
+        var result = InputValidator.validateNumber(str)
+        assertThat(result).isEqualTo(true)
+    }
+    @Test
+    fun `전진 횟수가 양의 숫자가 아닌 경우(문자)`(){
+        val str = "응?"
+        var result = InputValidator.validateNumber(str)
+        assertThat(result).isEqualTo(false)
+    }
+    @Test
+    fun `전진 횟수가 양의 숫자가 아닌 경우(음수)`(){
+        val str = "-5"
+        var result = InputValidator.validateNumber(str)
+        assertThat(result).isEqualTo(false)
+    }
 }
