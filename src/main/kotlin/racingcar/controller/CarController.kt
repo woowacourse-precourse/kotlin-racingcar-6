@@ -2,6 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.validator.InputValidator
 import racingcar.data.Car
 
 class CarController {
@@ -14,7 +15,7 @@ class CarController {
         inputCarNameFromUser()
             .split(",")
             .forEach { name ->
-                with(Validator) {
+                with(InputValidator) {
                     checkCarNameLength(name)
                     checkInputWhitespace(name.trim())
                 }
@@ -60,7 +61,7 @@ class CarController {
     private fun inputCarNameFromUser(): String {
         val carName = Console.readLine()
 
-        with(Validator) {
+        with(InputValidator) {
             checkInputNonBlank(carName)
             checkInputOverSize(carName.split(",").size)
             checkCarMinSize(carName)

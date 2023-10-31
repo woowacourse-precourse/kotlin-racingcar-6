@@ -2,6 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import racingcar.data.Car
+import racingcar.validator.InputValidator
 
 class RacingGameManager {
 
@@ -63,7 +64,7 @@ class RacingGameManager {
     private fun inputGameRoundFromUser(): Int {
         val gameRound = Console.readLine()
 
-        with(Validator) {
+        with(InputValidator) {
             checkIntType(gameRound)
             checkGameRoundSize(gameRound.toInt())
         }

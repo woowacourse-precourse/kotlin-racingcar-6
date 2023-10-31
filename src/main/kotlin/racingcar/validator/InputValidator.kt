@@ -1,6 +1,8 @@
-package racingcar
+package racingcar.validator
 
-object Validator {
+import racingcar.Message
+
+object InputValidator {
     fun checkInputNonBlank(inputData: String) {
         require(inputData.isNotBlank()) {
             Message.VALID_INPUT_NOT_BLANK.message
