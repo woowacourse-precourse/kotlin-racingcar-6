@@ -14,7 +14,6 @@ data class Car(val name: String) {
     }
 
     companion object {
-        const val STOP = ""
         const val GO = "-"
     }
 }
