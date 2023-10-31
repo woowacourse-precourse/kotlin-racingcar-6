@@ -18,16 +18,14 @@ object InputValidator {
     }
 
     fun validateGameCount(input: String): GameCountValidation {
-        val intValue = try {
-            input.toInt()
+        return try {
+            if (input.toInt() < 0) {
+                GameCountValidation.OUT_RANGE
+            } else {
+                GameCountValidation.VALID
+            }
         } catch (nfe: NumberFormatException) {
             return GameCountValidation.NOT_DIGIT
-        }
-
-        return if (intValue < 0) {
-            GameCountValidation.OUT_RANGE
-        } else {
-            GameCountValidation.VALID
         }
     }
 
