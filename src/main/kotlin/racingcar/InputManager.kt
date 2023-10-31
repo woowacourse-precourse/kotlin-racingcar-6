@@ -9,4 +9,10 @@ class InputManager {
 
         return input.split(",")
     }
+
+    fun readRepeatNum(): Int {
+        println("시도할 횟수는 몇 회인가요?")
+        val input = Console.readLine()
+        return input.toInt()
+    }
 }
