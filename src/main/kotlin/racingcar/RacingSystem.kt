@@ -52,9 +52,9 @@ object RacingSystem {
         return true
     }
 
-    fun presentWinner(){
-        val winners = carLane.judgeWinner().joinToString(separator = ", ")
-        println("\n최종 우승자 : ${winners}")
+    fun getWinners():List<String>{
+        val winners = carLane.judgeWinner()
+        return winners
     }
 
     fun startAttemptCarLane(){
