@@ -13,6 +13,7 @@
 - [X] 자동차 이름을 쉼표(,)를 기준으로 구분하고 자동차 개수를 파악한다. `processCarInput()`
     - [X] 각 자동차 이름이 5자 이하인지 확인한다. `processCarInput()`
     - [X] 쉼표가 없는 경우는 한 단어로 취급해야 한다. `processCarInput()`
+    - [X] 중복된 자동차 이름이 있는지 확인한다. `checkRepeatCar()`
     - [X] 자동차 이름이 6자 이상인 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다. `processCarInput()`
 
 ---
