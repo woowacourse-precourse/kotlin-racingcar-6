@@ -49,7 +49,7 @@ class Game {
     private fun winner() {
         val winners: MutableList<String> = ArrayList()
         val maxPosition = findMaxPos()
-        for (car in cars!!) {
+        for (car in cars) {
             if (car.getPosition() == maxPosition) {
                 winners.add(car.getName())
             }
@@ -59,7 +59,7 @@ class Game {
 
     private fun findMaxPos(): Int {
         var max = 0
-        for (car in cars!!) {
+        for (car in cars) {
             if (car.getPosition() > max) {
                 max = car.getPosition()
             }
