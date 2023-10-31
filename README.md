@@ -212,7 +212,7 @@ classDiagram
     InputView <.. Controller
     OutputView <.. Controller
     AttemptComparator <.. Controller
-    RandomNumberGenerator <.. Car
+    RandomNumberGenerator <.. Controller
     Validator <.. InputView
     Attempt <.. AttemptComparator
     Car <.. AttemptComparator
@@ -234,8 +234,7 @@ classDiagram
     }
     class Car {
         -currentPosition
-        +foward()
-        +stop()
+        +forwardOrStop()
     }
     class Attempt {
         -attmepts
