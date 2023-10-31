@@ -182,7 +182,7 @@ Randoms.pickNumberInRange(0, 9)
 
 ### AttemptComparator
 
-- [ ] 시도 횟수와 자동차 전진 횟수 비교
+- [x] 시도 횟수와 자동차 전진 횟수 비교
 
 ### RandomNumberGenerator
 
