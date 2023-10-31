@@ -53,7 +53,7 @@ class RacingGame {
         with(Delimiter.CAR.toString()) { // 문자열 구분자 ","
             require(!carNames.contains(this.repeat(2)) &&
                     !carNames.endsWith(this) &&
-                        !carNames.startsWith(this)
+                    !carNames.startsWith(this)
             ) {
                 CarException.COMMA
             }
