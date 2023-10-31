@@ -9,6 +9,6 @@ class NumericStringValidator() : StringValidator {
     }
 
     companion object {
-        private const val ERROR_MESSAGE = "시도 횟수는 숫자여야 합니다"
+        private const val ERROR_MESSAGE = "문자열은 숫자여야 합니다"
     }
 }
