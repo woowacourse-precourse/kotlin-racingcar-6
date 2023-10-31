@@ -13,14 +13,13 @@ class Error {
     }
 
     fun checkNum(repeat: String) {
-        when (repeat.toIntOrNull()) {
-            null -> throw IllegalArgumentException(NOT_INT_OR_NULL)
-            else -> true
+        if (repeat.toIntOrNull()==null) {
+            throw IllegalArgumentException(NOT_INT_OR_NULL)
         }
         checkNumMinus(repeat)
     }
     private fun checkNumMinus(repeat: String) {
-        if(repeat.toInt()<0){
+        if (repeat.toInt()<1) {
             throw IllegalArgumentException(INPUT_UNDER_ZERO)
         }
     }
@@ -50,8 +49,8 @@ class Error {
             throw IllegalArgumentException(INPUT_DUPLICATE)
         }
     }
-    private fun checkSize(input: List<String>){
-        if(input.size<2){
+    private fun checkSize(input: List<String>) {
+        if (input.size<2) {
             throw IllegalArgumentException(INPUT_SIZE)
         }
     }
