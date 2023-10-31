@@ -2,7 +2,8 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 
 class Refree(
-    private val namesOfParticipants: List<String>
+    private val namesOfParticipants: List<String>,
+    private val roundNum: Int
 ) {
     val cars: List<Car> = namesOfParticipants.map{Car(it)}
 }
