@@ -13,7 +13,7 @@ class PlayRacing(
     private val carList: CarList,
 ) {
 
-    fun racingProcess() {
+    fun start() {
         println(ENTER_CAR_NAME_COMMENT)
         val carList = inputRacingCarsName()
 
