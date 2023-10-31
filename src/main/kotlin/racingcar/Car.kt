@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Car(name: String) {
     private var name: String = name
-    private var position = 0
+    private var position: Int = 0
 
     companion object {
         private const val MOVE = "-"

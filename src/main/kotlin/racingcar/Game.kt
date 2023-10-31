@@ -62,7 +62,7 @@ class Game {
     private fun findMaxPos(): Int {
         var max = 0
         for (car in cars) {
-            if (car.getPosition() > max) {
+            if (car.getPosition() >= max) {
                 max = car.getPosition()
             }
         }
