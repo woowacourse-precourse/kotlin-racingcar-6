@@ -1,5 +1,4 @@
 package racingcar.domain
-
 class Winner(var cars: MutableList<Car>) {
     fun getWinners(): MutableList<Car> {
         var winners: MutableList<Car>

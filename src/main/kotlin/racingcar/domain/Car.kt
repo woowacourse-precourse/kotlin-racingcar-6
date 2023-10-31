@@ -1,6 +1,4 @@
 package racingcar.domain
-
-
 class Car(var name: String) {
     var count = 0
     fun move(number: Int) {
