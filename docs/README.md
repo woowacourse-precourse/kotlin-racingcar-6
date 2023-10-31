@@ -26,10 +26,10 @@
 - [x] 전진 조건을 판별한다.
   - [x] 0에서 9 까지의 무작위 수를 구한다. (`NumberGenerator.createRandomNumber`)
   - [x] 무작위 수가 4 이상인지 판별한다. (`Car.isMove`)
-- [ ] 자동차가 전진한다.
+- [x] 자동차가 전진한다.
   - [x] 자동차가 전진하면 Car 의 위치가 1 증가한다. (`Car.moveForward`)
-  - [ ] 자동차의 전진은 '-' 로 표시한다.
-  - [ ] 자동차들이 전진했을 때 모습은 아래처럼 출력한다. (`OutputResult.showRace`)
+  - [x] 자동차의 전진은 '-' 로 표시한다.
+  - [x] 자동차들이 전진했을 때 모습은 아래처럼 출력한다. (`OutputResult.showRace`)
       ```
       pobi : --
       woni : ----
