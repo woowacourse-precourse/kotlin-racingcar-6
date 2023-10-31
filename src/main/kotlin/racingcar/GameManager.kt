@@ -8,5 +8,8 @@ class GameManager {
         val carList = carNameList.map { carName ->
             Car(carName)
         }.toList()
+
+        val racingGame = Race(carList, roundCnt)
+        racingGame.startRound()
     }
 }
