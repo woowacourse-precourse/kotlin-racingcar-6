@@ -1,10 +1,12 @@
 package round
 
 import org.assertj.core.api.AssertionsForClassTypes.assertThat
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 import racingcar.car.Car
+import kotlin.math.exp
 
 class RoundTest {
 
@@ -40,6 +42,14 @@ class RoundTest {
         if (number >= 4) expectedCar.scoreSum++
         val actualCar = Car("jiyeon", 0)
         assertThat(actualCar).isEqualTo(expectedCar)
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = [0, 1, 2, 3])
+    fun `누적된 점수만큼 자동차의 이동경로를 출력한다`(move: Int) {
+        val expectedMovement = "-".repeat(Car("jiyeon", move).scoreSum)
+        val actualMovement = "-".repeat(move)
+        assertThat(actualMovement).isEqualTo(expectedMovement)
     }
 
 }
