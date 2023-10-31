@@ -2,8 +2,6 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.*
 
-
-
 fun main() {
     // TODO: 프로그램 구현
 
@@ -104,5 +102,5 @@ fun playGame(input1: Int, carGoCount: MutableList<Int>, carList: List<String>, c
 }
 
 fun inputError() {
-    throw IllegalArgumentException("오류 발생 예외처리");
+    throw IllegalArgumentException("오류 발생 예외처리 : 자동차 이름 제한 길이 초과");
 }
