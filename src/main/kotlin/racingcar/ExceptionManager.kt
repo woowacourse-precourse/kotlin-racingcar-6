@@ -8,6 +8,9 @@ class ExceptionManager {
             }
 
         }
+        if (name.distinct().size != name.size) {
+            throw IllegalArgumentException("동일한 이름이 중복되었습니다.")
+        }
     }
     fun repeatException(num : String){
         if (num.toIntOrNull() == null) {
