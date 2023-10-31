@@ -2,18 +2,21 @@ package racingcar.Model
 
 class RaceState {
 
-    fun oneRoundResult(carNames:List<String>): List<Boolean> {
+    fun createRoundResult(carNames:List<String>): List<Boolean> {
 
-        var oneRoundScore = mutableListOf<Boolean>()
+        val roundScore = mutableListOf<Boolean>()
 
         for(i in carNames.indices) {
-            var personalScore = ForwardOrWaitCheck().oneRoundPersonalScore()
-            oneRoundScore.add(personalScore)
+            val personalScore = ForwardOrWaitCheck().oneRoundPersonalScore()
+            roundScore.add(personalScore)
         }
-        return oneRoundScore
+        return roundScore
     }
 
-    fun updateEntireRaceScore(carNames: List<String>, oneRoundResults: List<Boolean>, entireRaceStatus: MutableMap<String, List<Boolean>>): MutableMap<String, List<Boolean>> {
+    fun updateEntireRaceScore(carNames: List<String>,
+                              oneRoundResults: List<Boolean>,
+                              entireRaceStatus: MutableMap<String,
+                                      List<Boolean>>): MutableMap<String, List<Boolean>> {
 
         for (i in carNames.indices) {
             entireRaceStatus[carNames[i]] = entireRaceStatus[carNames[i]].orEmpty() + listOf(oneRoundResults[i])
