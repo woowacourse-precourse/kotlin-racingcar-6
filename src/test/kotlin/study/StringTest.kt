@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class StringTest {
+
     @Test
     fun `split 메서드로 주어진 값을 구분`() {
         val input = "1,2"
@@ -39,6 +40,25 @@ class StringTest {
         val input = "abc"
         assertThrows<StringIndexOutOfBoundsException>("String index out of range: 5") {
             input[5]
+        }
+    }
+
+    @Test
+    fun `주어진 배열의 크기와 동일한 새로운 배열을 생성하기`(){
+        val input = arrayOf("a", "b", "c")
+        val result = Array(input.size) { "" }
+
+        assertThat(input.size).isEqualTo(result.size)
+    }
+
+    @Test
+    fun `배열의 index중 가장 글자 수가 가장 긴 index 찾기`(){
+        val input = arrayOf("-----","---------","----")
+        var result = 0
+        for (i in 0..input.size-1){
+            if(input[i].length > result){
+                result = input[i].length
+            }
         }
     }
 }
