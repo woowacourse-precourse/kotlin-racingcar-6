@@ -22,14 +22,20 @@ class RacingCarGameManager {
         this.racingCars = racingCars
     }
 
-    private fun validatedInputAsCarNames(input: String): List<String> {
-        validator.validateCarNames(input)
-        return input.split(COMMA)
-    }
-
     private fun getUserInputWithPrintingMessage(message: String): String {
         println(message)
         return Console.readLine()
+    }
+
+    private fun validatedInputAsCarNames(input: String): List<String> {
+        validator.checkHasNoBlank(input)
+        validator.checkHasSeparator(input, COMMA)
+        validator.checkItemsHasNoDuplication(input.split(COMMA))
+        validator.checkNumericValueIsInBoundary(input.split(COMMA).size, MIN_CAR_NAME_COUNT)
+        input.split(COMMA).map { data ->
+            validator.checkNumericValueIsInBoundary(data.length, MIN_CAR_NAME_LENGTH, MAX_CAR_NAME_LENGTH)
+        }
+        return input.split(COMMA)
     }
 
     private fun setTotalRound() {
@@ -39,7 +45,9 @@ class RacingCarGameManager {
     }
 
     private fun validatedInputAsTotalRoundNumber(input: String): Int {
-        validator.validateTotalRoundNumber(input)
+        validator.checkHasNoBlank(input)
+        validator.checkHasOnlyDigit(input)
+        validator.checkNumericValueIsInBoundary(Integer.parseInt(input), MIN_TOTAL_ROUND)
         return Integer.parseInt(input)
     }
 
@@ -47,5 +55,9 @@ class RacingCarGameManager {
         private const val COMMA = ","
         private const val CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
         private const val TOTAL_ROUND_MESSAGE = "시도할 횟수는 몇 회인가요?"
+        private const val MIN_CAR_NAME_LENGTH = 1
+        private const val MAX_CAR_NAME_LENGTH = 5
+        private const val MIN_CAR_NAME_COUNT = 2
+        private const val MIN_TOTAL_ROUND = 1
     }
 }
