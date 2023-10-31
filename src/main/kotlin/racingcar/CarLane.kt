@@ -22,7 +22,8 @@ class CarLane {
 
     fun showLap() {
         cars.forEach {
-            it.showDistanceWithName()
+            val lapResult = it.getNameAndCluster()
+            println(lapResult)
         }
     }
 
