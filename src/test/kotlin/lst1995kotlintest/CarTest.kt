@@ -1,6 +1,7 @@
 package lst1995kotlintest
 
 import car.CarConfiguration.START_FLAG
+import caroption.DashBoard
 import caroption.Engine
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -27,4 +28,13 @@ class CarTest {
         assertThat(result).isEqualTo(Engine().start(input))
     }
 
+    @Test
+    fun `DashBoard 반환값 검사`() {
+        val testDashBoard = DashBoard("테스트차량")
+        val result = "테스트차량 : ----------\n"
+        repeat(10) {
+            testDashBoard.distPlus()
+        }
+        assertThat("${testDashBoard.printDist()}").isEqualTo(result)
+    }
 }
