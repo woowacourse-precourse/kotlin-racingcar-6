@@ -11,39 +11,27 @@ class CarValidation {
     }
 
     private fun isInputWithinFiveChar(list: List<String>) {
-        if (list.any { it.length > MAX_LENGTH }) {
-            throw IllegalArgumentException(MAX_INPUT_ERROR)
-        }
+        require(!list.any { it.length > MAX_LENGTH }) { MAX_INPUT_ERROR }
     }
 
     private fun hasWhiteSpaceAtEdge(list: List<String>) {
-        if (list.any { it.startsWith(' ') || it.endsWith(' ') }) {
-            throw IllegalArgumentException(WHITE_SPACE_ERROR)
-        }
+        require(!(list.any { it.startsWith(' ') || it.endsWith(' ') })) { WHITE_SPACE_ERROR }
     }
 
     private fun checkAtLeastTwoNames(list: List<String>) {
-        if (list.count() < MIN_COUNT) {
-            throw IllegalArgumentException(MIN_COUNT_ERROR)
-        }
+        require(list.count() >= MIN_COUNT) { MIN_COUNT_ERROR }
     }
 
     private fun checkIsStartWithComma(list: List<String>) {
-        if (list.first().isEmpty()) {
-            throw IllegalArgumentException(COMMA_START_ERROR)
-        }
+        require(list.first().isNotEmpty()) { COMMA_START_ERROR }
     }
 
     private fun checkIsEndWithComma(list: List<String>) {
-        if (list.last().isEmpty()) {
-            throw IllegalArgumentException(COMMA_END_ERROR)
-        }
+        require(list.last().isNotEmpty()) { COMMA_END_ERROR }
     }
 
     private fun checkIsSameName(list: List<String>) {
-        if (list.toSet().size != list.size) {
-            throw IllegalArgumentException(SAME_NAME_ERROR)
-        }
+        require(list.toSet().size == list.size) { SAME_NAME_ERROR }
     }
 
     companion object {

@@ -7,15 +7,11 @@ class RoundValidation {
     }
 
     private fun checkIsNumber(input: String) {
-        if (input.toIntOrNull() == null) {
-            throw IllegalArgumentException(NUMBER_INPUT_ERROR)
-        }
+        require(input.toIntOrNull() != null) { NUMBER_INPUT_ERROR }
     }
 
     private fun checkIsBiggerThanOne(input: String) {
-        if (input.toInt() < MIN_ROUND) {
-            throw IllegalArgumentException(MIN_ROUND_ERROR)
-        }
+        require(input.toInt() >= MIN_ROUND) { MIN_ROUND_ERROR }
     }
 
     companion object {
