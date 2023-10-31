@@ -18,7 +18,7 @@ fun main() {
         cars.add(Car(carName))
     }
 
-    println("시도할 회수는 몇 회인가요?")
+    println("시도할 횟수는 몇 회인가요?")
     repeat = Console.readLine().toInt()
 
     println()
