@@ -23,7 +23,7 @@ class Game {
         var names = carname.split(',')
         error.checkName(names)
         for (name in names) {
-            cars?.add(Car(name.trim()))
+            cars?.add(Car(name))
         }
     }
 
