@@ -53,7 +53,7 @@ class Game {
                 winners.add(car.getName())
             }
         }
-        println("최종 우승자 : " + winners.joinToString(", "))
+        print("최종 우승자 : " + winners.joinToString(", "))
     }
 
     private fun findMaxPos(): Int {
