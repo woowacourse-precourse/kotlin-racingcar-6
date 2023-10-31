@@ -1,26 +1,27 @@
-package racingcar
+package racingcar.View
 
 import camp.nextstep.edu.missionutils.*
+import racingcar.Utils.Constans.CAR_NAME_INPUT_MENTION
+import racingcar.Utils.Constans.TIME_INPUT_MENTION
+import racingcar.Utils.Exceptions
 
 class InputView {
     companion object {
-        fun getNameList() : List<String> {
-            println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        fun getNameList(): List<String> {
+            println(CAR_NAME_INPUT_MENTION)
             val list = getInput().split(',')
             Exceptions.checkNameListInput(list)
             return list
         }
 
         // '.' 줄이기 위해 input함수 따로 작성
-        private fun getInput() : String = Console.readLine()
+        private fun getInput(): String = Console.readLine()
 
-        fun getRoundNumber() : Int {
-            println("시도할 횟수는 몇 회인가요?")
+        fun getRoundNumber(): Int {
+            println(TIME_INPUT_MENTION)
             val number = getInput()
             Exceptions.checkNumber(number)
             return number.toInt()
         }
-
     }
-
 }
