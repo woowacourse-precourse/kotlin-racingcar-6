@@ -12,7 +12,7 @@ class RacingGameManager {
 
     fun run() {
         printGameStart()
-        val cars = createCars(inputDataFromUser())
+        val cars = createCars(inputCarNameFromUser())
         printGameRoundQuestion()
 
         repeat(gameRound) { round ->
@@ -95,18 +95,18 @@ class RacingGameManager {
 
     private fun setGameRound(): Int = inputGameRoundFromUser()
 
-    private fun inputDataFromUser(): String {
-        val inputData = Console.readLine()
+    private fun inputCarNameFromUser(): String {
+        val carName = Console.readLine()
 
         with(Validator) {
-            checkInputNonBlank(inputData)
-            checkInputOverSize(inputData.split(",").size)
-            checkCarMinSize(inputData)
-            checkInputPrefix(inputData[0])
-            checkInputPostfix(inputData[inputData.lastIndex])
+            checkInputNonBlank(carName)
+            checkInputOverSize(carName.split(",").size)
+            checkCarMinSize(carName)
+            checkInputPrefix(carName[0])
+            checkInputPostfix(carName[carName.lastIndex])
         }
 
-        return inputData
+        return carName
     }
 
     private fun inputGameRoundFromUser(): Int {
