@@ -30,4 +30,16 @@ object Validator {
             Message.VALID_INPUT_MIN_SIZE.message
         }
     }
+
+    fun checkInputPrefix(first: Char) {
+        require(first != ',') {
+            Message.VALID_INPUT_PREFIX.message
+        }
+    }
+
+    fun checkInputPostfix(last: Char) {
+        require(last != ',') {
+            Message.VALID_INPUT_POSTFIX.message
+        }
+    }
 }

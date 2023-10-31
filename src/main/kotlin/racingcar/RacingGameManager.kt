@@ -102,6 +102,8 @@ class RacingGameManager {
             checkInputNonBlank(inputData)
             checkInputOverSize(inputData.split(",").size)
             checkCarMinSize(inputData)
+            checkInputPrefix(inputData[0])
+            checkInputPostfix(inputData[inputData.lastIndex])
         }
 
         return inputData
