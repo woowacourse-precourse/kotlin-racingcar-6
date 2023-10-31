@@ -12,13 +12,35 @@ class CarRacingGame {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     }
 
+    fun gameStart() {
+
+        val list_car = carInit()
+
+        if (list_car.size == 0) { // 입력된 자동차가 없는 경우 예외처리 후 종료
+            throw IllegalArgumentException("입력된 자동차가 없습니다.")
+            return
+        }
+
+        println("시도할 횟수는 몇 회인가요?")
+        val cnt_play = readLine()!!.toInt()
+        var cnt_lap = 0
+
+        while (cnt_lap < cnt_play) {
+
+        }
+
+    }
+
     private fun carInit(): MutableList<CarStatus> {
 
         val input_name = readLine()!!
+
+        println(input_name)
+
         val split_name = input_name.split(",")
         val list_car =  mutableListOf<CarStatus>()
 
-        if (nameCheck(split_name)){
+        if (!nameCheck(split_name)){ // 이름 조건 체크 후 부합하지 않은 경우 예외처리 후 빈 리스트 반환
             throw IllegalArgumentException("이름의 길이는 5자 이하로만 입력 가능합니다.")
             return list_car
         }
@@ -32,16 +54,22 @@ class CarRacingGame {
     }
 
     private fun nameCheck(name: List<String>): Boolean {
-
         for (it in name) {
-            when(it.length <= 0 && it.length > 5) {
-                true -> continue
-                false -> return false
+            when(it.length <= 0 || it.length > 5) { // 조건에 부합하지 않는 이름이 있으면 false 반환
+                true -> return false
+                false -> continue
             }
         }
 
         return true
-
     }
+
+    private fun movingForward(): Boolean {
+        val randomInt = Randoms.pickNumberInRange(0, 9)
+
+        if (randomInt >= 4) return true
+        else return false
+    }
+
 
 }
