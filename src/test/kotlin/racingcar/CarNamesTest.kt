@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class CarNamesTest : NsTest() {
+    private val carNames = CarNames()
+    private lateinit var names : List<String>
 
     @Test
     fun `이름 5자 초과 예외 처리`() {
@@ -39,7 +41,7 @@ class CarNamesTest : NsTest() {
     @Test
     fun `Split 메서드로 자동차 이름 구분`() {
         assertSimpleTest {
-            val names = getCarNames("pobi,woni")
+            names = carNames.getCarNames("pobi,woni")
 
             assertThat(names).contains("pobi","woni")
         }
@@ -48,7 +50,7 @@ class CarNamesTest : NsTest() {
     @Test
     fun `Split 메서드로 자동차 이름 구분 후 앞뒤 공백 제거`() {
         assertSimpleTest {
-            val names = getCarNames("pobi, woni")
+            names = carNames.getCarNames("pobi, woni")
 
             assertThat(names).contains("pobi","woni")
         }
@@ -57,7 +59,7 @@ class CarNamesTest : NsTest() {
     @Test
     fun `Split 메서드 사용시 구분자가 포함되지 않은 경우 값 그대로 반환`() {
         assertSimpleTest {
-            val names = getCarNames("pobi")
+            names = carNames.getCarNames("pobi")
 
             assertThat(names).contains("pobi")
         }
@@ -66,4 +68,5 @@ class CarNamesTest : NsTest() {
     public override fun runMain() {
         main()
     }
+
 }
