@@ -9,7 +9,7 @@ class RunGame {
         var racingNum: Int = pG.racingNumber()
 
         for( i in 1..racingNum){ // 전체 경주 실행 횟수 반복
-            repeatRace(racingCars.size)
+            repeatRace(racingCars.size,racingCars)
 
             // 그 안에서 플레이어 횟수만큼 반복
                 //그리고 랜덤 넘버 생성
@@ -25,7 +25,7 @@ class RunGame {
 
     fun repeatRace(numOfCar:Int,carList:MutableList<Players>){
 
-        for(i in 1..a){
+        for(i in 1..carList){
             var eachNum:Int = RacingGame().randomRace()
             if(ifGoForward(eachNum)){
                 carList.num=carList.num+1
