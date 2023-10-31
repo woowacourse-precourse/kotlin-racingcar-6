@@ -49,19 +49,20 @@ class InputView {
     }
 
     fun inputTryRaceCount(): Int {
-        val tryCount: Int
         inputTryRaceCountMessage()
-        try {
-            tryCount = Console.readLine().toInt()
-        } catch (e: NumberFormatException) {
-            throw IllegalArgumentException("숫자가 아닌 다른 값이 입력 되었습니다.")
-        }
+
+        val tryCount: Int = validateNotInputNumber(Console.readLine())
         validateNotTryZero(tryCount)
 
         return tryCount
     }
 
-    private fun validateNotTryZero(tryCount: Int) {
+    fun validateNotInputNumber(tryCount: String): Int {
+        require (tryCount.all { it.isDigit() }) {"숫자가 아닌 다른 값이 입력 되었습니다."}
+        return tryCount.toInt()
+    }
+
+    fun validateNotTryZero(tryCount: Int) {
         if (tryCount == 0) throw IllegalArgumentException("0은 입력될 수 없습니다.")
     }
 

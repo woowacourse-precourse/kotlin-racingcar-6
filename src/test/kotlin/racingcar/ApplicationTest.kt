@@ -25,7 +25,6 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
     }
-
     public override fun runMain() {
         main()
     }
