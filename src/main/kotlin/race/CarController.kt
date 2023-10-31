@@ -47,7 +47,7 @@ class CarController(private val carModel: CarModel, private val printResult: Pri
         for (car in cars) {
             if (car.trim().isEmpty() || car.contains(" ")) {
                 throw IllegalArgumentException(ErrorString.INPUT_VALUE_ERROR)
-            } else if (car.length > Constant.CAR_NAME_MAX_LENGTH) {
+            } else if (car.length !in Constant.CAR_NAME_MIN_LENGTH..Constant.CAR_NAME_MAX_LENGTH) {
                 throw IllegalArgumentException(ErrorString.INPUT_LENGTH_ERROR)
             }
             carModel.addCar(car)
