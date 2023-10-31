@@ -19,9 +19,9 @@ class RacingGame(
         requireCheckingForDuplicateNames()
 
         printer.printOutEnteringAttemptsNumber()
-        val attemptsNumberInputString = userInput()
-        requireValidAttemptsNumberInput(attemptsNumberInputString = attemptsNumberInputString)
-        val attemptsNumber = attemptsNumberInputString.toInt()
+        val attemptsNumberInput = userInput()
+        requireValidAttemptsNumberInput(attemptsNumberInput = attemptsNumberInput)
+        val attemptsNumber = attemptsNumberInput.toInt()
 
         startRacing(attemptsNumber = attemptsNumber)
     }
@@ -67,9 +67,9 @@ class RacingGame(
         }
     }
 
-    private fun requireValidAttemptsNumberInput(attemptsNumberInputString: String) {
-        require(attemptsNumberInputString.matches(Regex("^\\d+\$")))
-        require(attemptsNumberInputString.toInt() >= 0)
+    private fun requireValidAttemptsNumberInput(attemptsNumberInput: String) {
+        require(attemptsNumberInput.matches(Regex("^\\d+\$")))
+        require(attemptsNumberInput.toInt() >= 0)
     }
 
     companion object {
