@@ -135,6 +135,16 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `시도 횟수 메세지 출력`() {
+        assertSimpleTest {
+            run {
+                printNumberAttempts(NUMBER_ATTEMPTS_MSG)
+            }
+            assertThat(output()).isEqualTo("시도할 횟수는 몇 회인가요?")
+        }
+    }
+
     public override fun runMain() {
         main()
     }
