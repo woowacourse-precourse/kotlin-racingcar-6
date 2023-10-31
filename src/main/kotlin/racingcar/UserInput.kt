@@ -16,4 +16,15 @@ class UserInput {
             }
         }
     }
+
+    fun getTrialInput(): Int {
+        println(Constants.TRIAL_INPUT_MESSAGE)
+        val userInput = Console.readLine()
+        return when {
+            userInput.isNullOrBlank() -> throw IllegalArgumentException()
+            userInput.toIntOrNull() == null -> throw IllegalArgumentException()
+            userInput.toInt() == 0 -> throw IllegalArgumentException()
+            else -> userInput.toInt()
+        }
+    }
 }
