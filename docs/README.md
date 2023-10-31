@@ -11,10 +11,12 @@
 ---
 ### PrepareGame
 ---
-#### racingCarName() : 경주에 참여할 레이싱 카의 이름을 입력받는다.
-#### racingNumber() : 경주 실행 횟수를 입력받는다.
+#### racingCarName(): 경주에 참여할 레이싱 카의 이름을 입력받는다.
+#### racingNumber(): 경주 실행 횟수를 입력받는다.
+#### makingPlayerList(): 데이터 클래스 Players 리스트에 레이싱 카 목록을 만든다.
 
 ### 데이터 클래스 Players
+---
 #### name: 각 레이싱 카의 이름
 #### num: 각 레이싱 카가 움직인 거리
 
@@ -27,7 +29,7 @@
 ---
 #### startRace(): 게임 시작
 #### repeatRace(): 경주 실행 횟수만큼 루프 반복
-#### ifGoForward(): 전진 조건 판별
+#### ifGoForward(): 전진 조건 판별 후 전진이면 1 리턴.
 
 ### PostGame
 ---
