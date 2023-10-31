@@ -1,7 +1,7 @@
 package racingcar
 
 class GameManager {
-    fun startGame() {
+    fun runGame() {
         val userInputReader = UserInputReader()
         val carNameList = userInputReader.getCarName()
         val roundCnt = userInputReader.getRoundCount()
@@ -11,5 +11,7 @@ class GameManager {
 
         val racingGame = Race(carList, roundCnt)
         racingGame.startRace()
+        val winnerList = racingGame.findWinner()
+        racingGame.printWinner(winnerList)
     }
 }

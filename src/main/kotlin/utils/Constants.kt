@@ -5,4 +5,5 @@ object Constants {
     const val ROUND_INPUT_MSG = "시도할 횟수는 몇 회인가요?"
     const val FORWARD_STEP = 1
     const val ROUND_RESULT_MSG = "실행 결과"
+    const val WINNER_RESULT_TITLE = "최종 우승자 : "
 }
