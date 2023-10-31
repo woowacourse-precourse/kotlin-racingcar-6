@@ -19,9 +19,8 @@ class PrepareGame {
 
     fun makingPlayerList(carNames: List<String>):MutableList<Players> {
         var playerList:MutableList<Players> = mutableListOf<Players>()
-
         for(i in 1..carNames.size){
-            playerList[i]=Players(carNames[i],0)
+            playerList.add(Players(carNames[i-1],0))
         }
         return playerList
     }
