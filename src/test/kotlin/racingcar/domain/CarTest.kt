@@ -25,16 +25,16 @@ class CarTest {
     fun `자동차 전진 혹은 정지 테스트 1`() {
         val car = Car("test")
         car.moveOrStay(MOVING_FORWARD)
-        val expected = 1
-        assertThat(expected).isEqualTo(car.getPosition())
+        val expectedPosition = 1
+        assertThat(expectedPosition).isEqualTo(car.getPosition())
     }
 
     @Test
     fun `자동차 전진 혹은 정지 테스트 2`() {
         val car = Car("test")
         car.moveOrStay(STOP)
-        val expected = 0
-        assertThat(expected).isEqualTo(car.getPosition())
+        val expectedPosition = 0
+        assertThat(expectedPosition).isEqualTo(car.getPosition())
     }
 
     @Test
@@ -45,9 +45,8 @@ class CarTest {
         println(car)
 
         System.setOut(originalOut)
-        val consoleOutput = outputStreamCaptor.toString().trim()
-        val expected = "test :"
-        assertEquals(expected, consoleOutput)
+        val expectedOutPut = outputStreamCaptor.toString().trim()
+        assertEquals(expectedOutPut, "test :")
     }
 
     @Test
@@ -59,9 +58,8 @@ class CarTest {
         println(car)
 
         System.setOut(originalOut)
-        val consoleOutput = outputStreamCaptor.toString().trim()
-        val expected = "test : -"
-        assertEquals(expected, consoleOutput)
+        val expectedOutPut = outputStreamCaptor.toString().trim()
+        assertEquals(expectedOutPut, "test : -")
     }
 
     @Test

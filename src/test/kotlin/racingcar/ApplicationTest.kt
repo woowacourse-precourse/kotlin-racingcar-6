@@ -20,7 +20,14 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `전진 정지 2`() {
+    fun `이름에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
+
+    @Test
+    fun `우승자가 복수일 경우 출력 값이 올바른지 확인`() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni", "1")
@@ -31,21 +38,19 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `전진 정지 3`() {
+    fun `입력한 이동 횟수만큼 위치를 출력하는지 확인`() {
         assertRandomNumberInRangeTest(
             {
-                run("pobi,woni", "2")
-                assertThat(output()).contains("pobi :", "woni : --", "최종 우승자 : woni")
+                run("pobi", "4")
+                assertThat(output()).contains(
+                    "pobi : -",
+                    "pobi : --",
+                    "pobi : ---",
+                    "pobi : ----"
+                )
             },
-            STOP, MOVING_FORWARD, STOP, MOVING_FORWARD
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
         )
-    }
-
-    @Test
-    fun `이름에 대한 예외 처리`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
-        }
     }
 
     public override fun runMain() {
