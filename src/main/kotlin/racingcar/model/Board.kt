@@ -14,7 +14,7 @@ class Board private constructor(
 
     fun getResultByAttempt(attempt: Attempt): List<Pair<CarName, Score>> =
         scoresByCarName.flatMap { (carName, scores) ->
-            val score = scores.scoreByAttempt[attempt]!!
+            val score = scores.scoreByAttempt[attempt] ?: throw IllegalArgumentException(Error.InvalidAttempt.message)
             listOf(carName to score)
         }
 
@@ -26,7 +26,8 @@ class Board private constructor(
     }
 
     internal enum class Error(val message: String) {
-        InvalidName("대회에 참여한 자동차가 아닙니다. 자동차 이름을 확인해주세요.");
+        InvalidName("대회에 참여한 자동차가 아닙니다. 자동차 이름을 확인해주세요."),
+        InvalidAttempt("유효하지 않은 값입니다. attempt 값을 다시 확인해주세요."),
     }
 }
 
