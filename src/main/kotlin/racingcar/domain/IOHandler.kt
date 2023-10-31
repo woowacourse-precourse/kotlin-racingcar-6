@@ -5,7 +5,7 @@ import racingcar.data.Car
 
 class IOHandler(private val validator: Validator) {
 
-    fun getCarName(): List<String> {
+    fun getCarNames(): List<String> {
         val input = getInput()
         val names = splitNameFromInput(input)
 

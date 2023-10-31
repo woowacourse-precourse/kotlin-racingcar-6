@@ -12,11 +12,11 @@ class GameHandler(
     private var moveCount: Int = NOT_YET_SET
 
     fun start() {
-        setGame()
-        playGame()
+        set()
+        play()
     }
 
-    private fun setGame() {
+    private fun set() {
         setCar()
         setMoveCount()
     }
@@ -26,7 +26,7 @@ class GameHandler(
 
         val result = mutableListOf<Car>()
 
-        val names = io.getCarName()
+        val names = io.getCarNames()
         for (name in names) {
             result.add(Car(name))
         }
@@ -38,7 +38,7 @@ class GameHandler(
         moveCount = io.getMoveCount()
     }
 
-    private fun playGame() {
+    private fun play() {
         io.show(SENTENCE_FOR_RESULT, true)
 
         repeat(moveCount) {
