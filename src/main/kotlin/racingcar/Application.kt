@@ -4,5 +4,5 @@ import racingcar.domain.CarList
 
 fun main() {
     val carList = CarList
-    PlayRacing(carList).initProcess()
+    PlayRacing(carList).racingProcess()
 }

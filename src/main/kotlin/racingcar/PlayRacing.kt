@@ -13,9 +13,12 @@ class PlayRacing(
     private val carList: CarList,
 ) {
 
-    fun initProcess() {
+    fun racingProcess() {
+        println(ENTER_CAR_NAME_COMMENT)
         val carList = inputRacingCarsName()
-        val attempt = inputAttempt().toInt()
+
+        println(NUMBER_OF_ATTEMPT_COMMENT)
+        val attempt = inputAttempt()
 
         println(GAME_RESULT_COMMENT)
         val winner = racingProcess(carList, attempt)
@@ -35,14 +38,12 @@ class PlayRacing(
     }
 
     private fun inputRacingCarsName(): List<Car> {
-        println(ENTER_CAR_NAME_COMMENT)
         val userInput = Console.readLine()
         return carList.userInputToCarList(userInput)
     }
 
-    private fun inputAttempt(): String {
-        println(NUMBER_OF_ATTEMPT_COMMENT)
+    private fun inputAttempt(): Int {
         val userInput = Console.readLine()
-        return userInput.also { it.attemptValidation() }
+        return userInput.also { it.attemptValidation() }.toInt()
     }
 }
