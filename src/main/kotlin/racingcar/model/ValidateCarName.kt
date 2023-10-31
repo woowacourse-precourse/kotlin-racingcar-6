@@ -34,7 +34,7 @@ class ValidateCarName(private val multiRacingGame: MultiRacingGame) {
         multiRacingGame.inputTryCount(multiCarName)
     }
 
-    fun validateInputBlank(inputCarName: String): Boolean {
+    private fun validateInputBlank(inputCarName: String): Boolean {
         if (inputCarName.isBlank()) {
             return false
         }
