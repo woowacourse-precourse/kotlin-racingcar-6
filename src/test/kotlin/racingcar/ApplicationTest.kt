@@ -13,7 +13,6 @@ class ApplicationTest : NsTest() {
         assertRandomNumberInRangeTest({
             run("pobi,woni", "1")
             assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-            assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : woni")
         }, MOVING_FORWARD, STOP)
     }
 
@@ -22,7 +21,7 @@ class ApplicationTest : NsTest() {
     fun `이름에 대한 예외 처리`() {
         //자동차 입력값이 5글자 초과
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji123", "1") }
         }
 
         //자동차 입력값이 없을 경우
@@ -31,6 +30,10 @@ class ApplicationTest : NsTest() {
         }
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException(" ", "1") }
+        }
+        //쉼표만 입력이 되어 자동차 이름이 공백인 경우
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException(",", "1") }
         }
 
         //자동차 입력값이 중복인 경우
