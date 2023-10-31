@@ -14,6 +14,10 @@ fun main() {
     val raceResults = initializeRaceResults(carNames)
 
     conductRace(carNames, tryCount, raceResults)
+
+    val winners = determineWinners(raceResults)
+
+    printWinners(winners)
 }
 
 fun getCarNames(): List<String> {
@@ -63,4 +67,14 @@ fun conductRace(carNames: List<String>, tryCount: Int, raceResults: MutableMap<S
 fun calculateResult(raceResults: Map<String, Int>, carName: String, forward: Boolean): String {
     val dashes = "-".repeat(raceResults[carName] ?: 0)
     return if (forward) "$dashes-" else dashes
+}
+
+fun determineWinners(raceResults: Map<String, Int>): String {
+    val maxDistance = raceResults.values.max()
+    val winners = raceResults.filter { it.value == maxDistance }.keys.joinToString(", ")
+    return "최종 우승자 : $winners"
+}
+
+fun printWinners(winners: String) {
+    print(winners)
 }
