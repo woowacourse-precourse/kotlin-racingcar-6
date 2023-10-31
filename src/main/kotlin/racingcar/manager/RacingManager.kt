@@ -14,11 +14,21 @@ class RacingManager {
     }
 
     private fun remoteCarProgress(car: Car) {
-        if (makeRandomNumber() in 4..9)
+        if (makeRandomNumber() in
+            MIN_PROGRESS_NUM..MAX_PROGRESS_NUM)
             car.progress += 1
     }
 
     private fun makeRandomNumber(): Int {
-        return Randoms.pickNumberInRange(0, 9)
+        return Randoms.pickNumberInRange(
+            MIN_RANDOM_NUM, MAX_RANDOM_NUM
+        )
+    }
+
+    companion object{
+        private const val MIN_PROGRESS_NUM = 4
+        private const val MAX_PROGRESS_NUM = 9
+        private const val MIN_RANDOM_NUM = 0
+        private const val MAX_RANDOM_NUM = 9
     }
 }
