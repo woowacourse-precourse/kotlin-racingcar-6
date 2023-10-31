@@ -42,7 +42,7 @@ Repository 객체 대신 List로 간소화한다.
 
 #### Player
 
-- [ ] Player 클래스 기본 구성
+- [x] Player 클래스 기본 구성
 - [ ] 출력을 위한 toString 오버라이딩
 
 #### Constants
