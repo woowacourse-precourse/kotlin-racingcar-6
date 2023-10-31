@@ -13,8 +13,11 @@ class InputHandler {
         println("경주할 자동차 이름: ${carNames.joinToString(", ")}")
         println("실행 횟수: $roundCount")
         println("실행 결과:")
-        carResults.forEach { (carName, results) ->
-            println("$carName: ${results.joinToString(", ")}")
+        repeat(roundCount) {
+            carResults.forEach { (carName, results) ->
+                println("$carName: ${results.joinToString(", ")}")
+            }
+            println()
         }
         println("실행 종료!")
     }
