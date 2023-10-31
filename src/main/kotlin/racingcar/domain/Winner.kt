@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.domain
 
 class Winner(private var cars: MutableList<Car>) {
     fun getWinners(): MutableList<Car> {

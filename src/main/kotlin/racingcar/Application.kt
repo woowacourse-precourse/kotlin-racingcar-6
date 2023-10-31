@@ -2,12 +2,13 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.domain.Car
+import racingcar.domain.Winner
 
 
 fun main() {
     var repeat: Int
     var cars = mutableListOf<Car>()
-
 
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     var carNames = Console.readLine().split(",").toMutableList()
@@ -20,11 +21,12 @@ fun main() {
     }
 
     println("시도할 회수는 몇 회인가요?")
-    try {
-        repeat = Console.readLine().toInt()
-    } catch (e: IllegalArgumentException) {
-        throw e
-    }
+    repeat = Console.readLine().toInt()
+//    try {
+//
+//    } catch (e: IllegalArgumentException) {
+//        throw e
+//    }
 
     println()
 
