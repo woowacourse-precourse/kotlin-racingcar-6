@@ -1,11 +1,12 @@
-package racingcar
+package mytest
 
 import camp.nextstep.edu.missionutils.Randoms
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import racingcar.Constants.Companion.MAX_NUMBER
-import racingcar.Constants.Companion.MIN_NUMBER
+import racingcar.Constants
+import racingcar.Constants.MAX_NUMBER
+import racingcar.Constants.MIN_NUMBER
 
 class CarGameManagerTest {
 
