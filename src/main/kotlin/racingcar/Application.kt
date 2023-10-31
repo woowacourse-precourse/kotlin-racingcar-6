@@ -11,9 +11,8 @@ const val END_IDX = 9
 const val CONDITION = 4
 const val RESULT = "\n실행 결과"
 
-
 data class Car(val name: String) {
-    var position: Int = START_IDX
+    private var position: Int = START_IDX
 
     fun move() {
         if (Randoms.pickNumberInRange(START_IDX, END_IDX) >= CONDITION) {
@@ -21,8 +20,8 @@ data class Car(val name: String) {
         }
     }
 
-    fun display(): String {
-        return "$name : ${"-".repeat(position)}"
+    fun getPosition(): Int {
+        return position
     }
 }
 
@@ -69,17 +68,17 @@ private fun simulateRace(cars: List<Car>, attempts: Int): Int {
 
     repeat(attempts) {
         cars.forEach { it.move() }
-        val max = cars.maxOfOrNull { it.position }
+        val max = cars.maxOfOrNull { it.getPosition() }
         if (max != null && max > maxPosition) {
             maxPosition = max
         }
 
-        cars.forEach { println(it.display()) }
+        cars.forEach { println("${it.name} : ${"-".repeat(it.getPosition())}") }
         println()
     }
     return maxPosition
 }
 
 private fun findWinners(cars: List<Car>, maxPosition: Int): String {
-    return cars.filter { it.position == maxPosition }.joinToString(", ") { it.name }
+    return cars.filter { it.getPosition() == maxPosition }.joinToString(", ") { it.name }
 }
