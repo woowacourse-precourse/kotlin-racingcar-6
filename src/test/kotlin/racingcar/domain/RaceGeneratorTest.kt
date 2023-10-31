@@ -86,6 +86,8 @@ class RaceGeneratorTest {
       Arguments.of("$"),
       Arguments.of("5.4"),
       Arguments.of("-3"),
+      Arguments.of("24*4"),
+      Arguments.of("24-4"),
     )
   }
 }
