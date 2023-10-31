@@ -27,8 +27,6 @@ class Error {
     fun checkName(car: String) {
         checkError(car)
         checkSpace(car)
-        //checkDuplicate(car)
-        //checkSize(car)
     }
 
     private fun checkError(input: String) {
@@ -42,12 +40,12 @@ class Error {
         }
     }
 
-    private fun checkDuplicate(input: List<String>) {
+    fun checkDuplicate(input: List<String>) {
         if (input.toSet().size != input.size) {
             throw IllegalArgumentException(INPUT_DUPLICATE)
         }
     }
-    private fun checkSize(input: List<String>) {
+    fun checkSize(input: List<String>) {
         if (input.size<2) {
             throw IllegalArgumentException(INPUT_SIZE)
         }

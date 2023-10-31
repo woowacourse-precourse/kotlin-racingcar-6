@@ -30,6 +30,8 @@ class Game {
     private fun input() {
         val carname = Console.readLine()
         val names = carname.split(',')
+        error.checkDuplicate(names)
+        error.checkSize(names)
         for (name in names) {
             error.checkName(name)
             cars.add(Car(name))
