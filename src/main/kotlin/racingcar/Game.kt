@@ -3,8 +3,14 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 class Game {
+
     private val error = Error()
     private var cars: ArrayList<Car>? = null
+
+    companion object {
+        private const val INPUT_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+        private const val INPUT_REPEAT = "시도할 횟수는 몇 회인가요?"
+    }
 
     init {
         cars = ArrayList()
@@ -17,7 +23,7 @@ class Game {
     }
 
     private fun input() {
-        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        println(INPUT_NAME)
         val carname = Console.readLine()
         val names = carname.split(',')
         error.checkName(names)
@@ -39,7 +45,7 @@ class Game {
     }
 
     private fun inputRepeat(): Int {
-        println("시도할 횟수는 몇 회인가요?")
+        println(INPUT_REPEAT)
         val repeat = Console.readLine()
         error.checkNum(repeat)
         return repeat.toInt()

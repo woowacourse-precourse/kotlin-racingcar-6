@@ -25,6 +25,30 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
     }
+    @Test
+    fun `반복 횟수가 음수일 경우 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni,kim", "-3") }
+        }
+    }
+    @Test
+    fun `반복 횟수가 문자일 경우 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni,kim", "a") }
+        }
+    }
+    @Test
+    fun `차 이름이 중복일 경우 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi,kim", "1") }
+        }
+    }
+    @Test
+    fun `이름 사이에 공백이 있을 경우 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi, pobi,kim", "1") }
+        }
+    }
 
     public override fun runMain() {
         main()

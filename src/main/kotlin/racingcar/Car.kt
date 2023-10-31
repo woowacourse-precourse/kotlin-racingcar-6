@@ -2,10 +2,12 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-private const val MOVE = "-"
 class Car(name: String) {
     private var name: String
     private var position = 0
+    companion object {
+        private const val MOVE = "-"
+    }
 
     init {
         this.name = name
