@@ -1,6 +1,9 @@
-package racingcar
+package racingcar.controller
 
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.model.RacingCar
+import racingcar.view.InputView
+import racingcar.view.OutputView
 
 class RacingCarController(private val inputView: InputView, private val outputView: OutputView) {
     fun run() {

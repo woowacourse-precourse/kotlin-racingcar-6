@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.model
 
 data class RacingCar(val carName: String, var totalMove: Int = 0) {
     fun move() {
