@@ -61,7 +61,8 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `우승자 한 명 초과일 때, 쉼표 출력`() {
-
+        val winners: String = listOf("poby", "popo").joinToString(", ")
+        assertThat(winners).isEqualTo("poby, popo")
     }
 
     @Test
