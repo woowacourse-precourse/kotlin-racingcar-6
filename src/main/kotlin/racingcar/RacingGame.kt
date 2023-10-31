@@ -18,8 +18,8 @@ class RacingGame(
     private fun start(race: Race) {
         monitor.display(GameInstruction.RACING_RESULT)
         while (race.isRunning) {
-            race.runOnStep()
-            monitor.display(race.result)
+            val result = race.runOneStep()
+            monitor.display(result)
         }
     }
 
