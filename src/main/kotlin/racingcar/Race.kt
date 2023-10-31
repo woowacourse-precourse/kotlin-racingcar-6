@@ -60,8 +60,8 @@ class Race() {
         return nameList
     }
 
-    private fun getFarthestPosition() : Int {
-        var farthest = 0
+    private fun getFarthestPosition() : Long {
+        var farthest = 0L
         cars.forEach {
             if(it.getPosition() > farthest) farthest = it.getPosition()
             //farthest = kotlin.math.max(farthest, it.getPosition())

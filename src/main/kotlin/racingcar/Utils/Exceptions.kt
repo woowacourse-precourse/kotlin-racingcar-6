@@ -26,7 +26,7 @@ class Exceptions {
 
         fun checkNumber(number : String) {
             require(number.all { it.isDigit() }) { EXCEPTION_NUMBER_UNVALID }
-            require(number.toLong() <= 1_000_000) { "불가능한 이동 횟수 입니다" }
+            //require(number.toLong() <= 1_000_000) { "불가능한 이동 횟수 입니다" }
             require(number.toInt() > 0) { "이동 횟수는 0보다 커야합니다." }
         }
     }
