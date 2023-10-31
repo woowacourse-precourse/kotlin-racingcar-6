@@ -33,9 +33,10 @@ class RepetitionTest {
     @ParameterizedTest
     @ValueSource(strings = ["10", "1000", "100000"])
     @DisplayName("Repetition(init): checkDigitRange(+Int)")
-    fun `반복 횟수가 자연수일 때, 잘 동작하는지`(inputCount: String) {
-        assertDoesNotThrow {
+    fun `repetition 객체 생성한 뒤, count 검증`(inputCount: String) {
+        val repetition = assertDoesNotThrow {
             Repetition(inputCount)
         }
+        assertThat(repetition.count).isEqualTo(inputCount.toInt())
     }
 }
