@@ -53,6 +53,7 @@ class RacingGameManager {
         val cars = mutableListOf<Car>()
 
         input.split(",").forEach { name ->
+            Validator.checkCarNameLength(name)
             if (hasNotCarNameWhitespace(name)) {
                 cars.add(Car(name))
             }

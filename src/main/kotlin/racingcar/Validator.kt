@@ -18,4 +18,10 @@ object Validator {
             Message.VALID_INPUT_WHITESPACE.message
         }
     }
+
+    fun checkCarNameLength(input: String) {
+        require(input.length in 1..5) {
+            Message.VALID_INPUT_LENGTH.message
+        }
+    }
 }
