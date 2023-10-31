@@ -11,7 +11,13 @@ class CheckValidation {
             checkNameLength(carName) &&
                     checkNameIsBlank(carName)
         ) {
-            "자동차 이름은 5자 이하만 가능합니다."
+            "자동차 이름은 1자 이상, 5자 이하만 가능합니다."
+        }
+        require(
+            checkEnglishRegex(carName) ||
+                    checkKoreanRegex(carName)
+        ) {
+            "올바른 자동차 이름을 입력해야 합니다."
         }
     }
 
@@ -55,7 +61,21 @@ class CheckValidation {
         return carName.isNotBlank()
     }
 
+    private fun checkEnglishRegex(
+        carName: String
+    ): Boolean {
+        return carName.matches(CHECK_ENGLISH.toRegex())
+    }
+
+    private fun checkKoreanRegex(
+        carName: String
+    ): Boolean {
+        return carName.matches(CHECK_KOREAN.toRegex())
+    }
+
     companion object {
         private const val CAR_MAX_LENGTH = 5
+        private const val CHECK_ENGLISH = "^[a-zA-Z]*\$"
+        private const val CHECK_KOREAN = "^[가-힣]*\$"
     }
 }
