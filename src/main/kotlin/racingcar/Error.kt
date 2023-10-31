@@ -34,7 +34,7 @@ class Error {
     }
 
     private fun checkError(input: String) {
-        if (input.length > MAX_LENGTH || input.isEmpty()) {
+        if (input.length > MAX_LENGTH || input.isNullOrEmpty()) {
             throw IllegalArgumentException(INPUT_OVER_FIVE_OR_NULL)
         }
     }
