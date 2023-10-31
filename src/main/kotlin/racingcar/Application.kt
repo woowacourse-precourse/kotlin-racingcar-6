@@ -10,6 +10,7 @@ fun main() {
     val inputNames = readLine()
     val nameList = inputNames?.split(",") 
     val carMap = mutableMapOf<String, Int>()
+    
     for (name in nameList!!) {
         if (name.trim().length <= 5) {
             carMap.put(name.trim(), 0)
@@ -17,6 +18,10 @@ fun main() {
             throw IllegalArgumentException()
         }
     }
-    println(carMap)
+    
+    println("시도할 횟수는 몇 회인가요?")
+    
+    val moveConut = readLine()
+    
     
 }
