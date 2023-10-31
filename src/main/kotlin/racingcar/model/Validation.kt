@@ -8,6 +8,8 @@ class Validation {
                 throw IllegalArgumentException(Constants.ERROR_WORD_MAX)
             } else if (name.length == Constants.MIN) {
                 throw IllegalArgumentException(Constants.ERROR_WORD_MIN)
+            } else if (name.contains(Constants.SPACE_BAR)){
+                throw IllegalArgumentException(Constants.ERROR_WORD_EMPTY_SPACE)
             }
         }
     }
