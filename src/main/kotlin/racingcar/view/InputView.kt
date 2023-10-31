@@ -26,13 +26,13 @@ class InputView {
         return splitString
     }
 
-    fun validateOverFiveName(splitString: List<String>) {
+    private fun validateOverFiveName(splitString: List<String>) {
         splitString.map { names ->
             if (names.length > 5) throw IllegalArgumentException("5글자가 넘는 자동차 이름이 있습니다.")
         }
     }
 
-    fun validateDuplicateCheck(splitInputName: List<String>) {
+    private fun validateDuplicateCheck(splitInputName: List<String>) {
         for (x in splitInputName) {
             require(splitInputName.count { it == x } <= 1) { "중복된 자동차 이름이 있습니다." } // 같은 수가 1개 이상인 경우
         }
@@ -50,20 +50,29 @@ class InputView {
 
     fun inputTryRaceCount(): Int {
         inputTryRaceCountMessage()
-
-        val tryCount: Int = validateNotInputNumber(Console.readLine())
-        validateNotTryZero(tryCount)
+        val tryCount: Int = validateInputTryCount(Console.readLine())
 
         return tryCount
     }
 
-    fun validateNotInputNumber(tryCount: String): Int {
+    fun validateInputTryCount(tryCount: String): Int {
+        validateIsEmpty(tryCount)
+        validateNotInputNumber(tryCount)
+        validateNotTryZero(tryCount.toInt())
+
+        return tryCount.toInt()
+    }
+    private fun validateNotInputNumber(tryCount: String): Int {
         require (tryCount.all { it.isDigit() }) {"숫자가 아닌 다른 값이 입력 되었습니다."}
         return tryCount.toInt()
     }
 
-    fun validateNotTryZero(tryCount: Int) {
+    private fun validateNotTryZero(tryCount: Int) {
         if (tryCount == 0) throw IllegalArgumentException("0은 입력될 수 없습니다.")
+    }
+
+    private fun validateIsEmpty(tryCount: String) {
+        if (tryCount.isEmpty()) throw IllegalArgumentException("아무것도 입력되지 않았습니다.")
     }
 
 }
