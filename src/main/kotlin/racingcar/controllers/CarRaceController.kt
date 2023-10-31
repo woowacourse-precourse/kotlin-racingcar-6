@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Console
 import racingcar.models.CarRaceModel
 import racingcar.views.CarRaceView
 
-class CarRaceController {
-    private val model = CarRaceModel()
-    private val view = CarRaceView()
+class CarRaceController(private val model: CarRaceModel, private val view: CarRaceView) {
+//    private val model = CarRaceModel()
+//    private val view = CarRaceView()
 
     fun startRace() {
         val carNames = inputCarNames()
