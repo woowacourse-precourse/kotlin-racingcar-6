@@ -6,9 +6,9 @@ class RacingGame {
         for (car in cars) {
             if (RandomNumberGenerator().Generator() >= Constants.FOUR) {
                 carProgress.add(car + Constants.DASH.toString())
-            } else {
-                carProgress.add(car)
+                continue
             }
+            carProgress.add(car)
         }
         return carProgress
     }

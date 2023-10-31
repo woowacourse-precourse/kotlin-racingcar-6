@@ -8,9 +8,9 @@ class CarNameSeparator {
             if (word == Constants.COMMA) {
                 separatedName.add(carName)
                 carName = Constants.EMPTY_SPACE
-            } else {
-                carName += word
+                continue
             }
+            carName += word
         }
         separatedName.add(carName)
         return separatedName
