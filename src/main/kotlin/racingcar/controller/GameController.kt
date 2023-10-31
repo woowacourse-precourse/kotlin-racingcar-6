@@ -12,14 +12,16 @@ class GameController(
     private val racingGame: RacingGame
 ) {
     fun run() {
-        gameView.requireName()
+        gameView.printNameInput()
         carNames.inputCarNames()
 
-        gameView.requireMoveTimes()
+        gameView.printMoveTimesInput()
         moveTimes.inputMoveTimes()
 
-        gameView.startRacing()
+        gameView.printRacingStart()
         raceLoop()
+
+        gameView.printResult(racingGame.result())
     }
 
     private fun raceLoop() {
@@ -28,7 +30,7 @@ class GameController(
         for (i in 1..moveTimes.getMoveTime()) {
             val progress = racingGame.race(carNames.getNameList().size)
             racingGame.updateRaceState(progress)
-            gameView.showCurrentRace(racingGame.getRaceState())
+            gameView.printRaceState(racingGame.getRaceState())
         }
     }
 }

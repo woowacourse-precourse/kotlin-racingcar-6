@@ -14,12 +14,23 @@ class RacingGame(
         // true 일때 움직임, false 일때 정지 리스트
         val isMoveList = mutableListOf<Boolean>()
         for (i in 1..namesSize) {
-            if (randomNumberGenerator.createNumber() >= MAKE_MOVE_NUMBER) isMoveList.add(true)
-            else isMoveList.add(false)
+            isMoveList.add(randomNumberGenerator.createNumber() >= MAKE_MOVE_NUMBER)
         }
+
         return isMoveList
     }
+
+    fun result(): List<String> {
+        var max = 0
+        raceState.forEach { gameState ->
+            if (max < gameState.progress) max = gameState.progress
+        }
+
+        return raceState.filter { gameState -> gameState.progress == max }.map { it.name }
+    }
+
     fun getRaceState(): List<GameState> {
+
         return raceState
     }
 
