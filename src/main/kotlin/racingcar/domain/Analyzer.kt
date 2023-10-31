@@ -11,8 +11,8 @@ class Analyzer {
             if (car.location < maxNum) {
                 return@fold winners
             } else if (car.location > maxNum) {
-                maxNum = car.location
                 winners.clear()
+                maxNum = car.location
             }
             winners.add(car)
             winners
