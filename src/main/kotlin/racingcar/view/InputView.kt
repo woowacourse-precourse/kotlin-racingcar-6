@@ -1,10 +1,37 @@
 package racingcar.view
 
+import camp.nextstep.edu.missionutils.Console
+import racingcar.controller.RacingCarController
+import racingcar.model.RacingCar
+
 class InputView {
-    fun printInputCarName() = println(INPUT_CAR_NAME_MESSAGE)
-    fun printInputGameCount() = println(INPUT_GAME_COUNT_MESSAGE)
+    fun printInputCarName(): List<RacingCar> {
+        println(INPUT_CAR_NAME_MESSAGE)
+        val userList = Console.readLine().split(NAME_DELIMITERS)
+        checkSize(userList)
+        return userList.map { RacingCar(it, INIT_DISTANCE_NUM) }
+    }
+
+    fun printInputGameCount(): Int {
+        println(INPUT_GAME_COUNT_MESSAGE)
+        val gameCount = Console.readLine()
+        checkNumber(gameCount)
+        return gameCount.toInt()
+    }
+
+    private fun checkSize(userList: List<String>) {
+        userList.forEach {
+            require(it.length <= RacingCarController.MAX_NAME_LENGTH_NUM)
+        }
+    }
+
+    private fun checkNumber(input: String) {
+        require(input.toIntOrNull() != null)
+    }
 
     companion object {
+        const val NAME_DELIMITERS = ","
+        const val INIT_DISTANCE_NUM = 0
         const val INPUT_CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
         const val INPUT_GAME_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?"
     }
