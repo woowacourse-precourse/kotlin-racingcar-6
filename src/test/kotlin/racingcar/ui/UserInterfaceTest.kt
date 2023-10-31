@@ -28,4 +28,9 @@ class UserInterfaceTest {
     fun `시도 횟수가 숫자인지 검사_값 빈문자열`() {
         assertThrows<IllegalArgumentException> { InputValidator.checkOnlyDigit("")}
     }
+
+    @Test
+    fun `시도 횟수가 1 이상인지 검사_값 0`() {
+        assertThrows<IllegalArgumentException> { InputValidator.isPositive(0)}
+    }
 }
