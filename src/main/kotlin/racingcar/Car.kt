@@ -7,6 +7,6 @@ data class Car(val name: String, var distance: Int = 0) {
     }
 
     override fun toString(): String {
-        return "$name : ${"_".repeat(distance)}"
+        return "$name : ${"-".repeat(distance)}"
     }
 }
