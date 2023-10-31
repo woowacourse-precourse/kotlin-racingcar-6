@@ -13,7 +13,6 @@
 
 ### 자동차 게임(RacingCarGame)
 - 프로퍼티
-  - [x] 참여하는 자동차(cars)
   - [x] UserInputManager 객체
   - [x] RacingCarGameMessage 객체
   - [x] RacingCarGameResultEvaluator 객체
