@@ -7,7 +7,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-class ApplicationTest {
+class ApplicationTest : NsTest() {
     /*@Test
     fun `이름에 대한 예외 처리(공백 포함)`() {
         assertSimpleTest {
@@ -119,10 +119,11 @@ class ApplicationTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
     }
+ */
 
     public override fun runMain() {
         main()
-    }*/
+    }
 
     companion object {
         private const val MOVING_FORWARD = 4
