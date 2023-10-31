@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 
 fun main(arge: Array<String>) {
@@ -10,19 +11,37 @@ fun main(arge: Array<String>) {
 
     println("시도할 횟수는 몇 회인가요?")
     val rounds = Console.readLine()!!.toInt()
+
+    val race = Car.Race(cars, rounds)
+    race.run
 }
 
 class Car(val name: String, var position: Int = 0) {
     init {
         checkName(name)
     }
+
     private fun checkName(name: String) {
-        if(name.length > 5 || name.contains(",") || name.isBlank()) {
+        if (name.length > 5 || name.contains(",") || name.isBlank()) {
             throw IllegalArgumentException()
         }
     }
+
+    fun move(raceNums: Int) {
+        if(raceNums >= 4) {
+            position++
+        }
+    }
+    override fun toString(): String {
+        return "$name : ${"-".repeat(position)}"
+    }
 }
 
-//class Race {
-//
-//}
+class Race(val cars: List<Car>, val rounds: Int) {
+    fun run() {
+        for (track in 0 until rounds) {
+            cars.forEach {
+                it.move(Randoms.pickNumberInRange(0,9)) }
+        }
+    }
+}
