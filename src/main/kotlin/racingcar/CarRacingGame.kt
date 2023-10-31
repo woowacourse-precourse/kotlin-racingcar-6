@@ -24,9 +24,12 @@ class CarRacingGame {
         println("시도할 횟수는 몇 회인가요?")
         val cnt_play = readLine()!!.toInt()
         println(cnt_play)
+        println("\n실행 결과")
 
         for (i in 1 .. cnt_play) {
             gamePlay(list_car)
+            lapPrint(list_car)
+            println()
         }
 
     }
@@ -75,6 +78,18 @@ class CarRacingGame {
 
         if (randomInt >= 4) return true
         else return false
+    }
+
+    private fun lapPrint(list_car: MutableList<CarStatus>) {
+        for (i in list_car) {
+            print(i.name + " : ")
+
+            for (num in 1..i.count){
+                print("-")
+            }
+            
+            println()
+        }
     }
 
 
