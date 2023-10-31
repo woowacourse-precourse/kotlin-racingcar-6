@@ -28,7 +28,6 @@ class InputView {
             println(TIME_INPUT_MENTION)
             val number = getInput()
             Exceptions.checkNumber(number)
-            Console.close()
             return number.toLong()
         }
     }

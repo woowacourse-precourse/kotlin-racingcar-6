@@ -1,5 +1,6 @@
 package racingcar.View
 
+import camp.nextstep.edu.missionutils.Console
 import racingcar.Model.Car
 import racingcar.Utils.Constans.EXECUTION_RESULT_MENTION
 
@@ -23,6 +24,7 @@ class OutputView {
 
         fun printWinners(nameList: List<String>) {
             print("최종 우승자 : ${nameList.joinToString(", ")}")
+            Console.close()
         }
     }
 }
