@@ -11,19 +11,19 @@ class ValidateCarName {
 
     fun validateInputBlank(inputCarName: String) {
         if (inputCarName.isBlank()) {
-            throw IllegalArgumentException("자동차 이름을 반드시 입력해야 합니다.")
+            throw IllegalArgumentException() // 여기에 NO_CAR_NAM
         }
     }
 
     fun validateInputMultiCarName(multiCarName: List<String?>) {
         when (false) {
-            validateMaxInput5(multiCarName) -> throw IllegalArgumentException("자동차 이름은 5자 이하로만 가능합니다.")
+            validateMaxInput5(multiCarName) -> throw IllegalArgumentException() // CAR_NAME_CO
 
-            validateIsBlank(multiCarName) -> throw IllegalArgumentException("자동차 이름은 필수로 입력해야 합니다.")
+            validateIsBlank(multiCarName) -> throw IllegalArgumentException() // NO_ALL_CAR
 
-            validateDuplicateCarName(multiCarName) -> throw IllegalArgumentException("자동차 이름은 중복하지 않아야 합니다.")
+            validateDuplicateCarName(multiCarName) -> throw IllegalArgumentException() // DUPLICATE
 
-            validateRacingCarRange(multiCarName) -> throw IllegalArgumentException("게임에 참여 가능한 자동차 대수는 1대 이상 7대 이하만 가능합니다.")
+            validateRacingCarRange(multiCarName) -> throw IllegalArgumentException() //CAR_COUNT_ERROR
 
             else -> multiRacingGame.inputTryCount(multiCarName)
         }
