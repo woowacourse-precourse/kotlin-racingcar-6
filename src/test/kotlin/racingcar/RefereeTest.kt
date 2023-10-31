@@ -10,7 +10,6 @@ import racingcar.model.RaceResult
 import racingcar.model.Winner
 
 class RefereeTest {
-
     private lateinit var scoreGenerator: NumberGenerator
     private lateinit var referee: Referee
 
@@ -25,26 +24,24 @@ class RefereeTest {
     }
 
     @Test
-    fun `score가 4 이상이여야 차가 움직일 수 있다`() {
-        val referee = Referee(4)
-
-        val movable1 = referee.canCarMove(4)
-        val movable2 = referee.canCarMove(3)
-
-        assertThat(movable1).isTrue()
-        assertThat(movable2).isFalse()
-    }
-
-    @Test
     fun `심판은 차들의 Race 결과를 판정한다`() {
         val cars = listOf(
             Car("june", scoreGenerator),
             Car("june2", scoreGenerator)
         )
+        val initialRaceResult = referee.determineRaceResult(cars)
         cars.forEach { car -> car.move() }
-        val raceResult = referee.determineRaceResult(cars)
+        val oneStepRaceResult = referee.determineRaceResult(cars)
 
-        assertThat(raceResult).isEqualTo(
+        assertThat(initialRaceResult).isEqualTo(
+            RaceResult(
+                listOf(
+                    CarState("june", ""),
+                    CarState("june2", "")
+                )
+            )
+        )
+        assertThat(oneStepRaceResult).isEqualTo(
             RaceResult(
                 listOf(
                     CarState("june", "-"),
@@ -60,9 +57,11 @@ class RefereeTest {
             Car("june", scoreGenerator),
             Car("june2", scoreGenerator)
         )
+        val noWinner = referee.determineWinner(cars)
         cars.forEach { car -> car.move() }
         val winner = referee.determineWinner(cars)
 
+        assertThat(noWinner.toString()).isEqualTo(Winner(listOf()).toString())
         assertThat(winner.toString()).isEqualTo(
             Winner(
                 listOf(
