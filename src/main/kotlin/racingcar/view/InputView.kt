@@ -39,7 +39,7 @@ class InputView {
     }
 
     private fun validateNotFindComma(inputName: String) {
-        if (!inputName.contains(",")){
+        if (!inputName.contains(",")) {
             throw IllegalArgumentException("입력값에 쉼표가 포함되지 않았습니다.")
         }
     }
@@ -49,7 +49,7 @@ class InputView {
     }
 
     fun inputTryRaceCount(): Int {
-        val tryCount:Int
+        val tryCount: Int
         inputTryRaceCountMessage()
         try {
             tryCount = Console.readLine().toInt()
@@ -62,8 +62,7 @@ class InputView {
     }
 
     private fun validateNotTryZero(tryCount: Int) {
-        if (tryCount == 0)
-            throw IllegalArgumentException("0은 입력될 수 없습니다.")
+        if (tryCount == 0) throw IllegalArgumentException("0은 입력될 수 없습니다.")
     }
 
 }

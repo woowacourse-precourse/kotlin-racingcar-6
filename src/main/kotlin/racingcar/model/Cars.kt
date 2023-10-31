@@ -2,8 +2,8 @@ package racingcar.model
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class Cars(name:String) {
-    val carName= name
+class Cars(name: String) {
+    val carName = name
     var carPosition = 0
 
     private fun generateRandomNumber(): Int {
@@ -12,7 +12,7 @@ class Cars(name:String) {
 
     fun chooseActionFromRandomNumber() {
         val randomNumber = generateRandomNumber()
-        if (randomNumber >= 4){
+        if (randomNumber >= 4) {
             carPosition++
         }
     }
