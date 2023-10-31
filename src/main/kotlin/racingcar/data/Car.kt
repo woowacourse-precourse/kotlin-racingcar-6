@@ -1,9 +1,9 @@
 package racingcar.data
 
-data class Car(val name: String, private val trace: List<CarState>)
+data class Car(val name: String, val trace: List<CarState>)
 
-enum class CarState {
-    MOVE, STOP;
+enum class CarState(val symbol: String) {
+    MOVE("-"), STOP("");
 
     companion object {
         private const val MOVE_CRITERIA = 4
