@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 fun main() {
     val game = RacingCarGame()
     game.inputCarNames()
+    game.inputAttemptsCount()
 }
 
 class RacingCarGame {
@@ -14,6 +15,11 @@ class RacingCarGame {
         val carNames = Console.readLine()
         val carNameList = carNames.split(',')
         validateCarName(carNameList)
+    }
+
+    fun inputAttemptsCount(): Int {
+        println("시도할 횟수는 몇 회인가요?")
+        return Console.readLine().toInt()
     }
 
     private fun validateCarName(carNameList: List<String>) {
