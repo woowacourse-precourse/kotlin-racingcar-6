@@ -1,7 +1,7 @@
 package racingcar.model
 
 class WinnerGenerator {
-    private var winners = Winners(mutableListOf<RacingCar>())
+    private var winners = Winners(mutableListOf())
     fun win(racingCars: MutableList<RacingCar>): Winners {
         var max = 0
         for (racingCar in racingCars) {

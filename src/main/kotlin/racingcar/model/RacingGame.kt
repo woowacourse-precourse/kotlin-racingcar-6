@@ -3,7 +3,7 @@ package racingcar.model
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.view.OutputView
 
-class RacingGame() {
+class RacingGame {
     private val outputView = OutputView()
     fun playGame(racingCars: RacingCars) {
         var cnt = 0
