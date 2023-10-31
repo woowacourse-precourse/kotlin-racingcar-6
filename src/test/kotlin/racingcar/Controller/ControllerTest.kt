@@ -24,5 +24,24 @@ class ControllerTest {
             )
     }
 
+    @Test
+    fun `자동차 목록 중 우승자의 forward 값 확인하기`() {
+        val racingCars = listOf(
+            RacingCar("jon", 2),
+            RacingCar("pobi", 3),
+            RacingCar("dana", 1)
+        )
+        assertThat(controller.getWinnerForward(racingCars)).isEqualTo(3)
+    }
 
+    @Test
+    fun `최종 우승자의 목록 탐색`() {
+        val racingCars = listOf(
+            RacingCar("jon", 2),
+            RacingCar("pobi", 3),
+            RacingCar("dana", 3)
+        )
+        assertThat(controller.getWinnerCars(racingCars))
+            .isEqualTo(listOf("pobi", "dana"))
+    }
 }
