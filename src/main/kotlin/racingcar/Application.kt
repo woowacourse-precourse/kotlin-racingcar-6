@@ -1,5 +1,16 @@
 package racingcar
 
+import racingcar.game.CarRacingGame
+
 fun main() {
-    // TODO: 프로그램 구현
+    startRacingGame()
 }
+
+private fun startRacingGame() {
+    CarRacingGame().apply {
+        val carRaceGame = setUp().race()
+        outputManager.racingRoundResult(carRaceGame.racingResult())
+        outputManager.winner(carRaceGame.winner())
+    }
+}
+
