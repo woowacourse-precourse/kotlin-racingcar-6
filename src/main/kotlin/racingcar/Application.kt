@@ -7,8 +7,8 @@ import racingcar.domain.Winner
 
 
 fun main() {
-    var repeat: Int
-    var cars = mutableListOf<Car>()
+    var repeat:Int
+    val cars = mutableListOf<Car>()
 
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     var carNames = Console.readLine().split(",").toMutableList()
