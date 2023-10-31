@@ -159,3 +159,34 @@ Randoms.pickNumberInRange(0, 9)
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
   - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+## 구현할 기능 목록
+1. 경주 할 n대의 자동차를 만드는 클래스(Car) 생성, 시도할 횟수 입력받기
+   자동차 이름 입력받을 때 split() 이용
+2. 무작위 값을 구한 후 4 이상일 경우 전진하는 함수 구현
+3. 각 자동차별 전진 상황 출력하는 함수 구현
+4. 최종 우승자 출력하는 함수 구현
+
+
+## 참고 사이트
+split()으로 문자열 나누고 배열에 넣기
+https://kkh0977.tistory.com/640
+
+개발자 영어 단어
+https://brunch.co.kr/@hopeless/8
+
+객체로 배열 만들기
+https://developer-rooney.tistory.com/49
+
+'.indices' call
+https://kkangsnote.tistory.com/65
+
+isEmpty와 isBlank의 차이점
+https://holika.tistory.com/entry/%EB%82%B4-%EB%A7%98%EB%8C%80%EB%A1%9C-%EC%A0%95%EB%A6%AC%ED%95%9C-Kotlin-isEmpty%EC%99%80-isBlank%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90
+
+코틀린 배열
+https://warmdeveloper.tistory.com/15
+
+예외 처리
+https://taehyungk.github.io/posts/android-kotlin-basic-5/

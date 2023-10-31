@@ -1,0 +1,29 @@
+package racingcar
+
+data class Cars(var name: String, var go: Int)  // 객체 배열
+
+class Car {
+    fun makeCars(): Array<Cars?> {
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        var carname = readLine()
+
+        if (carname?.isBlank() == true)
+            throw IllegalArgumentException()
+
+        var carNameList = carname!!.split(",")
+        for (i in carNameList.indices) {
+            if (carNameList[i].length > 5)
+                throw IllegalArgumentException()
+        }
+
+        var carCnt = carNameList.size  // 차의 개수
+
+        var carList = Array<Cars?>(carCnt) { null }  // Cars 클래스가 들어갈 배열 생성
+        for (i in 0 until carCnt) {
+            val cars = Cars(carNameList[i], 0)  // 차 이름, 전진 횟수 초기화
+            carList[i] = cars
+        }
+
+        return carList
+    }
+}
