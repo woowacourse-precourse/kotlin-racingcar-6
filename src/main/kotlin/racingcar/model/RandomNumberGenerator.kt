@@ -7,7 +7,7 @@ class RandomNumberGenerator : NumberGenerator {
 
     companion object{
         const val MAX_NUMBER = 9
-        const val MIN_NUMBER = 1
+        const val MIN_NUMBER = 0
     }
 
 }
