@@ -15,10 +15,9 @@ class GameController (private val view: ScreenView){
 
     fun inputCars(): Cars {
         val userCar = view.inputCarName()
-        val carList = userCar.split(",")
         val cars = Cars()
 
-        for (carName in carList) {
+        for (carName in userCar) {
             val car = Car(name = carName)
             cars.add(car)
         }

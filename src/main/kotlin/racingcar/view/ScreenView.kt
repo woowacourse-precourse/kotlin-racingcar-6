@@ -8,7 +8,7 @@ class ScreenView {
     private val inputCarNameMessage = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
     private val inputGameCountMessage = "시도할 횟수는 몇 회인가요?"
 
-    fun inputCarName(): String {
+    fun inputCarName(): List<String> {
         println(inputCarNameMessage)
         return inputUserCarForWait()
     }
@@ -27,8 +27,18 @@ class ScreenView {
         }
     }
 
-    private fun inputUserCarForWait(): String {
-        return Console.readLine()?.toString() ?: throw IllegalArgumentException("올바른 형식으로 입력해주세요.")
+    private fun inputUserCarForWait(): List<String> {
+        val carNames = Console.readLine()?.toString()
+        if (carNames != null) {
+            val carList = carNames.split(",")
+            if (carList.size != carList.distinct().count()) {
+                throw IllegalArgumentException("중복된 이름이 존재합니다.")
+            } else {
+                return carList
+            }
+        } else {
+            throw IllegalArgumentException("자동차 이름을 입력해주세요.")
+        }
     }
 
 
