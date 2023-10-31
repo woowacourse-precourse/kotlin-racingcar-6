@@ -167,7 +167,9 @@ Randoms.pickNumberInRange(0, 9)
 
 - CarList 객체 생성 
 
-	- 속성 구현 
+	- 속성 구현
+
+ 	- 숫자 뽑기 메소드 구현 
 
 	- 전진 메소드 구현
  
