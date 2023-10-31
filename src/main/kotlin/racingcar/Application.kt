@@ -32,11 +32,18 @@ fun try_count():Int{
     return number
 }
 
+fun display(cars:List<String>, record:IntArray){
+    for (i in 0 until cars.size){
+        println("${cars[i]} : ${"-".repeat(record[i])}")
+    }
+    println()
+}
+
 fun main() {
     val cars = make_frame()
     val record = IntArray(cars.size){0}
     for (idx in 0 until try_count()) {
         move(record)
-        println(record.joinToString(","))
+        display(cars, record)
     }
 }
