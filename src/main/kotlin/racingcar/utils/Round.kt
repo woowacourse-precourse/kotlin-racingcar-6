@@ -8,8 +8,9 @@ object Round {
 
     const val FORWARD_THRESHOLD = 4
 
-    fun generateRandomNumber() = Randoms.pickNumberInRange(RANDOM_RANGE_START, RANDOM_RANGE_END)
+    internal fun generateRandomNumber() =
+        Randoms.pickNumberInRange(RANDOM_RANGE_START, RANDOM_RANGE_END)
 
-    fun isForward(randomNumber: Int): Boolean =
+    internal fun isForward(randomNumber: Int): Boolean =
         true.takeIf { randomNumber >= FORWARD_THRESHOLD } ?: false
 }

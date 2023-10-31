@@ -1,6 +1,5 @@
-package racingcar.model
+package racingcar.modelTest
 
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -12,6 +11,8 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EmptySource
 import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
+import racingcar.model.Car
+import racingcar.model.Cars
 import racingcar.view.InputView
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -22,7 +23,7 @@ class CarsTest {
     @ValueSource(strings = ["pobi, asd, 123"])
     @DisplayName("InputView: splitCarNamesByComma() - Multi")
     fun `여러 이름을 입력 받은 경우) ','로 분류하여 리스트 반환`(inputNames: String) {
-        Assertions.assertThat(
+        assertThat(
             inputView.splitCarNamesByComma(inputNames)
         ).containsExactly("pobi", " asd", " 123")
     }
@@ -32,7 +33,7 @@ class CarsTest {
     @ValueSource(strings = ["asd", " 123", "pobi ", "  jun", "taeng"])
     @DisplayName("InputView: splitCarNamesByComma() - Single")
     fun `하나의 이름을 입력 받은 경우) 하나를 리스트에 넣고 반환`(inputNames: String) {
-        Assertions.assertThat(
+        assertThat(
             inputView.splitCarNamesByComma(inputNames)
         ).isEqualTo(listOf(inputNames))
     }

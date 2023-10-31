@@ -24,7 +24,6 @@ data class Car(
         require(inputNameTrim.all { it.isDigit() || it.isLetter() }) { CAR_NAME_FORMAT_ERROR }
 
 
-
     internal fun moveForward() = _score++
 
     companion object {

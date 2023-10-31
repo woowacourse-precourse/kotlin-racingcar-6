@@ -14,7 +14,7 @@
 **3. 자동차 전진 조건 - model/Round**
 - [x] 0 ~ 9 사이의 `랜덤값 구하는 기능` model/Round.generateRandomNumber()
 - [x] 랜덤값이 `4이상인지 판단`하는 기능 - model/Round.isForward()
-- [ ] test
+- [x] test
 
 **4. 라운드 별 자동차 경주 점수 출력 - view/OutputView**
 - [x] 라운드의 진행 결과를 출력하는 기능 - view/OutputView.printRoundResult()
