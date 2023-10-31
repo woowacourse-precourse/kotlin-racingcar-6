@@ -12,7 +12,11 @@ fun main() {
         checkNames(carArray)
     }
 
+    println("시도할 횟수는 몇 회인가요?\n")
 
+    var gameNum = readLine()?.toInt()
+
+    val gamePlayer = GamePlayer(gameNum,carArray)
 
 
 
