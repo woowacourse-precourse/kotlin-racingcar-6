@@ -34,9 +34,7 @@ class InputView {
             validRacingCarNameList.add(racingCarName)
         }
 
-        if (racingCarNameList.size < 2) {
-            throw IllegalArgumentException("자동차 이름은 2개 이상 입력받아야 한다.")
-        }
+
 
         return validRacingCarNameList
     }
