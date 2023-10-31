@@ -17,6 +17,9 @@ class Error {
             null -> throw IllegalArgumentException(NOT_INT_OR_NULL)
             else -> true
         }
+        checkNumMinus(repeat)
+    }
+    private fun checkNumMinus(repeat: String) {
         if(repeat.toInt()<0){
             throw IllegalArgumentException(INPUT_UNDER_ZERO)
         }
@@ -25,6 +28,7 @@ class Error {
     fun checkName(cars: List<String>) {
         for (i in cars.indices) {
             checkError(cars[i])
+            checkSpace(cars[i])
         }
         checkDuplicate(cars)
         checkSize(cars)
@@ -34,6 +38,8 @@ class Error {
         if (input.length > MAX_LENGTH || input.isEmpty()) {
             throw IllegalArgumentException(INPUT_OVER_FIVE_OR_NULL)
         }
+    }
+    private fun checkSpace(input: String) {
         if (input.contains(SPACE)) {
             throw IllegalArgumentException(INPUT_HAVE_SPACE)
         }
