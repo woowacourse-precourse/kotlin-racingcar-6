@@ -41,4 +41,9 @@ class UserInterfaceTest {
     fun `시도 횟수가 1 이상인지 검사_값 0`() {
         assertThrows<IllegalArgumentException> { InputValidator.isPositive(0)}
     }
+
+    @Test
+    fun `시도 횟수가 100 이하인지 검사_값 1000`() {
+        assertThrows<IllegalArgumentException> { InputValidator.isUnderHundred(1000)}
+    }
 }
