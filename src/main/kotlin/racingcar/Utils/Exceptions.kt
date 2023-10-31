@@ -26,11 +26,8 @@ class Exceptions {
 
         fun checkNumber(number : String) {
             require(number.all { it.isDigit() }) { EXCEPTION_NUMBER_UNVALID }
-            //2000명이 동시에 진행하는 자동차 레이스 경주는 없음.
-            //https://www.reddit.com/r/iRacing/comments/keuu7j/maximum_participants_per_race/?rdt=39933
-            //바이크 레이스의 경우 검색결과 최대 1500명이 참가
-            //https://namu.wiki/w/%EC%97%90%EB%A5%B4%EC%B8%A0%EB%B2%84%EA%B7%B8%20%EB%A1%9C%EB%8D%B0%EC%98%A4
-            require(number.toLong() < Int.MAX_VALUE.toLong()) { "불가능한 이동 횟수 입니다" }
+            require(number.toLong() <= 1_000_000) { "불가능한 이동 횟수 입니다" }
+            require(number.toInt() > 0) { "이동 횟수는 0보다 커야합니다." }
         }
     }
 }
