@@ -71,6 +71,7 @@ class ApplicationTest : NsTest() {
     public override fun runMain() {
         main()
     }
+
     companion object {
         private const val MOVING_FORWARD = 4
         private const val STOP = 3
