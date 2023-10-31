@@ -24,11 +24,11 @@ class Car(name: String) {
     }
 
     private fun printResult() {
-        print("$name : ")
-        for (i in 0..<position) {
-            print(MOVE)
+        var go = ""
+        for(i in 0..<position){
+            go+= MOVE
         }
-        println()
+        println("$name : $go")
     }
 
     private fun makeRandom() {
