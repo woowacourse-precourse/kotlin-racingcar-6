@@ -42,20 +42,14 @@ object RacingGameManager {
         return this
     }
 
-    fun announceWinner() {
-        val winner = createWinnerList(racingCars)
-        UserOutput.printWinner(winner)
-    }
+    fun announceWinner() = UserOutput.printWinner(createWinnerList(racingCars))
 
-    private fun createWinnerList(cars: MutableList<RacingCar>): List<String> {
-        return findCarNameWithMaxDistance(cars, getMaxDistance(cars))
-    }
+    private fun createWinnerList(cars: MutableList<RacingCar>): List<String> =
+        findCarNameWithMaxDistance(cars, getMaxDistance(cars))
 
-    private fun getMaxDistance(cars: MutableList<RacingCar>): Int {
-        return cars.maxOf { it.distance }
-    }
+    private fun getMaxDistance(cars: MutableList<RacingCar>): Int =
+        cars.maxOf { it.distance }
 
-    private fun findCarNameWithMaxDistance(cars: MutableList<RacingCar>, max: Int): List<String> {
-        return cars.filter { it.distance == max }.map { it.name }
-    }
+    private fun findCarNameWithMaxDistance(cars: MutableList<RacingCar>, max: Int): List<String> =
+        cars.filter { it.distance == max }.map { it.name }
 }
