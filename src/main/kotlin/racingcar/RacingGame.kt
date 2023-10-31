@@ -11,7 +11,8 @@ class RacingGame {
         val cars = initCar()
         val roundCount = readRounds()
         computer.playGame(roundCount, cars)
-        computer.printWinner(cars)
+        val winner = computer.getWinnerStatus(cars)
+        println(winner)
     }
 
     private fun initCar(): List<Car> {
