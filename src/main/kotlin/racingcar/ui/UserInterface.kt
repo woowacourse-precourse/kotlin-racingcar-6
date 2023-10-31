@@ -43,11 +43,8 @@ object UserOutput {
 object InputValidator {
     private const val MIN_NAME_LENGTH = 1
     private const val MAX_NAME_LENGTH = 5
-    fun checkNamesLength(names: List<String>): InputValidator {
-        names.forEach {
-            require(it.length in MIN_NAME_LENGTH..MAX_NAME_LENGTH) { MSG_EXCEPTION_NAME_LENGTH } }
-        return this
-    }
+    fun checkNamesLength(names: List<String>) =
+        names.forEach { require(it.length in MIN_NAME_LENGTH..MAX_NAME_LENGTH) { MSG_EXCEPTION_NAME_LENGTH } }
 
     fun checkOnlyDigit(input: String) =
         input.forEach { require(it in '0'..'9') { MSG_EXCEPTION_ONLY_DIGIT } }
