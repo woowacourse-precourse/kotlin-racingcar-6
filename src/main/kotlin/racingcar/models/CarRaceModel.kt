@@ -14,8 +14,10 @@ class CarRaceModel {
 
     fun updateScores(carNames: List<String>) {
         for (carName in carNames) {
-            if (carNameAndScore.containsKey(carName) && Randoms.pickNumberInRange(0, 9) >= 4) {
-                carNameAndScore[carName] = carNameAndScore[carName]!! + 1
+            carNameAndScore[carName]?.let { currentScore ->
+                if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                    carNameAndScore[carName] = currentScore + 1
+                }
             }
         }
     }
