@@ -55,17 +55,14 @@ class RacingGameManager {
         val cars = mutableListOf<Car>()
 
         input.split(",").forEach { name ->
-            Validator.checkCarNameLength(name)
-            if (hasNotCarNameWhitespace(name)) {
-                cars.add(Car(name))
+            with(Validator) {
+                checkCarNameLength(name)
+                checkInputWhitespace(name.trim())
             }
+
+            cars.add(Car(name))
         }
         return cars.toList()
-    }
-
-    private fun hasNotCarNameWhitespace(name: String): Boolean {
-        Validator.checkInputWhitespace(name.trim())
-        return true
     }
 
     private fun moveCarsForward(cars: List<Car>) {
