@@ -1,6 +1,7 @@
 package racingcar.ui
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.ui.UserInput.createNameList
@@ -21,7 +22,9 @@ class UserInterfaceTest {
 
     @Test
     fun `중복된 자동차 이름 입력 시, 하나로 처리`() {
-
+        val duplicateInput = "pobi, pobi"
+        val duplicateNames = duplicateInput.createNameList()
+        assertThat(duplicateNames.size).isEqualTo(1)
     }
 
     @Test
