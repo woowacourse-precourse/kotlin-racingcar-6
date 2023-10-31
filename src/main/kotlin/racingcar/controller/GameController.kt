@@ -8,16 +8,11 @@ import racingcar.view.ScreenView
 
 
 class GameController (private val view: ScreenView){
-    fun goOrNot(gameCount: Int, car: Car){
-        var currentCount: Int = 0
-        while (currentCount < gameCount) {
-            val randomNumber = Randoms.pickNumberInRange(0, 9)
-            if (randomNumber >= 4) {
-                car.moved()
-            }
-            currentCount++
-        }
+    fun goOrNot(car: Car){
+        val randomNumber = Randoms.pickNumberInRange(0, 9)
+        if (randomNumber >= 4) { car.moved() }
     }
+
     fun inputCars(): Cars {
         val userCar = view.inputCarName()
         val carList = userCar.split(",")
@@ -30,12 +25,17 @@ class GameController (private val view: ScreenView){
         return cars
     }
 
-    fun getWinners(cars: Cars) {
-        val carWithMaxDistance = cars.withMaxDistance()
-
-        if (carWithMaxDistance != null) {
-            val winners = Winners(mutableListOf(carWithMaxDistance))
-            println(winners)
+    fun getWinners(cars: MutableList<Car>): Winners? {
+        val maxDistance = cars.maxByOrNull { it.distance }?.distance
+        if (maxDistance != null) {
+            val winners = Winners(mutableListOf())
+            cars.forEach { car ->
+                if (car.distance == maxDistance) {
+                    winners.winners.add(car)
+                }
+            }
+            return winners
         }
+        return null
     }
 }

@@ -6,7 +6,7 @@ class Car (name: String){
 
     init {
         require(name.length in 1..5) { "5자 이하의 이름이 아닙니다." }
-        require(name.isEmpty()) { "이름을 입력해주세요." }
+        require(name.isNotEmpty()) { "이름을 입력해주세요." }
         this.name = name
     }
 

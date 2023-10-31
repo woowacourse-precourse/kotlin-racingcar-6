@@ -1,7 +1,7 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
-import racingcar.model.Cars
+import racingcar.model.Car
 import racingcar.model.Winners
 
 class ScreenView {
@@ -13,8 +13,9 @@ class ScreenView {
         return inputUserCarForWait()
     }
 
-    fun inputGameCount() {
+    fun inputGameCount(): Int{
         println(inputGameCountMessage)
+        return Console.readLine()?.toInt() ?: throw IllegalArgumentException("0 이상의 정수를 입력해주세요.")
     }
 
     private fun inputUserCarForWait(): String {
@@ -22,8 +23,8 @@ class ScreenView {
     }
 
 
-    fun printTrace(cars: Cars) {
-        cars.cars.forEach { car ->
+    fun printTrace(cars: MutableList<Car>) {
+        cars.forEach { car ->
             print("${car.name} : ")
             println("-".repeat(car.distance))
         }

@@ -1,5 +1,8 @@
 package racingcar
 
+import racingcar.app.Racing
+
 fun main() {
-    // TODO: 프로그램 구현
+    val racing = Racing()
+    racing.run()
 }
