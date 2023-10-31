@@ -11,11 +11,8 @@ class Try {
                 print("${carList[i]!!.name} : ")
                 val result = Result()
                 result.printResult(carList[i]!!.go)
-
-                //println("${carList[i]!!.name} : ${carList[i]!!.go}")
             }
             println()
         }
-
     }
 }

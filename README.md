@@ -181,3 +181,12 @@ https://developer-rooney.tistory.com/49
 
 '.indices' call
 https://kkangsnote.tistory.com/65
+
+isEmpty와 isBlank의 차이점
+https://holika.tistory.com/entry/%EB%82%B4-%EB%A7%98%EB%8C%80%EB%A1%9C-%EC%A0%95%EB%A6%AC%ED%95%9C-Kotlin-isEmpty%EC%99%80-isBlank%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90
+
+코틀린 배열
+https://warmdeveloper.tistory.com/15
+
+예외 처리
+https://taehyungk.github.io/posts/android-kotlin-basic-5/
