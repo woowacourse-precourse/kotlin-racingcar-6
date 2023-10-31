@@ -26,6 +26,20 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `이름이 범위 밖인 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException(",javaji", "1") }
+        }
+    }
+
+    @Test
+    fun `이름을 ,로 구분하지 않았을 때의 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi.javaji", "1") }
+        }
+    }
+
     public override fun runMain() {
         main()
     }
