@@ -6,10 +6,9 @@ const val FORWARDABLE_NUMBER = 4
 
 class Car(val name: String) {
     var forwardCount = 0
-
-    private fun increaseForwardCount() = forwardCount++
+        private set
 
     fun forwardCar() {
-        if (pickNumberInRange(0, 9) >= FORWARDABLE_NUMBER) increaseForwardCount()
+        if (pickNumberInRange(0, 9) >= FORWARDABLE_NUMBER) forwardCount++
     }
 }
