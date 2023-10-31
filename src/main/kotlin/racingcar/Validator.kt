@@ -4,7 +4,7 @@ class Validator {
     fun validateInputString(inputString: String) {
         if (!inputString.contains(','))
             throw IllegalArgumentException("invalid input string, there is no comma")
-        if (inputString.contains(' '))
+        if (inputString.contains(' ') || inputString.contains('\t'))
             throw IllegalArgumentException("invalid input string, it contains blank")
     }
 
