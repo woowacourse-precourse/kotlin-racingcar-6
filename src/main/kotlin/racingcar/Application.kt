@@ -1,4 +1,5 @@
 package racingcar
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 class Refree(
@@ -32,6 +33,16 @@ class Car(val name: String) : Comparable<Car> {
 
     override fun compareTo(other: Car): Int = compareValuesBy(this, other, Car::position)
 
+}
+
+object InputManager {
+    fun getCarNames() : List<String> {
+        val input = Console.readLine()
+        return input.split(",").map {
+            require(it.length <= 5) {"Wrong Car name! Car name must be 5 characters or less"}
+            it
+        }
+    }
 }
 
 fun main() {
