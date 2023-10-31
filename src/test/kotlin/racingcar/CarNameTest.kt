@@ -12,7 +12,10 @@ class CarNameTest :NsTest(){
         assertThrows<IllegalArgumentException> { runException(",java", "1") }
     }
 
-
+    @Test
+    fun `자동차 이름에 공백이 있을 때`() {
+        assertThrows<IllegalArgumentException> { runException("a a,java", "1") }
+    }
 
     override fun runMain() {
         main()
