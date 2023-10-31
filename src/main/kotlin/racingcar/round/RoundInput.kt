@@ -6,7 +6,6 @@ class RoundInput {
         return inputRound()
     }
 
-    // TODO 예외처리
     private fun inputRound(): Int {
         val input = Console.readLine()
         RoundValidation().checkRoundInputValidation(input)
