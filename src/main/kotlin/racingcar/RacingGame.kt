@@ -37,6 +37,9 @@ class RacingGame {
         printWinner(winnerList)
     }
 
+    //랜덤 숫자를 가져와 움직일 수 있는지 확인한다.
+    //만약 움직일 수 있다면 자동차의 기존 이동거리에 1만큼 더한다.
+    //그 후 자동차 이름과 함께 이동거리를 출력한다.
     private fun runOneCycle() {
         cars.list.forEach { car ->
             val isMovable = checkMovable(getRandomNumber())
@@ -60,6 +63,8 @@ class RacingGame {
         validateNameLength(carNameList)
         validateNull(carNameList)
         validateDuplicate(carNameList)
+
+        //List<String> -> List<Car>
         return carManager.makeCarModelList(carNameList)
     }
 
