@@ -13,13 +13,6 @@ class CarModel {
 
     fun setAttemptsNumber(attempts: String) {
         attemptsNumber = InputValidation().validateAttemptsNumber(attempts)
-        attemptsByRound()
-    }
-
-    fun attemptsByRound() {
-        for (i in 1..attemptsNumber) {
-            moveCar()
-        }
     }
 
     fun moveCar() {

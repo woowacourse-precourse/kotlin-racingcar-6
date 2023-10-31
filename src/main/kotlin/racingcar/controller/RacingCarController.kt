@@ -19,6 +19,10 @@ class RacingCarController {
         view.inputAttemptsNumber()
         val attemptsNumber = Console.readLine()
         model.setAttemptsNumber(attemptsNumber)
+
+        for (i in 1..attemptsNumber.toInt()) {
+            model.moveCar()
+        }
     }
 
 }
