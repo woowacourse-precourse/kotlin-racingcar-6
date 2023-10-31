@@ -1,19 +1,19 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 class RacingCarGame {
     private val readCar = ReadCar()
     private val carInput = readCar.carInput
-    private val numberOfTry = readCar.numberOfTry.toInt()
+    private val numberOfTryStr = readCar.numberOfTry
     private val carList: List<String> = carInput.split(',')
     private val gameProgress: MutableMap<String, String> = mutableMapOf()
     private val moveCount: MutableMap<String, Int> = mutableMapOf()
 
+
     private fun setProgress() {
         for (carName in carList) {
-            gameProgress[carName] = "$carName: "
+            gameProgress[carName] = "$carName : "
         }
     }
 
@@ -50,8 +50,14 @@ class RacingCarGame {
         setProgress()
         setMoveCount()
 
+        try{
+            numberOfTryStr.toInt()
+        } catch(ex: NumberFormatException){
+            throw IllegalArgumentException("정수만 입력")
+        }
+
         println("\n실행 결과")
-        for (i in 0..< numberOfTry) {
+        for (i in 0..< numberOfTryStr.toInt()) {
             goOrNot()
             for (carName in carList) {
                 println(gameProgress[carName])
@@ -61,7 +67,6 @@ class RacingCarGame {
 
         val moveCountList = moveCount.toList()
         val sortedMoveCountList = moveCountList.sortedWith(compareByDescending { it.second })
-        val sortedMoveCount = sortedMoveCountList.toMap()
         print("최종 우승자 : ")
         for (i in carList.indices){
             print(sortedMoveCountList[i].first)
