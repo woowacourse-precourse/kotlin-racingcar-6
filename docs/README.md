@@ -22,7 +22,7 @@
 - [X] 자동차들의 이름을 입력받는다. InputManager#getCarNames()
   - [X] 자동차의 이름은 5자 이하여야 한다. 
   - [X] 자동차 이름은 쉼표로 구분한다.
-- [ ] 자동차들이 한 번 이동할 때마다 경기 현황을 출력해야 한다. OutputManager#printGameStatus()
+- [X] 자동차들이 한 번 이동할 때마다 경기 현황을 출력해야 한다. OutputManager#printGameStatus()
 - [ ] 누가 우승했는지 출력해야 한다. OutputManager#printWinner()
   - [ ] 우승자가 여러 명일 경우, 쉼표(, )로 구분해 출력한다.
 

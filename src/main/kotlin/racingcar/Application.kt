@@ -4,11 +4,15 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Refree(
     private val namesOfParticipants: List<String>,
-    private val roundNum: Int
+    private val roundNum: Int,
+    val doSomethingWithCarsAfterRound: (List<Car>) -> Unit
 ) {
     val cars: List<Car> = namesOfParticipants.map{Car(it)}
 
-    fun runRound() = cars.forEach{it.goForwardOrStop()}
+    fun runRound() {
+        cars.forEach{it.goForwardOrStop()}
+        doSomethingWithCarsAfterRound(cars)
+    }
     fun getGameStatus() = cars
     fun getWinners(): List<Car> {
         val winnerPosition = cars.max().position
@@ -42,6 +46,14 @@ object InputManager {
             require(it.length <= 5) {"Wrong Car name! Car name must be 5 characters or less"}
             it
         }
+    }
+}
+
+object OutputManager {
+
+    fun printGameStatus(cars:List<Car>) = cars.forEach{
+        val distanceBar = "-".repeat(it.position)
+        println("${it.name} : $distanceBar")
     }
 }
 
