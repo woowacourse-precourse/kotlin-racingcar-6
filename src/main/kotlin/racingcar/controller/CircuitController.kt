@@ -12,19 +12,19 @@ class CircuitController(
 
     fun run() {
         val circuit = Circuit()
-        while (circuit.state != CircuitState.EXIT) {
+        while (circuit.state != CircuitState.Exit) {
             proceedCircuit(circuit)
         }
     }
 
     private fun proceedCircuit(circuit: Circuit) {
         when (circuit.state) {
-            CircuitState.START -> {
+            CircuitState.Start -> {
                 outputView.printGameStartMessage()
                 circuit.makeCars(inputView.inputCars())
             }
 
-            CircuitState.RACING -> {
+            CircuitState.Racing -> {
                 outputView.printGameInputAttemptMessage()
                 val attempt = inputView.inputAttempt()
                 println()
@@ -32,12 +32,12 @@ class CircuitController(
                 circuit.moveCars(attempt)
             }
 
-            CircuitState.END -> {
+            CircuitState.End -> {
                 val winners = circuit.findWinner()
                 outputView.printGameWinnerMessage(winners)
             }
 
-            CircuitState.EXIT -> return
+            CircuitState.Exit -> return
         }
     }
 }
