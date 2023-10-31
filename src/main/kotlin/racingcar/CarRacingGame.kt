@@ -13,7 +13,6 @@ class CarRacingGame {
     }
 
     fun gameStart() {
-
         val list_car = carInit()
 
         if (list_car.size == 0) { // 입력된 자동차가 없는 경우 예외처리 후 종료
@@ -32,6 +31,7 @@ class CarRacingGame {
             println()
         }
 
+        resultPrint(list_car)
     }
 
     private fun gamePlay(list_car: MutableList<CarStatus>) {
@@ -41,7 +41,6 @@ class CarRacingGame {
     }
 
     private fun carInit(): MutableList<CarStatus> {
-
         val input_name = readLine()!!
 
         println(input_name)
@@ -59,7 +58,6 @@ class CarRacingGame {
         }
 
         return list_car
-
     }
 
     private fun nameCheck(name: List<String>): Boolean {
@@ -87,10 +85,25 @@ class CarRacingGame {
             for (num in 1..i.count){
                 print("-")
             }
-            
+
             println()
         }
     }
 
+    private fun resultPrint(list_car: MutableList<CarStatus>) {
+        print("최종 우승자 : ")
+        val max_count = list_car.maxWith(Comparator.comparingInt {it.count}).count
+        var result: String = ""
+
+        for (i in list_car) {
+            if (i.count == max_count){
+                result = result + i.name + ", "
+            }
+        }
+
+        result = result.substring(0, result.length - 2) // 결과 문자열의 마지막 쉼표 제거
+
+        print(result)
+    }
 
 }
