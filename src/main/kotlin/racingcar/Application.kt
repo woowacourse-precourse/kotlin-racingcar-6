@@ -3,6 +3,5 @@ package racingcar
 import InputUser
 
 fun main() {
-    // TODO: 프로그램 구현
-   RacingController().inputControl()
+   RacingController().run()
 }

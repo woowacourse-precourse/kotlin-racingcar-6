@@ -22,12 +22,11 @@ class Racing {
             println("\n")
         }
     fun calculateScore(gameInfo:Map<String,Int>):List<Pair<String,Int>>{
-        var score=0
         var scoreList= mutableListOf<Pair<String,Int>>()
         for((name,number)in gameInfo){
             if(number>=game.forwardStep){
-               score++
-                scoreList.add(Pair(name,score))
+                val score = gameInfo.count { it.value >= number }
+                scoreList.add(Pair(name, score))
             }
         }
         return scoreList
