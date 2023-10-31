@@ -11,28 +11,28 @@ class RacingCarController {
     private val outputView = OutputView()
 
     fun playGame() {
-        var racingCarList = inputView.printInputCarName()
+        var rackingCars = inputView.printInputCarName()
         val gameCount = inputView.printInputGameCount()
-        racingCarList = gameContinue(racingCarList, gameCount)
-        gameResult(racingCarList)
+        rackingCars = gameContinue(rackingCars, gameCount)
+        gameResult(rackingCars)
     }
 
-    private fun gameContinue(racingCarList: List<RacingCar>, gameCount: Int): List<RacingCar> {
+    private fun gameContinue(rackingCars: List<RacingCar>, gameCount: Int): List<RacingCar> {
         outputView.printResult()
 
         repeat(gameCount) {
-            racingCarList.forEach {
+            rackingCars.forEach {
                 addRacingCarDistance(it)
             }
             outputView.printEnter()
         }
 
-        return racingCarList
+        return rackingCars
     }
 
     private fun gameResult(racingCarList: List<RacingCar>) {
-        val maxDistanceRacingCarList = findMaxDistanceRacingCar(racingCarList)
-        outputView.printMaxDistanceRacingCarName(maxDistanceRacingCarList)
+        val maxDistanceRackingCars = findMaxDistanceRacingCar(racingCarList)
+        outputView.printMaxDistanceRacingCarName(maxDistanceRackingCars)
     }
 
     private fun addRacingCarDistance(racingCar: RacingCar): RacingCar {
@@ -40,7 +40,7 @@ class RacingCarController {
         if (randomNum >= MIN_DISTANCE_NUM) {
             racingCar.distance += randomNum
         }
-        outputView.printRacingCarList(racingCar)
+        outputView.printRackingCars(racingCar)
         return racingCar
     }
 
