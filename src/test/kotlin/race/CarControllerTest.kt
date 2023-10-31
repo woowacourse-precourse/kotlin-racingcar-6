@@ -33,7 +33,7 @@ class CarControllerTest {
         assertThrows<IllegalArgumentException> {
             carController.validateCarInput("Car1,Car2,Car3,")
         }
-        assertDoesNotThrow{
+        assertDoesNotThrow {
             carController.validateCarInput("Car1,Car2,Car3,Car4,Car5,Car6")
         }
     }
