@@ -34,21 +34,21 @@ class OutputViewTest {
     fun `printInputGuideCarNameList 정상 출력`() {
         val view = OutputView()
         view.printInputGuideCarNameList()
-        assertThat(output()).isEqualTo(OutputView.INPUT_GUIDE_CAR_NAME_LIST_MESSAGE)
+        assertThat(output()).isEqualTo(OutputView.Message.INPUT_GUIDE_CAR_NAME_LIST.text)
     }
 
     @Test
     fun `printInputGuidePlayCount 정상 출력`() {
         val view = OutputView()
         view.printInputGuidePlayCount()
-        assertThat(output()).isEqualTo(OutputView.INPUT_GUIDE_PLAY_COUNT_MESSAGE)
+        assertThat(output()).isEqualTo(OutputView.Message.INPUT_GUIDE_PLAY_COUNT.text)
     }
 
     @Test
     fun `printResultMessage 정상 출력`() {
         val view = OutputView()
         view.printResultMessage()
-        assertThat(output()).contains(OutputView.PLAY_RESULT_MESSAGE)
+        assertThat(output()).contains(OutputView.Message.PLAY_RESULT.text)
     }
 
     @Test
