@@ -13,7 +13,7 @@ class CarRaceLogic {
         carNamesAndResults = initializeCarResults(carNames)
         time = RaceTime().getRaceTime()
 
-        println("\n실행 결과")
+        println(MessageConstants.RESULTS_TITLE)
         for (i in 0 until time) {
             raceRound(carNames, carNamesAndResults)
         }
