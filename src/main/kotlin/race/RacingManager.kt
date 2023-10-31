@@ -37,6 +37,6 @@ class RacingManager(private val racing: Racing) {
     }
 
     private fun printWinner() {
-        print(racing.printWinner(racingCarList))
+        print(racing.findWinner(racingCarList))
     }
 }
