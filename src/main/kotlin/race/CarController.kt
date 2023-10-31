@@ -12,6 +12,7 @@ class CarController(private val carModel: CarModel, private val printResult: Pri
         validateCarInput(carString)
         processCarInput(carString)
         printResult.printMessage(Constant.TRY_NUMBER_INPUT_STRING)
+        carModel.checkGarageSize()
         val moveNum = inputMoveNum()
         carModel.moveCars(moveNum)
         printWinner()

@@ -45,6 +45,12 @@ class CarModel {
         return Randoms.pickNumberInRange(Constant.RANDOM_START_NUMBER, Constant.RANDOM_END_NUMBER)
     }
 
+    fun checkGarageSize() {
+        if (garage.size !in Constant.MIN_CAR_NUMBER..Constant.MAX_CAR_NUMBER)
+            throw IllegalArgumentException("두 대 이상의 자동차가 있어야 합니다.")
+
+    }
+
     fun getWinners(): List<String> {
         val winner = mutableListOf<String>()
         val maxValue = garage.values.max()

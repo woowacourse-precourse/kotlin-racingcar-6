@@ -8,5 +8,6 @@ class ErrorString {
         const val INPUT_REPEAT_ERROR = "중복된 자동차 이름이 있습니다."
         const val INTEGER_INPUT_ERROR = "정수를 입력하세요."
         const val INTEGER_RANGE_ERROR = "범위 안의 정수를 입력하세요."
+        const val CAR_COUNT_ERROR = "두 대 이상의 자동차가 있어야 합니다."
     }
 }

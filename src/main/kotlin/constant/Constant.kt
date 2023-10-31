@@ -7,6 +7,8 @@ class Constant {
         const val RANDOM_END_NUMBER = 9
         const val CAR_NAME_MIN_LENGTH = 1
         const val CAR_NAME_MAX_LENGTH = 5
+        const val MIN_CAR_NUMBER = 2
+        const val MAX_CAR_NUMBER = Int.MAX_VALUE
         const val MAX_TRY_NUMBER = Int.MAX_VALUE
         const val MIN_TRY_NUMBER = 1
 
