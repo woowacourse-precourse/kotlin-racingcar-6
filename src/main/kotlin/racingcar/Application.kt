@@ -13,8 +13,10 @@ class Refree(
         cars.forEach{it.goForwardOrStop()}
         doSomethingWithCarsAfterRound(cars)
     }
+    fun runAllRounds() = repeat(roundNum){ runRound() }
     fun getGameStatus() = cars
     fun getWinners(): List<Car> {
+        runAllRounds()
         val winnerPosition = cars.max().position
         return cars.filter{it.position == winnerPosition}
     }
