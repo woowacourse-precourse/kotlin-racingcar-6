@@ -58,6 +58,15 @@ internal class PrintUtilTest {
         assertThat(output()).contains(expectedWinnerMessageSole)
     }
 
+    @Test
+    fun `printWinnerList 메서드 출력 테스팅 - 우승자가 여러명일 때`() {
+        // given
+        PrintUtil.printWinnerList(mutableListOf(Car("bamin"), Car("pobi"), Car("woni")))
+        // when
+        val expectedWinnerMessageMultiple = "최종 우승자 : bamin, pobi, woni"
+        // then
+        assertThat(output()).contains(expectedWinnerMessageMultiple)
+    }
     @BeforeEach
     private fun init() {
         standardOut = System.out
