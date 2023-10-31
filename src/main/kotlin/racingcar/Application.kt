@@ -34,6 +34,17 @@ fun main() {
         printResult(carMap)
         println("")
     } 
+
+    val maxValue = carMap.values.max()
+    val winnerList: MutableList<String> = mutableListOf()
+    for ((key, value) in carMap) {
+        if (value == maxValue) {
+            winnerList.add(key)
+        }
+    }
+    
+    val winners = winnerList.joinToString(", ")
+    println("최종우승자 : $winners")
 }
 
 fun playGames(carMap : MutableMap<String, Int>){
