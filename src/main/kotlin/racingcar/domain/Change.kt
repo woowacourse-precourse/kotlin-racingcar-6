@@ -1,7 +1,5 @@
 package racingcar.domain
 
-import racingcar.domain.Car
-
 class Change {
     internal fun changePlayerListToMap(playerList: List<Car>, distanceList: List<String>) : Map<String, String> {
         val playerMap = mutableMapOf<String, String>()
