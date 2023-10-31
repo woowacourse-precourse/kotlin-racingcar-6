@@ -1,12 +1,46 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val input = getCarsName()
     val cars = generateCarsFromInput(input)
 
     val turn = getTurnNumber()
+
+    playRaceGame(turn, cars)
+}
+
+fun playRaceGame(turn: Int, cars: List<Car>) {
+    println("실행 결과")
+    repeat(turn) {
+        moveCarsForwardIfCan(cars)
+        printCarsInEachStep(cars)
+    }
+}
+
+fun printCarsInEachStep(cars: List<Car>) {
+    cars.forEach { car ->
+        println(car)
+    }
+    println()
+}
+
+fun moveCarsForwardIfCan(cars: List<Car>) {
+    cars.forEach { car ->
+        moveCarForwardIfCan(car)
+    }
+}
+
+fun moveCarForwardIfCan(car: Car) {
+    if (canCarMoveForward()) {
+        car.moveForward()
+    }
+}
+
+fun canCarMoveForward(): Boolean {
+    return Randoms.pickNumberInRange(0, 9) >= 4
 }
 
 fun getTurnNumber(): Int {
