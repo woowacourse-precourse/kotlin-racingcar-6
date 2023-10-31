@@ -25,10 +25,11 @@ class Game {
         for (name in names) {
             cars?.add(Car(name.trim()))
         }
-        Console.close()
     }
 
     private fun processGame(repeat: Int) {
+        println()
+        println("실행 결과")
         var rep = repeat
         while (rep > 0) {
             for (car in cars) {
