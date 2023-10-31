@@ -7,6 +7,9 @@ class RacingCarGameManager {
     private var racingCars = listOf<RacingCar>()
     private var totalRound = 0
 
+    fun getRacingCars(): List<RacingCar> = this.racingCars
+    fun getTotalRound(): Int = this.totalRound
+
     fun setConfiguration() {
         setRacingCars()
         setTotalRound()
@@ -30,10 +33,10 @@ class RacingCarGameManager {
     private fun validatedInputAsCarNames(input: String): List<String> {
         validator.checkHasNoBlank(input)
         validator.checkHasSeparator(input, COMMA)
-        validator.checkItemsHasNoDuplication(input.split(COMMA))
-        validator.checkNumericValueIsInBoundary(input.split(COMMA).size, MIN_CAR_NAME_COUNT)
+        validator.checkHasNoDuplication(input.split(COMMA))
+        validator.checkIsInBoundary(input.split(COMMA).size, MIN_CAR_NAME_COUNT)
         input.split(COMMA).map { data ->
-            validator.checkNumericValueIsInBoundary(data.length, MIN_CAR_NAME_LENGTH, MAX_CAR_NAME_LENGTH)
+            validator.checkIsInBoundary(data.length, MIN_CAR_NAME_LENGTH, MAX_CAR_NAME_LENGTH)
         }
         return input.split(COMMA)
     }
@@ -47,7 +50,7 @@ class RacingCarGameManager {
     private fun validatedInputAsTotalRoundNumber(input: String): Int {
         validator.checkHasNoBlank(input)
         validator.checkHasOnlyDigit(input)
-        validator.checkNumericValueIsInBoundary(Integer.parseInt(input), MIN_TOTAL_ROUND)
+        validator.checkIsInBoundary(Integer.parseInt(input), MIN_TOTAL_ROUND)
         return Integer.parseInt(input)
     }
 
