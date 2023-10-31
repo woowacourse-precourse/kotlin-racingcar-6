@@ -1,6 +1,8 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.car.Car
+import racingcar.car.MoveStrategyImpl
 
 class RaceGame {
     private var cars = listOf<Car>()
@@ -25,7 +27,7 @@ class RaceGame {
             if (name.length > MAX_CAR_NAME_LENGTH) throw IllegalArgumentException()
             if (name == "") throw IllegalArgumentException()
 
-            Car(name)
+            Car(name, MoveStrategyImpl())
         }
     }
 
