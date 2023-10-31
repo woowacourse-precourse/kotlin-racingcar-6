@@ -1,6 +1,6 @@
 package racingcar
 
-class Validator {
+object Validator {
     fun validateUserInput(carNamesList: List<String>) {
         if (carNamesList.any { it.length > 5 }) {
             throw IllegalArgumentException("이름은 5글자 이하로 입력해주세요.")

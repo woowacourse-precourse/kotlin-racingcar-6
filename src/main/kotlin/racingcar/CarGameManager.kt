@@ -16,10 +16,10 @@ class CarGameManager {
         val carNames = getUserInputString()
         val carNamesList = carNames.split(",")
         val carListCount = carNamesList.size
-        Validator().validateUserInput(carNamesList.map { it.trim() })
+        Validator.validateUserInput(carNamesList.map { it.trim() })
         println(TRY_COUNT_PROMPT_MESSAGE)
         val tryCount = getUserInputString()
-        Validator().validateUserTryCount(tryCount)
+        Validator.validateUserTryCount(tryCount)
         println(EXECUTION_RESULT_MESSAGE)
         val carResultList = MutableList(carListCount) { "" }
         for (countTry in MIN_NUMBER until tryCount.toInt()) {
