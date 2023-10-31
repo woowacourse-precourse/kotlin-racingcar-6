@@ -21,6 +21,14 @@ class CarRaceView {
         println(WINNER + winner)
     }
 
+    fun outputCarsPosition(position: Int){
+        val sb = StringBuilder()
+        repeat(position) {
+            sb.append("-")
+        }
+        println(sb.toString())
+    }
+
 
 
 }

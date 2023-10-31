@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Car(val name: String, var position: Int) {
 
-    fun makeRandomNum(): Int {
+    private fun makeRandomNum(): Int {
         return Randoms.pickNumberInRange(0, 9)
     }
 
@@ -13,4 +13,6 @@ class Car(val name: String, var position: Int) {
 
         if (num >= 4) position++
     }
+
+
 }

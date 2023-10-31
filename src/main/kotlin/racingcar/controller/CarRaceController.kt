@@ -4,7 +4,6 @@ import racingcar.model.Car
 import racingcar.util.Constants.ATTEMPT_NUMBER
 import racingcar.util.Constants.CAR_RACE_NAME
 import racingcar.util.Constants.RESULT
-import racingcar.util.Constants.WINNER
 import racingcar.util.Validation.validateName
 import racingcar.util.Validation.validateNum
 import racingcar.view.CarRaceView
@@ -12,7 +11,7 @@ import kotlin.text.StringBuilder
 
 class CarRaceController(val view: CarRaceView) {
 
-    val cars = mutableListOf<Car>()
+    private val cars = mutableListOf<Car>()
 
     init {
         println(CAR_RACE_NAME)
@@ -25,27 +24,14 @@ class CarRaceController(val view: CarRaceView) {
 
         //시도 횟수 입력
         println(ATTEMPT_NUMBER)
-        val num = view.inputAttemptNumber()
-        validateNum(num)
+        val attemptNum = view.inputAttemptNumber()
+        validateNum(attemptNum)
         println()
 
         //결과 출력
         println(RESULT)
-        for (idx in 0 until carsName.size) {
-            cars.add(Car(carsName[idx], 0))
-        }
-
-        for (idx in 0 until num.toInt()) {
-            for (car in cars) {
-                car.goOrStop()
-            }
-
-            cars.forEach {
-                print("${it.name} : ")
-                println(showCars(it.position))
-            }
-            println()
-        }
+        addCars(carsName)
+        showCarRace(attemptNum.toInt())
 
         //최종 우승자 출력
         val winner = choiceWinner(cars)
@@ -53,14 +39,27 @@ class CarRaceController(val view: CarRaceView) {
 
     }
 
-    fun showCars(position: Int): String {
-        val sb = StringBuilder()
-        repeat(position) {
-            sb.append("-")
+    private fun addCars(inputs: List<String>) {
+        for (element in inputs) {
+            cars.add(Car(element, 0))
         }
-        return sb.toString()
     }
 
+    private fun showCarRace(attemptNum: Int) {
+        for (idx in 0 until attemptNum) {
+            for (car in cars) {
+                car.goOrStop()
+            }
+
+            cars.forEach {
+                print("${it.name} : ")
+                view.outputCarsPosition(it.position)
+            }
+            println()
+        }
+    }
+
+    //우승자 선별
     fun choiceWinner(cars: List<Car>): List<String> {
         val winner = mutableListOf<String>()
 
@@ -72,6 +71,7 @@ class CarRaceController(val view: CarRaceView) {
         return winner
     }
 
+    //문자열 변환
     fun changeListToStr(list: List<String>): String {
         return list.joinToString(", ")
     }
