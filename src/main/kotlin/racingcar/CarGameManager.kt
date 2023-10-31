@@ -2,12 +2,13 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-import racingcar.Constants.Companion.EXECUTION_RESULT_MESSAGE
-import racingcar.Constants.Companion.FORWARD_CONDITION
-import racingcar.Constants.Companion.INPUT_PROMPT_MESSAGE
-import racingcar.Constants.Companion.MAX_NUMBER
-import racingcar.Constants.Companion.MIN_NUMBER
-import racingcar.Constants.Companion.TRY_COUNT_PROMPT_MESSAGE
+import racingcar.Constants.EXECUTION_RESULT_MESSAGE
+import racingcar.Constants.FORWARD_CONDITION
+import racingcar.Constants.INPUT_PROMPT_MESSAGE
+import racingcar.Constants.MAX_NUMBER
+import racingcar.Constants.MIN_NUMBER
+import racingcar.Constants.TRY_COUNT_PROMPT_MESSAGE
+
 
 class CarGameManager {
     fun play() {
