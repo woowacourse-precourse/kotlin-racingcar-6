@@ -5,7 +5,6 @@ import racingcar.utils.Converter
 class CarNameValidator {
     fun validate(carNames: String) {
         val nameList = Converter.splitByCommaToStringList(carNames)
-
         requireNoBlankName(nameList)
         requireNameLengthInRange(nameList)
         requireNoDuplicatedName(nameList)

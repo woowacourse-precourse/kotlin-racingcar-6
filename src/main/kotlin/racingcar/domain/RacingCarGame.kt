@@ -1,7 +1,7 @@
 package racingcar.domain
 
 import racingcar.validator.CarNameValidator
-import racingcar.validator.MoveCountValidator
+import racingcar.validator.RaceRoundValidator
 import racingcar.InputManager
 import racingcar.OutputManager
 
@@ -9,7 +9,7 @@ class RacingCarGame {
     private val inputManager = InputManager()
     private val outputManager = OutputManager()
     private val carNameValidator = CarNameValidator()
-    private val moveCountValidator = MoveCountValidator()
+    private val raceRoundValidator = RaceRoundValidator()
 
     private lateinit var carNames: String
     private lateinit var circuit: Circuit
@@ -22,12 +22,12 @@ class RacingCarGame {
 
     private fun init() {
         carNames = getValidatedCarNames()
-        val moveCount = getValidatedMoveCount().toInt()
-        circuit = Circuit(carNames, moveCount)
+        val raceRound = getValidatedRaceRound().toInt()
+        circuit = Circuit(carNames, raceRound)
     }
 
     private fun process() {
-        outputManager.printRaceStartResult()
+        outputManager.printRaceStartMessage()
         circuit.startRace()
     }
 
@@ -44,10 +44,10 @@ class RacingCarGame {
         return names
     }
 
-    private fun getValidatedMoveCount(): String {
-        val count = inputManager.getMoveCountFromUser()
-        moveCountValidator.validate(count)
+    private fun getValidatedRaceRound(): String {
+        val raceRound = inputManager.getRaceRoundFromUser()
+        raceRoundValidator.validate(raceRound)
 
-        return count
+        return raceRound
     }
 }

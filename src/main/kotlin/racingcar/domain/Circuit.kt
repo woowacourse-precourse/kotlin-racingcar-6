@@ -3,16 +3,17 @@ package racingcar.domain
 import racingcar.utils.Converter
 import racingcar.utils.RandomGenerator
 
-class Circuit(carNames: String, private var moveCount: Int) {
+class Circuit(carNames: String, private var raceRound: Int) {
     private var cars = mutableListOf<Car>()
 
     init {
-        createCarList(carNames)
+        registerCars(carNames)
     }
 
     fun startRace() {
-        repeat(moveCount) {
-            moveCarsAndPrintPositions()
+        repeat(raceRound) {
+            playRound()
+            printRacingStatus()
         }
     }
 
@@ -20,25 +21,16 @@ class Circuit(carNames: String, private var moveCount: Int) {
         return cars.toList()
     }
 
-    private fun createCarList(carNames: String) {
+    private fun registerCars(carNames: String) {
         val carNameList = Converter.splitByCommaToStringList(carNames)
-
-        carNameList.forEach {
-            val car = Car(it)
-            cars.add(car)
-        }
+        cars.addAll(carNameList.map { Car(it) })
     }
 
-    private fun moveCarsAndPrintPositions() {
-        moveOrStayAllCars()
-        printCarPositions()
-    }
-
-    private fun moveOrStayAllCars() {
+    private fun playRound() {
         cars.forEach { it.moveOrStay(RandomGenerator.generateRandomNumber()) }
     }
 
-    private fun printCarPositions() {
+    private fun printRacingStatus() {
         cars.forEach { println(it) }
         println()
     }

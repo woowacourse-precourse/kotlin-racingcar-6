@@ -2,10 +2,10 @@ package racingcar.validaotr
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import racingcar.validator.MoveCountValidator
+import racingcar.validator.RaceRoundValidator
 
-class MoveCountValidatorTest {
-    private val validator = MoveCountValidator()
+class RaceRoundValidatorTest {
+    private val validator = RaceRoundValidator()
 
     @Test
     fun `이동 횟수에 숫자가 아닌 형식을 입력 시 예외 발생 테스트 1`() {
