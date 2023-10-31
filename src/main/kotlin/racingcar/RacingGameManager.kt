@@ -54,8 +54,8 @@ class RacingGameManager {
         }
     }
 
-    private fun printWinners(winners: List<Car>) {
-        println(Message.OUTPUT_GAME_WINNER_PREFIX.message.plus(winners.joinToString()))
+    private fun printWinners(winners: List<String>) {
+        println("${Message.OUTPUT_GAME_WINNER_PREFIX.message}${winners.joinToString()}")
     }
 
     private fun setGameRound(): Int = inputGameRoundFromUser()
