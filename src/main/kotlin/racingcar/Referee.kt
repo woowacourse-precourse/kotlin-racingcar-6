@@ -8,8 +8,6 @@ import racingcar.model.Winner
 class Referee(
     private val attemptCount: Int
 ) {
-    fun canCarMove(score: Int) = (score >= MOVE_START_NUMBER)
-
     fun determineRaceResult(cars: List<Car>): RaceResult {
         return RaceResult(
             cars.map { car ->
@@ -21,9 +19,5 @@ class Referee(
     fun determineWinner(cars: List<Car>): Winner {
         val winners = cars.filter { car -> car.position.length == attemptCount }
         return Winner(winners)
-    }
-
-    companion object {
-        private const val MOVE_START_NUMBER = 4
     }
 }
