@@ -1,10 +1,6 @@
 package racingcar.model
 
 
-sealed class CircuitState{
-    data object Start : CircuitState()
-    data object Racing : CircuitState()
-    data object End : CircuitState()
-
-    data object Exit : CircuitState()
+enum class CircuitState {
+    START, RACING, END, EXIT
 }
