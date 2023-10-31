@@ -3,7 +3,9 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class Race(private val inputView: InputView, private val outputView: OutputView) {
+class Race() {
+    private val inputView = InputView()
+    private val outputView = OutputView()
     fun run() {
         outputView.printCarNameInputMention()
         val carList = getRacingCarList(inputView.inputCarName())

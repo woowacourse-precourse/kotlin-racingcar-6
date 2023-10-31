@@ -18,7 +18,7 @@ class CarTest {
     private val inputView = InputView()
     private val outputView = OutputView()
     private val outputStream = ByteArrayOutputStream()
-    private val race = Race(inputView, outputView)
+    private val race = Race()
 
     @BeforeEach
     fun init() {

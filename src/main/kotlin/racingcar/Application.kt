@@ -1,6 +1,6 @@
 package racingcar
 
 fun main() {
-    val race = Race(InputView(), OutputView())
+    val race = Race()
     race.run()
 }
