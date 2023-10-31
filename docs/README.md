@@ -7,7 +7,7 @@
 - [X] 게임 시작 전 몇 라운드만큼 자동차들이 이동할 지 정한다. Refree#setRoundNumber()
 - [X] 한 라운드 동안, 모든 자동차들은 한 번 전진하거나 멈춘다. Refree#runRound()
 - [X] 게임의 현황을 알 수 있어야 한다. Refree#getGameStatus()
-- [ ] 모든 라운드가 끝나고 우승자를 찾는다. 우승자는 여러 명일 수 있다. Refree#getWinner()
+- [X] 모든 라운드가 끝나고 우승자를 찾는다. 우승자는 여러 명일 수 있다. Refree#getWinner()
  
 ### 자동차
 - [X] 자동차의 이름 설정 - Car#setName()

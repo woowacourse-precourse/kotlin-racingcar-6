@@ -9,6 +9,10 @@ class Refree(
 
     fun runRound() = cars.forEach{it.goForwardOrStop()}
     fun getGameStatus(): List<Int> = cars.map{it.position}
+    fun getWinners(): List<Car> {
+        val winnerPosition = cars.max().position
+        return cars.filter{it.position == winnerPosition}
+    }
 }
 
 class Car(val name: String) : Comparable<Car> {
