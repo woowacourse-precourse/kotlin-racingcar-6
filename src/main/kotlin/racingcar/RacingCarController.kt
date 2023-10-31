@@ -3,7 +3,6 @@ package racingcar
 import racingcar.Constants.MESSAGE_CAR_MINIMUM_REQUIRED
 import racingcar.Constants.MESSAGE_DUPLICATE_CAR_NAME
 import racingcar.Constants.MINIMUM_CAR_NUMBER
-import racingcar.Constants.START_POSITION
 import racingcar.GameConsole.printCarNamePrompt
 import racingcar.GameConsole.printMoveCountPrompt
 import racingcar.GameConsole.printPosition
@@ -27,7 +26,7 @@ class RacingCarController {
     private fun createRacingCars(carNameList: List<String>): List<RacingCar> {
         require(MINIMUM_CAR_NUMBER <= carNameList.size) { MESSAGE_CAR_MINIMUM_REQUIRED }
         require(carNameList.toSet().size == carNameList.size) { MESSAGE_DUPLICATE_CAR_NAME }
-        return carNameList.map { RacingCar(it, START_POSITION) }
+        return carNameList.map { RacingCar(it, moveStrategy = RandomMoveStrategy()) }
     }
 
     fun play() {
