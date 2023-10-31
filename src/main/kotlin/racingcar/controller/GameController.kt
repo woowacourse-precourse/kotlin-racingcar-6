@@ -4,12 +4,15 @@ import racingcar.domain.CarStatusUpdater
 import racingcar.util.Validator
 import racingcar.view.InputView
 import racingcar.view.RaceView
+import racingcar.view.ResultView
 
 class GameController {
 
+    private val carStatus = mutableMapOf<String, String>()
+
     fun run() {
         val (carNames, attemptCount) = getUserInput()
-        println("")
+        println()
         Validator(carNames, attemptCount)
         play(carNames, attemptCount.toInt())
         printResult()
@@ -25,7 +28,8 @@ class GameController {
         val carStatusUpdater = CarStatusUpdater()
         val RaceView = RaceView()
 
-        val carStatus = carNames.associateWith { "" }.toMutableMap()
+        carStatus.clear()
+        carStatus.putAll(carNames.associateWith { "" })
         var currentCount = 0
         while (currentCount < attemptCount) {
             for (car in carStatus) {
@@ -38,6 +42,7 @@ class GameController {
     }
 
     private fun printResult() {
-
+        val resultView = ResultView()
+        resultView.printWinner(carStatus)
     }
 }

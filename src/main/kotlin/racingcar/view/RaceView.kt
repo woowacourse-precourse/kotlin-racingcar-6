@@ -5,6 +5,6 @@ class RaceView {
         for (car in carStatus) {
             println(car.key + " : " + car.value)
         }
-        println("")
+        println()
     }
 }
