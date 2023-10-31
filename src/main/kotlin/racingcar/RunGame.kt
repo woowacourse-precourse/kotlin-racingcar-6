@@ -25,10 +25,10 @@ class RunGame {
 
     fun repeatRace(numOfCar:Int,carList:MutableList<Players>){
 
-        for(i in 1..carList){
+        for(i in 1..numOfCar){
             var eachNum:Int = RacingGame().randomRace()
             if(ifGoForward(eachNum)){
-                carList.num=carList.num+1
+                carList[i].num=carList[i].num+1
             }
         }
 
