@@ -125,6 +125,16 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `경기 시작 출력`() {
+        assertSimpleTest {
+            run {
+                printRaceStart(RACE_START_MSG)
+            }
+            assertThat(output()).isEqualTo("경주할 자동차 이름을 입력하세요.")
+        }
+    }
+
     public override fun runMain() {
         main()
     }
