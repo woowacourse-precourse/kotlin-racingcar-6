@@ -4,20 +4,31 @@ fun splitNames(names: String): List<String> {
     return names.split(',')
 }
 
-fun inputNames(view: View): List<String> {
-    val inputString = view.enterNames()
-    val nameList = splitNames(inputString)
-    nameList.forEach {
-        nameErrorCheck(it)
-    }
+fun getInputString(view: View): String {
+    return view.enterNames()
+}
+
+fun validateNameList(nameList:List<String>){
+    nameList.forEach{ nameErrorCheck(it) }
     redundancyErrorCheck(nameList)
+}
+
+
+fun inputNames(view: View): List<String> {
+    val inputString = getInputString(view)
+    val nameList = splitNames(inputString)
+    validateNameList(nameList)
     return nameList
 }
 
-fun inputNumberTimes(view: View): Int {
+fun getInputTimes(view:View):Int{
     val times = view.enterNumberTimes()
     numberTimesErrorCheck(times)
     return times.toInt()
+}
+
+fun inputNumberTimes(view: View): Int {
+    return getInputTimes(view)
 }
 
 fun startGame() {
