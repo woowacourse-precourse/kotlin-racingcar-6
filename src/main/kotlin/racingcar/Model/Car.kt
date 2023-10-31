@@ -19,7 +19,6 @@ class Car(val name : String) {
         return position
     }
 
-
     private fun goOrStopDetermine() : Int {
         return if(getRandomNumber() in 0..< 4) 0
         else 1

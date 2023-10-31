@@ -5,7 +5,7 @@ import racingcar.View.InputView
 import racingcar.View.OutputView
 
 class Race() {
-    private var round = 0
+    private var round = 0L
     private lateinit var cars : List<Car>
     fun run(){
         cars = getCarList(InputView.getNameList(InputView.getNameInput()))
@@ -28,7 +28,7 @@ class Race() {
     }
 
     private fun testAllRounds(){
-        repeat(round) { testOneRound() }
+        for (i in 0 until round)  testOneRound()
         OutputView.printWinners(getWinnerList())
     }
 
@@ -41,7 +41,7 @@ class Race() {
     }
 
     private fun allRounds() {
-        repeat(round) { oneRound() }
+        for(i in 0 until round)  oneRound()
         OutputView.printWinners(getWinnerList())
     }
 
