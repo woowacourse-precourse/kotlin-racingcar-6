@@ -14,29 +14,36 @@ fun main() {
     var carNames = Console.readLine().split(",").toMutableList()
 
     for (carName in carNames) {
-        if (carName.length > 5) {
-            throw IllegalArgumentException()
-        }
+        throwExceptionOverFive(carName)
         cars.add(Car(carName))
     }
 
     println("시도할 회수는 몇 회인가요?")
     repeat = Console.readLine().toInt()
-//    try {
-//
-//    } catch (e: IllegalArgumentException) {
-//        throw e
-//    }
 
     println()
 
     for (i in 0..<repeat) {
-        for (car in cars) {
-            car.move(Randoms.pickNumberInRange(0, 9))
-            car.print()
-        }
+//        for (car in cars) {
+//            car.move(Randoms.pickNumberInRange(0, 9))
+//            car.print()
+//        }
+        moveCars(cars)
         println()
     }
     var winner = Winner(cars)
     winner.print()
+}
+
+fun throwExceptionOverFive(name:String){
+    if (name.length > 5) {
+        throw IllegalArgumentException()
+    }
+}
+
+fun moveCars(cars:MutableList<Car>){
+    for (car in cars) {
+        car.move(Randoms.pickNumberInRange(0, 9))
+        car.print()
+    }
 }
