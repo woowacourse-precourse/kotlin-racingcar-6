@@ -1,6 +1,7 @@
 package racingcar
 
 class Error {
+
     fun checkNum(repeat: String) {
         when (repeat.toIntOrNull()) {
             null -> throw IllegalArgumentException("숫자가 아니거나 null입니다.")

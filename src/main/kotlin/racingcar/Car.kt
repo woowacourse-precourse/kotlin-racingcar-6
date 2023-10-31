@@ -2,6 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
+private const val MOVE = "-"
 class Car(name: String) {
     private var name: String
     private var position = 0
@@ -26,7 +27,7 @@ class Car(name: String) {
     private fun printResult() {
         print("$name : ")
         for (i in 0..<position) {
-            print("-")
+            print(MOVE)
         }
         println()
     }
