@@ -12,7 +12,7 @@ class RacingGameManager {
 
     fun run() {
         printGameStart()
-        val cars = createCars()
+        val cars = createCars(inputDataFromUser())
         printGameRoundQuestion()
 
         repeat(gameRound) { round ->
@@ -49,20 +49,16 @@ class RacingGameManager {
 
     private fun printWinners(winners: List<Car>) = println("최종 우승자 : ${winners.joinToString(", ")}")
 
-    private fun createCars(): List<Car> {
+    private fun createCars(input: String): List<Car> {
         val cars = mutableListOf<Car>()
 
-        inputDataFromUser().let { carNames ->
-            carNames.split(",").forEach { name ->
-                cars.add(
-                    Car(name = name
-                        .filterNot {
-                            it.isWhitespace()
-                        }
-                    )
-                )
+        input.split(",").forEach { name ->
+            if (hasNotCarNameWhitespace(name)) {
+                cars.add(Car(name))
             }
         }
+        return cars.toList()
+    }
 
     private fun hasNotCarNameWhitespace(name: String): Boolean {
         Validator.checkInputWhitespace(name.trim())
