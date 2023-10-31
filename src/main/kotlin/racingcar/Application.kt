@@ -6,4 +6,5 @@ fun main() {
     val carNames = car.createCar()
 
     car.validateCarNameLength(carNames)
+    car.validateDuplicateName(carNames)
 }

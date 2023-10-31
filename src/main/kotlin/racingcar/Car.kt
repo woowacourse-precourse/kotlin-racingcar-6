@@ -14,4 +14,8 @@ class Car {
     fun validateCarNameLength(carNames : List<String>) {
         if (carNames.any { it.length > 5 }) throw IllegalArgumentException("자동차 이름의 길이가 5가 넘습니다.")
     }
+
+    fun validateDuplicateName(carNames : List<String>) {
+        if (carNames.size != carNames.distinct().size) throw IllegalArgumentException("자동차 이름에 중복이 있습니다.")
+    }
 }
