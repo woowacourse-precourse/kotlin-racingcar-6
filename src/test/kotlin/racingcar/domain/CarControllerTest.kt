@@ -77,10 +77,4 @@ class CarControllerTest {
             carController.checkMoveNum("abc")
         }
     }
-
-    @Test
-    fun testIsInteger() {
-        assertThat(carController.isInteger("123")).isEqualTo(true)
-        assertThat(carController.isInteger("abc")).isEqualTo(false)
-    }
 }

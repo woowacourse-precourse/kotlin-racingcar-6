@@ -60,26 +60,11 @@ class CarController(private val carModel: CarModel, private val printResult: Pri
     }
 
     fun checkMoveNum(inputNumber: String): Int {
-        if (inputNumber.isEmpty()) {
-            throw IllegalArgumentException(ErrorString.NO_INPUT_ERROR)
-        } else if (isInteger(inputNumber)) {
-            val number = inputNumber.toInt()
-            if (number !in Constant.MIN_TRY_NUMBER..Constant.MAX_TRY_NUMBER) {
-                throw IllegalArgumentException(ErrorString.INTEGER_RANGE_ERROR)
-            }
-            return number
-        } else {
-            throw IllegalArgumentException(ErrorString.INTEGER_INPUT_ERROR)
+        val number = inputNumber.toIntOrNull()
+        if (number == null || number !in Constant.MIN_TRY_NUMBER..Constant.MAX_TRY_NUMBER) {
+            throw IllegalArgumentException(ErrorString.INTEGER_RANGE_ERROR)
         }
-    }
-
-    fun isInteger(checkString: String): Boolean {
-        return try {
-            checkString.toInt()
-            true
-        } catch (e: NumberFormatException) {
-            false
-        }
+        return number
     }
 
     private fun printWinner() {
