@@ -17,19 +17,12 @@ class GameController {
         }
 
         val carMove = mutableMapOf<String, Int>()
-
         for (i in 1..tryCountInput) {
             println()
-            for (car in carNameInput) {
-                if ((0..9).random() >= 4) {
-                    carMove[car] = (carMove[car] ?: 0) + 1
-                }
-            }
-            for (car in carNameInput) {
-                val distance = carMove[car] ?: 0
-                println("$car : ${"-".repeat(distance)}")
-            }
+            moveCar(carNameInput, carMove)
         }
+
+
         var maxMove = 0
         for ((_, distance) in carMove) {
             if (distance > maxMove) {
@@ -55,5 +48,17 @@ class GameController {
         println("시도할 횟수는 몇 회인가요?")
         val tryCountInput = readLine()!!.toInt()
         return tryCountInput
+    }
+
+    private fun moveCar(carNameInt: List<String>, carMove: MutableMap<String,Int>){
+        for (car in carNameInt) {
+            if ((0..9).random() >= 4) {
+                carMove[car] = (carMove[car] ?: 0) + 1
+            }
+        }
+        for (car in carNameInt) {
+            val distance = carMove[car] ?: 0
+            println("$car : ${"-".repeat(distance)}")
+        }
     }
 }
