@@ -5,6 +5,18 @@ import camp.nextstep.edu.missionutils.Console
 fun main() {
     val input = getCarsName()
     val cars = generateCarsFromInput(input)
+
+    val turn = getTurnNumber()
+}
+
+fun getTurnNumber(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+    return try {
+        Console.readLine().toInt()
+    } catch (e: NumberFormatException) {
+        e.printStackTrace()
+        GameUtils.onWrongInput()
+    }
 }
 
 fun generateCarsFromInput(input: String): List<Car> {
