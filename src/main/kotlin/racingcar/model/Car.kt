@@ -15,12 +15,20 @@ class Car(
 
     private fun checkSoloCar(inputCarName: String): Boolean {
         if (!inputCarName.contains(",")) {
-            validateCarName.validateInputSingleCarName(inputCarName)
-            soloRacingGame.soloCarGame(inputCarName)
+            validateAndStartSoloRace(inputCarName)
         } else {
-            val multiCarName = inputCarName.split(",")
-            validateCarName.validateInputMultiCarName(multiCarName)
+            validateAndStartMultiRace(inputCarName)
         }
         return true
+    }
+
+    private fun validateAndStartSoloRace(inputCarName: String) {
+        validateCarName.validateInputSingleCarName(inputCarName)
+        soloRacingGame.soloCarGame(inputCarName)
+    }
+
+    private fun validateAndStartMultiRace(inputCarName: String) {
+        val multiCarName = inputCarName.split(",")
+        validateCarName.validateInputMultiCarName(multiCarName)
     }
 }
