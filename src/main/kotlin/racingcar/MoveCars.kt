@@ -3,7 +3,6 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 
 class MoveCars(private val nameList: List<String>, private val tryNumber: Int) {
-
     private val moveNumList = MutableList(nameList.size) { 0 }
 
     private fun randomNum() {
@@ -23,5 +22,4 @@ class MoveCars(private val nameList: List<String>, private val tryNumber: Int) {
         }
         return moveNumList
     }
-
 }
