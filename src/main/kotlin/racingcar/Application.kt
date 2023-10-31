@@ -5,9 +5,9 @@ fun main() {
     val machine = InputMachine()
     val racing = Racing()
 
-    val carsList : List<String> = machine.makeCars()
+    val carsList: List<String> = machine.makeCars()
 
-    val carsClass : MutableList<Car> = mutableListOf()
+    val carsClass: MutableList<Car> = mutableListOf()
 
     // car 선언
     for (car in carsList) {
