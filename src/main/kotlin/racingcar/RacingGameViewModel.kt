@@ -39,5 +39,15 @@ class RacingGameViewModel(private val numberGenerator: NumberGenerator) {
         return roundResult.toString() + "\n"
     }
 
+    fun getWinners(): String {
+        val winners = mutableListOf<String>()
+        val maxScore = _playerList.maxBy { it.position }.position
+        _playerList.forEach {
+            if (it.position == maxScore) winners.add(it.name)
+        }
+        return winners.joinToString(", ")
+    }
+
+
     private fun canMoveForward() = numberGenerator.generate() >= 4
 }
