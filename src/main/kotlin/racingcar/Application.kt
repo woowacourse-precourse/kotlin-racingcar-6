@@ -1,6 +1,131 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
+
+private val cars = mutableListOf<Car>()
+private val winners = mutableListOf<String>()
+private var MAX = 0
+private val INPUT_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+private val INPUT_REPEAT = "시도할 횟수는 몇 회인가요?"
+private val NOT_INT_OR_NULL = "숫자가 아니거나 null입니다."
+private val INPUT_UNDER_ZERO = "입력 값에 음수가 있습니다."
+private val INPUT_OVER_FIVE_OR_NULL = "이름이 5자가 넘어가거나 값이 없습니다."
+private val INPUT_HAVE_SPACE = ",뒤에 공백이 있습니다."
+private val INPUT_DUPLICATE = "중복된 수가 있습니다."
+private val INPUT_SIZE = "2대 이상 입력해야 합니다."
+private val SPACE = " "
+private val MAX_LENGTH = 5
 fun main() {
-    val game = Game()
-    game.gameStart()
+    println(INPUT_NAME)
+    input()
+    processGame(inputRepeat())
+    for (car in cars) {
+        findMaxPos(car)
+    }
+    for (car in cars) {
+        winner(car)
+    }
+    printWinner(winners)
+}
+
+private fun input() {
+    val carname = Console.readLine()
+    val names = carname.split(',')
+    checkDuplicate(names)
+    checkSize(names)
+    for (name in names) {
+        checkName(name)
+        cars.add(Car(name))
+    }
+}
+
+private fun processGame(repeat: Int) {
+    println()
+    println("실행 결과")
+    for (i in 0 until repeat) {
+        for (car in cars) {
+            val random = Randoms.pickNumberInRange(0, 9)
+            result(car, random)
+        }
+        println()
+    }
+}
+
+private fun result(car: Car, random: Int) {
+    if (random >= 4) {
+        car.goPos()
+    }
+    var step = ""
+    for (i in 0..<car.position) {
+        step += "-"
+    }
+    println("${car.name} : $step")
+}
+
+private fun inputRepeat(): Int {
+    println(INPUT_REPEAT)
+    val repeat = Console.readLine()
+    checkNum(repeat)
+    Console.close()
+    return repeat.toInt()
+}
+
+private fun winner(car: Car) {
+    if (car.position == MAX) {
+        winners.add(car.name)
+    }
+}
+
+private fun findMaxPos(car: Car): Int {
+    if (car.position >= MAX) {
+        MAX = car.position
+    }
+    return MAX
+}
+
+private fun printWinner(winners: MutableList<String>) {
+    print("최종 우승자 : ${winners.joinToString(", ")}")
+}
+
+fun checkNum(repeat: String) {
+    if (repeat.toIntOrNull() == null) {
+        throw IllegalArgumentException(NOT_INT_OR_NULL)
+    }
+    checkNumMinus(repeat)
+}
+
+private fun checkNumMinus(repeat: String) {
+    if (repeat.toInt() < 1) {
+        throw IllegalArgumentException(INPUT_UNDER_ZERO)
+    }
+}
+
+fun checkName(car: String) {
+    checkError(car)
+    checkSpace(car)
+}
+
+private fun checkError(input: String) {
+    if (input.length > MAX_LENGTH || input.isNullOrEmpty()) {
+        throw IllegalArgumentException(INPUT_OVER_FIVE_OR_NULL)
+    }
+}
+
+private fun checkSpace(input: String) {
+    if (input.contains(SPACE)) {
+        throw IllegalArgumentException(INPUT_HAVE_SPACE)
+    }
+}
+
+fun checkDuplicate(input: List<String>) {
+    if (input.toSet().size != input.size) {
+        throw IllegalArgumentException(INPUT_DUPLICATE)
+    }
+}
+
+fun checkSize(input: List<String>) {
+    if (input.size < 2) {
+        throw IllegalArgumentException(INPUT_SIZE)
+    }
 }
