@@ -112,6 +112,10 @@ class RacingGameManager {
     private fun inputGameRoundFromUser(): Int {
         val gameRound = Console.readLine()
 
+        with(Validator) {
+            checkGameRoundSize(gameRound.toInt())
+        }
+
         return gameRound.toInt()
     }
 

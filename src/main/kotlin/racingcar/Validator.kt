@@ -42,4 +42,10 @@ object Validator {
             Message.VALID_INPUT_POSTFIX.message
         }
     }
+
+    fun checkGameRoundSize(round: Int) {
+        require(round in 1..50) {
+            Message.VALID_ROUND_SIZE.message
+        }
+    }
 }

@@ -13,4 +13,6 @@ enum class Message(val message: String) {
     VALID_INPUT_MIN_SIZE("경주할 자동차의 수는 2대 이상이어야 합니다."),
     VALID_INPUT_PREFIX("쉼표(,)는 가장 처음에 위치할 수 없습니다."),
     VALID_INPUT_POSTFIX("쉼표(,)는 가장 마지막에 위치할 수 없습니다."),
+
+    VALID_ROUND_SIZE("잘못된 게임 시도 횟수입니다. 1~50 사이의 값을 입력해주세요."),
 }
