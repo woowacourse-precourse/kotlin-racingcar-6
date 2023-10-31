@@ -25,6 +25,6 @@ class Game {
     }
 
     private fun findWinner(cars: List<Car>, maxDistance: Int): String {
-        return cars.filter { it.distance == maxDistance }.joinToString(",") { it.name }
+        return cars.filter { it.distance == maxDistance }.joinToString(", ") { it.name }
     }
 }
