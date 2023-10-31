@@ -1,5 +1,7 @@
 package racingcar
 
+import java.lang.NumberFormatException
+
 class InputMachine {
 
     // 자동차 이름 입력↓
@@ -28,7 +30,17 @@ class InputMachine {
 
     // 몇 번 이동 입력↓
     fun tryMove() : Int {
-        return 0
+
+        val tryCount : Int
+
+        try {
+            tryCount = readln().toInt()
+        } catch (e : NumberFormatException) {
+            throw IllegalArgumentException("숫자를 입력하세요")
+        }
+
+        return tryCount
+
     }
 
     fun checkOnlyNatural(move: Int) : Boolean {
