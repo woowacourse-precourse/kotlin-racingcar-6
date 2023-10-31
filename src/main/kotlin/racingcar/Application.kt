@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 import kotlin.system.exitProcess
 
 fun main() {
@@ -11,6 +12,8 @@ fun main() {
     println("실행 결과")
 
     val raceResults = initializeRaceResults(carNames)
+
+    conductRace(carNames, tryCount, raceResults)
 }
 
 fun getCarNames(): List<String> {
@@ -40,4 +43,24 @@ fun initializeRaceResults(carNames: List<String>): MutableMap<String, Int> {
         raceResults[carName] = 0
     }
     return raceResults
+}
+
+fun conductRace(carNames: List<String>, tryCount: Int, raceResults: MutableMap<String, Int>) {
+    for (i in 1..tryCount) {
+        carNames.forEach { carName ->
+            val randomValue = Randoms.pickNumberInRange(0, 9)
+            val forward = randomValue >= 4
+
+            val result = calculateResult(raceResults, carName, forward)
+            raceResults[carName] = result.length
+
+            println("$carName : $result")
+        }
+        println()
+    }
+}
+
+fun calculateResult(raceResults: Map<String, Int>, carName: String, forward: Boolean): String {
+    val dashes = "-".repeat(raceResults[carName] ?: 0)
+    return if (forward) "$dashes-" else dashes
 }
