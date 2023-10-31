@@ -60,7 +60,7 @@ Repository 객체 대신 List로 간소화한다.
 
 #### RacingGameView
 
-- [ ] startGame(): 사용자의 입력을 받아서 viewModel에게 일 시키고, 결과들을 받아서 출력
+- [x] startGame(): 입력을 받아 뷰모델에게 작업을 요청하고, 결과를 출력
 
 #### RacingGameViewModelTest
 
