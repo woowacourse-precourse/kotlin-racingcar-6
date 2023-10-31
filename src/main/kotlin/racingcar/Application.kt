@@ -8,7 +8,7 @@ class Refree(
     val cars: List<Car> = namesOfParticipants.map{Car(it)}
 
     fun runRound() = cars.forEach{it.goForwardOrStop()}
-    fun getGameStatus(): List<Int> = cars.map{it.position}
+    fun getGameStatus() = cars
     fun getWinners(): List<Car> {
         val winnerPosition = cars.max().position
         return cars.filter{it.position == winnerPosition}
