@@ -1,5 +1,10 @@
 package racingcar
 
+import racingcar.Controller.GameController
+
+
 fun main() {
-    // TODO: 프로그램 구현
+
+    GameController().gameStarter()
+
 }
