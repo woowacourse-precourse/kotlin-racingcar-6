@@ -10,11 +10,9 @@ fun main() {
 fun startRacingGame() {
     val cars = carNamesInput()
 
-    var raceRound = roundInput()
+    val raceRound = roundInput()
 
-    raceRound = roundResult(raceRound, cars)
-
-    printWinners(raceRound, cars)
+    gameResult(raceRound, cars)
 }
 
 fun carNamesInput(): List<Cars> {
@@ -44,27 +42,22 @@ fun validateRaceRound(raceRound: Int) {
     }
 }
 
-fun roundResult(inputRound: Int, cars: List<Cars>): Int {
-    var raceRound = inputRound
+fun gameResult(inputRound: Int, cars: List<Cars>) {
     println("\n실행 결과")
-    while (raceRound > 0) {
+    repeat(inputRound) {
         cars.forEach { car ->
             car.move()
             println("${car.name} : ${"-".repeat(car.position)}")
         }
         println()
-        raceRound--
     }
-    return raceRound
+    printWinners(cars)
 }
 
-fun printWinners(raceRound: Int, cars: List<Cars>) {
-    val winners = if (raceRound == 0) {
-        val headPosition = cars.maxOf { it.position }
-        cars.filter { it.position == headPosition }.map { it.name }
-    } else {
-        mutableListOf()
-    }
+fun printWinners(cars: List<Cars>) {
+    val headPosition = cars.maxOf { it.position }
+    val winners = cars.filter { it.position == headPosition }.map { it.name }
+
     println("최종 우승자 : ${winners.joinToString(", ")}")
 }
 
