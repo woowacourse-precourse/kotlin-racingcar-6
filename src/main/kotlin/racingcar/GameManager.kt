@@ -1,5 +1,7 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Randoms
+
 class GameManager {
     private val racingCarList = ArrayList<RacingCar>()
     private var trial = 0
@@ -16,5 +18,9 @@ class GameManager {
         for (racingCarName in racingCarNameList) {
             racingCarList.add(RacingCar(racingCarName))
         }
+    }
+
+    private fun generateRandomNumber(): Int {
+        return Randoms.pickNumberInRange(0, 9)
     }
 }
