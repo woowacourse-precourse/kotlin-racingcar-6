@@ -54,7 +54,7 @@ private fun processGame(repeat: Int) {
 }
 fun gamePlay(){
     for(car in CARS){
-        var random = Randoms.pickNumberInRange(0, 9)
+        val random = Randoms.pickNumberInRange(0, 9)
         step(random,car)
     }
     println()
