@@ -7,7 +7,9 @@ fun main() {
     val racingCars = splitRacingCarName(Console.readLine())
     invalidRacingCarsCheck(racingCars)
     println("시도할 횟수는 몇 회인가요?")
-    invalidTryCountCheck(Console.readLine().toIntOrNull())
+    val tryCount = Console.readLine().toIntOrNull()
+    invalidTryCountCheck(tryCount)
+    println("\n실행 결과")
 }
 
 fun invalidTryCountCheck(tryCount: Int?) {
