@@ -85,6 +85,15 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `다중 우승자 판별`() {
+        assertSimpleTest {
+            val cars: List<Car> = listOf(Car("Bear", 3), Car("Dog", 6), Car("Cat", 7), Car("Tiger", 7))
+            val results = racing.getWinner(cars)
+            assertThat(results).isEqualTo("Cat, Tiger")
+        }
+    }
+
     public override fun runMain() {
         main()
     }
