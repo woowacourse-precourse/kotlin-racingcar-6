@@ -17,6 +17,8 @@ class CarNameTest :NsTest(){
         assertThrows<IllegalArgumentException> { runException("a a,java", "1") }
     }
 
+
+
     override fun runMain() {
         main()
     }
