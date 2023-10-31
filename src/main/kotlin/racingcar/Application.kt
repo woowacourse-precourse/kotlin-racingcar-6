@@ -44,22 +44,36 @@ fun validateRaceRound(raceRound: Int) {
 
 fun gameResult(inputRound: Int, cars: List<Cars>) {
     println("\n실행 결과")
+    val racedCars = raceCars(inputRound, cars)
+    raceCars(inputRound, cars)
+    printWinners(getWinners(racedCars))
+}
+
+fun raceCars(inputRound: Int, cars: List<Cars>): List<Cars> {
     repeat(inputRound) {
-        cars.forEach { car ->
-            car.move()
-            println("${car.name} : ${"-".repeat(car.position)}")
-        }
+        cars.forEach { it.move() }
+        printCarPositions(cars)
         println()
     }
-    printWinners(cars)
+    return cars
 }
 
-fun printWinners(cars: List<Cars>) {
+fun printCarPositions(cars: List<Cars>) {
+    cars.forEach { car ->
+        println("${car.name} : ${"-".repeat(car.position)}")
+    }
+}
+
+fun getWinners(cars: List<Cars>): List<Cars>{
     val headPosition = cars.maxOf { it.position }
-    val winners = cars.filter { it.position == headPosition }.map { it.name }
-
-    println("최종 우승자 : ${winners.joinToString(", ")}")
+    return cars.filter { it.position == headPosition }
 }
+
+fun printWinners(winners: List<Cars>) {
+    val winnersName = winners.map { it.name }
+    println("최종 우승자 : ${winnersName.joinToString(", ")}")
+}
+
 
 class Cars(carName: String) {
     var position = 0
