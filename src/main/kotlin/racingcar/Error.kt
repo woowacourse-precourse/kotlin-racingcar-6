@@ -3,7 +3,7 @@ package racingcar
 class Error {
     fun checkNum(repeat: String) {
         when (repeat.toIntOrNull()) {
-            null -> throw IllegalArgumentException("숫자가 아니거나 null값입니다.")
+            null -> throw IllegalArgumentException("숫자가 아니거나 null입니다.")
             else -> true
         }
     }
@@ -11,8 +11,8 @@ class Error {
     fun checkName(cars: List<String>) {
         for (i in cars.indices) {
             checkError(cars[i])
-            checkDuplicate(cars)
         }
+        checkDuplicate(cars)
     }
 
     private fun checkError(input: String) {

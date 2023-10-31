@@ -2,7 +2,6 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 
-
 class Game {
     private val error = Error()
     private var cars: ArrayList<Car>? = null
