@@ -1,9 +1,10 @@
 package racingcar
 
-import racingcar.presentation.RacingBoard
+import racingcar.data.CarFactory
+import racingcar.presentation.Input
 
 fun main() {
-    val board = RacingBoard()
-    val playerList = board.getPlayerList()
-    val gameCount = board.getGameCount()
+    val playerList = Input.getPlayerList()
+    val gameCount = Input.getGameCount()
+    val carList = CarFactory.makeCarList(playerList, gameCount)
 }
