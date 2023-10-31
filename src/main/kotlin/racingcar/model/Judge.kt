@@ -10,13 +10,11 @@ class Judge(
     private val board = Board.create(raceParticipants.getNamesOfParticipants(), attempt)
 
     fun play(): Board {
-        repeat(attempt) {
-            executeMove(attempt)
-        }
+        repeat(attempt) { executeMove(attempt) }
         return board
     }
 
-    fun getWinner(): List<Car> = raceParticipants.getCarsWithLongestDistance()
+    fun getWinner(): List<CarName> = raceParticipants.getCarsWithLongestDistance().map { car -> car.name }
 
     private fun executeMove(attempt: Attempt) {
         raceParticipants.getNamesOfParticipants().forEach { carName ->

@@ -21,9 +21,8 @@ class OutputView {
         println(message)
     }
 
-    fun printWinner(winners: List<Car>) {
-        val nameOfWinners = winners.map { winner -> winner.name }
-        print(String.format(Message.WinnerFormat.toString(), formatWinner(nameOfWinners)))
+    fun printWinner(winners: List<CarName>) {
+        print(String.format(Message.WinnerFormat.toString(), formatWinner(winners)))
     }
 
     private fun formatDistance(score: Score): String =
