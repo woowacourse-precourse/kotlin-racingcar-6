@@ -142,4 +142,3 @@ class RacingGameTest {
         assertThat(afterRaceDistance).isNotEqualTo(initialDistance)
     }
 }
-
