@@ -35,3 +35,7 @@ private fun inputTryCount() {
         throw IllegalArgumentException()
     }
 }
+
+private fun generateRandomNumber(): Int {
+    return Randoms.pickNumberInRange(0, 9)
+}
