@@ -4,14 +4,13 @@ data class Car(
     val name: String,
     var position: Int = 0,
 ) {
-    fun moveForward() {
-        if (isMove()) {
+    fun moveForward(numberGenerator: NumberGenerator = NumberGenerator()) {
+        if (isMove(numberGenerator)) {
             position++
         }
     }
 
-    private fun isMove(): Boolean {
-        val numberGenerator = NumberGenerator()
+    private fun isMove(numberGenerator: NumberGenerator): Boolean {
         val randomNumber = numberGenerator.generateRandomNumber()
         if (randomNumber >= 4) {
             return true
