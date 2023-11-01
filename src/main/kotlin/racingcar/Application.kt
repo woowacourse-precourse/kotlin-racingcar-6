@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    inputFirstSetting()
+    playGame()
 }
 
-private fun inputFirstSetting() {
+private fun playGame() {
     println(ConstValue.FIRST_LINE)
     val carString = Console.readLine().toString()
 
