@@ -68,7 +68,8 @@ fun raceCars(carNames: List<String>, tryNumber: Int): List<Pair<String, String>>
 }
 
 fun printRaceResults(raceResults: List<Pair<String, String>>) {
-    raceResults.forEach {(carName, result) ->
+    print("실행 결과:")
+    raceResults.forEach {(carName, result) ->     
         println("$carName : $result")
     }
 }
