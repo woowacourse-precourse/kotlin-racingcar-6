@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     // TODO: 프로그램 구현
@@ -17,6 +18,15 @@ fun getCarNames():List<String> {
 fun getTryNumber() {
     print("시도할 횟수는 몇 회인가요?")
     val tryNumber = Console.readLine()
-    
+
     return tryNumber
 }
+
+fun carGoOrStop() {
+    val goOrStop = Randoms.pickNumberInRange()
+
+    if (goOrStop >= 4){
+        print("-")
+    }
+}
+
