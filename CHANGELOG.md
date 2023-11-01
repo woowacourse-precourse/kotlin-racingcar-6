@@ -1,0 +1,22 @@
+- style: correct newline formatting
+- docs: update list of features to implement
+- test: add unit test for MOVING_FORWARD & STOP
+- fix: issue with invalid number in input
+- test: add unit test for user input
+- fix: issue with improper whitespace handling in input
+- fix: issue with improper whitespace handling in output
+- refactor: getCarNames function to validate car names lenght
+- feat: validate user input for name length 5
+- feat: add print winner feature
+- feat: add determine winner feature
+- feat: print result for round
+- fix: resolve return type error
+- refactor: update Car class method
+- feat: add isAdvance function
+- feat: add exception process
+- feat: add Game class
+- update list of features
+- feat: add Car class
+- feat: implement user input feature
+- docs: update list of features to implement
+- feat: setup precourse racingcar project
