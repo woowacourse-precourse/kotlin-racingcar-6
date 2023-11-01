@@ -44,12 +44,12 @@ class RacingGame {
     fun printRaceResult(
         numberOfAttempt: Int,
         cars: List<Car>,
-        raceFunction: (List<Car>) -> List<Int> = { host.printCurrentRaceSituation(it) }
+        race: (List<Car>) -> List<Int> = { host.printCurrentRaceSituation(it) }
     ): List<Int> {
         var carsFinalPosition = listOf<Int>()
 
         for (i in 0 until numberOfAttempt) {
-            carsFinalPosition = raceFunction(cars)
+            carsFinalPosition = race(cars)
             println()
         }
 
