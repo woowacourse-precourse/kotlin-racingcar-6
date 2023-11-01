@@ -72,4 +72,16 @@ class ValidatorTest {
         val carName = "abc"
         assertDoesNotThrow { Validator.validateCarName(carName) }
     }
+
+    @Test
+    fun `잘못된 이동 횟수 입력값에 대해 예외 발생`() {
+        val input = "1 2"
+        assertThrows<IllegalArgumentException> { Validator.validateInputMoveCount(input) }
+    }
+
+    @Test
+    fun `올바른 이동 횟수 입력값에 대해 예외 발생하지 않음`() {
+        val input = "1"
+        assertDoesNotThrow { Validator.validateInputMoveCount(input) }
+    }
 }
