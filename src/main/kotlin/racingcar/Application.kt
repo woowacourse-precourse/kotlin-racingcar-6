@@ -30,13 +30,13 @@ fun decideWinners(carList: List<Car>): List<String> {
 
     var maxValue = -1
     for (car in carList) {
-        if (maxValue < car.status) {
-            maxValue = car.status
+        if (maxValue < car.num) {
+            maxValue = car.num
         }
     }
 
     for (car in carList) {
-        if (maxValue == car.status) {
+        if (maxValue == car.num) {
             winners.add(car.name)
         }
     }
@@ -89,17 +89,17 @@ fun generate0to9(): Int {
 
 class Car(name: String) {
     val name: String = name
-    var status: Int = 0
+    var num: Int = 0
 
     fun goOrStay() {
         val randomNum = generate0to9()
         if (randomNum >= 4) {
-            this.status += 1
+            this.num += 1
         }
     }
 
     private fun getStatus(): Int {
-        return this.status
+        return this.num
     }
 
     fun print() {
