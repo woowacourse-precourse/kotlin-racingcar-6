@@ -18,7 +18,7 @@ class HostTest {
         var index = 0
         val positions = host.printCurrentRaceSituation(cars) { randomNumbers[index++] }
 
-        assertEquals(ADVANCE, positions[POLY])
+        assertEquals(ADVANCE, positions[POLI])
         assertEquals(INITIAL_POSITION, positions[ROY])
         assertEquals(ADVANCE, positions[AMBER])
     }
@@ -54,7 +54,7 @@ class HostTest {
     companion object {
         private const val INITIAL_POSITION = 0
         private const val ADVANCE = 1
-        private const val POLY = 0
+        private const val POLI = 0
         private const val ROY = 1
         private const val AMBER = 2
     }
