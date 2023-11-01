@@ -49,8 +49,8 @@
 
 ## 📚 기능별 테스트 목록
 
-    1번 기능 : CarNameValidatorTest, ConverterTest
-    2번 기능 : CarTest, CircuitTest, RandomNumberTest
-    3번 기능 : RaceRoundValidatorTets, ConverterTest
-    4번 기능 : ApplicationTest, CircuitTest
-    5번 기능 : ApplicationTest, RefereeTest
+    1번 기능 : CarNameValidatorTest, ConverterTest, ApplicationTest
+    2번 기능 : CarTest, CircuitTest, RandomNumberTest, ApplicationTest
+    3번 기능 : RaceRoundValidatorTets, ConverterTest, ApplicationTest
+    4번 기능 : CircuitTest, ApplicationTest
+    5번 기능 : RefereeTest, ApplicationTest
