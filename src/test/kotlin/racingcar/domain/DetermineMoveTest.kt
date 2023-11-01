@@ -1,9 +1,7 @@
 package racingcar.domain
 
-import camp.nextstep.edu.missionutils.test.Assertions
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 class DetermineMoveTest {
@@ -16,7 +14,7 @@ class DetermineMoveTest {
                 assertThat(determineMove.isMove()).isTrue
                 assertThat(determineMove.isMove()).isFalse
             },
-            6,  2,
+            6, 2,
         )
     }
 }
