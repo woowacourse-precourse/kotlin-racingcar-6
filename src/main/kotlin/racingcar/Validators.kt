@@ -12,3 +12,9 @@ fun verifyCarName(name: String) {
     require(name.length >= minNameLength) { "1자 이상의 자동차 이름을 입력하세요." }
     require(name.length <= maxNameLength) { "5자 이하의 자동차 이름을 입력하세요." }
 }
+
+fun verifyTryNumber(number: String) {
+    val tryNumber = number.toIntOrNull()
+    require(tryNumber != null) { "정수를 입력하세요." }
+    require(tryNumber > 0) { "양수를 입력하세요." }
+}
