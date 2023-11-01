@@ -3,10 +3,20 @@ package racingcar
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DynamicTest.dynamicTest
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestFactory
 
 class UserTest {
     private lateinit var user: User
+    private val testInputs = listOf(
+        "pobi, woni, jun",
+        "pobi,     woni, jun"
+    )
+
+    private val expectedCarsList = listOf(
+        listOf(Car("pobi"), Car("woni"), Car("jun")),
+        listOf(Car("pobi"), Car("woni"), Car("jun"))
+    )
 
     @BeforeEach
     fun setUp() {
@@ -26,14 +36,4 @@ class UserTest {
             assertThat(result).isTrue()
         }
     }
-
-    private val testInputs = listOf(
-        "pobi, woni, jun",
-        "pobi,     woni, jun"
-    )
-
-    private val expectedCarsList = listOf(
-        listOf(Car("pobi"), Car("woni"), Car("jun")),
-        listOf(Car("pobi"), Car("woni"), Car("jun"))
-    )
 }
