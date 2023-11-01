@@ -88,7 +88,6 @@ class RacingCarGame {
             println()
         }
 
-
         printWinner()
     }
 }
