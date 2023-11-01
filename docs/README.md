@@ -68,5 +68,5 @@ Repository 객체 대신 List로 간소화한다.
 
 - [x] savePlayers() 테스트
 - [x] saveRound() 테스트
-- [ ] playRound() 테스트
+- [x] playRound() 테스트
 - [ ] getWinners() 테스트

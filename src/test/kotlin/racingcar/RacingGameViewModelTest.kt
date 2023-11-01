@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.util.Constants
+import racingcar.util.ForwardNumberGenerator
 import racingcar.util.RandomNumberGenerator
+import racingcar.util.StopNumberGenerator
 
 
 class RacingGameViewModelTest {
@@ -50,5 +52,21 @@ class RacingGameViewModelTest {
         val viewModel = RacingGameViewModel(RandomNumberGenerator())
         viewModel.saveRound("5")
         assertEquals(5, viewModel.round)
+    }
+
+    @Test
+    fun `playRound() 움직임 테스트`() {
+        val viewModel = RacingGameViewModel(ForwardNumberGenerator())
+        viewModel.savePlayers("kim,park,jun", ',')
+        viewModel.playRound()
+        assertThat(viewModel.playerList).extracting("position").contains(1, 1, 1)
+    }
+
+    @Test
+    fun `playRound() 멈춤 테스트`() {
+        val viewModel = RacingGameViewModel(StopNumberGenerator())
+        viewModel.savePlayers("kim,park,jun", ',')
+        viewModel.playRound()
+        assertThat(viewModel.playerList).extracting("position").contains(0, 0, 0)
     }
 }
