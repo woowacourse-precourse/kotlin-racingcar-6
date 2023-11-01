@@ -1,14 +1,11 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    val player = mutableMapOf<String, Int>()
-    for (name in parsingInput()) {
-        player[name] = 0
-    }
-    println(player)
-    println( inputNumber())
+    game()
+
 }
 
 fun parsingInput(): List<String> {
@@ -40,6 +37,47 @@ fun validateNumber(input: String): Int {
     return input.toInt()
 }
 
-fun validateIsPositiveInteger(input: Int){
-    if(input<0) throw IllegalArgumentException("${input}은 0보다 작은 횟수로 입력이 불가능합니다.")
+fun validateIsPositiveInteger(input: Int) {
+    if (input < 0) throw IllegalArgumentException("${input}은 0보다 작은 횟수로 입력이 불가능합니다.")
 }
+
+fun game() {
+    val playerList = mutableMapOf<String, Int>()
+    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    for (name in parsingInput()) {
+        playerList[name] = 0
+    }
+    println("시도할 횟수는 몇 회인가요?")
+    val runtime = inputNumber()
+    println("\n실행결과")
+    for (time: Int in 1..runtime) {
+        gameMain(playerList)
+    }
+    gameEnd(playerList)
+}
+
+fun gameMain(playerList: MutableMap<String, Int>) {
+    var run: Int
+    for (name in playerList.keys) {
+        run = Randoms.pickNumberInRange(0, 9)
+        if (run >= 4) playerList[name] = playerList.getValue(name) + 1
+        gameRunText(name, playerList.getValue(name))
+    }
+    println()
+}
+
+fun gameRunText(name: String, runtime: Int) {
+    println("${name} : " + "-".repeat(runtime))
+}
+
+fun gameEnd(playerList: Map<String, Int>) {
+    val winner = mutableListOf<String>()
+    for ((key, value) in playerList) {
+        if (value == playerList.values.max()) {
+            winner.add(key)
+        }
+    }
+    println("최종 우승자 : " + winner.joinToString(","))
+}
+
+
