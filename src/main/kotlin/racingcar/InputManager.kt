@@ -13,6 +13,8 @@ object InputManager {
     }
     fun getRoundNum(): Int{
         println(Resources.HOW_MANY_ATTEMPTS)
-        return Console.readLine().toInt()
+        val roundNum = Console.readLine().toInt()
+        require(roundNum >= 0){"Round number must be 0 or positive"}
+        return roundNum
     }
 }
