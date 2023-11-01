@@ -2,19 +2,29 @@ package racingcar
 
 class Referee {
 
-    fun notifyWhoWin(): List<String> {
+    fun notifyWhoWin(cars: MutableList<Car>): List<String> {
 
-        return arrayOf<String>().toList()
+        val maxForward = checkMaxForward(cars)
+        val winCarsList = mutableListOf<String>()
 
+        for (car in cars) {
+            if (maxForward == car.distance) {
+                winCarsList.add(car.name)
+            }
+        }
+
+        return winCarsList
     }
 
-    fun checkMaxForward(cars: MutableList<Car>): Int {
+    private fun checkMaxForward(cars: MutableList<Car>): Int {
 
         var maxForward = 0
 
         for (car in cars) {
-            if(maxForward < car.distance) {
+            if (maxForward < car.distance) {
+
                 maxForward = car.distance
+
             }
         }
 

@@ -24,6 +24,7 @@ fun main() {
     println("실행 결과")
     racing.playRacing(tryCount, carsClass)
 
-    println(referee.checkMaxForward(carsClass))
+    val winCarsList: List<String> = referee.notifyWhoWin(carsClass)
+    println("최종 우승자 : ${winCarsList.joinToString(",")}")
 
 }
