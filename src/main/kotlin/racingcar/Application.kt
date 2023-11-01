@@ -11,8 +11,8 @@ class InputHandler {
         val carResults = mutableMapOf<String, MutableList<String>>()
         val randomGenerator = RandomGenerator()
 
+        println("실행 결과")
         repeat(roundCount) {
-            println("실행 결과")
             carNames.forEach { carName ->
                 val randomValue = randomGenerator.generate()
                 val position = if (randomValue >= 4) "-" else ""
