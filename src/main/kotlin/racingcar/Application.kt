@@ -20,7 +20,6 @@ fun main() {
         repeat = Console.readLine().toInt()
     }catch (e:IllegalArgumentException){
         throw e
-
     }
 
     println()
@@ -30,7 +29,7 @@ fun main() {
         println()
     }
     var winner = Winners(cars)
-    println(winner.getOutput())
+    print(winner.getOutput())
 }
 
 
