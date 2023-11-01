@@ -11,13 +11,21 @@ class RacingCarGame(private val user: User) {
         val moveCount = user.requestInputMoveCount()
 
         println("실행 결과")
-        repeat(moveCount) { race(cars) }
+        repeat(moveCount) {
+            race(cars)
+            println()
+        }
     }
 
     private fun race(cars: List<Car>) {
         cars.forEach {
             val randomNumber = Randoms.pickNumberInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER)
             it.tryMoveForward(randomNumber)
+            showRaceMessage(it.name, randomNumber)
         }
+    }
+
+    private fun showRaceMessage(carName: String, randomNumber: Int) {
+        println("$carName : ${"_".repeat(randomNumber)}")
     }
 }
