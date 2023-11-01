@@ -29,11 +29,17 @@ class Validator {
     }
 
     private fun checkNameSize(name: String) {
-        if(name.length > 5) throw IllegalArgumentException(ErrorMessage.INPUT_CAR_NAME_SIZE_OVER)
+        if(name.length > NAME_MAX_LENGTH) throw IllegalArgumentException(ErrorMessage.INPUT_CAR_NAME_SIZE_OVER)
     }
 
     private fun checkTryNumSize(num: String) {
-        if(num.toInt() < 1) throw IllegalArgumentException(ErrorMessage.INPUT_TRY_NUM_SIZE_UNDER)
-        if(num.toInt() > 100) throw IllegalArgumentException(ErrorMessage.INPUT_TRY_NUM_SIZE_OVER)
+        if(num.toInt() < TRY_NUM_MIN_SIZE) throw IllegalArgumentException(ErrorMessage.INPUT_TRY_NUM_SIZE_UNDER)
+        if(num.toInt() > TRY_NUM_MAX_SIZE) throw IllegalArgumentException(ErrorMessage.INPUT_TRY_NUM_SIZE_OVER)
+    }
+
+    companion object {
+        private const val NAME_MAX_LENGTH = 5
+        private const val TRY_NUM_MIN_SIZE = 1
+        private const val TRY_NUM_MAX_SIZE = 100
     }
 }
