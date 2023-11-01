@@ -51,4 +51,8 @@ class Controller(
     private fun getWinners(getGreatestPosition: Int): List<Car> {
         return cars.filter { car -> car.currentPosition.length == getGreatestPosition }
     }
+
+    private fun getWinnerCarNames(winners: List<Car>): List<String> {
+        return winners.map { winner -> winner.name }
+    }
 }
