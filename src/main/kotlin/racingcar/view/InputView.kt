@@ -2,8 +2,13 @@ package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
 
-class InputTry {
-    operator fun invoke(tryCount: String = Console.readLine()): Int {
+class InputView {
+
+    fun inputCars(cars: String = Console.readLine()): List<String> {
+        return cars.split(',').map { it.trim() }
+    }
+
+    fun inputTryCount(tryCount: String = Console.readLine()): Int {
         val count = tryCount.toIntOrNull()
         return when {
             count == null || count <= 0 -> {
@@ -13,4 +18,5 @@ class InputTry {
             else -> count
         }
     }
+
 }

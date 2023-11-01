@@ -2,12 +2,14 @@ package racingcar.controller
 
 import racingcar.model.Car
 import racingcar.model.Cars
-import racingcar.view.*
+import racingcar.view.InputView
+import racingcar.view.OutputCars
+import racingcar.view.OutputGuide
+import racingcar.view.OutputResult
 
 class GameController {
     private val outputGuide = OutputGuide()
-    private val inputCars = InputCars()
-    private val inputTry = InputTry()
+    private val inputView = InputView()
     private val outputCars = OutputCars()
     private val outputResult = OutputResult()
 
@@ -15,11 +17,11 @@ class GameController {
 
     fun startGame() {
         outputGuide.showStartGuide()
-        cars = Cars(inputCars().map { Car(it) })
+        cars = Cars(inputView.inputCars().map { Car(it) })
         cars.validate()
 
         outputGuide.showTryCountGuide()
-        val tryCount = inputTry()
+        val tryCount = inputView.inputTryCount()
         startTurn(tryCount)
         val winners = cars.decideWinner()
         outputResult.showResult(winners)
