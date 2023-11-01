@@ -8,6 +8,15 @@ fun main() {
     val carNames = game.inputCarNames()
     val attemptsCount = game.inputAttemptsCount()
 
+    val cars = carNames.map { Car(it) }
+
+    println("\n실행 결과")
+    repeat(attemptsCount) {
+        for (car in cars) {
+            car.move()
+        }
+        game.printGameResult(cars)
+    }
 }
 
 class RacingCarGame {
