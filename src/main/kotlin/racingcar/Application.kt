@@ -4,4 +4,6 @@ fun main() {
 
     val carGame = RacingCarGame()
     carGame.gameStart()
+
+    return
 }

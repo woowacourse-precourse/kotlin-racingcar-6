@@ -91,5 +91,7 @@ class RacingCarGame {
             println()
         }
         printWinner()
+
+        return
     }
 }
