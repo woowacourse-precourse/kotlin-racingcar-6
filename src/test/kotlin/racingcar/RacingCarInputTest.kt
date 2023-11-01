@@ -13,7 +13,7 @@ class RacingCarInputTest {
             Car("abcde")
         )
 
-        //then
+        // then
         assertThatThrownBy {
             RacingCarInput.validate(racingCarNames)
         }.isInstanceOf(IllegalArgumentException::class.java)
