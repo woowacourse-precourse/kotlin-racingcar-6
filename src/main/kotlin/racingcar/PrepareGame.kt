@@ -6,8 +6,9 @@ class PrepareGame {
         val vali = Validation()
 
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        var userName: String = readLine()
-        vali.nameValid(userName)
+        var userName: String? = readLine()
+        var isNameValid: Boolean
+        vali.nameValid(userName!!)
         var userList: List<String> = userName.split(",")
 
         return userList
