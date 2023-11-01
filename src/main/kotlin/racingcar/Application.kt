@@ -15,11 +15,14 @@ class RacingCarValidator {
         }
         return racingCars
     }
+    companion object {
+        val instance = RacingCarValidator()
+    }
 }
 fun main() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분")
     val cars = Console.readLine()
-    val racingCars = RacingCarValidator().checkCars(cars)
+    val racingCars = RacingCarValidator.instance.checkCars(cars)
     println("시도 할 횟수는 몇 회인가요?")
     val trying = Console.readLine()
     RacingGames().checkTime(racingCars, trying.toInt())
