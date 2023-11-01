@@ -13,6 +13,8 @@ private fun playGame() {
 
     val carList = makeCarList(carString)
 
+    val finalCarList = validateCarNameLength(carList)
+
     println(ConstValue.SECOND_LINE)
     val trial = Console.readLine().toString()
 
@@ -20,10 +22,10 @@ private fun playGame() {
 
     println(ConstValue.RESULT)
 
-    val map = makeCarMap(carList)
+    val map = makeCarMap(finalCarList)
 
     do {
-        doSaveCarMove(carList, map)
+        doSaveCarMove(finalCarList, map)
         numberOfTrial -= 1
         println()
     } while (numberOfTrial != 0)
@@ -32,9 +34,18 @@ private fun playGame() {
 
 }
 
+private fun validateCarNameLength(carList: List<String>): List<String> {
+    for (car in carList) {
+        if (car.length > 5) {
+            throw IllegalArgumentException(ConstValue.ERROR_CAR_NAME_OUT_OF_RANGE)
+        }
+    }
+    return carList.filter { it.length < 5 }
+}
+
 private fun makeCarList(carList: String): List<String> {
     if (carList.isEmpty()) {
-        throw IllegalArgumentException("입력값이 없습니다.")
+        throw IllegalArgumentException(ConstValue.ERROR_NO_INPUT)
     } else {
         return carList.split(",")
     }
@@ -50,16 +61,16 @@ private fun makeCarMap(carList: List<String>): MutableMap<String, Int> {
 
 private fun validateTrialNumber(num: String): Int {
     if (num.isEmpty()) {
-        throw IllegalArgumentException("입력값이 없습니다.")
+        throw IllegalArgumentException(ConstValue.ERROR_NO_INPUT)
     }
     try {
         val inputNumber = num.toInt()
         if (inputNumber <= 0) {
-            throw IllegalArgumentException("입력값이 0 이하입니다")
+            throw IllegalArgumentException(ConstValue.ERROR_INPUT_BELOW_POSITIVE)
         }
         return inputNumber
     } catch (e: NumberFormatException) {
-        throw IllegalArgumentException("입력값이 숫자가 아닙니다")
+        throw IllegalArgumentException(ConstValue.ERROR_INPUT_NOT_NUM)
     }
 }
 
