@@ -33,7 +33,7 @@ class Champion(var championName: MutableList<String> = mutableListOf()) {
     }
 
     private fun compareMaxDistanceRacer(racerCrew: Racer, maxDistance: Int, index: Int) {
-        if (racerCrew.moveDistance[index]==maxDistance)
+        if (racerCrew.moveDistance[index] == maxDistance)
             this.championName.add(racerCrew.racerName[index])
     }
 }

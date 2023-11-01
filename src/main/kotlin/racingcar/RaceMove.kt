@@ -2,9 +2,9 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class RaceMove (val moveChanceNumber: MutableList<Int> = mutableListOf()) {
+class RaceMove(val moveChanceNumber: MutableList<Int> = mutableListOf()) {
     fun getMoveNumber(racerNameSize: Int) {
-        for(i in INITIALIZATION until racerNameSize){
+        for (i in INITIALIZATION until racerNameSize) {
             val moveDecisionNumber = Randoms.pickNumberInRange(RANDOM_NUMBER_MINIMUM, RANDOM_NUMBER_MAXIMUM)
             moveChanceNumber.add(judgeMoveOrStop(moveDecisionNumber))
         }
@@ -14,7 +14,7 @@ class RaceMove (val moveChanceNumber: MutableList<Int> = mutableListOf()) {
         return when (moveDecisionNumber) {
             in STOP_MINIMUM..STOP_MAXIMUM -> STOP
             in MOVE_MINIMUM..MOVE_MAXIMUM -> MOVE
-            else -> throw IllegalArgumentException(Message.MOVE_ERROR.messageText)
+            else -> throw IllegalArgumentException(Message.RANDOM_NUMBER_ERROR.messageText)
         }
     }
 }

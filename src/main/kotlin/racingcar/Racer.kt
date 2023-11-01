@@ -1,11 +1,11 @@
 package racingcar
 
-class Racer (
+class Racer(
     var racerName: MutableList<String> = mutableListOf(),
     var moveDistance: MutableList<Int> = mutableListOf(),
     var playTime: Int = INITIALIZATION
 ) {
-    fun updateRacerName(racerName:MutableList<String>) {
+    fun updateRacerName(racerName: MutableList<String>) {
         this.racerName = racerName
     }
 
@@ -19,7 +19,7 @@ class Racer (
         }
     }
 
-    fun updatePlayTime(playTime:Int) {
+    fun updatePlayTime(playTime: Int) {
         this.playTime = playTime
     }
 }

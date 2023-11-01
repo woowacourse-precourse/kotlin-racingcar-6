@@ -1,6 +1,6 @@
 package racingcar
 
-fun main(){
+fun main() {
     val view = RacingCarView()
     val model = RacingCarModel()
     val controller = RacingCarController(view, model)
