@@ -6,6 +6,8 @@ import org.assertj.core.api.Assertions.assertThat
 
 fun main() {
     val carNames = inputCarNames()
+    val numberOfAttempts = inputNumberOfAttempts()
+
 }
 
 fun inputCarNames(): List<String> {
@@ -18,4 +20,9 @@ fun inputCarNames(): List<String> {
     }
 
     return carNames
+}
+
+fun inputNumberOfAttempts(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+    return readLine()?.toIntOrNull() ?: 0
 }
