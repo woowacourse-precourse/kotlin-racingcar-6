@@ -4,7 +4,9 @@ class Car (private val name: String, private var position: Int){
     init {
         checkingValidName()
     }
-
+    override fun toString(): String {
+        return name
+    }
     private fun checkingValidName() {
         if (name.length > NAME_MAXIMUM_LENGTH) {
             throw IllegalArgumentException(INVALID_NAME_MSG)
