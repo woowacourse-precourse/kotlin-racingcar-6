@@ -14,7 +14,8 @@ class PlayerTest {
 
         val carNames = player.determineCarNames(input)
 
-        assertThat(carNames).isEqualTo(listOf("june", "crong", "pobi"))
+        assertThat(carNames)
+            .isEqualTo(listOf("june", "crong", "pobi"))
     }
 
     @Test

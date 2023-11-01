@@ -11,8 +11,13 @@ class NumericStringValidatorTest {
         val numericWithLetterString = "123a"
         val validator: StringValidator = NumericStringValidator()
 
-        val validResult = runCatching { validator.validate(numericString) }.exceptionOrNull()
-        val inValidResult = runCatching { validator.validate(numericWithLetterString) }.exceptionOrNull()
+        val validResult = runCatching {
+            validator.validate(numericString)
+        }.exceptionOrNull()
+        val inValidResult = runCatching {
+            validator.validate(numericWithLetterString)
+        }.exceptionOrNull()
+
 
         assertThat(validResult).isNull()
         assertThat(inValidResult).hasSameClassAs(IllegalArgumentException())
