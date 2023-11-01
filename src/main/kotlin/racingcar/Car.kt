@@ -1,6 +1,10 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Randoms
+
 class Car(val name: String) {
+
+    var moveCount = 0
 
     init {
         if (name.length > 5) {
@@ -8,4 +12,9 @@ class Car(val name: String) {
         }
     }
 
+    fun moveCar() {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            moveCount++
+        }
+    }
 }
