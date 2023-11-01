@@ -1,7 +1,6 @@
-package racingcar.datahandling
+package racingcar.domain
 
 import camp.nextstep.edu.missionutils.Randoms
-import racingcar.domain.Car
 
 class Decision {
     fun decideMovement(player: Car): Int {

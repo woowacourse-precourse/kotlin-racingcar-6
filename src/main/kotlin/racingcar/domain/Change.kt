@@ -1,6 +1,4 @@
-package racingcar.datahandling
-
-import racingcar.domain.Car
+package racingcar.domain
 
 class Change {
     internal fun changePlayerListToMap(playerList: List<Car>, distanceList: List<String>) : Map<String, String> {

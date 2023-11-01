@@ -5,9 +5,9 @@ class NameValidation(private val input: String) : Exception {
 
     init {
         checkEmpty()
-        checkDuplicationName()
         checkSpaceName()
         checkSpaceInName()
+        checkDuplicationName()
         checkLengthName()
     }
 

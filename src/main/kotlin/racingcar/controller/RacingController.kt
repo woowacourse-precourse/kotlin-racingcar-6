@@ -2,9 +2,9 @@ package racingcar.controller
 
 import camp.nextstep.edu.missionutils.Console
 import racingcar.domain.Car
-import racingcar.datahandling.Decision
-import racingcar.datahandling.Save
-import racingcar.datahandling.Input
+import racingcar.domain.Decision
+import racingcar.domain.Save
+import racingcar.view.Input
 import racingcar.view.Print
 
 class RacingController {
@@ -26,6 +26,7 @@ class RacingController {
             print.printDistance(playerList, distanceList)
             COUNT++
         }
+
         val winnerList = decision.decideWinner(playerList, distanceList)
         print.printWinner(winnerList)
         Console.close()
