@@ -17,7 +17,7 @@ class Validator {
 
     fun isNumber(inputString: String) {
         val regex = "\\d+".toRegex()
-        if (!inputString.matches(regex)){
+        if (!inputString.matches(regex)) {
             throw IllegalArgumentException("invalid input string, input is not number")
         }
     }
@@ -29,7 +29,7 @@ class Validator {
     }
 
     private fun underFiveLength(name: String) {
-        if (name.length > 5){
+        if (name.length > 5) {
             throw IllegalArgumentException("invalid car's name, length of name is over 5")
         }
     }
