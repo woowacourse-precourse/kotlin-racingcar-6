@@ -9,7 +9,6 @@ import racingcar.view.OutputView
 
 class Controller(
     private val validator: Validator,
-    private val randomNumberGenerator: RandomNumberGenerator,
 ) {
     private val cars = ArrayList<Car>()
 
@@ -18,6 +17,7 @@ class Controller(
         setRacingCars(getNamesOfCar())
         OutputView.howManyAttempts()
         val attempt = getAttempts()
+        OutputView.executionResult()
     }
 
     private fun getNamesOfCar(): List<String> {
