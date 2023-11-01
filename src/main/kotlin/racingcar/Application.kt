@@ -1,5 +1,6 @@
 package racingcar
 
 fun main() {
-    val game = GameController();
+    val game = GameController(GameView(InputValidate()));
+    game.racingGame()
 }
