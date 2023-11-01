@@ -12,5 +12,6 @@ class Car(var name: String) {
         println("$name : ${"-".repeat(count)}")
     }
 
+
     override fun toString(): String = "$name"
 }

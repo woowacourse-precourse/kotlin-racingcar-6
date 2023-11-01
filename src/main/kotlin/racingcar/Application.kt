@@ -24,7 +24,7 @@ fun main() {
 }
 
 fun throwExceptionOverFive(name: String) {
-    if (name.length > 5 || name == "1") {
+    if (name.length > 5) {
         throw IllegalArgumentException()
     }
 }
