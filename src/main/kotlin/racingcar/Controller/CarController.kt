@@ -36,16 +36,8 @@ class CarController(val view: CarView, val model: CarModel) {
         return tryCountInput
     }
 
-    private fun moveCar(carNameInt: List<String>, carMove: MutableMap<String,Int>){
-        for (car in carNameInt) {
-            if ((0..9).random() >= 4) {
-                carMove[car] = (carMove[car] ?: 0) + 1
-            }
-        }
-        for (car in carNameInt) {
-            val distance = carMove[car] ?: 0
-            view.printMoveCar(car,distance)
-        }
+    private fun moveCar(carNameInput: List<String>, carMove: MutableMap<String,Int>){
+        model.moveCar(carNameInput, carMove, view)
     }
     private fun winnersList(carMove: MutableMap<String, Int>):List<String> {
         var maxMove = 0

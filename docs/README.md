@@ -25,6 +25,8 @@
 - ### 게임 하는 객체들
 - carNameLimit
   - [x] 이름은 5자 이하
+- moveCar
+  - [x] 자동차 이동
 
 
 
