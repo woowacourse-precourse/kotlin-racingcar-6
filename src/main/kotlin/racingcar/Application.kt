@@ -1,10 +1,12 @@
 package racingcar
 
-
+fun Run.execute(): Run {
+    inputData()
+    play()
+    printWinners()
+    return this
+}
 
 fun main() {
-    val run = Run()
-    run.inputData()
-    run.play()
-    run.printWinners()
+    Run().execute()
 }
