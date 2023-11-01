@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.domain
 
 object RoundNumberConstants {
     const val POSITIVE_NUMBER_ONE = 1

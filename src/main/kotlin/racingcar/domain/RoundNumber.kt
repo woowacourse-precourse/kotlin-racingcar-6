@@ -1,7 +1,6 @@
 package racingcar.domain
 
 import camp.nextstep.edu.missionutils.Console
-import racingcar.RoundNumberConstants
 
 class RoundNumber {
     fun requestInput() {
@@ -17,11 +16,7 @@ class RoundNumber {
             throw IllegalArgumentException(RoundNumberConstants.INPUT_IS_EMPTY)
         }
 
-        val inputInt = input.toIntOrNull()
-
-        if (inputInt == null) {
-            throw IllegalArgumentException(RoundNumberConstants.INPUT_IS_NOT_INT)
-        }
+        val inputInt = input.toIntOrNull() ?: throw IllegalArgumentException(RoundNumberConstants.INPUT_IS_NOT_INT)
 
         if (inputInt < RoundNumberConstants.POSITIVE_NUMBER_ONE) {
             throw IllegalArgumentException(RoundNumberConstants.ROUND_NUMBER_IS_NOT_POSITIVE)

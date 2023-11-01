@@ -1,8 +1,6 @@
 package racingcar.domain
 
 import org.junit.jupiter.api.*
-import racingcar.CarNameConstants
-import org.assertj.core.api.Assertions.assertThat
 
 
 class CarNameTest{

@@ -1,11 +1,10 @@
 package racingcar.domain
 
 import camp.nextstep.edu.missionutils.Randoms
-import racingcar.CarRaceConstants
 
 class CarRace {
     private fun generateNumber(): Int {
-        return Randoms.pickNumberInRange(0, 9)
+        return Randoms.pickNumberInRange(CarRaceConstants.RANDOM_NUMBER_MIN, CarRaceConstants.RANDOM_NUMBER_MAX)
     }
 
     fun startFlag() {

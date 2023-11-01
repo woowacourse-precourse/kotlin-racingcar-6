@@ -1,7 +1,5 @@
 package racingcar.domain
 
-import racingcar.RefereeConstants
-
 class Referee {
     fun findMaxScore(carScore: MutableList<Pair<String, Int>>): Int? {
         return carScore.maxOfOrNull { it.second }

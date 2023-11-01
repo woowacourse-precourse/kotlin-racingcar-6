@@ -1,9 +1,6 @@
 package racingcar
 
-import racingcar.domain.CarName
-import racingcar.domain.CarRace
-import racingcar.domain.Referee
-import racingcar.domain.RoundNumber
+import racingcar.domain.*
 
 fun main() {
     val carName = CarName()
