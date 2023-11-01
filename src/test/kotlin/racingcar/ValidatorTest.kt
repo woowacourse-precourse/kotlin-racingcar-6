@@ -42,7 +42,7 @@ class ValidatorTest {
     }
 
     @Test
-    fun `checkItemsHasNoDuplication 메서드 사용 시 입력값에 중복되는 item 이 존재할 때 예외 발생`() {
+    fun `checkHasNoDuplication 메서드 사용 시 입력값에 중복되는 item 이 존재할 때 예외 발생`() {
         val input = listOf(1, 2, 3, 1)
 
         assertSimpleTest {
@@ -53,7 +53,7 @@ class ValidatorTest {
     }
 
     @Test
-    fun `checkNumericValueIsInBoundary 메서드 사용 시 입력값이 주어진 범위를 벗어났을 때 예외 발생`() {
+    fun `checkIsInBoundary 메서드 사용 시 입력값이 주어진 범위를 벗어났을 때 예외 발생`() {
         val input = 5
 
         assertSimpleTest {
