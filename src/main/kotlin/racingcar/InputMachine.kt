@@ -3,31 +3,38 @@ package racingcar
 import java.lang.NumberFormatException
 
 class InputMachine {
-
     // 자동차 이름 입력↓
     fun makeCars(): List<String> {
 
         val cars = readln().split(",")
 
+        checkCarNameUnderFive(cars)
 
         return cars
 
     }
 
-    fun checkCarNameUnder5(cars: MutableList<Car>) {
+    private fun checkCarNameUnderFive(cars: List<String>) {
 
         for (car in cars) {
-            if (car.name.length > 5) {
-                println("실패")
-                throw IllegalArgumentException("자동차 이름이 5자를 초과합니다.")
-            }
-        }
-        println("통과")
 
+            if (car.length > 5) {
+
+                throw IllegalArgumentException("자동차 이름이 5자를 초과합니다.")
+
+            } else if (car.isEmpty()) {
+
+                throw IllegalArgumentException("자동차 이름이 없습니다.")
+
+            }
+
+        }
     }
+    //
 
     // 몇 번 이동 입력↓
     fun tryMove(): Int {
+
         val tryCount: Int
 
         try {
@@ -39,7 +46,7 @@ class InputMachine {
         if (!checkOnlyNatural(tryCount)) {
             throw IllegalArgumentException("양의 정수를 입력하세요")
         }
-
+        println()
 
         return tryCount
 
