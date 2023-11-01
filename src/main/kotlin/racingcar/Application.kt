@@ -28,6 +28,8 @@ private fun playGame() {
         println()
     } while (numberOfTrial != 0)
 
+    showWinner(map)
+
 }
 
 private fun makeCarList(carList: String): List<String> {
@@ -101,3 +103,14 @@ private fun generateRandomNumber(): Int {
     return Randoms.pickNumberInRange(0, 9)
 }
 
+private fun showWinner(carMap: MutableMap<String, Int>) {
+    val maxValue = carMap.values.max()
+    val winnerKeys: MutableList<String> = mutableListOf()
+    for ((key, value) in carMap) {
+        if (value == maxValue) {
+            winnerKeys.add(key)
+        }
+    }
+    val winnerName = winnerKeys.joinToString(", ")
+    println("최종 우승자 : $winnerName")
+}
