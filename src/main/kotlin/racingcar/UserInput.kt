@@ -11,6 +11,7 @@ class UserInput {
         println(Constants.NAME_INPUT_MESSAGE)
         val userInput = inputWithNullOrBlankCheck()
         val carList = userInput.split(',').map { it.toRacingCar() }
+        require(carList.size >= RacingCarGame.MIN_RACING_CAR) { "자동차는 최소 2대 이상이어야 합니다." }
         require(!hasDuplication(carList)) { "자동차 이름은 중복해서 입력할 수 없습니다." }
 
         return carList

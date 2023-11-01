@@ -43,5 +43,6 @@ class RacingCarGame {
         const val MIN_RANDOM_NUM = 0
         const val MAX_RANDOM_NUM = 9
         const val LIMIT_FOR_MOVING = 4
+        const val MIN_RACING_CAR = 2
     }
 }
