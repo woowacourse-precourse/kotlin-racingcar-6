@@ -7,6 +7,7 @@ data class Player(
     fun addWinCount() {
         winCount++
     }
+
     companion object {
         fun toPlayer(name: String): Player = Player(name, 0)
     }
