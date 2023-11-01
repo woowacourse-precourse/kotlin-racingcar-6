@@ -23,6 +23,15 @@ class ApplicationTest : NsTest() {
     fun `이름에 대한 예외 처리`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+
+            // 빈 이름
+            assertThrows<IllegalArgumentException> { runException(",pobi,woni", "1") }
+
+            // 중복 이름
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi,woni", "1") }
+
+            // 한대 이하의 자동차
+            assertThrows<IllegalArgumentException> { runException("pobi", "1") }
         }
     }
 
