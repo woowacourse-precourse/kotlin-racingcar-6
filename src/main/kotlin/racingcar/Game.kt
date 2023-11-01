@@ -24,6 +24,12 @@ fun List<Car>.race(loopCount: Int): Unit {
     }
 }
 
+fun List<Car>.winner(): String {
+    val maxLocation = this.maxOf { it.location }
+    val winners = this.filter { it.location == maxLocation }
+    return winners.map { it.name }.joinToString(", ")
+}
+
 class Car(val name: String) {
     init {
         if (name.length > 5) throw IllegalArgumentException("5자 이상 이름 필요")
