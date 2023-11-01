@@ -23,10 +23,13 @@ fun getTryNumber() {
 }
 
 fun carGoOrStop() {
-    val goOrStop = Randoms.pickNumberInRange()
+    val goOrStop = Randoms.pickNumberInRange() 
 
     if (goOrStop >= 4){
         print("-")
     }
 }
 
+fun printWinner(){
+    print("")
+}
