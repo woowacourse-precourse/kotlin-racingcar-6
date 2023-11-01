@@ -20,7 +20,7 @@ class RacingGame(private val cars: List<Car>, private val tryCount: Int) {
         println()
     }
 
-    private fun printWinners() {
+    fun printWinners() {
         val maxPosition = cars.maxOf { it.position }
         val winners = cars.filter { it.position == maxPosition }
         val winnerNames = winners.joinToString(", ") { it.name }
