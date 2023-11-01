@@ -17,6 +17,9 @@ fun List<Car>.toStatusString(): String {
 }
 
 class Car(val name: String) {
+    init {
+        if (name.length > 5) throw IllegalArgumentException("5자 이상 이름 필요")
+    }
     var location: Int = 0
     fun randMove(): Unit = TODO()
 }

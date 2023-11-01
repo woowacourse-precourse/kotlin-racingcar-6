@@ -20,7 +20,7 @@
         [x] 이름 property를 가진 Car 객체를 생성  
     
     Car (name, location, randMove())
-    [ ] 5글자 초과의 이름에 대해서 오류 발생 - setName()
+    [x] 5글자 초과의 이름에 대해서 오류 발생 - setName후 instance init 과정에서 확인
     [ ] 전진 기능 : 0 ~ 9 의 무작위 숫자 발생 후 4 이상이면 위치 + 1 - randMove()
 
     
