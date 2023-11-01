@@ -8,20 +8,21 @@ fun main() {
 }
 
 fun doGame() {
-    val inputList = getInputList()
-    val executionNum = getExecutionNum()
+    val inputList = getInputList(getUserInput())
+    val executionNum = getExecutionNum(getUserInput())
 
     val carList = mutableListOf<Car>()
 
     for (str in inputList) {
         carList.add(Car(str))
     }
-
+    println()
+    println("실행 결과")
     for (i in 0 until executionNum) {
         makeOneRound(carList)
     }
 
-    announceWinners(decideWinners(carList))
+    print(announceWinners(decideWinners(carList)))
 }
 
 fun decideWinners(carList: List<Car>): List<String> {
@@ -42,8 +43,12 @@ fun decideWinners(carList: List<Car>): List<String> {
     return winners
 }
 
-fun announceWinners(winners: List<String>) {
-    print("최종 우승자 : " + winners.joinToString(", "))
+fun getUserInput(): String? {
+    return Console.readLine()
+}
+
+fun announceWinners(winners: List<String>): String {
+    return "최종 우승자 : " + winners.joinToString(", ")
 }
 
 fun makeOneRound(carList: List<Car>) {
@@ -64,20 +69,20 @@ fun isNamein5Letters(inputList: List<String>): Boolean {
     return true
 }
 
-fun getExecutionNum(): Int {
-    val inputStr = Console.readLine()
-    requireNotNull(inputStr)
+fun getExecutionNum(userInput: String?): Int {
+    println("시도할 횟수는 몇 회인가요?")
+    requireNotNull(userInput)
     try {
-        return inputStr.toInt()
+        return userInput.toInt()
     } catch (e: NumberFormatException) {
         throw IllegalArgumentException()
     }
 }
 
-fun getInputList(): List<String> {
-    val inputStr = Console.readLine()
-    requireNotNull(inputStr)
-    val inputList = inputStr.split(',').toList()
+fun getInputList(userInput: String?): List<String> {
+    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    requireNotNull(userInput)
+    val inputList = userInput.split(',').toList()
     check(isNamein5Letters(inputList)) { throw IllegalArgumentException() }
     return inputList
 }
@@ -86,9 +91,14 @@ fun generate0to9(): Int {
     return Randoms.pickNumberInRange(0, 9)
 }
 
-class Car(name: String) {
+class Car(name: String, num: Int) {
     val name: String = name
-    var num: Int = 0
+    var num: Int = num
+
+    constructor(name: String) : this(name, 0) {
+        this.num = num
+    }
+
 
     fun goOrStay() {
         val randomNum = generate0to9()
@@ -98,6 +108,6 @@ class Car(name: String) {
     }
 
     fun print() {
-        print(name + " : " + "-".repeat(this.num))
+        println(name + " : " + "-".repeat(this.num))
     }
 }
