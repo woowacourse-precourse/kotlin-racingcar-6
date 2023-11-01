@@ -20,6 +20,8 @@ class GameManager(
         for (round in 0 until tryCount) {
             oneRoundResult()
         }
+        // 최종 우승 차량을 출력
+        // printWinners()
     }
 
     private fun oneRoundResult() {
@@ -28,5 +30,10 @@ class GameManager(
             car.howFarHaveGone()
         }
         println()
+    }
+
+    private fun printWinners() {
+        // 우승자를 찾아내어야 함
+        println("최종 우승자 : ")
     }
 }
