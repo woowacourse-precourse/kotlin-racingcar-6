@@ -9,7 +9,7 @@ object ExceptionManager {
         }
     }
 
-    fun validateExecutionNumber(numberString: String){
+    fun validateExecutionNumber(numberString: String) {
         val number = numberString.toIntOrNull()
         if (number == null || number < 0) {
             throw IllegalArgumentException()

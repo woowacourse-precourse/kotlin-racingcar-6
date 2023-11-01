@@ -1,11 +1,12 @@
 package racingcar
 
 import org.junit.jupiter.api.parallel.Execution
+
 const val RESULT = "실행 결과"
 const val WINNER = "최종 우승자 :"
 
 
-fun addCarToList(carNames: List<String>) : MutableList<Car> {
+private fun addCarToList(carNames: List<String>): MutableList<Car> {
     val cars = mutableListOf<Car>()
     carNames.forEach { carName ->
         cars.add(Car(carName))
@@ -19,7 +20,7 @@ private fun makeCar(): MutableList<Car> {
     return addCarToList(carNames)
 }
 
-private fun printProcess(cars: List<Car>){
+private fun printProcess(cars: List<Car>) {
     cars.forEach { car ->
         car.forwardCar()
         println("${car.name} : ${"-".repeat(car.forwardCount)}")
@@ -27,7 +28,7 @@ private fun printProcess(cars: List<Car>){
     println()
 }
 
-private fun printResult(cars: List<Car>){
+private fun printResult(cars: List<Car>) {
     val maxCount = cars.maxOf { it.forwardCount }
     val winners = cars.filter { it.forwardCount == maxCount }
     val winnerNames = winners.joinToString(", ") { it.name }
