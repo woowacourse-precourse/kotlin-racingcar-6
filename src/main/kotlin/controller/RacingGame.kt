@@ -31,5 +31,6 @@ class RacingGame(private val outputView: OutputView, private val inputView: Inpu
             carList.move(it, speed)
             outputView.outputTurnResult(carList.carList[it])
         }
+        outputView.outputBlankLine()
     }
 }

@@ -20,4 +20,8 @@ class OutputView {
         val positionResult: String = "-".repeat(car.position)
         println("${car.name} : $positionResult")
     }
+
+    fun outputBlankLine() {
+        println()
+    }
 }
