@@ -27,7 +27,13 @@ class RacingcarController {
         return racingcarName
     }
 
-    fun splitRacingcarName(racingcarName: String): List<String> = racingcarName.split(",")
+    fun splitRacingcarName(racingcarName: String): List<String> {
+        val names = racingcarName.split(",")
+        if (names.any { it.isBlank() }) {
+            callException()
+        }
+        return names
+    }
 
     private fun inputTryNumber(): Int {
         outputView.printTryNumber()
