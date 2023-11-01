@@ -13,9 +13,10 @@ class RacingCarGameController(
     fun playGame() {
         val racingCarNames = getRacingCarNames()
         val attemptsNum = getAttemptsNum()
-        val racingCars = race(racingCarNames = racingCarNames, attemptsNum = attemptsNum)
-        val winners = racingCarGame.getWinners(racingCars = racingCars)
-        outputView.printGameWinner(winners = winners)
+        race(racingCarNames = racingCarNames, attemptsNum = attemptsNum) { racingCars ->
+            val winners = racingCarGame.getWinners(racingCars = racingCars)
+            outputView.printGameWinner(winners = winners)
+        }
     }
 
     private fun getRacingCarNames(): List<String> {
@@ -30,7 +31,7 @@ class RacingCarGameController(
         return attemptsNum
     }
 
-    private fun race(racingCarNames: List<String>, attemptsNum: Int): List<RacingCar> {
+    private inline fun race(racingCarNames: List<String>, attemptsNum: Int, action: (List<RacingCar>) -> Unit) {
         var racingCars = racingCarGame.createRacingCars(racingCars = racingCarNames)
         outputView.printGameResult()
 
@@ -38,7 +39,6 @@ class RacingCarGameController(
             racingCars = racingCarGame.moveRacingCars(racingCars = racingCars)
             outputView.printCarRaceResults(racingCars = racingCars)
         }
-
-        return racingCars
+        action(racingCars)
     }
 }
