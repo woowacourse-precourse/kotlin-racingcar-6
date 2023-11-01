@@ -39,5 +39,4 @@
 ---
 ### 테스트 코드 작성 목록
 - [X] InputTest
-- [ ] RacingTest
-- [ ] WinnerTest
+- [X] RacingTest
