@@ -12,9 +12,12 @@ class RacingCarGame {
     fun start() {
         val carNames = inputCarNames()
         val attemptsCount = inputAttemptsCount()
-
         val cars = carNames.map { Car(it) }
+        playGame(cars, attemptsCount)
 
+    }
+
+    private fun playGame(cars: List<Car>, attemptsCount: Int) {
         println("\n실행 결과")
         repeat(attemptsCount) {
             cars.forEach { it.move() }
