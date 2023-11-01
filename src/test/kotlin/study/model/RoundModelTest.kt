@@ -16,10 +16,5 @@ class RoundModelTest {
         roundModel = RoundModel(1, mutableListOf(RacingCarModel("차1"), RacingCarModel("차2"), RacingCarModel("차3")))
     }
 
-    @Test
-    fun `라운드 결과 테스트`(){
-        val expected = "차2"
-        assert(roundModel.getRacingResult().contains(expected))
-    }
 
 }

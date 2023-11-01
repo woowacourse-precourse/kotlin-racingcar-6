@@ -10,14 +10,23 @@ class RacingGameController {
     private val raceResultView = RaceResultView
     private val userInputView = UserInputView
     private lateinit var racingCarsManagement: RacingCarsManagement
-    private var roundCnt:Int = 0
+    private lateinit var roundManagement: RoundManagement
 
 
     fun start(){
         guideView.printInputCarsName()
         racingCarsManagement = RacingCarsManagement(RacingCarsDTO(userInputView.getCarsName()).convertRacingCars())
         guideView.printInputRoundCnt()
-        roundCnt = RoundDTO(userInputView.getRoundCount()).convertRoundCount()
+        roundManagement = RoundManagement(RoundDTO(userInputView.getRoundCount()).convertRoundCount(),racingCarsManagement)
+    }
+
+    fun progress(){
+        guideView.printExecutionResult()
+        repeat (roundManagement.count){
+            roundManagement.playRound()
+            raceResultView.printRoundResult(roundManagement.getRacingResult())
+            println()
+        }
     }
 
 
