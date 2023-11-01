@@ -21,8 +21,8 @@ class CarsTest {
 
     @ParameterizedTest
     @ValueSource(strings = ["pobi, asd, 123"])
-    @DisplayName("InputView: splitCarNamesByComma() - Multi")
-    fun `여러 이름을 입력 받은 경우) ','로 분류하여 리스트 반환`(inputNames: String) {
+    @DisplayName("InputView: splitCarNamesByComma() - Multi is Success Case")
+    fun `','가 있는 경우) ','로 분류하여 리스트 반환`(inputNames: String) {
         assertThat(
             inputView.splitCarNamesByComma(inputNames)
         ).containsExactly("pobi", " asd", " 123")
@@ -30,12 +30,13 @@ class CarsTest {
 
     @ParameterizedTest
     @EmptySource
-    @ValueSource(strings = ["asd", " 123", "pobi ", "  jun", "taeng"])
-    @DisplayName("InputView: splitCarNamesByComma() - Single")
-    fun `하나의 이름을 입력 받은 경우) 하나를 리스트에 넣고 반환`(inputNames: String) {
-        assertThat(
+    @ValueSource(strings = ["as", "pobi", "taeng"])
+    @DisplayName("InputView: splitCarNamesByComma() - Single is Fail Case")
+    fun `','가 없는 경우) 오류 발생 검증`(inputNames: String) {
+        val exception = assertThrows<IllegalArgumentException> {
             inputView.splitCarNamesByComma(inputNames)
-        ).isEqualTo(listOf(inputNames))
+        }
+        assertEquals(InputView.MINIMUM_CAR_COUNT_REQUIRED, exception.message)
     }
 
     @ParameterizedTest

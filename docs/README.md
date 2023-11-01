@@ -3,7 +3,7 @@
 ## 기능 목록
 **1. 경주 할 자동차 이름 - model/`Cars`(List<`Car`>), `Car`(name, score: Int)**
 - [x] 입력 - view/InputView
-- [x] 검증 : `5자리 이하 문자열들이 쉼표로 구분되어 있는지` - Car.init -> Cars.init
+- [x] 검증 : `5자리 이하 문자열들이 쉼표로 구분되어 있는지` - Cars.init -> Car.init 
 - [x] test
 
 **2. 시도할 횟수 - model/Repetition**

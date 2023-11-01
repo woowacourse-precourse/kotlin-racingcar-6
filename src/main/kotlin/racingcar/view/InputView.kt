@@ -5,10 +5,10 @@ import racingcar.view.Constants.COMMA_DELIMITERS
 
 class InputView {
     internal fun splitCarNamesByComma(carNames: String): List<String> {
-        if (carNames.contains(COMMA_DELIMITERS)) {
-            return carNames.split(COMMA_DELIMITERS)
+        require(carNames.contains(COMMA_DELIMITERS)) {
+            MINIMUM_CAR_COUNT_REQUIRED
         }
-        return listOf(carNames)
+        return carNames.split(COMMA_DELIMITERS)
     }
 
     internal fun promptCarNames(): String {
@@ -27,5 +27,7 @@ class InputView {
 
         internal const val INPUT_REPOTITION = "시도할 횟수는 몇 회인가요?"
         internal const val REPOTITION_NOT_ENTERED = "시도할 횟수가 입력되지 않았습니다."
+
+        internal const val MINIMUM_CAR_COUNT_REQUIRED = "경주할 자동차는 2개 이상 이어야 합니다."
     }
 }
