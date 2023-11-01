@@ -34,16 +34,26 @@ fun inputCarName(): MutableList<String> {
     afterText = stringPattern.replace(inputText, "")
 
     val commaPattern = Regex(",{1,}")
+    val numberPattern = Regex("[0-9,]{1,}")
 
-    if (inputText != afterText || commaPattern.matches(afterText)) {
+    println("보정텍스트 : ${afterText}")
+
+    if (inputText != afterText || numberPattern.matches(afterText)) {
         /* 입력받은 값과 카네임 기준으로 보정한 값이 다르거나
         카네임 기준으로 보정한 값이 쉼표만 확인되는 경우 처리*/
+        throw IllegalArgumentException("잘못된 문자 또는 쉼표만 입력되어 게임종료")
         try {
-            throw IllegalArgumentException()
         } catch (e: IllegalArgumentException) {
             println("잘못된 문자 또는 쉼표만 입력되어 게임종료")
             System.out
             return carNameList
+        }
+    } else if(numberPattern.matches(afterText)) {
+        throw IllegalArgumentException("숫자만 입력되어 게임종료")
+        try {
+        } catch (e: IllegalArgumentException) {
+            println("숫자만 입력되어 게임종료")
+            System.out
         }
     }
     carNameList = afterText.split(",").toMutableList()
@@ -56,8 +66,8 @@ fun inputCarName(): MutableList<String> {
 
 fun getCarNameEmptyCheck(carName: String, carNameList: MutableList<String>): MutableList<String> {
     if (carName == "") {
+        throw IllegalArgumentException("비어있는 사용자, 쉼표 초과 입력되어 게임종료")
         try {
-            throw IllegalArgumentException()
         } catch (e: IllegalArgumentException) {
             println("비어있는 사용자, 쉼표 초과 입력되어 게임종료")
             System.out
@@ -76,8 +86,8 @@ fun getCarNameListCheck(carNameList: MutableList<String>): MutableMap<String, In
         return carNameMap
     } else if (carNameList.size == 1) {
         // 카네임이 1개일때 처리
+        throw IllegalArgumentException("카네임 1개만 확인되어 게임종료")
         try {
-            throw IllegalArgumentException()
         } catch (e: IllegalArgumentException) {
             println("카네임 1개만 확인되어 게임종료")
             System.out
@@ -88,8 +98,8 @@ fun getCarNameListCheck(carNameList: MutableList<String>): MutableMap<String, In
     var uniqueList = carNameList.distinct()
     if (carNameList != uniqueList) {
         //중복 이름에 대한 처리
+        throw IllegalArgumentException("중복 이름이 확인되어 게임 종료")
         try {
-            throw IllegalArgumentException()
         } catch (e: IllegalArgumentException) {
             println("중복 이름이 확인되어 게임 종료")
             System.out
@@ -112,7 +122,7 @@ fun getCarNameListCheck(carNameList: MutableList<String>): MutableMap<String, In
 
 fun getCarNameLengthCheck(carName: String): Boolean {
     if (carName.length > 5) {
-        throw IllegalArgumentException()
+        throw IllegalArgumentException("글자수가 5자를 초과하여 게임종료")
         try {
         } catch (e: IllegalArgumentException) {
             println("글자수가 5자를 초과하여 게임종료")
@@ -162,7 +172,6 @@ fun racingPlay(carNameMap: MutableMap<String, Int>, inputCount: Int) {
         carNameMap.clear()
         for ((resultKey, resultValue) in racingResultMap) {
             carNameMap[resultKey] = resultValue.length
-            println("키 : ${resultKey} / 최종숫자 : ${resultValue.length}")
         }
 
         var WinnerList = mutableListOf<String>()
@@ -170,8 +179,6 @@ fun racingPlay(carNameMap: MutableMap<String, Int>, inputCount: Int) {
         var index = 0
         var userCount = 1
         maxProgress = carNameMap.values.maxOf { it }.toInt()
-        println("최대값 : ${maxProgress}")
-
 
         print("최종 우승자 : ")
         for ((carKey, carValue) in carNameMap) {
