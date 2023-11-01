@@ -32,5 +32,4 @@ class Car {
     fun createCarProgressList(carNames: List<String>): MutableList<Int> {
         return MutableList<Int>(carNames.size) { 0 }
     }
-
 }
