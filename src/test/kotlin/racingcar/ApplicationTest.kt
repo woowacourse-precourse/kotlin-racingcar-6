@@ -22,7 +22,19 @@ class ApplicationTest : NsTest() {
     @Test
     fun `이름에 대한 예외 처리`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+            assertThrows<IllegalArgumentException>("5자 이하의 이름만 유효합니다.") {
+                runException("pobi,javaji", "1")
+            }
+        }
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>("1자 이상의 이름만 유효합니다.") {
+                run("pobi,,woni", "1")
+            }
+        }
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>("중복된 이름은 유효하지 않습니다.") {
+                runException("pobi,woni,woni", "1")
+            }
         }
     }
 
