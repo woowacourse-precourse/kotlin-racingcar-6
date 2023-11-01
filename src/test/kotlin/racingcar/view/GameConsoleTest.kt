@@ -31,6 +31,6 @@ class GameConsoleTest {
 
         GameConsole.printWinnerNames(winnerNames)
 
-        Assertions.assertThat(outputCaptor.toString().trim()).isEqualTo("최종 우승자 : somin, woowa, test")
+        Assertions.assertThat(outputCaptor.toString().trim()).isEqualTo("최종 우승자 : car1, car2, car3")
     }
 }
