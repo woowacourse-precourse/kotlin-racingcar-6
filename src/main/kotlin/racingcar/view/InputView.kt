@@ -20,13 +20,13 @@ class InputView {
 
     private fun printInputGameCount() = println(INPUT_GAME_COUNT_MESSAGE)
 
-    private fun checkRacingCarNameSize(users: List<String>) {
+    fun checkRacingCarNameSize(users: List<String>) {
         users.forEach {
             require(it.length <= MAX_NAME_LENGTH_NUM)
         }
     }
 
-    private fun checkNumber(input: String): Int {
+    fun checkNumber(input: String): Int {
         val gameCount = input.toIntOrNull() ?: 0
         require(gameCount > 0)
         return gameCount
