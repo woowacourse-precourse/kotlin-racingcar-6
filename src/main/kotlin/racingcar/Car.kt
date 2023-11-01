@@ -1,3 +1,5 @@
+import camp.nextstep.edu.missionutils.Randoms
+
 class Car {
     var name: String = ""
     var score: Int = 0
@@ -6,5 +8,13 @@ class Car {
         this.name = name
     }
 
+    fun confirmProgress(): Boolean {
+        var randomNumber = Randoms.pickNumberInRange(0, 9)
+        
+        if (randomNumber >= 4) {
+            return true
+        }
+        return false
+    }
     
 }
