@@ -7,8 +7,8 @@ class Game (private val cars: List<Car>, private val rounds: Int) {
             for (Car in cars) {
                 Car.advancePosition()
                 Car.printCarData()
-                println("")
             }
+            println("")
         }
         val winners = findWinners()
         printWinners(winners)

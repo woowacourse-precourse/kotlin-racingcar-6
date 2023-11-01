@@ -37,5 +37,6 @@ fun getRounds(): Int {
     if (inputNumber < 1) {
         throw IllegalArgumentException("시도할 횟수가 적절하지 않습니다.")
     }
+    println("")
     return userInput.toInt()
 }

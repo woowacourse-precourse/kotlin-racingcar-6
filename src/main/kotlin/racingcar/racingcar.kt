@@ -10,6 +10,7 @@ class Car(val name: String) {
         repeat(position) {
             print("-")
         }
+        println("")
     }
     fun advancePosition () {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {

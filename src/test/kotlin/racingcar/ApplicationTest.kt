@@ -39,7 +39,6 @@ class ApplicationTest : NsTest() {
             },
             MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
         )
-
     }
     @Test
     fun `공동 우승(정지)`() {
@@ -50,7 +49,16 @@ class ApplicationTest : NsTest() {
             },
             STOP, STOP, STOP, STOP, STOP, STOP
         )
-
+    }
+    @Test
+    fun `공동 우승(복합)`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,jun", "5")
+                assertThat(output()).contains("pobi : -", "woni : ", "jun : -","pobi : --", "woni : -", "jun : --","pobi : ---", "woni : --", "jun : ---","pobi : ----", "woni : ---", "jun : ----","pobi : -----", "woni : ----", "jun : -----", "최종 우승자 : pobi, jun")
+            },
+            MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        )
     }
 
     @Test
