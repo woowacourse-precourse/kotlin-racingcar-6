@@ -1,8 +1,9 @@
 package racingcar.domain
 
-class Car {
-    private lateinit var name: String
-    private var score = 0
+class Car (name: String) {
+    var carName: String = name
+    var score = 0
+
 
     fun goForward(): Int = score++
 }
