@@ -16,6 +16,7 @@ class RacingCarGame {
         repeat(trial) {
             playEachRound()
         }
+        printFinalWinner()
     }
 
     private fun playEachRound() {
@@ -26,6 +27,16 @@ class RacingCarGame {
         }
         racingCars.forEach { println(it.toString()) }
         println()
+    }
+
+    private fun printFinalWinner() {
+        val sortedRacingCar: List<RacingCar> = racingCars.sorted()
+        val winnerLocation = sortedRacingCar.first().location
+
+        print(Constants.FINAL_WINNER_MESSAGE)
+        println(sortedRacingCar.filter {
+            it.location == winnerLocation
+        }.joinToString(separator = ", ", transform = { car -> car.carName }))
     }
 
     companion object {
