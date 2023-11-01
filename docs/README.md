@@ -28,3 +28,14 @@
 - [x] resultOutput : 매개변수로 받은 자동차의 이름과 점수를 OutputView의 resultOutput 메서드에 전달하여 출력한다.
 - [x] isMove : 랜덤으로 생성된 숫자가 4 이상이면 true를 반환하고, 그렇지 않으면 false를 반환한다.
 - [x] startRacing : cars 리스트의 모든 자동차에 대해 isMove 메서드의 결과가 true일 경우 해당 자동차의 move 메서드를 호출하고, resultOutput 메서드를 호출하여 자동차의 이름과 점수를 출력한다.
+
+### Test
+- [x] runGame 실행 시 setGame과 gameResult가 호출되는지 테스트 
+- [x] 우승자가 한명일 경우 정상적으로 출력되는지 테스트
+- [x] 우승자가 여러명일 경우 정상적으로 출력되는지 테스트
+- [x] isMove 메서드가 0 이상 9 이하의 랜덤 숫자를 생성하여 4 이상인 경우 true를 반환하는지 테스트
+- [x] Car 객체의 move()함수가 score를 1씩 증가시키는지 테스트
+- [x] 이름이 5글자를 초과하는 경우 IllegalArgumentException가 발생되는지 테스트
+- [x] 게임 진행 횟수를 입력할 경우 입력받은 값이 숫자인지 확인하는 테스트
+- [x] 입력받은 값이 0인 경우 IllegalArgumentException가 발생되는지 테스트
+- [x] OutputView에서 의도한 대로 결과를 출력하는지 테스트
