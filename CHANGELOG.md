@@ -1,3 +1,4 @@
+- feat: declare constants for threshold
 - style: correct newline formatting
 - docs: update list of features to implement
 - test: add unit test for MOVING_FORWARD & STOP
