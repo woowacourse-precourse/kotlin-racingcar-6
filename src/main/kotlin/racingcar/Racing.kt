@@ -9,22 +9,27 @@ class RacingGame {
 
     fun playGame() {
         prepareRace()
-        setGamePlayCount()
+        setRacingPlayer()
+
+        printRacingResult()
     }
 
-    fun prepareRace() {
+    private fun prepareRace() {
         playerList = inputManager.getCarName()
-
-        // carList.add()
-        inputManager.getTryTime()
-    }
-
-    fun printRacingResult() {
-
-    }
-
-    fun setGamePlayCount() {
         N = inputManager.getTryTime()
+
+        setRacingPlayer()
+    }
+
+    private fun setRacingPlayer() {
+        for(x in 0 until playerList.size) {
+            val initCar = Car(playerList[x])
+            carList.add(initCar)
+        }
+    }
+
+    private fun printRacingResult() {
+        print("최종 우승자 : ${winnerList.joinToString(", ")}")
     }
 
     fun getPlayCount() = N

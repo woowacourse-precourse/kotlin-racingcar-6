@@ -1,5 +1,7 @@
 package racingcar
 
-fun main(){
+fun main() {
+    val racing = RacingGame()
 
+    racing.playGame()
 }
