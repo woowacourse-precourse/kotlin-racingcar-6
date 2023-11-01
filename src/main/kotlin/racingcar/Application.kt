@@ -17,6 +17,9 @@ class InputHandler {
             }
             println()
         }
+
+        val winners = findWinners(cars)
+        println("최종 우승자: ${winners.joinToString(", ")}")
     }
 
     private fun getCarNames(): List<String> {
@@ -38,8 +41,8 @@ class InputHandler {
         return input.toIntOrNull() ?: 0
     }
 
-    private class Car(val name: String) {
-        private var position = 0
+    class Car(val name: String) {
+        internal var position = 0
 
         fun move() {
             val randomValue = RandomGenerator.generate()
@@ -57,6 +60,11 @@ class InputHandler {
         fun generate(): Int {
             return Randoms.pickNumberInRange(0, 9)
         }
+    }
+
+    private fun findWinners(cars: List<Car>): List<String> {
+        val maxPosition = cars.maxOf { it.position }
+        return cars.filter { it.position == maxPosition }.map { it.name }
     }
 }
 
