@@ -3,9 +3,7 @@ package racingcar.model
 class GameModel(names: List<String>, private val attempts: Int) {
     val cars: List<CarModel> = names.map { CarModel(it) }
     fun race() {
-        repeat(attempts) {
-            cars.forEach{ it.move() }
-        }
+        cars.forEach { it.move() }
     }
 
     fun getWinners(): List<CarModel> {
