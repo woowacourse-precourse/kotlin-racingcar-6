@@ -17,7 +17,8 @@ class Game {
         //3. 우승자 선정
         val winners = Select.selectWinner(carList.getCars())
 
-
+        //4. 우승자 출력
+        Print.printWinner(winners)
 
 
     }
