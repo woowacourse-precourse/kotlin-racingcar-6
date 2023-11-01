@@ -27,28 +27,6 @@ class RacingCarsTest {
     }
 
     @Test
-    fun `우승자찾기_단독우승자임`() {
-        val firstPlace = RacingCar("pobi", 1)
-        val secondPlace = RacingCar("woni", 0)
-        val racingCars = RacingCars.fromCars(listOf(firstPlace, secondPlace))
-
-        val winners = racingCars.findWinners()
-
-        assertThat(winners).isEqualTo(listOf(firstPlace))
-    }
-
-    @Test
-    fun 우승자찾기_공동우승자임() {
-        val firstPlace = RacingCar("pobi", 1)
-        val secondPlace = RacingCar("woni", 1)
-        val racingCars = RacingCars.fromCars(listOf(firstPlace, secondPlace))
-
-        val winners = racingCars.findWinners()
-
-        assertThat(winners).isEqualTo(listOf(firstPlace, secondPlace))
-    }
-
-    @Test
     fun `toString_차 3대 상황`() {
         val pobi = RacingCar("pobi", 2)
         val woni = RacingCar("woni", 4)

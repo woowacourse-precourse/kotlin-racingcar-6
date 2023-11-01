@@ -9,10 +9,7 @@ class RacingCars private constructor(private val cars: List<RacingCar>) {
 
     fun move() = cars.forEach { it.move(Randoms.pickNumberInRange(0, 9)) }
 
-    fun findWinners(): List<RacingCar> {
-        val maxPosition = cars.maxOf { it.getPosition() }
-        return cars.filter { it.getPosition() == maxPosition }
-    }
+    fun findWinners(): Winners = Winners(cars)
 
     override fun toString() = cars.joinToString("\n")
 

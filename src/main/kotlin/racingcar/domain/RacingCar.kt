@@ -9,6 +9,8 @@ class RacingCar(name: String, private var position: Int = 0) {
         }
     }
 
+    fun getName(): CarName = name
+
     fun getPosition(): Int = position
 
     override fun toString() = "$name : ${"-".repeat(position)}"
