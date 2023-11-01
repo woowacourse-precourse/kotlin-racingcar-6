@@ -12,7 +12,12 @@ class ValidationTest {
     @Test
     fun `차량 이름을 정상적으로 입력했을 때`() {
         val carNames = "fubao,aibao,러바오,731"
-        val carList = listOf(Car("fubao"), Car("aibao"), Car("러바오"), Car("731"))
+        val carList = listOf(
+            Car("fubao"),
+            Car("aibao"),
+            Car("러바오"),
+            Car("731")
+        )
 
         validation.isValidCarName(carNames, carList)
     }
@@ -37,7 +42,10 @@ class ValidationTest {
 
     @Test
     fun `중복된 이름이 있을 때`() {
-        val carList = listOf(Car("fubao"), Car("fubao"))
+        val carList = listOf(
+            Car("fubao"),
+            Car("fubao")
+        )
 
         assertThrows<IllegalArgumentException> {
             validation.checkCarNameDuplication(carList)
@@ -46,7 +54,10 @@ class ValidationTest {
 
     @Test
     fun `자동차 이름 5자 초과 했을 때`() {
-        val carList = listOf(Car("huibao"), Car("bao"))
+        val carList = listOf(
+            Car("huibao"),
+            Car("bao")
+        )
 
         assertThrows<IllegalArgumentException> {
             validation.checkCarNameLength(carList)
@@ -55,7 +66,11 @@ class ValidationTest {
 
     @Test
     fun `자동차 이름 공란일 때`() {
-        val carList = listOf(Car("fubao"), Car(""), Car("bao"))
+        val carList = listOf(
+            Car("fubao"),
+            Car(""),
+            Car("bao")
+        )
 
         assertThrows<IllegalArgumentException> {
             validation.checkCarNameBlank(carList)
