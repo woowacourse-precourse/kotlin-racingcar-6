@@ -1,4 +1,4 @@
-package racingcar.domain
+package racingcar.model
 
 class Car(val name: String) : Movement {
     override fun moveForward() = 1

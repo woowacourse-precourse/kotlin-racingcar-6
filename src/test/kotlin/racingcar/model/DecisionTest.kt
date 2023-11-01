@@ -1,4 +1,4 @@
-package racingcar.domain
+package racingcar.model
 
 import camp.nextstep.edu.missionutils.Randoms
 import org.junit.jupiter.api.Test

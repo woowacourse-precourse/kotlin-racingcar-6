@@ -1,6 +1,6 @@
 package racingcar.view
 
-import racingcar.domain.Car
+import racingcar.model.Car
 
 class Print {
     fun printWinner(winnerList: List<String>) {

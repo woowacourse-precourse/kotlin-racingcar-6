@@ -1,9 +1,9 @@
 package racingcar.controller
 
 import camp.nextstep.edu.missionutils.Console
-import racingcar.domain.Car
-import racingcar.domain.Decision
-import racingcar.domain.Save
+import racingcar.model.Car
+import racingcar.model.Decision
+import racingcar.model.Save
 import racingcar.view.Input
 import racingcar.view.Print
 
