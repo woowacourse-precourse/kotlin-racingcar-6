@@ -2,6 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.max
 
 fun main() {
     startGame()
@@ -20,6 +21,30 @@ fun startGame() {
     for (i in 0 until executionNum) {
         makeOneRound(carList)
     }
+
+    announceWinners(decideWinners(carList))
+}
+
+fun decideWinners(carList: List<Car>): List<String> {
+    val winners = mutableListOf<String>()
+
+    var maxValue = -1
+    for (car in carList) {
+        if (maxValue < car.status) {
+            maxValue = car.status
+        }
+    }
+
+    for (car in carList) {
+        if (maxValue == car.status) {
+            winners.add(car.name)
+        }
+    }
+    return winners
+}
+
+fun announceWinners(winners: List<String>) {
+    print("최종 우승자 : " + winners.joinToString(", "))
 }
 
 fun makeOneRound(carList: List<Car>) {
