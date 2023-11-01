@@ -1,8 +1,8 @@
 package racingcar.domain
 
 class Referee(private val cars: List<Car>) {
-    private var maxPosition = 0
-    private var winningCarNames = mutableListOf<String>()
+    private var maxPosition: Int = 0
+    private var winningCarNames: MutableList<String> = mutableListOf()
 
     init {
         setMaxDistance()
@@ -12,13 +12,7 @@ class Referee(private val cars: List<Car>) {
     fun getWinningCarNames(): List<String> = winningCarNames
 
     private fun setMaxDistance() {
-        cars.forEach {
-            updateMaxDistance(it)
-        }
-    }
-
-    private fun updateMaxDistance(car: Car) {
-        maxPosition = maxPosition.coerceAtLeast(car.getPosition())
+        maxPosition = cars.maxOf { it.getPosition() }
     }
 
     private fun setWinnerCarNames() {

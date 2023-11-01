@@ -4,7 +4,7 @@ import racingcar.utils.StringListSplitter
 import racingcar.utils.RandomGenerator
 
 class Circuit(carNames: String, private var raceRound: Int) {
-    private var cars = mutableListOf<Car>()
+    private val cars = mutableListOf<Car>()
 
     init {
         registerCars(carNames)

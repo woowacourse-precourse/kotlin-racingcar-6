@@ -15,7 +15,6 @@ class CarTest {
         val car = Car("test")
         val expectedName = car.getName()
         val expectedPosition = car.getPosition()
-
         assertThat(car).isNotNull
         assertThat(expectedName).isEqualTo("test")
         assertThat(expectedPosition).isEqualTo(0)
