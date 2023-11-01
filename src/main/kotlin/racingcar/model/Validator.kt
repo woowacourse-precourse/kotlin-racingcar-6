@@ -6,7 +6,7 @@ internal inline fun <T> T.alsoCatching(block: T.() -> Unit): Result<T> =
         this
     }
 
-internal fun List<String>.validateNoDuplicates(): Result<List<String>> =
+internal fun <T> List<T>.validateNoDuplicates(): Result<List<T>> =
     alsoCatching {
         require(this.hasNoDuplicated()) { Error.DuplicatedCarName }
     }
