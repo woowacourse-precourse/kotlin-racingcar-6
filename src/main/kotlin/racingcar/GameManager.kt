@@ -23,7 +23,7 @@ class GameManager(
     }
 
     private fun oneRoundResult() {
-        for (car: Car in carsList) {
+        for (car in this.carsList) {
             car.chooseGoOrStop()
             car.howFarHaveGone()
         }
