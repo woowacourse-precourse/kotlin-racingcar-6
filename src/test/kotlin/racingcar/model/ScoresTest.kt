@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 
 class ScoresTest {
 
-    private val scores = Scores.create(attempt = 3)
+    private val scores = Scores.from(attempt = 3)
 
     @Test
     @DisplayName("attempt 값이 최대를 넘었을 때, 에러를 발생하는지")

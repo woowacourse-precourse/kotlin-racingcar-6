@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource
 
 class BoardTest {
 
-    private val board = Board.create(
+    private val board = Board.of(
         nameOfParticipants = listOf(CarName(CAR_NAME1), CarName(CAR_NAME2)),
         attempt = 4
     )

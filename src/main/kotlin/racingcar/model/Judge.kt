@@ -7,7 +7,7 @@ class Judge(
     private val attempt: Attempt
 ) {
 
-    private val board = Board.create(raceParticipants.getNamesOfParticipants(), attempt)
+    private val board = Board.of(raceParticipants.getNamesOfParticipants(), attempt)
 
     fun play(): Board {
         (1..attempt).forEach { executeMove(it) }

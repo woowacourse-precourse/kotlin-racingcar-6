@@ -3,9 +3,7 @@ package racingcar.model
 typealias Attempt = Int
 typealias Score = Int
 
-class Board private constructor(
-    private val scoresByCarName: MutableMap<CarName, Scores>,
-) {
+class Board private constructor(private val scoresByCarName: Map<CarName, Scores>) {
 
     fun writeResult(carName: CarName, attempt: Attempt, score: Score) {
         val scores = scoresByCarName[carName] ?: throw IllegalArgumentException(Error.InvalidName.message)
@@ -19,8 +17,8 @@ class Board private constructor(
         }
 
     companion object {
-        fun create(nameOfParticipants: List<CarName>, attempt: Attempt): Board {
-            val scoresByCarName = nameOfParticipants.associateWith { Scores.create(attempt) }.toMutableMap()
+        fun of(nameOfParticipants: List<CarName>, attempt: Attempt): Board {
+            val scoresByCarName = nameOfParticipants.associateWith { Scores.from(attempt) }
             return Board(scoresByCarName)
         }
     }
@@ -44,7 +42,7 @@ class Scores private constructor(private val _scoreByAttempt: MutableMap<Attempt
         private const val SCORE_INITIAL = 0
         private const val FIRST_ATTEMPT = 1
 
-        fun create(attempt: Attempt): Scores {
+        fun from(attempt: Attempt): Scores {
             val scoreByAttempt = (FIRST_ATTEMPT..attempt).associateWith { SCORE_INITIAL }
             return Scores(scoreByAttempt.toMutableMap())
         }
