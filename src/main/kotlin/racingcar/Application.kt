@@ -1,5 +1,50 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
+
 fun main() {
-    // TODO: 프로그램 구현
+    startGame()
+}
+
+fun startGame() {
+    val inputList = getInputList()
+    val executionNum = getExecutionNum()
+
+    val carList = mutableListOf<Car>()
+
+    for (str in inputList) {
+        carList.add(Car(str))
+    }
+}
+
+fun isNamein5Letters(inputList: List<String>): Boolean {
+    for (str in inputList) {
+        if (str.length > 5)
+            return false
+    }
+    return true
+}
+
+fun getExecutionNum(): Int {
+    val inputStr = Console.readLine()
+    requireNotNull(inputStr)
+    try {
+        return inputStr.toInt()
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException()
+    }
+}
+
+fun getInputList(): List<String> {
+    val inputStr = Console.readLine()
+    requireNotNull(inputStr)
+    val inputList = inputStr.split(',').toList()
+    check(isNamein5Letters(inputList)) { throw IllegalArgumentException() }
+    return inputList
+}
+
+class Car(name: String) {
+    val name: String = name
+    var status: Int = 0
 }
