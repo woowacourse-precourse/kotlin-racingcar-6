@@ -18,7 +18,7 @@ fun main() {
 fun gameStart() {
     println("레이싱 카 게임")
     println("=====================================")
-    println("경주할 자동차 이름을 입력하세요.(영문이름은 5자까지,  쉼표(,) 기준으로 구분)")
+    println("경주할 자동차 이름을 입력하세요.(이름은 영문으로 쉼표(,) 기준으로 구분)")
 }
 
 fun inputCarName(): MutableList<String> {
@@ -32,9 +32,6 @@ fun inputCarName(): MutableList<String> {
     inputText = Console.readLine().replace(" ", "")
     //맨 왼쪽, 맨 오른쪽 공백은 편의상 제외처리
     afterText = stringPattern.replace(inputText, "")
-
-    println("변환 전 : ${inputText}")
-    println("변환 후 : ${afterText}")
 
     val commaPattern = Regex(",{1,}")
 
@@ -58,9 +55,7 @@ fun inputCarName(): MutableList<String> {
 }
 
 fun getCarNameEmptyCheck(carName: String, carNameList: MutableList<String>): MutableList<String> {
-    println("현재 네임 : ${carName}")
     if (carName == "") {
-        println("여기 들어옴2")
         try {
             throw IllegalArgumentException()
         } catch (e: IllegalArgumentException) {
@@ -111,15 +106,14 @@ fun getCarNameListCheck(carNameList: MutableList<String>): MutableMap<String, In
             carNameMap.clear()
             return carNameMap
         }
-        println("${carName} : ${carNameMap[carName]}")
     }
     return carNameMap
 }
 
 fun getCarNameLengthCheck(carName: String): Boolean {
     if (carName.length > 5) {
+        throw IllegalArgumentException()
         try {
-            throw IllegalArgumentException()
         } catch (e: IllegalArgumentException) {
             println("글자수가 5자를 초과하여 게임종료")
             System.out
