@@ -10,4 +10,8 @@ class OutputView {
     fun outputTryNum() {
         println(Strings.INPUT_TRY_NUM)
     }
+
+    fun outputTryResult() {
+        println("\n" + Strings.TURN_RESULT)
+    }
 }

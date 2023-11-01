@@ -10,6 +10,7 @@ class RacingGame(private val outputView: OutputView, private val inputView: Inpu
         val carList: CarList = CarList(inputCarList())
         outputView.outputTryNum()
         val tryNum: Int = inputTryNum()
+        outputView.outputTryResult()
     }
 
     private fun inputCarList(): String {
