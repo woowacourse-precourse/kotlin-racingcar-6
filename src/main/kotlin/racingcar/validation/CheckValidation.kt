@@ -3,6 +3,7 @@ package racingcar.validation
 import racingcar.model.Car
 import java.lang.NumberFormatException
 
+// 입력값의 유효성을 검사하는 클래스입니다.
 class CheckValidation {
 
     fun checkCarLength(
@@ -40,10 +41,10 @@ class CheckValidation {
     }
 
     fun checkDuplicateCarName(
-        carList: List<Car>
+        carNameList: List<String>
     ) {
         require(
-            checkDuplication(carList)
+            checkDuplication(carNameList)
         ) {
             "자동차 이름은 중복을 허용하지 않습니다."
         }
@@ -91,10 +92,10 @@ class CheckValidation {
     }
 
     private fun checkDuplication(
-        carList : List<Car>
+        carNameList : List<String>
     ): Boolean {
-        val distinctCount = carList.distinct().count()
-        return carList.size == distinctCount
+        val distinctCount = carNameList.distinct().count()
+        return carNameList.size == distinctCount
     }
 
     companion object {

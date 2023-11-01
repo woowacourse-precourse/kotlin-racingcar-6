@@ -4,6 +4,7 @@ package validationTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.model.Car
 import racingcar.validation.CheckValidation
 import java.lang.IllegalArgumentException
 
@@ -47,4 +48,20 @@ class CarValidationTest {
             discriminator.checkCarNameValidation(input)
         }
     }
+
+    @Test
+    fun `자동차 이름 중복값 검사`() {
+        val carNameList = listOf("kona","k7")
+        val result = discriminator.checkDuplicateCarName(carNameList)
+        assertThat(result)
+    }
+
+    @Test
+    fun `자동차 이름 중복값이 있을 경우 예외 발생`() {
+        val carNameList = listOf("kona","kona")
+        assertThrows<IllegalArgumentException>("자동차 이름은 중복을 허용하지 않습니다."){
+            discriminator.checkDuplicateCarName(carNameList)
+        }
+    }
+
 }

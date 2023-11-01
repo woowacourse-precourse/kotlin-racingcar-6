@@ -14,14 +14,15 @@ object GameConsole {
     fun getRacingCount(): Int = racingCount
 
     fun separateCarList() {
-        for (carName in userInput.split(",")) {
+        val carNameList = userInput.split(",")
+        for (carName in carNameList) {
             discriminator.apply {
                 checkCarLength(carName)
                 checkCarNameValidation(carName)
             }
             registerCar((carName))
         }
-        discriminator.checkDuplicateCarName(carList)
+        discriminator.checkDuplicateCarName(carNameList)
     }
 
     fun selectWinner() : List<String>{
