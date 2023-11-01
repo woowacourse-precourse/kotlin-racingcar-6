@@ -1,7 +1,8 @@
 package racingcar
 
-fun main() {
+import camp.nextstep.edu.missionutils.Randoms
 
-    val carGame = RacingCarGame()
-    carGame.gameStart()
+fun main() {
+    var game = Randoms.pickNumberInRange(0, 9)
+    println(game)
 }
