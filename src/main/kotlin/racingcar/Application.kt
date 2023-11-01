@@ -4,61 +4,63 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    startGame()
+    startGame(Console::readLine, Randoms::pickNumberInRange)
 }
 
-fun startGame() {
-    val carList = inputCarName()
-    val tryNumber = inputTryNumber()
+fun startGame(readLine: () -> String, pickNumberInRange: (Int, Int) -> Int) {
+    val carList = inputCarName(readLine)
+    val tryNumber = inputTryNumber(readLine)
 
-    printRacing(carList, tryNumber)
+    printRacing(carList, tryNumber, pickNumberInRange)
 
     val winnerNameList = decideWinnerNameList(carList)
     printWinner(winnerNameList)
 }
 
-fun inputCarName(): List<Car> {
+fun inputCarName(readLine: () -> String): List<Car> {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    return with(Console.readLine().split(",")) {
-        this.map { Car(it) }
-    }
+    return readLine().split(",").map { Car(it.trim()) }
 }
 
-fun inputTryNumber(): Int {
+fun inputTryNumber(readLine: () -> String): Int {
     println("시도할 횟수는 몇 회인가요?")
-    return Console.readLine().apply {
+    return readLine().apply {
         require(this.isNotEmpty() && Regex("[0-9]+").matches(this)) { "시도할 횟수는 숫자만 입력해야만 합니다." }
     }.toInt()
 }
 
-fun printRacing(carList: List<Car>, tryNumber: Int) {
+fun printRacing(carList: List<Car>, tryNumber: Int, pickNumberInRange: (Int, Int) -> Int) {
     println("\n실행 결과")
 
     for (round in 0 until tryNumber) {
-        raceCar(carList)
+        raceCar(carList, pickNumberInRange)
         printCurrentRace(carList)
     }
 }
 
-fun raceCar(carList: List<Car>) {
+fun raceCar(carList: List<Car>, pickNumberInRange: (Int, Int) -> Int) {
     for (car in carList) {
-        val randomNumber = Randoms.pickNumberInRange(0, 9)
-        if (randomNumber >= 4) {
-            car.drive()
-        }
+        val randomNumber = pickNumberInRange(0, 9)
+        driveCar(car, randomNumber)
+    }
+}
+
+fun driveCar(car: Car, randomNumber: Int) {
+    if (randomNumber >= 4) {
+        car.drive()
     }
 }
 
 fun printCurrentRace(carList: List<Car>) {
     for (car in carList) {
-        println("${car.getName()} : ${car.getDistance()}")
+        println("${car.name} : ${car.distance}")
     }
     println()
 }
 
 fun decideWinnerNameList(carList: List<Car>): List<String> {
-    val max = carList.maxOf { it.getDistanceLength() }
-    return carList.filter { it.getDistanceLength() == max }.map { it.getName() }
+    val max = carList.maxOf { it.distanceLength }
+    return carList.filter { it.distanceLength == max }.map { it.name }
 }
 
 fun printWinner(winnerList: List<String>) {
