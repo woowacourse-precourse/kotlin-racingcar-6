@@ -45,6 +45,13 @@ class Validation {
         checkCarNameLength(carList)
     }
 
+    fun checkNumberBlank(numberOfAttempt: String): String {
+        if (numberOfAttempt == "") {
+            throw IllegalArgumentException("값을 입력하세요")
+        }
+        return numberOfAttempt
+    }
+
     fun checkNumberOrNot(numberOfAttempt: String): Int {
         return try {
             numberOfAttempt.toInt()
