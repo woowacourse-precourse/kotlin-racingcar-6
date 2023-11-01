@@ -62,4 +62,51 @@ class PlayerConsoleTest {
             }
         }
     }
+
+    @Nested
+    inner class GetValidMoveCountTest {
+        @Test
+        fun `getValidMoveCount 테스트`() {
+            simulateInput("12")
+            val moveCount = PlayerConsole.getValidMoveCount()
+            assertThat(outputCaptor.toString().trim()).isEqualTo("시도할 횟수는 몇 회인가요?")
+            assertThat(moveCount).isEqualTo(12)
+        }
+
+        @Test
+        fun `getValidMoveCount - 입력값이 비어 있을 때`() {
+            val invalidInputs = listOf("", " ", "  ")
+
+            invalidInputs.forEach { input ->
+                simulateInput(input)
+                val exception = assertThrows<IllegalArgumentException> { PlayerConsole.getValidMoveCount() }
+                assertThat(exception.message).isEqualTo("입력값이 비어 있습니다.")
+                Console.close()
+            }
+        }
+
+        @Test
+        fun `getValidMoveCount - 입력값이 숫자가 아닐 때`() {
+            val invalidInputs = listOf(" 12", "abc")
+
+            invalidInputs.forEach { input ->
+                simulateInput(input)
+                val exception = assertThrows<IllegalArgumentException> { PlayerConsole.getValidMoveCount() }
+                assertThat(exception.message).isEqualTo("숫자만 입력해 주세요.")
+                Console.close()
+            }
+        }
+
+        @Test
+        fun `getValidMoveCount - 입력값의 범위가 조건과 다를 때`() {
+            val invalidInputs = listOf("0", "99999999999")
+
+            invalidInputs.forEach { input ->
+                simulateInput(input)
+                val exception = assertThrows<IllegalArgumentException> { PlayerConsole.getValidMoveCount() }
+                assertThat(exception.message).isEqualTo("입력 숫자의 범위가 유효하지 않습니다.")
+                Console.close()
+            }
+        }
+    }
 }
