@@ -3,20 +3,26 @@ package racingcar
 class RacingCarGame {
     private val racingCarGameManager = RacingCarGameManager()
     private val racingNumberGenerator = RacingNumberGenerator()
+    private val racingCarGameViewer = RacingCarGameViewer()
+    private var racingCars = listOf<RacingCar>()
+    private var totalRound = 0
     private var currentRound = 0
 
     init {
         racingCarGameManager.setConfiguration()
+        this.racingCars = racingCarGameManager.getRacingCars()
+        this.totalRound = racingCarGameManager.getTotalRound()
     }
 
     fun run() {
-
+        playRound()
     }
 
     private fun playRound() {
-        racingCarGameManager.getRacingCars().map { racingCar ->
+        racingCars.map { racingCar ->
             if (racingNumberGenerator.get() >= MIN_MOVING_NUMBER) racingCar.move()
         }
+        racingCarGameViewer.showRoundResult(racingCars)
     }
 
     companion object {
