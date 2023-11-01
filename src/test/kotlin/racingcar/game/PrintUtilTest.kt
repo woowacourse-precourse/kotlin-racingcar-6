@@ -38,7 +38,7 @@ internal class PrintUtilTest {
         // given
         PrintUtil.printExecutionResult()
         // when
-        val expectedStartMessage = "\n실행 결과"
+        val expectedStartMessage = "실행 결과"
         // then
         assertThat(output()).contains(expectedStartMessage)
     }
