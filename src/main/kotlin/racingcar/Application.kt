@@ -17,6 +17,7 @@ fun main() {
 
     for (attempt in 1..numberOfAttempts) {
         val roundResults = simulateRace(cars)
+        printRoundResults(roundResults)
     }
 
 }
@@ -52,3 +53,10 @@ fun simulateRace(cars: List<Car>): Map<String, Int> {
     return roundResults
 }
 
+fun printRoundResults(roundResults: Map<String, Int>) {
+    roundResults.forEach { (carName, position) ->
+        val carDisplay = "-".repeat(position)
+        println("$carName : $carDisplay")
+    }
+    print("\n")
+}
