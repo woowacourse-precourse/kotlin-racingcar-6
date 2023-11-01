@@ -1,5 +1,10 @@
 package racingcar
 
+import racingcar.play.RacingGameManager
+
 fun main() {
-    // TODO: 프로그램 구현
+    RacingGameManager.registerCarNames()
+        .getAttemptCount()
+        .startRace()
+        .announceWinner()
 }
