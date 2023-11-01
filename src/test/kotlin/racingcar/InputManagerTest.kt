@@ -11,7 +11,7 @@ class InputManagerTest {
     fun `입력 받은 자동차 이름의 예외 처리`() {
         val inputData = "ejlfklf, dkd".split(",")
         assertSimpleTest{
-            assertThrows<IllegalArgumentException> { ExceptionManager.carException(inputData) }
+            assertThrows<IllegalArgumentException> { ExceptionManager.validateCars(inputData) }
         }
     }
 
@@ -19,7 +19,7 @@ class InputManagerTest {
     fun `입력 받은 시도 횟수의 예외 처리`() {
         val inputData = "-1"
         assertSimpleTest{
-            assertThrows<IllegalArgumentException> { ExceptionManager.executionNumberException(inputData) }
+            assertThrows<IllegalArgumentException> { ExceptionManager.validateExecutionNumber(inputData) }
         }
     }
 }
