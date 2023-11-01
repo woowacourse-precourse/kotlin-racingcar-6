@@ -9,6 +9,7 @@ object PlayerConsole {
     private const val MESSAGE_INVALID_NAME_LENGTH = "자동차 이름은 한 글자 이상, 5글자 이하로 입력해 주세요."
     private const val MESSAGE_INVALID_NAME_FORMAT = "문자와 숫자만 입력해 주세요."
     private const val MESSAGE_INVALID_NUMBER_FORMAT = "숫자만 입력해 주세요."
+    private const val MESSAGE_EMPTY_FORMAT = "입력값이 비어 있습니다."
     private const val MESSAGE_INVALID_NUMBER_RANGE = "입력 숫자의 범위가 유효하지 않습니다."
     private const val MINIMUM_MOVE_COUNT = 1
     private const val MINIMUM_CAR_NAME_LENGTH = 1
@@ -33,6 +34,7 @@ object PlayerConsole {
     }
 
     private fun String.toIntegerOrException(): Int {
+        require(this.isNotBlank()) { MESSAGE_EMPTY_FORMAT }
         require(this.all { it.isDigit() }) { MESSAGE_INVALID_NUMBER_FORMAT }
         require(this.toLong() in MINIMUM_MOVE_COUNT..Int.MAX_VALUE) { MESSAGE_INVALID_NUMBER_RANGE }
         return this.toInt()
