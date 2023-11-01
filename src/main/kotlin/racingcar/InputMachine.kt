@@ -7,13 +7,13 @@ class InputMachine {
 
         val cars = readln().split(",")
 
-        checkCarNameUnder5(cars)
+        checkCarNameUnderFive(cars)
 
         return cars
 
     }
 
-    private fun checkCarNameUnder5(cars: List<String>) {
+    private fun checkCarNameUnderFive(cars: List<String>) {
 
         for (car in cars) {
 
@@ -22,7 +22,9 @@ class InputMachine {
                 throw IllegalArgumentException("자동차 이름이 5자를 초과합니다.")
 
             } else if (car.isEmpty()) {
+
                 throw IllegalArgumentException("자동차 이름이 없습니다.")
+
             }
 
         }
