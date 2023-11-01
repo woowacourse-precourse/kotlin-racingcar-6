@@ -40,10 +40,20 @@ fun main() {
 
     println("\n실행 결과")
 
-    require(carNames != null && tryCount != null && tryCount > 0) { throw IllegalArgumentException("잘못된 입력입니다.")}
+    require(carNames != null && tryCount != null && tryCount > 0) { throw IllegalArgumentException("잘못된 입력입니다.") }
 
     val carNameList = carNames.split(",")
 
     val cars = carNameList.map { Car(it.trim()) }
-}
 
+    repeat(tryCount) {
+        cars.forEach { it.move() }
+        cars.forEach { it.printPosition() }
+        println()
+    }
+
+    val maxPosition = cars.maxOf { it.position }
+    val winners = cars.filter { it.position == maxPosition }.map { it.name }
+
+    println("최종 우승자 : ${winners.joinToString(", ")}")
+}
