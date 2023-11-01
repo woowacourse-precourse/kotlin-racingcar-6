@@ -12,12 +12,16 @@ class UserTest {
         "pobi",
         "pobi, woni",
         "pobi, woni, jun",
+        "pobi,woni,jun,john",
+        "pobi, woni,  jun,john, tom  "
     )
 
-    private val expectedCarsList = listOf(
-        listOf(Car("pobi")),
-        listOf(Car("pobi"), Car("woni")),
-        listOf(Car("pobi"), Car("woni"), Car("jun"))
+    private val expectedCarNamesList = listOf(
+        listOf("pobi"),
+        listOf("pobi", "woni"),
+        listOf("pobi", "woni", "jun"),
+        listOf("pobi", "woni", "jun", "john"),
+        listOf("pobi", "woni", "jun", "john", "tom")
     )
 
     private val incorrectTestInputs = listOf(
@@ -37,16 +41,13 @@ class UserTest {
     }
 
     @TestFactory
-    fun `차들이 올바르게 생성된 경우`() = testInputs.mapIndexed { index, input ->
+    fun `입력값에 대해 차들이 올바르게 생성된 경우 성공`() = testInputs.mapIndexed { index, input ->
         dynamicTest("테스트 케이스 ${index + 1}") {
-            val cars = user.createCars(input)
-            val expectedCars = expectedCarsList[index]
+            val expectedCarNames = expectedCarNamesList[index]
 
-            val result = cars.zip(expectedCars) { actual, expected ->
-                actual.name == expected.name
-            }.all { it }
+            val actualCarNames = user.createCars(input).map { it.name }
 
-            assertThat(result).isTrue()
+            assertThat(actualCarNames).isEqualTo(expectedCarNames)
         }
     }
 
