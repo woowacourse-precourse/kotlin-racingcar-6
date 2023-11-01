@@ -16,7 +16,7 @@ class RacingGameManager {
     fun run() {
         println(Message.INPUT_CAR_NAME.message)
         carController.run {
-            createCars(inputCarNameFromUser())
+            createCars(inputCarNameFromUser(Console.readLine()))
         }
         println(Message.INPUT_GAME_ROUND.message)
 

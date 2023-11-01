@@ -1,6 +1,5 @@
 package racingcar.controller
 
-import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.validator.InputValidator
 import racingcar.data.Car
@@ -59,12 +58,10 @@ class CarController {
         return cars.maxByOrNull { car -> car.distance }
     }
 
-    fun inputCarNameFromUser(): String {
-        val carName = Console.readLine()
+    fun inputCarNameFromUser(input: String): String {
+        validInputCarName(input)
 
-        validInputCarName(carName)
-
-        return carName
+        return input
     }
 
     private fun validInputCarName(carName: String) {
