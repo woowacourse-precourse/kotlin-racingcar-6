@@ -1,5 +1,6 @@
 package racingcar
 import camp.nextstep.edu.missionutils.Console.readLine
+import camp.nextstep.edu.missionutils.Randoms
 
 fun inputException(inputs: List<String>): List<String> {
 
@@ -18,6 +19,19 @@ fun inputException(inputs: List<String>): List<String> {
 
 }
 
+fun carRace(score: MutableMap<String, String>){
+
+    for ((key, value ) in score) {
+        if (Randoms.pickNumberInRange(0, 9) >= 4 ) {
+            score[key] +="-"
+        }
+
+        println("$key : $value")
+
+    }
+    println()
+
+}
 
 fun main() {
 
@@ -29,14 +43,16 @@ fun main() {
 
     println("시도할 횟수는 몇 회인가요?")
     val chance = readLine().toInt()
+    val score = names.associate { it to "" }.toMutableMap()
+
 
     println("\n실행 결과")
 
     repeat(chance){
 
         // TODO : feat: race
-        println("race function call")
-        println()
+        carRace(score)
+
     }
 
 
