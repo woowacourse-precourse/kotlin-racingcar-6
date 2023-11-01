@@ -42,6 +42,19 @@ class ApplicationTest : NsTest() {
         assertThat(cars.map{ it.name }).isEqualTo(nameList)
     }
 
+    fun List<Car>.toStatusString(): String {
+        val progressCharacter = "-"
+        return this.map { "${it.name} : ${progressCharacter.repeat(it.location)}"}.joinToString("\n")
+    }
+    @Test
+    fun `cars(List of Car) 로부터 현재 상태 출력 테스트`() {
+        val inputString = "pobi,woni,jun"
+        val nameList = inputString.split(",").map { it.trim()  }
+        val names = inputString.split(",").map{ it.trim() }
+        val cars: List<Car> = names.map{ Car(it) }
+        assertThat(cars.toStatusString()).isEqualTo("pobi : \nwoni : \njun : ")
+    }
+
     public override fun runMain() {
         main()
     }
