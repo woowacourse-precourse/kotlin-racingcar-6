@@ -24,6 +24,7 @@ fun main() {
         racingGame.playGame()
 
     } catch (e: IllegalArgumentException) {
-        println(e.message)
+        println(e.message) // 예외 메시지를 출력
+        throw e // 예외를 다시 던짐
     }
 }
