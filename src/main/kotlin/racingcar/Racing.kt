@@ -8,6 +8,7 @@ class Racing {
     fun enterMoveCount(): Int {
         println("시도할 횟수는 몇 회인가요?")
         val num = Console.readLine()
+        Console.close()
         println("")
 
         val moveCount = validateInteger(num)
