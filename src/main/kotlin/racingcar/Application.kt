@@ -2,6 +2,6 @@ package racingcar
 
 fun main() {
 
-    //val carGame = RacingCarGame()
+    var carGame = RacingCarGame()
     //carGame.gameStart()
 }
