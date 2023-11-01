@@ -18,7 +18,12 @@ class RacingGame {
             }
         }
 
+        val maxPosition = cars.maxByOrNull { it.getPosition() }?.getPosition()
+        val winners = cars.filter { it.getPosition() == maxPosition }.joinToString(", ") { it.getName() }
 
+        PrintUtils.printCars(cars)
+        println()
+        PrintUtils.printWinners(winners)
     }
 
     private fun readCarNames(): List<String> {
