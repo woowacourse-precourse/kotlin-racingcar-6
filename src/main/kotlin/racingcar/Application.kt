@@ -6,7 +6,7 @@ fun make_frame(): List<String>{
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val sentence = Console.readLine().split(",")
     for (car in sentence){
-        if (car.length > 3 || car.isEmpty()){
+        if (car.length > 5 || car.isEmpty()){
             throw IllegalArgumentException()
         }
     }
@@ -62,7 +62,7 @@ fun race(){
     val cars = make_frame()
     val record = IntArray(cars.size){0}
     val trial = try_count()
-    println("실행 결과")
+    println("\n실행 결과")
     for (idx in 0 until trial) {
         move(record)
         display(cars, record)
