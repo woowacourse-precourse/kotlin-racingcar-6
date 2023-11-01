@@ -17,4 +17,13 @@ class InputValidate {
             }
         }
     }
+
+    fun validateAttempts(attempts: String): Int{
+        val convertedAttempts = attempts.toIntOrNull()
+            ?: throw IllegalArgumentException("시도 횟수는 숫자여야 합니다.")
+        if (convertedAttempts < 1) {
+            throw IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.")
+        }
+        return convertedAttempts
+    }
 }
