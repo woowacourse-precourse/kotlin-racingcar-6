@@ -6,8 +6,25 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.AfterEach
+import java.io.ByteArrayOutputStream
+import java.io.PrintStream
 
 class ApplicationTest : NsTest() {
+    private val outputBuffer = ByteArrayOutputStream()
+    private val originalOutput = System.out
+
+    @BeforeEach
+    fun setUpOutput() {
+        System.setOut(PrintStream(outputBuffer))
+    }
+
+    @AfterEach
+    fun restoreOutput() {
+        System.setOut(originalOutput)
+    }
+
     @Test
     fun `전진 정지`() {
         assertRandomNumberInRangeTest(
@@ -22,7 +39,8 @@ class ApplicationTest : NsTest() {
     @Test
     fun `이름에 대한 예외 처리`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+            val exception = assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+            assertThat(exception.message).isEqualTo("자동차 이름은 5자 이하만 가능하며, 쉼표(,)로 구분되어야 합니다.")
         }
     }
 
