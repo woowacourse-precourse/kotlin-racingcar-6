@@ -18,6 +18,7 @@ class RaceParticipants private constructor(private val cars: List<Car>) {
 
         fun from(carNames: String): RaceParticipants {
             val cars = carNames.split(NAME_SEPARATOR)
+                .map { s -> s.trim() }
                 .validateNoDuplicates()
                 .getOrThrow()
                 .map { name -> Car(CarName(name)) }
