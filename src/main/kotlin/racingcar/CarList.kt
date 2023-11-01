@@ -42,6 +42,10 @@ data class CarList(private var cars : MutableList<Car>, private var count : Int)
     }
 
 
+    private fun forward(car : Car){
+        car.forwardCount++
+        car.path += "-"
+    }
 
 
 
