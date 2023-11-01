@@ -1,6 +1,6 @@
 package racingcar.dto
 
-class CarDTO (private val carName: String, private val position: Int) {
+class CarDto (private val carName: String, private val position: Int) {
 
     fun getCarName(): String {
         return carName

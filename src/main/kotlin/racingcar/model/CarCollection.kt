@@ -3,8 +3,8 @@ package racingcar.model
 import racingcar.SEPARATOR
 import racingcar.command.CommandInvoker
 import racingcar.command.DoRaceCommand
-import racingcar.dto.CarDTO
-import racingcar.dto.WinnerDTO
+import racingcar.dto.CarDto
+import racingcar.dto.WinnerDto
 
 
 class CarCollection(carNameString: String) {
@@ -43,16 +43,16 @@ class CarCollection(carNameString: String) {
         return cars.getOrNull(index)
     }
 
-    fun getCarsDto(): MutableList<CarDTO> {
+    fun getCarsDto(): MutableList<CarDto> {
         return cars.stream()
-            .map { car: Car -> CarDTO(car.getCarNameString(), car.getPositionNumber()) }
+            .map { car: Car -> CarDto(car.getCarNameString(), car.getPositionNumber()) }
             .toList()
     }
 
-    fun getWinnersDto(): MutableList<WinnerDTO> {
+    fun getWinnersDto(): MutableList<WinnerDto> {
         val winnerList = getWinners()
         return winnerList.stream()
-            .map { car: Car -> WinnerDTO(car.getCarNameString())}
+            .map { car: Car -> WinnerDto(car.getCarNameString())}
             .toList()
     }
 }

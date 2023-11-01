@@ -1,7 +1,7 @@
 package racingcar.service
 
-import racingcar.dto.CarDTO
-import racingcar.dto.WinnerDTO
+import racingcar.dto.CarDto
+import racingcar.dto.WinnerDto
 import racingcar.model.CarCollection
 
 class CarCollectionService (carName: String) {
@@ -11,11 +11,11 @@ class CarCollectionService (carName: String) {
         carCollection = CarCollection(carName)
     }
 
-    fun getCarsDto(): MutableList<CarDTO> {
+    fun getCarsDto(): MutableList<CarDto> {
         return carCollection.getCarsDto()
     }
 
-    fun getWinnersDto(): MutableList<WinnerDTO> {
+    fun getWinnersDto(): MutableList<WinnerDto> {
         return carCollection.getWinnersDto()
     }
 }

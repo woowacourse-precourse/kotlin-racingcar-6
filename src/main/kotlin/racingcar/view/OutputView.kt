@@ -1,8 +1,8 @@
 package racingcar.view
 
 import racingcar.*
-import racingcar.dto.CarDTO
-import racingcar.dto.WinnerDTO
+import racingcar.dto.CarDto
+import racingcar.dto.WinnerDto
 import racingcar.exceptions.UnvalidPositionException
 
 class OutputView {
@@ -10,14 +10,14 @@ class OutputView {
         println(OUTPUT_MESSAGE_RACE_RESULT)
     }
 
-    fun printRound(carDTOList: MutableList<CarDTO>) {
+    fun printRound(carDTOList: MutableList<CarDto>) {
         carDTOList.forEach {carDTO ->
             println(carDTO.getCarName() + OUTPUT_MESSAGE_DIVIDER + createDistanceStringFromPosition(carDTO.getPositionNumber()))
         }
         print(OUTPUT_MESSAGE_NEWLINE)
     }
 
-    fun printWinner(winnerDTOList: MutableList<WinnerDTO>) {
+    fun printWinner(winnerDTOList: MutableList<WinnerDto>) {
         print(OUTPUT_MESSAGE_WINNER_ANNOUNCE)
         winnerDTOList.forEachIndexed {index, winnerDTO ->
             print(winnerDTO.getWinnersName())
