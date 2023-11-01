@@ -6,4 +6,9 @@ class CarList(val carList: List<Car>) {
     fun move(index: Int, speed: Int) {
         carList[index].move(speed)
     }
+
+    fun findWinnerList(carList: CarList): String {
+        val maxPosition: Int = carList.carList.maxOf { it.position }
+        return carList.carList.filter { it.position == maxPosition }.joinToString(separator = ", ") { it.name }
+    }
 }

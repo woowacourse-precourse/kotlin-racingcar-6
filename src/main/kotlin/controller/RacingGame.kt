@@ -15,6 +15,7 @@ class RacingGame(private val outputView: OutputView, private val inputView: Inpu
         repeat(tryNum) {
             tryTurn(carList)
         }
+        outputView.outputWinners(carList)
     }
 
     private fun inputCarList(): String {

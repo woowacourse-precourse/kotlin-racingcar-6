@@ -2,6 +2,7 @@ package view
 
 import constants.Strings
 import model.Car
+import model.CarList
 
 class OutputView {
     fun outputCarList() {
@@ -19,6 +20,11 @@ class OutputView {
     fun outputTurnResult(car: Car) {
         val positionResult: String = "-".repeat(car.position)
         println("${car.name} : $positionResult")
+    }
+
+    fun outputWinners(carList: CarList) {
+        val winnerList: String = carList.findWinnerList(carList)
+        println(Strings.WINNER_LIST + winnerList)
     }
 
     fun outputBlankLine() {
