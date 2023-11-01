@@ -7,6 +7,10 @@ import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
+import racingcar.res.ErrorMessage.BLANK_CAR_NAME_ERRORMESSAGE
+import racingcar.res.ErrorMessage.INDISTINCTIVE_CAR_NAME_ERRORMESSAGE
+import racingcar.res.ErrorMessage.NOT_PROPER_NUMBER_OF_MOVES_ERRORMESSAGE
+import racingcar.res.ErrorMessage.OVER_5_LETTERS_CAR_NAME_ERRORMESSAGE
 
 class RaceGeneratorTest {
 
@@ -49,10 +53,10 @@ class RaceGeneratorTest {
   @ParameterizedTest
   @MethodSource("badNumberOfMovesTest")
   fun badNumberOfMovesTest(input: String) {
-    val exception = assertThrows<IllegalArgumentException>("올바른 횟수를 입력해주세요.") {
+    val exception = assertThrows<IllegalArgumentException>(NOT_PROPER_NUMBER_OF_MOVES_ERRORMESSAGE) {
       myRace.checkNumberOfMoves(input)
     }
-    assertThat(exception.message).isEqualTo("올바른 횟수를 입력해주세요.")
+    assertThat(exception.message).isEqualTo(NOT_PROPER_NUMBER_OF_MOVES_ERRORMESSAGE)
   }
 
   companion object {
@@ -60,17 +64,18 @@ class RaceGeneratorTest {
     fun goodCarNamesTest() = listOf(
       Arguments.of("pobi", listOf("pobi")),
       Arguments.of("pobi,woni,jun", listOf("pobi", "woni", "jun")),
-      Arguments.of("     ,   ,  ", listOf("     ", "   ", "  ")), // 공백 5개, 3개, 2개
+      Arguments.of("   철수,철  수,제 이 슨", listOf("   철수", "철  수", "제 이 슨")),
     )
 
     @JvmStatic
     fun badCarNamesTest() = listOf(
-      Arguments.of("", "자동차 이름을 입력해주세요."),
-      Arguments.of(",,,", "자동차 이름을 입력해주세요."),
-      Arguments.of("브루스,,", "자동차 이름을 입력해주세요."),
-      Arguments.of("one,two,and,overFive", "자동차 이름을 5자 이하로 작성해주세요."),
-      Arguments.of("철수,영희,영희", "자동차 이름들을 구별되게 지어주세요."),
-      Arguments.of("     ,   ,   ", "자동차 이름들을 구별되게 지어주세요."),  // 공백 5개, 3개, 3개
+      Arguments.of("", BLANK_CAR_NAME_ERRORMESSAGE),
+      Arguments.of(",,,", BLANK_CAR_NAME_ERRORMESSAGE),
+      Arguments.of("브루스,,", BLANK_CAR_NAME_ERRORMESSAGE),
+      Arguments.of("     ,   ,   ", BLANK_CAR_NAME_ERRORMESSAGE),
+      Arguments.of("철  수,   ,   영희", BLANK_CAR_NAME_ERRORMESSAGE),
+      Arguments.of("one,two,and,overFive", OVER_5_LETTERS_CAR_NAME_ERRORMESSAGE),
+      Arguments.of("철수,영희,영희", INDISTINCTIVE_CAR_NAME_ERRORMESSAGE),
     )
 
     @JvmStatic
