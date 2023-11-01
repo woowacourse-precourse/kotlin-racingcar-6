@@ -1,7 +1,5 @@
 package racingcar
 
 fun main() {
-
-    val carGame = RacingCarGame()
-    carGame.gameStart()
+    println("예기치못한 오류 수정중..")
 }
