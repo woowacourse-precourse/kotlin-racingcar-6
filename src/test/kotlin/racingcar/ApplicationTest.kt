@@ -29,29 +29,30 @@ class ApplicationTest : NsTest() {
     @Test
     fun `inputString 을 쉼표 기준으로 nameList 변환`() {
         val inputString = "pobi,woni,jun"
-        val nameList = inputString.split(",").map { it.trim()  }
-        assertThat(nameList).contains("pobi","woni","jun")
+        val nameList = inputString.split(",").map { it.trim() }
+        assertThat(nameList).contains("pobi", "woni", "jun")
     }
 
     @Test
     fun `names(String) 을 cars(List) 로 변환 테스트`() {
         val inputString = "pobi,woni,jun"
-        val nameList = inputString.split(",").map { it.trim()  }
-        val names = inputString.split(",").map{ it.trim() }
-        val cars: List<Car> = names.map{ Car(it) }
-        assertThat(cars.map{ it.name }).isEqualTo(nameList)
+        val nameList = inputString.split(",").map { it.trim() }
+        val names = inputString.split(",").map { it.trim() }
+        val cars: List<Car> = names.map { Car(it) }
+        assertThat(cars.map { it.name }).isEqualTo(nameList)
     }
 
     fun List<Car>.toStatusString(): String {
         val progressCharacter = "-"
-        return this.map { "${it.name} : ${progressCharacter.repeat(it.location)}"}.joinToString("\n")
+        return this.map { "${it.name} : ${progressCharacter.repeat(it.location)}" }.joinToString("\n")
     }
+
     @Test
     fun `cars(List of Car) 로부터 현재 상태 출력 테스트`() {
         val inputString = "pobi,woni,jun"
-        val nameList = inputString.split(",").map { it.trim()  }
-        val names = inputString.split(",").map{ it.trim() }
-        val cars: List<Car> = names.map{ Car(it) }
+        val nameList = inputString.split(",").map { it.trim() }
+        val names = inputString.split(",").map { it.trim() }
+        val cars: List<Car> = names.map { Car(it) }
         assertThat(cars.toStatusString()).isEqualTo("pobi : \nwoni : \njun : ")
     }
 
