@@ -28,6 +28,8 @@ class RacingCarController {
             model.moveCar()
             printEachRacingCar(carNames)
         }
+
+        printRacingCarWinner(carNames)
     }
 
     fun printEachRacingCar(carNames: List<String>) {
@@ -38,4 +40,23 @@ class RacingCarController {
         }
         println()
     }
+
+    fun printRacingCarWinner(carNames: List<String>) {
+        val maxProgress = model.getMaxProgress()
+        val winners = mutableListOf<String>()
+
+        for (i in carNames.indices) {
+            val progress = model.getCarProgress(i)
+            if (progress == maxProgress) {
+                winners.add(carNames[i])
+            }
+        }
+
+        if (winners.size == 1) {
+            outputView.singleWinner(winners[0])
+        } else {
+            outputView.multipleWinners(winners)
+        }
+    }
+
 }

@@ -1,8 +1,6 @@
 package racingcar.view
 
-import racingcar.util.COLON
-import racingcar.util.DASH
-import racingcar.util.RESULT_MESSAGE
+import racingcar.util.*
 
 class OutputView {
     fun progressResult() {
@@ -18,5 +16,14 @@ class OutputView {
             print(DASH)
         }
         println()
+    }
+
+    fun singleWinner(winner: String) {
+        println(WINNER_MESSAGE + COLON + "$winner")
+    }
+
+    fun multipleWinners(winners: List<String>) {
+        val winnerNames = winners.joinToString(COMMA + " ")
+        println(WINNER_MESSAGE + COLON + "$winnerNames")
     }
 }

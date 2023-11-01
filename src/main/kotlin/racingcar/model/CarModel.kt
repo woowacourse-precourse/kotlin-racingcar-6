@@ -39,4 +39,8 @@ class CarModel {
     fun getCarProgress(index: Int): Int {
         return progressList[index]
     }
+
+    fun getMaxProgress(): Int {
+        return progressList.maxOrNull() ?: 0
+    }
 }
