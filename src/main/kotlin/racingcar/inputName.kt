@@ -1,5 +1,4 @@
 package racingcar
-
 class inputNames(input: String) {
     private val names: List<String> = input.split(",").map { it.trim() }
     init {

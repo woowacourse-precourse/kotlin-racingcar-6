@@ -1,6 +1,8 @@
 package racingcar
 import racingcar.inputNames
-
+import racingcar.inputTrys
+import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
+import camp.nextstep.edu.missionutils.Console.readLine
 fun main() {
     print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분): ")
     val userInput = readLine() ?: ""
@@ -11,5 +13,9 @@ fun main() {
         names.forEach { println(it) }
     } catch (e: IllegalArgumentException) {
         println("오류: ${e.message}")}
+
+    val inputTrys = inputTrys()
+    val numberOfAttempts = inputTrys.getinputTrys()
+    println("시도할 횟수는 $numberOfAttempts 회입니다.")
 }
 
