@@ -52,7 +52,7 @@ class RacingGame(
 
         while (attemptsNumber > 0) {
             carsList.map { car ->
-                car.moveForward()
+                if (car.createMoveForwardStandard()) car.moveForward()
             }
             printer.printOutCarsMoveResult(carsList = carsList)
             attemptsNumber--
@@ -64,12 +64,7 @@ class RacingGame(
         requireNotNull(maxHowGoForwardCars)
 
         val winners = carsList.filter { it.howGoForwardCount == maxHowGoForwardCars.howGoForwardCount }
-        if (winners.size > 1) {
-            val winnersName = winners.joinToString(",") { it.name }
-            printer.printOutRacingWinner(winnersName)
-        } else {
-            printer.printOutRacingWinner(winners[0].name)
-        }
+        printer.printOutRacingWinner(winners)
     }
 
 }
