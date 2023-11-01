@@ -10,8 +10,12 @@ class StringLengthValidatorTest {
         val validString = "june,pobi"
         val stringLengthValidator: StringValidator = StringLengthValidator()
 
-        val inValidResult = runCatching { stringLengthValidator.validate(inValidString) }.exceptionOrNull()
-        val validResult = runCatching { stringLengthValidator.validate(validString) }.exceptionOrNull()
+        val inValidResult = runCatching {
+            stringLengthValidator.validate(inValidString)
+        }.exceptionOrNull()
+        val validResult = runCatching {
+            stringLengthValidator.validate(validString)
+        }.exceptionOrNull()
 
         assertThat(inValidResult).isInstanceOf(IllegalArgumentException::class.java)
         assertThat(inValidResult!!.message).isEqualTo("문자열의 길이가 1글자 이상 5글자 이하여야 합니다")

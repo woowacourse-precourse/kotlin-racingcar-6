@@ -61,7 +61,10 @@ class RefereeTest {
         cars.forEach { car -> car.move() }
         val winner = referee.determineWinner(cars)
 
-        assertThat(noWinner.toString()).isEqualTo(Winner(listOf()).toString())
+        assertThat(noWinner.toString())
+            .isEqualTo(
+                Winner(listOf()).toString()
+            )
         assertThat(winner.toString()).isEqualTo(
             Winner(
                 listOf(
