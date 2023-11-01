@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Racing {
 
-    fun random09() : Int {
+    fun random09(): Int {
         val num = Randoms.pickNumberInRange(0, 9)
         println(num)
         return num
@@ -14,7 +14,11 @@ class Racing {
     fun forwardOver4(cars: MutableList<Car>) {
 
         for (car in cars) {
-            if (random09() >= 4) {
+            val forward = random09()
+
+            printHyphen(car.name, forward)
+
+            if (forward >= 4) {
                 println("${car.name} : ${car.distance}")
                 car.distance += 1
                 println("${car.name} : ${car.distance}")
@@ -23,8 +27,8 @@ class Racing {
 
     }
 
-    fun printHyphen() {
-
+    private fun printHyphen(carName: String, forward: Int) {
+        println("$carName : ${"-".repeat(forward)}")
     }
 
 }
