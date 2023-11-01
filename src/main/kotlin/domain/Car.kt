@@ -4,16 +4,20 @@ import camp.nextstep.edu.missionutils.Console
 import domain.Constant.INPUT_CAR_NAME_TEXT
 import domain.Constant.NAME_DIVISION_NOTATION
 
-class Car {
-    fun printName() {
-        println(INPUT_CAR_NAME_TEXT)
+class Car(private var name: String) {
+    private var moveCount = 0
 
+    fun moveForward(): Int {
+        moveCount++
+        return moveCount
     }
-    fun inputName(): List<String> {
-        val inputCarName = Console.readLine()
-        // 결과 확인을 위한 예시 출력
-        // println(inputCarName)
-        // println(carName)
-        return inputCarName.split(NAME_DIVISION_NOTATION)
+
+    fun moveStop(): Int {
+        return moveCount
+    }
+
+    // 해결하는데 오래 걸린 부분
+    override fun toString(): String {
+        return "${name}"
     }
 }
