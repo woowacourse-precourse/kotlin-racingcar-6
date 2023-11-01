@@ -3,28 +3,42 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
-object CarNameConstraints {
-    const val VALID_MAXIMUM_LENGTH = 5
+object CarConstraints {
+    const val NAME_MAXIMUM_LENGTH = 5
+    const val RANDOM_MIN_VALUE = 0
+    const val RANDOM_MAX_VALUE = 9
+    const val MOVEMENT_THRESHOLD = 4
+    const val MOVE_DISTANCE = 1
+    const val NO_MOVE_DISTANCE = 0
 }
 
-object CarMovementConstraints {
-    const val RANDOM_NUMBER_GENERATOR_MINIMUM_VALUE = 0
-    const val RANDOM_NUMBER_GENERATOR_MAXIMUM_VALUE = 9
-    const val CAR_MOVEMENT_THRESHOLD = 4
-    const val MOVEMENT_UNIT = 1
-    const val NO_MOVEMENT = 0
-}
-
-object RacingCarGameMessages {
-    const val RACECAR_NAME_QUERY = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-    const val RACECAR_TURN_COUNT_QUERY = "시도할 횟수는 몇 회인가요?"
-    const val GAME_RESULT_TITLE = "실행 결과"
+object GameMessages {
+    const val CAR_NAME_QUERY = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+    const val TURN_COUNT_QUERY = "시도할 횟수는 몇 회인가요?"
+    const val TURN_RESULTS = "실행 결과"
     const val FINAL_WINNER_PREFIX = "최종 우승자 : "
 }
 
 class RaceCar(val name: String, var position: Int = 0) {
     init {
-        require((name.length <= CarNameConstraints.VALID_MAXIMUM_LENGTH)) { "Invalid Car Name." }
+        validateCarName(name)
+    }
+
+    private fun validateCarName(name: String) {
+        require(name.length <= CarConstraints.NAME_MAXIMUM_LENGTH) { "Invalid Car Name." }
+    }
+
+    private fun shouldMove(): Boolean {
+        val randomNumber = Randoms.pickNumberInRange(CarConstraints.RANDOM_MIN_VALUE, CarConstraints.RANDOM_MAX_VALUE)
+        return randomNumber >= CarConstraints.MOVEMENT_THRESHOLD
+    }
+
+    private fun generateMoveDistance(): Int {
+        return if (shouldMove()) CarConstraints.MOVE_DISTANCE else CarConstraints.NO_MOVE_DISTANCE
+    }
+
+    fun move() {
+        position += generateMoveDistance()
     }
 
     override fun toString(): String {
@@ -33,64 +47,60 @@ class RaceCar(val name: String, var position: Int = 0) {
 
 }
 
-fun filterMovableNumber(target: Int): Int {
-    if (target < CarMovementConstraints.CAR_MOVEMENT_THRESHOLD) {
-        return CarMovementConstraints.NO_MOVEMENT
-    }
-    return CarMovementConstraints.MOVEMENT_UNIT
-}
-
-fun randomNumberGenerator(): Int {
-    return Randoms.pickNumberInRange(
-        CarMovementConstraints.RANDOM_NUMBER_GENERATOR_MINIMUM_VALUE,
-        CarMovementConstraints.RANDOM_NUMBER_GENERATOR_MAXIMUM_VALUE
-    )
-}
-
-fun moveDistance(): Int {
-    val randomNumber = randomNumberGenerator()
-    return filterMovableNumber(randomNumber)
-}
-
-private fun RaceCar.move() {
-    position += moveDistance()
-}
-
-fun parseCarName(): List<RaceCar> {
-    println(RacingCarGameMessages.RACECAR_NAME_QUERY)
+private fun promptCarNames(): List<RaceCar> {
+    println(GameMessages.CAR_NAME_QUERY)
     return Console.readLine().split(",").map { RaceCar(it.trim()) }
 }
 
-fun isNonnegativeInt(target: String): Boolean {
-    return (target.isNotEmpty()) and (target.all { it.isDigit() })
+private fun promptTurnCount(): Int {
+    println(GameMessages.TURN_COUNT_QUERY)
+    val turnCountString = Console.readLine()
+    validateTurnCount(turnCountString)
+    return convertTurnCount(turnCountString)
 }
 
-fun parseTurnCount(): Int {
-    println(RacingCarGameMessages.RACECAR_TURN_COUNT_QUERY)
-    val turnCountString = Console.readLine()
-    require(isNonnegativeInt(turnCountString)) { "Invalid Turn Count." }
+private fun validateTurnCount(turnCountString: String) {
+    require((turnCountString.isNotEmpty()) and (turnCountString.all { it.isDigit() })) { "Invalid Turn Count." }
+}
+
+private fun convertTurnCount(turnCountString: String): Int {
     return turnCountString.toInt()
 }
 
-fun turnProcess(raceCars: List<RaceCar>) {
-    for (raceCar in raceCars) {
-        raceCar.move()
-    }
+private fun conductTurnForCars(raceCars: List<RaceCar>) {
+    raceCars.forEach { it.move() }
 }
 
-fun decideWinners(raceCars: List<RaceCar>): List<String> {
-    val longestDistance = raceCars.maxOfOrNull { it.position } ?: 0
-    return raceCars.filter { it.position == longestDistance }.map { it.name }
+private fun conductTurn(raceCars: List<RaceCar>) {
+    conductTurnForCars(raceCars)
+}
+
+private fun displayTurnResult(raceCars: List<RaceCar>) {
+    println(raceCars.joinToString("\n", postfix = "\n"))
+}
+
+private fun determineWinners(raceCars: List<RaceCar>): List<String> {
+    val maxDistance = raceCars.maxOfOrNull { it.position } ?: 0
+    return raceCars.filter { it.position == maxDistance }.map { it.name }
+}
+
+
+private fun displayWinners(raceCars: List<RaceCar>) {
+    val winners = determineWinners(raceCars)
+    println(winners.joinToString(", ", prefix = GameMessages.FINAL_WINNER_PREFIX))
+}
+
+private fun executeGame(raceCars: List<RaceCar>, turnCount: Int) {
+    println("\n${GameMessages.TURN_RESULTS}")
+    repeat(turnCount) {
+        conductTurn(raceCars)
+        displayTurnResult(raceCars)
+    }
+    displayWinners(raceCars)
 }
 
 fun main() {
-    val raceCars = parseCarName()
-    val turnCount = parseTurnCount()
-    println("\n" + RacingCarGameMessages.GAME_RESULT_TITLE)
-    for (i in 1..turnCount) {
-        turnProcess(raceCars)
-        println(raceCars.joinToString("\n", postfix = "\n"))
-    }
-    val winners = decideWinners(raceCars)
-    println(winners.joinToString(", ", RacingCarGameMessages.FINAL_WINNER_PREFIX))
+    val raceCars = promptCarNames()
+    val turnCount = promptTurnCount()
+    executeGame(raceCars, turnCount)
 }
