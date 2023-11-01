@@ -6,6 +6,9 @@ class Game {
 
 
     fun start(){
+        //1. 초기 설정
+        InitSetting.initSet()
+
 
 
 
