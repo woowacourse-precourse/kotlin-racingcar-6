@@ -10,13 +10,22 @@ class Game {
         val names = inputString.split(",").map { it.trim() }
         val cars: List<Car> = names.map { Car(it) }
         println("시도할 횟수는 몇 회인가요?")
-        val loopCount = Console.readLine().trim().toInt()
+        val loopCount = Console.readLine().trim().toLegalInt()
         println("실행 결과")
         cars.race(loopCount)
         print("최종 우승자 : ")
         println(cars.winner())
     }
 }
+
+fun String.toLegalInt(): Int {
+    try {
+        return this.toInt()
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException("숫자만 입력하세요.")
+    }
+}
+
 
 class Car(val name: String) {
     init {
