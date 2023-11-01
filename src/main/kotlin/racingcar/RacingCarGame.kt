@@ -1,8 +1,5 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Randoms
-import kotlin.math.max
-
 class RacingCarGame(private val user: User) {
 
     fun start() {

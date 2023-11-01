@@ -2,6 +2,7 @@ package racingcar
 
 const val NAME_SEPARATOR = ","
 const val MAX_NAME_LENGTH = 5
+
 object Validator {
     private fun isEmptyOrBlank(input: String): Boolean {
         return input.isEmpty() || input.isBlank()
