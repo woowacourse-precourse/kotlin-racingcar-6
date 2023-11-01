@@ -10,9 +10,9 @@ class Validation {
 
         for(i in userList){
             if (i.length >GlobalVariables.nameNum) throw IllegalArgumentException()
-
         }
-
     }
-    
+
+
+
 }
