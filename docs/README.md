@@ -23,8 +23,8 @@
     - ```최종 우승자 : pobi```
   - [ ] 공동 우승자를 출력할 수 있다. - DisplayBoard#displayWinners()
     - ```최종 우승자 : pobi, jun```
-- [ ] 각 차수별 실행결과를 출력할 수 있다. - DisplayBoard#displayRacingCars()
-  - [ ] 위치 한 칸은 -로 표시한다.
+- [X] 각 차수별 실행결과를 출력할 수 있다. - DisplayBoard#displayRacingCars()
+  - [X] 위치 한 칸은 -로 표시한다.
   - ```
     pobi : --
     woni : ----

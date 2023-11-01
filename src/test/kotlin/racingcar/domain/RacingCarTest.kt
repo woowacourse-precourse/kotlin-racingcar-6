@@ -48,4 +48,18 @@ class RacingCarTest {
 
         assertThat(racingCar.getPosition()).isEqualTo(1)
     }
+
+    @Test
+    fun `toString_이름이 pobi이고 0칸에 위치`() {
+        val racingCar = RacingCar("pobi")
+
+        assertThat(racingCar.toString()).isEqualTo("pobi : ")
+    }
+
+    @Test
+    fun `toString_이름이 woni이고 4칸에 위치`() {
+        val racingCar = RacingCar("woni", 4)
+
+        assertThat(racingCar.toString()).isEqualTo("woni : ----")
+    }
 }

@@ -47,4 +47,20 @@ class RacingCarsTest {
 
         assertThat(winners).isEqualTo(listOf(firstPlace, secondPlace))
     }
+
+    @Test
+    fun `toString_차 3대 상황`() {
+        val pobi = RacingCar("pobi", 2)
+        val woni = RacingCar("woni", 4)
+        val jun = RacingCar("jun", 3)
+        val racingCars = RacingCars.fromCars(listOf(pobi, woni, jun))
+
+        assertThat(racingCars.toString()).isEqualTo(
+            """
+            pobi : --
+            woni : ----
+            jun : ---
+            """.trimIndent()
+        )
+    }
 }

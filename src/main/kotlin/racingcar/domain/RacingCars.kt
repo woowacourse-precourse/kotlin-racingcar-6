@@ -14,6 +14,8 @@ class RacingCars private constructor(private val cars: List<RacingCar>) {
         return cars.filter { it.getPosition() == maxPosition }
     }
 
+    override fun toString() = cars.joinToString("\n")
+
     companion object {
         private const val MINIMUM_NUMBER_OF_CARS = 2
 

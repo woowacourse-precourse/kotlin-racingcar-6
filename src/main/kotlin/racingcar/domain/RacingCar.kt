@@ -17,6 +17,8 @@ class RacingCar(name: String, private var position: Int = 0) {
 
     fun getPosition(): Int = position
 
+    override fun toString() = "$name : ${"-".repeat(position)}"
+
     companion object {
         private const val MIN_NAME_LENGTH = 1
         private const val MAX_NAME_LENGTH = 5
