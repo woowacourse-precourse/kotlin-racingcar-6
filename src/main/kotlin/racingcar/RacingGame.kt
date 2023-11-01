@@ -7,13 +7,13 @@ class RacingGame {
     private val validation = Validation()
 
     fun start() {
-        val carNamesList = getCarNames()
+        val carNames = getCarNames()
         val numberOfAttempt = getNumberOfAttempt()
 
         showGameHeader()
-        val carsFinalPosition = printRaceResult(numberOfAttempt, carNamesList)
+        val carsFinalPosition = printRaceResult(numberOfAttempt, carNames)
 
-        val winners = host.determineWinners(carsFinalPosition, carNamesList)
+        val winners = host.determineWinners(carsFinalPosition, carNames)
         host.printWinners(winners)
     }
 
