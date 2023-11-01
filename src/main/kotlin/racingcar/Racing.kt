@@ -22,6 +22,15 @@ class Racing {
         }
     }
 
+    fun determineProgress(carProgressList : MutableList<Int>): MutableList<Int>{
+        for (i in 0..<carProgressList.size){
+            if (validateMoveCondition(createRandomNumber())){
+                carProgressList[i]+=1
+            }
+        }
+        return carProgressList
+    }
+
     fun createRandomNumber(): Int{
         return Randoms.pickNumberInRange(0, 9)
     }
