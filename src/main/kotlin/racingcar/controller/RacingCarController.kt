@@ -38,27 +38,31 @@ class RacingCarController(racingCarView: RacingCarView) {
 
     }
 
-    private fun initializeCars(carNames: List<String>) {
+    fun initializeCars(carNames: List<String>) {
         for (carName in carNames) {
             var car = Car(carName)
             carList.add(car)
         }
     }
 
-    private fun moveForwardCarList() {
+    fun moveForwardCarList() {
         for (car in carList) {
             moveForwardCar(car)
         }
     }
 
-    private fun moveForwardCar(car: Car) {
+    fun moveForwardCar(car: Car) {
         if (randomNumberGenerator(0, 9) >= 4) {
             car.increaseForwardCount()
         }
     }
 
-    private fun selectFinalWinner(carList: List<Car>): List<Car> {
+    fun selectFinalWinner(carList: List<Car>): List<Car> {
         var maxForwardCount = carList.maxByOrNull { it.getForwardCount() }?.getForwardCount()
-        return carList.filter{ it.getForwardCount() == maxForwardCount }
+        return carList.filter { it.getForwardCount() == maxForwardCount }
+    }
+
+    fun getCarList(): List<Car> {
+        return carList
     }
 }
