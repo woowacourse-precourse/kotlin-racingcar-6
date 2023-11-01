@@ -58,12 +58,18 @@ fun display_winner(cars: List<String>, winner:ArrayList<Int>){
     println("최종 우승자 : ${answer.joinToString(",")}")
 }
 
-fun main() {
+fun race(){
     val cars = make_frame()
     val record = IntArray(cars.size){0}
-    for (idx in 0 until try_count()) {
+    val trial = try_count()
+    println("실행 결과")
+    for (idx in 0 until trial) {
         move(record)
         display(cars, record)
     }
     display_winner(cars, find_winner(record))
+}
+
+fun main() {
+    race()
 }
