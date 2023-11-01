@@ -17,6 +17,15 @@ fun main() {
 
     }
 
+    repeat( numberOfRounds ) {
+        for ( item in carObjectList ) {
+            item.moveCar()
+            item.printLocation()
+
+        }
+        println("")
+
+    }
 
 }
 
