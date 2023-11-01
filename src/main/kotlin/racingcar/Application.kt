@@ -8,8 +8,6 @@ fun main() {
     val carGame = Console.readLine()
     var test = Randoms.pickNumberInRange(0, 9)
 
-    test++
-
     println(carGame)
     println(test)
     Console.close()
