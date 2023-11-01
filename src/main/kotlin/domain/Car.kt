@@ -9,11 +9,11 @@ class Car {
         println(INPUT_CAR_NAME_TEXT)
 
     }
-    fun inputName() {
+    fun inputName(): List<String> {
         val inputCarName = Console.readLine()
-        val carName = inputCarName.split(NAME_DIVISION_NOTATION)
         // 결과 확인을 위한 예시 출력
-        println(inputCarName)
-        println(carName)
+        // println(inputCarName)
+        // println(carName)
+        return inputCarName.split(NAME_DIVISION_NOTATION)
     }
 }
