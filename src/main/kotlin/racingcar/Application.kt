@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     game()
-
 }
 
 fun parsingInput(): List<String> {
@@ -49,7 +48,7 @@ fun game() {
     }
     println("시도할 횟수는 몇 회인가요?")
     val runtime = inputNumber()
-    println("\n실행결과")
+    println("\n실행결과\n")
     for (time: Int in 1..runtime) {
         gameMain(playerList)
     }
