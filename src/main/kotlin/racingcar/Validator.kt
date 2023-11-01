@@ -26,4 +26,18 @@ object Validator {
             throw IllegalArgumentException("자동차 이름은 ${MAX_NAME_LENGTH}자 이하로 입력해주세요.")
         }
     }
+
+    fun isInvalidNumericInput(input: String): Boolean {
+        return !input.all { it.isDigit() }
+    }
+
+    fun validateInputMoveCount(input: String) {
+        if (isEmptyInput(input)) {
+            throw IllegalArgumentException("입력이 잘못되었어요.")
+        }
+
+        if (isInvalidNumericInput(input)) {
+            throw IllegalArgumentException("이동 횟수는 숫자로 입력해주세요.")
+        }
+    }
 }

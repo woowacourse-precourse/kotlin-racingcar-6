@@ -17,4 +17,16 @@ class User {
 
         return carNames.map { Car(it) }
     }
+
+    fun requestInputMoveCount(): Int {
+        val input = Console.readLine()
+
+        return parseMoveCountInput(input)
+    }
+
+    private fun parseMoveCountInput(input: String): Int {
+        Validator.validateInputMoveCount(input)
+
+        return input.toInt()
+    }
 }
