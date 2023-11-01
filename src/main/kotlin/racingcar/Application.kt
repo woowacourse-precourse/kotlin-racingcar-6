@@ -11,13 +11,13 @@ fun main() {
     invalidTryCountCheck(tryCount)
     val racingCars = racingCarNames.map { RacingCar(it) }
     race(racingCars, tryCount)
-    printFinalWinner(racingCars)
+    print(finalWinner(racingCars))
 }
 
-fun printFinalWinner(racingCars: List<RacingCar>) {
-    val winner = racingCars.maxByOrNull { it.mileage }
-    val winnerNames = racingCars.filter { it.mileage == winner?.mileage }.map { it.name }
-    println("최종 우승자 : ${winnerNames.joinToString(", ")}")
+fun finalWinner(racingCars: List<RacingCar>): String {
+    val winner = racingCars.maxBy { it.mileage }
+    val winnerNames = racingCars.filter { it.mileage == winner.mileage }.map { it.name }
+    return "최종 우승자 : ${winnerNames.joinToString(", ")}"
 }
 
 fun race(racingCars: List<RacingCar>, tryCount: Int?) {
