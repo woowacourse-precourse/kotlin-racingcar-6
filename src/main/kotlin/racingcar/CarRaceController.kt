@@ -12,15 +12,15 @@ class CarRaceController {
     private lateinit var carCollectionService: CarCollectionService
     private lateinit var round: Round
 
-        /*
+
     fun doRace() {
         getCars()
         getRound()
         raceStart()
         printWinner()
-        CommandInvoker.clearCommands()
+        //CommandInvoker.clearCommands()
     }
-*/
+
     private fun getCars() {
         val inputString = inputView.inputCarNames()
         carCollectionService = CarCollectionService(inputString)
