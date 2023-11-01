@@ -1,6 +1,6 @@
 package racingcar
 class inputNames(input: String) {
-    private val names: List<String> = input.split(",").map { it.trim() }
+    public val names: List<String> = input.split(",").map { it.trim() }
     init {
         require(names.size <= 3) { "최대 3개의 이름을 입력하세요." }
         names.forEach {

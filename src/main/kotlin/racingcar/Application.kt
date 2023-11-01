@@ -1,6 +1,7 @@
 package racingcar
 import racingcar.inputNames
 import racingcar.inputTrys
+import racingcar.randomMove
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 import camp.nextstep.edu.missionutils.Console.readLine
 fun main() {
@@ -17,5 +18,7 @@ fun main() {
     val inputTrys = inputTrys()
     val numberOfAttempts = inputTrys.getinputTrys()
     println("시도할 횟수는 $numberOfAttempts 회입니다.")
+
+    val randomMove = randomMove()
 }
 
