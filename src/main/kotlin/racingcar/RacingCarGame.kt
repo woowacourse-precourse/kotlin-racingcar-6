@@ -21,8 +21,8 @@ class RacingCarGame {
     private fun playRound() {
         racingCars.map { racingCar ->
             if (racingNumberGenerator.get() >= MIN_MOVING_NUMBER) racingCar.move()
+            racingCarGameViewer.showMoveResult(racingCar)
         }
-        racingCarGameViewer.showRoundResult(racingCars)
     }
 
     companion object {

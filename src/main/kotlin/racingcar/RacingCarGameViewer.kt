@@ -2,11 +2,11 @@ package racingcar
 
 class RacingCarGameViewer {
 
-    fun showRoundResult(racingCars: List<RacingCar>) {
-        racingCars.map { racingCar -> println(racingCarMovedResult(racingCar)) }
+    fun showMoveResult(racingCar: RacingCar) {
+        println(getMoveResult(racingCar))
     }
 
-    private fun racingCarMovedResult(racingCar: RacingCar): String {
+    private fun getMoveResult(racingCar: RacingCar): String {
         return racingCar.getName() + BLANKED_COLON + DASH.repeat(racingCar.getPosition())
     }
 
