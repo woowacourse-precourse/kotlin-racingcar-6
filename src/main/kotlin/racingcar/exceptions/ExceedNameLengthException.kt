@@ -1,5 +1,0 @@
-package racingcar.exceptions
-
-import racingcar.EXCEPTION_MESSAGE_EXCEED_NAME_LENGTH
-
-class ExceedNameLengthException : IllegalArgumentException(EXCEPTION_MESSAGE_EXCEED_NAME_LENGTH)

@@ -1,5 +1,0 @@
-package racingcar.exceptions
-
-import racingcar.EXCEPTION_MESSAGE_WRONG_ROUND_NUMBER
-
-class WrongRoundNumberException : IllegalArgumentException(EXCEPTION_MESSAGE_WRONG_ROUND_NUMBER)
