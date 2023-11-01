@@ -19,7 +19,7 @@ fun getCarNames(): String {
     return input
 }
 
-fun getValidCarNamesArray(carNames: String): Collection<Car> {
+fun getValidCarNamesArray(carNames: String): List<Car> {
     val carNamesArray = carNames.split(",").map { Car(it, 0) }
     if (carNamesArray.any { it.name.length > 5 }) throw IllegalArgumentException("자동차 이름은 5자 이하 이어야 함")
     return carNamesArray
