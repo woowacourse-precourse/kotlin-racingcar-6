@@ -49,6 +49,13 @@ fun printScore(num : Int){
     }
 }
 
+fun printCarWithScore(carNamesList: List<Car>){
+    for(car in carNamesList){
+        val scoreLine = "-".repeat(car.score)
+        println("${car.name} : $scoreLine")
+    }
+}
+
 
 
 
