@@ -57,4 +57,11 @@ class ApplicationTest : NsTest() {
             validationCarName(listOf("abc", "abc", "abcde"))
         }
     }
+
+    @Test
+    fun `시도 횟수가 0인 경우 예외 발생`() {
+        assertThrows<IllegalArgumentException>("0번 시도할 수는 없습니다.") {
+            validationNumberAttempts("0")
+        }
+    }
 }
