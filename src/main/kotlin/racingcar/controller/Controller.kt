@@ -20,6 +20,7 @@ class Controller(
         val attempt = getAttempts()
         OutputView.executionResult()
         forwardOrStop(attempt)
+        val winners = getWinners(getGreatestPosition())
     }
 
     private fun getNamesOfCar(): List<String> {
@@ -45,5 +46,9 @@ class Controller(
 
     private fun getGreatestPosition(): Int {
         return cars.maxOf { car -> car.currentPosition.length }
+    }
+
+    private fun getWinners(getGreatestPosition: Int): List<Car> {
+        return cars.filter { car -> car.currentPosition.length == getGreatestPosition }
     }
 }
