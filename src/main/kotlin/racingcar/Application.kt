@@ -54,9 +54,13 @@ class RacingCarGame {
 }
 
 class Car(val name: String) {
-    var position = 0
+    private var position = 0
 
     fun move() {
-        val randomValue = Randoms.pickNumberInRange(0,9)
+        val randomValue = Randoms.pickNumberInRange(0, 9)
+
+        if (randomValue >= 4) {
+            position++
+        }
     }
 }
