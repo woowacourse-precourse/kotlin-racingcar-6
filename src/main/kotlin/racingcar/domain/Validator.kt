@@ -27,7 +27,6 @@ class Validator(inputCarsNames: String, inputRound: Int) {
             if (carList.size != 1) {
                 throw IllegalArgumentException("2대 이상의 차가 필요합니다.")
             }
-
         }
 
         private fun validateRound(inputRound: Int) {
