@@ -44,7 +44,12 @@ class ApplicationTest : NsTest() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni,jun", "5")
-                assertThat(output()).contains("pobi : ----", "woni : ---", "jun : ---", "최종 우승자 : pobi")
+                assertThat(output()).contains(
+                    "pobi : ----",
+                    "woni : ---",
+                    "jun : ---",
+                    "최종 우승자 : pobi"
+                )
             },
             randomNumbers[0], *randomNumbers.copyOfRange(1, randomNumbers.size).toTypedArray()
         )
@@ -57,7 +62,12 @@ class ApplicationTest : NsTest() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni,jun", "5")
-                assertThat(output()).contains("pobi : ----", "woni : ----", "jun : ---", "최종 우승자 : pobi, woni")
+                assertThat(output()).contains(
+                    "pobi : ----",
+                    "woni : ----",
+                    "jun : ---",
+                    "최종 우승자 : pobi, woni"
+                )
             },
             randomNumbers[0], *randomNumbers.copyOfRange(1, randomNumbers.size).toTypedArray()
         )
@@ -68,15 +78,16 @@ class ApplicationTest : NsTest() {
     }
 
     companion object {
-        const val MOVING_FORWARD = 4
-        const val STOP = 3
+        private const val MOVING_FORWARD = 4
+        private const val STOP = 3
 
         @JvmStatic
-        fun RandomNumbersSingleWinner() = listOf(
+        private fun RandomNumbersSingleWinner() = listOf(
             intArrayOf(6, 4, 3, 8, 0, 6, 4, 7, 4, 5, 8, 5, 3, 0, 3), // 4, 3, 3
         )
+
         @JvmStatic
-        fun RandomNumbersMultiWinners() = listOf(
+        private fun RandomNumbersMultiWinners() = listOf(
             intArrayOf(6, 4, 3, 8, 0, 6, 4, 7, 4, 5, 8, 5, 3, 5, 3), // 4, 4, 3
         )
     }

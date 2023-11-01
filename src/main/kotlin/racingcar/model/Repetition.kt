@@ -4,7 +4,7 @@ data class Repetition(
     private val inputRepetition: String,
 ) {
     private var _count: Int
-    val count: Int get() = _count
+    internal val count: Int get() = _count
 
     init {
         checkDigitRange()

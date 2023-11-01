@@ -21,6 +21,7 @@ class GameController {
 
         playGame(cars, repetition)
     }
+
     private fun inputCarName(): List<String> {
         val carNameInput = inputView.promptCarNames()
         return inputView.splitCarNamesByComma(carNameInput)

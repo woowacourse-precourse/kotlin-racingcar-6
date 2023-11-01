@@ -1,5 +1,5 @@
 package racingcar.view
 
 internal object Constants {
-    const val COMMA_DELIMITERS = ','
+    internal const val COMMA_DELIMITERS = ','
 }

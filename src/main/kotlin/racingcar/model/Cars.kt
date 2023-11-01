@@ -4,7 +4,7 @@ data class Cars(
     private val inputCars: List<Car>,
 ) {
     private var _carList: List<Car>
-    val carList: List<Car> get() = _carList
+    internal val carList: List<Car> get() = _carList
 
     init {
         checkDuplicateName(inputCars)

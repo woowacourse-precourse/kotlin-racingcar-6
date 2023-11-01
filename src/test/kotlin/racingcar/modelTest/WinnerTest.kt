@@ -2,9 +2,7 @@ package racingcar.modelTest
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
@@ -44,7 +42,7 @@ class WinnerTest {
 
     companion object {
         @JvmStatic
-        fun carListForZeroScore(): List<List<Car>> {
+        private fun carListForZeroScore(): List<List<Car>> {
             return listOf(
                 listOf(
                     Car("Pobi", 0),
@@ -55,7 +53,7 @@ class WinnerTest {
         }
 
         @JvmStatic
-        fun carListForSingleWinner(): List<List<Car>> {
+        private fun carListForSingleWinner(): List<List<Car>> {
             return listOf(
                 listOf(
                     Car("Pobi", 5),
@@ -66,7 +64,7 @@ class WinnerTest {
         }
 
         @JvmStatic
-        fun carListForMultiWinner(): List<List<Car>> {
+        private fun carListForMultiWinner(): List<List<Car>> {
             return listOf(
                 listOf(
                     Car("Pobi", 8),
