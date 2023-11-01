@@ -4,11 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 
 class InputView {
-    fun carNameInput(): String {
-        return Console.readLine()
-    }
-
-    fun tryNameInput(): String {
+    fun Input(): String {
         return Console.readLine()
     }
 }

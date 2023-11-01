@@ -8,25 +8,27 @@ import racingcar.view.OutputView
 class GameManager {
     fun start() {
         val carNamesSeparated = carNameinput()
-        val tryNum = tryNumberInput()
+        val tryNum= tryNumberInput()
+        validate(carNamesSeparated,tryNum.toString())
         val carProgress = racing(carNamesSeparated, tryNum)
         winnerOutput(carNamesSeparated, carProgress)
         Console.close()
     }
-
+    fun validate(carNamesSeparated: List<String>, tryNum:String){
+        Validation().carName(carNamesSeparated)
+        Validation().tryNum(tryNum)
+    }
     fun carNameinput(): List<String> {
         OutputView().carInputMassage()
-        val carNames = InputView().carNameInput()
+        val carNames = InputView().Input()
         val carNamesSeparated = CarNameSeparator().separator(carNames)
-        Validation().carName(carNamesSeparated)
         return carNamesSeparated
     }
 
     fun tryNumberInput(): Int {
         OutputView().tryInputMassage()
-        val tryNum = InputView().tryNameInput() // 시도 횟수 입력
-        val num = Validation().tryNum(tryNum)
-        return num
+        val tryNum = InputView().Input() // 시도 횟수 입력
+        return tryNum.toInt()
     }
 
     fun racing(carNamesSeparated: List<String>, tryNum: Int): List<String> {
