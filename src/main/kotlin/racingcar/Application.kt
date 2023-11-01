@@ -4,10 +4,12 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
+    println(Const.INPUT_CARNAME)
     val carInput = Console.readLine()
     val carList = carInput.split(",")
     processExceptionCar(carList)
 
+    println(Const.INPUT_COUNT)
     val countInput = Console.readLine()
     processExceptionCount(countInput)
 
