@@ -1,7 +1,6 @@
 package util
 
 import constants.ErrorMessage
-import javax.xml.stream.events.Characters
 
 class Validator {
     fun checkCarName(name: String) {
@@ -25,7 +24,7 @@ class Validator {
     }
 
     private fun checkNameNull(name: String) {
-        if(name.isEmpty())  throw IllegalArgumentException(ErrorMessage.INPUT_CAR_NAME_NULL)
+        if(name.isEmpty()) throw IllegalArgumentException(ErrorMessage.INPUT_CAR_NAME_NULL)
     }
 
     private fun checkNameSize(name: String) {
