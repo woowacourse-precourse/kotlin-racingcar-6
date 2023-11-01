@@ -14,6 +14,7 @@ class GameController {
 		createRaceNumber()
 		println()
 		playRace()
+		gameResult()
 	}
 
 	fun createCarList() {
@@ -31,5 +32,9 @@ class GameController {
 	fun playRace() {
 		println(InformationMessage.EXECUTION_RESULT.message)
 		raceService.playRace()
+	}
+	fun gameResult() {
+		val winner = carService.getWinner()
+		println(InformationMessage.FINAL_WINNER.message + winner)
 	}
 }

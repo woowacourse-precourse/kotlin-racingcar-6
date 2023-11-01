@@ -24,4 +24,10 @@ class CarService {
 			if(random >= 4) car.move()
 		}
 	}
+
+	fun getWinner(): String {
+		val largestNumber = Companion.cars.maxOf(Car::location)
+		return Companion.cars.filter { it.location == largestNumber }
+					.joinToString(separator = ", ") { car -> car.name }
+	}
 }
