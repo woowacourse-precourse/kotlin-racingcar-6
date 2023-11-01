@@ -6,7 +6,7 @@ object Validator {
         userInputLength(carNamesList)
         userInputContainsNumber(carNamesList)
         userInputContainsWhitespace(carNamesList)
-        userInputBlack(carNamesList)
+        userInputBlank(carNamesList)
     }
 
     private fun userInputLength(carNamesList: List<String>) {
@@ -30,7 +30,7 @@ object Validator {
         }
     }
 
-    private fun userInputBlack(carNamesList: List<String>) {
+    private fun userInputBlank(carNamesList: List<String>) {
         if (carNamesList.any { it.isBlank() }) {
             throw IllegalArgumentException("이름을 입력해주세요.")
         }

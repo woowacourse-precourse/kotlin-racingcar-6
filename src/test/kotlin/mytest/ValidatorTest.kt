@@ -35,6 +35,15 @@ class ValidatorTest {
             }
         }
     }
+    @Test
+    fun `자동차의 이름을 입력하지 않았다면 예외처리`() {
+        val carBlankNameList: List<String> = listOf("")
+        assertThrows<IllegalArgumentException>("이름을 입력해주세요.") {
+            if (carBlankNameList.any { it.isBlank() }) {
+                throw IllegalArgumentException("이름을 입력해주세요.")
+            }
+        }
+    }
 
     @Test
     fun `시도횟수가 숫자가 아니면 예외처리`() {
