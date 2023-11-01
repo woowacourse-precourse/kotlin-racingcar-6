@@ -1,12 +1,13 @@
 package racingcar.io
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.io.checker.ExceptionCheckerInterface
 
 class Input {
-    fun getInput(inputType: InputEnum): String {
+    fun getInput(checker: ExceptionCheckerInterface): String {
         val inputString = Console.readLine()
 
-        inputType.exceptionChecker.check(inputString)
+        checker.check(inputString)
 
         return inputString
     }

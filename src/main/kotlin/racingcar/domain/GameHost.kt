@@ -3,20 +3,21 @@ package racingcar.domain
 import racingcar.model.Car
 import racingcar.util.Const
 import racingcar.io.Input
-import racingcar.io.InputEnum
 import racingcar.io.Printer
+import racingcar.io.checker.CarNameExceptionChecker
+import racingcar.io.checker.LoopCountExceptionChecker
 
 class GameHost {
     fun start() {
         val inputModule = Input()
         println(Const.START_MSG)
-        val inputString = inputModule.getInput(InputEnum.CAR_NAME)
+        val inputString = inputModule.getInput(CarNameExceptionChecker())
         val carList = inputString.split(",").map {
             Car(it)
         }
 
         println(Const.LOOP_MSG)
-        val loopString = inputModule.getInput(InputEnum.LOOP_COUNT)
+        val loopString = inputModule.getInput(LoopCountExceptionChecker())
         val loop = loopString.toInt()
         println()
         println(Const.LOOP_START_MSG)
