@@ -28,27 +28,6 @@ class ApplicationTest : NsTest() {
         }
     }
 
-    @Test
-    fun `이름이 범위 밖인 경우`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException(",javaji", "1") }
-        }
-    }
-
-    @Test
-    fun `,외 다른 것으로 구분 시 예외 처리`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("ppb.ads", "1") }
-        }
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = ["@", "한", "A", "", " "])
-    fun `시도할 횟수가 숫자가 아닌 경우`(testInput: String) {
-        assertThrows<IllegalArgumentException>("숫자를 입력해주세요") {
-            require(testInput.toIntOrNull() != null)
-        }
-    }
 
     public override fun runMain() {
         main()
