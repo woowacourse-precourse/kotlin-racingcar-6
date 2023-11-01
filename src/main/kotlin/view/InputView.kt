@@ -12,9 +12,16 @@ class InputView {
         return names
     }
 
-    fun isValidLength(names: List<String>){
-        for(name in names){
+    fun isValidLength(names: List<String>) {
+        for (name in names) {
             ExceptionHandler.checkNameLength(name)
         }
+    }
+    fun requireTryCnt(): Int {
+        var cnt : String
+        do {
+            cnt = Console.readLine()
+        } while (!ExceptionHandler.checkValidCount(cnt))
+        return cnt.toInt()
     }
 }
