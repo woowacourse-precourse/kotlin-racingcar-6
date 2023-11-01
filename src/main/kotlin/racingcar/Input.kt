@@ -9,6 +9,12 @@ class Input {
         return carName
     }
 
+    fun inputGameNumber(): Int {
+        val gameNumber = Console.readLine().toInt()
+        gameNumberCheck(gameNumber)
+        return gameNumber
+    }
+
     private fun nameCheck(carName: List<String>) {
         for (carName in carName) {
             if (carName.length > 5) {
@@ -17,6 +23,18 @@ class Input {
             if (carName.isEmpty()) {
                 throw IllegalArgumentException("자동차 이름을 입력해 주세요.")
             }
+        }
+    }
+
+    private fun gameNumberCheck(gameNumber: Int) {
+        //if (gameNumber == null) {
+        //throw IllegalArgumentException("시도할 횟수를 입력해 주세요.")
+        //}
+        //if (gameNumber !is Int) {
+        //throw IllegalArgumentException("숫자를 입력해 주세요.")
+        //}
+        if (gameNumber < 1) {
+            throw IllegalArgumentException("1 이상의 숫자를 입력해 주세요")
         }
     }
 }

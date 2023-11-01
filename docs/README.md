@@ -7,11 +7,11 @@
     - [x] 잘못된 값을 입력한 경우 IllegalArgumentException을 발생시킨다. Input#nameCheck()
         - [x] 이름은 5자 이하만 가능하다.
         - [x] 값을 입력해야 한다.
-- [] 시도할 횟수를 입력한다. Input#inputGameNumber()
-    - [] 잘못된 값을 입력한 경우 IllegalArgumentException을 발생시킨다. Input#gameNumberCheck()
+- [x] 시도할 횟수를 입력한다. Input#inputGameNumber()
+    - [x] 잘못된 값을 입력한 경우 IllegalArgumentException을 발생시킨다. Input#gameNumberCheck()
         - [] 값을 입력해야 한다.
         - [] 숫자를 입력해야 한다.
-        - [] 1이상을 입력해야 한다.
+        - [x] 1이상을 입력해야 한다.
 - [] 0에서 9 사이에서 무작위 값을 생성한다. RandomNumber#createRandomNumber()
 - [] 무작위 값이 4 이상일 경우 전진한다. Move#moveCar()
 - [] 각각의 자동차의 전진한 횟수를 비교한다. Comparison#compareMoveNumber()
