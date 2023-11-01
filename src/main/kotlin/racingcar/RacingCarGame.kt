@@ -82,11 +82,10 @@ class RacingCarGame {
         notIntException()
 
         println("\n실행 결과")
-        val numberOfTryInt = numberOfTryStr.toInt()
-        for (i in 0..<numberOfTryInt) {
+        for (i in 0..<numberOfTryStr.toInt()) {
             goOrNot()
             printGameProgress()
-            println()
+            //println()
         }
         printWinner()
     }
