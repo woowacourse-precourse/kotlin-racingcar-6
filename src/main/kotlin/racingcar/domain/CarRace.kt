@@ -3,13 +3,16 @@ package racingcar.domain
 import camp.nextstep.edu.missionutils.Randoms
 
 class CarRace {
-    private fun generateNumber(): Int {
+    fun generateNumber(): Int {
         return Randoms.pickNumberInRange(CarRaceConstants.RANDOM_NUMBER_MIN, CarRaceConstants.RANDOM_NUMBER_MAX)
     }
 
-    fun startFlag() {
+    fun startFlag(): String {
+        val startComment = CarRaceConstants.EXECUTION_RESULT
         println()
         println(CarRaceConstants.EXECUTION_RESULT)
+
+        return startComment
     }
 
     fun runRound(carScore: MutableList<Pair<String, Int>>) {

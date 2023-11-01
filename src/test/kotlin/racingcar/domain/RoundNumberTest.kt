@@ -1,7 +1,6 @@
 package racingcar.domain
 
 import org.junit.jupiter.api.*
-import racingcar.RoundNumberConstants
 
 class RoundNumberTest {
 
@@ -19,6 +18,15 @@ class RoundNumberTest {
             roundNumber.validateInput(input)
         }
         Assertions.assertEquals(RoundNumberConstants.INPUT_IS_EMPTY, exception.message)
+    }
+
+    @Test
+    fun `입력값이 문자일 때`() {
+        val input = "woowa"
+        val exception = assertThrows<IllegalArgumentException> {
+            roundNumber.validateInput(input)
+        }
+        Assertions.assertEquals(RoundNumberConstants.INPUT_IS_NOT_INT, exception.message)
     }
 
     @Test

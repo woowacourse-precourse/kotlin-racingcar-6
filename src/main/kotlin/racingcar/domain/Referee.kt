@@ -10,7 +10,9 @@ class Referee {
         return winnerPair.map { it.first }
     }
 
-    fun printWinner(winnerName: List<String>) {
-        println(RefereeConstants.WINNER_MESSAGE + winnerName.joinToString(RefereeConstants.WINNER_SEPARATOR))
+    fun printWinner(winnerName: List<String>): String {
+        val winComment = RefereeConstants.WINNER_MESSAGE + winnerName.joinToString(RefereeConstants.WINNER_SEPARATOR)
+        println(winComment)
+        return winComment
     }
 }
