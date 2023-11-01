@@ -28,6 +28,7 @@ class RacingTest {
             .contains("김종국 : ")
             .contains("송지효 : ")
             .contains("전소민 : ")
+            .contains("-")
             .contains("\n")
     }
 
