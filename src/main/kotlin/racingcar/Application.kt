@@ -7,13 +7,8 @@ fun inputException(inputs: List<String>): List<String> {
     val names = inputs.distinct().toMutableList()
     names.removeAll{it.trim().isEmpty()}
 
-    if (names.size < 2)
+    if (names.size < 2 || names.any { it.length > 5 })
         throw IllegalArgumentException()
-
-    for (name in names){
-        if (name.length > 5)
-            throw IllegalArgumentException()
-    }
 
     return names
 
