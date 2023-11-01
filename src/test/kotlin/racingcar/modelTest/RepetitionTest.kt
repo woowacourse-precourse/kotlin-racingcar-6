@@ -13,7 +13,7 @@ class RepetitionTest {
     @ParameterizedTest
     @ValueSource(strings = ["a", " ", "*", "!"])
     @DisplayName("Repetition(init): checkDigitRange(special char)")
-    fun `반복 횟수가 숫자 인지 검증`(inputCount: String) {
+    fun `Repetition 객체 생성, 반복 횟수가 숫자 인지 검증`(inputCount: String) {
         val exception = assertThrows<IllegalArgumentException> {
             Repetition(inputCount)
         }
@@ -23,7 +23,7 @@ class RepetitionTest {
     @ParameterizedTest
     @ValueSource(strings = ["-1", "0"])
     @DisplayName("Repetition(init): checkDigitRange(-Int, Zero)")
-    fun `반복 횟수가 숫자라면 1이상 인지 검증`(inputCount: String) {
+    fun `Repetition 객체 생성, 반복 횟수가 숫자 라면 1이상 인지 검증`(inputCount: String) {
         val exception = assertThrows<IllegalArgumentException> {
             Repetition(inputCount)
         }
@@ -34,7 +34,7 @@ class RepetitionTest {
     @ParameterizedTest
     @ValueSource(strings = ["10", "1000", "100000"])
     @DisplayName("Repetition(init): checkDigitRange(+Int)")
-    fun `repetition 객체 생성한 뒤, count 검증`(inputCount: String) {
+    fun `Repetition 객체 생성, count 검증`(inputCount: String) {
         val repetition = assertDoesNotThrow {
             Repetition(inputCount)
         }

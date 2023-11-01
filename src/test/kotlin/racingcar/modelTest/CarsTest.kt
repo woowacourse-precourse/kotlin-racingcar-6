@@ -21,8 +21,8 @@ class CarsTest {
 
     @ParameterizedTest
     @ValueSource(strings = ["pobi, asd, 123"])
-    @DisplayName("InputView: splitCarNamesByComma() - Multi is Success Case")
-    fun `','가 있는 경우) ','로 분류하여 리스트 반환`(inputNames: String) {
+    @DisplayName("InputView: splitCarNamesByComma() - Multi / Success Case")
+    fun `리스트 반환 검증 (','가 있는 경우)`(inputNames: String) {
         assertThat(
             inputView.splitCarNamesByComma(inputNames)
         ).containsExactly("pobi", " asd", " 123")
@@ -31,8 +31,8 @@ class CarsTest {
     @ParameterizedTest
     @EmptySource
     @ValueSource(strings = ["as", "pobi", "taeng"])
-    @DisplayName("InputView: splitCarNamesByComma() - Single is Fail Case")
-    fun `','가 없는 경우) 오류 발생 검증`(inputNames: String) {
+    @DisplayName("InputView: splitCarNamesByComma() - Single / Fail Case")
+    fun `오류 발생 검증 (','가 없는 경우) `(inputNames: String) {
         val exception = assertThrows<IllegalArgumentException> {
             inputView.splitCarNamesByComma(inputNames)
         }
@@ -42,7 +42,7 @@ class CarsTest {
     @ParameterizedTest
     @ValueSource(strings = ["", "1234  ", "  1234", "Pobi12", "123456"])
     @DisplayName("Car(init): checkNameLength()")
-    fun `차 이름이 1~5 이내 인지 검증`(inputName: String) {
+    fun `Car 객체 생성, 차 이름이 1~5 이내 인지 검증`(inputName: String) {
         val exception = assertThrows<IllegalArgumentException> { // JUnit5 lib : assertThrows
             Car(inputName)
         }
@@ -52,7 +52,7 @@ class CarsTest {
     @ParameterizedTest
     @ValueSource(strings = ["Car!", "Car@2", "My!!!", "!! !!", "! !", "()_+"])
     @DisplayName("Car(init): checkNameLetter()")
-    fun `차 이름이 한글, 영문, 숫자로 구성되어 있는지 검증`(inputName: String) {
+    fun `Car 객체 생성, 차 이름이 한글-영문-숫자로 구성되어 있는지 검증`(inputName: String) {
         assertThatThrownBy { Car(inputName) } // AssertJ lib : assertThatThrownBy
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessageContaining(Car.CAR_NAME_FORMAT_ERROR)
@@ -60,24 +60,34 @@ class CarsTest {
 
     @ParameterizedTest
     @MethodSource("duplicationTestdataGenerate")
-    @DisplayName("Cars(init): fromNames() - Fail Case")
-    fun `차 이름이 중복되지 않았는지 검증`(inputName: List<String>) {
+    @DisplayName("Cars(init): fromNames() / Fail Case")
+    fun `Cars 객체 생성, 차 이름이 중복되지 않았는지 검증`(inputName: List<String>) {
         val exception = assertThrows<IllegalArgumentException> {
             Cars.fromNames(inputName)
         }
-        assertEquals(Cars.CAR_NAME_DUPLICATE_ERROR, exception.message) // JUnit
+
         assertThat(Cars.CAR_NAME_DUPLICATE_ERROR).isEqualTo(exception.message) // AssertJ
+        // assertEquals(Cars.CAR_NAME_DUPLICATE_ERROR, exception.message) // JUnit
     }
 
     @ParameterizedTest
     @MethodSource("CarsInstanceGenerateData")
-    @DisplayName("Cars(init): fromNames() - Success Case")
-    fun `Cars 객체(List(Car)) 생성한 뒤, size 및 carName 검증`(inputName: List<String>) {
+    @DisplayName("Cars(init): fromNames() size Valid / Success Case")
+    fun `Cars 객체 생성, size 검증`(inputName: List<String>) {
         val cars = assertDoesNotThrow {
             Cars.fromNames(inputName)
         }
 
         assertThat(cars.carList.size).isEqualTo(inputName.size) // 사이즈 검증
+    }
+
+    @ParameterizedTest
+    @MethodSource("CarsInstanceGenerateData")
+    @DisplayName("Cars(init): fromNames() carName Valid / Success Case")
+    fun `Cars 객체 생성, carName 검증`(inputName: List<String>) {
+        val cars = assertDoesNotThrow {
+            Cars.fromNames(inputName)
+        }
 
         for ((index, carName) in inputName.withIndex()) {
             val carsInstanceCarName = cars.carList[index].name

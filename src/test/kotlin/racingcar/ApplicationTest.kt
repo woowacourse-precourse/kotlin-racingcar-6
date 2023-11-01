@@ -40,7 +40,7 @@ class ApplicationTest : NsTest() {
     @ParameterizedTest
     @MethodSource("RandomNumbersSingleWinner")
     @DisplayName("OutputView: printRoundResult() - Winner Single Case")
-    fun `우승자가 한 명인 경우) 라운드 자동차 경주 점수 출력`(randomNumbers: IntArray) {
+    fun `라운드 자동차 경주 점수 출력 (우승자가 한 명인 경우)`(randomNumbers: IntArray) {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni,jun", "5")
@@ -53,7 +53,7 @@ class ApplicationTest : NsTest() {
     @ParameterizedTest
     @MethodSource("RandomNumbersMultiWinners")
     @DisplayName("OutputView: printRoundResult() - Winner Multi Case")
-    fun `우승자가 여러 명인 경우) 라운드 자동차 경주 점수 출력`(randomNumbers: IntArray) {
+    fun `라운드 자동차 경주 점수 출력 (우승자가 여러 명인 경우)`(randomNumbers: IntArray) {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni,jun", "5")

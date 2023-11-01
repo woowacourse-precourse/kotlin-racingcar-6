@@ -9,7 +9,7 @@ import racingcar.utils.Round
 class RoundTest {
     @Test
     @DisplayName("Round : generateRandomNumber() - Range Test")
-    fun `랜덤 숫자가 범위 안에 있는지 검증`() {
+    fun `랜덤 숫자 생성 메서드 호출, 숫자가 범위 안에 있는지 검증`() {
         repeat(1000) {
             assertTrue(Round.generateRandomNumber() in Round.RANDOM_RANGE_START..Round.RANDOM_RANGE_END)
         }
@@ -38,7 +38,7 @@ class RoundTest {
     // GPT C. 경주 게임의 전진 조건을 결정하는 핵심 로직이므로 하는 것을 추천한다.
     @Test
     @DisplayName("Round : isForward()")
-    fun `전진 조건 검증  3이하 - 정지(false), 4이상 - 전진(true)`() {
+    fun `전진 조건 검증 - 3이하 정지(false), 4이상 전진(true)`() {
         for (i in Round.RANDOM_RANGE_START until Round.FORWARD_THRESHOLD) {
             assertFalse(Round.isForward(i))
         }
