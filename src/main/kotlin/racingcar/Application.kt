@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import net.bytebuddy.asm.Advice.OffsetMapping.Factory.Illegal
 
 fun main() {
-    getValidCarNamesArray(getCarNames())
+
 }
 
 fun getCarNames(): String {
@@ -19,4 +19,11 @@ fun getValidCarNamesArray(carNames: String): Collection<String> {
     }
     return carNamesArray
 }
+
+fun getNumberOfRacing():Int{
+    println("시도할 횟수는 몇 회인가요?")
+    return Console.readLine().toInt()
+}
+
+
 
