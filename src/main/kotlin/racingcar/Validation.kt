@@ -66,4 +66,12 @@ class Validation {
         }
     }
 
+    fun isValidNumberOfAttempt(numberOfAttempt: String): Int {
+        checkNumberBlank(numberOfAttempt)
+        val numberOfAttemptToInt = checkNumberOrNot(numberOfAttempt)
+        checkNumberOfAttemptOneAndMore(numberOfAttemptToInt)
+
+        return numberOfAttemptToInt
+    }
+
 }
