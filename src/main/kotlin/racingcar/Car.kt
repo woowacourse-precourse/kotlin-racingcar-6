@@ -1,4 +1,5 @@
-package racingcar.domain
+package racingcar
+
 class Car(var name: String) {
     var count = 0
     fun move(number: Int) {
@@ -6,8 +7,10 @@ class Car(var name: String) {
             count += 1
         }
     }
+
     fun print() {
         println("$name : ${"-".repeat(count)}")
     }
+
     override fun toString(): String = "$name"
 }

@@ -2,8 +2,6 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-import racingcar.domain.Car
-import racingcar.domain.Winner
 
 fun main() {
     val cars = mutableListOf<Car>()
@@ -14,7 +12,7 @@ fun main() {
         cars.add(Car(carName))
     }
     println("시도할 횟수는 몇 회인가요?")
-    var repeat:Int = Console.readLine().toInt()
+    var repeat: Int = Console.readLine().toInt()
     println()
     println("실행 결과")
     for (i in 0..<repeat) {
@@ -24,12 +22,14 @@ fun main() {
     var winner = Winner(cars)
     winner.print()
 }
-fun throwExceptionOverFive(name:String){
+
+fun throwExceptionOverFive(name: String) {
     if (name.length > 5 || name == "1") {
         throw IllegalArgumentException()
     }
 }
-fun moveCars(cars:MutableList<Car>){
+
+fun moveCars(cars: MutableList<Car>) {
     for (car in cars) {
         car.move(Randoms.pickNumberInRange(0, 9))
         car.print()

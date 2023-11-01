@@ -1,5 +1,7 @@
-package racingcar.domain
+package racingcar
+
 class Winner(var cars: MutableList<Car>) {
+
     fun getWinners(): MutableList<Car> {
         var winners: MutableList<Car>
         var topCount = 0
@@ -11,6 +13,7 @@ class Winner(var cars: MutableList<Car>) {
         winners = cars.filter { it.count == topCount }.toMutableList()
         return winners
     }
+
     fun print() {
         print("최종 우승자 : ${getWinners().joinToString(", ")}")
     }
