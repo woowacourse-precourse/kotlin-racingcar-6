@@ -1,4 +1,6 @@
 package racingcar
 
 class GameView {
+
+
 }
