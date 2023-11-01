@@ -6,7 +6,7 @@ import racingcar.model.CarNameSeparator
 import racingcar.model.RacingGame
 import racingcar.model.WinnerDiscrimination
 
-class FunctionTest{
+class FunctionTest {
     @Test
     fun `자동차 이름 분리 테스트`() {
         val names = "kim,su,han,mu"
@@ -28,17 +28,15 @@ class FunctionTest{
     fun `레이싱 게임 기능 테스트`() {
         camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest(
             {
-                val expectedResult = RacingGame().racing(listOf("","","-"))
-                assertEquals(expectedResult, listOf("-","","--"))
+                val expectedResult = RacingGame().racing(listOf("", "", "-"))
+                assertEquals(expectedResult, listOf("-", "", "--"))
             },
             MOVING_FORWARD, STOP, MOVING_FORWARD
         )
     }
 
-
     companion object {
         private const val MOVING_FORWARD = 4
         private const val STOP = 3
     }
-
 }

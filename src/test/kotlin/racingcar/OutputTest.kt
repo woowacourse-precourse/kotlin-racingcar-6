@@ -10,6 +10,7 @@ import java.io.PrintStream
 
 class OutputTest {
     val outputStreamCaptor = ByteArrayOutputStream()
+
     @BeforeEach
     fun setUp() {
         System.setOut(PrintStream(outputStreamCaptor))
@@ -24,30 +25,22 @@ class OutputTest {
     fun `각 게임 결과 반환 테스트`() {
         val cars = listOf("bmw", "lexus", "lambo")
         val progress = listOf("--", "---", "-")
-
         OutputView().eachRacingResult(cars, progress)
-
         val expectedOutput = """
             bmw : --
             lexus : ---
             lambo : -
         """.trimIndent()
-
-
         assertEquals(expectedOutput, outputStreamCaptor.toString().trim())
     }
 
     @Test
     fun `우승자 반환 테스트`() {
         val cars = listOf("bmw", "lexus")
-
         OutputView().winner(cars)
-
         val expectedOutput = """
             최종 우승자 : bmw, lexus
         """.trimIndent()
-
-
         assertEquals(expectedOutput, outputStreamCaptor.toString().trim())
     }
 

@@ -6,7 +6,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-class CarNameTest :NsTest(){
+class CarNameTest : NsTest() {
     @Test
     fun `자동차 이름이 없을 때`() {
         assertThrows<IllegalArgumentException> { runException(",java", "1") }
@@ -16,8 +16,6 @@ class CarNameTest :NsTest(){
     fun `자동차 이름에 공백이 있을 때`() {
         assertThrows<IllegalArgumentException> { runException("a a,java", "1") }
     }
-
-
 
     override fun runMain() {
         main()
