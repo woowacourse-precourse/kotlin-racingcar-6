@@ -70,7 +70,7 @@ fun raceCars(carNames: List<String>, tryNumber: Int): List<Pair<String, String>>
 fun printRaceResults(raceResults: List<Pair<String, String>>) {
     print("실행 결과:")
     raceResults.forEach {(carName, result) ->     
-        println("$carName : $result")
+        println("${carName} : ${result}")
     }
 }
 
@@ -86,7 +86,7 @@ fun findWinners(raceResults: List<Pair<String, String>>) : List<String> {
 
 fun printWinners(winners: List<String){
     val winnerString = if (winners.size>1) winners.joinToString(",")  else winners.first()
-    print("최종 우승자: $winnerString") 
+    print("최종 우승자: ${winnerString}") 
 }
 
 
