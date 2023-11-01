@@ -14,4 +14,8 @@ class Car(private val objectName: String) { // 객체명이 printLocation()에�
         println("$objectName : $currentLocation")
     }
 
+    fun getLocation(): Int {
+        return location
+    }
+
 }
