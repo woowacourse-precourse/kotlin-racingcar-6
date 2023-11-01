@@ -63,9 +63,25 @@ class ValidationTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = [1, 3, 6, 10])
-    fun `시도 횟수를 정상적으로 입력했을 때`(invalidNum: Int) {
-        validation.checkNumberOfAttemptOneAndMore(invalidNum)
+    @ValueSource(strings = ["1", "3", "6", "10"])
+    fun `시도 횟수를 정상적으로 입력했을 때`(invalidNum: String) {
+        validation.isValidNumberOfAttempt(invalidNum)
+    }
+
+    @Test
+    fun `시도 횟수를 입력하지 않았을 때`() {
+        val input = ""
+        assertThrows<IllegalArgumentException> {
+            validation.checkNumberBlank(input)
+        }
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["a", "-", "abc", "ㅇ"])
+    fun `시도 횟수 입력 시 문자를 입력했을 때`(input: String) {
+        assertThrows<IllegalArgumentException> {
+            validation.checkNumberOrNot(input)
+        }
     }
 
     @ParameterizedTest
