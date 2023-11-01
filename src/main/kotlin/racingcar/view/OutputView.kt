@@ -9,7 +9,7 @@ class OutputView {
 
     fun printInputRaceCarNames() = println(Message.RaceCarNames)
 
-    fun printInputNumberOfAttempts() = println(Message.NumberOfAttempts)
+    fun printInputNumberOfAttempts() = println(Message.NumberOfRound)
 
     fun printCurrentRaceResult(board: Board, lastRound: Round) {
         val message = buildString {
@@ -44,7 +44,7 @@ class OutputView {
 
     private enum class Message(private val message: String) {
         RaceCarNames("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"),
-        NumberOfAttempts("시도할 횟수는 몇 회인가요?"),
+        NumberOfRound("시도할 횟수는 몇 회인가요?"),
         RaceResult("실행 결과"),
         WinnerFormat("최종 우승자 : %s"),
         RaceResultFormat("%s : %s");

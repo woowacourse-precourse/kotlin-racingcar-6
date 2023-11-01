@@ -37,21 +37,21 @@ class Scores private constructor(private val _scoreByRound: MutableMap<Round, Sc
     val scoreByRound: Map<Round, Score> get() = _scoreByRound
 
     fun addCurrentScore(round: Round, score: Score) {
-        require(_scoreByRound.contains(round)) { Error.OverflowAttempt.message }
+        require(_scoreByRound.contains(round)) { Error.OverflowRound.message }
         _scoreByRound[round] = score
     }
 
     companion object {
         private const val SCORE_INITIAL = 0
-        private const val FIRST_ATTEMPT = 1
+        private const val FIRST_ROUND = 1
 
-        fun from(round: Round): Scores {
-            val scoreByAttempt = (FIRST_ATTEMPT..round).associateWith { SCORE_INITIAL }
+        fun from(lastRound: Round): Scores {
+            val scoreByAttempt = (FIRST_ROUND..lastRound).associateWith { SCORE_INITIAL }
             return Scores(scoreByAttempt.toMutableMap())
         }
     }
 
     internal enum class Error(val message: String) {
-        OverflowAttempt("입력한 차수를 넘겼습니다. ")
+        OverflowRound("입력한 차수를 넘겼습니다.")
     }
 }

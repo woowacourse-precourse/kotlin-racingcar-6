@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test
 
 class ScoresTest {
 
-    private val scores = Scores.from(round = 3)
+    private val scores = Scores.from(lastRound = 3)
 
     @Test
     @DisplayName("attempt 값이 최대를 넘었을 때, 에러를 발생하는지")
     fun addCurrentScore_overflowAttempt() {
         assertThatThrownBy { scores.addCurrentScore(round = 4, score = 4) }
             .isExactlyInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(Scores.Error.OverflowAttempt.message)
+            .hasMessage(Scores.Error.OverflowRound.message)
     }
 
     @Test

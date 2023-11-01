@@ -14,9 +14,9 @@ class Controller {
 
     fun start() {
         val participants = getRaceParticipants()
-        val attemptNumber = getAttemptNumber()
-        val judge = Judge(participants, attemptNumber)
-        displayRaceResult(judge, attemptNumber)
+        val round = getRoundNumber()
+        val judge = Judge(participants, round)
+        displayRaceResult(judge, round)
         inputView.terminated()
     }
 
@@ -25,7 +25,7 @@ class Controller {
         return RaceParticipants.from(inputView.getUserInput())
     }
 
-    private fun getAttemptNumber(): Int {
+    private fun getRoundNumber(): Int {
         outputView.printInputNumberOfAttempts()
         return inputView.getUserInput().validatePositiveNumber().getOrThrow().toInt()
     }
