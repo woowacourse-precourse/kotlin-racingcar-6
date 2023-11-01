@@ -6,7 +6,9 @@ fun nameErrorCheck(name: String) {
 }
 
 fun nameLengthCheck(name: String) {
-    if (name.length >= NAME_OVER_LENGTH) throw IllegalArgumentException(LENGTH_ERROR)
+    if (name.length >= NAME_OVER_LENGTH) {
+        throw IllegalArgumentException(LENGTH_ERROR)
+    }
 }
 
 fun nameEmptyCheck(name: String) {
