@@ -88,6 +88,12 @@ class RacingCarGame {
         }
         return winnerNames
     }
+
+    fun printWinners(winners: List<String>) {
+        val winnerMessage =
+            if (winners.size == 1) "최종 우승자 : ${winners.first()}" else "최종 우승자 : ${winners.joinToString(", ")}"
+        println(winnerMessage)
+    }
 }
 
 class Car(val name: String) {
