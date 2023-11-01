@@ -10,7 +10,7 @@ data class RacingCar(val racingCarName: String, private var distance: Int) {
     fun addRacingCarDistance() {
         val randomNum = Randoms.pickNumberInRange(RANDOM_START_NUM, RANDOM_FINISH_NUM)
         if (randomNum >= MIN_DISTANCE_NUM) {
-            distance += randomNum
+            distance ++
         }
     }
 
