@@ -11,7 +11,7 @@ object OutputManager {
     }
 
     fun printWinners(winners:List<Car>) {
-        val winnersString = winners.map{it.name}.joinToString { ", " }
+        val winnersString = winners.joinToString(", ") { it.name }
         println("최종 우승자 : $winnersString")
     }
 }
