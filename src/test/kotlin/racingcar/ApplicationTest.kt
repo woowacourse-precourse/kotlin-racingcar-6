@@ -24,6 +24,28 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("min,", "1") }
+        }
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("", "1") }
+        }
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("min,min", "1") }
+        }
+    }
+
+    @Test
+    fun `실행 횟수에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("min,ji", "-1") }
+        }
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("min,ji", "1.5") }
+        }
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("min,ji", "가나다") }
+        }
     }
 
     public override fun runMain() {
