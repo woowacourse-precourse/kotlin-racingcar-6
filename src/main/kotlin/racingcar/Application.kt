@@ -20,6 +20,7 @@ fun main() {
         printRoundResults(roundResults)
     }
 
+    val winners = determineWinners(cars)
 }
 
 fun inputCarNames(): List<String> {
@@ -59,4 +60,9 @@ fun printRoundResults(roundResults: Map<String, Int>) {
         println("$carName : $carDisplay")
     }
     print("\n")
+}
+
+fun determineWinners(cars: List<Car>): List<String> {
+    val maxPosition = cars.map { it.position }.maxOrNull()
+    return cars.filter { it.position == maxPosition }.map { it.name }
 }
