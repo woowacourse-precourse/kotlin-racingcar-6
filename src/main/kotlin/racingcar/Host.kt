@@ -12,10 +12,13 @@ class Host {
         println("시도할 횟수는 몇 회인가요?")
     }
 
-    fun printCurrentRaceSituation(cars: List<Car>): List<Int> {
+    fun printCurrentRaceSituation(
+        cars: List<Car>,
+        randomNumberGenerator: () -> Int = { Randoms.pickNumberInRange(0, 9) }
+    ): List<Int> {
         val playerPosition = mutableListOf<Int>()
         cars.forEach {
-            val currentPosition = it.move(Randoms.pickNumberInRange(0, 9))
+            val currentPosition = it.move(randomNumberGenerator())
             println()
             playerPosition.add(currentPosition)
         }
