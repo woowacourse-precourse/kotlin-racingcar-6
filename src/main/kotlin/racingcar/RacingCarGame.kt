@@ -17,7 +17,7 @@ class RacingCarGame(private val user: User) {
             showGameMessage()
         }
 
-        val winnerNames = decideWinners(cars)
+        val winnerNames = decideWinnerNames(cars)
         showGameMessage("최종 우승자 : ${winnerNames.joinToString(", ")}")
     }
 
@@ -36,7 +36,7 @@ class RacingCarGame(private val user: User) {
         println("$carName : ${"-".repeat(conditionNumber)}")
     }
 
-    private fun decideWinners(cars: List<Car>): List<String> {
+    private fun decideWinnerNames(cars: List<Car>): List<String> {
         val maxForwardCount = cars.maxOf { it.forwardCount }
         val winners = cars.filter { it.forwardCount == maxForwardCount }
 
