@@ -2,20 +2,16 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class Car(val name: String, var movingDistance: Int) {
+class Car(val name: String, var movingDistance: String) {
     fun chooseGoOrStop() {
         val randomNumber: Int = Randoms.pickNumberInRange(0, 9)
         if (randomNumber >= 4) {
-            this.movingDistance += 1
+            this.movingDistance += "-"
         }
     }
 
     fun howFarHaveGone() {
-        var nameString: String = "${this.name} :"
-        var distanceString: String = ""
-        for (count in 0 until movingDistance){
-            distanceString += '-'
-        }
-        print(nameString + distanceString)
+        var printString: String = "${this.name} : ${this.movingDistance}"
+        print(printString)
     }
 }
