@@ -48,4 +48,13 @@ fun main() {
     if (move == null) {
         throw IllegalArgumentException()
     }
+
+    println("실행 결과")
+    var result = Array(carsNum) { 0 }
+    var randomNum = Array(carsNum) { 0 }
+    for (i: Int in 1..move) {
+        randomNum = allocRandom(carsNum)
+        checkForward(randomNum, result)
+        printCurrent(result, car)
+    }
 }
