@@ -18,7 +18,7 @@ class RacingGames {
     fun checkCars(cars:List<String>) : MutableList<String> {
         val check = MutableList(cars.size) {""}
 
-        for(i in 0 until cars.size){
+        for(i in cars.indices){
             val move = racing()
             if(move) {
                 check[i] += "-"
