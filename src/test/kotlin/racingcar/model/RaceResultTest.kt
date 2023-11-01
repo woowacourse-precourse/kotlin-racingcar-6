@@ -12,6 +12,7 @@ class RaceResultTest {
             CarState("crong", "------")
         )
         val raceResult = RaceResult(carStateList)
-        assertThat(raceResult.toString()).isEqualTo("murjune : ---\npobi : ----\ncrong : ------\n")
+        assertThat(raceResult.toString())
+            .isEqualTo("murjune : ---\npobi : ----\ncrong : ------\n")
     }
 }

@@ -50,7 +50,12 @@ class RaceTest {
         val winner = race.winner
 
         assertThat(emptyWinner).isEqualTo(Winner(listOf()))
-        assertThat(winner.toString()).isEqualTo(Winner(listOf(Car("june", scoreGenerator))).toString())
+        assertThat(winner.toString())
+            .isEqualTo(
+                Winner(
+                    listOf(Car("june", scoreGenerator))
+                ).toString()
+            )
     }
 
     @Test
