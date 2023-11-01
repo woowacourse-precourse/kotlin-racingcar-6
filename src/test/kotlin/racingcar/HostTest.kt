@@ -8,6 +8,23 @@ class HostTest {
     private val host = Host()
 
     @Test
+    fun `라운드별 경주 상황`() {
+        val cars = listOf(
+            Car("폴리"),
+            Car("로이"),
+            Car("앰버")
+        )
+        val randomNumbers = listOf(5, 2, 7)
+        var index = 0
+
+        val positions = host.printCurrentRaceSituation(cars) { randomNumbers[index++] }
+
+        assertEquals(ADVANCE, positions[POLY])
+        assertEquals(INITIAL_POSITION, positions[ROY])
+        assertEquals(ADVANCE, positions[AMBER])
+    }
+
+    @Test
     fun `우승자 결정(우승자 1명)`() {
         val playersFinalPosition = listOf(5, 2, 3)
         val cars = listOf(
@@ -33,6 +50,14 @@ class HostTest {
 
         val winners = host.determineWinners(playersFinalPosition, cars)
         assertEquals("최종 우승자 : car3, car4", winners)
+    }
+
+    companion object {
+        const val INITIAL_POSITION = 0
+        const val ADVANCE = 1
+        const val POLY = 0
+        const val ROY = 1
+        const val AMBER = 2
     }
 
 }
