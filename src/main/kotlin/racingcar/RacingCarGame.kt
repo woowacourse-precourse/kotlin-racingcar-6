@@ -78,7 +78,7 @@ class RacingCarGame {
         }
     }
 
-    fun gameStart() {
+    fun gameStart(): Int {
         isNameNotExceed5Letters()
         setProgress()
         setMoveCount()
@@ -92,6 +92,6 @@ class RacingCarGame {
         }
         printWinner()
 
-        return
+        return 0
     }
 }
