@@ -12,7 +12,7 @@
         - [] 값을 입력해야 한다.
         - [] 숫자를 입력해야 한다.
         - [x] 1이상을 입력해야 한다.
-- [] 0에서 9 사이에서 무작위 값을 생성한다. RandomNumber#createRandomNumber()
+- [x] 0에서 9 사이에서 무작위 값을 생성한다. RandomNumber#createRandomNumber()
 - [] 무작위 값이 4 이상일 경우 전진한다. Move#moveCar()
 - [] 각각의 자동차의 전진한 횟수를 비교한다. Comparison#compareMoveNumber()
     - [] 가장 많이 전진한 자동차가 우승한다.
