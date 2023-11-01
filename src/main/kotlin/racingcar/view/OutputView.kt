@@ -8,6 +8,7 @@ class OutputView {
     fun printInputNumberOfAttempts() = println(Message.NUMBER_OF_ATTEMPTS)
 
     fun printAllRoundsResult(){
+        println(Message.RESULT_PHRASE)
 
     }
 
