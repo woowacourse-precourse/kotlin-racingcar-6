@@ -1,11 +1,14 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 class RacingCarGame {
-    private val readCar = ReadCar()
-    private val carInput = readCar.carInput
-    private val numberOfTryStr = readCar.numberOfTry
+    private val carInput: String = Console.readLine()
+    private val numberOfTryStr: String = Console.readLine()
+    //private val readCar = ReadCar()
+    //private val carInput = readCar.carInput
+    //private val numberOfTryStr = readCar.numberOfTry
     private val carList: List<String> = carInput.split(',')
     private val gameProgress: MutableMap<String, String> = mutableMapOf()
     private val moveCount: MutableMap<String, Int> = mutableMapOf()
