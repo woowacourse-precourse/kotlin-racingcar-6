@@ -13,7 +13,7 @@ class CarTest {
     }
 
     @Test
-    fun testUpdatePosition(){
+    fun testUpdatePosition() {
         val car = Car("test")
         assertThat(car.getPositionNumber()).isEqualTo(0)
         car.updatePosition(true)
@@ -23,7 +23,7 @@ class CarTest {
     }
 
     @Test
-    fun testGetPosition(){
+    fun testGetPosition() {
         val car = Car("test")
         car.updatePosition(true)
         assertThat(car.getPosition()).isEqualTo("-")
@@ -34,7 +34,7 @@ class CarTest {
     }
 
     @Test
-    fun getNameTest(){
+    fun getNameTest() {
         val car = Car("test")
         assertThat(car.getName()).isEqualTo("test")
     }

@@ -17,7 +17,7 @@ fun inputNames(view: View): List<String> {
     return nameList
 }
 
-fun getInputTimes(view:View):Int{
+fun getInputTimes(view: View): Int {
     val times = view.enterNumberTimes()
     numberTimesErrorCheck(times)
     return times.toInt()
