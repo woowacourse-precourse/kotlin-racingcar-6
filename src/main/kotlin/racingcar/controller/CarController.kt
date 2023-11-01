@@ -11,17 +11,11 @@ class CarController {
 
     fun getCars(): List<Car> = cars.toList()
 
-    fun createCars() {
-        inputCarNameFromUser()
-            .split(",")
-            .forEach { name ->
-                with(InputValidator) {
-                    checkCarNameLength(name)
-                    checkInputWhitespace(name.trim())
-                }
-
-                cars.add(Car(name))
-            }
+    fun createCars(input: String) {
+        input.split(",").forEach { name ->
+            validCreateCars(name)
+            cars.add(Car(name))
+        }
     }
 
     fun moveCarsForward(): List<Car> {
@@ -58,7 +52,7 @@ class CarController {
         return cars.maxByOrNull { car -> car.distance }
     }
 
-    private fun inputCarNameFromUser(): String {
+    fun inputCarNameFromUser(): String {
         val carName = Console.readLine()
 
         with(InputValidator) {
