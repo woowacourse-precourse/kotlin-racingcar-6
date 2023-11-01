@@ -29,16 +29,20 @@ object PrintUtil {
     fun printWinnerList(winnerList: MutableList<Car>) {
         print(WINNER_MESSAGE)
         if (winnerList.size > SOLE_WINNER_COUNT) {
-            winnerList.forEach{ _car ->
-                if (winnerList.last() != _car){
-                    print(_car.getName() + ", ")
-                }
-                else {
-                    print(_car.getName())
-                }
-            }
+            printWinnerListEach(winnerList)
             return
         }
         print(winnerList.first().getName())
+    }
+
+    private fun printWinnerListEach(winnerList: MutableList<Car>) {
+        winnerList.forEach{ _car ->
+            if (winnerList.last() != _car){
+                print(_car.getName() + ", ")
+            }
+            else {
+                print(_car.getName())
+            }
+        }
     }
 }
