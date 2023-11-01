@@ -18,11 +18,10 @@ class Game(private val view: View) {
 
     private fun moveCars() {
         cars.forEach { car ->
-            val num = car.generateRandomNumber()
-            car.updatePosition(car.judgeNumber(num))
+            val randomNumber = car.generateRandomNumber()
+            car.updatePosition(car.judgeNumber(randomNumber))
         }
     }
-
 
     private fun playGameNTimes(times:Int){
         repeat(times){
@@ -31,12 +30,8 @@ class Game(private val view: View) {
         }
     }
 
-    private fun getLeadPosition(): Int {
-        return cars.maxOf { it.getPositionNumber() }
-    }
-
     private fun getWinners(): List<String> {
-        val leadPosition = getLeadPosition()
+        val leadPosition = cars.maxOf { it.getPositionNumber() }
         return cars.filter { it.getPositionNumber() == leadPosition }.map { it.getName() }
     }
 }
