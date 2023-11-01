@@ -58,6 +58,6 @@ class RacingCarController {
     }
 
     fun printRacingCarWinner(winners: List<String>) {
-        outputView.multipleWinners(winners)
+        outputView.printWinners(winners)
     }
 }

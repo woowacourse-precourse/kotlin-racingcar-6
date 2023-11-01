@@ -18,11 +18,7 @@ class OutputView {
         println()
     }
 
-    fun singleWinner(winner: String) {
-        println(WINNER_MESSAGE + COLON + "$winner")
-    }
-
-    fun multipleWinners(winners: List<String>) {
+    fun printWinners(winners: List<String>) {
         val winnerNames = winners.joinToString(COMMA + " ")
         println(WINNER_MESSAGE + COLON + "$winnerNames")
     }
