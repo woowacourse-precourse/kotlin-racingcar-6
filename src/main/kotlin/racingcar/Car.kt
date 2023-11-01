@@ -1,6 +1,6 @@
 package racingcar
 
-class Car() {
+class Car {
     var count = 0
     lateinit var name:String
     fun move(number: Int) {

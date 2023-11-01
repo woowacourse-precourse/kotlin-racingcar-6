@@ -14,7 +14,6 @@ fun main() {
         car.name = carName
         car.isValid()
         cars.add(car)
-
     }
     println("시도할 횟수는 몇 회인가요?")
     try{
@@ -36,7 +35,7 @@ fun main() {
 
 
 
-fun moveCars(cars: MutableList<Car>) {
+fun moveCars(cars:MutableList<Car>) {
     for (car in cars) {
         car.move(Randoms.pickNumberInRange(0, 9))
         print(car.getOutput())
