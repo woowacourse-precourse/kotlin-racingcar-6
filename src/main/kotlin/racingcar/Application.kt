@@ -67,7 +67,25 @@ private fun doSaveCarMove(carList: List<String>, map: MutableMap<String, Int>) {
         saveCarMove(car, map)
         //println(map)
     }
-    //showResult(carList, map)
+    showResult(carList, map)
+}
+
+private fun showResult(carList: List<String>, carMap: MutableMap<String, Int>) {
+    for (car in carList) {
+        print("${car} : ")
+        printCarMove(car, carMap)
+        println()
+    }
+}
+
+private fun printCarMove(car: String, carMap: MutableMap<String, Int>) {
+    var num = carMap[car]
+    if (num != null) {
+        while (num != 0) {
+            print("-")
+            num -= 1
+        }
+    }
 }
 
 // 4이상의 수가 나올 때만 값 저장
