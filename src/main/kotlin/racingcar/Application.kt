@@ -31,11 +31,12 @@ fun getNumberOfRacing(): Int {
     return Console.readLine().toInt()
 }
 
-fun getRandomNumArray(carNamesArray: Collection<Car>): Array<Int> {
+fun getRandomNumArray(carNamesArray: List<Car>): Array<Int> {
     return Array(carNamesArray.size) {
         Randoms.pickNumberInRange(0, 9)
     }
 }
+
 
 
 
