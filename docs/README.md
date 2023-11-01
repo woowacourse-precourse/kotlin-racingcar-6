@@ -4,6 +4,7 @@
   - [x] 이름이 5자 이하인지 확인 - Car#validateCarNameLength
   - [x] 이름이 중복되지 않는지 확인 - Car#validateDuplicateName
   - [x] 이름이 공백이 아닌지 확인 - Car#validateBlnakName
+  - [x] 이름에 공백이 포함되어 있는지 확인 -Car#validateNameHaveBlank
 - [x] 자동차들의 전진 현황이 담긴 리스트 생성 - Car#createcarProgressList 
 - [x] 이동 횟수 입력 - Racing#enterMoveCount
   - [x] 정수인지 확인 - Racing#validateInteger
