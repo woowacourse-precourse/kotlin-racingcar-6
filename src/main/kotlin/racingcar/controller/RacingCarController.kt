@@ -46,7 +46,7 @@ class RacingCarController {
         outputView.printMaxDistanceRacingCarName(maxDistanceRacingCars)
     }
 
-    private fun findMaxDistanceRacingCar(racingCarList: List<RacingCar>): List<String> {
+    fun findMaxDistanceRacingCar(racingCarList: List<RacingCar>): List<String> {
         return RacingCars(racingCarList).getMaxDistanceCar().map { it.racingCarName }
     }
 

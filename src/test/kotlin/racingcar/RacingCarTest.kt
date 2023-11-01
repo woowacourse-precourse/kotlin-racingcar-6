@@ -8,6 +8,9 @@ import racingcar.controller.RacingCarController
 import racingcar.model.RacingCar
 
 class RacingCarTest : NsTest() {
+
+    val racingCarController = RacingCarController()
+
     @Test
     fun `전진을 하는지 테스트`() {
         assertRandomNumberInRangeTest(
@@ -30,6 +33,20 @@ class RacingCarTest : NsTest() {
             },
             2
         )
+    }
+
+    @Test
+    fun `우승자가 1명일 때`() {
+        val data = listOf(RacingCar("pobi", 1), RacingCar("woni", 2), RacingCar("jun", 3))
+        val result = racingCarController.findMaxDistanceRacingCar(data)
+        assertThat(result).isEqualTo(listOf("jun"))
+    }
+
+    @Test
+    fun `우승자가 2명일 때`() {
+        val data = listOf(RacingCar("pobi", 1), RacingCar("woni", 3), RacingCar("jun", 3))
+        val result = racingCarController.findMaxDistanceRacingCar(data)
+        assertThat(result).isEqualTo(listOf("woni", "jun"))
     }
 
     override fun runMain() {
