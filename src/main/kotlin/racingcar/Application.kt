@@ -50,7 +50,13 @@ fun printCarWithScore(carNamesList: List<Car>) {
     }
 }
 
-
+fun startRacing(numberOfRacing: Int, carNamesList: List<Car>, randomNumArray: Array<Int>) {
+    for (i in 0 until numberOfRacing) {
+        getRandomNumArray(carNamesList)
+        addScore(carNamesList, randomNumArray)
+        printCarWithScore(carNamesList)
+    }
+}
 
 
 
