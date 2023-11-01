@@ -176,14 +176,6 @@ Randoms.pickNumberInRange(0, 9)
   - [x] 단독 우승자 안내 문구 출력
   - [x] 공동 우승자 안내 문구 출력(쉼표를 이용하여 구분)
 
-### Attempts
-
-- [x] 시도 횟수 저장
-
-### AttemptComparator
-
-- [x] 시도 횟수와 자동차 전진 횟수 비교
-
 ### RandomNumberGenerator
 
 - [x] 0~9 사이 랜덤 값 반환
@@ -211,14 +203,11 @@ Randoms.pickNumberInRange(0, 9)
 
 ```mermaid
 classDiagram
-    Attempt <.. Controller
     InputView <.. Controller
     OutputView <.. Controller
-    AttemptComparator <.. Controller
+    Car <.. Controller
     RandomNumberGenerator <.. Controller
     Validator <.. InputView
-    Attempt <.. AttemptComparator
-    Car <.. AttemptComparator
     class Controller {
         +startCarRacing()
     }
@@ -238,13 +227,6 @@ classDiagram
     class Car {
         -currentPosition
         +forwardOrStop()
-    }
-    class Attempt {
-        -attmepts
-        +setAttempt()
-    }
-    class AttemptComparator {
-        +compareAttemptAndPosition()
     }
     class Validator {
         +nameLength()
