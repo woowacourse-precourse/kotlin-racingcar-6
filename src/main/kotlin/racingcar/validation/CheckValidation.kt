@@ -4,7 +4,7 @@ import java.lang.NumberFormatException
 
 class CheckValidation {
 
-    fun checkCarName(
+    fun checkCarLength(
         carName: String
     ) {
         require(
@@ -13,13 +13,19 @@ class CheckValidation {
         ) {
             "자동차 이름은 1자 이상, 5자 이하만 가능합니다."
         }
+    }
+
+    fun checkCarNameValidation(
+        carName: String
+    ) {
         require(
-            checkEnglishRegex(carName) ||
+            checkEnglishAndNumRegex(carName) ||
                     checkKoreanRegex(carName)
         ) {
             "올바른 자동차 이름을 입력해야 합니다."
         }
     }
+
 
     fun checkInputRacingCount(
         userInput: String
@@ -46,7 +52,7 @@ class CheckValidation {
     private fun checkIsPositive(
         number: Int
     ): Boolean {
-        return number >= 0
+        return number > 0
     }
 
     private fun checkNameLength(
@@ -58,13 +64,13 @@ class CheckValidation {
     private fun checkNameIsBlank(
         carName: String
     ): Boolean {
-        return carName.isNotBlank()
+        return carName.isNotEmpty()
     }
 
-    private fun checkEnglishRegex(
+    private fun checkEnglishAndNumRegex(
         carName: String
     ): Boolean {
-        return carName.matches(CHECK_ENGLISH.toRegex())
+        return carName.matches(CHECK_ENGLISH_AND_NUM.toRegex())
     }
 
     private fun checkKoreanRegex(
@@ -75,7 +81,7 @@ class CheckValidation {
 
     companion object {
         private const val CAR_MAX_LENGTH = 5
-        private const val CHECK_ENGLISH = "^[a-zA-Z]*\$"
+        private const val CHECK_ENGLISH_AND_NUM = "^[a-zA-Z0-9]*\$"
         private const val CHECK_KOREAN = "^[가-힣]*\$"
     }
 }

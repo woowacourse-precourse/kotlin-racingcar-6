@@ -15,7 +15,10 @@ object GameConsole {
 
     fun separateCarList() {
         for (carName in userInput.split(",")) {
-            discriminator.checkCarName(carName)
+            discriminator.apply {
+                checkCarLength(carName)
+                checkCarNameValidation(carName)
+            }
             registerCar((carName))
         }
     }
