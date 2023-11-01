@@ -1,7 +1,7 @@
 package racingcar
 
 fun main() {
-    //val carRace = CarRaceController()
+    val carRace = CarRaceController()
 
-    //carRace.doRace()
+    carRace.doRace()
 }
