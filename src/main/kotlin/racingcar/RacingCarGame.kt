@@ -27,16 +27,15 @@ class RacingCarGame(private val user: User) {
 
     private fun race(cars: List<Car>) {
         cars.forEach {
-            val randomNumber = Randoms.pickNumberInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER)
-            it.tryMoveForward(randomNumber)
-            showRaceMessage(it.name, randomNumber)
+            val conditionNumber = it.tryMoveForward()
+            showRaceMessage(it.name, conditionNumber)
         }
 
         makeBlankLine()
     }
 
-    private fun showRaceMessage(carName: String, randomNumber: Int) {
-        println("$carName : ${"-".repeat(randomNumber)}")
+    private fun showRaceMessage(carName: String, conditionNumber: Int) {
+        println("$carName : ${"-".repeat(conditionNumber)}")
     }
 
     private fun decideWinners(cars: List<Car>): List<String> {
