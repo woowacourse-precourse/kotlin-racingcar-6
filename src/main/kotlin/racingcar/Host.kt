@@ -1,5 +1,7 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Randoms
+
 class Host {
 
     fun printRequestEnterCarName() {
@@ -13,7 +15,7 @@ class Host {
     fun printCurrentRaceSituation(cars: List<Car>): List<Int> {
         val playerPosition = mutableListOf<Int>()
         cars.forEach {
-            val currentPosition = it.move()
+            val currentPosition = it.move(Randoms.pickNumberInRange(0, 9))
             println()
             playerPosition.add(currentPosition)
         }
