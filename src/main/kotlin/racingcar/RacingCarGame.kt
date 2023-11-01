@@ -24,6 +24,8 @@ class RacingCarGame {
                 racingCars[it].location++
             }
         }
+        racingCars.forEach { println(it.toString()) }
+        println()
     }
 
     companion object {
