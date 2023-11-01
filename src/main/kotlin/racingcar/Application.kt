@@ -19,10 +19,10 @@ fun getCarNames(): String {
     return input
 }
 
-fun getValidCarNamesArray(carNames: String): List<Car> {
-    val carNamesArray = carNames.split(",").map { Car(it, 0) }
-    if (carNamesArray.any { it.name.length > 5 }) throw IllegalArgumentException("자동차 이름은 5자 이하 이어야 함")
-    return carNamesArray
+fun getValidcarNamesList(carNames: String): List<Car> {
+    val carNamesList = carNames.split(",").map { Car(it, 0) }
+    if (carNamesList.any { it.name.length > 5 }) throw IllegalArgumentException("자동차 이름은 5자 이하 이어야 함")
+    return carNamesList
 }
 
 fun getNumberOfRacing(): Int {
@@ -31,11 +31,13 @@ fun getNumberOfRacing(): Int {
     return Console.readLine().toInt()
 }
 
-fun getRandomNumArray(carNamesArray: List<Car>): Array<Int> {
-    return Array(carNamesArray.size) {
+fun getRandomNumArray(carNamesList: List<Car>): Array<Int> {
+    return Array(carNamesList.size) {
         Randoms.pickNumberInRange(0, 9)
     }
 }
+
+
 
 
 
