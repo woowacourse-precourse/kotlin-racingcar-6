@@ -8,12 +8,18 @@ fun main() {
         player[name] = 0
     }
     println(player)
+    println( inputNumber())
 }
 
 fun parsingInput(): List<String> {
     val inputText: String = Console.readLine()
     validateNameLength(inputText.split(","))
     return inputText.split(",")
+}
+
+fun inputNumber(): Int {
+    val inputText: String = Console.readLine()
+    return validateNumber(inputText)
 }
 
 fun validateNameLength(input: List<String>) {
@@ -27,7 +33,12 @@ fun validateNameIsNotInt(input: String) {
     if (input.toIntOrNull() != null) throw IllegalArgumentException("${input}은 숫자입니다.")
 }
 
-fun validateNumber(input:String){
-    if (input.toIntOrNull()== null) throw IllegalArgumentException("${input}은 숫자가 아닙니다.")
+fun validateNumber(input: String): Int {
+    if (input.toIntOrNull() == null) throw IllegalArgumentException("${input}은 정수가 아닙니다.")
+    validateIsPositiveInteger(input.toInt())
+    return input.toInt()
 }
 
+fun validateIsPositiveInteger(input: Int){
+    if(input<0) throw IllegalArgumentException("${input}은 0보다 작은 횟수로 입력이 불가능합니다.")
+}
