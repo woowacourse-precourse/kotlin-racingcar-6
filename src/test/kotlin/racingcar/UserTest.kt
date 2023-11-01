@@ -1,7 +1,6 @@
 package racingcar
 
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -15,6 +14,9 @@ class UserTest {
         fun provideCarNamesForValidation(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of(",,,,", "자동차의 이름이 입력되지 않았습니다."),
+                Arguments.of(",2,3", "1번째 자동차 이름이 입력되지 않았습니다."),
+                Arguments.of("1,,3", "2번째 자동차 이름이 입력되지 않았습니다."),
+                Arguments.of("1,2,", "3번째 자동차 이름이 입력되지 않았습니다."),
                 Arguments.of("car123456,car2", "자동차 이름은 5자 이하이어야 합니다."),
                 Arguments.of("car1,car1,car3", "자동차 이름은 중복될 수 없습니다.")
             )
@@ -45,8 +47,6 @@ class UserTest {
     @ParameterizedTest
     @MethodSource("provideAttemptNumbersForValidation")
     fun `validateAttemptNumber tests`(input: String, expectedMessage: String) {
-        val user = User()
-
         val exception = assertThrows<IllegalArgumentException> {
             user.validateAttemptNumber(input)
         }
