@@ -13,11 +13,15 @@ class View {
         return Console.readLine()
     }
 
+    fun printResult(){
+        println("\n${ENTER_RESULT}")
+    }
+
     fun printPosition(cars: List<Car>) {
-        println(ENTER_RESULT)
         for (car in cars) {
             println("${car.getName()} : ${car.getPosition()}")
         }
+        println()
     }
 
     fun printWinner(winnerList: List<String>) {

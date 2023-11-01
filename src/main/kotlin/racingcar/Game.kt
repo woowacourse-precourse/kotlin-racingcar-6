@@ -24,6 +24,7 @@ class Game(private val view: View) {
     }
 
     private fun playGameNTimes(times: Int) {
+        view.printResult()
         repeat(times) {
             moveCars()
             view.printPosition(cars)
