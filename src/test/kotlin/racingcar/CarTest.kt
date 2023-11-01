@@ -32,4 +32,10 @@ class CarTest {
         car.updatePosition(false)
         assertThat(car.getPosition()).isEqualTo("--")
     }
+
+    @Test
+    fun getNameTest(){
+        val car = Car("test")
+        assertThat(car.getName()).isEqualTo("test")
+    }
 }
