@@ -1,7 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
-/*
+
 class RacingCarGame {
     private val readCar = ReadCar()
     private val carInput = readCar.carInput
@@ -74,7 +74,7 @@ class RacingCarGame {
             print(", ")
         }
     }
-
+/*
     fun gameStart() {
         isNameNotExceed5Letters()
         setProgress()
@@ -88,6 +88,5 @@ class RacingCarGame {
             println()
         }
         printWinner()
-    }
+    }*/
 }
-*/
