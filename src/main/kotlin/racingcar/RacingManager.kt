@@ -16,20 +16,17 @@ class RacingManager {
         }
     }
 
-
     fun findWinner() {
-
         val winner = mutableListOf<String>()
         val carNameList = mutableListOf<String>()
-
         val moveCountList = mutableListOf<Int>()
+
         for (car in cars) {
             moveCountList.add(car.moveCount)
             carNameList.add(car.carName)
         }
 
         val bestScore = moveCountList.maxOrNull()
-
         val indices = moveCountList.indices.filter { moveCountList[it] == bestScore }
 
         for (num in indices) {
