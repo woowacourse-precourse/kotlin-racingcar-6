@@ -5,6 +5,7 @@ class Validator(inputCarsNames: String, inputRound: Int) {
     init {
         validateLength(inputCarsNames)
         validateDuplicate(inputCarsNames)
+        validateNumOfCars(inputCarsNames)
         validateRound(inputRound)
     }
 
@@ -19,11 +20,15 @@ class Validator(inputCarsNames: String, inputRound: Int) {
             }
         }
 
-        private fun validateDuplicate(inputCarsNames: String) {
+        private fun validateDuplicate(inputCarsNames: String) :String {
             val carList = inputCarsNames.split(',').toList()
-            if (HashSet(carList).size != carList.size) {
-                throw IllegalArgumentException("중복된 이름이 존재하면 안 됩니다.")
-            }
+            require(HashSet(carList).size != carList.size) { "중복된 이름이 존재하면 안 됩니다."}
+            
+            return this.toString()
+        }
+
+        private fun validateNumOfCars(inputCarsNames: String)  {
+            val carList = inputCarsNames.split(',').toList()
             if (carList.size == 1) {
                 throw IllegalArgumentException("2대 이상의 차가 필요합니다.")
             }
