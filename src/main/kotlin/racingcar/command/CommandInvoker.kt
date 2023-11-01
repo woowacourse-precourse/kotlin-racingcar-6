@@ -13,5 +13,9 @@ class CommandInvoker {
                 command.execute()
             }
         }
+
+        fun clearCommands() {
+            commands.clear()
+        }
     }
 }
