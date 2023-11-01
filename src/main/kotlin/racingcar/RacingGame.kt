@@ -6,14 +6,18 @@ class RacingGame(private val cars: List<Car>, private val tryCount: Int) {
         println("\n실행 결과")
         repeat(tryCount) {
             playRound()
-            println("\n")
         }
         printWinners()
     }
 
     private fun playRound() {
-        cars.forEach { it.move() }
-        println(cars.joinToString("\n"))
+        val roundResults = mutableListOf<String>()
+        cars.forEach { car ->
+            car.move()
+            roundResults.add(car.toString())
+        }
+        println(roundResults.joinToString("\n"))
+        println()
     }
 
     private fun printWinners() {
@@ -23,4 +27,3 @@ class RacingGame(private val cars: List<Car>, private val tryCount: Int) {
         println("\n최종 우승자: $winnerNames")
     }
 }
-
