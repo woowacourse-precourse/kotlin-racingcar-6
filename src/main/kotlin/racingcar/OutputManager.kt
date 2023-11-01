@@ -2,7 +2,7 @@ package racingcar
 
 object OutputManager {
 
-    fun printGameStatus(cars:List<Car>) {
+    fun printGameStatus(cars: List<Car>) {
         print(buildGameStatusString(cars))
         println()
     }
@@ -13,6 +13,5 @@ object OutputManager {
     fun printWinners(winners: List<Car>) {
         println(buildWinnersString(winners))
     }
-    private fun buildWinnersString(winners:List<Car>): String = Resources.WINNER_IS + winners.joinToString(", ") { it.name }
-
+    private fun buildWinnersString(winners: List<Car>): String = Resources.WINNER_IS + winners.joinToString(", ") { it.name }
 }

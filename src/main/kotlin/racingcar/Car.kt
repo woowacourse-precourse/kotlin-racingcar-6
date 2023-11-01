@@ -7,16 +7,15 @@ class Car(val name: String) : Comparable<Car> {
         private set
 
     init {
-        require(name.length <= 5){ "Car name length exceeds 5 letters" }
+        require(name.length <= 5) { "Car name length exceeds 5 letters" }
     }
 
     fun goForwardOrStop() {
-        val random = Randoms.pickNumberInRange(0,9)
+        val random = Randoms.pickNumberInRange(0, 9)
         if (random >= 4) {
             position++
         }
     }
 
     override fun compareTo(other: Car): Int = compareValuesBy(this, other, Car::position)
-
 }
