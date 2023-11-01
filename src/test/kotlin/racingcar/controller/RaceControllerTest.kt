@@ -5,7 +5,8 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.model.TestCarFactory
-import racingcar.model.TestCarFactory.CarType.*
+import racingcar.model.TestCarFactory.CarType.ALWAYS_GO_FORWARD
+import racingcar.model.TestCarFactory.CarType.NEVER_GO_FORWARD
 import racingcar.model.TurnNumber
 import racingcar.model.car.CarName
 import racingcar.view.RaceView
@@ -168,5 +169,16 @@ class RaceControllerTest {
         println(outputView.capturedTexts)
 
         assertThat(capturedTexts[0]).isEqualTo("최종 우승자 : pobi, woni, jun")
+    }
+
+    @Test
+    fun startRace_userEnterNonNumberInputForTurnNumber_throwIllegalArgumentException() {
+        // given
+        inputView.addUserInput("pobi,woni,jun", "abc")
+
+        // when, then
+        assertThrows<IllegalArgumentException> {
+            controller.startRace()
+        }
     }
 }

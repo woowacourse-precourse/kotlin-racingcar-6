@@ -104,6 +104,17 @@ class RaceViewTest {
     }
 
     @Test
+    fun getTurnNumberFromUser_userEnterNonNumberInput_throwIllegalArgumentException() {
+        // given
+        inputView.addUserInput("abc")
+
+        // when, then
+        assertThrows<IllegalArgumentException> {
+            view.getTurnNumberFromUser()
+        }
+    }
+
+    @Test
     fun displayRaceResult_carsAreGiven_printCarNameAndDistanceMarkerCorrectly() {
         // given
         val cars = listOf(
