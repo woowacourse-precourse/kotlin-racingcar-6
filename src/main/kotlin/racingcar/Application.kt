@@ -69,6 +69,25 @@ class RacingCarGame {
         println("")
 
     }
+
+    fun findWinners(cars: List<Car>): List<String> {
+        var maxPosition: Int? = null
+        val winnerNames = mutableListOf<String>()
+
+        for (car in cars) {
+            val position = car.getPosition()
+
+            if (maxPosition == null || position > maxPosition) {
+                maxPosition = position
+                winnerNames.clear()
+            }
+
+            if (position == maxPosition) {
+                winnerNames.add(car.name)
+            }
+        }
+        return winnerNames
+    }
 }
 
 class Car(val name: String) {
