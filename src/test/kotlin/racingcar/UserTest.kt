@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DynamicTest.dynamicTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestFactory
+import org.junit.jupiter.api.assertThrows
 
 class UserTest {
     private lateinit var user: User
@@ -35,5 +36,13 @@ class UserTest {
 
             assertThat(result).isTrue()
         }
+    }
+
+    @Test
+    fun `입력값이 올바르지 않은 경우 예외를 발생시켜야 함`() {
+        val input = "pobi, wodjsss, jun"
+        val exception = assertThrows<IllegalArgumentException> { user.createCars(input) }
+
+        assertThat(exception.message).isEqualTo("자동차 이름은 ${MAX_NAME_LENGTH}자 이하로 입력해주세요.")
     }
 }
