@@ -1,10 +1,24 @@
 package racingcar
 
-import racingcar.domain.User
+import racingcar.domain.Car
+import racingcar.domain.Game
+import racingcar.utils.Constants.RESULT_MESSAGE
+import racingcar.view.InputView
+import racingcar.view.OutputView.printRaceWinner
 
 fun main() {
-    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    val result = User.resultName
-    println("시도할 횟수는 몇 회인가요?")
-    val num = User.tryNum
+
+    val names = InputView.inputCarName()
+    val nameList = names?.split(",")
+    val nameResult = nameList?.map { Car(it) }
+    val trial = InputView.inputTrial()
+    val game = Game()
+    print(RESULT_MESSAGE)
+
+    repeat(trial) {
+        game.start(nameResult)
+        println()
+    }
+
 }
+
