@@ -8,7 +8,7 @@ class InputView {
         var carNames : String
         do{
             carNames = Console.readLine()
-        }while(!ExceptionHandler.checkNames(carNames))
+        }while(!ExceptionHandler.checkNames(carNames)|| !ExceptionHandler.checkDuplicateNames(carNames))
         val names = carNames.split(",")
         isValidLength(names)
         return names
