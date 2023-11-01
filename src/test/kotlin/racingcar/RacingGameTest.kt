@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class RacingGameTest {
+
     private val game = RacingGame()
 
     @Test

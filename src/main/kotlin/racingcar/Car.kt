@@ -13,6 +13,7 @@ class Car(val name: String) {
             position++
         }
         print("$name : ${ADVANCE.repeat(position)}")
+
         return position
     }
 

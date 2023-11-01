@@ -16,7 +16,6 @@ class HostTest {
         )
         val randomNumbers = listOf(5, 2, 7)
         var index = 0
-
         val positions = host.printCurrentRaceSituation(cars) { randomNumbers[index++] }
 
         assertEquals(ADVANCE, positions[POLY])
@@ -32,8 +31,8 @@ class HostTest {
             Car("car2"),
             Car("car3")
         )
-
         val winners = host.determineWinners(playersFinalPosition, cars)
+
         assertEquals("최종 우승자 : car1", winners)
     }
 
@@ -47,8 +46,8 @@ class HostTest {
             Car("car4"),
             Car("car5")
         )
-
         val winners = host.determineWinners(playersFinalPosition, cars)
+
         assertEquals("최종 우승자 : car3, car4", winners)
     }
 

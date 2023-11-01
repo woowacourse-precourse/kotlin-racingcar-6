@@ -17,11 +17,13 @@ class Host {
         randomNumberGenerator: () -> Int = { Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER) }
     ): List<Int> {
         val playerPosition = mutableListOf<Int>()
+
         cars.forEach {
             val currentPosition = it.move(randomNumberGenerator())
             println()
             playerPosition.add(currentPosition)
         }
+
         return playerPosition
     }
 
