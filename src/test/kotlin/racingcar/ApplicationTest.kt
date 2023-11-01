@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class ApplicationTest : NsTest() {
     @Test
@@ -37,6 +39,14 @@ class ApplicationTest : NsTest() {
     fun `이름을 ,로 구분하지 않았을 때의 예외 처리`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi.javaji", "1") }
+        }
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["@", "한", "A", "", " "])
+    fun `시도할 횟수가 숫자가 아닌 경우`(testInput: String) {
+        assertThrows<IllegalArgumentException>("숫자를 입력해주세요") {
+            require(testInput.toIntOrNull() != null)
         }
     }
 
