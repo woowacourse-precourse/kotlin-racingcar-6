@@ -15,7 +15,7 @@ class User {
             if (carName.isBlank()) {
                 throw IllegalArgumentException("차의 이름이 공백일 수 없습니다.")
             }
-            if (carName.matches(validNameRegex)) {
+            if (!carName.matches(validNameRegex)) {
                 throw IllegalArgumentException("차의 이름은 특수 문자를 포함할 수 없습니다.")
             }
             cars.addCar(Car(carName))
@@ -25,6 +25,9 @@ class User {
 
     fun askNumber(count: String): Int {
         println("시도할 횟수는 몇 회인가요?")
+        if (count.isBlank()) {
+            throw IllegalArgumentException("시도할 횟수가 공백일 수 없습니다.")
+        }
         if (count.toIntOrNull() == null) {
             throw IllegalArgumentException("시도할 횟수는 정수 이어야 합니다.")
         }
