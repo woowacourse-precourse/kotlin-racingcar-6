@@ -16,6 +16,12 @@ fun main() {
         println()
     }
 
+    printWinners(listOfCar)
+
+}
+
+fun printWinners(listOfCar:List<Car>)
+{
     print("최종 우승자 : ")
     val maxPosition = listOfCar
         .maxOf { it.position }
@@ -24,7 +30,6 @@ fun main() {
         .map { it.name }
     print(listOfWinner.joinToString(","))
 }
-
 fun createListOfCar(input:String) = input
     .split(',')
     .map{Car(it)}
