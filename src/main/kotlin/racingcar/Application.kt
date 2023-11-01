@@ -66,9 +66,7 @@ fun judgementException(judge: String, carName: String){
             stringLenthJudgement(carName)
         }
         "repeatCount" -> {
-            if (!carName.all { it.isDigit() }) {
-                throw IllegalArgumentException("Repeat count should be a valid number")
-            }
+            isNumber(carName)
         }
     }
 }
