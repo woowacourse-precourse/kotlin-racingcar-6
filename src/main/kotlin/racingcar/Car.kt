@@ -17,4 +17,8 @@ class Car(val name: String) {
             moveCount++
         }
     }
+
+    fun printCarMove() {
+        println("$name : ${"-".repeat(moveCount)}")
+    }
 }
