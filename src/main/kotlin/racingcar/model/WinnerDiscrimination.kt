@@ -12,7 +12,7 @@ class WinnerDiscrimination {
         return winnerCars
     }
 
-    fun Discriminating(scoreBoard: List<String>): MutableList<Int> {
+    private fun Discriminating(scoreBoard: List<String>): MutableList<Int> {
         var winnerIndices = mutableListOf<Int>()
         var max = 0
         for ((index, score) in scoreBoard.withIndex()) {
