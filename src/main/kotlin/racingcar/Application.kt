@@ -15,18 +15,12 @@ fun inputException(inputs: List<String>): List<String> {
 }
 
 
-fun carRace(score: MutableMap<String, String>){
-
-    for ((key, _ ) in score) {
-        if (Randoms.pickNumberInRange(0, 9) >= 4 ) {
-            score[key] +="-"
-        }
-
+fun carRace(score: MutableMap<String, String>) {
+    score.forEach { (key, _) ->
+        if (Randoms.pickNumberInRange(0, 9) >= 4) score[key] += "-"
         println("$key : ${score[key]}")
-
     }
     println()
-
 }
 
 fun displayOutput(score: Map<String, String>) {
