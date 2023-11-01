@@ -1,7 +1,5 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Console
-
 object Process {
     private val validation = Validation()
     private lateinit var carNames: List<String>
@@ -11,6 +9,7 @@ object Process {
     fun generateCars(input: String) {
         carNames = validation.validateCarNames(input.split(",").map { it.trim() })
         round = Round(carNames)
+        round.initializeAndGetCars(carNames)
     }
 
     fun setAttemptTimes(input: String) {

@@ -3,6 +3,8 @@ package racingcar
 
 
 fun main() {
-    // TODO: 프로그램 구현
-
+    val run = Run()
+    run.inputData()
+    run.play()
+    run.printWinners()
 }
