@@ -18,4 +18,8 @@ class Car(private val objectName: String) { // 객체명이 printLocation()에�
         return location
     }
 
+    fun getObjectName(): String {
+        return objectName
+    }
+
 }
