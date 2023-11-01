@@ -29,6 +29,21 @@ fun printCurrent(result: Array<Int>, car: List<String>?) {
     println()
 }
 
+fun printWinner(car: List<String>, result: Array<Int>) {
+    var multipleWinner: Boolean = false
+    var winnerForward = result.maxOrNull()
+
+    for (i: Int in 0..car.size - 1) {
+        if (result[i] == winnerForward && !multipleWinner) {
+            print(car[i])
+            multipleWinner = true
+        } else if (result[i] == winnerForward) {
+            print(", ")
+            print(car[i])
+        }
+    }
+}
+
 fun main() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     var cars = readLine()
@@ -57,4 +72,7 @@ fun main() {
         checkForward(randomNum, result)
         printCurrent(result, car)
     }
+
+    print("최종 우승자 : ")
+    printWinner(car!!, result)
 }
