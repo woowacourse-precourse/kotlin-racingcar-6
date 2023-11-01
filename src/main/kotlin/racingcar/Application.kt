@@ -39,6 +39,25 @@ fun display(cars:List<String>, record:IntArray){
     println()
 }
 
+fun find_winner(record:IntArray):ArrayList<Int>{
+    val win_cars =  ArrayList<Int>()
+    val stand = record.max()
+    for (i in 0 until record.size){
+        if (record[i] == stand){
+            win_cars.add(i)
+        }
+    }
+    return win_cars
+}
+
+fun display_winner(cars: List<String>, winner:ArrayList<Int>){
+    val answer = ArrayList<String>()
+    for (i in winner){
+        answer.add(cars[i])
+    }
+    println("최종 우승자 : ${answer.joinToString(",")}")
+}
+
 fun main() {
     val cars = make_frame()
     val record = IntArray(cars.size){0}
@@ -46,4 +65,5 @@ fun main() {
         move(record)
         display(cars, record)
     }
+    display_winner(cars, find_winner(record))
 }
