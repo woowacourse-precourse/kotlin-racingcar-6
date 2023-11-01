@@ -20,5 +20,8 @@ fun main() {
         println()
     }
 
+    val result = game.result(nameResult)
+    val winnwer = game.awardWinner(result)
+    printRaceWinner(winnwer)
 }
 
