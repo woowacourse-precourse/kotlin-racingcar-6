@@ -3,6 +3,4 @@ package racingcar
 class Referee {
 
 
-
-
 }
