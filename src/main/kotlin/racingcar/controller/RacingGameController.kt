@@ -31,7 +31,6 @@ class RacingGameController {
         repeat (roundManagement.count){
             roundManagement.playRound()
             raceResultView.printRoundResult(roundManagement.getRacingResult())
-            println()
         }
     }
 

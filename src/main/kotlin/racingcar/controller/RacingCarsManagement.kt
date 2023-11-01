@@ -10,8 +10,7 @@ class RacingCarsManagement(val cars:MutableList<RacingCarModel>) {
 
     fun getWinners():String{
         val maxPlace = cars.maxOf { it.place }
-
-        return "최종 우승 : ${cars.filter { car -> car.place == maxPlace}.joinToString(", ")}"
+        return "${cars.filter { car -> car.place == maxPlace}.map { racingCarModel ->racingCarModel.name  }.joinToString(", ")}"
     }
 
 }
