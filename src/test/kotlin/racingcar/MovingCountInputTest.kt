@@ -16,4 +16,16 @@ class MovingCountInputTest {
         }.isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("입력된 횟수가 0 이하입니다.")
     }
+
+    @Test
+    fun `입력된 이동 횟수가 숫자가 아니라면 예외가 발생한다`() {
+        // given
+        val countInput = "a"
+
+        // then
+        assertThatThrownBy {
+            MoveCountInput.getMoveCount(countInput)
+        }.isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("입력된 수가 숫자가 아닙니다.")
+    }
 }
