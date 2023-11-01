@@ -1,11 +1,10 @@
 package racingcar.domain
 
-class Car(val name: String) {
-
-    var advanceState = 0
-
+data class Car(
+    val name: String,
+    var advanceState: Int = 0,
+) {
     fun moveForward() {
         advanceState++
     }
-
 }
