@@ -37,7 +37,7 @@ class RacingGameController {
         return cars
     }
 
-    private fun tryOne(cars: List<Car>) {
+    private fun tryOne(cars: List<Car>) { // 하나의 라운드만 돌기
         for (car in cars) {
             val randomNum = generateNum()
             if (randomNum >= 4) car.moveForward()
