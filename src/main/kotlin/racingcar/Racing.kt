@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Racing {
 
-    fun random09(): Int {
+    private fun random09(): Int {
         val num = Randoms.pickNumberInRange(0, 9)
         println(num)
         return num
