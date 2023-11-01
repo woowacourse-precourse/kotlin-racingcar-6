@@ -64,6 +64,7 @@ fun judgementException(judge: String, carName: String){
     when(judge){
         "inputCar" -> {
             stringLenthJudgement(carName)
+            containsOnlyDigitsAndSpaces(carName)
         }
         "repeatCount" -> {
             isNumber(carName)
@@ -80,5 +81,14 @@ fun stringLenthJudgement(carName: String){
 fun isNumber(carName: String){
     if (!carName.all { it.isDigit() }) {
         throw IllegalArgumentException()
+    }
+}
+
+fun containsOnlyDigitsAndSpaces(carName: String) {
+    if (!carName.all { it.isDigit() || it.isWhitespace() }) {
+        throw IllegalArgumentException("Car name should contain only digits and spaces")
+    }
+    if (carName.split(" ").size > 1) {
+        throw IllegalArgumentException("Spaces inside a number are not allowed")
     }
 }
