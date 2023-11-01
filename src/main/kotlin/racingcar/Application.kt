@@ -3,5 +3,7 @@ package racingcar
 fun main() {
 
     val machine = InputMachine()
-    val tryCount = machine.tryMove()
+    val racing = Racing()
+
+    println(racing.random09())
 }

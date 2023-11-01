@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms
 class Racing {
 
     fun random09() : Int {
-        return 0
+        return Randoms.pickNumberInRange(0, 9)
     }
 
     fun forwardOver4() {
