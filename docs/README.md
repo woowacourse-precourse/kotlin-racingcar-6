@@ -29,7 +29,7 @@
         - [X] false인 경우 IllegalArgumentException
 
 - 출력
-    - [ ] 각 차수별 실행결과
+    - [X] 각 차수별 실행결과
     - [ ] 단독 우승자 안내 문구
     - [ ] 공동 우승자 안내 문구
 
