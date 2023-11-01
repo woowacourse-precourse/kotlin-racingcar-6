@@ -1,21 +1,17 @@
 package domain
 
-import view.View
-
 class CarManager {
     private var cars: MutableList<Car> = mutableListOf()
     private var tryCnt: Int = 0
-    private val view = View()
 
-    fun getNamesAndMakeCars() {
-        val carNames = view.requireCarNames()
+    fun getNamesAndMakeCars(carNames: List<String>) {
         for (name in carNames) {
             makeCar(name)
         }
     }
 
-    fun getTryCnt() {
-        tryCnt = view.requireTryCnt()
+    fun getTryCnt(cnt: Int) {
+        tryCnt = cnt
     }
 
     fun makeCar(name: String) {
@@ -30,6 +26,10 @@ class CarManager {
             }
         }
         return firstPlayers
+    }
+
+    fun getCars(): MutableList<Car> {
+        return this.cars
     }
 
     fun nextStep() {

@@ -1,5 +1,6 @@
 package view
 
+import domain.Car
 import service.Message
 
 class OutputView {
@@ -9,5 +10,15 @@ class OutputView {
 
     fun printRequireTry(){
         println(Message.REQUIRE_TRY.toString())
+    }
+
+    fun printStep(car: Car) {
+        print(car.getName() + " : ")
+        println("-".repeat(car.getCurrentPosition()))
+    }
+
+    fun printResult(winners: List<String>) {
+        print(Message.RESULT.toString())
+        println(winners.toString().subSequence(1,winners.toString().length-1))
     }
 }
