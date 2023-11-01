@@ -43,7 +43,7 @@ class RacingCarController {
         return attemptsNumber.toInt()
     }
 
-    fun printEachRacingCar(carNames: List<String>) {
+    private fun printEachRacingCar(carNames: List<String>) {
         for (i in carNames.indices) {
             val progress = model.getCarProgress(i)
             outputView.roundResult(carNames[i])
@@ -57,7 +57,7 @@ class RacingCarController {
         return carNames.filterIndexed { index, _ -> model.getCarProgress(index) == maxProgress }
     }
 
-    fun printRacingCarWinner(winners: List<String>) {
+    private fun printRacingCarWinner(winners: List<String>) {
         outputView.printWinners(winners)
     }
 }
