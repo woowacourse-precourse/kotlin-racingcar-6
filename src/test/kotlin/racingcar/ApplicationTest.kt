@@ -26,6 +26,17 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `이름에 대한 예외 처리(공백)`() {
+        assertRandomNumberInRangeTest(
+            {
+                run(" pobi  , woni ", "1")
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD, STOP
+        )
+    }
+
     public override fun runMain() {
         main()
     }
