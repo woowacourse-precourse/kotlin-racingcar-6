@@ -1,5 +1,9 @@
 package racingcar
 
+import racingcar.constants.COMMA
+import racingcar.constants.EXECUTION_RESULT
+import racingcar.constants.FIRST_ATTEMPT
+
 class RacingGame {
 
     private val host = Host()

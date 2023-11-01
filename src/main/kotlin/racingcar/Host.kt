@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.constants.*
 
 class Host {
 

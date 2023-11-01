@@ -1,5 +1,6 @@
 package racingcar
 
+import racingcar.constants.*
 import kotlin.IllegalArgumentException
 
 class Validation {

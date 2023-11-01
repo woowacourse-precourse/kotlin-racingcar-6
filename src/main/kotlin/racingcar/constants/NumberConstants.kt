@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.constants
 
 const val MIN_NUMBER_CAR_NAMES = 2
 const val MAX_LENGTH_CAR_NAME = 5
