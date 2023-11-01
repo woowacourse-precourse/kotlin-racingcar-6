@@ -11,18 +11,21 @@ fun main() {
 
     println("시도할 횟수는 몇 회인가요?")
     val repeatCount = readLine()
+    judgmentException("repeatCount", repeatCount.toString())
     println("\n실행 결과")
     for (i in 0..repeatCount!!.toInt()-1) { // allCarList.indices는 0 부터 allCarList.size - 1 까지의 범위를 제공합니다.
         showProcedure(carList, forwardCondition(distanceList))
     }
     finalWinner(carList, distanceList)
-
-
 }
 
 fun inputCarList(): List<String>{
     val inputCarName = readLine()
     val CarList = inputCarName!!.split(",")
+
+    CarList.forEach {
+        judgmentException("inputCar", it)
+    }
     return CarList
 }
 
@@ -54,5 +57,20 @@ fun finalWinner(carList: List<String>, distanceList: MutableList<Int>) {
             if (value == maxDistance) carList[index] else null // 최댓값과 동일하면 해당 차의 이름을 반환하고, 아니면 null을 반환합니다.
         }
         println("최종 우승자 : ${winners.joinToString(", ")}")
+    }
+}
+
+fun judgmentException(judge: String, abc: String){
+    when(judge){
+        "inputCar" -> {
+            if (abc.length >= 6) {
+                throw IllegalArgumentException("abc should not be 6 characters or more")
+            }
+        }
+        "repeatCount" -> {
+            if (!abc.all { it.isDigit() }) {
+                throw IllegalArgumentException("Repeat count should be a valid number")
+            }
+        }
     }
 }
