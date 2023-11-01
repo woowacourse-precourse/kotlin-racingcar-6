@@ -32,8 +32,8 @@
 
 ### 세부 구현 사항
 
-    [ ] indent depth <= 2
-    [ ] JUnit5, AssertJ 를 이용한 테스트 코드
-    [ ] camp.nextstep.edu.missionUtils 라이브러리의 다음 함수 사용
-        [ ] Randoms.pickNumberInRange()
-        [ ] Console.readLine() 
+    [x] indent depth <= 2
+    [x] JUnit5, AssertJ 를 이용한 테스트 코드
+    [x] camp.nextstep.edu.missionUtils 라이브러리의 다음 함수 사용
+        [x] Randoms.pickNumberInRange()
+        [x] Console.readLine() 
