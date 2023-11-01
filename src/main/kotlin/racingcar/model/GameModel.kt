@@ -1,15 +1,14 @@
 package racingcar.model
 
-class GameModel(names: List<String>) {
-    val cars: List<CarModel> = names.map { CarModel(it) }
-    fun race() {
-        cars.forEach {
+class GameModel {
+    fun race(carList: List<CarModel>) {
+        carList.forEach {
             it.move(it.numberGenerator())
         }
     }
 
-    fun getWinners(): List<CarModel> {
-        val maxPosition = cars.maxOf { it.position }
-        return cars.filter { it.position == maxPosition }
+    fun getWinners(carList: List<CarModel>): List<CarModel> {
+        val maxPosition = carList.maxOf { it.position }
+        return carList.filter { it.position == maxPosition }
     }
 }

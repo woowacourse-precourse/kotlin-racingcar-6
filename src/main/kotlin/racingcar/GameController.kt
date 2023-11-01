@@ -1,17 +1,20 @@
 package racingcar
+import racingcar.model.CarModel
 import racingcar.model.GameModel
 
-class GameController(private val view: GameView) {
+class GameController(private val view: GameView, private val racingGame: GameModel) {
     fun racingGame() {
         val carNames = view.getCarNames()
         val attempts = view.getAttempts()
 
-        val racingGame = GameModel(carNames)
+        val cars: List<CarModel> = carNames.map { CarModel(it) }
+
         repeat(attempts) {
-            racingGame.race()
-            view.raceStatus(racingGame.cars)
+            racingGame.race(cars)
+            view.raceStatus(cars)
         }
-        val winners = racingGame.getWinners()
+
+        val winners = racingGame.getWinners(cars)
         view.printWinner(winners)
     }
 }
