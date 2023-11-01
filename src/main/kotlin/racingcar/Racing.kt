@@ -21,4 +21,12 @@ class Racing {
             throw IllegalArgumentException("1 이상의 정수를 입력해주세요.")
         }
     }
+
+    fun createRandomNumber(): Int{
+        return Randoms.pickNumberInRange(0, 9)
+    }
+
+    fun validateMoveCondition(number : Int) : Boolean {
+        return number>=4
+    }
 }
