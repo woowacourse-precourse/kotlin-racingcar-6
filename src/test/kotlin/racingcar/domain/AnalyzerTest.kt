@@ -8,11 +8,11 @@ import racingcar.data.Car
 
 class AnalyzerTest {
 
-    private lateinit var anaylazer: Analyzer
+    private lateinit var analyzer: Analyzer
 
     @BeforeEach
     fun setUp() {
-        anaylazer = Analyzer()
+        analyzer = Analyzer()
     }
 
     @Test
@@ -21,7 +21,7 @@ class AnalyzerTest {
         val pickedNum = 0
 
         // when
-        val actual = anaylazer.isMoveAllowed(pickedNum)
+        val actual = analyzer.isMoveAllowed(pickedNum)
 
         // then
         val expected = false
@@ -35,7 +35,7 @@ class AnalyzerTest {
         val pickedNum = 3
 
         // when
-        val actual = anaylazer.isMoveAllowed(pickedNum)
+        val actual = analyzer.isMoveAllowed(pickedNum)
 
         // then
         val expected = false
@@ -48,7 +48,7 @@ class AnalyzerTest {
         val pickedNum = 4
 
         // when
-        val actual = anaylazer.isMoveAllowed(pickedNum)
+        val actual = analyzer.isMoveAllowed(pickedNum)
 
         // then
         val expected = true
@@ -61,7 +61,7 @@ class AnalyzerTest {
         val pickedNum = 9
 
         // when
-        val actual = anaylazer.isMoveAllowed(pickedNum)
+        val actual = analyzer.isMoveAllowed(pickedNum)
 
         // then
         val expected = true
@@ -83,7 +83,7 @@ class AnalyzerTest {
         val candidates = listOf(a, b, c)
 
         // when
-        val actual = anaylazer.judgeWinner(candidates)
+        val actual = analyzer.judgeWinner(candidates)
 
         // then
         val expected = listOf(a)
@@ -105,7 +105,7 @@ class AnalyzerTest {
         val candidates = listOf(a, b, c)
 
         // when
-        val actual = anaylazer.judgeWinner(candidates)
+        val actual = analyzer.judgeWinner(candidates)
 
         // then
         val expected = listOf(b)
@@ -127,7 +127,7 @@ class AnalyzerTest {
         val candidates = listOf(a, b, c)
 
         // when
-        val actual = anaylazer.judgeWinner(candidates)
+        val actual = analyzer.judgeWinner(candidates)
 
         // then
         val expected = listOf(c)
@@ -149,7 +149,7 @@ class AnalyzerTest {
         val candidates = listOf(a, b, c)
 
         // when
-        val actual = anaylazer.judgeWinner(candidates)
+        val actual = analyzer.judgeWinner(candidates)
 
         // then
         val expected = listOf(a, c)
@@ -165,7 +165,7 @@ class AnalyzerTest {
         val candidates = listOf(a, b, c)
 
         // when
-        val actual = anaylazer.judgeWinner(candidates)
+        val actual = analyzer.judgeWinner(candidates)
 
         // then
         val expected = listOf(a, b, c)
