@@ -1,5 +1,9 @@
 package racingcar
 
 fun main() {
-    // TODO: 프로그램 구현
+    val view = RacingCarView()
+    val model = RacingCarModel()
+    val controller = RacingCarController(view, model)
+
+    controller.race() //자동차경주 시작
 }
