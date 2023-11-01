@@ -3,10 +3,10 @@ package racingcar.domain
 import camp.nextstep.edu.missionutils.Console
 import racingcar.res.GuideMessage.ENTER_CAR_NAMES_GUIDEMESSAGE
 import racingcar.res.GuideMessage.ENTER_NUMBER_OF_MOVES_GUIDEMESSAGE
-import racingcar.res.ErrorMessage.EMPTY_CAR_NAME_ERRORMESSAGE
+import racingcar.res.ErrorMessage.BLANK_CAR_NAME_ERRORMESSAGE
 import racingcar.res.ErrorMessage.INDISTINCTIVE_CAR_NAME_ERRORMESSAGE
 import racingcar.res.ErrorMessage.NOT_PROPER_NUMBER_OF_MOVES_ERRORMESSAGE
-import racingcar.res.ErrorMessage.UNDER_5_LETTERS_CAR_NAME_ERRORMESSAGE
+import racingcar.res.ErrorMessage.OVER_5_LETTERS_CAR_NAME_ERRORMESSAGE
 
 class RaceGenerator {
   private val cars: MutableList<Car> = mutableListOf()
@@ -36,12 +36,12 @@ class RaceGenerator {
     val carNames: List<String> = input.split(",")
 
     for (carName in carNames) {
-      if (carName.isEmpty()) {
-        throw IllegalArgumentException(EMPTY_CAR_NAME_ERRORMESSAGE)
+      if (carName.isBlank()) {
+        throw IllegalArgumentException(BLANK_CAR_NAME_ERRORMESSAGE)
       }
 
       if (carName.length > 5) {
-        throw IllegalArgumentException(UNDER_5_LETTERS_CAR_NAME_ERRORMESSAGE)
+        throw IllegalArgumentException(OVER_5_LETTERS_CAR_NAME_ERRORMESSAGE)
       }
     }
 
