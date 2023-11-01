@@ -17,7 +17,7 @@ class CarController {
         }
     }
 
-    private fun validCreateCars(name: String) {
+    fun validCreateCars(name: String) {
         with(InputValidator) {
             checkCarNameLength(name)
             checkInputWhitespace(name.trim())
