@@ -15,7 +15,6 @@ fun findWinner(cars: Array<RacingCar>): ArrayList<String> {
     val winner = ArrayList<RacingCar>()
 
     winner.add(cars[0])
-    println("test")
 
     for (i in 1..cars.size - 1) {
         if (winner[0].getMoveCnt() < cars[i].getMoveCnt()) {
