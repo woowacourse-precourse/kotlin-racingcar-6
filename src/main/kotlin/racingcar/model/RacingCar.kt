@@ -1,4 +1,4 @@
-package model
+package racingcar.model
 
 class RacingCar(
     val name: String,

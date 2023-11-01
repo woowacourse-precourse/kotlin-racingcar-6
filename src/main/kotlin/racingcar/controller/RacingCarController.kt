@@ -1,11 +1,11 @@
-package controller
+package racingcar.controller
 
-import model.RacingCar
-import model.RandomMoveStrategy
-import view.GameConsole.printPosition
-import view.GameConsole.printWinnerNames
-import view.PlayerConsole.getValidCarNames
-import view.PlayerConsole.getValidMoveCount
+import racingcar.model.RacingCar
+import racingcar.model.RandomMoveStrategy
+import racingcar.view.GameConsole.printPosition
+import racingcar.view.GameConsole.printWinnerNames
+import racingcar.view.PlayerConsole.getValidCarNames
+import racingcar.view.PlayerConsole.getValidMoveCount
 
 class RacingCarController {
 

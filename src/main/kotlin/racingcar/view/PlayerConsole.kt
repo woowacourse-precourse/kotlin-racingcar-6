@@ -1,8 +1,8 @@
-package view
+package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console.readLine
-import view.GameConsole.printCarNamePrompt
-import view.GameConsole.printMoveCountPrompt
+import racingcar.view.GameConsole.printCarNamePrompt
+import racingcar.view.GameConsole.printMoveCountPrompt
 
 object PlayerConsole {
 

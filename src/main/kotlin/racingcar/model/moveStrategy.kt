@@ -1,9 +1,9 @@
-package model
+package racingcar.model
 
 import camp.nextstep.edu.missionutils.Randoms
-import model.MoveStrategy.Companion.FORWARD_THRESHOLD
-import model.MoveStrategy.Companion.MAXIMUM_DIGIT
-import model.MoveStrategy.Companion.MINIMUM_DIGIT
+import racingcar.model.MoveStrategy.Companion.FORWARD_THRESHOLD
+import racingcar.model.MoveStrategy.Companion.MAXIMUM_DIGIT
+import racingcar.model.MoveStrategy.Companion.MINIMUM_DIGIT
 
 interface MoveStrategy {
 
