@@ -2,47 +2,48 @@ package racingcar.controller
 
 import camp.nextstep.edu.missionutils.Console
 import racingcar.model.*
-import racingcar.view.InputView
-import racingcar.view.OutputView
+import racingcar.view.Input
+import racingcar.view.Output
 
 class GameManager {
     fun start() {
         val carNamesSeparated = carNameinput()
         val tryNum = tryNumberInput()
         validate(carNamesSeparated, tryNum)
-        val carProgress = racing(carNamesSeparated, tryNum.toInt())
+        val carProgress = race(carNamesSeparated, tryNum.toInt())
         winnerOutput(carNamesSeparated, carProgress)
         Console.close()
     }
 
-    fun validate(carNamesSeparated: List<String>, tryNum: String) {
-        Validation().carName(carNamesSeparated)
-        Validation().tryNum(tryNum)
-    }
 
     fun carNameinput(): List<String> {
-        OutputView().carInputMassage()
-        val carNames = InputView().input()
-        return CarNameSeparator().separator(carNames)
+        Output().carInputMassage()
+        val carNames = Input().write()
+        return CarName().separator(carNames)
     }
 
     fun tryNumberInput(): String {
-        OutputView().tryInputMassage()
-        return InputView().input()
+        Output().tryInputMassage()
+        return Input().write()
     }
 
-    fun racing(carNamesSeparated: List<String>, tryNum: Int): List<String> {
-        OutputView().racingResult()
-        var carProgress: List<String> = CarProgressInit().progress(carNamesSeparated.size)
+    fun validate(carNamesSeparated: List<String>, tryNum: String) {
+        Validation().carNameValidate(carNamesSeparated)
+        Validation().tryNumValidate(tryNum)
+    }
+
+    fun race(carNamesSeparated: List<String>, tryNum: Int): List<String> {
+        Output().racingResult()
+        var carProgress: List<String> = CarProgress().initialize(carNamesSeparated.size)
         for (i in 0..<tryNum) {
-            carProgress = RacingGame().racing(carProgress)
-            OutputView().eachRacingResult(carNamesSeparated, carProgress)
+            carProgress = Game().eachRace(carProgress)
+            Output().eachRacingResult(carNamesSeparated, carProgress)
         }
         return carProgress
     }
 
     fun winnerOutput(carNamesSeparated: List<String>, carProgress: List<String>) {
-        val winners = WinnerDiscrimination().answer(carProgress, carNamesSeparated)
-        OutputView().winner(winners)
+        val winners = Winner().discriminate(carProgress, carNamesSeparated)
+        Output().winner(winners)
     }
 }

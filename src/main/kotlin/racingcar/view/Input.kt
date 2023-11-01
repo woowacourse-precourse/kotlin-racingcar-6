@@ -3,8 +3,8 @@ package racingcar.view
 import camp.nextstep.edu.missionutils.Console
 
 
-class InputView {
-    fun input(): String {
+class Input {
+    fun write(): String {
         return Console.readLine()
     }
 }

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import racingcar.view.OutputView
+import racingcar.view.Output
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
@@ -25,7 +25,7 @@ class OutputTest {
     fun `각 게임 결과 반환 테스트`() {
         val cars = listOf("bmw", "lexus", "lambo")
         val progress = listOf("--", "---", "-")
-        OutputView().eachRacingResult(cars, progress)
+        Output().eachRacingResult(cars, progress)
         val expectedOutput = """
             bmw : --
             lexus : ---
@@ -37,7 +37,7 @@ class OutputTest {
     @Test
     fun `우승자 반환 테스트`() {
         val cars = listOf("bmw", "lexus")
-        OutputView().winner(cars)
+        Output().winner(cars)
         val expectedOutput = """
             최종 우승자 : bmw, lexus
         """.trimIndent()

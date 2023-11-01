@@ -1,10 +1,8 @@
 package racingcar.model
 
-import net.bytebuddy.pool.TypePool.CacheProvider.Discriminating
-
-class WinnerDiscrimination {
-    fun answer(scoreBoard: List<String>, cars: List<String>): MutableList<String> {
-        val winnerIndices = Discriminating(scoreBoard)
+class Winner {
+    fun discriminate(scoreBoard: List<String>, cars: List<String>): MutableList<String> {
+        val winnerIndices = indexing(scoreBoard)
         val winnerCars = mutableListOf<String>()
         for (selectedIndex in winnerIndices) {
             winnerCars.add(cars[selectedIndex])
@@ -12,7 +10,7 @@ class WinnerDiscrimination {
         return winnerCars
     }
 
-    private fun Discriminating(scoreBoard: List<String>): MutableList<Int> {
+    private fun indexing(scoreBoard: List<String>): MutableList<Int> {
         var winnerIndices = mutableListOf<Int>()
         var max = 0
         for ((index, score) in scoreBoard.withIndex()) {

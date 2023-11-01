@@ -1,7 +1,7 @@
 package racingcar.model
 
 class Validation {
-    fun carName(names: List<String>) {
+    fun carNameValidate(names: List<String>) {
         for (name in names) {
             if (name.length > Constants.NAME_LENGTH) {
                 throw IllegalArgumentException(Constants.ERROR_WORD_MAX)
@@ -13,7 +13,7 @@ class Validation {
         }
     }
 
-    fun tryNum(tryNum: String) {
+    fun tryNumValidate(tryNum: String) {
         try {
             tryNum.toInt()
         } catch (e: NumberFormatException) {
