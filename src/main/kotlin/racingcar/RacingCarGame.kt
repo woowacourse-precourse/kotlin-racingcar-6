@@ -3,23 +3,26 @@ package racingcar
 class RacingCarGame(private val user: User) {
 
     fun start() {
-        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        showGameMessage("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val cars = user.requestInputCarNames()
 
-        println("시도할 횟수는 몇 회인가요?")
+        showGameMessage("시도할 횟수는 몇 회인가요?")
         val moveCount = user.requestInputMoveCount()
 
-        makeBlankLine()
+        showGameMessage()
 
-        println("실행 결과")
-        repeat(moveCount) { race(cars) }
+        showGameMessage("실행 결과")
+        repeat(moveCount) {
+            race(cars)
+            showGameMessage()
+        }
 
         val winnerNames = decideWinners(cars)
-        println("최종 우승자 : ${winnerNames.joinToString(", ")}")
+        showGameMessage("최종 우승자 : ${winnerNames.joinToString(", ")}")
     }
 
-    private fun makeBlankLine() {
-        println()
+    private fun showGameMessage(message: String = "") {
+        println(message)
     }
 
     private fun race(cars: List<Car>) {
@@ -27,8 +30,6 @@ class RacingCarGame(private val user: User) {
             val conditionNumber = it.tryMoveForward()
             showRaceMessage(it.name, conditionNumber)
         }
-
-        makeBlankLine()
     }
 
     private fun showRaceMessage(carName: String, conditionNumber: Int) {
