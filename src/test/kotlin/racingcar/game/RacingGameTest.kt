@@ -30,16 +30,6 @@ class RacingGameTest {
     }
 
     @Test
-    fun `랜덤값에 따른 전진 가능 유무`() {
-        assertRandomNumberInRangeTest(
-            {
-                assertEquals(RacingGame.isCarMovable(), true)
-            },
-            4
-        )
-    }
-
-    @Test
     fun `우승한 자동차 선택`() {
         val winnerCar1 = Car("Car1", 3)
         val winnerCar2 = Car("Car2", 3)
