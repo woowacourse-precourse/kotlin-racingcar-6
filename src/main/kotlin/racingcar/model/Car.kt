@@ -3,7 +3,7 @@ package racingcar.model
 import racingcar.config.ExceptionMessage.INVALID_CAR_NAME
 import racingcar.config.ExceptionMessage.TOO_LONG_NAME
 
-data class Car(
+class Car(
     val name: String,
     var position: Int = 0,
 ) {
@@ -19,6 +19,10 @@ data class Car(
             return true
         }
         return false
+    }
+
+    override fun toString(): String {
+        return "Car(name='$name', position=$position)"
     }
 }
 

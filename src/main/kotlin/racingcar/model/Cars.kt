@@ -23,4 +23,8 @@ class Cars(val carList: List<Car>) {
         }
     }
 
+    override fun toString(): String {
+        return "Cars(carList=$carList)"
+    }
+
 }
