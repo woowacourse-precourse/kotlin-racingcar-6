@@ -4,27 +4,35 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 class InputHandler {
-    fun start() {
-        val carNames = getCarNames()
-        val roundCount = getRoundCount()
+    private val raceResults: MutableList<MutableList<String>> = mutableListOf()
+    private val carNames: List<String>
 
-        val carResults = mutableMapOf<String, MutableList<String>>()
+    init {
+        carNames = getCarNames()
+    }
+
+    fun start() {
+        val roundCount = getRoundCount()
         val randomGenerator = RandomGenerator()
 
         println("실행 결과")
         repeat(roundCount) {
+            val roundResults = mutableListOf<String>()
             carNames.forEach { carName ->
                 val randomValue = randomGenerator.generate()
                 val position = if (randomValue >= 4) "-" else ""
-                carResults.computeIfAbsent(carName) { mutableListOf() }.add(position)
-                println("$carName: ${carResults[carName]!!.joinToString("")}")
+                roundResults.add(position)
+                println("$carName: ${roundResults.joinToString("")}")
             }
+            raceResults.add(roundResults)
             println()
         }
+
+        println("최종 우승자: ${findWinners()}")
     }
 
     private fun getCarNames(): List<String> {
-        println("경주할 자동차 이름을 입력해주세요(이름은 (,)를 기준으로 구분)")
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val input = Console.readLine()
         val carNames = input.split(",").map { it.trim() }
 
@@ -44,6 +52,14 @@ class InputHandler {
         }
 
         return input.toIntOrNull() ?: 0
+    }
+
+    private fun findWinners(): String {
+        val maxPosition = raceResults.last().maxOf { it.count { it == '-' } }
+        val winners = carNames.filterIndexed { index, _ ->
+            raceResults.last()[index].count { it == '-' } == maxPosition
+        }
+        return winners.joinToString(", ")
     }
 
     private class RandomGenerator {
