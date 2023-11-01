@@ -8,9 +8,15 @@ class RacingGame(private val outputView: OutputView, private val inputView: Inpu
     fun runGame() {
         outputView.outputCarList()
         val carList: CarList = CarList(inputCarList())
+        outputView.outputTryNum()
+        val tryNum: Int = inputTryNum()
     }
 
     private fun inputCarList(): String {
         return inputView.inputCarNames()
+    }
+
+    private fun inputTryNum(): Int {
+        return inputView.inputTryNum().toInt()
     }
 }
