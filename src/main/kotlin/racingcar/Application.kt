@@ -15,6 +15,16 @@ class RacingCarValidator {
         }
         return racingCars
     }
+    fun checkTrying(tries:String):Int{
+        if (tries.isBlank()) {
+            throw IllegalArgumentException()
+        }
+        try{
+            return tries.toInt()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException()
+        }
+    }
     companion object {
         val instance = RacingCarValidator()
     }
@@ -25,5 +35,6 @@ fun main() {
     val racingCars = RacingCarValidator.instance.checkCars(cars)
     println("시도 할 횟수는 몇 회인가요?")
     val trying = Console.readLine()
-    RacingGames().checkTime(racingCars, trying.toInt())
+    val tryTimes = RacingCarValidator.instance.checkTrying(trying)
+    RacingGames().checkTime(racingCars, tryTimes)
 }
