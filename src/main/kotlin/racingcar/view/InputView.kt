@@ -1,14 +1,13 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
-import racingcar.model.RacingCar
 
 class InputView {
-    fun printInputCarName(): List<RacingCar> {
+    fun getInputCarName(): List<String> {
         println(INPUT_CAR_NAME_MESSAGE)
         val users = Console.readLine().split(NAME_DELIMITERS)
         checkRacingCarNameSize(users)
-        return users.map { RacingCar(it, INIT_DISTANCE_NUM) }
+        return users
     }
 
     fun printInputGameCount(): Int {

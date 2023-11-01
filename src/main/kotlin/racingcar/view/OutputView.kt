@@ -5,7 +5,7 @@ import racingcar.model.RacingCar
 class OutputView {
     fun printResult() = println(RESULT_MESSAGE)
     fun printEnter() = println()
-    fun printRackingCar(racingCar: RacingCar) {
+    fun printRacingCar(racingCar: RacingCar) {
         println("${racingCar.racingCarName} : ${printDistance(racingCar.getDistance())}")
     }
 
@@ -17,8 +17,8 @@ class OutputView {
         return builder.toString()
     }
 
-    fun printMaxDistanceRacingCarName(maxDistanceRackingCars: List<String>) =
-        println("$FINAL_WINNER_MESSAGE${maxDistanceRackingCars.joinToString(COMMA)}")
+    fun printMaxDistanceRacingCarName(maxDistanceRacingCars: List<String>) =
+        println("$FINAL_WINNER_MESSAGE${maxDistanceRacingCars.joinToString(COMMA)}")
 
 
     companion object {
