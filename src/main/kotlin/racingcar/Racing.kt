@@ -9,6 +9,7 @@ class Racing {
     fun enterMoveCount(): Int {
         println("시도할 횟수는 몇 회인가요?")
         val moveCount = Console.readLine()
+        println("")
         return try {
             moveCount!!.toInt()
         } catch (e: NumberFormatException){
