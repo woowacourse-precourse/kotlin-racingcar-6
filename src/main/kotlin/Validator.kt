@@ -1,3 +1,4 @@
+import InputValue.CAR_DELIMITER
 import InputValue.INPUT_NOT_FIRST_VALUE
 import car.Car
 import car.CarConfiguration.MAX_NAME_LENGTH
@@ -7,11 +8,11 @@ import java.math.BigInteger
 
 object Validator {
 
-    fun nameCheck(input: List<String>): List<Car> {
+    fun nameCheck(input: String): List<Car> {
         val carList = mutableListOf<Car>()
-        input.forEach {
-            nameLengthCheck(it)
-            carList.add(makeCar(it))
+        for (name in input.split(CAR_DELIMITER)) {
+            nameLengthCheck(name)
+            carList.add(makeCar(name))
         }
         return carList
     }
