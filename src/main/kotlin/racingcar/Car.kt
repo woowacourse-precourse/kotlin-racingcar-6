@@ -16,5 +16,9 @@ class Car {
         }
         return false
     }
+
+    fun progressScore() {
+        this.score += 1
+    }
     
 }
