@@ -22,21 +22,9 @@ class GameController {
             moveCar(carNameInput, carMove)
         }
 
+        val winners = winnersList(carMove)
+        printWinners(winners)
 
-        var maxMove = 0
-        for ((_, distance) in carMove) {
-            if (distance > maxMove) {
-                maxMove = distance
-            }
-        }
-
-        val winners = mutableListOf<String>()
-        for ((car, distance) in carMove) {
-            if (distance == maxMove) {
-                winners.add(car)
-            }
-        }
-        println("\n최종 우승자 : ${winners.joinToString(", ")}")
     }
     private fun carName(): List<String> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -60,5 +48,24 @@ class GameController {
             val distance = carMove[car] ?: 0
             println("$car : ${"-".repeat(distance)}")
         }
+    }
+    private fun winnersList(carMove: MutableMap<String, Int>):List<String> {
+        var maxMove = 0
+        for ((_, distance) in carMove) {
+            if (distance > maxMove) {
+                maxMove = distance
+            }
+        }
+
+        val winners = mutableListOf<String>()
+        for ((car, distance) in carMove) {
+            if (distance == maxMove) {
+                winners.add(car)
+            }
+        }
+        return winners
+    }
+    private fun printWinners(winners: List<String>){
+        println("\n최종 우승자 : ${winners.joinToString(", ")}")
     }
 }
