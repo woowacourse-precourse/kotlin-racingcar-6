@@ -31,6 +31,11 @@ fun main() {
 
 fun processExceptionCar(carList: List<String>) {
     for (name in carList) {
+        val dupliList = carList.distinct()
+        if (dupliList.size != carList.size) {
+            throw IllegalArgumentException(Const.EXCEPTION_DUPLI_NAME)
+        }
+
         if (name.toList().any { !it.isLetterOrDigit() }) {
             throw IllegalArgumentException(Const.EXCEPTION_WRONG_NAME)
         }
