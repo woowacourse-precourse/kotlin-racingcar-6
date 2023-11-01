@@ -18,7 +18,7 @@ class CarRaceController {
         getRound()
         raceStart()
         printWinner()
-        //CommandInvoker.clearCommands()
+        CommandInvoker.clearCommands()
     }
 
     private fun getCars() {
