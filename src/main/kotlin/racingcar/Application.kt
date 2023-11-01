@@ -5,9 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    val listOfCar = Console.readLine()
-        .split(',')
-        .map{Car(it)}
+    val listOfCar = createListOfCar(Console.readLine())
 
     println("시도할 횟수는 몇 회인가요?")
     var round = getUserIntInput()
@@ -26,6 +24,10 @@ fun main() {
         .map { it.name }
     print(listOfWinner.joinToString(","))
 }
+
+fun createListOfCar(input:String) = input
+    .split(',')
+    .map{Car(it)}
 fun getUserIntInput(): Int {
     var input: Int
     try {
