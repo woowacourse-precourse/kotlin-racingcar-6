@@ -13,10 +13,11 @@ class OutputView {
     }
 
     fun outputGameResult() {
+        println()
         println(GameMessage.OUTPUT_GAME_RESULT)
     }
 
-    fun outputGameWinner() {
+    private fun outputGameWinner() {
         print(GameMessage.OUTPUT_GAME_WINNER)
     }
 
@@ -25,10 +26,13 @@ class OutputView {
             val carName = car.getName()
             val carDashes = "-".repeat(car.getPosition())
             print("$carName : $carDashes")
+            println()
         }
+        println()
     }
 
     fun printGameWinner(gameWinnerList: List<Car>) {
+        outputGameWinner()
         println(gameWinnerList.joinToString(", "))
     }
 }
