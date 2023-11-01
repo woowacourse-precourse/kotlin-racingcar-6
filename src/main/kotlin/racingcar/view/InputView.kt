@@ -6,7 +6,7 @@ import racingcar.utils.Constants.TRIAL_MESSAGE
 import racingcar.utils.Validations
 
 object InputView {
-    fun inputCarName(): String? {
+    fun inputCarName(): String {
         println(START_MESSAGE)
         val name = Console.readLine()
         return Validations.inputCarName(name)

@@ -7,5 +7,6 @@ object Constants {
     const val WINNER_MESSAGE = "최종 우승자 : "
 
     const val ERROR_STRING_TYPE = "문자가 아닌 숫자를 입력하세요."
+    const val ERROR_IS_EMPTY = "공백 없이 입력하세요."
     const val ERROR_MAX_STRING = "이름을 5글자 이내로 입력하세요."
 }
