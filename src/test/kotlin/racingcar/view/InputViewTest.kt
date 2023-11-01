@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.config.ExceptionMessage.INVALID_INTEGER
 
 class InputViewTest {
     private lateinit var inputView: InputView
@@ -37,7 +38,7 @@ class InputViewTest {
     fun `숫자가 아닌 문자열을 입력하면 예외를 던진다`() {
         inputTryCount = "abc"
         assertThrows<IllegalArgumentException>(
-            "${Integer.MAX_VALUE} 이하의 자연수를 입력해주세요."
+            INVALID_INTEGER
         ) {
             inputView.inputTryCount(inputTryCount)
         }
@@ -47,7 +48,7 @@ class InputViewTest {
     fun `0 이하의 숫자를 입력하면 예외를 던진다`() {
         inputTryCount = "-1"
         assertThrows<IllegalArgumentException>(
-            "${Integer.MAX_VALUE} 이하의 자연수를 입력해주세요."
+            INVALID_INTEGER
         ) {
             inputView.inputTryCount(inputTryCount)
         }
@@ -57,7 +58,7 @@ class InputViewTest {
     fun `Int 형의 최대값보다 큰 숫자를 입력하면 예외를 던진다`() {
         inputTryCount = "${Integer.MAX_VALUE + 1}" // 테스트를 위해 overflow 를 일부러 발생시킨다.
         assertThrows<IllegalArgumentException>(
-            "${Integer.MAX_VALUE} 이하의 자연수를 입력해주세요."
+            INVALID_INTEGER
         ) {
             inputView.inputTryCount(inputTryCount)
         }

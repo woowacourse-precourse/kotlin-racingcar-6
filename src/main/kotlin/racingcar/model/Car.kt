@@ -1,5 +1,8 @@
 package racingcar.model
 
+import racingcar.config.ExceptionMessage.INVALID_CAR_NAME
+import racingcar.config.ExceptionMessage.TOO_LONG_NAME
+
 data class Car(
     val name: String,
     var position: Int = 0,
@@ -22,11 +25,11 @@ data class Car(
 internal fun Car.validateCar() {
     when {
         name.isBlank() -> {
-            throw IllegalArgumentException("올바른 이름을 입력해주세요.")
+            throw IllegalArgumentException(INVALID_CAR_NAME)
         }
 
         name.length > 5 -> {
-            throw IllegalArgumentException("이름은 5자 이하까지 입력 가능합니다.")
+            throw IllegalArgumentException(TOO_LONG_NAME)
         }
     }
 }

@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.function.Executable
+import racingcar.config.ExceptionMessage.INVALID_CAR_NAME
+import racingcar.config.ExceptionMessage.TOO_LONG_NAME
 
 class CarTest {
 
@@ -20,7 +22,7 @@ class CarTest {
     fun `Car 이름이 empty 이면 예외를 던진다`() {
         car = Car("")
         assertThrows<IllegalArgumentException>(
-            "올바른 이름을 입력해주세요"
+            INVALID_CAR_NAME
         ) {
             car.validateCar()
         }
@@ -30,7 +32,7 @@ class CarTest {
     fun `Car 이름이 공백으로만 이루어졌다면 예외를 던진다`() {
         car = Car(" ")
         assertThrows<IllegalArgumentException>(
-            "올바른 이름을 입력해주세요"
+            INVALID_CAR_NAME
         ) {
             car.validateCar()
         }
@@ -40,7 +42,7 @@ class CarTest {
     fun `Car 이름이 개행으로만 이루어졌다면 예외를 던진다`() {
         car = Car("\n")
         assertThrows<IllegalArgumentException>(
-            "올바른 이름을 입력해주세요"
+            INVALID_CAR_NAME
         ) {
             car.validateCar()
         }
@@ -50,7 +52,7 @@ class CarTest {
     fun `Car 이름이 5자 초과라면 예외를 던진다`() {
         car = Car("abcdef")
         assertThrows<IllegalArgumentException>(
-            "이름은 5자 이하까지 입력 가능합니다."
+            TOO_LONG_NAME
         ) {
             car.validateCar()
         }
@@ -81,7 +83,7 @@ class CarTest {
      * 테스트 용도의 클래스
      *
      * 리턴하는 RandomNumber 를 개발자가 입력하는 값으로 한다.
-      */
+     */
     class NumberGeneratorTest(private val returnValue: Int) : NumberGenerator() {
         override fun generateRandomNumber(): Int {
             return returnValue

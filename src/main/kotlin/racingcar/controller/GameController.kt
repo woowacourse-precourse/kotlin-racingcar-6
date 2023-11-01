@@ -2,7 +2,8 @@ package racingcar.controller
 
 import racingcar.model.Car
 import racingcar.model.Cars
-import racingcar.view.*
+import racingcar.view.InputView
+import racingcar.view.OutputView
 
 class GameController {
 

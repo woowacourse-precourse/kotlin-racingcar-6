@@ -1,6 +1,7 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.config.ExceptionMessage.INVALID_INTEGER
 
 class InputView {
 
@@ -11,7 +12,7 @@ class InputView {
         val count = tryCount.toIntOrNull()
         return when {
             count == null || count <= 0 -> {
-                throw IllegalArgumentException("${Integer.MAX_VALUE} 이하의 자연수를 입력해주세요.")
+                throw IllegalArgumentException(INVALID_INTEGER)
             }
 
             else -> count
@@ -19,7 +20,7 @@ class InputView {
     }
 
     companion object {
-        const val DELIMITER = ", "
+        const val DELIMITER = ","
     }
 
 }

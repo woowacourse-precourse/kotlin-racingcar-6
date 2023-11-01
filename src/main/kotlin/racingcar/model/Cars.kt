@@ -1,12 +1,14 @@
 package racingcar.model
 
+import racingcar.config.ExceptionMessage.DUPLICATED_NAME
+
 class Cars(val cars: List<Car>) {
 
     fun decideWinner(): List<String> {
         val maxPosition = cars.maxOf(Car::position)
         return cars.filter {
             it.position == maxPosition
-        }.map { it.name }.toList()
+        }.map(Car::name).toList()
     }
 
     fun validate() {
@@ -17,7 +19,7 @@ class Cars(val cars: List<Car>) {
     internal fun validateDuplicate() {
         val set = cars.map(Car::name).toSet()
         if (cars.size > set.size) {
-            throw IllegalArgumentException("차에 중복된 이름이 있습니다.")
+            throw IllegalArgumentException(DUPLICATED_NAME)
         }
     }
 

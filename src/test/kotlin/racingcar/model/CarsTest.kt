@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
+import racingcar.config.ExceptionMessage.DUPLICATED_NAME
 
 class CarsTest {
     private lateinit var cars: Cars
@@ -12,7 +13,7 @@ class CarsTest {
     fun `중복된 이름이 있으면 예외를 던진다`() {
         cars = Cars(listOf(Car("pobi"), Car("woni"), Car("jun"), Car("pobi")))
         assertThrows<IllegalArgumentException>(
-            "차에 중복된 이름이 있습니다."
+            DUPLICATED_NAME
         ) {
             cars.validateDuplicate()
         }
