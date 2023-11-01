@@ -25,7 +25,7 @@ class CarController {
         }
     }
 
-    fun moveCarsForward(): List<Car> {
+    fun moveCarsForward(cars: List<Car>): List<Car> {
         cars.forEachIndexed { index, _ ->
             if (isCarMovingAllowed(generateRandomNumber())) {
                 increaseCarDistance(index)

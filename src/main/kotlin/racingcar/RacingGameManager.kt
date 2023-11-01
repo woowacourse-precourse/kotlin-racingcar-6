@@ -30,7 +30,7 @@ class RacingGameManager {
         repeat(gameRound) { round ->
             printGameResultOverview(round)
 
-            carController.moveCarsForward()
+            carController.moveCarsForward(carController.getCars())
             printGameResultPerGameRound(carController.getCars())
             println()
         }
