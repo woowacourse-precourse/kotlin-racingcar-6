@@ -28,6 +28,16 @@ fun getTryNumber() {
     return tryNumber
 }
 
+fun validateTryNumber(tryNumber: String) {
+    try {
+        tryNumber.toInt()
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException("숫자만 입력 가능합니다.")
+    }
+}
+
+
+
 fun carGoOrStop() {
     val goOrStop = Randoms.pickNumberInRange() 
 
