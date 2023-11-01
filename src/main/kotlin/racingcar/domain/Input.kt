@@ -3,6 +3,7 @@ package racingcar.domain
 import camp.nextstep.edu.missionutils.Console
 import racingcar.domain.Validation.checkContainComma
 import racingcar.domain.Validation.checkNameLength
+import racingcar.domain.Validation.checkSameName
 
 class Input {
 
@@ -13,6 +14,7 @@ class Input {
 
         val carNameList = userInput.split(",")
         checkNameLength(carNameList)
+        checkSameName(carNameList)
 
         return carNameList
     }
