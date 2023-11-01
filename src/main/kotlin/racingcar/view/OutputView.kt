@@ -1,5 +1,7 @@
 package racingcar.view
 
+import racingcar.domain.Car
+
 
 class OutputView {
 
@@ -9,18 +11,12 @@ class OutputView {
 
     fun printStartOfResultPhrase() = println(Message.RESULT_PHRASE)
 
-
     fun printRoundResultFormat(name: String, position: Int){
         println("$name : ${"-".repeat(position)}")
     }
 
-    fun printFinalWinners() {
-        println(Message.FINAL_WINNER_FORMAT.format())
-    }
-
-    //fun formatOfFinalResults(score: Int) = "-".repeat(score)
-
-    fun printWinnerFormat(){
-
+    fun printWinnerFormat(winnerList: List<Car>){
+        val winners = winnerList.joinToString(",")
+        println("${Message.FINAL_WINNER_FORMAT} + ${winners}")
     }
 }

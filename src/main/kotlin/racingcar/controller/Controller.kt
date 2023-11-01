@@ -6,7 +6,6 @@ import racingcar.view.OutputView
 import racingcar.domain.Validator
 
 class Controller {
-
     private val inputView = InputView()
     private val outputView = OutputView()
     fun start() {
@@ -23,9 +22,6 @@ class Controller {
         }
 
         showWinners(carList)
-
-
-
     }
 
     private fun readInputCars(): String {
@@ -47,8 +43,12 @@ class Controller {
     }
 
     private fun showWinners(carList: List<Car>) {
-
+        outputView.printWinnerFormat(decideWinners(carList))
     }
 
+    private fun decideWinners(carList: List<Car>): List<Car> {
+        val maxForward = carList.maxByOrNull { it.forward }?.forward
+        return carList.filter { it.forward == maxForward }
+    }
 
 }

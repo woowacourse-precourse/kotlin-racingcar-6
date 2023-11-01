@@ -12,13 +12,6 @@ class Cars(private val cars: List<Car>) {
             val carNames = userInput.split(",")
             val cars = carNames.map { Car(it) }
             Cars(cars)
-
-            /**
-             * 검증
-             * 1. 5자 이하
-             * 2. 중복 있는지
-             */
-
         }
     }
 
