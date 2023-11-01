@@ -10,19 +10,23 @@ class Game {
         val names = inputString.split(",").map { it.trim() }
         val cars: List<Car> = names.map { Car(it) }
         println("시도할 횟수는 몇 회인가요?")
-        val loopCount = Console.readLine()
+        val loopCount = Console.readLine().trim().toInt()
+        println("실행 결과")
+        cars.race(loopCount)
 
     }
 }
 
 fun List<Car>.toStatusString(): String {
     val progressCharacter = "-"
-    return this.map { "${it.name} : ${progressCharacter.repeat(it.location)}" }.joinToString("\n")
+    return this.map { "${it.name} : ${progressCharacter.repeat(it.location)}" }
+        .joinToString(separator = "\n", postfix = "\n")
 }
 
 fun List<Car>.race(loopCount: Int): Unit {
     for (i in 1..loopCount) {
         this.forEach { it.randMove() }
+        println(this.toStatusString())
     }
 }
 
