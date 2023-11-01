@@ -1,13 +1,11 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
-import javax.print.attribute.IntegerSyntax
 import kotlin.IllegalArgumentException
-import kotlin.reflect.typeOf
 
 class InputManager {
     private var tryTime = 0
-    fun getCarName(): List<String> {
+    fun getCarName(): MutableList<String> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,)) 기준으로 구분")
         val inputLine = Console.readLine()
 
@@ -15,7 +13,7 @@ class InputManager {
             throw IllegalArgumentException("")
         }
 
-        return inputLine.split(",")
+        return inputLine.split(",").toMutableList()
     }
 
     fun getTryTime(): Int {
