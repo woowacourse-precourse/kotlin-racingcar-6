@@ -11,7 +11,7 @@ fun main() {
 
     println("시도할 횟수는 몇 회인가요?")
     val repeatCount = readLine()
-    judgmentException("repeatCount", repeatCount.toString())
+    judgementException("repeatCount", repeatCount.toString())
     println("\n실행 결과")
     for (i in 0..repeatCount!!.toInt()-1) { // allCarList.indices는 0 부터 allCarList.size - 1 까지의 범위를 제공합니다.
         showProcedure(carList, forwardCondition(distanceList))
@@ -24,7 +24,7 @@ fun inputCarList(): List<String>{
     val CarList = inputCarName!!.split(",")
 
     CarList.forEach {
-        judgmentException("inputCar", it)
+        judgementException("inputCar", it)
     }
     return CarList
 }
@@ -60,17 +60,27 @@ fun finalWinner(carList: List<String>, distanceList: MutableList<Int>) {
     }
 }
 
-fun judgmentException(judge: String, abc: String){
+fun judgementException(judge: String, carName: String){
     when(judge){
         "inputCar" -> {
-            if (abc.length >= 6) {
-                throw IllegalArgumentException("abc should not be 6 characters or more")
-            }
+            stringLenthJudgement(carName)
         }
         "repeatCount" -> {
-            if (!abc.all { it.isDigit() }) {
+            if (!carName.all { it.isDigit() }) {
                 throw IllegalArgumentException("Repeat count should be a valid number")
             }
         }
+    }
+}
+
+fun stringLenthJudgement(carName: String){
+    if (carName.length >= 6) {
+        throw IllegalArgumentException("abc should not be 6 characters or more")
+    }
+}
+
+fun isNumber(carName: String){
+    if (!carName.all { it.isDigit() }) {
+        throw IllegalArgumentException("Repeat count should be a valid number")
     }
 }
