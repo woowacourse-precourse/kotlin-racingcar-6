@@ -1,9 +1,10 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Randoms
-import racingcar.Controller.GameController
+import racingcar.Controller.CarController
+import racingcar.View.CarView
 
 fun main() {
-    val controller = GameController()
+    val view = CarView()
+    val controller = CarController(view)
     controller.startGame()
 }

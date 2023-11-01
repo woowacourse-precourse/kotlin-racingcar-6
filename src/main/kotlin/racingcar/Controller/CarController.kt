@@ -1,6 +1,8 @@
 package racingcar.Controller
 
-class GameController {
+import racingcar.View.CarView
+
+class CarController(val view: CarView) {
     fun startGame() {
 
         val carNameInput = carName()
@@ -27,13 +29,13 @@ class GameController {
 
     }
     private fun carName(): List<String> {
-        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        view.printCarNamesMessage()
         val carName = readLine()
             return carName?.split(",") ?: throw IllegalArgumentException("올바르게 다시 입력해주세요")
     }
 
     private fun tryCount():Int{
-        println("시도할 횟수는 몇 회인가요?")
+        view.printTryCountMessage()
         val tryCountInput = readLine()!!.toInt()
         return tryCountInput
     }
@@ -46,7 +48,7 @@ class GameController {
         }
         for (car in carNameInt) {
             val distance = carMove[car] ?: 0
-            println("$car : ${"-".repeat(distance)}")
+            view.printMoveCar(car,distance)
         }
     }
     private fun winnersList(carMove: MutableMap<String, Int>):List<String> {
@@ -66,6 +68,6 @@ class GameController {
         return winners
     }
     private fun printWinners(winners: List<String>){
-        println("\n최종 우승자 : ${winners.joinToString(", ")}")
+       view.printWinnersMessage(winners.joinToString(", "))
     }
 }
