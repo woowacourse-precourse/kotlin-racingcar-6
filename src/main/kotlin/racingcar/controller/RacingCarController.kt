@@ -3,6 +3,7 @@ package racingcar.controller
 import racingcar.model.CarModel
 import racingcar.view.InputView
 import camp.nextstep.edu.missionutils.Console
+import racingcar.util.COMMA
 import racingcar.view.OutputView
 
 
@@ -12,24 +13,34 @@ class RacingCarController {
     private val outputView = OutputView()
 
     fun startRacingCarGame() {
-        inputView.inputCarNames()
-        val input = Console.readLine()
-        val carNames = input.split(",")
+        val carNames = inputCarNames()
         model.setCarNames(carNames)
 
-        inputView.inputAttemptsNumber()
-        val attemptsNumber = Console.readLine()
+        val attemptsNumber = inputAttemptsNumber()
         model.setAttemptsNumber(attemptsNumber)
 
         model.initProgressList()
-
         outputView.progressResult()
-        for (i in 1..attemptsNumber.toInt()) {
+
+        for (i in 1..attemptsNumber) {
             model.moveCar()
             printEachRacingCar(carNames)
         }
 
-        printRacingCarWinner(carNames)
+        val winners = calculateWinners(carNames)
+        printRacingCarWinner(winners)
+    }
+
+    private fun inputCarNames(): List<String> {
+        inputView.inputCarNames()
+        val input = Console.readLine()
+        return input.split(COMMA)
+    }
+
+    private fun inputAttemptsNumber(): Int {
+        inputView.inputAttemptsNumber()
+        val attemptsNumber = Console.readLine()
+        return attemptsNumber.toInt()
     }
 
     fun printEachRacingCar(carNames: List<String>) {
@@ -41,22 +52,12 @@ class RacingCarController {
         println()
     }
 
-    fun printRacingCarWinner(carNames: List<String>) {
+    private fun calculateWinners(carNames: List<String>): List<String> {
         val maxProgress = model.getMaxProgress()
-        val winners = mutableListOf<String>()
-
-        for (i in carNames.indices) {
-            val progress = model.getCarProgress(i)
-            if (progress == maxProgress) {
-                winners.add(carNames[i])
-            }
-        }
-
-        if (winners.size == 1) {
-            outputView.singleWinner(winners[0])
-        } else {
-            outputView.multipleWinners(winners)
-        }
+        return carNames.filterIndexed { index, _ -> model.getCarProgress(index) == maxProgress }
     }
 
+    fun printRacingCarWinner(winners: List<String>) {
+        outputView.multipleWinners(winners)
+    }
 }

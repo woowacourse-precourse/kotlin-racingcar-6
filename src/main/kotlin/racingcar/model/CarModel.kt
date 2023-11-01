@@ -12,7 +12,7 @@ class CarModel {
         carNames = InputValidation().validateCarNames(names)
     }
 
-    fun setAttemptsNumber(attempts: String) {
+    fun setAttemptsNumber(attempts: Int) {
         attemptsNumber = InputValidation().validateAttemptsNumber(attempts)
     }
 

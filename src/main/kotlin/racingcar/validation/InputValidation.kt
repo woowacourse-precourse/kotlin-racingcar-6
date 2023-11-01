@@ -21,9 +21,9 @@ class InputValidation {
         }
     }
 
-    fun validateAttemptsNumber(attempt: String): Int {
-        val attemptsNumber = attempt.toIntOrNull()
-        if (attemptsNumber != null) {
+    fun validateAttemptsNumber(attempt: Int): Int {
+        val attemptsNumber = attempt
+        if (attemptsNumber >= 0) {
             return attemptsNumber
         } else {
             throw IllegalArgumentException(INVALID_ATTEMPTS_NUMBER_TYPE)
