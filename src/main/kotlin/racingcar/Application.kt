@@ -21,7 +21,7 @@ fun main() {
 
 fun inputCarList(): List<String>{
     val inputCarName = readLine()
-    val CarList = inputCarName!!.split(",")
+    val CarList = inputCarName!!.split(",").map { it.trim() } // 각 아이템 주변의 공백 제거
 
     CarList.forEach {
         judgementException("inputCar", it)
@@ -73,12 +73,12 @@ fun judgementException(judge: String, carName: String){
 
 fun stringLenthJudgement(carName: String){
     if (carName.length >= 6) {
-        throw IllegalArgumentException("abc should not be 6 characters or more")
+        throw IllegalArgumentException()
     }
 }
 
 fun isNumber(carName: String){
     if (!carName.all { it.isDigit() }) {
-        throw IllegalArgumentException("Repeat count should be a valid number")
+        throw IllegalArgumentException()
     }
 }
