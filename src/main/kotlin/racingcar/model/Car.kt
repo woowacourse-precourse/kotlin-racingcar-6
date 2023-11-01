@@ -1,4 +1,7 @@
-package racingcar
+package racingcar.model
+
+import racingcar.domain.movestrategy.BasicMoveStrategy
+import racingcar.domain.movestrategy.MoveStrategyInterface
 
 class Car(
     val name: String,

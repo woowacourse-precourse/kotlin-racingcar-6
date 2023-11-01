@@ -2,6 +2,8 @@ package racingcar
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import racingcar.domain.movestrategy.BasicMoveStrategy
+import racingcar.domain.movestrategy.TestMoveStrategy
 
 class StrategyTest {
     @Test

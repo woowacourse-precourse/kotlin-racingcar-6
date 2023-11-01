@@ -2,6 +2,9 @@ package racingcar
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.io.checker.CarNameExceptionChecker
+import racingcar.io.checker.LoopCountExceptionChecker
+import racingcar.util.Const
 
 class ExceptionTest {
     @Test

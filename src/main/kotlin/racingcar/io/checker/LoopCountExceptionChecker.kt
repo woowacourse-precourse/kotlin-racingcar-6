@@ -1,4 +1,6 @@
-package racingcar
+package racingcar.io.checker
+
+import racingcar.util.Const
 
 class LoopCountExceptionChecker: ExceptionCheckerInterface {
     override fun check(input: String) {

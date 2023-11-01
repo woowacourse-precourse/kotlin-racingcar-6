@@ -1,5 +1,7 @@
-package racingcar
+package racingcar.io
 
+import racingcar.model.Car
+import racingcar.util.Const
 import java.lang.StringBuilder
 
 class Printer {

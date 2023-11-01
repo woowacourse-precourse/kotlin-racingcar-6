@@ -1,6 +1,6 @@
-package racingcar
+package racingcar.domain.movestrategy
 
-import racingcar.Const.MOVE_POINT_NUMBER
+import racingcar.util.Const.MOVE_POINT_NUMBER
 
 class TestMoveStrategy(private val numberList: List<Int>) : MoveStrategyInterface {
     private var pointer = 0

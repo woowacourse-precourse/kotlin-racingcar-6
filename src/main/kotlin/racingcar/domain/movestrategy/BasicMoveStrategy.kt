@@ -1,7 +1,7 @@
-package racingcar
+package racingcar.domain.movestrategy
 
 import camp.nextstep.edu.missionutils.Randoms
-import racingcar.Const.MOVE_POINT_NUMBER
+import racingcar.util.Const.MOVE_POINT_NUMBER
 
 class BasicMoveStrategy : MoveStrategyInterface {
     override fun calculateLocation(speed: Int, location: Int): Int {

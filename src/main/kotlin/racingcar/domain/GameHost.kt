@@ -1,4 +1,10 @@
-package racingcar
+package racingcar.domain
+
+import racingcar.model.Car
+import racingcar.util.Const
+import racingcar.io.Input
+import racingcar.io.InputEnum
+import racingcar.io.Printer
 
 class GameHost {
     fun start() {
