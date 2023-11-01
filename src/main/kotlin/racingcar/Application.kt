@@ -43,18 +43,13 @@ fun addScore(carNamesList: List<Car>, randomNumArray: Array<Int>) {
     }
 }
 
-fun printScore(num : Int){
-    for(i in 0 until num){
-        print("-")
-    }
-}
-
 fun printCarWithScore(carNamesList: List<Car>){
     for(car in carNamesList){
         val scoreLine = "-".repeat(car.score)
         println("${car.name} : $scoreLine")
     }
 }
+
 
 
 
