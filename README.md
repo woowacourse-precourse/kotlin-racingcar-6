@@ -9,7 +9,7 @@
 - [x] 자동차별로 난수를 생성한다. - RacingNumberGenerator#get()
 - [x] 4 이상의 수가 나온 자동차는 이동하고, 그렇지 않은 자동차는 멈춰있는다. - RacingCarGame#playRound()
 - [x] 자동차별로 이동에 대한 결과를 자동차 이름과 함께 출력한다. - RacingCarGameViewer#showRoundResult()
-- [ ] 주어진 횟수만큼 이동이 완료되면 우승자 정보를 출력하고 게임이 종료된다.
+- [x] 주어진 횟수만큼 이동이 완료되면 우승자 정보를 출력하고 게임이 종료된다. - RacingCarGameViewer#showWinners()
 
 ## 기능 요구 사항
 

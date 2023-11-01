@@ -15,14 +15,32 @@ class RacingCarGame {
     }
 
     fun run() {
-        playRound()
+        showTitle()
+        while (currentRound != totalRound) {
+            playRound()
+            showRoundResult()
+        }
+        showWinners()
+    }
+
+    private fun showTitle() {
+        racingCarGameViewer.showResultsTitle()
     }
 
     private fun playRound() {
+        currentRound++
+
         racingCars.map { racingCar ->
             if (racingNumberGenerator.get() >= MIN_MOVING_NUMBER) racingCar.move()
-            racingCarGameViewer.showMoveResult(racingCar)
         }
+    }
+
+    private fun showRoundResult() {
+        racingCarGameViewer.showRoundResult(racingCars)
+    }
+
+    private fun showWinners() {
+        racingCarGameViewer.showWinners(racingCars)
     }
 
     companion object {
