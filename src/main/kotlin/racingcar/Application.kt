@@ -3,18 +3,17 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 class Referee(
-    private val namesOfParticipants: List<String>,
+    namesOfParticipants: List<String>,
     private val roundNum: Int,
     val doSomethingWithCarsAfterRound: (List<Car>) -> Unit
 ) {
-    val cars: List<Car> = namesOfParticipants.map{Car(it)}
+    private val cars: List<Car> = namesOfParticipants.map{Car(it)}
 
-    fun runRound() {
+    private fun runRound() {
         cars.forEach{it.goForwardOrStop()}
         doSomethingWithCarsAfterRound(cars)
     }
-    fun runAllRounds() = repeat(roundNum){ runRound() }
-    fun getGameStatus() = cars
+    private fun runAllRounds() = repeat(roundNum){ runRound() }
     fun getWinners(): List<Car> {
         runAllRounds()
         val winnerPosition = cars.max().position
