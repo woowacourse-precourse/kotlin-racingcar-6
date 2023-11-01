@@ -13,7 +13,8 @@ class Game {
         val loopCount = Console.readLine().trim().toInt()
         println("실행 결과")
         cars.race(loopCount)
-
+        print("최종 우승자 : ")
+        println(cars.winner())
     }
 }
 
