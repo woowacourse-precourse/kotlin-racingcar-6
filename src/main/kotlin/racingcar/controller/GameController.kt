@@ -14,11 +14,11 @@ class GameController(
     fun run() {
         // 이름 입력
         gameView.printNameInput()
-        carNames.inputCarNames()
+        carNames.inputCarNames(gameView.readInput())
 
         // 횟수 입력
         gameView.printMoveTimesInput()
-        moveTimes.inputMoveTimes()
+        moveTimes.inputMoveTimes(gameView.readInput())
 
         // 횟수 만큼 이동
         gameView.printRacingStart()
