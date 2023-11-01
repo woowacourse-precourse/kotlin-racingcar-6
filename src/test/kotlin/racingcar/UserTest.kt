@@ -10,13 +10,26 @@ import org.junit.jupiter.api.assertThrows
 class UserTest {
     private lateinit var user: User
     private val testInputs = listOf(
+        "pobi",
+        "pobi, woni",
         "pobi, woni, jun",
-        "pobi,     woni, jun"
     )
 
     private val expectedCarsList = listOf(
-        listOf(Car("pobi"), Car("woni"), Car("jun")),
+        listOf(Car("pobi")),
+        listOf(Car("pobi"), Car("woni")),
         listOf(Car("pobi"), Car("woni"), Car("jun"))
+    )
+
+    private val incorrectTestInputs = listOf(
+        "",
+        ", abc, a",
+        "abc, a,",
+        "abc,, a",
+        ",",
+        ", abc, a,",
+        "abcdef",
+        "a, bcdefg, h"
     )
 
     @BeforeEach
@@ -25,9 +38,9 @@ class UserTest {
     }
 
     @TestFactory
-    fun `차들이 올바르게 생성된 경우`() = testInputs.mapIndexed { index, testInput ->
+    fun `차들이 올바르게 생성된 경우`() = testInputs.mapIndexed { index, input ->
         dynamicTest("테스트 케이스 ${index + 1}") {
-            val cars = user.createCars(testInput)
+            val cars = user.createCars(input)
             val expectedCars = expectedCarsList[index]
 
             val result = cars.zip(expectedCars) { actual, expected ->
@@ -38,11 +51,10 @@ class UserTest {
         }
     }
 
-    @Test
-    fun `입력값이 올바르지 않은 경우 예외를 발생시켜야 함`() {
-        val input = "pobi, wodjsss, jun"
-        val exception = assertThrows<IllegalArgumentException> { user.createCars(input) }
-
-        assertThat(exception.message).isEqualTo("자동차 이름은 ${MAX_NAME_LENGTH}자 이하로 입력해주세요.")
+    @TestFactory
+    fun `잘못된 입력에 대해 차들을 생성하지 못하는 예외를 발생시켜야 함`() = incorrectTestInputs.mapIndexed { index, input ->
+        dynamicTest("테스트 케이스 ${index + 1}") {
+            assertThrows<IllegalArgumentException> { user.createCars(input) }
+        }
     }
 }
