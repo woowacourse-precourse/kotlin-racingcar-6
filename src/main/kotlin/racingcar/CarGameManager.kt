@@ -16,7 +16,8 @@ class CarGameManager {
         val carNames = getUserInputString()
         val carNamesList = carNames.split(",")
         val carListCount = carNamesList.size
-        Validator.validateUserInput(carNamesList.map { it.trim() })
+        Validator.userInputLength(carNamesList.map { it.trim() })
+        Validator.userInputContainsNumber(carNamesList.map { it.trim() })
         println(TRY_COUNT_PROMPT_MESSAGE)
         val tryCount = getUserInputString()
         Validator.validateUserTryCount(tryCount)
@@ -63,4 +64,5 @@ class CarGameManager {
         }
         println("${Constants.FINAL_WINNER_MESSAGE}${winnersList.joinToString(", ")}")
     }
+
 }
