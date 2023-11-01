@@ -11,7 +11,7 @@ class RacingGame {
         val numberOfAttempt = getNumberOfAttempt()
 
         showGameHeader()
-        val carsFinalPosition = playAndPrintResults(numberOfAttempt, carNamesList)
+        val carsFinalPosition = printRaceResult(numberOfAttempt, carNamesList)
 
         val winners = host.determineWinners(carsFinalPosition, carNamesList)
         host.printWinners(winners)
@@ -41,7 +41,7 @@ class RacingGame {
         println("\n실행 결과")
     }
 
-    fun playAndPrintResults(
+    fun printRaceResult(
         numberOfAttempt: Int,
         cars: List<Car>,
         raceFunction: (List<Car>) -> List<Int> = { host.printCurrentRaceSituation(it) }
