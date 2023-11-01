@@ -34,4 +34,34 @@ class ApplicationTest : NsTest() {
         private const val MOVING_FORWARD = 4
         private const val STOP = 3
     }
+
+
+    @Test
+    fun `자동차 이름이 5자를 초과할 시 예외 발생`() {
+        assertThrows<IllegalArgumentException>("자동차 이름은 5자 이하만 가능") {
+            validationCarName(listOf("abc", "abcdef"))
+        }
+    }
+
+    @Test
+    fun `시도할 횟수가 숫자가 아닐 때 예외 발생`() {
+        assertThrows<IllegalArgumentException>("숫자만 입력 가능") {
+            validationNumberAttempts("12a")
+            validationNumberAttempts("abc")
+        }
+    }
+
+    @Test
+    fun `자동차 이름이 중복된 경우 예외 발생`() {
+        assertThrows<IllegalArgumentException>("중복된 이름은 사용할 수 없습니다.") {
+            validationCarName(listOf("abc", "abc", "abcde"))
+        }
+    }
+
+    @Test
+    fun `시도 횟수가 0인 경우 예외 발생`() {
+        assertThrows<IllegalArgumentException>("0번 시도할 수는 없습니다.") {
+            validationNumberAttempts("0")
+        }
+    }
 }
