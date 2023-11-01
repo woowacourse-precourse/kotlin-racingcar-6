@@ -1,5 +1,9 @@
 package racingcar
 
+import racingcar.controller.Controller
+import racingcar.randomnumbergenerator.RandomNumberGeneratorImpl
+import racingcar.validator.ValidatorImpl
+
 fun main() {
-    // TODO: 프로그램 구현
+    Controller(ValidatorImpl(), RandomNumberGeneratorImpl()).startGame()
 }
