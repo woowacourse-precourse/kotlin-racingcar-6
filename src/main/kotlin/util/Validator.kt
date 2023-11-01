@@ -6,7 +6,6 @@ class Validator {
     fun checkCarName(name: String) {
         checkNameNull(name)
         checkNameSize(name)
-        //Todo : 예외 처리_동명의 자동차
     }
 
     fun checkTryNum(num: String) {
