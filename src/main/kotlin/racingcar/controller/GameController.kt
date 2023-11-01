@@ -29,9 +29,7 @@ class GameController (private val view: ScreenView){
         if (maxDistance != null) {
             val winners = Winners(mutableListOf())
             cars.forEach { car ->
-                if (car.distance == maxDistance) {
-                    winners.winners.add(car)
-                }
+                if (car.distance == maxDistance) { winners.winners.add(car) }
             }
             return winners
         }
