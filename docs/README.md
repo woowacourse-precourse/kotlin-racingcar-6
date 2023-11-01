@@ -18,7 +18,7 @@
 
 - [] 자동차의 이름은 5자 이하
 - [] 4 이상인 경우에 전진
-- [] 사용자 입력에 대한 오류는 IllegalArgumentException 발생
+- [] 사용자 입력에 대한 오류는 IllegalArgumentException 
 
 ---
 ## 🚀 기능 요구 사항
