@@ -9,6 +9,7 @@ class Dice {
 
     fun goStop(): Boolean {
         val myNum = rollTheDice()
+
         return myNum >= MINIMUM_GO
     }
 

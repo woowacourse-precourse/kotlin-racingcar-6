@@ -22,7 +22,6 @@ class RacingGame(
         for (player in players) {
             player.playGame()
         }
-
         printRoundResult()
     }
 
@@ -32,14 +31,12 @@ class RacingGame(
             ui.printPlayerProgress(player.getPlayerName(), player.getProgress())
         }
         ui.printBlankLine()
-
     }
 
     private fun updateMaxProgress(currentProgress: Int) {
         if (maxProgress < currentProgress) {
             maxProgress = currentProgress
         }
-
     }
 
     private fun getWinner(): List<String> {
