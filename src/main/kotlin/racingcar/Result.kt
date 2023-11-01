@@ -17,12 +17,14 @@ class Result {
         }
     }
 
-    fun printWinner(carNames : List<String>,carProgressList : MutableList<Int>) : MutableList<String> {
-        val max=carProgressList.max()
-        val winnerList: MutableList<String> = mutableListOf()
-        for (i in carNames.indices){
-            if (max==carProgressList[i]) { winnerList.add(carNames[i]) }
+    fun printWinner(carNames: List<String>, carProgressList: MutableList<Int>): String {
+        val max = carProgressList.max()
+        val list: MutableList<String> = mutableListOf()
+        for (i in carNames.indices) {
+            if (max == carProgressList[i]) {
+                list.add(carNames[i])
+            }
         }
-        return winnerList
+        return list.joinToString(", ")
     }
 }
