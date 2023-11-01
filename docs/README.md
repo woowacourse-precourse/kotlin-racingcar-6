@@ -12,5 +12,4 @@
   - [x] 전진 조건 만족하는지 확인 - Racing#validateMoveCondition
 - [ ] 전진 결과 출력 - Result#printProgress
   - [ ] 전진 표시 출력("-") - Result#drawProgress
-- [ ] 우승자 목록 확인 - Result#checkWinner
 - [ ] 우승자 출력 - Result#printWinner
