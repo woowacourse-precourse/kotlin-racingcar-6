@@ -15,14 +15,4 @@ class Racing {
             throw IllegalArgumentException("정수를 입력해 주세요.")
         }
     }
-
-    fun validatePositiveInteger(moveCount: Int) {
-        if (moveCount <= 0) {
-            throw IllegalArgumentException("1 이상의 정수를 입력해주세요.")
-        }
-    }
-
-    fun createRandomNumber(): Int{
-        return Randoms.pickNumberInRange(0, 9)
-    }
 }
