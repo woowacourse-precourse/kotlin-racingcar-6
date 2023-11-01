@@ -1,8 +1,10 @@
 package study
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.isOnlyBlankValidation
 
 class StringTest {
     @Test
@@ -40,5 +42,11 @@ class StringTest {
         assertThrows<StringIndexOutOfBoundsException>("String index out of range: 5") {
             input[5]
         }
+    }
+
+    @Test
+    fun `isOnlyBlankValidation - non-blank input`() {
+        val input = "not blank"
+        assertEquals(false, isOnlyBlankValidation(input))
     }
 }
