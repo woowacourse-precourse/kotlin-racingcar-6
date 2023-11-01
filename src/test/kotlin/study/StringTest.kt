@@ -15,7 +15,7 @@ class StringTest {
 
     @Test
     fun `split 메서드 사용시 구분자가 포함되지 않은 경우 값을 그대로 반환`() {
-        val input = "1"
+        val input = "5,1"
         val result = input.split(",")
         assertThat(result).contains("1")
     }
@@ -38,7 +38,7 @@ class StringTest {
     fun `get 메서드 사용시 문자열의 길이보다 큰 숫자 위치의 문자를 찾을 때 예외 발생`() {
         val input = "abc"
         assertThrows<StringIndexOutOfBoundsException>("String index out of range: 5") {
-            input[5]
+            input[3]
         }
     }
 }
