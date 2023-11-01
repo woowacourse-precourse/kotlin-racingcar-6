@@ -9,10 +9,14 @@ fun main() {
     result(cars, numberAttempt)
 }
 
-fun enterCarName(): List<String> {
+fun enterCarName(): List<Car> {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    val cars = Console.readLine().split(",")
-    validationCarName(cars)
+    val carsName = Console.readLine().split(",")
+    validationCarName(carsName)
+    val cars = mutableListOf<Car>()
+    for (carName in carsName) {
+        cars.add(Car(carName))
+    }
     return cars
 }
 
@@ -39,37 +43,36 @@ fun validationNumberAttempts(numberAttempt: String) {
     }
 }
 
-fun result(cars: List<String>, numberAttempt: String) {
+fun result(cars: List<Car>, numberAttempt: String) {
+    println()
     println("실행 결과")
-    val raceProgress = MutableList(cars.size) { "" }
     repeat(numberAttempt.toInt()) {
-        printEachResult(cars, raceProgress)
+        printEachResult(cars)
     }
+    guideWinners(cars)
 }
 
 fun printEachResult(
-    cars: List<String>,
-    raceProgress: MutableList<String>
+    cars: List<Car>
 ) {
     for (i in cars.indices) {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
-            raceProgress[i] += "-"
+            cars[i].move()
         }
     }
 
     for (i in cars.indices) {
-        println("${cars[i]} : ${raceProgress[i]}")
+        println("${cars[i].name} : ${cars[i].raceProgress}")
     }
     println()
-    guideWinners(cars, raceProgress)
 }
 
-fun guideWinners(cars: List<String>, raceProgress: MutableList<String>) {
-    val max = raceProgress.maxByOrNull { it.length }?.length ?: 0
+fun guideWinners(cars: List<Car>) {
+    val max = cars.maxOfOrNull { it.raceProgress }?.length ?: 0
     val winner = mutableListOf<String>()
-    for (i in raceProgress.indices) {
-        if (raceProgress[i].length == max) {
-            winner.add(cars[i])
+    for (i in cars.indices) {
+        if (cars[i].isWinner(max)) {
+            winner.add(cars[i].name)
         }
     }
     println("최종 우승자 : ${winner.joinToString(", ")}")
