@@ -8,10 +8,10 @@ import racingcar.view.InputView
 import racingcar.view.OutputView
 
 class CarRaceController {
-    val inputView = InputView()
-    val outputView = OutputView()
-    lateinit var carCollectionService: CarCollectionService
-    lateinit var round: Round
+    private val inputView = InputView()
+    private val outputView = OutputView()
+    private lateinit var carCollectionService: CarCollectionService
+    private lateinit var round: Round
 
     fun doRace() {
         getCars()
@@ -33,7 +33,7 @@ class CarRaceController {
 
     private fun raceStart() {
         outputView.raceStart()
-        for (i in 0..< round.getRound()) {
+        for (i in 0 until round.getRound()) {
             CommandInvoker.executeCommands()
             outputView.printRound(carCollectionService.getCarsDto())
         }
