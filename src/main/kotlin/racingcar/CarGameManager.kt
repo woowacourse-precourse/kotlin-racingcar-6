@@ -18,6 +18,7 @@ class CarGameManager {
         val carListCount = carNamesList.size
         Validator.userInputLength(carNamesList.map { it.trim() })
         Validator.userInputContainsNumber(carNamesList.map { it.trim() })
+        Validator.userInputContainsWhitespace(carNamesList.map { it.trim() })
         println(TRY_COUNT_PROMPT_MESSAGE)
         val tryCount = getUserInputString()
         Validator.validateUserTryCount(tryCount)
