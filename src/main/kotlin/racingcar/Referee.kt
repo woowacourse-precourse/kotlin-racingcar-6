@@ -1,4 +1,4 @@
-import racingcar.Car
+package racingcar
 
 class Referee {
 
@@ -10,7 +10,15 @@ class Referee {
 
     fun checkMaxForward(cars: MutableList<Car>): Int {
 
-        return 0
+        var maxForward = 0
+
+        for (car in cars) {
+            if(maxForward < car.distance) {
+                maxForward = car.distance
+            }
+        }
+
+        return maxForward
 
     }
 
