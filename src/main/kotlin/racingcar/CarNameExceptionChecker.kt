@@ -2,6 +2,10 @@ package racingcar
 
 class CarNameExceptionChecker : ExceptionCheckerInterface {
     override fun check(input: String) {
+        if(input.isEmpty()){
+            throw IllegalArgumentException(Const.INPUT_EMPTY)
+        }
+
         val inputCharList = input.toList()
         val nameChecker = inputCharList.all {
             it.isLetterOrDigit() || it == ','
