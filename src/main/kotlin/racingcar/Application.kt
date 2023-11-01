@@ -25,7 +25,7 @@ class RacingCarGame {
         printWinners(findWinners(cars))
     }
 
-    fun inputCarNames(): List<String> {
+    private fun inputCarNames(): List<String> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val carNames = Console.readLine()
         val carNameList = carNames.split(',')
@@ -34,7 +34,7 @@ class RacingCarGame {
         return carNameList
     }
 
-    fun inputAttemptsCount(): Int {
+    private fun inputAttemptsCount(): Int {
         println("시도할 횟수는 몇 회인가요?")
         val attemptsCount = Console.readLine()
         validateAttemptsCount(attemptsCount)
@@ -66,14 +66,14 @@ class RacingCarGame {
         }
     }
 
-    fun printGameResult(cars: List<Car>) {
+    private fun printGameResult(cars: List<Car>) {
         cars.forEach { car ->
             println("${car.name} : ${"-".repeat(car.getPosition())}")
         }
         println()
     }
 
-    fun findWinners(cars: List<Car>): List<String> {
+    private fun findWinners(cars: List<Car>): List<String> {
         var maxPosition: Int? = null
         val winnerNames = mutableListOf<String>()
 
@@ -92,7 +92,7 @@ class RacingCarGame {
         return winnerNames
     }
 
-    fun printWinners(winners: List<String>) {
+    private fun printWinners(winners: List<String>) {
         val winnerMessage = "최종 우승자 : ${winners.joinToString(", ")}"
         println(winnerMessage)
     }
