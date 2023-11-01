@@ -21,6 +21,7 @@ class Controller(
         OutputView.executionResult()
         forwardOrStop(attempt)
         val winners = getWinners(getGreatestPosition())
+        OutputView.finalWinner(getWinnerCarNames(winners))
     }
 
     private fun getNamesOfCar(): List<String> {
