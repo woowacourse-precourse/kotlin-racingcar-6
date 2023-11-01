@@ -7,7 +7,7 @@ import org.junit.jupiter.api.assertThrows
 
 class ValidatorTest {
     @Test
-    fun `빈 문자열인 경우 예외 발생`() {
+    fun `입력값이 빈 문자열인 경우 예외 발생`() {
         val input = ""
 
         val exception = assertThrows<IllegalArgumentException> { Validator.validateInput(input) }
@@ -16,7 +16,7 @@ class ValidatorTest {
     }
 
     @Test
-    fun `빈 문자열이 아닌 경우 예외 발생하지 않음`() {
+    fun `입력값이 빈 문자열이 아닌 경우 예외 발생하지 않음`() {
         val input = "테스트"
 
         assertDoesNotThrow { Validator.validateInput(input) }
@@ -56,13 +56,17 @@ class ValidatorTest {
 
     @Test
     fun `잘못된 이동 횟수 입력값에 대해 예외 발생`() {
-        val input = "1 2"
-        assertThrows<IllegalArgumentException> { Validator.validateInputMoveCount(input) }
+        val moveCount = "1 2"
+
+        val exception = assertThrows<IllegalArgumentException> { Validator.validateMoveCountInput(moveCount) }
+
+        assertThat(exception.message).isEqualTo("이동 횟수는 숫자로 입력해주세요.")
     }
 
     @Test
     fun `올바른 이동 횟수 입력값에 대해 예외 발생하지 않음`() {
-        val input = "1"
-        assertDoesNotThrow { Validator.validateInputMoveCount(input) }
+        val moveCount = "1"
+
+        assertDoesNotThrow { Validator.validateMoveCountInput(moveCount) }
     }
 }

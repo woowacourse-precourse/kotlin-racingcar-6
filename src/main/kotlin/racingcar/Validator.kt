@@ -3,22 +3,22 @@ package racingcar
 const val NAME_SEPARATOR = ","
 const val MAX_NAME_LENGTH = 5
 object Validator {
-    fun isEmptyInput(input: String): Boolean {
-        return input.isEmpty()
+    private fun isEmptyOrBlank(input: String): Boolean {
+        return input.isEmpty() || input.isBlank()
     }
 
     fun validateInput(input: String) {
-        if (isEmptyInput(input)) {
+        if (isEmptyOrBlank(input)) {
             throw IllegalArgumentException("입력이 잘못되었어요.")
         }
     }
 
-    fun isInvalidCarNameLength(carName: String): Boolean {
+    private fun isInvalidCarNameLength(carName: String): Boolean {
         return carName.length > MAX_NAME_LENGTH
     }
 
     fun validateCarName(carName: String) {
-        if (isEmptyInput(carName)) {
+        if (isEmptyOrBlank(carName)) {
             throw IllegalArgumentException("자동차 이름을 잘못 입력했어요.")
         }
 
@@ -27,16 +27,12 @@ object Validator {
         }
     }
 
-    fun isInvalidNumericInput(input: String): Boolean {
+    private fun isInvalidNumeric(input: String): Boolean {
         return !input.all { it.isDigit() }
     }
 
-    fun validateInputMoveCount(input: String) {
-        if (isEmptyInput(input)) {
-            throw IllegalArgumentException("입력이 잘못되었어요.")
-        }
-
-        if (isInvalidNumericInput(input)) {
+    fun validateMoveCountInput(moveCountInput: String) {
+        if (isInvalidNumeric(moveCountInput)) {
             throw IllegalArgumentException("이동 횟수는 숫자로 입력해주세요.")
         }
     }
