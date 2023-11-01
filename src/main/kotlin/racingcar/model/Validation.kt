@@ -1,7 +1,6 @@
 package racingcar.model
 
 class Validation {
-    val error: IllegalArgumentException = IllegalArgumentException()
     fun carName(names: List<String>) {
         for (name in names) {
             if (name.length > Constants.NAME_LENGTH) {
