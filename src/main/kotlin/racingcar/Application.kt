@@ -38,17 +38,19 @@ fun getRandomNumArray(carNamesList: List<Car>): Array<Int> {
 }
 
 fun addScore(carNamesList: List<Car>, randomNumArray: Array<Int>) {
-    for(i in randomNumArray.indices){
-        if (randomNumArray[i]>=4) carNamesList[i].score++
+    for (i in randomNumArray.indices) {
+        if (randomNumArray[i] >= 4) carNamesList[i].score++
     }
 }
 
-fun printCarWithScore(carNamesList: List<Car>){
-    for(car in carNamesList){
+fun printCarWithScore(carNamesList: List<Car>) {
+    for (car in carNamesList) {
         val scoreLine = "-".repeat(car.score)
         println("${car.name} : $scoreLine")
     }
 }
+
+
 
 
 
