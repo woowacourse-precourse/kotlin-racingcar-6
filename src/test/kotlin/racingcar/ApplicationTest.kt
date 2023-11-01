@@ -33,6 +33,19 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `진행 상황 출력 테스트`() {
+        assertSimpleTest {
+            run(
+                "가은,나은,다은", "5"
+            )
+            assertThat(output())
+                .contains("가은 : ")
+                .contains("나은 : ")
+                .contains("다은 : ")
+        }
+    }
+
     public override fun runMain() {
         main()
     }
