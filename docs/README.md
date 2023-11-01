@@ -5,7 +5,8 @@
   - [x] 이름이 중복되지 않는지 확인 - Car#validateDuplicateName
   - [x] 이름이 공백이 아닌지 확인 - Car#validateBlnakName
 - [x] 자동차들의 전진 현황이 담긴 리스트 생성 - Car#createcarProgressList 
-- [x] 정수의 이동 횟수 입력 - Racing#enterMoveCount
+- [x] 이동 횟수 입력 - Racing#enterMoveCount
+  - [x] 정수인지 확인 - Racing#validateInteger
   - [x] 이동 횟수가 0 이하의 수가 입력되었는지 확인 - Racing#validatePositiveInteger
 - [x] 전진 결과 전달 Racing#determineProgress
   - [x] 전진 또는 멈춤을 결정 할 랜덤 값 생성 - Racing#createRandomNumber 
