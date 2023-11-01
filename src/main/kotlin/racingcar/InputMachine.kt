@@ -1,5 +1,6 @@
 package racingcar
 
+// 우선 남겨두고 오류뜨며 지워보는거로
 import java.lang.NumberFormatException
 
 class InputMachine {
@@ -7,10 +8,7 @@ class InputMachine {
     // 자동차 이름 입력↓
     fun makeCars(): List<String> {
 
-        val cars = readln().split(",")
-
-
-        return cars
+        return readln().split(",")
 
     }
 
