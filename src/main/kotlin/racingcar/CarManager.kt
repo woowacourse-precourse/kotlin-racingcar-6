@@ -9,6 +9,7 @@ class Car(name: String) {
 
     fun compareRandom() : Boolean = randomNumber >= MOVE_CONDITION
     fun getName() = name
+    fun getLocation() = location
     fun moveForward() {
         location++
     }
