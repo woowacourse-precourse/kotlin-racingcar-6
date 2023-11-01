@@ -23,10 +23,7 @@ class InputManager {
         return tryTime
     }
     private fun checkTryTime() {
-        if(tryTime is Int) {
-            return;
-        }
-        else{
+        if(tryTime <= 0) {
             throw IllegalArgumentException("")
         }
     }

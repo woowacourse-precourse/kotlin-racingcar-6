@@ -57,6 +57,9 @@ class RacingGame {
 
     private fun setRacingPlayer() {
         for(x in 0 until playerList.size) {
+            if (playerList[x].length > 5) {
+                throw IllegalArgumentException("")
+            }
             val initCar = Car(playerList[x])
             carList.add(initCar)
         }
