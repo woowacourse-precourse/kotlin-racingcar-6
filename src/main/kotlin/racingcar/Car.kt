@@ -12,6 +12,6 @@ class Car(val name: String, var movingDistance: String) {
 
     fun howFarHaveGone() {
         var printString: String = "${this.name} : ${this.movingDistance}"
-        print(printString)
+        println(printString)
     }
 }
