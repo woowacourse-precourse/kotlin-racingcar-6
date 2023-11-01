@@ -9,6 +9,9 @@ class Car(name: String) {
     private val baseRandomNumber: Int = 4
     private val maxRandomNumber: Int = 9
 
+    fun getName() = name
+    fun getLocation() = location
+
     init {
         this.name = name
         this.location = 0
@@ -18,6 +21,7 @@ class Car(name: String) {
         val randomNumber = Randoms.pickNumberInRange(minRandomNumber, maxRandomNumber)
         return randomNumber >= baseRandomNumber
     }
+
     fun tryToMoveForward() {
         if (canMoveForward()) location++
     }

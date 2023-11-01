@@ -25,6 +25,7 @@ class Game {
 
         ProgressMessage.DescribeNextResult.show()
         startRace()
+        showWinnerList()
     }
 
     private fun initCarList(inputCarList: List<Car>) {
@@ -55,5 +56,28 @@ class Game {
             }
             print("\n")
         }
+    }
+
+    private fun makeWinnerList(): List<String> {
+        var winnerList = mutableListOf<String>()
+        var winnerLocation = 0
+
+        for (car in carList) {
+            var carLocation = car.getLocation()
+            if (carLocation > winnerLocation) {
+                winnerLocation = carLocation
+                winnerList = mutableListOf()
+                winnerList.add(car.getName())
+            } else if (carLocation == winnerLocation) {
+                winnerList.add(car.getName())
+            }
+        }
+
+        return winnerList
+    }
+
+    private fun showWinnerList() {
+        var winnerList = makeWinnerList()
+        println("최종 우승자 : ${winnerList.joinToString(", ")}")
     }
 }
