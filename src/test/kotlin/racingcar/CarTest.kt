@@ -19,6 +19,13 @@ class CarTest {
         assertEquals(INITIAL_POSITION + ADVANCE, currentPosition)
     }
 
+    @Test
+    fun `차량이 4 이상의 숫자를 연속해서 받았을 때`() {
+        car.move(MOVE)
+        val finalPosition = car.move(MOVE)
+        assertEquals(INITIAL_POSITION + ADVANCE * 2, finalPosition)
+    }
+
     companion object {
         const val INITIAL_POSITION = 0
         const val ADVANCE = 1
