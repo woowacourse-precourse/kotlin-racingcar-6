@@ -11,11 +11,7 @@ fun main() {
     Prompter.tryGameNumber()
     val tryNumber = getTryNumber()
     Prompter.resultGame()
-    val game = Game(cars, tryNumber)
-    for (i in 1..tryNumber) {
-        game.tryEachUser()
-        Prompter.showEachTry(game.getScoreMap(), cars)
-    }
+    val game = Game(cars)
+    Prompter.showGame(game,tryNumber)
     Prompter.showWinner(game.getWinner())
-
 }

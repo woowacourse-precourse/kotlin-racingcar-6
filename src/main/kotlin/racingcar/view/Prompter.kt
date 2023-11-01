@@ -1,5 +1,6 @@
 package racingcar.view
 
+import racingcar.model.Game
 import racingcar.res.GAME_RESULT
 import racingcar.res.GAME_RESULT_USER
 import racingcar.res.GAME_START_MESSAGE
@@ -19,8 +20,15 @@ object Prompter {
         println(GAME_RESULT)
     }
 
-    fun showEachTry(scoreMap: MutableMap<String, Int>, user: List<String>){
-        for (car in user){
+    fun showGame(game: Game, tryNumber: Int){
+        for (i in 1..tryNumber) {
+            game.tryEachUser()
+            showEachTry(game.getScoreMap(), game.getUserList())
+        }
+    }
+
+    private fun showEachTry(scoreMap: MutableMap<String, Int>, user: List<String>) {
+        for (car in user) {
             println("$car : ${printDash(scoreMap[car]!!)}")
         }
         println()
@@ -30,7 +38,7 @@ object Prompter {
         val sb = StringBuilder()
         sb.append(winnerList.first())
         for(index in 1 until winnerList.size){
-            sb.append(",").append(winnerList[index])
+            sb.append(", ").append(winnerList[index])
         }
         println("$GAME_RESULT_USER : $sb")
     }
