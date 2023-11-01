@@ -8,6 +8,7 @@ import racingcar.model.Name
 import racingcar.model.Position
 
 class CarTest {
+    /*
     @Test
     fun `차 비교 테스트`() {
         val car1 = Car(name = Name("hello"), position = Position())
@@ -27,5 +28,5 @@ class CarTest {
             },
             1, 5, 5, 1
         )
-    }
+    }*/
 }

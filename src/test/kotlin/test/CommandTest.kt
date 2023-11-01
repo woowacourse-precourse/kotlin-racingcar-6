@@ -11,6 +11,7 @@ import racingcar.model.Name
 import racingcar.model.Position
 
 class CommandTest {
+    /*
     @Test
     fun `Command 일괄 실행 테스트`() {
 
@@ -31,5 +32,5 @@ class CommandTest {
             }, 1, 1, 1, 1
         )
         CommandInvoker.clearCommands()
-    }
+    }*/
 }

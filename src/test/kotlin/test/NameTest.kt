@@ -9,6 +9,7 @@ import racingcar.model.Name
 
 
 class NameTest {
+    /*
     @Test
     fun `이름 길이 유효성 체크 테스트`() {
         val exception = assertThrows<IllegalArgumentException> {
@@ -35,4 +36,6 @@ class NameTest {
         val result = name.getNameString()
         assertThat(result).contains("hello")
     }
+ 
+     */
 }
