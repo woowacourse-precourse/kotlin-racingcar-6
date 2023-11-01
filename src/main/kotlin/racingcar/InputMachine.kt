@@ -1,7 +1,5 @@
 package racingcar
 
-import java.lang.NumberFormatException
-
 class InputMachine {
 
     // 자동차 이름 입력↓
