@@ -82,7 +82,7 @@ class RacingCarGame {
         notIntException()
 
         println("\n실행 결과")
-        for (dummy in 0..<numberOfTryStr.toInt()) {
+        for (dummy in 2..numberOfTryStr.toInt()+1) {
             goOrNot()
             printGameProgress()
             println()
