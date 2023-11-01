@@ -16,7 +16,7 @@
         [ ] 최종 우승자 
     [ ] 이동 횟수 입력 받기
     [ ] 자동차 이름을 입력받아 이름 속성을 가진 Car 객체를 생성하기
-        [ ] 입력받은 String을 쉼표 기준으로 구분해서 이름 list 만들기
+        [x] 입력받은 String을 쉼표 기준으로 구분해서 이름 list 만들기
         [ ] 이름 property를 가진 Car 객체를 생성  
     
     Car (name, location, randMove())
