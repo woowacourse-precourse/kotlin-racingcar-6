@@ -19,18 +19,26 @@ fun inputException(inputs: List<String>): List<String> {
 
 }
 
+
 fun carRace(score: MutableMap<String, String>){
 
-    for ((key, value ) in score) {
+    for ((key, _ ) in score) {
         if (Randoms.pickNumberInRange(0, 9) >= 4 ) {
             score[key] +="-"
         }
 
-        println("$key : $value")
+        println("$key : ${score[key]}")
 
     }
     println()
 
+}
+
+fun displayOutput(score: Map<String, String>) {
+    val maxCount = score.values.map { it.length }.max()
+    val winners = score.filterValues { it.length == maxCount }.keys
+
+    println("최종 우승자 : ${winners.joinToString(separator = ", ")}")
 }
 
 fun main() {
@@ -55,10 +63,8 @@ fun main() {
 
     }
 
-
     // TODO : feat: output
-    println("최종 우승자")
-
+    displayOutput(score)
 
 
 }
