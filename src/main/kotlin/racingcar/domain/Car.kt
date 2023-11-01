@@ -1,7 +1,8 @@
 package racingcar.domain
 
 import racingcar.domain.DecisionMaker
-class Car (name: String) {
+
+class Car(name: String) {
     var carName: String = name
     var forward = 0
 

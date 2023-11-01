@@ -1,6 +1,7 @@
 package racingcar.domain
 
 import camp.nextstep.edu.missionutils.Randoms
+
 class DecisionMaker() {
 
     companion object {
@@ -9,7 +10,7 @@ class DecisionMaker() {
         const val FORWARD_THRESHOLD = 4
     }
 
-    fun decideToMove() : Boolean {
+    fun decideToMove(): Boolean {
         val random = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT)
         return random >= FORWARD_THRESHOLD
     }

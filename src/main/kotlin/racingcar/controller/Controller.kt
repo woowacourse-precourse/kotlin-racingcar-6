@@ -12,14 +12,18 @@ class Controller {
     fun start() {
         val inputCarsNames = readInputCars()
         val inputRound = readInputRound().toInt()
-        val carList : List<Car> = inputCarsNames.split(',').map { Car(it) }
+        val carList: List<Car> = inputCarsNames.split(',').map { Car(it) }
         Validator(inputCarsNames, inputRound)
+        outputView.printStartOfResultPhrase()
 
-        repeat(inputRound){
+        repeat(inputRound) {
             playGame(carList)
-            showResult() // 한 라운드 결과
+            showResult(carList)
+            println()
         }
-        //최종 위
+
+        showWinners(carList)
+
 
 
     }
@@ -34,13 +38,17 @@ class Controller {
         return inputView.readUserInput()
     }
 
-    private fun playGame(carList : List<Car>) {
-        carList.forEach { it.goForward()}
+    private fun playGame(carList: List<Car>) {
+        carList.forEach { it.goForward() }
     }
 
-    private fun showResult() {
-        outputView.printStartOfResultPhrase()
+    private fun showResult(carList: List<Car>) {
+        carList.forEach { outputView.printRoundResultFormat(it.carName, it.forward) }
+    }
+
+    private fun showWinners(carList: List<Car>) {
 
     }
+
 
 }
