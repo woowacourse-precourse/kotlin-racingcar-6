@@ -18,6 +18,12 @@ fun List<Car>.toStatusString(): String {
     return this.map { "${it.name} : ${progressCharacter.repeat(it.location)}" }.joinToString("\n")
 }
 
+fun List<Car>.race(loopCount: Int): Unit {
+    for (i in 1..loopCount) {
+        this.forEach { it.randMove() }
+    }
+}
+
 class Car(val name: String) {
     init {
         if (name.length > 5) throw IllegalArgumentException("5자 이상 이름 필요")
