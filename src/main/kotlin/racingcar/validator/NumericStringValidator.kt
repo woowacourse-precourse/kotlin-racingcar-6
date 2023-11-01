@@ -8,6 +8,7 @@ class NumericStringValidator() : StringValidator {
     }
 
     private fun isZero(target: String) = target == ZERO
+
     private fun isNotNumeric(target: String) = target.all { it.isDigit() }.not()
 
     companion object {

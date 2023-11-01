@@ -17,7 +17,9 @@ class Referee(
     }
 
     fun determineWinner(cars: List<Car>): Winner {
-        val winners = cars.filter { car -> car.position.length == attemptCount }
+        val winners = cars.filter { car ->
+            car.position.length == attemptCount
+        }
         return Winner(winners)
     }
 }

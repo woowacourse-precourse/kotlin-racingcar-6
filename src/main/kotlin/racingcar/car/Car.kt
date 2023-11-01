@@ -7,8 +7,10 @@ class Car(
     val name: String = "",
     private val scoreGenerator: NumberGenerator = RandomNumberGenerator(),
 ) {
-    val score get() = scoreGenerator.generate()
-    private val canMove get() = (score >= MOVE_START_NUMBER)
+    private val score
+        get() = scoreGenerator.generate()
+    private val canMove
+        get() = (score >= MOVE_START_NUMBER)
     var position = ""
         private set
 

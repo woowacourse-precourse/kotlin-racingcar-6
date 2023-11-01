@@ -49,17 +49,23 @@ class ApplicationTest : NsTest() {
     @Test
     fun `이름의 길이는 1글자 이상 5글자 이하`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException>("문자열의 길이가 1글자 이상 5글자 이하여야 합니다") { runException("pobi, ", "1") }
+            assertThrows<IllegalArgumentException>("문자열의 길이가 1글자 이상 5글자 이하여야 합니다") {
+                runException("pobi, ", "1")
+            }
         }
     }
 
     @Test
     fun `실행 횟수에 대한 예외 처리`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException>("문자열은 숫자여야 합니다") { runException("pobi,woni", "a") }
+            assertThrows<IllegalArgumentException>("문자열은 숫자여야 합니다") {
+                runException("pobi,woni", "a")
+            }
         }
         assertSimpleTest {
-            assertThrows<IllegalArgumentException>("0은 유효하지 않습니다") { runException("pobi,woni", "0") }
+            assertThrows<IllegalArgumentException>("0은 유효하지 않습니다") {
+                runException("pobi,woni", "0")
+            }
         }
     }
 

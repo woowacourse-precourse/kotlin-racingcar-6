@@ -10,7 +10,7 @@ class Player(
 ) {
     fun determineCarNames(
         input: String = reader.read(),
-        validator: StringValidator = StringLengthValidator()
+        validator: StringValidator = StringLengthValidator(),
     ): List<String> {
         validator.validate(input)
         return input.toCarNames()
