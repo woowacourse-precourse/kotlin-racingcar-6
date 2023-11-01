@@ -20,7 +20,7 @@ class Car {
     }
 
     fun validateBlankName(carNames : List<String>) {
-        if (carNames.any { it.isEmpty() }) throw IllegalArgumentException("자동차 이름이 공백입니다.")
+        if (carNames.any { it.isBlank() }) throw IllegalArgumentException("자동차 이름이 공백입니다.")
     }
 
     fun createCarProgressList(carNames: List<String>) : MutableList<Int> {
