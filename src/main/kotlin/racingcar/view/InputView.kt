@@ -1,13 +1,15 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.model.Car
+
 class InputView {
 
-    fun inputCarList(): List<String> {
-        val carList = mutableListOf<String>()
+    fun inputCarList(): List<Car> {
+        val carList = mutableListOf<Car>()
         val carNames = Console.readLine().split(",")
         for (carName in carNames) {
-            carList.add(carName)
+            carList.add(Car(carName, 0))
         }
         return carList.toList()
     }
