@@ -63,4 +63,8 @@ class Car(val name: String) {
             position++
         }
     }
+현
+    fun getPosition(): Int {
+        return position
+    }
 }
