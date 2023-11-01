@@ -13,8 +13,9 @@ class Validator(inputCarNames: String, inputRound: Int) {
         private fun validateLength(inputCarNames: String) {
             val listCars = inputCarNames.split(',').toList()
             listCars.forEach { car ->
-                if (car.length > 5)
+                if (car.length > 5) {
                     throw IllegalArgumentException("이름은 5자 이하만 가능합니다.")
+                }
             }
         }
 
