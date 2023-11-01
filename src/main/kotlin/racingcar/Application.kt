@@ -27,8 +27,10 @@ fun getValidcarNamesList(carNames: String): List<Car> {
 
 fun getNumberOfRacing(): Int {
     println("시도할 횟수는 몇 회인가요?")
-    if (!Console.readLine().matches(Regex("\\d"))) throw IllegalArgumentException("숫자로 입력해야 함")
-    return Console.readLine().toInt()
+    val numberOfRacing = Console.readLine()
+    println()
+    if (!numberOfRacing.matches(Regex("\\d"))) throw IllegalArgumentException("숫자로 입력해야 함")
+    return numberOfRacing.toInt()
 }
 
 fun getRandomNumArray(carNamesList: List<Car>): Array<Int> {
@@ -58,16 +60,3 @@ fun startRacing(numberOfRacing: Int, carNamesList: List<Car>) {
         printCarWithScore(carNamesList)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
