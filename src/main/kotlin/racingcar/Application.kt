@@ -1,7 +1,7 @@
-// Application.kt
-
 package racingcar
 
+import racingcar.controller.RacingContoller
+
 fun main() {
-    RacingGame().start()
+    RacingContoller().start()
 }
