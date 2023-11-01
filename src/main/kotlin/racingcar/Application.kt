@@ -1,16 +1,14 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
-import camp.nextstep.edu.missionutils.Randoms
-
+import racingcar.model.RaceGame
 
 fun main() {
+    val carNames = getCarNames()
+    val numberOfRacing = getNumberOfRacing()
+    val raceGame = RaceGame(carNames, numberOfRacing)
+    raceGame.start()
 }
-
-data class Car(
-    val name: String,
-    var score: Int
-)
 
 fun getCarNames(): String {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -19,51 +17,10 @@ fun getCarNames(): String {
     return input
 }
 
-fun getValidcarNamesList(carNames: String): List<Car> {
-    val carNamesList = carNames.split(",").map { Car(it, 0) }
-    if (carNamesList.any { it.name.length > 5 }) throw IllegalArgumentException("자동차 이름은 5자 이하 이어야 함")
-    return carNamesList
-}
-
 fun getNumberOfRacing(): Int {
     println("시도할 횟수는 몇 회인가요?")
     val numberOfRacing = Console.readLine()
     println()
     if (!numberOfRacing.matches(Regex("\\d"))) throw IllegalArgumentException("숫자로 입력해야 함")
     return numberOfRacing.toInt()
-}
-
-fun getRandomNumArray(carNamesList: List<Car>): Array<Int> {
-    return Array(carNamesList.size) {
-        Randoms.pickNumberInRange(0, 9)
-    }
-}
-
-fun addScore(carNamesList: List<Car>, randomNumArray: Array<Int>) {
-    for (i in randomNumArray.indices) {
-        if (randomNumArray[i] >= 4) carNamesList[i].score++
-    }
-}
-
-fun printCarWithScore(carNamesList: List<Car>) {
-    for (car in carNamesList) {
-        val scoreLine = "-".repeat(car.score)
-        println("${car.name} : $scoreLine")
-    }
-    println()
-}
-
-fun startRacing(numberOfRacing: Int, carNamesList: List<Car>) {
-    for (i in 0 until numberOfRacing) {
-        val randomNumArray = getRandomNumArray(carNamesList)
-        addScore(carNamesList, randomNumArray)
-        printCarWithScore(carNamesList)
-    }
-    printWinner(carNamesList)
-}
-
-fun printWinner(carNamesList: List<Car>) {
-    val maxScore = carNamesList.maxBy { it.score }.score
-    val winner = carNamesList.filter { it.score == maxScore }.joinToString(", "){it.name}
-    println("최종 우승자 : $winner")
 }
