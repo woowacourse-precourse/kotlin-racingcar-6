@@ -12,6 +12,12 @@ class MyException {
         }
     }
 
+    fun throwNameOneException(input: String){
+        if(input.length == 1){
+            throw IllegalArgumentException()
+        }
+    }
+
     fun throwRepeatStringException(input:String){
         try{
             input.toInt()
