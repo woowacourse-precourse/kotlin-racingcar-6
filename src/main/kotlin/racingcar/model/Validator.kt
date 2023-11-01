@@ -11,9 +11,9 @@ internal fun List<String>.validateNoDuplicates(): Result<List<String>> =
         require(this.hasNoDuplicated()) { Error.DuplicatedCarName }
     }
 
-internal fun String.validateCarName(): Result<String> =
+internal fun CarName.validateCarName(): Result<CarName> =
     alsoCatching {
-        require(this.isNotBlank() && this.length <= 5) { Error.InvalidCarName }
+        require(value.isNotBlank() && value.length <= 5) { Error.InvalidCarName }
     }
 
 internal fun String.validateNumber(containsDigit: Boolean = true): Result<String> =

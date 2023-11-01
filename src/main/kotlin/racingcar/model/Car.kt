@@ -9,10 +9,10 @@ class Car(val name: CarName) {
 }
 
 @JvmInline
-value class CarName(private val value: String) {
+value class CarName(val value: String) {
 
     init {
-        value.validateCarName().getOrThrow()
+        this.validateCarName().getOrThrow()
     }
 
     override fun toString(): String = value
