@@ -1,17 +1,13 @@
 package racingcar.Controller
 
+import racingcar.Model.CarModel
 import racingcar.View.CarView
 
-class CarController(val view: CarView) {
+class CarController(val view: CarView, val model: CarModel) {
     fun startGame() {
 
         val carNameInput = carName()
-
-        for (car in carNameInput) {
-            if (car.length > 5) {
-                throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.")
-            }
-        }
+        model.carNameLimit(carNameInput)
 
         val tryCountInput = tryCount()
         if (tryCountInput <= 0) {
@@ -31,7 +27,7 @@ class CarController(val view: CarView) {
     private fun carName(): List<String> {
         view.printCarNamesMessage()
         val carName = readLine()
-            return carName?.split(",") ?: throw IllegalArgumentException("올바르게 다시 입력해주세요")
+        return carName?.split(",") ?: throw IllegalArgumentException("올바르게 다시 입력해주세요")
     }
 
     private fun tryCount():Int{
@@ -68,6 +64,6 @@ class CarController(val view: CarView) {
         return winners
     }
     private fun printWinners(winners: List<String>){
-       view.printWinnersMessage(winners.joinToString(", "))
+        view.printWinnersMessage(winners.joinToString(", "))
     }
 }
