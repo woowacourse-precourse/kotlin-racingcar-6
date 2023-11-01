@@ -13,6 +13,7 @@ class GameController {
 		createCarList()
 		createRaceNumber()
 		println()
+		playRace()
 	}
 
 	fun createCarList() {
@@ -25,5 +26,10 @@ class GameController {
 		println(InformationMessage.ATTEMPT_NUMBER.message)
 		val input = Console.readLine()
 		raceService.createRaceNumber(input)
+	}
+
+	fun playRace() {
+		println(InformationMessage.EXECUTION_RESULT.message)
+		raceService.playRace()
 	}
 }
