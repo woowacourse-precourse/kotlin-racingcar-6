@@ -34,6 +34,10 @@ class CarPlayGameImpl(
             playRound()
             println()
         }
+
+        val winnerCount = getCurrentWinnerCount()
+
+        endGame(winnerCount)
     }
 
     override fun playRound() {
@@ -45,6 +49,12 @@ class CarPlayGameImpl(
     }
 
     override fun endGame(winnerCount: Int) {
+        val winnerList = mutableListOf<String>()
+        players.forEach { player ->
+            if (player.winCount == winnerCount) winnerList.add(player.name)
+        }
+
+        printGame.printWinner(winnerList)
     }
 
     // 5자 이하의 이름인지 확인하는 메서드
@@ -58,6 +68,15 @@ class CarPlayGameImpl(
     // 4 이상 부터 전진한다.
     private fun canIGo(): Boolean {
         return Randoms.pickNumberInRange(0, 9) > RUN_OR_STOP_STANDARD
+    }
+
+    // 현재 가장 많이 전진한 사람의 count를 가져오는 메서드
+    private fun getCurrentWinnerCount(): Int {
+        var maxGoCount = 0
+
+        players.forEach { player -> maxGoCount = max(maxGoCount, player.winCount) }
+
+        return maxGoCount
     }
 
     companion object {

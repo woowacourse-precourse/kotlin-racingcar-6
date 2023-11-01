@@ -1,5 +1,10 @@
 package racingcar
 
+import racingcar.service.CarPlayGameImpl
+import racingcar.service.CarPrintGame
+
 fun main() {
-    // TODO: 프로그램 구현
+    val playGame = CarPlayGameImpl(CarPrintGame())
+
+    playGame.playGame()
 }
