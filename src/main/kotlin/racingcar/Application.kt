@@ -9,6 +9,6 @@ fun main() {
     val test = Randoms.pickNumberInRange(0, 9)
 
     println(carGame)
-    println(test)
+    //println(test)
     Console.close()
 }
