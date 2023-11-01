@@ -19,7 +19,12 @@ fun main() {
 
     println(tries)
 
-
+    for (i in 1..tries) {
+        for (key in keys) {
+            carMoveCounter(key, carMap)
+        }
+        println(carMap)
+    }
     // TODO : 최종결과 출력하는 함수 만들기
 }
 
@@ -30,5 +35,10 @@ fun moveCondition(): Boolean {
 
     if (num < 4) return false
     else return true
+}
+
+fun carMoveCounter(key: String, carMap: MutableMap<String, Int>) {
+    println(key)
+    if (moveCondition()) carMap[key] = (carMap[key] ?: 0) + 1
 }
 
