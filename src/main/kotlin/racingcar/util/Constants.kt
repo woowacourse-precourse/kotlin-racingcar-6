@@ -7,6 +7,7 @@ object Constants {
     const val RESULT = "실행 결과"
     const val WINNER = "최종 우승자 : "
 
+    const val EMPTY_ERROR = "[Error] 빈 칸은 입력할 수 없습니다."
     const val INPUT_NAME_ERROR = "[Error] 이름은 5자 이하만 가능합니다."
     const val INPUT_NUM_ERROR = "[Error] 1이상의 숫자만 입력해주세요."
 }
