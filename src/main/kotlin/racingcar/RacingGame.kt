@@ -10,6 +10,10 @@ class RacingGame {
     fun gameStart() {
         getRacer()
         val round = getRound()
+        println("실행 결과")
+        for (i in 0 until round) {
+            move()
+        }
     }
 
     private fun getRacer() {
@@ -32,5 +36,12 @@ class RacingGame {
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException("잘못된 라운드를 입력하였습니다.")
         }
+    }
+
+    fun move() {
+        for (car in cars) {
+            car.move()
+        }
+        println()
     }
 }
