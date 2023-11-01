@@ -9,7 +9,7 @@ class Cars(private val cars: List<Car>) {
 
     companion object {
         fun registerCars(userInput: String) {
-            val carNames = userInput.split("-")
+            val carNames = userInput.split(",")
             val cars = carNames.map { Car(it) }
             Cars(cars)
 
