@@ -12,6 +12,7 @@ class InputHandler {
         val randomGenerator = RandomGenerator()
 
         repeat(roundCount) {
+            println("실행 결과")
             carNames.forEach { carName ->
                 val randomValue = randomGenerator.generate()
                 val position = if (randomValue >= 4) "-" else ""
@@ -20,12 +21,10 @@ class InputHandler {
             }
             println()
         }
-
-        println("실행 종료!")
     }
 
     private fun getCarNames(): List<String> {
-        println("경주할 자동차 이름을 입력해주세요(이름은 [,]를 기준으로 구분해주세요.):")
+        println("경주할 자동차 이름을 입력해주세요(이름은 (,)를 기준으로 구분)")
         val input = Console.readLine()
         val carNames = input.split(",").map { it.trim() }
 
@@ -37,7 +36,7 @@ class InputHandler {
     }
 
     private fun getRoundCount(): Int {
-        println("시도할 횟수를 입력하세요:")
+        println("시도할 횟수는 몇 회인가요?")
         val input = Console.readLine()
 
         if (!input.matches(Regex("-?\\d+"))) {
