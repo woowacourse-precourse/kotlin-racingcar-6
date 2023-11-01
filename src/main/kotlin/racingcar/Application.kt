@@ -40,7 +40,7 @@ fun main() {
 
     println("\n실행 결과")
 
-    //입력 유효성 검사 구현
+    //입력 유효성 검사 구현 IllegalArgumentException 예외 발생
     require(carNames != null && tryCount != null && tryCount > 0) { throw IllegalArgumentException("잘못된 입력입니다.") }
 
     val carNameList = carNames.split(",")
