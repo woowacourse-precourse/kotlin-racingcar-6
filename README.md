@@ -31,6 +31,11 @@ BUILD SUCCESSFUL in 0s
 
 ---
 
+## 기능 목록
+- [o] 경주할 자동차들을 입력하고 조건에 맞게 리스트를 출력한다. - createCarsList()
+- [x] 랜덤값에 따라 "-"가 출력된다. - printDashes()
+- [x] 최종 우승자를 출력한다 - printWinner()
+
 ## 🚀 기능 요구 사항
 
 초간단 자동차 경주 게임을 구현한다.
