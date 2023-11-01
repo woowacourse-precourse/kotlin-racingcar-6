@@ -13,7 +13,7 @@ class View {
         return Console.readLine()
     }
 
-    fun printResult(){
+    fun printResult() {
         println("\n${ENTER_RESULT}")
     }
 
