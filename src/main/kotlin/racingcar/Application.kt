@@ -1,7 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
-import net.bytebuddy.asm.Advice.OffsetMapping.Factory.Illegal
+
 
 fun main() {
 
@@ -18,7 +18,7 @@ fun getCarNames(): String {
 }
 
 fun getValidCarNamesArray(carNames: String): Collection<Car> {
-    val carNamesArray = carNames.split(",").map { Car(it,0) }
+    val carNamesArray = carNames.split(",").map { Car(it, 0) }
     if (carNamesArray.any { it.name.length > 5 }) {
         throw IllegalArgumentException("자동차 이름은 5자 이하 이어야 함")
     }
@@ -27,8 +27,13 @@ fun getValidCarNamesArray(carNames: String): Collection<Car> {
 
 fun getNumberOfRacing(): Int {
     println("시도할 횟수는 몇 회인가요?")
+    if (!Console.readLine().matches(Regex("\\d"))){
+        throw IllegalArgumentException("숫자로 입력해야 함")
+    }
     return Console.readLine().toInt()
 }
+
+
 
 
 
