@@ -20,7 +20,7 @@ class InputManager {
 
     // 입력된 경주 시도 횟수를 정수형으로 반환
     fun getTrial(): Int {
-        return inputTrial().toInt()
+        return checkTrialValidation(inputTrial())
     }
 
     // 경주 자동차 이름 길이에 대한 유효성 검사
@@ -31,5 +31,18 @@ class InputManager {
             }
         }
         return racingCarNameList
+    }
+
+    // 경주 시도 횟수에 대한 유효성 검사
+    private fun checkTrialValidation(trial: String): Int {
+        // 사용자 입력 문자열 숫자 여부 유효성 검사
+        val trialCharArray = trial.toCharArray()
+        for (trialChar in trialCharArray) {
+            if (trialChar.code < 48 || trialChar.code > 57) {
+                print(trialChar.code)
+                throw IllegalArgumentException("숫자 입력 오류 발생")
+            }
+        }
+        return trial.toInt()
     }
 }
