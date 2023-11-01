@@ -7,12 +7,12 @@ import org.junit.jupiter.api.Test
 
 class ScoresTest {
 
-    private val scores = Scores.from(lastRound = 3)
+    private val scores = Scores.from(lastRound = Round(3))
 
     @Test
     @DisplayName("attempt 값이 최대를 넘었을 때, 에러를 발생하는지")
     fun addCurrentScore_overflowAttempt() {
-        assertThatThrownBy { scores.addCurrentScore(round = 4, score = 4) }
+        assertThatThrownBy { scores.addCurrentScore(round = Round(4), score = 4) }
             .isExactlyInstanceOf(IllegalArgumentException::class.java)
             .hasMessage(Scores.Error.OverflowRound.message)
     }
@@ -20,9 +20,11 @@ class ScoresTest {
     @Test
     @DisplayName("해당 주차의 점수가 잘 기록되는지 확인")
     fun addCurrentScore() {
-        scores.addCurrentScore(3, 4)
-        scores.addCurrentScore(1, 3)
-        assertThat(scores.scoreByRound[3]).isEqualTo(4)
-        assertThat(scores.scoreByRound[1]).isEqualTo(3)
+        val round1 = Round(1)
+        val round3 = Round(3)
+        scores.addCurrentScore(round3, 4)
+        scores.addCurrentScore(round1, 3)
+        assertThat(scores.scoreByRound[round3]).isEqualTo(4)
+        assertThat(scores.scoreByRound[round1]).isEqualTo(3)
     }
 }

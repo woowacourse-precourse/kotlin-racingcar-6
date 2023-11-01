@@ -1,9 +1,7 @@
 package racingcar.controller
 
 import racingcar.model.Judge
-import racingcar.model.RaceParticipants
 import racingcar.model.Round
-import racingcar.model.validatePositiveNumber
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -13,26 +11,26 @@ class Controller {
     private val inputView = InputView()
 
     fun start() {
-        val participants = getRaceParticipants()
-        val round = getRoundNumber()
-        val judge = Judge(participants, round)
+        val participants = getRaceParticipantsInput()
+        val round = getRoundInput()
+        val judge = Judge.of(participants, round)
         displayRaceResult(judge, round)
         inputView.terminated()
     }
 
-    private fun getRaceParticipants(): RaceParticipants {
+    private fun getRaceParticipantsInput(): String {
         outputView.printInputRaceCarNames()
-        return RaceParticipants.from(inputView.getUserInput())
+        return inputView.getUserInput()
     }
 
-    private fun getRoundNumber(): Int {
+    private fun getRoundInput(): String {
         outputView.printInputNumberOfAttempts()
-        return inputView.getUserInput().validatePositiveNumber().getOrThrow().toInt()
+        return inputView.getUserInput()
     }
 
-    private fun displayRaceResult(judge: Judge, lastRound: Round) {
+    private fun displayRaceResult(judge: Judge, roundString: String) {
         val raceResult = judge.startRace()
-        outputView.printCurrentRaceResult(raceResult, lastRound)
+        outputView.printCurrentRaceResult(raceResult, Round.from(roundString))
         outputView.printWinner(judge.getWinner())
     }
 }

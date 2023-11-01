@@ -2,7 +2,7 @@ package racingcar.model
 
 import racingcar.RandomGenerator
 
-class Judge(
+class Judge private constructor(
     private val raceParticipants: RaceParticipants,
     private val round: Round
 ) {
@@ -13,7 +13,7 @@ class Judge(
      * 경기를 시작하고 경기의 모든 진행 결과를 담은 [Board] 객체를 반환함
      * */
     fun startRace(): Board {
-        (1..round).forEach { executeMove(it) }
+        round.forEach { currentRound -> executeMove(currentRound) }
         return board
     }
 
@@ -37,5 +37,11 @@ class Judge(
         private const val RANDOM_START_NUMBER = 0
         private const val RANDOM_END_NUMBER = 9
         private const val MOVING_POINT = 4
+
+        fun of(participantsString: String, roundString: String): Judge {
+            val participants = RaceParticipants.from(participantsString)
+            val round = Round.from(roundString)
+            return Judge(participants, round)
+        }
     }
 }

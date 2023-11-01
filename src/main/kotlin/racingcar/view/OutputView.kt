@@ -11,12 +11,12 @@ class OutputView {
 
     fun printInputNumberOfAttempts() = println(Message.NumberOfRound)
 
-    fun printCurrentRaceResult(board: Board, lastRound: Round) {
+    fun printCurrentRaceResult(board: Board, round: Round) {
         val message = buildString {
             appendLine()
             appendLine(Message.RaceResult)
-            (1..lastRound).forEach { currentAttempt ->
-                val carNameAndScoreList = board.getScoresByRound(currentAttempt)
+            round.forEach { currentRound ->
+                val carNameAndScoreList = board.getScoresByRound(currentRound)
                 appendLine(formatRaceResults(carNameAndScoreList))
                 appendLine()
             }
