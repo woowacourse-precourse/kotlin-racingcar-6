@@ -13,7 +13,7 @@ class RacingCarController {
         val users = inputView.getInputCarName()
         var racingCars = convertUsersToRacingCars(users)
 
-        val gameCount = inputView.printInputGameCount()
+        val gameCount = inputView.getInputGameCount()
         racingCars = getGameResultRacingCars(racingCars, gameCount)
 
         gameEnd(racingCars)
@@ -51,6 +51,6 @@ class RacingCarController {
     }
 
     companion object {
-        const val INIT_DISTANCE_NUM = 0
+        private const val INIT_DISTANCE_NUM = 0
     }
 }
