@@ -7,6 +7,7 @@ import racingcar.view.RacingCarView
 class RacingCarController(racingCarView: RacingCarView) {
     private val racingCarView: RacingCarView = racingCarView
     private var carList = mutableListOf<Car>()
+    var LOWER_NUM = 4
 
     fun run() {
         var inputForCarName = racingCarView.getUserInputForCarName()
@@ -47,12 +48,16 @@ class RacingCarController(racingCarView: RacingCarView) {
 
     fun moveForwardCarList() {
         for (car in carList) {
-            moveForwardCar(car)
+            moveForwardCar(car, generateRandomNum(0, 9))
         }
     }
 
-    fun moveForwardCar(car: Car) {
-        if (randomNumberGenerator(0, 9) >= 4) {
+    fun generateRandomNum(startNum: Int, lastNum: Int):Int{
+        return randomNumberGenerator(startNum, lastNum)
+    }
+
+    fun moveForwardCar(car: Car, randomNum: Int) {
+        if (randomNum >= LOWER_NUM) {
             car.increaseForwardCount()
         }
     }
