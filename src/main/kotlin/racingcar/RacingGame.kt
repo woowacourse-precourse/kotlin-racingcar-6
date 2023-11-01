@@ -6,7 +6,7 @@ class RacingGame(
     private val printer: Printer = Printer()
 ) {
 
-    private lateinit var carsList: List<Car>
+    private lateinit var cars: List<Car>
 
     private var attemptsNumber: Int = 0
 
@@ -22,7 +22,7 @@ class RacingGame(
     private fun stepToEnterCarNames() {
         printer.printOutEnteringCarName()
         val carsInputString = userInput()
-        carsList = createCarsList(carsInputString)
+        cars = createCarsList(carsInputString)
     }
 
     fun createCarsList(carsInputString: String): List<Car> {
@@ -51,19 +51,19 @@ class RacingGame(
         printer.printOutResultInformationText()
 
         while (attemptsNumber > 0) {
-            carsList.map { car ->
+            cars.map { car ->
                 if (car.createMoveForwardStandard()) car.moveForward()
             }
-            printer.printOutCarsMoveResult(carsList = carsList)
+            printer.printOutCarsMoveResult(carsList = cars)
             attemptsNumber--
         }
     }
 
     private fun stepToChooseWinners() {
-        val maxHowGoForwardCars = carsList.maxByOrNull { it.howGoForwardCount }
+        val maxHowGoForwardCars = cars.maxByOrNull { it.howGoForwardCount }
         requireNotNull(maxHowGoForwardCars)
 
-        val winners = carsList.filter { it.howGoForwardCount == maxHowGoForwardCars.howGoForwardCount }
+        val winners = cars.filter { it.howGoForwardCount == maxHowGoForwardCars.howGoForwardCount }
         printer.printOutRacingWinner(winners)
     }
 
