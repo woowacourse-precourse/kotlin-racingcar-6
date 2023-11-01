@@ -6,6 +6,6 @@ object Message {
     const val ENTERING_ATTEMPTS_NUMBER = "시도할 횟수는 몇 회인가요?"
     const val RESULT_INFORMATION_TEXT = "실행 결과"
     const val NOT_ONLY_NUMBER_PATTERN = "^[A-Za-z가-힣]*\$"
-    const val ONLY_NUMBER_PATTERN = "^\\d+\$"
+    const val WINNERS = "최종 우승자 : "
 
 }
