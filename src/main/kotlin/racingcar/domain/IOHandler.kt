@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console
 import racingcar.data.Car
 
 class IOHandler(private val validator: Validator) {
-
     fun getCarNames(): List<String> {
         val input = getInput()
         val names = splitNameFromInput(input)
@@ -70,5 +69,4 @@ class IOHandler(private val validator: Validator) {
         private const val SENTENCE_FOR_WINNER = "최종 우승자 : "
         private const val SEPARATOR_FOR_WINNER = ", "
     }
-
 }

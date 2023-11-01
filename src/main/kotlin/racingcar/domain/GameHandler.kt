@@ -31,6 +31,7 @@ class GameHandler(
 
     private fun setMoveCount() {
         io.show(SENTENCE_FOR_GETTING_MOVEMENT, true)
+
         moveCount = io.getMoveCount()
     }
 
@@ -40,6 +41,7 @@ class GameHandler(
 
         repeat(moveCount) {
             moveCars(cars)
+
             io.showLocation(cars)
             io.show(EMPTY_SENTENCE_FOR_LINE_BREAK, true)
         }
@@ -55,7 +57,6 @@ class GameHandler(
     }
 
     private fun getRandomNum(): Int = Randoms.pickNumberInRange(MIN_RANDOM_NUM, MAX_RANDOM_NUM)
-
 
     companion object {
         private const val NOT_YET_SET = Int.MIN_VALUE

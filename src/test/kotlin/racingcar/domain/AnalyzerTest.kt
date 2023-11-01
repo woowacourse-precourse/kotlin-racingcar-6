@@ -28,7 +28,6 @@ class AnalyzerTest {
         assertThat(actual).isEqualTo(expected)
     }
 
-
     @Test
     fun `숫자 3이 나오면 움직일 수 없다는 의미의 false를 반환한다`() {
         // given

@@ -6,7 +6,8 @@ import racingcar.domain.Analyzer
 import racingcar.domain.Validator
 
 fun main() {
-    val ioHandler = IOHandler(Validator())
+    val validator = Validator()
+    val ioHandler = IOHandler(validator)
     val analyzer = Analyzer()
     val gameHandler = GameHandler(ioHandler, analyzer)
 

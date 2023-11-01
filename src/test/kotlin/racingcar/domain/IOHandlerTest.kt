@@ -190,7 +190,6 @@ class IOHandlerTest {
         val expectedErrorMessage = IOHandler.NAME_LENGTH_IS_NOT_MATCHED
         assertThat(actual).isInstanceOf(expectedClass)
         assertThat(actual).hasMessageContaining(expectedErrorMessage)
-
     }
 
     @Test

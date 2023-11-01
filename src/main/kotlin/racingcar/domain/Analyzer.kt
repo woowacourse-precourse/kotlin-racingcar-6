@@ -3,7 +3,6 @@ package racingcar.domain
 import racingcar.data.Car
 
 class Analyzer {
-
     fun judgeWinner(cars: List<Car>): List<Car> {
         val winners = mutableListOf<Car>()
         var maxLocation = NOT_YET_SET
