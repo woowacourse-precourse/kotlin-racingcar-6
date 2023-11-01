@@ -22,7 +22,7 @@ class RacingCarController {
         model.initProgressList()
         outputView.printExecutionResult()
 
-        for (i in 1..attemptsNumber) {
+        repeat(attemptsNumber) {
             model.moveCar()
             printEachRacingCar(carNames)
         }
@@ -44,10 +44,10 @@ class RacingCarController {
     }
 
     private fun printEachRacingCar(carNames: List<String>) {
-        for (i in carNames.indices) {
-            val progress = model.getCarProgress(i)
-            outputView.printRoundResult(carNames[i])
-            outputView.makeDash((progress))
+        carNames.forEachIndexed { index, name ->
+            val progress = model.getCarProgress(index)
+            outputView.printRoundResult(name)
+            outputView.makeDash(progress)
         }
         println()
     }

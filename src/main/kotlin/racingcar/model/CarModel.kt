@@ -17,17 +17,17 @@ class CarModel {
     }
 
     fun initProgressList() {
-        for (i in carNames.indices) {
+        for (index in carNames.indices) {
             progressList.add(0)
         }
     }
 
     fun moveCar() {
         val randomNumber = RandomNumber()
-        for (i in 0..carNames.size - 1) {
+        carNames.indices.forEach { index ->
             val random = randomNumber.generateRandomNumber()
             if (random >= MOVE_CONDITION) {
-                moveCarForward(i)
+                moveCarForward(index)
             }
         }
     }
