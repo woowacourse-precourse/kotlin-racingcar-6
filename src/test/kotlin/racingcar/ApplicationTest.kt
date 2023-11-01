@@ -11,11 +11,11 @@ class ApplicationTest : NsTest() {
     @Test
     fun `전진 정지`() {
         assertRandomNumberInRangeTest(
-            {
-                run("pobi,woni", "1")
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-            },
-            MOVING_FORWARD, STOP
+                {
+                    run("pobi,woni", "1")
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
+                },
+                MOVING_FORWARD, STOP
         )
     }
 
@@ -25,6 +25,7 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
     }
+
     @Test
     fun `단독 우승`() {
         assertRandomNumberInRangeTest(
