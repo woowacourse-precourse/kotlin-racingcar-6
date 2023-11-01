@@ -13,4 +13,10 @@ fun main() {
             throw IllegalArgumentException()
         }
     }
+
+    println("시도할 횟수는 몇 회인가요?")
+    val move = readLine()?.toIntOrNull()
+    if (move == null) {
+        throw IllegalArgumentException()
+    }
 }
