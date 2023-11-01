@@ -11,8 +11,8 @@ class Controller {
     fun start() {
         val inputCarsNames = readInputCars()
         val inputRound = readInputRound().toInt()
-        val carList: List<Car> = inputCarsNames.split(',').map { Car(it) }
         Validator(inputCarsNames, inputRound)
+        val carList: List<Car> = inputCarsNames.split(',').map { Car(it) }
         outputView.printStartOfResultPhrase()
 
         repeat(inputRound) {

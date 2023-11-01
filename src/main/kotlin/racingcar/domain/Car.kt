@@ -1,7 +1,7 @@
 package racingcar.domain
 
 class Car(name: String) {
-    var carName: String = name
+    var carName: String = name.trim()
     var forward = 0
 
 
