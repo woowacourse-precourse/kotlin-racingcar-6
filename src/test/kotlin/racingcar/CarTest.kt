@@ -6,42 +6,71 @@ import org.junit.jupiter.api.assertThrows
 
 
 class CarTest {
-//    @Test
-//    fun `above_four_move`(){
-//        // given
-//        var underFour = 7
-//        var car = Car()
-//
-//        // when
-//        car.move(underFour)
-//        var result = car.count
-//
-//        // then
-//        assertThat(result).isEqualTo(1)
-//    }
-//
-//    @Test
-//    fun `under_four_stop`(){
-//        // given
-//        var underFour = 3
-//        var car = Car()
-//
-//        // when
-//        car.move(underFour)
-//        var result = car.count
-//
-//        // then
-//        assertThat(result).isEqualTo(0)
-//    }
+    var exception = MyException()
+    @Test
+    fun `자동차_입력_숫자_4이상`(){
+        // given
+        var underFour = 7
+        var car = Car()
+
+        // when
+        car.move(underFour)
+        var result = car.count
+
+        // then
+        assertThat(result).isEqualTo(1)
+    }
+
+    @Test
+    fun `자동차_입력_숫자_4미만`(){
+        // given
+        var underFour = 3
+        var car = Car()
+
+        // when
+        car.move(underFour)
+        var result = car.count
+
+        // then
+        assertThat(result).isEqualTo(0)
+    }
 
 
     @Test
-    fun `car_name_over_five`() {
+    fun `자동차_이름_공백`() {
+        // given
         var car = Car()
-        car.name = "banana"
+        car.name = ""
+
+        //when, then
         assertThrows<IllegalArgumentException> {
-            car.isValid()
+            exception.throwNameEmptyException(car.name)
         }
     }
 
+    @Test
+    fun `자동차_이름_5초과`() {
+        var car = Car()
+        car.name = "abcdefg"
+
+        assertThrows<IllegalArgumentException> {
+            exception.throwNameOverFiveException(car.name)
+        }
+    }
+
+    @Test
+    fun `반복_횟수_문자_입력`(){
+        var repeat = "a"
+        assertThrows<IllegalArgumentException> {
+            exception.throwRepeatStringException(repeat)
+        }
+    }
+
+    @Test
+    fun `반복_횟수_빈칸_입력`(){
+        var repeat = ""
+        assertThrows<IllegalArgumentException> {
+            exception.throwRepeatEmptyException(repeat)
+        }
+    }
 }
