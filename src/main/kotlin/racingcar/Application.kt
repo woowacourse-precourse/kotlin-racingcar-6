@@ -28,7 +28,7 @@ fun getWinners(listOfCar:List<Car>):String
     val listOfWinner = listOfCar
         .filter { it.position == maxPosition }
         .map { it.name }
-    return listOfWinner.joinToString(",")
+    return listOfWinner.joinToString(", ")
 }
 fun createListOfCar(input:String) = input
     .split(',')
