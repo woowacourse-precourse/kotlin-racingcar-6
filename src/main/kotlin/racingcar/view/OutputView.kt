@@ -5,8 +5,8 @@ import racingcar.model.RacingCar
 class OutputView {
     fun printResult() = println(RESULT_MESSAGE)
     fun printEnter() = println()
-    fun printRackingCars(racingCar: RacingCar) {
-        println("${racingCar.racingCarName} : ${printDistance(racingCar.distance)}")
+    fun printRackingCar(racingCar: RacingCar) {
+        println("${racingCar.racingCarName} : ${printDistance(racingCar.getDistance())}")
     }
 
     private fun printDistance(distance: Int): String {

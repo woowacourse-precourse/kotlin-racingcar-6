@@ -1,6 +1,5 @@
 package racingcar.controller
 
-import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.RacingCar
 import racingcar.view.InputView
 import racingcar.view.OutputView
@@ -17,17 +16,17 @@ class RacingCarController {
         gameResult(rackingCars)
     }
 
-    private fun gameContinue(rackingCars: List<RacingCar>, gameCount: Int): List<RacingCar> {
+    private fun gameContinue(racingCars: List<RacingCar>, gameCount: Int): List<RacingCar> {
         outputView.printResult()
 
         repeat(gameCount) {
-            rackingCars.forEach {
-                addRacingCarDistance(it)
+            racingCars.forEach { rackingCar ->
+                rackingCar.addRacingCarDistance()
+                outputView.printRackingCar(rackingCar)
             }
             outputView.printEnter()
         }
-
-        return rackingCars
+        return racingCars
     }
 
     private fun gameResult(racingCarList: List<RacingCar>) {
@@ -35,23 +34,9 @@ class RacingCarController {
         outputView.printMaxDistanceRacingCarName(maxDistanceRackingCars)
     }
 
-    private fun addRacingCarDistance(racingCar: RacingCar): RacingCar {
-        val randomNum = Randoms.pickNumberInRange(RANDOM_START_NUM, RANDOM_FINISH_NUM)
-        if (randomNum >= MIN_DISTANCE_NUM) {
-            racingCar.distance += randomNum
-        }
-        outputView.printRackingCars(racingCar)
-        return racingCar
-    }
-
     private fun findMaxDistanceRacingCar(racingCarList: List<RacingCar>): List<String> {
-        return racingCarList.filter { racingCar -> racingCar.distance == racingCarList.maxOf { it.distance } }
+        return racingCarList.filter { racingCar -> racingCar.getDistance() == racingCarList.maxOf { it.getDistance() } }
             .map { it.racingCarName }
     }
 
-    companion object {
-        private const val RANDOM_START_NUM = 0
-        private const val RANDOM_FINISH_NUM = 9
-        const val MIN_DISTANCE_NUM = 4
-    }
 }
