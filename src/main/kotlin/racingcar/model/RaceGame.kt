@@ -5,6 +5,16 @@ import camp.nextstep.edu.missionutils.Randoms
 class RaceGame(carNames: String, private val numberOfRacing: Int) {
     private val carNameList: List<Car> = carNames.split(",").map { Car(it) }
 
+    init {
+        validateCarNames(carNames)
+    }
+
+    private fun validateCarNames(carNames: String) {
+        if (carNameList.any { it.name.length > 5 }) {
+            throw IllegalArgumentException("자동차 이름은 5자 이하 이어야 함")
+        }
+    }
+
     fun start() {
         runRaces()
         printWinners()
