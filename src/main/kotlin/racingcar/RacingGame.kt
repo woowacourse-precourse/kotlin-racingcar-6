@@ -10,6 +10,9 @@ class RacingGame {
         print("시도할 횟수는 몇 회인가요?: ")
         val numberOfTries = readNumberOfTries()
 
+        val cars = carNames.map { Car(it) }
+
+
     }
 
 }
