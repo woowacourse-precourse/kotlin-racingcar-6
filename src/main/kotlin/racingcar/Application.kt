@@ -4,14 +4,19 @@ import org.junit.jupiter.api.parallel.Execution
 const val RESULT = "실행 결과"
 const val WINNER = "최종 우승자 :"
 
-private fun makeCar(): MutableList<Car> {
-    val carString = InputManager.inputCar()
 
-    val car = mutableListOf<Car>()
-    for (i in 0..carString.lastIndex) {
-        car.add(Car(carString[i]))
+fun addCarToList(carNames: List<String>) : MutableList<Car> {
+    val cars = mutableListOf<Car>()
+    carNames.forEach { carName ->
+        cars.add(Car(carName))
     }
-    return car
+    return cars
+}
+
+private fun makeCar(): MutableList<Car> {
+    val carNames: List<String> = InputManager.inputCar()
+
+    return addCarToList(carNames)
 }
 
 private fun printProcess(cars: List<Car>){
