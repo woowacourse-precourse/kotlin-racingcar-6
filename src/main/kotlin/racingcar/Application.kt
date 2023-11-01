@@ -10,7 +10,7 @@ fun main() {
 
     gameStart()
     carNameList = inputCarName()
-    carNameMap = carNameListCheck(carNameList)
+    carNameMap = getCarNameListCheck(carNameList)
     inputCount = inputRoundCount(carNameMap)
     racingPlay(carNameMap, inputCount)
 }
@@ -24,10 +24,9 @@ fun gameStart() {
 fun inputCarName(): MutableList<String> {
     var inputText = ""
     var afterText = ""
-    //패턴 비교후 텍스트
+    //카네임 기준으로 보정하는 값
     val stringPattern = Regex("[^A-Za-z0-9,]")
-    // 텍스트 비교용 패턴, 영문/숫자/쉼표만, 이름중복 때문에 숫자 허용,
-    //★★★★★★★중복일 경우 추가처리 필요, 끝자리 쉼표만 있는경우 처리필요★★★★★★★
+    // 텍스트 비교용 패턴, 영문/숫자/쉼표만, 이름중복 때문에 숫자 허용
     var carNameList = mutableListOf<String>()
 
     inputText = Console.readLine().replace(" ", "")
@@ -37,32 +36,67 @@ fun inputCarName(): MutableList<String> {
     println("변환 전 : ${inputText}")
     println("변환 후 : ${afterText}")
 
-    if (inputText != afterText) {
+    val commaPattern = Regex(",{1,}")
+
+    if (inputText != afterText || commaPattern.matches(afterText)) {
+        /* 입력받은 값과 카네임 기준으로 보정한 값이 다르거나
+        카네임 기준으로 보정한 값이 쉼표만 확인되는 경우 처리*/
         try {
             throw IllegalArgumentException()
         } catch (e: IllegalArgumentException) {
-            println("잘못된 문자가 입력되어 게임종료")
+            println("잘못된 문자 또는 쉼표만 입력되어 게임종료")
             System.out
-            afterText = ""
-            carNameList = afterText.split(" ", "").toMutableList()
+            return carNameList
+        }
+    }
+    carNameList = afterText.split(",").toMutableList()
+
+    for (carName in carNameList) {
+        carNameList = getCarNameEmptyCheck(carName, carNameList)
+    }
+    return carNameList
+}
+
+fun getCarNameEmptyCheck(carName: String, carNameList: MutableList<String>): MutableList<String> {
+    println("현재 네임 : ${carName}")
+    if (carName == "") {
+        println("여기 들어옴2")
+        try {
+            throw IllegalArgumentException()
+        } catch (e: IllegalArgumentException) {
+            println("비어있는 사용자, 쉼표 초과 입력되어 게임종료")
+            System.out
             carNameList.clear()
             return carNameList
         }
     }
-    return afterText.split(",").toMutableList()
+    return carNameList
 }
 
-fun carNameListCheck(carNameList: MutableList<String>): MutableMap<String, Int> {
+fun getCarNameListCheck(carNameList: MutableList<String>): MutableMap<String, Int> {
     var carNameMap = mutableMapOf<String, Int>()
     var carNameDanger = false
 
     if (carNameList.isEmpty()) {
         return carNameMap
     } else if (carNameList.size == 1) {
+        // 카네임이 1개일때 처리
         try {
             throw IllegalArgumentException()
         } catch (e: IllegalArgumentException) {
-            println("자동차만 1대만 확인되어 게임종료")
+            println("카네임 1개만 확인되어 게임종료")
+            System.out
+            return carNameMap
+        }
+    }
+
+    var uniqueList = carNameList.distinct()
+    if (carNameList != uniqueList) {
+        //중복 이름에 대한 처리
+        try {
+            throw IllegalArgumentException()
+        } catch (e: IllegalArgumentException) {
+            println("중복 이름이 확인되어 게임 종료")
             System.out
             return carNameMap
         }
@@ -164,13 +198,13 @@ fun getRacingPlayLog(
     for (i in 1..inputCount) {
         println("")
         println("[${i} 라운드]")
-        println("--------------------------")
+        println("==================")
         for ((resultKey, resultValue) in racingResultMap) {
             racingProgress = racingResultMap[resultKey].toString()
             // 진행상태를 누적할 수 있도록, 결과리스트에 저장되어있던 값을 변수에 다시 저장
             racingProgress += getRanmdomNumber()
             println("${resultKey} : ${racingProgress}")
-            racingResultMap.put(resultKey, racingProgress)
+            racingResultMap[resultKey] = racingProgress
             racingProgress = ""
         }
     }
@@ -189,8 +223,8 @@ fun getRanmdomNumber(): String {
     return racingProgress
 }
 
-fun getUserCountCheck(userCount: Int): String{
-    if(userCount > 1) {
+fun getUserCountCheck(userCount: Int): String {
+    if (userCount > 1) {
         return ","
     }
     return ""
