@@ -1,7 +1,9 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     val (carNameMap, tryCount) = getRacingInput()
+    playRacingGame(carNameMap, tryCount)
 }
 
 fun getRacingInput(): Pair<MutableMap<String, String>, Int> {
@@ -18,4 +20,17 @@ fun getRacingInput(): Pair<MutableMap<String, String>, Int> {
     val tryCount = readLine()!!.toInt()
 
     return Pair(carNameMap, tryCount)
+}
+
+fun playRacingGame(carNameMap: MutableMap<String, String>, tryCount: Int) {
+    println("실행 결과")
+    repeat(tryCount) {
+        for ((key, value) in carNameMap) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                carNameMap[key] = value + "-"
+            }
+            println("${key} : ${carNameMap[key]}")
+        }
+        println()
+    }
 }
