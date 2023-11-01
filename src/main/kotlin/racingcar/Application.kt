@@ -1,6 +1,7 @@
 package racingcar
 
 
+
 fun main() {
     val carNames = inputCar()
     val tryNum = numberOfAttempts()
