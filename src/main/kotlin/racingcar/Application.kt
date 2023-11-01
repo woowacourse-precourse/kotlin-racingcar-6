@@ -6,11 +6,15 @@ fun main() {
 
         val carNames = readLine()?.split(",")?.map { it.trim() }
 
+        if (carNames.isNullOrEmpty() || !carNames.all { it.length <= 5 }) {
+            throw IllegalArgumentException("입력값이 올바르지 않습니다.")
+        }
+
         PrintUtils.printTryCount()
 
         val tryCount = readLine()?.toIntOrNull()
 
-        if (carNames == null || tryCount == null || carNames.isEmpty()) {
+        if (tryCount == null || tryCount <= 0) {
             throw IllegalArgumentException("입력값이 올바르지 않습니다.")
         }
 
