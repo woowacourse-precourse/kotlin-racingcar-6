@@ -2,8 +2,6 @@ package controller
 
 import model.RacingCar
 import model.RandomMoveStrategy
-import view.GameConsole.printCarNamePrompt
-import view.GameConsole.printMoveCountPrompt
 import view.GameConsole.printPosition
 import view.GameConsole.printWinnerNames
 import view.PlayerConsole.getValidCarNames
@@ -14,12 +12,8 @@ class RacingCarController {
     private val carList: List<RacingCar>
     private val moveCount: Int
 
-
     init {
-        printCarNamePrompt()
         carList = createRacingCars(getValidCarNames())
-
-        printMoveCountPrompt()
         moveCount = getValidMoveCount()
     }
 

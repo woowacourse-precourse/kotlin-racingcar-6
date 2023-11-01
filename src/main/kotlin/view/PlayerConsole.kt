@@ -1,17 +1,22 @@
 package view
 
 import camp.nextstep.edu.missionutils.Console.readLine
+import view.GameConsole.printCarNamePrompt
+import view.GameConsole.printMoveCountPrompt
 
 object PlayerConsole {
 
     private const val MESSAGE_INVALID_NAME_LENGTH = "자동차 이름은 한 글자 이상, 5글자 이하로 입력해 주세요."
     private const val MESSAGE_INVALID_NAME_FORMAT = "문자와 숫자만 입력해 주세요."
     private const val MESSAGE_INVALID_NUMBER_FORMAT = "숫자만 입력해 주세요."
-    private const val MESSAGE_INVALID_NUMBER_RANGE = "1 이상의 시도 횟수를 입력해주세요."
+    private const val MESSAGE_INVALID_NUMBER_RANGE = "입력 숫자의 범위가 유효하지 않습니다."
     private const val MINIMUM_MOVE_COUNT = 1
     private const val MINIMUM_CAR_NAME_LENGTH = 5
 
-    fun getValidCarNames() = parseInputByComma().validateCarNames()
+    fun getValidCarNames(): List<String> {
+        printCarNamePrompt()
+        return parseInputByComma().validateCarNames()
+    }
 
     private fun parseInputByComma() = readLine().split(",")
 
@@ -21,11 +26,14 @@ object PlayerConsole {
         return this
     }
 
-    fun getValidMoveCount() = readLine().toNumberOrException()
+    fun getValidMoveCount(): Int {
+        printMoveCountPrompt()
+        return readLine().toIntegerOrException()
+    }
 
-    private fun String.toNumberOrException(): Int {
+    private fun String.toIntegerOrException(): Int {
         require(this.all { it.isDigit() }) { MESSAGE_INVALID_NUMBER_FORMAT }
-        require(MINIMUM_MOVE_COUNT <= this.toInt()) { MESSAGE_INVALID_NUMBER_RANGE }
+        require(this.toLong() in MINIMUM_MOVE_COUNT..Int.MAX_VALUE) { MESSAGE_INVALID_NUMBER_RANGE }
         return this.toInt()
     }
 }
