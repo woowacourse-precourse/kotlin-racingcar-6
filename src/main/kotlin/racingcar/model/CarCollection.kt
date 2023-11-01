@@ -31,7 +31,7 @@ class CarCollection(carNameString: String) {
         val winnerList = mutableListOf<Car>()
 
         for (car in cars) {
-            if (car.equals(maxPositionCar)) {
+            if (car == maxPositionCar) {
                 winnerList.add(car)
             }
         }
@@ -43,15 +43,21 @@ class CarCollection(carNameString: String) {
     }
 
     fun getCarsDto(): MutableList<CarDto> {
-        return cars.stream()
-            .map { car: Car -> CarDto(car.getCarNameString(), car.getPositionNumber()) }
-            .toList()
+        val carDtoList : MutableList<CarDto> = mutableListOf<CarDto>()
+
+        cars.forEach{ car: Car ->
+            carDtoList.add(CarDto(car.getCarNameString(), car.getPositionNumber()))
+        }
+        return carDtoList
     }
 
     fun getWinnersDto(): MutableList<WinnerDto> {
-        val winnerList = getWinners()
-        return winnerList.stream()
-            .map { car: Car -> WinnerDto(car.getCarNameString())}
-            .toList()
+        val winnerDtoList : MutableList<WinnerDto> = mutableListOf<WinnerDto>()
+
+        cars.forEach{ car: Car ->
+            winnerDtoList.add(WinnerDto(car.getCarNameString()))
+        }
+
+        return winnerDtoList
     }
 }
