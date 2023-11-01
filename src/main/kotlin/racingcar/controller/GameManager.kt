@@ -22,13 +22,13 @@ class GameManager {
 
     fun carNameinput(): List<String> {
         OutputView().carInputMassage()
-        val carNames = InputView().Input()
+        val carNames = InputView().input()
         return CarNameSeparator().separator(carNames)
     }
 
     fun tryNumberInput(): String {
         OutputView().tryInputMassage()
-        return InputView().Input()
+        return InputView().input()
     }
 
     fun racing(carNamesSeparated: List<String>, tryNum: Int): List<String> {

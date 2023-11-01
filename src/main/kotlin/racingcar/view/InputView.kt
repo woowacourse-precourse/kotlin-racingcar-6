@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 
 class InputView {
-    fun Input(): String {
+    fun input(): String {
         return Console.readLine()
     }
 }
