@@ -16,7 +16,7 @@ class InputValidator {
     }
 
     companion object {
-        private const val CAR_NAMES_REGEX = "^(\\w+,)+\\w$"
+        private const val CAR_NAMES_REGEX = "^(\\w+,)+\\w+$"
         private const val MAX_ROUND_REGEX = "^\\d+$"
     }
 }

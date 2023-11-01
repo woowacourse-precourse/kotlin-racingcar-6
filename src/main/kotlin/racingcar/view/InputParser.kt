@@ -8,6 +8,6 @@ class InputParser {
     fun parseToMaxRound(input: String) = input.toInt()
 
     companion object {
-        const val CAR_NAMES_DELIMITER = ", "
+        const val CAR_NAMES_DELIMITER = ","
     }
 }

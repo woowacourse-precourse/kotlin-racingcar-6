@@ -1,8 +1,8 @@
 package racingcar.domain.car.boxed
 
-data class CarName(val carName: String) {
+data class CarName(val value: String) {
     init {
-        validateNameLength(carName)
+        validateNameLength(value)
     }
 
     companion object {
