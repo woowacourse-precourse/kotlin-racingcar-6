@@ -50,4 +50,11 @@ class ApplicationTest : NsTest() {
             validationNumberAttempts("abc")
         }
     }
+
+    @Test
+    fun `자동차 이름이 중복된 경우 예외 발생`() {
+        assertThrows<IllegalArgumentException>("중복된 이름은 사용할 수 없습니다.") {
+            validationCarName(listOf("abc", "abc", "abcde"))
+        }
+    }
 }
