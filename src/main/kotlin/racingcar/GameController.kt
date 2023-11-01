@@ -6,7 +6,7 @@ class GameController(private val view: GameView) {
         val carNames = view.getCarNames()
         val attempts = view.getAttempts()
 
-        val racingGame = GameModel(carNames, attempts)
+        val racingGame = GameModel(carNames)
         repeat(attempts) {
             racingGame.race()
             view.raceStatus(racingGame.cars)

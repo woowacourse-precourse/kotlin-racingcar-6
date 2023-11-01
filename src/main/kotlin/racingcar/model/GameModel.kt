@@ -1,6 +1,6 @@
 package racingcar.model
 
-class GameModel(names: List<String>, private val attempts: Int) {
+class GameModel(names: List<String>) {
     val cars: List<CarModel> = names.map { CarModel(it) }
     fun race() {
         cars.forEach {
