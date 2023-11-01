@@ -26,6 +26,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `횟수에 대한 예외처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaj", "-1") }
+            assertThrows<IllegalArgumentException> { runException("pobi,javaj", "1.5") }
+        }
+    }
+
     public override fun runMain() {
         main()
     }
