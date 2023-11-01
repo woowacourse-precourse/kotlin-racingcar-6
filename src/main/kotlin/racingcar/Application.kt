@@ -1,5 +1,11 @@
 package racingcar
 
+
+
 fun main() {
-    // TODO: 프로그램 구현
+    val carNames = inputCar()
+    val tryNum = numberOfAttempts()
+    val game = RacingCarGame(carNames)
+    val carPositions = game.run(tryNum)
+    winner(carPositions)
 }
