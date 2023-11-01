@@ -16,7 +16,7 @@ class RacingGameController {
 
     fun start(){
         guideView.printInputCarsName()
-        userInputView.getCarsName()
+        racingCars = RacingCarsDTO(userInputView.getCarsName()).convertRacingCars().toMutableList()
         guideView.printInputRoundCnt()
     }
 
