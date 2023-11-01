@@ -3,7 +3,14 @@ package racingcar
 class Race {
 
     fun startRace(cars: List<Car>, moveTime: Int) {
-
+        println()
+        println("실행 결과")
+        repeat(moveTime) {
+            cars.forEach { it.moveCar() }
+            viewRace(cars)
+            println()
+        }
+        printWinner(decideWinner(cars))
     }
 
     private fun viewRace(cars: List<Car>) {
