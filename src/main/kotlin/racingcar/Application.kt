@@ -13,3 +13,10 @@ fun getCarNames():List<String> {
 
     return carName
 }
+
+fun getTryNumber() {
+    print("시도할 횟수는 몇 회인가요?")
+    val tryNumber = Console.readLine()
+    
+    return tryNumber
+}
