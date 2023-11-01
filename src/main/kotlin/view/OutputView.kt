@@ -3,7 +3,7 @@ package view
 import constants.Strings
 
 class OutputView {
-    fun outputCarNames() {
+    fun outputCarList() {
         println(Strings.INPUT_CAR_NAME)
     }
 }

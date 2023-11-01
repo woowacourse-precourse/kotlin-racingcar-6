@@ -11,7 +11,6 @@ class RacingGame(private val outputView: OutputView, private val inputView: Inpu
     }
 
     private fun inputCarList(): String {
-        var input = inputView.inputCarNames()
-        return input
+        return inputView.inputCarNames()
     }
 }
