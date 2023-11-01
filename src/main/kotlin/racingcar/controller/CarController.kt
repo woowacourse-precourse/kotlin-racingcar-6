@@ -18,6 +18,13 @@ class CarController {
         }
     }
 
+    private fun validCreateCars(name: String) {
+        with(InputValidator) {
+            checkCarNameLength(name)
+            checkInputWhitespace(name.trim())
+        }
+    }
+
     fun moveCarsForward(): List<Car> {
         cars.forEachIndexed { index, _ ->
             if (isCarMovingAllowed(generateRandomNumber())) {
@@ -55,6 +62,12 @@ class CarController {
     fun inputCarNameFromUser(): String {
         val carName = Console.readLine()
 
+        validInputCarName(carName)
+
+        return carName
+    }
+
+    private fun validInputCarName(carName: String) {
         with(InputValidator) {
             checkInputNonBlank(carName)
             checkInputOverSize(carName.split(",").size)
@@ -62,8 +75,6 @@ class CarController {
             checkInputPrefix(carName[0])
             checkInputPostfix(carName[carName.lastIndex])
         }
-
-        return carName
     }
 
     private fun generateRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
