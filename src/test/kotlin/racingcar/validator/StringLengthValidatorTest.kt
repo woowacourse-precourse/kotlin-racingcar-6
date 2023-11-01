@@ -2,6 +2,7 @@ package racingcar.validator
 
 import org.assertj.core.api.AssertionsForClassTypes.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class StringLengthValidatorTest {
     @Test
@@ -20,5 +21,15 @@ class StringLengthValidatorTest {
         assertThat(inValidResult).isInstanceOf(IllegalArgumentException::class.java)
         assertThat(inValidResult!!.message).isEqualTo("문자열의 길이가 1글자 이상 5글자 이하여야 합니다")
         assertThat(validResult).isNull()
+    }
+
+    @Test
+    fun `공백 문자열은 유효하지 않다`() {
+        val blankString = "  "
+        val stringLengthValidator: StringValidator = StringLengthValidator()
+
+        assertThrows<IllegalArgumentException>("문자열의 길이가 1글자 이상 5글자 이하여야 합니다") {
+            stringLengthValidator.validate(blankString)
+        }
     }
 }
