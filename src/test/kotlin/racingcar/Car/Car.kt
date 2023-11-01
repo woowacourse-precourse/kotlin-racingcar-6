@@ -16,7 +16,7 @@ class Car {
     fun `moveOrStay 함수는 MIN_MOVE_VALUE 이상의 난수가 주어지면 차량을 이동시켜야 한다`() {
         val car = Car("test")
 
-        val randomNumber = Randoms.pickNumberInRange(MiN_RANDOM_VALUE,MAX_RANDOM_VALUE)
+        val randomNumber = Randoms.pickNumberInRange(MiN_RANDOM_VALUE, MAX_RANDOM_VALUE)
         if (randomNumber >= MIN_MOVE_VALUE) {
             Move.moveOrStay(car)
             Assertions.assertThat(car.position).isNotEqualTo(0) // 차량이 이동했는지 확인

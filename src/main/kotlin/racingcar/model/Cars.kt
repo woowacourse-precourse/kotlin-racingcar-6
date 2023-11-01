@@ -1,6 +1,7 @@
 package racingcar.model
 
 private const val DUPLICATE_NAME_EXCEPTION_MESSAGE = "중복된 이름이 존재합니다!"
+
 class Cars(private val cars: List<Car>) {
 
     init {
