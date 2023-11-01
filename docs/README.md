@@ -1,27 +1,39 @@
 ## 기능 목록
 
 ### RacingGame
-- Racing 게임이 시작하는 장소 
+
+- Racing 게임이 시작하는 장소
 
 ### Player
+
 - [x] : 경주 할 자동차 이름(이름은 쉼표(,) 기준으로 구분) 결정하기
 - [x] : 시도할 횟수 결정하기
 
 ### StringValidator
+
 해당 문자열이 유효한지 검증하는 객체
-#### NumericValidator
-- [x] : 해당 문자열이 숫자인지 검증한다.
-#### InputValidator
-- [x] : 해당 문자열을 쉼표(,)로 구분하여 각 문자가 길이 5 이하인지 검증한다.
+
+#### NumericStringValidator
+
+- [x] : 문자열의 모든 문자가 숫자여야함
+- [x] : 0은 유효하지 않다
+
+#### StringLengthValidator
+
+- [x] : 쉼표(,)로 구분된 문자열의 길이가 Blank이 아닌지 검증한다.
+- [x] : 쉼표(,)로 구분된 문자열의 길이가 1 이상 5이하 인지 검증한다.
 
 ### Car
-- [x] : 자동차에 이름(name)이 있다  
+
+- [x] : 자동차에 이름(name)이 있다
 - [x] : 차의 위치(position)가 있다
 - [x] : 차를 전진시킨다 - move()
 - [x] : toString()에 이름(name)을 반환하도록 overriding
 
 ### Race
+
 cars와 referee가 협력하여 진행되는 레이싱
+
 - [x] : Car 객체를 담는 List(cars) 가 있다
 - [x] : 전진 가능한 car만 move하는 runOnStep() 함수
 - [x] : 현재 레이싱의 결과를 반환하는 result getter()
@@ -29,44 +41,59 @@ cars와 referee가 협력하여 진행되는 레이싱
 - [x] : 현재 레이싱이 진행하고 있는지 반환하는 isRunning getter()
 
 ### RacingCar : Car
+
 Car를 상속받는 레이싱 차
+
 - [x] : move() 함수 호출시 position +1
 
 ### RandomNumberGenerator
+
 무작위 숫자를 만들어내는 객체
+
 - [x] : 무작위 숫자 반환하기
 
-### Referee 
+### Referee
+
 - [x] 차가 움직일 수 있는지 판정한다.
 - [x] Race의 결과를 판정한다.
 - [x] 게임의 Winner를 판정한다.
 
-### Reader 
+### Reader
+
 - [x] 입력값을 읽어온다
 - [x] 잘못된 입력값을 받아올 경우 IllegalArgumentException 발생
 
 ### Monitor
+
 - [x] : 게임의 지시 사항을 출력한다.
 - [x] : 게임의 결과를 출력한다.
 - [x] : 게임의 우승자를 출력한다.
 
 ## model
-### CarState 
+
+### CarState
+
 차의 상태를 나타내는 data class
+
 - [x] : 차의 이름(name)과 위치(position)가 있다
 - [x] : toString()에 이름(name)과 위치(position)을 반환하도록 overriding
 
 ### RaceResult
+
 레이싱 결과를 나타내는 data class
+
 - [x] : 레이싱에 참여하는 차들의 CarState를 담는 List(carStateList)가 있다
 - [x] : toString()에 CarState를 `\n`으로 구분되어 반환되도록 overriding
 
 ### Winner
+
 우승자를 나타내는 data class
+
 - [x] : 우승한 차들을 담은 List(cars)가 있다
-- [x] : toString()에 우승한 차들의 이름을 `, `으로 구분되어 반환되도록 overriding  
+- [x] : toString()에 우승한 차들의 이름을 `, `으로 구분되어 반환되도록 overriding
 
 ## 기능 요구 사항
+
 초간단 자동차 경주 게임을 구현한다.
 
 - 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.

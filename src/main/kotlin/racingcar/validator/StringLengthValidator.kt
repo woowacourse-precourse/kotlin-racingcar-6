@@ -5,6 +5,7 @@ class StringLengthValidator() : StringValidator {
     override fun validate(target: String) {
         if (target
                 .split(DELIMITER)
+                .map { it.trim() }
                 .all { it.length in MIN_LENGTH..MAX_LENGTH }
                 .not()
         ) throw IllegalArgumentException(ERROR_MESSAGE)
