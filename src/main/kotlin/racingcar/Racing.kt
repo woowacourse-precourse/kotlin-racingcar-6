@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 import java.lang.NumberFormatException
 
 class Racing {
@@ -19,5 +20,9 @@ class Racing {
         if (moveCount <= 0) {
             throw IllegalArgumentException("1 이상의 정수를 입력해주세요.")
         }
+    }
+
+    fun createRandomNumber(): Int{
+        return Randoms.pickNumberInRange(0, 9)
     }
 }
