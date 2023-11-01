@@ -14,7 +14,12 @@ class DetermineMoveTest {
                 assertThat(determineMove.isMove()).isTrue
                 assertThat(determineMove.isMove()).isFalse
             },
-            6, 2,
+            MOVING_FORWARD, STOP,
         )
+    }
+
+    companion object {
+        private const val MOVING_FORWARD = 6
+        private const val STOP = 2
     }
 }
