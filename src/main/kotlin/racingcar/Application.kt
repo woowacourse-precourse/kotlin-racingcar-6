@@ -14,10 +14,8 @@ fun main() {
         }
     }
 
-    val carInfo = Array<Car?>(carlistSize){null}
-    for(i in 0..carlistSize-1){
-        carInfo[i] = Car(carList[i])
-    }
+    val carInfo = Array(carlistSize){ Car(carList[it])}
+
     var playTime = 0
     println("시도할 횟수는 몇 회인가요?")
     try {
@@ -36,18 +34,18 @@ fun main() {
     println("최종 우승자 : $dap")
 }
 
-fun playGame(car: Array<Car?>){
+fun playGame(car: Array<Car>){
     for(i in 0..car.size-1){
-        car[i]?.getRandomNum()
-        car[i]?.isGo()
-        car[i]?.curLocation()
+        car[i].getRandomNum()
+        car[i].isGo()
+        car[i].curLocation()
     }
     println("")
 }
 
-fun findWinner(car: Array<Car?>): List<String>{
-    val winner = car.maxByOrNull{ it!!.getMoveCnt()}
+fun findWinner(car: Array<Car>): List<String>{
+    val winner = car.maxByOrNull{ it.getMoveCnt()}
     val longDistance = winner?.getMoveCnt()
-    val winners = car.filter{it!!.getMoveCnt() == longDistance}.map{it!!.name}
+    val winners = car.filter{it.getMoveCnt() == longDistance}.map{it!!.name}
     return winners
 }
