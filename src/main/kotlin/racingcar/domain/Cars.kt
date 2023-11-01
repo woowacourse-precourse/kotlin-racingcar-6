@@ -9,11 +9,12 @@ class Cars(private val determineMove: DetermineMove) {
 
     private val _carStateList = mutableListOf<Int>()
 
-    fun createCar(carNames: List<String>) {
+    fun createCar(carNames: List<String>): List<Car> {
         carNames.forEach { name ->
             _carList.add(Car(name))
             _carStateList.add(0)
         }
+        return carList
     }
 
     fun getAdvanceStateList(): List<Int> {
@@ -28,6 +29,11 @@ class Cars(private val determineMove: DetermineMove) {
             if (determineMove.isMove())
                 car.moveForward()
         }
+    }
+
+    fun getWinnerList(): List<String> {
+        val maxState = getAdvanceStateList().max()
+        return _carList.filter { it.advanceState == maxState }.map { it.name }
     }
 
 }

@@ -1,18 +1,14 @@
 package racingcar.domain
 
-class Output(private val cars: Cars) {
+class Output() {
 
-    fun printState() {
-        val carStateList = cars.getAdvanceStateList()
-        cars.carList.forEachIndexed { index, car ->
-            println("${car.name} : ${"-".repeat(carStateList[index])}")
+    fun printState(carList: List<Car>) {
+        carList.forEach { car ->
+            println("${car.name} : ${"-".repeat(car.advanceState)}")
         }
     }
 
-    fun printResult() {
-        val maxState = cars.getAdvanceStateList().max()
-        val winnerList = cars.carList.filter { it.advanceState == maxState }.map { it.name }
-
+    fun printResult(winnerList: List<String>) {
         print("최종 우승자 : ${winnerList.joinToString(", ")}")
     }
 
