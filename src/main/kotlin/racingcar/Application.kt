@@ -11,12 +11,12 @@ fun main() {
     val cars = input.split(',')
     val carMap = cars.associateWith { 0 }.toMutableMap()
 
-    println(carMap)
     val keys = carMap.keys
     // TODO : 시도할 횟수 입력받기
     println("시도할 횟수는 몇 회인가요?")
     val tries: Int = readLine()?.toInt() ?: throw IllegalArgumentException()
 
+    println("\n")
     println("실행 결과")
 
     for (i in 1..tries) {
@@ -28,7 +28,9 @@ fun main() {
         }
         print("\n")
     }
-    // TODO : 최종결과 출력하는 함수 만들기
+
+    val winners: Map<String, Int> = winner(carMap)
+    println("최종 우승자 : ${winners.keys.joinToString()}")
 }
 
 fun moveCondition(): Boolean {
@@ -51,4 +53,9 @@ fun printMove(key: String, carMap: MutableMap<String, Int>) {
         print("-")
     }
     print("\n")
+}
+
+fun winner(carMap: MutableMap<String, Int>): Map<String, Int> {
+    val maxCount = carMap.values.maxOrNull() ?: emptyMap<String, Int>()
+    return carMap.filter { it.value == maxCount }
 }
