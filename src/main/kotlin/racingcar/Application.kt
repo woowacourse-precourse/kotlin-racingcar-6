@@ -43,6 +43,12 @@ fun addScore(carNamesList: List<Car>, randomNumArray: Array<Int>) {
     }
 }
 
+fun printScore(num : Int){
+    for(i in 0 until num){
+        print("-")
+    }
+}
+
 
 
 
