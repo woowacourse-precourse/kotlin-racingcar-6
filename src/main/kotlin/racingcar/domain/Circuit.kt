@@ -3,7 +3,7 @@ package racingcar.domain
 import racingcar.utils.RandomGenerator
 import racingcar.utils.StringListSplitter
 
-class Circuit(carNames: String, private var raceRound: Int) {
+class Circuit(carNames: String, private val raceRound: Int) {
     private val cars = mutableListOf<Car>()
 
     init {
