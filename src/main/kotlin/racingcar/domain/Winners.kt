@@ -5,7 +5,7 @@ class Winners(cars: List<RacingCar>) {
 
     init {
         val maxPosition = cars.maxOf { it.getPosition() }
-        winningList =  cars.filter { it.getPosition() == maxPosition }.map { it.getName() }
+        winningList = cars.filter { it.getPosition() == maxPosition }.map { it.getName() }
     }
 
     override fun toString(): String = "최종 우승자 : ${winningList.joinToString(", ")}"

@@ -1,5 +1,5 @@
 # 구현할 기능 목록
-- [ ] 자동차 경주 게임을 시작한다. - RacingGame#start()
+- [X] 자동차 경주 게임을 시작한다. - RacingGame#start()
   - [X] 사용자는 경주 할 자동차들의 이름을 입력할 수 있다. - Player#inputRacingCarNames()
     - [X] 사용자의 입력이 null일 경우 IllegalArgumentException을 발생시킨다.
     - [X] 자동차 이름은 쉼표를 기준으로 구분한다.

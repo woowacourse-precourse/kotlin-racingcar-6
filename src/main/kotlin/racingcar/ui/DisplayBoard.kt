@@ -4,11 +4,17 @@ import racingcar.domain.RacingCars
 import racingcar.domain.Winners
 
 class DisplayBoard {
-    fun display(racingCars: RacingCars) {
-        println(racingCars)
+
+    fun displayRaceStart() {
+        println("실행 결과")
     }
 
-    fun display(winners: Winners) {
-        println(winners)
+    fun displayRacingResults(racingCars: RacingCars) {
+        println(racingCars)
+        println()
+    }
+
+    fun displayWinners(winners: Winners) {
+        print(winners)
     }
 }
