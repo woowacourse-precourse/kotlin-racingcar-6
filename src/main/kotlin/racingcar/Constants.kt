@@ -6,3 +6,5 @@ const val EXCEPTION_MESSAGE_UNVALID_ROUND_NUMBER = "잘못된 라운드 값이 �
 
 const val MIN_NAME_LENGTH = 1
 const val MAX_NAME_LENGTH = 5
+
+const val SEPARATOR = ","
