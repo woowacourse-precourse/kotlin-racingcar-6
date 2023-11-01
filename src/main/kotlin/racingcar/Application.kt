@@ -7,4 +7,9 @@ fun main() {
 
     car.validateCarNameLength(carNames)
     car.validateDuplicateName(carNames)
+    car.validateBlankName(carNames)
+
+    val racing = Racing()
+    val moveCount = racing.enterMoveCount()
+
 }

@@ -18,4 +18,8 @@ class Car {
     fun validateDuplicateName(carNames : List<String>) {
         if (carNames.size != carNames.distinct().size) throw IllegalArgumentException("자동차 이름에 중복이 있습니다.")
     }
+
+    fun validateBlankName(carNames : List<String>) {
+        if (carNames.any { it.isEmpty() }) throw IllegalArgumentException("자동차 이름이 공백입니다.")
+    }
 }
