@@ -2,8 +2,10 @@ package racingcarTest
 
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThat
+
 import racingcar.Car
 import racingcar.RacingGame
+
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
@@ -12,11 +14,11 @@ class RacingGameTest {
     @Test
     fun `playGame should move cars for the specified number of rounds`() {
         val cars = listOf(Car("pobi"), Car("woni"), Car("jun"))
-        val racingGame = RacingGame(cars, 3)
+        val racingGame = RacingGame(cars, 5)
 
         racingGame.playGame()
 
-        assertThat(cars).allMatch { it.position in 0..3 }
+        assertThat(cars).allMatch { it.position in 0..5 }
     }
 
     @Test
