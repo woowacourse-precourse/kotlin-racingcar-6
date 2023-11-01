@@ -15,8 +15,8 @@ class OutputView {
         println("$name : ${"-".repeat(position)}")
     }
 
-    fun printWinnerFormat(winnerList: List<Car>){
+    fun printWinnerFormat(winnerList: List<String>){
         val winners = winnerList.joinToString(",")
-        println("${Message.FINAL_WINNER_FORMAT} + ${winners}")
+        println("${Message.FINAL_WINNER_FORMAT}${winners}")
     }
 }

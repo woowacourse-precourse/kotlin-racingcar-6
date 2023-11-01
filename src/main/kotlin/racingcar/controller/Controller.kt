@@ -46,9 +46,9 @@ class Controller {
         outputView.printWinnerFormat(decideWinners(carList))
     }
 
-    private fun decideWinners(carList: List<Car>): List<Car> {
+    private fun decideWinners(carList: List<Car>): List<String> {
         val maxForward = carList.maxByOrNull { it.forward }?.forward
-        return carList.filter { it.forward == maxForward }
+        return carList.filter { it.forward == maxForward }.map { it.carName }
     }
 
 }

@@ -24,7 +24,7 @@ class Validator(inputCarsNames: String, inputRound: Int) {
             if (HashSet(carList).size != carList.size) {
                 throw IllegalArgumentException("중복된 이름이 존재하면 안 됩니다.")
             }
-            if (carList.size != 1) {
+            if (carList.size == 1) {
                 throw IllegalArgumentException("2대 이상의 차가 필요합니다.")
             }
         }
