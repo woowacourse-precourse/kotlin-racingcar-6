@@ -12,8 +12,8 @@ class InputMachine {
 
     }
 
-    fun checkCarNameUnder5(cars: MutableList<Car>) {
 
+    fun checkCarNameUnder5(cars: MutableList<Car>) {
         for (car in cars) {
             if (car.name.length > 5) {
                 println("실패")
@@ -21,33 +21,22 @@ class InputMachine {
             }
         }
         println("통과")
-
     }
-
+    //
     // 몇 번 이동 입력↓
     fun tryMove(): Int {
         val tryCount: Int
-
         try {
             tryCount = readln().toInt()
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException("숫자를 입력하세요")
         }
-
         if (!checkOnlyNatural(tryCount)) {
             throw IllegalArgumentException("양의 정수를 입력하세요")
         }
-
-
         return tryCount
-
     }
-
     private fun checkOnlyNatural(move: Int): Boolean {
-
         return move > 0
-
     }
-
-
 }
