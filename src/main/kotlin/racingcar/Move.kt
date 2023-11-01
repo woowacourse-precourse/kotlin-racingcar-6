@@ -12,9 +12,10 @@ package racingcar
             if (randomNum >= 4) {
                 car.forward()
             }
-            println("${car.name}: ${"-".repeat(car.distance)}")
+            println("${car.name} : ${"-".repeat(car.distance)}")
             //println(randomNum)
         }
+        println()
     }
 
 }

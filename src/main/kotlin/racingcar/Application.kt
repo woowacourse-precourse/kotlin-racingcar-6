@@ -1,17 +1,23 @@
 package racingcar
 
 fun main() {
-    println("이름")
+    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val user = Input()
     val carName = user.inputCarName()
     //println(carName)
+    println("시도할 횟수는 몇 회인가요?")
+    val count = user.inputGameNumber()
+    println("실행 결과")
 
     var car: MutableList<Car> = mutableListOf()
     //val car = Car()
     setCar(carName, car)
 
-    val m = Move(car)
-    val mm = m.moveCar()
+
+    val move = Move(car)
+    repeat(count) {
+        val carMove = move.moveCar()
+    }
 
 
     //val randomNumber = RandomNumber()
