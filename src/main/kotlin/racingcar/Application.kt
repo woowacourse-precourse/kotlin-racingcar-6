@@ -8,14 +8,15 @@ class InputHandler {
         val carNames = getCarNames()
         val roundCount = getRoundCount()
 
-        val carResults = mutableMapOf<String, MutableList<Int>>()
+        val carResults = mutableMapOf<String, MutableList<String>>()
         val randomGenerator = RandomGenerator()
 
         repeat(roundCount) {
             carNames.forEach { carName ->
                 val randomValue = randomGenerator.generate()
-                carResults.computeIfAbsent(carName) { mutableListOf() }.add(randomValue)
-                println("$carName: ${carResults[carName]!!.joinToString(", ")}")
+                val position = if (randomValue >= 4) "-" else ""
+                carResults.computeIfAbsent(carName) { mutableListOf() }.add(position)
+                println("$carName: ${carResults[carName]!!.joinToString("")}")
             }
             println()
         }
