@@ -17,13 +17,16 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val tries: Int = readLine()?.toInt() ?: throw IllegalArgumentException()
 
-    println(tries)
+    println("실행 결과")
 
     for (i in 1..tries) {
         for (key in keys) {
             carMoveCounter(key, carMap)
         }
-        println(carMap)
+        for (key in keys) {
+            printMove(key, carMap)
+        }
+        print("\n")
     }
     // TODO : 최종결과 출력하는 함수 만들기
 }
@@ -31,14 +34,21 @@ fun main() {
 fun moveCondition(): Boolean {
     // TODO : 전진 조건 판별하는 함수 만들기
     val num = Randoms.pickNumberInRange(0, 9)
-    println(num)
 
     if (num < 4) return false
     else return true
 }
 
 fun carMoveCounter(key: String, carMap: MutableMap<String, Int>) {
-    println(key)
     if (moveCondition()) carMap[key] = (carMap[key] ?: 0) + 1
 }
 
+fun printMove(key: String, carMap: MutableMap<String, Int>) {
+    val moveDistance = carMap[key] ?: throw IllegalArgumentException()
+
+    print("${key} : ")
+    for (i in 1..moveDistance) {
+        print("-")
+    }
+    print("\n")
+}
