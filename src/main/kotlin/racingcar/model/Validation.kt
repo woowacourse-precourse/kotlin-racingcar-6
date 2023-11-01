@@ -14,7 +14,7 @@ class Validation {
     }
 
     fun tryNum(tryNum: String) {
-        val num: Int = try {
+        try {
             tryNum.toInt()
         } catch (e: NumberFormatException) {
             error(Constants.ERROR_NUMBER_VALIDITY)
