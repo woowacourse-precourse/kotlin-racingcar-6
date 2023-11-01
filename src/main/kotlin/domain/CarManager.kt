@@ -1,12 +1,20 @@
 package domain
 
+import view.View
+
 class CarManager {
     private var cars: MutableList<Car> = mutableListOf()
+    private var tryCnt: Int = 0
+    private val view = View()
 
-    /**
-     * 자동차 생성 및 CarManager 에 추가
-     */
-    fun makeCar(name: String){
+    fun makeCars() {
+        val carNames = view.requireCarNames()
+        for (name in carNames) {
+            makeCar(name)
+        }
+    }
+
+    fun makeCar(name: String) {
         cars.add(Car(name))
     }
 }

@@ -5,8 +5,10 @@ import service.ExceptionHandler
 
 class InputView {
     fun requireCarNames(): List<String> {
-        val carNames = Console.readLine()
-        ExceptionHandler.checkNames(carNames)
+        var carNames : String
+        do{
+            carNames = Console.readLine()
+        }while(!ExceptionHandler.checkNames(carNames))
         val names = carNames.split(",")
         isValidLength(names)
         return names

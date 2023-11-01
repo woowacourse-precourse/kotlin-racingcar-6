@@ -1,18 +1,16 @@
 package service
 
 object ExceptionHandler {
-    fun checkNames(names: String) {
+    fun checkNames(names: String) : Boolean {
         try {
             for (i in names) {
-                require(
-                    i in 'A'..'Z'
-                            || i in 'a'..'z'
-                            || i == ','
-                ) { Message.ERROR.toString() }
+                require(i in 'A'..'Z'|| i in 'a'..'z' || i == ',') { Message.ERROR.toString() }
             }
         } catch (e: IllegalArgumentException) {
             println(e.message)
+            return false
         }
+        return true
     }
 
     fun checkNameLength(name: String) {
