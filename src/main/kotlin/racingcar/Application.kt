@@ -33,4 +33,15 @@ fun playRacingGame(carNameMap: MutableMap<String, String>, tryCount: Int) {
         }
         println()
     }
+    calculateFinalWinner(carNameMap)
+}
+
+fun calculateFinalWinner(carNameMap: MutableMap<String, String>) {
+    val maxLength = carNameMap.values.map { it.length }.maxOrNull()
+    val winner = carNameMap.filter { it.value.length == maxLength }.keys.toList()
+    if (winner.size == 1) {
+        print("최종 우승자 : ${winner[0]}")
+    } else {
+        print("최종 우승자 : ${winner.joinToString(", ")}")
+    }
 }
