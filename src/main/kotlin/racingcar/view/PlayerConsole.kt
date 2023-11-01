@@ -11,7 +11,8 @@ object PlayerConsole {
     private const val MESSAGE_INVALID_NUMBER_FORMAT = "숫자만 입력해 주세요."
     private const val MESSAGE_INVALID_NUMBER_RANGE = "입력 숫자의 범위가 유효하지 않습니다."
     private const val MINIMUM_MOVE_COUNT = 1
-    private const val MINIMUM_CAR_NAME_LENGTH = 5
+    private const val MINIMUM_CAR_NAME_LENGTH = 1
+    private const val MAXIMUM_CAR_NAME_LENGTH = 5
 
     fun getValidCarNames(): List<String> {
         printCarNamePrompt()
@@ -21,7 +22,7 @@ object PlayerConsole {
     private fun parseInputByComma() = readLine().split(",")
 
     private fun List<String>.validateCarNames(): List<String> {
-        require(this.all { it.length <= MINIMUM_CAR_NAME_LENGTH && it.isNotEmpty() }) { MESSAGE_INVALID_NAME_LENGTH }
+        require(this.all { it.length in MINIMUM_CAR_NAME_LENGTH..MAXIMUM_CAR_NAME_LENGTH }) { MESSAGE_INVALID_NAME_LENGTH }
         require(this.all { playerName -> playerName.all { it.isLetter() || it.isDigit() } }) { MESSAGE_INVALID_NAME_FORMAT }
         return this
     }
