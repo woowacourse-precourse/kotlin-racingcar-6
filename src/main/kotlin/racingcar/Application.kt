@@ -27,6 +27,47 @@ fun main() {
 
     }
 
+
+    val maxList = mutableListOf<Int>()     // max의 값들을 모아놓는 리스트
+
+    val originalMaxLocation = carObjectList.maxWith(Comparator.comparingInt { it.getLocation() })
+    val originalMax = originalMaxLocation.getLocation()
+    maxList.add(originalMax)
+    // max값을 미리 추가해 둠으로써 뒤에 나올 반복문에서 do{}의 전체 내용이 최초 1회는 꼭 실행되도록 함.
+
+    val winnerList = mutableListOf<String>()    // winner의 이름들을 모아놓는 리스트
+
+
+    do {
+        val maxLocation = carObjectList.maxWith(Comparator.comparingInt { it.getLocation() })
+        // location 값이 가장 높은 객체를 반환
+        val max = maxLocation.getLocation()    // 그 객체의 location 값을 max에 할당
+        if (max !in maxList) {
+            break
+        }
+        winnerList.add( maxLocation.getObjectName() )    // 그 객체의 이름을 winnerList에 추가)
+        maxList.add(max)
+        carObjectList.removeIf { it.getObjectName() in winnerList }  // 그 객체를 carObjectList에서 삭제
+
+    } while ( (max in maxList) && (carObjectList.isNotEmpty()) )
+
+    val result = winnerList.joinToString(", ")
+    println("최종 우승자 : ${result}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 fun getUserInput(): Pair<List<String>, Int> {
