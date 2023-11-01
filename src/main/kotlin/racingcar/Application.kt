@@ -34,6 +34,7 @@ fun enterNumberAttempts(): String {
 
 fun validationNumberAttempts(numberAttempt: String) {
     for (i in numberAttempt) {
+        if(numberAttempt.length == 1 && i == '0') throw IllegalArgumentException("0번 시도할 수는 없습니다.")
         if (i < '0' || i > '9') throw IllegalArgumentException("숫자만 입력해주세요.")
     }
 }
