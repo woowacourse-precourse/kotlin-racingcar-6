@@ -10,6 +10,14 @@ fun allocRandom(carsNum: Int): Array<Int> {
     return randomNum
 }
 
+fun checkForward(randomNum: Array<Int>, result: Array<Int>) {
+    for (i: Int in 0..randomNum.size - 1) {
+        if (randomNum[i] >= 4) {
+            result[i] += 1
+        }
+    }
+}
+
 fun main() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     var cars = readLine()
