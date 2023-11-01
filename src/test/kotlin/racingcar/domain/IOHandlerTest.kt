@@ -33,7 +33,7 @@ class IOHandlerTest {
     }
 
     @Test
-    fun `2칸 전진한 A, 0칸 전진한 B, 3칸 전진한 C의 현재 위치를 보여준다`() {
+    fun `자동차의 위치를 보여주는 함수에 2칸 전진한 A, 0칸 전진한 B, 3칸 전진한 C를 입력하면 현재 위치를 보여준다`() {
         // given
         val a = Car("A")
         repeat(2) {
@@ -63,7 +63,7 @@ class IOHandlerTest {
     }
 
     @Test
-    fun `0칸 전진한 A, 0칸 전진한 B, 0칸 전진한 C의 현재 위치를 보여준다`() {
+    fun `자동차의 위치를 보여주는 함수에 0칸 전진한 A, 0칸 전진한 B, 0칸 전진한 C를 입력하면 현재 위치를 보여준다`() {
         // given
         val a = Car("A")
         val b = Car("B")
@@ -150,7 +150,6 @@ class IOHandlerTest {
         // when
         val actual = ioHandler.getCarNames()
 
-
         // then
         val expected = listOf("""가"나"다""")
         assertThat(actual).isEqualTo(expected)
@@ -178,7 +177,6 @@ class IOHandlerTest {
         val name = "\n"
         setInput(name)
         Mockito.`when`(mockedValidator.checkCarName("")).thenReturn(false)
-
 
         // when
         val actual: java.lang.IllegalArgumentException = assertThrows(IllegalArgumentException::class.java) {
@@ -238,7 +236,7 @@ class IOHandlerTest {
     }
 
     @Test
-    fun `" ,   ,  "를 자동차 이름으로 입력하면 " ", "   ","  "를 리턴한다`() {
+    fun `" ,   ,  "를 자동차 이름으로 입력하면 " ", "   ", "  "를 리턴한다`() {
         // given
         val name = " ,   ,  "
         setInput(name)
@@ -396,7 +394,8 @@ class IOHandlerTest {
         System.setIn(inputStream)
     }
 
-    private fun setOutput(output: ByteArrayOutputStream) {
-        System.setOut(PrintStream(output))
+    private fun setOutput(outputStream: ByteArrayOutputStream) {
+        val printStream = PrintStream(outputStream)
+        System.setOut(printStream)
     }
 }

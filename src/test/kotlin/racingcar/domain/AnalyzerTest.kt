@@ -16,7 +16,7 @@ class AnalyzerTest {
     }
 
     @Test
-    fun `숫자 0이 나오면 움직일 수 없다는 의미의 false를 반환한다`() {
+    fun `자동차가 움직일 수 있는지 확인하는 함수에 0을 입력하면 false를 반환한다`() {
         // given
         val pickedNum = 0
 
@@ -29,7 +29,7 @@ class AnalyzerTest {
     }
 
     @Test
-    fun `숫자 3이 나오면 움직일 수 없다는 의미의 false를 반환한다`() {
+    fun `자동차가 움직일 수 있는지 확인하는 함수에 3을 입력하면 false를 반환한다`() {
         // given
         val pickedNum = 3
 
@@ -42,7 +42,7 @@ class AnalyzerTest {
     }
 
     @Test
-    fun `숫자 4가 나오면 움직일 수 있다는 의미의 true를 반환한다`() {
+    fun `자동차가 움직일 수 있는지 확인하는 함수에 4을 입력하면 true를 반환한다`() {
         // given
         val pickedNum = 4
 
@@ -55,7 +55,7 @@ class AnalyzerTest {
     }
 
     @Test
-    fun `숫자 9가 나오면 움직일 수 있다는 의미의 true를 반환한다`() {
+    fun `자동차가 움직일 수 있는지 확인하는 함수에 9을 입력하면 true를 반환한다`() {
         // given
         val pickedNum = 9
 
@@ -68,7 +68,7 @@ class AnalyzerTest {
     }
 
     @Test
-    fun `3칸 전진한 A, 2칸 전진한 B, 0칸 전진한 C를 입력하면 A를 승자로 반환한다`() {
+    fun `우승자 판별 함수에 3칸 전진한 A, 2칸 전진한 B, 0칸 전진한 C를 입력하면 A를 반환한다`() {
         // given
         val a = Car("A")
         repeat(3) {
@@ -90,7 +90,7 @@ class AnalyzerTest {
     }
 
     @Test
-    fun `0칸 전진한 A, 3칸 전진한 B, 2칸 전진한 C를 입력하면 B를 승자로 반환한다`() {
+    fun `우승자 판별 함수에 0칸 전진한 A, 3칸 전진한 B, 2칸 전진한 C를 입력하면 B를 반환한다`() {
         // given
         val a = Car("A")
         val b = Car("B")
@@ -112,7 +112,7 @@ class AnalyzerTest {
     }
 
     @Test
-    fun `2칸 전진한 A, 0칸 전진한 B, 3칸 전진한 C를 입력하면 C를 승자로 반환한다`() {
+    fun `우승자 판별 함수에 2칸 전진한 A, 0칸 전진한 B, 3칸 전진한 C를 입력하면 C를 반환한다`() {
         // given
         val a = Car("A")
         repeat(2) {
@@ -134,7 +134,7 @@ class AnalyzerTest {
     }
 
     @Test
-    fun `2칸 전진한 A, 0칸 전진한 B, 2칸 전진한 C를 입력하면 A, C를 승자로 반환한다`() {
+    fun `우승자 판별 함수에 2칸 전진한 A, 0칸 전진한 B, 2칸 전진한 C를 입력하면 A, C를 반환한다`() {
         // given
         val a = Car("A")
         repeat(2) {
@@ -156,7 +156,7 @@ class AnalyzerTest {
     }
 
     @Test
-    fun `0칸 전진한 A, 0칸 전진한 B, 0칸 전진한 C를 입력하면 A, B, C를 승자로 반환한다`() {
+    fun `우승자 판별 함수에 0칸 전진한 A, 0칸 전진한 B, 0칸 전진한 C를 입력하면 A, B, C를 반환한다`() {
         // given
         val a = Car("A")
         val b = Car("B")
