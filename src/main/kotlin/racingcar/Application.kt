@@ -6,8 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     // TODO: 프로그램 구현
-    val tempPair = beforeRacing()
-    val carNameList = tempPair.first   // beforeRacing()의 리턴 값은 ↓
+    val tempPair = getUserInput()
+    val carNameList = tempPair.first   // getUserInput()의 리턴 값은 ↓
     val numberOfRounds = tempPair.second    // ( carNameList, numberOfRounds )로 이루어진 Pair
 
     val carObjectList = mutableListOf<Car>()   // car 객체들을 담은 리스트 생성
@@ -19,7 +19,7 @@ fun main() {
 
 }
 
-fun beforeRacing(): Pair<List<String>, Int> {
+fun getUserInput(): Pair<List<String>, Int> {
 
     val carNameList: List<String> = listOf(Console.readLine())
     val numberOfRounds = Console.readLine().toInt()
