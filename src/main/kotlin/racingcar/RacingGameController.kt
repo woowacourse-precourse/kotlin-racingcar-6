@@ -6,16 +6,22 @@ class RacingGameController {
     private val view = ConsoleView()
 
     fun startGame() {
+        val cars = getCars()
+        val tryNum = getTryNum()
+        runRace(tryNum, cars)
+    }
+
+    private fun getCars():List<Car>{
         val carNames = view.promptUser("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
             .split(',')
         carNamesValidator(carNames)
+        return createCars(carNames)
+    }
 
+    private fun getTryNum(): Int{
         val tryNum = view.promptUser("시도할 횟수는 몇 회인가요?").toInt()
         tryNumValidator(tryNum)
-
-        val cars = createCars(carNames)
-
-        runRace(tryNum, cars)
+        return tryNum
     }
 
     private fun runRace(tryNum: Int, cars: List<Car>) {
