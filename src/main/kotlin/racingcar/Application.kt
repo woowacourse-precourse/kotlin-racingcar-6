@@ -17,7 +17,7 @@ fun main() {
     GameConsole.setRacingCount()
 
     messenger.printGameResult()
-    repeat(GameConsole.getRacingCount()){
+    repeat(GameConsole.getRacingCount()) {
         racingManager.racingCycle(
             GameConsole.getCarList()
         )

@@ -11,7 +11,7 @@ class MessageManager {
 
     fun printGameResult() = println(GAME_RESULT)
 
-    fun printOneRacingResult(carList : List<Car>){
+    fun printOneRacingResult(carList: List<Car>) {
         for (car in carList)
             printCarProgress(car)
         println()

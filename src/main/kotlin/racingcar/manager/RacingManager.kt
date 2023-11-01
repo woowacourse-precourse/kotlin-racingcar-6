@@ -15,7 +15,8 @@ class RacingManager {
 
     private fun remoteCarProgress(car: Car) {
         if (makeRandomNumber() in
-            MIN_PROGRESS_NUM..MAX_PROGRESS_NUM)
+            MIN_PROGRESS_NUM..MAX_PROGRESS_NUM
+        )
             car.progress += 1
     }
 
@@ -25,7 +26,7 @@ class RacingManager {
         )
     }
 
-    companion object{
+    companion object {
         private const val MIN_PROGRESS_NUM = 4
         private const val MAX_PROGRESS_NUM = 9
         private const val MIN_RANDOM_NUM = 0

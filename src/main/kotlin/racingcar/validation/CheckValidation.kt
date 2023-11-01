@@ -1,6 +1,5 @@
 package racingcar.validation
 
-import racingcar.model.Car
 import java.lang.NumberFormatException
 
 // 입력값의 유효성을 검사하는 클래스입니다.
@@ -92,7 +91,7 @@ class CheckValidation {
     }
 
     private fun checkDuplication(
-        carNameList : List<String>
+        carNameList: List<String>
     ): Boolean {
         val distinctCount = carNameList.distinct().count()
         return carNameList.size == distinctCount
