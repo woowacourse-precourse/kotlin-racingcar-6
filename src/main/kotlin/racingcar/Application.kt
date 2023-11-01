@@ -18,6 +18,17 @@ fun checkForward(randomNum: Array<Int>, result: Array<Int>) {
     }
 }
 
+fun printCurrent(result: Array<Int>, car: List<String>?) {
+    for (i: Int in 0..result.size - 1) {
+        print(car!![i] + " : ")
+        for (j: Int in 1..result[i]) {
+            print("-")
+        }
+        println()
+    }
+    println()
+}
+
 fun main() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     var cars = readLine()
