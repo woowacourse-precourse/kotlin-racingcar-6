@@ -3,36 +3,44 @@ package racingcar
 import racingcar.command.CommandInvoker
 import racingcar.model.CarCollection
 import racingcar.model.Round
+import racingcar.service.CarCollectionService
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
 class CarRaceController {
     val inputView = InputView()
     val outputView = OutputView()
+    lateinit var carCollectionService: CarCollectionService
     lateinit var carCollection: CarCollection
     lateinit var round: Round
 
     fun doRace() {
         getCars()
         getRound()
-        outputView.raceStart()
-        for (i in 0..< round.getRound()) {
-            CommandInvoker.executeCommands()
-            outputView.printRound(carCollection.getCarsDto())
-        }
-        outputView.printWinner(carCollection.getWinnersDto())
+        raceStart()
+        printWinner()
         CommandInvoker.clearCommands()
     }
 
-    fun getCars() {
+    private fun getCars() {
         val inputString = inputView.inputCarNames()
-        carCollection = CarCollection(inputString)
+        carCollectionService = CarCollectionService(inputString)
     }
 
-    fun getRound() {
+    private fun getRound() {
         val inputNumber = inputView.inputRoundNum()
         round = Round(inputNumber)
     }
 
+    private fun raceStart() {
+        outputView.raceStart()
+        for (i in 0..< round.getRound()) {
+            CommandInvoker.executeCommands()
+            outputView.printRound(carCollectionService.getCarsDto())
+        }
+    }
 
+    private fun printWinner() {
+        outputView.printWinner(carCollectionService.getWinnersDto())
+    }
 }
