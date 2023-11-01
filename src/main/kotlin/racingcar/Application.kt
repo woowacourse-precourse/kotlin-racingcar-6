@@ -17,11 +17,12 @@ fun main() {
 
     }
 
+
 }
 
 fun getUserInput(): Pair<List<String>, Int> {
 
-    val carNameList: List<String> = listOf(Console.readLine())
+    val carNameList: List<String> = Console.readLine().split(",")
     val numberOfRounds = Console.readLine().toInt()
 
     return Pair(carNameList, numberOfRounds)
