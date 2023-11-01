@@ -159,3 +159,77 @@ Randoms.pickNumberInRange(0, 9)
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
   - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 📌 기능 목록
+
+### InputView
+
+- [x] 사용자는 몇 번의 시도를 할 것인지 입력
+- [x] 경주할 자동차 입력(이름은 쉼표를 기준으로 구분, 이름은 5자 이하만 가능)
+
+### OutputView
+
+- [x] 자동차 이름 입력 문구 출력
+- [x] 시도 횟수 입력 문구 출력
+- [x] 각 차수별 실행 결과와 함께 자동차 이름 출력(입력 한 자동차 이름 순서대로 출력)
+- [x] 자동차 경주 게임 우승자 출력
+  - [x] 단독 우승자 안내 문구 출력
+  - [x] 공동 우승자 안내 문구 출력(쉼표를 이용하여 구분)
+
+### RandomNumberGenerator
+
+- [x] 0~9 사이 랜덤 값 반환
+
+### Car
+
+- [x] 자동차 상태 반환
+- [x] 자동차 전진 또는 멈추기
+  - [x] 랜덤 값이 0~3면 멈추기
+  - [x] 랜덤 값이 4~9면 전진하기
+
+### Validator
+
+- [x] 잘못된 값을 입력할 경우 IllegalArgumentException 발생시키기
+  - [x] 경주할 자동차 이름이 5자이하만 가능
+  - [x] 시도 입력은 수만 가능
+
+### Controller
+
+- [x] 자동차 경주 시작
+- [x] 문구 출력
+- [x] 입력
+
+## 👉 클래스 다이어 그램
+
+```mermaid
+classDiagram
+    InputView <.. Controller
+    OutputView <.. Controller
+    Car <.. Controller
+    RandomNumberGenerator <.. Controller
+    Validator <.. InputView
+    class Controller {
+        +startCarRacing()
+    }
+    class InputView {
+        +askNumberOfAttempts()
+        +askCarToRace()
+    }
+    class OutputView {
+        +enterNamesOfCars()
+        +howManyAttempts()
+        +executionResult()
+        +finalWinner()
+    }
+    class RandomNumberGenerator {
+        +gernerateRandomNumber()
+    }
+    class Car {
+        -currentPosition
+        +forwardOrStop()
+    }
+    class Validator {
+        +nameLength()
+        +attemptsComponents()
+    }
+```
