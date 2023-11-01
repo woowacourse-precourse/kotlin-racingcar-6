@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 class DetermineMoveTest {
 
     @Test
-    fun `isMove ¸Ş¼­µåÀÇ true ¹× false ¹İÈ¯ Å×½ºÆ®`() {
+    fun `isMove ë©”ì„œë“œì˜ true ë° false ë°˜í™˜ í…ŒìŠ¤íŠ¸`() {
         val determineMove = DetermineMove()
         assertRandomNumberInRangeTest(
             {
