@@ -22,7 +22,7 @@ class RacingCarTest {
     private val inputView = InputView()
     private val outputView = OutputView()
     private val outputStream = ByteArrayOutputStream()
-    private val racingCarController = RacingCarController(inputView, outputView)
+    private val racingCarController = RacingCarController()
 
     @BeforeEach
     fun init() {
