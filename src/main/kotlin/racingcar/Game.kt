@@ -9,6 +9,8 @@ class Game {
         val inputString = Console.readLine()
         val names = inputString.split(",").map { it.trim() }
         val cars: List<Car> = names.map { Car(it) }
+        println("시도할 횟수는 몇 회인가요?")
+        val loopCount = Console.readLine()
 
     }
 }
