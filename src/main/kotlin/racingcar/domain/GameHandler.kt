@@ -58,7 +58,7 @@ class GameHandler(
 
 
     companion object {
-        const val NOT_YET_SET = Int.MIN_VALUE
+        private const val NOT_YET_SET = Int.MIN_VALUE
         private const val SENTENCE_FOR_GETTING_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
         private const val SENTENCE_FOR_GETTING_MOVEMENT = "시도할 횟수는 몇 회인가요?"
         private const val SENTENCE_FOR_RESULT = "실행 결과"

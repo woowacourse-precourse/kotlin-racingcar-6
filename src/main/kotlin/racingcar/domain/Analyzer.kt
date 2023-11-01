@@ -6,7 +6,7 @@ class Analyzer {
 
     fun judgeWinner(cars: List<Car>): List<Car> {
         val winners = mutableListOf<Car>()
-        var maxLocation = Int.MIN_VALUE
+        var maxLocation = NOT_YET_SET
 
         for (car in cars) {
             if (car.location > maxLocation) {
@@ -24,6 +24,6 @@ class Analyzer {
 
     companion object {
         private const val MIN_PASSING_NUM = 4
-
+        private const val NOT_YET_SET = Int.MIN_VALUE
     }
 }
