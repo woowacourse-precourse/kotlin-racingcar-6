@@ -16,6 +16,20 @@ fun startGame() {
     for (str in inputList) {
         carList.add(Car(str))
     }
+
+    for (i in 0 until executionNum) {
+        makeOneRound(carList)
+    }
+}
+
+fun makeOneRound(carList: List<Car>) {
+    for (car in carList) {
+        car.goOrStay()
+    }
+    for (car in carList) {
+        car.print()
+    }
+    println()
 }
 
 fun isNamein5Letters(inputList: List<String>): Boolean {
@@ -44,7 +58,26 @@ fun getInputList(): List<String> {
     return inputList
 }
 
+fun generate0to9(): Int {
+    return Randoms.pickNumberInRange(0, 9)
+}
+
 class Car(name: String) {
     val name: String = name
     var status: Int = 0
+
+    fun goOrStay() {
+        val randomNum = generate0to9()
+        if (randomNum >= 4) {
+            this.status += 1
+        }
+    }
+
+    private fun getStatus(): Int {
+        return this.status
+    }
+
+    fun print() {
+        print(name + " : " + "-".repeat(getStatus()))
+    }
 }
