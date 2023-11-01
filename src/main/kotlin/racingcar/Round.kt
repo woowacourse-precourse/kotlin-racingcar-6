@@ -1,15 +1,7 @@
 package racingcar
 
 class Round(carNames: List<String>) {
-    private var cars: MutableList<Car> = arrayListOf()
-
-    fun initializeAndGetCars(carNames: List<String>): List<Car> {
-        carNames.forEach {
-            val car = Car(it)
-            cars.add(car)
-        }
-        return cars
-    }
+    private var cars: MutableList<Car> = carNames.map { Car(it) }.toMutableList()
 
 
     fun move() {
@@ -31,8 +23,8 @@ class Round(carNames: List<String>) {
         return cars.filter { it.getPosition() == maxPosition }.map { it.getName() }
     }
 
-    private fun findMaxPosition():Int{
-        val winnerCar = cars.maxBy{ it.getPosition() }
+    private fun findMaxPosition(): Int {
+        val winnerCar = cars.maxBy { it.getPosition() }
         return winnerCar.getPosition()
     }
 

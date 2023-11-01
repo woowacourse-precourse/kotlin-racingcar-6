@@ -9,7 +9,7 @@ object Process {
     fun generateCars(input: String) {
         carNames = validation.validateCarNames(input.split(",").map { it.trim() })
         round = Round(carNames)
-        round.initializeAndGetCars(carNames)
+
     }
 
     fun setAttemptTimes(input: String) {
