@@ -52,4 +52,18 @@ class RacingCarTest {
         assertThat(racingCar.nameAndMileage().split(" : ").first()).isEqualTo("pobi")
         assertThat(racingCar.nameAndMileage().split(" : ").last().length).isBetween(0, 2)
     }
+
+    @Test
+    fun `최종 우승자 출력`() {
+        var racingCars = listOf(RacingCar("pobi"), RacingCar("woni"), RacingCar("jun"))
+        racingCars[0].mileage = 1
+        racingCars[1].mileage = 2
+        racingCars[2].mileage = 3
+        assertThat(finalWinner(racingCars)).isEqualTo("최종 우승자 : jun")
+        racingCars = listOf(RacingCar("pobi"), RacingCar("woni"), RacingCar("jun"))
+        racingCars[0].mileage = 1
+        racingCars[1].mileage = 2
+        racingCars[2].mileage = 2
+        assertThat(finalWinner(racingCars)).isEqualTo("최종 우승자 : woni, jun")
+    }
 }
