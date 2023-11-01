@@ -21,7 +21,8 @@ object RacingCarInput {
         }
     }
 
-    private fun validate(cars: List<Car>) {
+    // 테스트 코드를 위해 public 으로 전환했습니다. (멍청이슈)
+    fun validate(cars: List<Car>) {
         validateCarNameDuplicate(cars)
         validateMinimumCarCount(cars)
         validateCarNameLength(cars)
