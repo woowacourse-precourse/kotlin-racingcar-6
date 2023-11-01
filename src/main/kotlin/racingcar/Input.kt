@@ -3,8 +3,8 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 class Input {
-    fun inputCarName(): List<String> {
-        val carName: List<String> = Console.readLine().split(",")
+    fun inputCarName(): MutableList<String> {
+        val carName: MutableList<String> = Console.readLine().split(",").toMutableList()
         nameCheck(carName)
         return carName
     }
