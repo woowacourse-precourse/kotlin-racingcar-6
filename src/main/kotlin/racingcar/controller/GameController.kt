@@ -9,7 +9,7 @@ class GameController(
     private val outputView: OutputView = OutputView(),
 ) {
     private lateinit var nameList: List<String>
-    private var car: MutableList<Car> = mutableListOf()
+    var car: MutableList<Car> = mutableListOf()
     private var count: Int? = null
 
     fun runGame() {
@@ -20,11 +20,11 @@ class GameController(
 
     private fun setCount(): Int = inputView.inputCount()
 
-    private fun setCar() {
+    fun setCar() {
         for(i in nameList) { car.add(Car(name = i)) }
     }
 
-    private fun setGame() {
+    fun setGame() {
         outputView.startCommand()
         nameList = inputView.inputName()
         outputView.getCountCommand()
@@ -32,13 +32,13 @@ class GameController(
         setCar()
     }
 
-    private fun setWinner(): String {
+    fun setWinner(): String {
         val highestScore = car.maxOfOrNull { it.score }
         val highestScoreCars = car.filter { it.score == highestScore }
         return highestScoreCars.joinToString(separator = ",") { it.name }
     }
 
-    private fun gameResult() {
+    fun gameResult() {
         val winners = setWinner()
         outputView.winnerOutput(winners)
     }
