@@ -10,14 +10,17 @@ import race.Racing
 class RacingTest {
     private var carList = listOf<Car>()
     private var racing = Racing()
-    private var car = listOf<Car>()
-    private var singleRacing = Racing()
+    private var startList = listOf(10, 1, 1, 1, 1)
 
     @BeforeEach
     fun setUp() {
         carList = makeCar("유재석,하하,김종국,송지효,전소민")
-        car = makeCar("유재석")
-        singleRacing.start(car)
+        carList.forEachIndexed { index, car ->
+            repeat(startList[index]) {
+                car.start()
+            }
+        }
+        racing.start(carList)
     }
 
     @Test
@@ -34,6 +37,6 @@ class RacingTest {
 
     @Test
     fun `우승자 출력 검사`() {
-        assertThat("${singleRacing.findWinner(car)}").isEqualTo("최종 우승자 : 유재석")
+        assertThat("${racing.findWinner(carList)}").isEqualTo("최종 우승자 : 유재석")
     }
 }
