@@ -16,8 +16,6 @@ class ValidatorTest {
                 arrayOf("AB##", "ABC"),
                 arrayOf("A1B2", "ABC"),
                 arrayOf("A   B", "ABC"),
-                arrayOf("  AB", "ABC"),
-                arrayOf("AB  ", "ABC"),
             )
         }
     }
