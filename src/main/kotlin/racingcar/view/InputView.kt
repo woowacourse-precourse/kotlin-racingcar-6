@@ -1,11 +1,11 @@
-package racingcar
+package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
     companion object ErrorMessage {
         const val NULL: String = "빈 값 입니다."
-        const val CONTAIN_ZERO = "0은 포함될 수 없습니다."
+        const val CONTAIN_ZERO = "0은 입력될 수 없습니다."
         const val NUMERIC = "숫자만 입력이 가능합니다."
         const val FIVE_LETTER = "이름은 5자리 이하만 입력이 가능합니다."
     }
