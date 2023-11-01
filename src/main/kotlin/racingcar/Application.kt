@@ -4,9 +4,20 @@ import camp.nextstep.edu.missionutils.Randoms
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThat
 
+class Car(val name: String) {
+    var position = 0
+}
+
 fun main() {
     val carNames = inputCarNames()
     val numberOfAttempts = inputNumberOfAttempts()
+    val cars = carNames.map { Car(it) }
+
+    println("\n실행 결과")
+
+    for (attempt in 1..numberOfAttempts) {
+        val roundResults = simulateRace(cars)
+    }
 
 }
 
@@ -26,3 +37,18 @@ fun inputNumberOfAttempts(): Int {
     println("시도할 횟수는 몇 회인가요?")
     return readLine()?.toIntOrNull() ?: 0
 }
+
+fun simulateRace(cars: List<Car>): Map<String, Int> {
+    val roundResults = mutableMapOf<String, Int>()
+
+    for (car in cars) {
+        val randomValue = Randoms.pickNumberInRange(0, 9)
+        if (randomValue >= 4) {
+            car.position++
+        }
+        roundResults[car.name] = car.position
+    }
+
+    return roundResults
+}
+
