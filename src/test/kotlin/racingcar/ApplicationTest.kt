@@ -45,6 +45,17 @@ class ApplicationTest : NsTest() {
         assertThat(now).isEqualTo(after)
     }
 
+    @Test
+    fun `count의 수 만큼 '-' 출력하기`(){
+        var name = "pobi"
+        var car = Car(name)
+        car.move(5)
+        car.move(6)
+        car.move(7)
+        var output = "pobi : ---"
+        assertThat(output).isEqualTo("${car.name} : ${"-".repeat(car.count)}")
+    }
+
 
 
     public override fun runMain() {
