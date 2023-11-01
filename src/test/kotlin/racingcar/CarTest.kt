@@ -2,6 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.test.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
@@ -42,6 +43,21 @@ class CarTest {
                 car.goForwardOrStop()
                 assertEquals(car.position, 0)
             },
+            3,
+        )
+    }
+
+    @Test
+    fun `대소 비교 테스트`() {
+        val carA = Car("a")
+        val carB = Car("a")
+        Assertions.assertRandomNumberInRangeTest(
+            {
+                carA.goForwardOrStop()
+                carB.goForwardOrStop()
+                assertTrue(carA > carB)
+            },
+            4,
             3,
         )
     }
