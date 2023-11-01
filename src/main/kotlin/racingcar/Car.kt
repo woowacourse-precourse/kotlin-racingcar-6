@@ -17,6 +17,9 @@ class Car (val name:String){
         }
     }
     fun curLocation(){
-        println("name : "+"-".repeat(moveCnt))
+        println(carName+" : " +"-".repeat(moveCnt))
+    }
+    fun getMoveCnt(): Int {
+        return moveCnt
     }
 }
