@@ -1,5 +1,15 @@
 package racingcar
 
+import racingcar.domain.Commentator
+import racingcar.domain.RaceGenerator
+
 fun main() {
-    // TODO: 프로그램 구현
+  val myRace = RaceGenerator()
+  val racingCars = myRace.generateCars()
+  val numberOfMoves = myRace.askNumberOfMoves()
+
+  val myCommentator = Commentator(racingCars, numberOfMoves)
+  myCommentator.commentRace()
+
+  myCommentator.theWinnerIs()
 }
