@@ -13,12 +13,13 @@ class User {
 
     fun attemptNumber(): Int {
         println("시도할 횟수는 몇 회인가요?")
-        return Console.readLine().toInt()
+        val input = Console.readLine() ?: throw IllegalArgumentException("입력값이 없습니다.")
+        return validateAttemptNumber(input)
     }
 
     private fun validateNames(names: String) {
         if (names.all { it == ',' }) {
-            throw IllegalArgumentException("유효하지 않은 입력입니다. 자동차 이름을 제대로 입력해주세요.")
+            throw IllegalArgumentException("자동차의 이름이 입력되지 않았습니다.")
         }
 
         val carNamesList = names.split(",")
@@ -30,5 +31,19 @@ class User {
         if (carNamesList.distinct().size != carNamesList.size) {
             throw IllegalArgumentException("자동차 이름은 중복될 수 없습니다.")
         }
+    }
+
+    private fun validateAttemptNumber(input: String): Int {
+        val number = try {
+            input.toInt()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("유효하지 않은 입력입니다. 양의 정수를 입력해주세요.")
+        }
+
+        if (number <= 0) {
+            throw IllegalArgumentException("시도 횟수는 양의 정수이어야 합니다.")
+        }
+
+        return number
     }
 }
