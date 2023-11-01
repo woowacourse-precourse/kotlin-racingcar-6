@@ -59,6 +59,7 @@ fun startRacing(numberOfRacing: Int, carNamesList: List<Car>) {
         addScore(carNamesList, randomNumArray)
         printCarWithScore(carNamesList)
     }
+    printWinner(carNamesList)
 }
 
 fun printWinner(carNamesList: List<Car>) {
