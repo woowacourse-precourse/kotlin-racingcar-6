@@ -5,7 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
 
-    val carGame = Randoms.pickNumberInRange(0, 9)
+    val carGame = Console.readLine()
 
     println(carGame)
+    Console.close()
+
+
 }
