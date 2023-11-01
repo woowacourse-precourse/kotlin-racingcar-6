@@ -64,6 +64,9 @@ fun getUserInput(): Pair<List<String>, Int> {
         if ( item.length > 5 ) {
             throw IllegalArgumentException("5글자 이하의 이름만 입력하세요.")
         }
+        else if (item.length == 0) {
+            throw IllegalArgumentException("이름을 입력하세요.")
+        }
     }
 
     val numberOfRounds = Console.readLine().toInt()
