@@ -15,8 +15,13 @@ class Report {
         return winners.joinToString(", ")
     }
 
-    fun raceResult(winner: String) {
-        if (winner.isEmpty()) println("모두 출발하지 못해, 우승자가 없습니다")
-        else println("최종 우승자 : $winner")
+    fun raceResult(winner: String) :Boolean{
+        return if (winner.isEmpty()) {
+            print("모두 출발하지 못해, 우승자가 없습니다")
+            false
+        } else {
+            print("최종 우승자 : $winner")
+            true
+        }
     }
 }
