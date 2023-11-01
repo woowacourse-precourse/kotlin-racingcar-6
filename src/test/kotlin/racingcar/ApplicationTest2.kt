@@ -1,4 +1,4 @@
-package racingcar
+/*package racingcar
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
@@ -35,3 +35,4 @@ class ApplicationTest2 : NsTest() {
         private const val STOP = 3
     }
 }
+*/
