@@ -37,7 +37,7 @@ class ApplicationTest : NsTest() {
                 run("pobi,woni,booze", "2")
                 assertThat(output()).contains("pobi : --", "woni : --", "booze : --", "최종 우승자 : pobi, woni, booze")
             },
-            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
         )
 
     }
