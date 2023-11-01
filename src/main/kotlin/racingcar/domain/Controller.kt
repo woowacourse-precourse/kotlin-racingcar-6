@@ -4,7 +4,7 @@ import racingcar.domain.car.Car
 import racingcar.domain.car.Cars
 
 class Controller {
-    fun playRound(car: Car, randomNumber: Int){
+    fun playRound(car: Car, randomNumber: Int) {
         car.move(randomNumber)
         println(car.printResult())
     }
