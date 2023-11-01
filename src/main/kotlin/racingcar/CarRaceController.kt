@@ -1,7 +1,6 @@
 package racingcar
 
 import racingcar.command.CommandInvoker
-import racingcar.model.CarCollection
 import racingcar.model.Round
 import racingcar.service.CarCollectionService
 import racingcar.view.InputView
@@ -13,6 +12,7 @@ class CarRaceController {
     private lateinit var carCollectionService: CarCollectionService
     private lateinit var round: Round
 
+        /*
     fun doRace() {
         getCars()
         getRound()
@@ -20,7 +20,7 @@ class CarRaceController {
         printWinner()
         CommandInvoker.clearCommands()
     }
-
+*/
     private fun getCars() {
         val inputString = inputView.inputCarNames()
         carCollectionService = CarCollectionService(inputString)
