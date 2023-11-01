@@ -1,0 +1,3 @@
+import racingcar.EXCEPTION_MESSAGE_UNVALID_ROUND_NUMBER
+
+class UnvalidRoundNumberException : IllegalArgumentException(EXCEPTION_MESSAGE_UNVALID_ROUND_NUMBER)
