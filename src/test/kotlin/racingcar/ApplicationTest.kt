@@ -25,11 +25,21 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
     }
+
     @Test
     fun `inputString 을 쉼표 기준으로 nameList 변환`() {
         val inputString = "pobi,woni,jun"
         val nameList = inputString.split(",").map { it.trim()  }
         assertThat(nameList).contains("pobi","woni","jun")
+    }
+
+    @Test
+    fun `names(String) 을 cars(List) 로 변환 테스트`() {
+        val inputString = "pobi,woni,jun"
+        val nameList = inputString.split(",").map { it.trim()  }
+        val names = inputString.split(",").map{ it.trim() }
+        val cars: List<Car> = names.map{ Car(it) }
+        assertThat(cars.map{ it.name }).isEqualTo(nameList)
     }
 
     public override fun runMain() {
