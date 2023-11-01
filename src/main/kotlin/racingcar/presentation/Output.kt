@@ -14,7 +14,7 @@ object Output {
         printWinner(result)
     }
 
-    private fun printTrace(result: List<Car>, depth: Int) {
+    private tailrec fun printTrace(result: List<Car>, depth: Int) {
         val limit = result[0].trace.size
         if (depth >= limit) {
             return
@@ -23,7 +23,7 @@ object Output {
             println("${it.name} : ${getTraceToString(it.trace, depth)}")
         }
         println()
-        printTrace(result, depth + 1)
+        return printTrace(result, depth + 1)
     }
 
     private fun getTraceToString(traces: List<CarState>, depth: Int): String =
