@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    startGame()
+    doGame()
 }
 
-fun startGame() {
+fun doGame() {
     val inputList = getInputList()
     val executionNum = getExecutionNum()
 
@@ -97,11 +97,7 @@ class Car(name: String) {
         }
     }
 
-    private fun getStatus(): Int {
-        return this.num
-    }
-
     fun print() {
-        print(name + " : " + "-".repeat(getStatus()))
+        print(name + " : " + "-".repeat(this.num))
     }
 }
