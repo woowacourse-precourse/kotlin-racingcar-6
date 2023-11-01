@@ -1,9 +1,14 @@
 package racingcar.domain
 
+import racingcar.domain.DecisionMaker
 class Car (name: String) {
     var carName: String = name
-    var score = 0
+    var forward = 0
 
 
-    fun goForward(): Int = score++
+    fun goForward() {
+        if (DecisionMaker().decideToMove()) {
+            forward++
+        }
+    }
 }

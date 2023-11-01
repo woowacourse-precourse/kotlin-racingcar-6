@@ -1,5 +1,6 @@
 package racingcar.controller
 
+import racingcar.domain.Car
 import racingcar.view.InputView
 import racingcar.view.OutputView
 import racingcar.domain.Validator
@@ -11,10 +12,14 @@ class Controller {
     fun start() {
         val inputCarsNames = readInputCars()
         val inputRound = readInputRound().toInt()
-        val listCars = inputCarsNames.split(',').toList()
+        val carList : List<Car> = inputCarsNames.split(',').map { Car(it) }
         Validator(inputCarsNames, inputRound)
-        playGame(listCars, inputRound)
-        showResult()
+
+        repeat(inputRound){
+            playGame(carList)
+            showResult() // 한 라운드 결과
+        }
+        //최종 위
 
 
     }
@@ -29,12 +34,13 @@ class Controller {
         return inputView.readUserInput()
     }
 
-    private fun playGame( CarsName : List<String>, round : Int) {
-
+    private fun playGame(carList : List<Car>) {
+        carList.forEach { it.goForward()}
     }
 
     private fun showResult() {
-        outputView.printAllRoundsResult()
+        outputView.printStartOfResultPhrase()
+
     }
 
 }
