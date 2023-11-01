@@ -1,7 +1,31 @@
 package racingcar
 
-class Race(var cars:MutableList<Car>) {
+import camp.nextstep.edu.missionutils.Console
 
+class Race() {
+    var cars = mutableListOf<Car>()
+
+    fun startRace(){
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        var carNames = Console.readLine().split(",").toMutableList()
+        for (carName in carNames) {
+            var car = Car(carName)
+            cars.add(car)
+        }
+        println("시도할 횟수는 몇 회인가요?")
+        var repeat = Console.readLine().toInt()
+
+        println()
+        println("실행 결과")
+        for (i in 0..<repeat) {
+            for (car in cars) {
+                car.move()
+                print(car.getOutput())
+            }
+            println()
+        }
+        print(getOutput())
+    }
     fun getWinners():MutableList<Car>{
         return cars.filter { it.position == getTopPosition() }.toMutableList()
     }
