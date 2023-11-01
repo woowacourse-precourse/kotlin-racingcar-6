@@ -4,9 +4,7 @@ import racingcar.SEPARATOR
 import racingcar.command.CommandInvoker
 import racingcar.command.DoRaceCommand
 import racingcar.dto.CarDTO
-import java.util.stream.Collectors
-
-
+import racingcar.dto.WinnerDTO
 
 
 class CarCollection(carNameString: String) {
@@ -47,7 +45,14 @@ class CarCollection(carNameString: String) {
 
     fun getCarsDto(): MutableList<CarDTO> {
         return cars.stream()
-            .map { car: Car -> CarDTO(car.name.getNameString(), car.position.getPositionNumber()) }
+            .map { car: Car -> CarDTO(car.getCarNameString(), car.getPositionNumber()) }
+            .toList()
+    }
+
+    fun getWinnersDto(): MutableList<WinnerDTO> {
+        val winnerList = getWinners()
+        return winnerList.stream()
+            .map { car: Car -> WinnerDTO(car.getCarNameString())}
             .toList()
     }
 }
