@@ -10,11 +10,18 @@ class RacingGame(
 ) {
     fun start() {
         val cars = racingCarInput.getCarNames()
-        val count = moveCountInput.getMoveCount()
+        showNumberInputMessage()
+        val count = UserInput.getUserInput().let {
+            moveCountInput.getMoveCount(it)
+        }
         raceManager.setup(cars)
         runRace(count)
         val winners = raceManager.findWinners()
         racePrinter.showWinners(winners)
+    }
+
+    private fun showNumberInputMessage() {
+        println(GameMessage.INPUT_NUMBER_ATTEMPTS_MESSAGE)
     }
 
     private fun runRace(count: Int) {
