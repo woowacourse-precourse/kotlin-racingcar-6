@@ -1,6 +1,8 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
+
 class Game {
     fun start() {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -21,5 +23,7 @@ class Car(val name: String) {
         if (name.length > 5) throw IllegalArgumentException("5자 이상 이름 필요")
     }
     var location: Int = 0
-    fun randMove(): Unit = TODO()
+    fun randMove(): Unit {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) location++
+    }
 }
