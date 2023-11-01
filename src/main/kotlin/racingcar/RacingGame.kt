@@ -19,20 +19,32 @@ class RacingGame(
         stepToChooseWinners()
     }
 
-    fun stepToEnterCarNames() {
+    private fun stepToEnterCarNames() {
         printer.printOutEnteringCarName()
         val carsInputString = userInput()
-        carsList = carsInputString.split(",").filter { it.isNotBlank() }.map { Car(it) }
-
-        requireValidCarsInput(carsInputString = carsInputString)
-        requireCheckingForDuplicateNames()
+        carsList = createCarsList(carsInputString)
     }
 
-    fun stepToEnterTheNumberOfAttempts() {
+    fun createCarsList(carsInputString: String): List<Car> {
+        val tempCarsList = carsInputString.split(",").map { Car(it) }
+        val nameSet = mutableSetOf<String>()
+        for (car in tempCarsList) {
+            require(car.name !in nameSet)
+            nameSet.add(car.name)
+        }
+        return tempCarsList
+    }
+
+    private fun stepToEnterTheNumberOfAttempts() {
         printer.printOutEnteringAttemptsNumber()
         val attemptsNumberInput = userInput()
-        requireValidAttemptsNumberInput(attemptsNumberInput = attemptsNumberInput)
-        attemptsNumber = attemptsNumberInput.toInt()
+        attemptsNumber = createAttemptsNumber(attemptsNumberInput)
+    }
+
+    fun createAttemptsNumber(input: String): Int {
+        val count = input.toIntOrNull() ?: throw IllegalArgumentException()
+        require(count > 0)
+        return count
     }
 
     private fun stepInWhichRacingIsCarriedOut() {
@@ -58,28 +70,6 @@ class RacingGame(
         } else {
             printer.printOutRacingWinner(winners[0].name)
         }
-    }
-
-    private fun requireValidCarsInput(carsInputString: String) {
-        require(carsInputString.count { it == ',' } == carsList.size - 1)
-        require(carsInputString.length <= carsList.size * CARS_MAX_LENGTH + carsInputString.count { it == ',' })
-    }
-
-    private fun requireCheckingForDuplicateNames() {
-        val nameSet = mutableSetOf<String>()
-        for (car in carsList) {
-            require(car.name !in nameSet)
-            nameSet.add(car.name)
-        }
-    }
-
-    private fun requireValidAttemptsNumberInput(attemptsNumberInput: String) {
-        require(attemptsNumberInput.matches(Regex(Message.ONLY_NUMBER_PATTERN)))
-        require(attemptsNumberInput.toInt() >= 0)
-    }
-
-    companion object {
-        const val CARS_MAX_LENGTH = 5
     }
 
 }
