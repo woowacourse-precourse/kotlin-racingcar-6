@@ -45,8 +45,16 @@ class Validation {
         checkCarNameLength(carList)
     }
 
-    fun checkNumberOfAttemptOneAndMore(numberOfAttempt: Int) {
-        if (numberOfAttempt < 1) {
+    fun checkNumberOrNot(numberOfAttempt: String): Int {
+        return try {
+            numberOfAttempt.toInt()
+        } catch (e: Exception) {
+            throw IllegalArgumentException("숫자만 입력하세요")
+        }
+    }
+
+    fun checkNumberOfAttemptOneAndMore(numberOfAttemptToInt: Int) {
+        if (numberOfAttemptToInt < 1) {
             throw IllegalArgumentException("1 이상 입력 가능합니다")
         }
     }

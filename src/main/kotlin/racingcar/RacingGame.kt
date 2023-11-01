@@ -29,9 +29,10 @@ class RacingGame {
     private fun getNumberOfAttempt(): Int {
         host.printQuestionNumberOfAttempt()
         val numberOfAttempt = player.inputNumberOfAttempt()
-        validation.checkNumberOfAttemptOneAndMore(numberOfAttempt)
+        val numberOfAttemptToInt = validation.checkNumberOrNot(numberOfAttempt)
+        validation.checkNumberOfAttemptOneAndMore(numberOfAttemptToInt)
 
-        return numberOfAttempt
+        return numberOfAttemptToInt
     }
 
     private fun printRaceResult(numberOfAttempt: Int, cars: List<Car>): List<Int> {
