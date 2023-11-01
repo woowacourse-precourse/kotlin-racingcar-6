@@ -69,4 +69,21 @@ class RacingGameViewModelTest {
         viewModel.playRound()
         assertThat(viewModel.playerList).extracting("position").contains(0, 0, 0)
     }
+
+    @Test
+    fun `getWinners() 우승자 한명 테스트`() {
+        val viewModel = RacingGameViewModel(RandomNumberGenerator())
+        viewModel.savePlayers("kim,park,jun", ',')
+        viewModel.playerList[0].move()
+        assertThat(viewModel.getWinners()).isEqualTo("kim")
+    }
+
+    @Test
+    fun `getWinners() 우승자 여러명 테스트`() {
+        val viewModel = RacingGameViewModel(RandomNumberGenerator())
+        viewModel.savePlayers("kim,park,jun", ',')
+        viewModel.playerList[0].move()
+        viewModel.playerList[1].move()
+        assertThat(viewModel.getWinners()).isEqualTo("kim, park")
+    }
 }
