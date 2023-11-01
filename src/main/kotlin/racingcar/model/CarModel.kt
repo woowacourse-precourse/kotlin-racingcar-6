@@ -25,14 +25,14 @@ class CarModel {
     fun moveCar() {
         val randomNumber = RandomNumber()
         for (i in 0..carNames.size - 1) {
-            val random = randomNumber.randomNumberGenerator()
+            val random = randomNumber.generateRandomNumber()
             if (random >= MOVE_CONDITION) {
-                incrementProgress(i)
+                moveCarForward(i)
             }
         }
     }
 
-    fun incrementProgress(index: Int) {
+    fun moveCarForward(index: Int) {
         progressList[index]++
     }
 

@@ -3,11 +3,11 @@ package racingcar.view
 import racingcar.util.*
 
 class OutputView {
-    fun progressResult() {
+    fun printExecutionResult() {
         println(RESULT_MESSAGE)
     }
 
-    fun roundResult(car: String) {
+    fun printRoundResult(car: String) {
         print(car + COLON)
     }
 
