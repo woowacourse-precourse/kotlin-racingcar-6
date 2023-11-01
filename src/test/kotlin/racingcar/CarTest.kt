@@ -5,14 +5,13 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import racingcar.model.Car
 
-class CarMethodTest {
+class CarTest {
     private lateinit var car: Car
 
     @BeforeEach
     fun `자동차 객체 생성`(){
         car = Car("seoyeon")
     }
-
 
     @Test
     fun `자동차 이름 확인 테스트`() {
