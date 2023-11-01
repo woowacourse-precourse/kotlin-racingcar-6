@@ -26,6 +26,26 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `시도 횟수를 0번으로 지정했을 때의 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>("1번 이상의 횟수가 필요합니다.") {
+                Input().checkMoveTimeValidate(0)
+            }
+        }
+    }
+
+    @Test
+    fun `공동우승자 발생 시 쉼표로 우승자 출력`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi,woni")
+            },
+            MOVING_FORWARD, MOVING_FORWARD
+        )
+    }
+
     public override fun runMain() {
         main()
     }
