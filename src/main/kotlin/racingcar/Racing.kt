@@ -13,12 +13,11 @@ class Racing {
 
 
     private fun random09(): Int {
-        val num = Randoms.pickNumberInRange(0, 9)
 
-        return num
+        return Randoms.pickNumberInRange(0, 9)
     }
 
-    fun forwardOver4(cars: MutableList<Car>) {
+    private fun forwardOver4(cars: MutableList<Car>) {
 
         for (car in cars) {
             val forward = random09()
