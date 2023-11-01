@@ -21,8 +21,8 @@ class Round(carNames: List<String>) {
 
     fun printRound() {
         cars.forEach {
-            val printResult = it.movingState()
-            println(printResult)
+            val currentPosition = it.movingState()
+            println(currentPosition)
         }
     }
 
