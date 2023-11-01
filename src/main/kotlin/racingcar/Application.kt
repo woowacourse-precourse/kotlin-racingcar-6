@@ -6,7 +6,7 @@ fun main() {
     val referee = Referee(
         namesOfParticipants = participants,
         roundNum = roundNum,
-        OutputManager::printGameStatus
+        doSomethingWithCarsAfterRound = OutputManager::printGameStatus
     )
     println(Resources.RESULT_OF_GAME)
     val winners = referee.getWinners()
