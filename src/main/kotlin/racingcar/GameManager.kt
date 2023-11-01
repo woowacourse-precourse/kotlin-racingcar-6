@@ -1,5 +1,7 @@
 package racingcar
 
+import kotlin.math.max
+
 class GameManager(
     val nameList: List<String>,
     val tryCount: Int,
@@ -33,7 +35,27 @@ class GameManager(
     }
 
     private fun printWinners() {
-        // 우승자를 찾아내어야 함
-        println("최종 우승자 : ")
+        val winners: String = findWinners()
+        println("최종 우승자 : ${winners}")
+    }
+
+    private fun findWinners(): String {
+        var maxDistance: Int = findMaxDistance()
+        var winnerList: MutableList<String> = mutableListOf()
+        carsList.forEach { car ->
+            if (car.movingDistance.length == maxDistance){
+                winnerList.add(car.name)
+            }
+        }
+        var winners: String = winnerList.joinToString()
+        return winners
+    }
+
+    private fun findMaxDistance(): Int {
+        var maxDistance: Int = 0
+        for (car in this.carsList) {
+            maxDistance = max(maxDistance, car.movingDistance.length)
+        }
+        return maxDistance
     }
 }
