@@ -8,6 +8,7 @@ class RacingCarGame {
     private val user = UserInput()
     private var racingCars: List<RacingCar> = listOf()
     private var trial: Int = 0
+
     fun startGame() {
         racingCars = user.getNameInput()
         trial = user.getTrialInput()
@@ -21,9 +22,8 @@ class RacingCarGame {
 
     private fun playEachRound() {
         repeat(racingCars.size) {
-            if (Randoms.pickNumberInRange(MIN_RANDOM_NUM, MAX_RANDOM_NUM) >= LIMIT_FOR_MOVING) {
+            if (Randoms.pickNumberInRange(MIN_RANDOM_NUM, MAX_RANDOM_NUM) >= LIMIT_FOR_MOVING)
                 racingCars[it].location++
-            }
         }
         racingCars.forEach { println(it.toString()) }
         println()
