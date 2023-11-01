@@ -11,7 +11,7 @@ class GamePlay(gameNum : Int?, carList : List<String>?) {
     init {
 
 
-        makeListToHash(carList)
+         carScore= makeListToHash(carList)
 
 
         while(gameOrder <= gameNum!!) {
@@ -51,6 +51,8 @@ class GamePlay(gameNum : Int?, carList : List<String>?) {
         return carScore
 
     }
+
+
 
     fun printEachGameResult(carName : String, carScore : Int){
         print(carName)

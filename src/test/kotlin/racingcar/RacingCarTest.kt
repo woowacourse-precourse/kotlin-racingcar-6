@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
+import org.mockito.Mockito
 
 class RacingCarTest {
 
@@ -23,11 +24,7 @@ class RacingCarTest {
     }
 
 
-    @Test
-    fun `자동차 경주 각 게임 실행`(){
 
-
-    }
 
 
 }
