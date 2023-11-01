@@ -14,6 +14,7 @@ class Controller(
     fun startGame() {
         OutputView.enterNamesOfCars()
         setRacingCars(getNamesOfCar())
+        OutputView.howManyAttempts()
     }
 
     private fun getNamesOfCar(): List<String> {
