@@ -1,7 +1,6 @@
-package racingcar.view
+package racingcar
 
 import camp.nextstep.edu.missionutils.Console
-import racingcar.model.Car
 
 class InputView {
 

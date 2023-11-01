@@ -1,4 +1,4 @@
-package racingcar.model
+package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 object RandomNumberGenerator {
