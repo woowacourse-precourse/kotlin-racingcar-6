@@ -6,10 +6,10 @@ object OutputManager {
         print(buildGameStatusString(cars))
         println()
     }
-    private fun buildGameStatusString(cars: List<Car>) = cars.map{
+    private fun buildGameStatusString(cars: List<Car>) = cars.joinToString("\n"){
             val distanceBar = "-".repeat(it.position)
-            return "${it.name} : $distanceBar"
-        }.joinToString("\n")
+            "${it.name} : $distanceBar"
+        }
 
     fun printWinners(winners: List<Car>) {
         println(buildWinnersString(winners))
