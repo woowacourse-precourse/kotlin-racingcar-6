@@ -34,4 +34,12 @@ class ApplicationTest : NsTest() {
         private const val MOVING_FORWARD = 4
         private const val STOP = 3
     }
+
+
+    @Test
+    fun `자동차 이름이 5자를 초과할 시 예외 발생`() {
+        assertThrows<IllegalArgumentException>("자동차 이름은 5자 이하만 가능") {
+            validationCarName(listOf("abc", "abcdef"))
+        }
+    }
 }
