@@ -3,42 +3,42 @@ package racingcar
 class GamePlay(gameNum : Int?, carList : List<String>?) {
 
 
-    private var carScore = HashMap<String,Int>()
+    private var carScoreList = HashMap<String,Int>()
     private var _winnerList : MutableList<String> = mutableListOf()
     val winnerList =  _winnerList
-    var gameOrder  = 1
+    private var gameOrder  = 1
 
     init {
 
 
-         carScore= makeListToHash(carList)
+         carScoreList= makeListToHash(carList)
 
 
         while(gameOrder <= gameNum!!) {
 
-            carScore = playGame(carScore)
+            carScoreList = playGame(carScoreList)
 
             print("\n")
 
             gameOrder ++
         }
 
-        _winnerList = selectWinner(carScore)
+        _winnerList = selectWinner(carScoreList)
 
 
 
     }
 
-    fun makeListToHash(list : List<String>?) : HashMap<String,Int>{
+    private fun makeListToHash(list : List<String>?) : HashMap<String,Int>{
 
         list?.forEach {
                 carName ->
-            carScore[carName] = 0
+            carScoreList[carName] = 0
         }
-        return carScore
+        return carScoreList
     }
 
-    fun playGame(carScore : HashMap<String,Int>) : HashMap<String,Int> {
+    private fun playGame(carScore : HashMap<String,Int>) : HashMap<String,Int> {
 
         carScore.forEach {
 
@@ -54,7 +54,8 @@ class GamePlay(gameNum : Int?, carList : List<String>?) {
 
 
 
-    fun printEachGameResult(carName : String, carScore : Int){
+
+    private fun printEachGameResult(carName : String, carScore : Int){
         print(carName)
         print(" : ")
         for (i in 1..carScore){
@@ -64,7 +65,7 @@ class GamePlay(gameNum : Int?, carList : List<String>?) {
 
     }
 
-    fun selectWinner(carScore: HashMap<String, Int>): MutableList<String> {
+    private fun selectWinner(carScore: HashMap<String, Int>): MutableList<String> {
 
         val maxScore = carScore.maxByOrNull { it.value }?.value
         carScore.forEach {

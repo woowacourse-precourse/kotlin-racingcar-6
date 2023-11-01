@@ -4,11 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class RandomNumProducer {
 
-    fun makeRandomNum() : Int {
+    fun makeRandomNum(): Int {
 
-        val randomNum = Randoms.pickNumberInRange(0,9)
-
-        return randomNum
+        return Randoms.pickNumberInRange(0, 9)
     }
 
 }
