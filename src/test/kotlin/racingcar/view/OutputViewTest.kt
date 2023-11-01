@@ -15,9 +15,11 @@ class OutputViewTest {
             RacingCar("jun", 3)
         )
         assertThat(outputView.printResult(racingCars))
-            .isEqualTo("pobi : --\n" +
-                    "woni : ----\n" +
-                    "jun : ---\n")
+            .isEqualTo(
+                "pobi : --\n" +
+                        "woni : ----\n" +
+                        "jun : ---\n"
+            )
     }
 
     @Test
@@ -29,7 +31,7 @@ class OutputViewTest {
 
     @Test
     fun `최종 우승자가 공동인 경우`() {
-        val winnerCars = listOf("pobi","jon")
+        val winnerCars = listOf("pobi", "jon")
         val result = outputView.printWinner(winnerCars)
         assertThat(result).isEqualTo("pobi, jon")
     }

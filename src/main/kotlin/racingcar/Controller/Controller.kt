@@ -6,9 +6,9 @@ import racingcar.view.InputView
 import racingcar.view.OutputView
 
 class Controller(private val inputView: InputView, private val outputView: OutputView) {
-    fun startGame(){
+    fun startGame() {
         inputView.printStartGameMessage()
-        val carNames : List<String> = inputView.inputRacingCarName()
+        val carNames: List<String> = inputView.inputRacingCarName()
         inputView.printAskTryNumberMessage()
         val tryNumber = inputView.inputTryNumber()
 
@@ -21,7 +21,7 @@ class Controller(private val inputView: InputView, private val outputView: Outpu
         println(outputView.printWinner(getWinnerCars(racingCars)))
     }
 
-    fun makeRacingCars(carNames: List<String>) : List<RacingCar> {
+    fun makeRacingCars(carNames: List<String>): List<RacingCar> {
         val racingCars = mutableListOf<RacingCar>()
         for (car in carNames.indices) {
             racingCars.add(RacingCar(carNames[car]))
@@ -29,7 +29,7 @@ class Controller(private val inputView: InputView, private val outputView: Outpu
         return racingCars
     }
 
-    private fun moveOrStop(racingCars: List<RacingCar>) : List<RacingCar> {
+    private fun moveOrStop(racingCars: List<RacingCar>): List<RacingCar> {
         for (car in racingCars.indices) {
             val randomNumber = getRandomNumber()
             if (validateMoreThanFour(randomNumber)) racingCars[car].forward++
@@ -37,20 +37,20 @@ class Controller(private val inputView: InputView, private val outputView: Outpu
         return racingCars
     }
 
-    private fun getRandomNumber() : Int = Randoms.pickNumberInRange(0, 9)
+    private fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
 
-    private fun validateMoreThanFour(randomNumber: Int) : Boolean = randomNumber >= 4
+    private fun validateMoreThanFour(randomNumber: Int): Boolean = randomNumber >= 4
 
-    fun getWinnerForward(racingCars: List<RacingCar>) : Int {
+    fun getWinnerForward(racingCars: List<RacingCar>): Int {
         val sortedRacingCars = racingCars.sortedByDescending { it.forward }
         return sortedRacingCars[0].forward
     }
 
-    fun getWinnerCars(racingCars: List<RacingCar>) : List<String> {
+    fun getWinnerCars(racingCars: List<RacingCar>): List<String> {
         val winnerForward = getWinnerForward(racingCars)
         val winnerCars = mutableListOf<String>()
         for (car in racingCars) {
-            if(car.forward == winnerForward) winnerCars.add(car.name)
+            if (car.forward == winnerForward) winnerCars.add(car.name)
         }
         return winnerCars
     }
