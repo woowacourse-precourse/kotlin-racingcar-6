@@ -1,0 +1,59 @@
+package racingcar.game
+
+import racingcar.game.PrintUtil.printAskAttempts
+import racingcar.game.PrintUtil.printExecutionResult
+import racingcar.game.PrintUtil.printStartMessage
+import racingcar.game.PrintUtil.printRacingCars
+import racingcar.game.PrintUtil.printWinnerList
+
+class RacingGame {
+    private lateinit var racingCars: List<Car>
+
+    fun start() {
+        printStartMessage()
+        inviteRacer()
+        printAskAttempts()
+        processRacingGame()
+        startAwardCeremony()
+    }
+
+    private fun inviteRacer() {
+        racingCars = UserInputUtil.getRacingCars()
+    }
+
+    private fun processRacingGame() {
+        val attempts = UserInputUtil.getAttempts()
+        printExecutionResult()
+        repeat(attempts) {
+            processRacingCars()
+            printRacingCars(racingCars)
+        }
+
+    }
+
+    private fun processRacingCars() {
+        racingCars.map { _car ->
+            with(_car) {
+                startEngine()
+                this
+            }
+        }
+    }
+
+    private fun startAwardCeremony() {
+        val winnerList = rateAllRacers()
+        printWinnerList(winnerList)
+    }
+
+    private fun rateAllRacers(): MutableList<Car> {
+        val winners = mutableListOf<Car>()
+        var maxDistance = -1
+        racingCars.sortedByDescending { _car -> _car.getDistance() }.forEach { _car ->
+            if (_car.getDistance() >= maxDistance) {
+                winners.add(_car)
+                maxDistance = _car.getDistance()
+            }
+        }
+        return winners
+    }
+}
