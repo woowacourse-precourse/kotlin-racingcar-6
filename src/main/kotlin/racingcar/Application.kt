@@ -49,9 +49,11 @@ fun game() {
     }
     println("시도할 횟수는 몇 회인가요?")
     val runtime = inputNumber()
-    for (time: Int in 0..runtime) {
+    println("\n실행결과")
+    for (time: Int in 1..runtime) {
         gameMain(playerList)
     }
+    gameEnd(playerList)
 }
 
 fun gameMain(playerList: MutableMap<String, Int>) {
@@ -67,3 +69,15 @@ fun gameMain(playerList: MutableMap<String, Int>) {
 fun gameRunText(name: String, runtime: Int) {
     println("${name} : " + "-".repeat(runtime))
 }
+
+fun gameEnd(playerList: Map<String, Int>) {
+    val winner = mutableListOf<String>()
+    for ((key, value) in playerList) {
+        if (value == playerList.values.max()) {
+            winner.add(key)
+        }
+    }
+    println("최종 우승자 : " + winner.joinToString(","))
+}
+
+
