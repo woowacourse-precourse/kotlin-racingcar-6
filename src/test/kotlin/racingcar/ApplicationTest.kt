@@ -23,6 +23,9 @@ class ApplicationTest : NsTest() {
     fun `이름에 대한 예외 처리`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+            assertThrows<IllegalArgumentException> { runException("pobi, ,javaji", "1") }
+            assertThrows<IllegalArgumentException> { runException("pobi, ", "1") }
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji,", "1") }
         }
     }
 
