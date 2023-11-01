@@ -74,6 +74,23 @@ class ApplicationTest : NsTest() {
 
     }
 
+    fun List<Car>.winner(): String {
+        val maxLocation = this.maxOf { it.location }
+        val winners = this.filter { it.location == maxLocation }
+        return winners.map { it.name }.joinToString(", ")
+    }
+
+    @Test
+    fun `cars(List of Car) 로부터 가장 멀리 간 차량을 추출하는 winner() 테스트`() {
+        val inputString = "pobi,woni,jun"
+        val nameList = inputString.split(",").map { it.trim() }
+        val names = inputString.split(",").map { it.trim() }
+        val cars: List<Car> = names.map { Car(it) }
+        cars.race(10)
+        println(cars.toStatusString())
+        println(cars.winner())
+    }
+
     public override fun runMain() {
         main()
     }
