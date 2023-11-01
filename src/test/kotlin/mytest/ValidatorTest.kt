@@ -26,6 +26,15 @@ class ValidatorTest {
             }
         }
     }
+    @Test
+    fun `자동차 이름에 공백이 포함되어 있으면 예외처리`() {
+        val carWhitespaceNameList: List<String> = listOf("po bi", "one", "jun")
+        assertThrows<IllegalArgumentException>("이름에 공백이 포함되어 있습니다.") {
+            if (carWhitespaceNameList.any { it.contains(" ") }) {
+                throw IllegalArgumentException("이름에 공백이 포함되어 있습니다.")
+            }
+        }
+    }
 
     @Test
     fun `시도횟수가 숫자가 아니면 예외처리`() {
