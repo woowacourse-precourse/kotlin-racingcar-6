@@ -10,6 +10,11 @@ fun main() {
 fun inputCarNamesAndTrialNumber() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val carNameAndTrialNumber = Console.readLine().split(",").toMutableList()
+    for (element in carNameAndTrialNumber) {
+        if (element.length > 5) {
+            throw IllegalArgumentException("5자리 이상인 이름은 허용되지 않습니다. 프로그램을 종료합니다.")
+        }
+    }
     println("시도할 횟수는 몇 회인가요?")
     carNameAndTrialNumber.add(Console.readLine())
     startRacing(carNameAndTrialNumber)
@@ -32,8 +37,11 @@ fun startRacing(carNameAndTrialNumber: MutableList<String>) {
     val resultIndex = getResult(forwardCount)
     print("최종 우승자 : ")
     for (element in resultIndex) {
-        print("${carNameAndTrialNumber[element]},")
-
+        if (element == resultIndex.last()) {
+            print(carNameAndTrialNumber[element])
+        } else {
+            print("${carNameAndTrialNumber[element]}, ")
+        }
     }
 }
 
@@ -41,19 +49,13 @@ fun makeRandomNumber(): Boolean {
     return Randoms.pickNumberInRange(0, 9) > 3
 }
 
-fun getResult(forwordCount: MutableList<String>): MutableSet<Int> {
-    val result = mutableSetOf<Int>()
-    for (i in 0 until forwordCount.size - 1) {
-        if (forwordCount[0].length < forwordCount[i+1].length) {
-            result.add(i+1)
-        } else if (forwordCount[0].length == forwordCount[i+1].length) {
-            result.clear()
-            result.add(0)
-            result.add(i+1)
-        } else if (forwordCount[0].length > forwordCount[i+1].length) {
-            result.add(0)
+fun getResult(forwordCount: MutableList<String>): MutableList<Int> {
+    val size = forwordCount.max().length
+    val result = mutableListOf<Int>()
+    for (i in 0 until forwordCount.size) {
+        if (size == forwordCount[i].length) {
+            result.add(i)
         }
     }
-    println(result)
     return result
 }
