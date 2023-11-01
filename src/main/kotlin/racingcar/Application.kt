@@ -10,11 +10,13 @@ fun main() {
 
 class RacingCarGame {
 
-    fun inputCarNames() {
+    fun inputCarNames(): List<String> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val carNames = Console.readLine()
         val carNameList = carNames.split(',')
         validateCarName(carNameList)
+
+        return carNameList
     }
 
     fun inputAttemptsCount(): Int {
@@ -48,4 +50,8 @@ class RacingCarGame {
             throw IllegalArgumentException("1 이상의 숫자를 입력해주세요.")
         }
     }
+}
+
+class Car(val name: String) {
+    var position = 0
 }
