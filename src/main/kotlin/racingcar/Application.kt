@@ -9,13 +9,14 @@ fun main() {
 //    val racingInfo = beforeRacing()  // racingInfo(rmation) : carList와 numberOfRounds로 이루어진 Pair
 //    print(racingInfo)
 //    print(goOrStop())
-    val pobiCar = Car()
-    pobiCar.moveCar()
-    pobiCar.moveCar()
-    pobiCar.moveCar()
-    pobiCar.moveCar()
+    val pobi = Car("pobi")
+    pobi.moveCar()
+    pobi.moveCar()
+    pobi.moveCar()
+    pobi.moveCar()
 
-    print(pobiCar.location) // 0,1,2,3,4 모든 경우의 값이 출력되는 걸 확인했다.
+    println(pobi.location) // 0,1,2,3,4 모든 경우의 값이 출력되는 걸 확인했다.
+    pobi.printLocation()
 
 }
 
