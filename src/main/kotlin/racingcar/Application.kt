@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 
 fun main() {
-    // TODO: 프로그램 구현
+    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val tempPair = getUserInput()
     val carNameList = tempPair.first   // getUserInput()의 리턴 값은 ↓
     val numberOfRounds = tempPair.second    // ( carNameList, numberOfRounds )로 이루어진 Pair
@@ -55,27 +55,24 @@ fun main() {
     println("최종 우승자 : ${result}")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 fun getUserInput(): Pair<List<String>, Int> {
 
     val carNameList: List<String> = Console.readLine().split(",")
+    for ( item in carNameList ) {
+        if ( item.length > 5 ) {
+            throw IllegalArgumentException("5글자 이하의 이름만 입력하세요.")
+        }
+    }
+
     val numberOfRounds = Console.readLine().toInt()
 
     return Pair(carNameList, numberOfRounds)
+}
+
+fun validateInput() {
+
 }
 
 fun goOrStop(): Boolean {    // Car class의 인스턴스 함수가 사용한다.
