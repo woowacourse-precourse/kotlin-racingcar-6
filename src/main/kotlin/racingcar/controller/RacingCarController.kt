@@ -5,7 +5,10 @@ import racingcar.model.RacingCar
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
-class RacingCarController(private val inputView: InputView, private val outputView: OutputView) {
+class RacingCarController {
+    private val inputView = InputView()
+    private val outputView = OutputView()
+
     fun run() {
         outputView.printRacingCarNameInstruction()
         val racingCarList = makeRacingCarList(inputView.inputRacingCarName())
