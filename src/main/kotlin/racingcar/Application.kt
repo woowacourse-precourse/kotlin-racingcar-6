@@ -1,7 +1,10 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
+
 fun main() {
 
-    val carGame = RacingCarGame()
-    carGame.gameStart()
+    val carGame = Console.readLine()
+
+    println(carGame)
 }
