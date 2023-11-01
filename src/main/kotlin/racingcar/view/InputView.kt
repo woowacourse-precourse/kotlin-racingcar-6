@@ -6,4 +6,5 @@ class InputView {
 
     fun readUserInput(): String = Console.readLine().trim()
 
+    fun finish() = Console.close()
 }

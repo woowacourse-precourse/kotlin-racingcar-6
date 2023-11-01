@@ -11,11 +11,11 @@ class OutputView {
 
     fun printStartOfResultPhrase() = println(Message.RESULT_PHRASE)
 
-    fun printRoundResultFormat(name: String, position: Int){
+    fun printRoundResultFormat(name: String, position: Int) {
         println("$name : ${"-".repeat(position)}")
     }
 
-    fun printWinnerFormat(winnerList: List<String>){
+    fun printWinnerFormat(winnerList: List<String>) {
         val winners = winnerList.joinToString(",")
         println("${Message.FINAL_WINNER_FORMAT}${winners}")
     }

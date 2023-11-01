@@ -22,6 +22,8 @@ class Controller {
         }
 
         showWinners(carList)
+
+        inputView.finish()
     }
 
     private fun readInputCars(): String {
