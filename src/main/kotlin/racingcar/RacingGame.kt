@@ -5,7 +5,6 @@ import kotlin.IllegalArgumentException
 
 class RacingGame {
     private val cars: MutableList<Car> = mutableListOf()
-    private lateinit var winner: String
 
     fun gameStart() {
         getRacer()
@@ -14,6 +13,7 @@ class RacingGame {
         for (i in 0 until round) {
             move()
         }
+        printResult()
     }
 
     private fun getRacer() {
@@ -43,5 +43,25 @@ class RacingGame {
             car.move()
         }
         println()
+    }
+
+    fun printResult() {
+        val progress = mutableListOf<Int>()
+        for (car in cars) {
+            progress.add(car.progress)
+        }
+        showWinner(progress.max())
+    }
+
+    private fun showWinner(maxValue: Int) {
+        val result = cars.filter { it.progress == maxValue }
+        print("최종 우승자 : ")
+        var win: String = result[0].name
+        if(result.size > 1) {
+            for (winner in result.subList(1, result.size)) {
+                win = win + ", " + winner.name
+            }
+        }
+        println(win)
     }
 }
