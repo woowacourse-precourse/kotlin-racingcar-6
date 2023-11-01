@@ -4,9 +4,8 @@ import camp.nextstep.edu.missionutils.Console
 
 class InputView {
 
-    fun inputCars(cars: String = Console.readLine()): List<String> {
-        return cars.split(',').map { it.trim() }
-    }
+    fun inputCars(cars: String = Console.readLine()): List<String> =
+        cars.split(DELIMITER).map { it.trim() }
 
     fun inputTryCount(tryCount: String = Console.readLine()): Int {
         val count = tryCount.toIntOrNull()
@@ -17,6 +16,10 @@ class InputView {
 
             else -> count
         }
+    }
+
+    companion object {
+        const val DELIMITER = ", "
     }
 
 }
