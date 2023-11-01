@@ -12,7 +12,7 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.PrintStream
 
-class ApplicationTest {
+class ApplicationTest { // main은 테스트코드를 어떻게 짜죠..?ㅠㅠ
 
     @TempDir
     lateinit var tempDir: File
