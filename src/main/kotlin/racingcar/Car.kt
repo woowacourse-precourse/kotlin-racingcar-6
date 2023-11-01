@@ -4,7 +4,7 @@ class Car(val name: String) {
 
     private var position = INITIAL_CAR_POSITION
 
-    private fun findForwardCondition(randomNumber: Int): Boolean {
+    fun findForwardCondition(randomNumber: Int): Boolean {
         return randomNumber >= MIN_FORWARD_POSITION
     }
 

@@ -2,10 +2,28 @@ package racingcar
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class CarTest {
 
     private val car = Car("Car1")
+
+    @ParameterizedTest
+    @ValueSource(ints = [4, 7, 9])
+    fun `전진 조건이 4이상 일 때`(input: Int) {
+        val whetherAdvance = car.findForwardCondition(input)
+
+        assertEquals(ADVANCE_POSSIBLE, whetherAdvance)
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = [0, 2])
+    fun `전진 조건이 3이하 일 때`(input: Int) {
+        val whetherAdvance = car.findForwardCondition(input)
+
+        assertEquals(ADVANCE_IMPOSSIBLE, whetherAdvance)
+    }
 
     @Test
     fun `차량이 3 이하의 숫자를 받으면 전진하지 않음`() {
@@ -34,6 +52,8 @@ class CarTest {
         private const val ADVANCE = 1
         private const val STOP = 3
         private const val MOVE = 4
+        private const val ADVANCE_POSSIBLE = true
+        private const val ADVANCE_IMPOSSIBLE = false
     }
 
 }
