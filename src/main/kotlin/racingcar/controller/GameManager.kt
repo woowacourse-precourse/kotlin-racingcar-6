@@ -35,7 +35,7 @@ class GameManager {
     fun race(carNamesSeparated: List<String>, tryNum: Int): List<String> {
         Output().racingResult()
         var carProgress: List<String> = CarProgress().initialize(carNamesSeparated.size)
-        for (i in 0..<tryNum) {
+        repeat(tryNum) {
             carProgress = Game().eachRace(carProgress)
             Output().eachRacingResult(carNamesSeparated, carProgress)
         }
