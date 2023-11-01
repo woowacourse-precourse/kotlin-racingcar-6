@@ -2,6 +2,7 @@ package racingcar.controller
 
 import racingcar.constant.Constants.EXECUTION_RESULT_STRING
 import racingcar.domain.CarStatusUpdater
+import racingcar.domain.NumberGenerator
 import racingcar.util.Validator
 import racingcar.view.InputView
 import racingcar.view.RaceView
@@ -26,17 +27,21 @@ class GameController {
 
     private fun play(carNames: ArrayList<String>, attemptCount: Int) {
         println(EXECUTION_RESULT_STRING)
+
         val carStatusUpdater = CarStatusUpdater()
-        val RaceView = RaceView()
+        val numberGenerator = NumberGenerator()
+        val raceView = RaceView()
 
         carStatus.clear()
         carStatus.putAll(carNames.associateWith { "" })
         var currentCount = 0
+        var randomNumber: Int
         while (currentCount < attemptCount) {
             for (car in carStatus) {
-                carStatusUpdater.moveCarForward(carStatus, car.key)
+                randomNumber = numberGenerator.createRandomNumber()
+                carStatusUpdater.moveCarForward(carStatus, car.key, randomNumber)
             }
-            RaceView.printCarProgress(carStatus)
+            raceView.printCarProgress(carStatus)
 
             currentCount++
         }

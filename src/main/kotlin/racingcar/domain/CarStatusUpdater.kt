@@ -1,10 +1,8 @@
 package racingcar.domain
 
 class CarStatusUpdater {
-    fun moveCarForward(carStatus: MutableMap<String, String>, carName: String) {
+    fun moveCarForward(carStatus: MutableMap<String, String>, carName: String, randomNumber: Int) {
         val judgment = Judgment()
-        val numberGenerator = NumberGenerator()
-        val randomNumber = numberGenerator.createRandomNumber()
 
         if (judgment.canMoveForward(randomNumber)) {
             carStatus[carName] = carStatus[carName] + "-"
