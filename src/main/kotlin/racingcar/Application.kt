@@ -8,17 +8,17 @@ class InputHandler {
         val carNames = getCarNames()
         val roundCount = getRoundCount()
 
-        val carResults = simulateRace(carNames, roundCount)
+        val carResults = mutableMapOf<String, MutableList<Int>>()
 
-        println("경주할 자동차 이름: ${carNames.joinToString(", ")}")
-        println("실행 횟수: $roundCount")
-        println("실행 결과:")
         repeat(roundCount) {
-            carResults.forEach { (carName, results) ->
-                println("$carName: ${results.joinToString(", ")}")
+            carNames.forEach { carName ->
+                val randomValue = Randoms.pickNumberInRange(0, 9)
+                carResults.computeIfAbsent(carName) { mutableListOf() }.add(randomValue)
+                println("$carName: ${carResults[carName]!!.joinToString(", ")}")
             }
             println()
         }
+
         println("실행 종료!")
     }
 
@@ -32,17 +32,6 @@ class InputHandler {
         println("시도할 횟수를 입력하세요:")
         val input = Console.readLine()
         return input.toIntOrNull() ?: 0
-    }
-
-    private fun simulateRace(carNames: List<String>, roundCount: Int): Map<String, List<Int>> {
-        val carResults = mutableMapOf<String, List<Int>>()
-
-        carNames.forEach { carName ->
-            val results = (1..roundCount).map { Randoms.pickNumberInRange(0, 9) }
-            carResults[carName] = results
-        }
-
-        return carResults
     }
 }
 
