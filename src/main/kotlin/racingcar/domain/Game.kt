@@ -1,13 +1,11 @@
 package racingcar.domain
 
 class Game() {
-
     fun result(cars: List<Car>?): Map<String, Int> {
         return cars!!.associateBy({ it.name }, { it.position })
     }
 
     fun start(cars: List<Car>?) {
-
         cars!!.forEach { car ->
             val randomNum = car.getRandoms()
             car.move(randomNum) }

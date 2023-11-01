@@ -13,7 +13,7 @@ object Validations {
             throw IllegalArgumentException(ERROR_STRING_TYPE)
         }
 
-        if(num.isEmpty()) {
+        if (num.isEmpty()) {
             throw IllegalArgumentException(ERROR_IS_EMPTY)
         }
         return result
@@ -21,11 +21,11 @@ object Validations {
 
     fun inputCarName(name: String): String {
         val names = name.split(",")
-        for(i in names.indices) {
-            if(names[i].length > 5) {
+        for (i in names.indices) {
+            if (names[i].length > 5) {
                 throw IllegalArgumentException(ERROR_MAX_STRING)
             }
-            if(names[i].isEmpty()) {
+            if (names[i].isEmpty()) {
                 throw IllegalArgumentException(ERROR_IS_EMPTY)
             }
         }
