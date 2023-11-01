@@ -2,12 +2,14 @@ package racingcar.controller
 
 import racingcar.car.Car
 import racingcar.car.CarImpl
+import racingcar.randomnumbergenerator.RandomNumberGenerator
 import racingcar.validator.Validator
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
 class Controller(
     private val validator: Validator,
+    private val randomNumberGenerator: RandomNumberGenerator,
 ) {
     private val cars = ArrayList<Car>()
 
@@ -15,6 +17,7 @@ class Controller(
         OutputView.enterNamesOfCars()
         setRacingCars(getNamesOfCar())
         OutputView.howManyAttempts()
+        val attempt = getAttempts()
     }
 
     private fun getNamesOfCar(): List<String> {
@@ -25,5 +28,9 @@ class Controller(
         for (name in namesOfCar) {
             cars.add(CarImpl(name))
         }
+    }
+
+    private fun getAttempts(): Int {
+        return InputView.askNumberOfAttempts(validator)
     }
 }
