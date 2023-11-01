@@ -18,4 +18,16 @@ class RacingCarInputTest {
         }.isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("입력된 자동차 이름이 5자 초과입니다.")
     }
+
+    @Test
+    fun `입력된 자동차 개수가 1개 이하면 예외가 발생한다`() {
+        // given
+        val racingCarName: List<Car> = listOf(Car("abcde"))
+
+        // then
+        assertThatThrownBy {
+            RacingCarInput.validate(racingCarName)
+        }.isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("입력된 자동차의 개수가 1개 이하입니다.")
+    }
 }
