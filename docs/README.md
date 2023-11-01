@@ -67,6 +67,6 @@ Repository 객체 대신 List로 간소화한다.
 비즈니스 로직을 처리하는 ViewModel 클래스에 대한 테스트만 진행하면 된다.
 
 - [x] savePlayers() 테스트
-- [ ] saveRound() 테스트
+- [x] saveRound() 테스트
 - [ ] playRound() 테스트
 - [ ] getWinners() 테스트
