@@ -3,7 +3,7 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 class RacingGame(
-    private val printer: Printer = Printer(),
+    private val printer: Printer = Printer()
 ) {
 
     private lateinit var carsList: List<Car>
@@ -59,7 +59,7 @@ class RacingGame(
             printer.printOutRacingWinner(winners[0].name)
         }
     }
-    
+
     private fun requireValidCarsInput(carsInputString: String) {
         require(carsInputString.count { it == ',' } == carsList.size - 1)
         require(carsInputString.length <= carsList.size * CARS_MAX_LENGTH + carsInputString.count { it == ',' })
