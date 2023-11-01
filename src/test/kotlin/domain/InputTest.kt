@@ -1,16 +1,16 @@
 package domain
 
-import domain.Constant.WRONG_NAME_LENGTH_EXCEPTION
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.Test
 
 class InputTest {
     @Test
     fun car입력값5자이하() {
-        val input = "baehyun,jin"
-        val result = input.split(",")
-        for (index in result.indices) {
+        val exception = Exception()
+        val result = "hyunjin"
+        assertThrows<IllegalArgumentException>{
+            exception.nameLengthException(result)
         }
     }
 
