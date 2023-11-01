@@ -6,9 +6,11 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
 
     val carGame = Console.readLine()
-    val test = Randoms.pickNumberInRange(0, 9)
+    var test = Randoms.pickNumberInRange(0, 9)
+
+    test++
 
     println(carGame)
-    //println(test)
+    println(test)
     Console.close()
 }
