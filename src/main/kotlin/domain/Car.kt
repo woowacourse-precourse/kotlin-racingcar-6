@@ -5,7 +5,11 @@ import domain.Constant.INPUT_CAR_NAME_TEXT
 import domain.Constant.NAME_DIVISION_NOTATION
 
 class Car(private var name: String) {
-    private var moveCount = 0
+    var moveCount = 0
+
+    fun moveCount(): Int {
+        return moveCount
+    }
 
     fun moveForward(): Int {
         moveCount++

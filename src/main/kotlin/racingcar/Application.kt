@@ -3,6 +3,7 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 import domain.Car
 import domain.Constant
+import domain.Constant.FINAL_WINNER
 import domain.Constant.FORWARD_CONDITION_STANDARD
 import domain.Constant.FORWARD_NOTATION
 import domain.Constant.INPUT_CAR_NAME_TEXT
@@ -26,6 +27,7 @@ fun startRacingPlay(cars: List<Car>, racing: Int) {
         racingPlay(cars)
         println()
     }
+    winnerJudge(cars)
 }
 
 fun racingPlay(car: List<Car>) {
@@ -57,3 +59,24 @@ fun moveStop(name: Car) {
 }
 
 fun move(moveCount: Int): String = FORWARD_NOTATION.repeat(moveCount)
+
+fun winnerJudge(cars: List<Car>) {
+    var moveCountMap: MutableMap<String, Int> = mutableMapOf()
+    cars.forEach { car -> moveCountMap[car.toString()] = car.moveCount }
+    println(moveCountMap)
+    val map = moveCountMap.toList().sortedByDescending { it.second }.toMap() as MutableMap
+    println(map)
+    val max = map.values.max()
+    val maxKey: MutableList<String> = mutableListOf()
+    for ((key, value) in map) {
+        if (value == max) {
+            maxKey.add(key)
+        }
+    }
+    outputWinner(maxKey.joinToString(", "))
+}
+
+fun outputWinner(max: String) {
+    println()
+    println("${FINAL_WINNER}${max}")
+}
