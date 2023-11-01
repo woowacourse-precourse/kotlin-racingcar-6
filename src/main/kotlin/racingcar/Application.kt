@@ -1,5 +1,13 @@
 package racingcar
 
+import racingcar.data.CarFactory
+import racingcar.presentation.Input
+import racingcar.presentation.Output
+
 fun main() {
-    // TODO: 프로그램 구현
+    val playerList = Input.getPlayerList()
+    val gameCount = Input.getGameCount()
+    val carList = CarFactory.makeCarList(playerList, gameCount)
+    Output.printResult(carList)
+    Input.close()
 }
