@@ -27,10 +27,10 @@ class CarTest {
     }
 
     companion object {
-        const val INITIAL_POSITION = 0
-        const val ADVANCE = 1
-        const val STOP = 3
-        const val MOVE = 4
+        private const val INITIAL_POSITION = 0
+        private const val ADVANCE = 1
+        private const val STOP = 3
+        private const val MOVE = 4
     }
 
 }

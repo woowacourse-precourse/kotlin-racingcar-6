@@ -53,11 +53,11 @@ class HostTest {
     }
 
     companion object {
-        const val INITIAL_POSITION = 0
-        const val ADVANCE = 1
-        const val POLY = 0
-        const val ROY = 1
-        const val AMBER = 2
+        private const val INITIAL_POSITION = 0
+        private const val ADVANCE = 1
+        private const val POLY = 0
+        private const val ROY = 1
+        private const val AMBER = 2
     }
 
 }
