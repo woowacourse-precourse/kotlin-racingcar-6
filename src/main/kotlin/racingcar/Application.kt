@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 
 fun main() {
@@ -28,6 +29,12 @@ fun getNumberOfRacing(): Int {
     println("시도할 횟수는 몇 회인가요?")
     if (!Console.readLine().matches(Regex("\\d"))) throw IllegalArgumentException("숫자로 입력해야 함")
     return Console.readLine().toInt()
+}
+
+fun getRandomNumArray(carNamesArray: Collection<Car>): Array<Int> {
+    return Array(carNamesArray.size) {
+        Randoms.pickNumberInRange(0, 9)
+    }
 }
 
 
