@@ -109,9 +109,11 @@ class RaceViewTest {
         inputView.addUserInput("abc")
 
         // when, then
-        assertThrows<IllegalArgumentException> {
+        val exception = assertThrows<IllegalArgumentException> {
             view.getTurnNumberFromUser()
         }
+
+        assertThat(exception.message).isEqualTo(TestInputView.INPUT_NOT_NUMBER_EXCEPTION)
     }
 
     @Test

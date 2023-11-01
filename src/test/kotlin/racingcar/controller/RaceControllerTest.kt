@@ -177,8 +177,10 @@ class RaceControllerTest {
         inputView.addUserInput("pobi,woni,jun", "abc")
 
         // when, then
-        assertThrows<IllegalArgumentException> {
+        val exception = assertThrows<IllegalArgumentException> {
             controller.startRace()
         }
+
+        assertThat(exception.message).isEqualTo(TestInputView.INPUT_NOT_NUMBER_EXCEPTION)
     }
 }
