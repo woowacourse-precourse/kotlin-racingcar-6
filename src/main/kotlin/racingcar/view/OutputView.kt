@@ -3,20 +3,20 @@ package racingcar.view
 import racingcar.model.Cars
 
 class OutputView {
-    fun showStartGuide() = println(START_GUIDE_MESSAGE)
+    fun startGuide() = println(START_GUIDE_MESSAGE)
 
-    fun showTryCountGuide() = println(TRY_COUNT_GUIDE_MESSAGE)
+    fun tryCountGuide() = println(TRY_COUNT_GUIDE_MESSAGE)
 
-    fun showResultGuide() = println(RESULT_GUIDE_MESSAGE)
+    fun resultGuide() = println(RESULT_GUIDE_MESSAGE)
 
-    fun showRace(cars: Cars) {
+    fun race(cars: Cars) {
         cars.carList.forEach {
             println(it.name + START_LANE + CAR_POSITION_SYMBOL.repeat(it.position))
         }
         println()
     }
 
-    fun showResult(cars: List<String>) = print("$FINAL_WINNER_LABEL ${cars.joinToString(DELIMITER)}")
+    fun result(cars: List<String>) = print("$FINAL_WINNER_LABEL ${cars.joinToString(DELIMITER)}")
 
     companion object {
         const val START_GUIDE_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
