@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    println(Const.INPUT_CARNAME)
+    println(Const.INPUT_CAR_NAME)
     val carInput = Console.readLine()
     val carList = carInput.split(",")
     processExceptionCar(carList)
@@ -34,9 +34,9 @@ fun main() {
 
 fun processExceptionCar(carList: List<String>) {
     for (name in carList) {
-        val dupliList = carList.distinct()
-        if (dupliList.size != carList.size) {
-            throw IllegalArgumentException(Const.EXCEPTION_DUPLI_NAME)
+        val dupList = carList.distinct()
+        if (dupList.size != carList.size) {
+            throw IllegalArgumentException(Const.EXCEPTION_DUP_NAME)
         }
 
         if (name.toList().any { !it.isLetterOrDigit() }) {

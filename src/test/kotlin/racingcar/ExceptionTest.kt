@@ -1,6 +1,5 @@
 package racingcar
 
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -21,7 +20,7 @@ class ExceptionTest {
     @Test
     fun `중복된 이름이 있으면 예외가 발생한다`() {
         val nameList = listOf("pobi","woni","jun","woni")
-        assertThrows<IllegalArgumentException>(Const.EXCEPTION_DUPLI_NAME) { processExceptionCar(nameList) }
+        assertThrows<IllegalArgumentException>(Const.EXCEPTION_DUP_NAME) { processExceptionCar(nameList) }
     }
 
     @Test
