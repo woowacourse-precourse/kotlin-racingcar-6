@@ -8,11 +8,11 @@ fun main() {
     val carList = carInput.split(",")
     processExceptionCar(carList)
 
-    val playCount= Console.readLine()
-    processExceptionCount(playCount)
+    val countInput = Console.readLine()
+    processExceptionCount(countInput)
 
     val resList = MutableList(carList.size) {0}
-    var count = playCount.toInt()
+    var count = countInput.toInt()
 
     println(Const.RESULT_MSG)
     while (count != 0) {
@@ -46,11 +46,11 @@ fun processExceptionCar(carList: List<String>) {
     }
 }
 
-fun processExceptionCount(playCount: String) {
-    if (playCount == "0") {
+fun processExceptionCount(countInput: String) {
+    if (countInput == "0") {
         throw IllegalArgumentException(Const.EXCEPTION_WRONG_NUMBER)
     }
-    if (playCount.toList().any { !it.isDigit() }) {
+    if (countInput.toList().any { !it.isDigit() }) {
         throw IllegalArgumentException(Const.EXCEPTION_NOT_NUMBER)
     }
 }
