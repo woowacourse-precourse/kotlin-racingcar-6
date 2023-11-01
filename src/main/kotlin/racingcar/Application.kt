@@ -5,8 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val game = RacingCarGame()
-    game.inputCarNames()
-    game.inputAttemptsCount()
+    val carNames = game.inputCarNames()
+    val attemptsCount = game.inputAttemptsCount()
+
 }
 
 class RacingCarGame {
@@ -51,6 +52,14 @@ class RacingCarGame {
             throw IllegalArgumentException("1 이상의 숫자를 입력해주세요.")
         }
     }
+
+    fun printGameResult(cars: List<Car>) {
+        cars.forEach { car ->
+            println("${car.name} : ${"-".repeat(car.getPosition())}")
+        }
+        println("")
+
+    }
 }
 
 class Car(val name: String) {
@@ -63,7 +72,7 @@ class Car(val name: String) {
             position++
         }
     }
-현
+
     fun getPosition(): Int {
         return position
     }
