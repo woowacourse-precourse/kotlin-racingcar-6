@@ -22,6 +22,11 @@ object Validator {
             throw IllegalArgumentException("이름에 공백이 포함되어 있습니다.")
         }
     }
+    fun userInputBlack(carNameList: List<String>){
+        if (carNameList.any{it.isBlank()}){
+            throw IllegalArgumentException("이름을 입력해주세요.")
+        }
+    }
     fun validateUserTryCount(tryCount: String) {
         if (tryCount.toIntOrNull() == null) {
             throw IllegalArgumentException("유효한 숫자를 입력하세요.")
