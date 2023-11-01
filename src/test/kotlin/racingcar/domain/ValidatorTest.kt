@@ -1,6 +1,6 @@
 package racingcar.domain
 
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 
 import org.junit.jupiter.api.Test
@@ -24,7 +24,7 @@ class ValidatorTest {
 
         // then
         val expected = true
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -37,7 +37,7 @@ class ValidatorTest {
 
         // then
         val expected = true
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -50,7 +50,7 @@ class ValidatorTest {
 
         // then
         val expected = false
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -63,7 +63,7 @@ class ValidatorTest {
 
         // then
         val expected = true
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -76,7 +76,7 @@ class ValidatorTest {
 
         // then
         val expected = false
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -89,6 +89,6 @@ class ValidatorTest {
 
         // then
         val expected = true
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 }

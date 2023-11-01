@@ -1,6 +1,6 @@
 package racingcar.domain
 
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 
 import org.junit.jupiter.api.Test
@@ -25,7 +25,7 @@ class AnalyzerTest {
 
         // then
         val expected = false
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
 
@@ -39,7 +39,7 @@ class AnalyzerTest {
 
         // then
         val expected = false
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -52,7 +52,7 @@ class AnalyzerTest {
 
         // then
         val expected = true
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -65,7 +65,7 @@ class AnalyzerTest {
 
         // then
         val expected = true
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -87,7 +87,7 @@ class AnalyzerTest {
 
         // then
         val expected = listOf(a)
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -109,7 +109,7 @@ class AnalyzerTest {
 
         // then
         val expected = listOf(b)
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -131,7 +131,7 @@ class AnalyzerTest {
 
         // then
         val expected = listOf(c)
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -153,7 +153,7 @@ class AnalyzerTest {
 
         // then
         val expected = listOf(a, c)
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -169,6 +169,6 @@ class AnalyzerTest {
 
         // then
         val expected = listOf(a, b, c)
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 }

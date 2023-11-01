@@ -1,7 +1,7 @@
 package racingcar.domain
 
 import camp.nextstep.edu.missionutils.Console
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 
@@ -59,7 +59,7 @@ class IOHandlerTest {
             C : ---
             
         """.trimIndent()
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -83,7 +83,7 @@ class IOHandlerTest {
             C : 
             
         """.trimIndent()
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -101,7 +101,7 @@ class IOHandlerTest {
 
         // then
         val expected = "최종 우승자 : A"
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -120,7 +120,7 @@ class IOHandlerTest {
 
         // then
         val expected = "최종 우승자 : A, B"
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -137,7 +137,7 @@ class IOHandlerTest {
 
         // then
         val expected = listOf("ppoBi", "영수", "철수")
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -153,7 +153,7 @@ class IOHandlerTest {
 
         // then
         val expected = listOf("""가"나"다""")
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -169,7 +169,7 @@ class IOHandlerTest {
 
         // then
         val expected = listOf("이\\n름", " 정상이름")
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -188,8 +188,8 @@ class IOHandlerTest {
         // then
         val expectedClass = IllegalArgumentException::class.java
         val expectedErrorMessage = IOHandler.NAME_LENGTH_IS_NOT_MATCHED
-        Assertions.assertThat(actual).isInstanceOf(expectedClass)
-        Assertions.assertThat(actual).hasMessageContaining(expectedErrorMessage)
+        assertThat(actual).isInstanceOf(expectedClass)
+        assertThat(actual).hasMessageContaining(expectedErrorMessage)
 
     }
 
@@ -205,7 +205,7 @@ class IOHandlerTest {
 
         // then
         val expected = listOf("  ")
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -220,7 +220,7 @@ class IOHandlerTest {
 
         // then
         val expected = listOf("김 치")
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -235,7 +235,7 @@ class IOHandlerTest {
 
         // then
         val expected = listOf("김 치 ")
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -252,7 +252,7 @@ class IOHandlerTest {
 
         // then
         val expected = listOf(" ", "   ", "  ")
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -272,8 +272,8 @@ class IOHandlerTest {
         // then
         val expectedClass = IllegalArgumentException::class.java
         val expectedErrorMessage = IOHandler.NAME_LENGTH_IS_NOT_MATCHED
-        Assertions.assertThat(actual).isInstanceOf(expectedClass)
-        Assertions.assertThat(actual).hasMessageContaining(expectedErrorMessage)
+        assertThat(actual).isInstanceOf(expectedClass)
+        assertThat(actual).hasMessageContaining(expectedErrorMessage)
     }
 
     @Test
@@ -289,7 +289,7 @@ class IOHandlerTest {
 
         // then
         val expected = listOf("아우디", " 아우지", "아우디")
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -304,7 +304,7 @@ class IOHandlerTest {
 
         // then
         val expected = 5
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -321,8 +321,8 @@ class IOHandlerTest {
         // then
         val expectedClass = IllegalArgumentException::class.java
         val expectedErrorMessage = IOHandler.INPUT_IS_NOT_NUM
-        Assertions.assertThat(actual).isInstanceOf(expectedClass)
-        Assertions.assertThat(actual).hasMessageContaining(expectedErrorMessage)
+        assertThat(actual).isInstanceOf(expectedClass)
+        assertThat(actual).hasMessageContaining(expectedErrorMessage)
     }
 
     @Test
@@ -339,8 +339,8 @@ class IOHandlerTest {
         // then
         val expectedClass = IllegalArgumentException::class.java
         val expectedErrorMessage = IOHandler.INPUT_IS_NOT_NUM
-        Assertions.assertThat(actual).isInstanceOf(expectedClass)
-        Assertions.assertThat(actual).hasMessageContaining(expectedErrorMessage)
+        assertThat(actual).isInstanceOf(expectedClass)
+        assertThat(actual).hasMessageContaining(expectedErrorMessage)
     }
 
     @Test
@@ -358,8 +358,8 @@ class IOHandlerTest {
         // then
         val expectedClass = IllegalArgumentException::class.java
         val expectedErrorMessage = IOHandler.NOT_ALLOWED_COUNT
-        Assertions.assertThat(actual).isInstanceOf(expectedClass)
-        Assertions.assertThat(actual).hasMessageContaining(expectedErrorMessage)
+        assertThat(actual).isInstanceOf(expectedClass)
+        assertThat(actual).hasMessageContaining(expectedErrorMessage)
     }
 
     @Test
@@ -374,7 +374,7 @@ class IOHandlerTest {
 
         // then
         val expected = 0
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -389,7 +389,7 @@ class IOHandlerTest {
 
         // then
         val expected = 1_000_000
-        Assertions.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     private fun setInput(input: String) {
