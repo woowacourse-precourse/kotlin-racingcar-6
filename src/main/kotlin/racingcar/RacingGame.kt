@@ -3,45 +3,51 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 class RacingGame(
-    private val printer: Printer = Printer()
+    private val printer: Printer = Printer(),
 ) {
 
     private lateinit var carsList: List<Car>
 
+    private var attemptsNumber: Int = 0
+
     private fun userInput() = Console.readLine()
 
-    fun readyRacing() {
+    fun execute() {
+        stepToEnterCarNames()
+        stepToEnterTheNumberOfAttempts()
+        stepInWhichRacingIsCarriedOut()
+        stepToChooseWinners()
+    }
+
+    fun stepToEnterCarNames() {
         printer.printOutEnteringCarName()
         val carsInputString = userInput()
-
         carsList = carsInputString.split(",").filter { it.isNotBlank() }.map { Car(it) }
+
         requireValidCarsInput(carsInputString = carsInputString)
         requireCheckingForDuplicateNames()
+    }
 
+    fun stepToEnterTheNumberOfAttempts() {
         printer.printOutEnteringAttemptsNumber()
         val attemptsNumberInput = userInput()
         requireValidAttemptsNumberInput(attemptsNumberInput = attemptsNumberInput)
-        val attemptsNumber = attemptsNumberInput.toInt()
-
-        startRacing(attemptsNumber = attemptsNumber)
+        attemptsNumber = attemptsNumberInput.toInt()
     }
 
-    private fun startRacing(attemptsNumber: Int) {
-        var attempts = attemptsNumber
+    private fun stepInWhichRacingIsCarriedOut() {
         printer.printOutResultInformationText()
 
-        while (attempts > 0) {
+        while (attemptsNumber > 0) {
             carsList.map { car ->
                 car.moveForward()
             }
             printer.printOutCarsMoveResult(carsList = carsList)
-            attempts--
+            attemptsNumber--
         }
-
-        chooseWinners()
     }
 
-    private fun chooseWinners() {
+    private fun stepToChooseWinners() {
         val maxHowGoForwardCars = carsList.maxByOrNull { it.howGoForwardCount }
         requireNotNull(maxHowGoForwardCars)
 
