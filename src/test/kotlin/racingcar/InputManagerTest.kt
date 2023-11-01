@@ -9,7 +9,14 @@ class InputManagerTest: NsTest() {
     @Test
     fun `이름에 대한 예외 처리`() {
         Assertions.assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+            assertThrows<IllegalArgumentException> { runException("pobi,java, minsu", "1") }
+        }
+    }
+
+    @Test
+    fun `실행 횟수가 음수 일 경우 예외 처리`() {
+        Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,sam,rupi", "-1") }
         }
     }
 
