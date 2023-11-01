@@ -21,15 +21,15 @@ object Process {
         return round
     }
 
-    fun getWinners(): List<String> {
-        return Round.getWinner()
-    }
-
     fun playRound() {
         for (i in 1..attemptTimes) {
-            Round.move()
-            Round.printRound()
+            round.move()
+            round.printRound()
         }
+    }
+
+    fun getWinners(): List<String> {
+        return round.getWinners()
     }
 }
 
@@ -38,7 +38,7 @@ class Validation {
         return carNamesInput.apply {
             forEach {
                 require(it.isNotBlank()) { "자동차 이름을 입력해주세요." }
-                require(it.length <= 5) { "이름은 5자 이하로 입력해주세요."}
+                require(it.length <= 5) { "이름은 5자 이하로 입력해주세요." }
             }
         }
     }
@@ -46,6 +46,3 @@ class Validation {
     fun getAttemptTimes(attemptTimes: String): Int =
         attemptTimes.toIntOrNull() ?: throw IllegalArgumentException("시도 횟수를 입력해주세요.")
 }
-
-
-
