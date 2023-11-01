@@ -27,7 +27,7 @@ class CarCollection(carNameString: String) {
     }
 
     fun getWinners(): MutableList<Car> {
-        val maxPositionCar = cars.stream().max(Car::compareTo).orElse(null)
+        val maxPositionCar = cars.max()
         val winnerList = mutableListOf<Car>()
 
         for (car in cars) {
