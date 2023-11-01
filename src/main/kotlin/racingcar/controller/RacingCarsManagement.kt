@@ -8,9 +8,10 @@ class RacingCarsManagement(val cars:MutableList<RacingCarModel>) {
         cars.add(racingCarModel)
     }
 
-    fun getWinners():List<RacingCarModel>{
+    fun getWinners():String{
         val maxPlace = cars.maxOf { it.place }
-        return cars.filter { car -> car.place == maxPlace}
+
+        return "최종 우승 : ${cars.filter { car -> car.place == maxPlace}.joinToString(", ")}"
     }
 
 }

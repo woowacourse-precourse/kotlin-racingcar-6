@@ -12,21 +12,31 @@ class RacingGameController {
     private lateinit var racingCarsManagement: RacingCarsManagement
     private lateinit var roundManagement: RoundManagement
 
+    fun play(){
+        start()
+        progress()
+        end()
+    }
 
-    fun start(){
+
+    private fun start(){
         guideView.printInputCarsName()
         racingCarsManagement = RacingCarsManagement(RacingCarsDTO(userInputView.getCarsName()).convertRacingCars())
         guideView.printInputRoundCnt()
         roundManagement = RoundManagement(RoundDTO(userInputView.getRoundCount()).convertRoundCount(),racingCarsManagement)
     }
 
-    fun progress(){
+    private fun progress(){
         guideView.printExecutionResult()
         repeat (roundManagement.count){
             roundManagement.playRound()
             raceResultView.printRoundResult(roundManagement.getRacingResult())
             println()
         }
+    }
+
+    private fun end(){
+        raceResultView.printWinners(racingCarsManagement.getWinners())
     }
 
 
