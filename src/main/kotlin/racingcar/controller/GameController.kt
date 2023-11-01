@@ -2,39 +2,36 @@ package racingcar.controller
 
 import racingcar.model.Car
 import racingcar.model.Cars
-import racingcar.view.InputView
-import racingcar.view.OutputCars
-import racingcar.view.OutputGuide
-import racingcar.view.OutputResult
+import racingcar.view.*
 
 class GameController {
-    private val outputGuide = OutputGuide()
+
+    // view
     private val inputView = InputView()
-    private val outputCars = OutputCars()
-    private val outputResult = OutputResult()
+    private val outputView = OutputView()
 
     private lateinit var cars: Cars
 
     fun startGame() {
-        outputGuide.showStartGuide()
+        outputView.showStartGuide()
         cars = Cars(inputView.inputCars().map { Car(it) })
         cars.validate()
 
-        outputGuide.showTryCountGuide()
+        outputView.showTryCountGuide()
         val tryCount = inputView.inputTryCount()
         startTurn(tryCount)
         val winners = cars.decideWinner()
-        outputResult.showResult(winners)
+        outputView.showResult(winners)
 
     }
 
     private fun startTurn(tryCount: Int) {
-        outputGuide.showResultGuide()
+        outputView.showResultGuide()
         for (i in 1..tryCount) {
             cars.cars.forEach {
                 it.moveForward()
             }
-            outputCars.showRace(cars)
+            outputView.showRace(cars)
         }
     }
 
