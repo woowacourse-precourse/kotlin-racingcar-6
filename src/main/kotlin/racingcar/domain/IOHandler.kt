@@ -31,7 +31,7 @@ class IOHandler(private val validator: Validator) {
 
     fun showLocation(cars: List<Car>) {
         for (car in cars) {
-            show(car, true)
+            show(car)
         }
     }
 
@@ -42,13 +42,15 @@ class IOHandler(private val validator: Validator) {
         show("$SENTENCE_FOR_WINNER$sentence")
     }
 
-    fun show(sentence: Any, lineBreak: Boolean = false) {
+    fun show(sentence: String, lineBreak: Boolean = false) {
         if (lineBreak) {
             println(sentence)
             return
         }
         print(sentence)
     }
+
+    private fun show(car: Car) = println(car)
 
     private fun getInput(): String = Console.readLine()
 
