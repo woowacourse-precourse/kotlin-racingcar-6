@@ -1,5 +1,7 @@
 package racingcar
 
+import racingcar.container.createGameController
+
 fun main() {
-    // TODO: 프로그램 구현
+    createGameController().run()
 }
