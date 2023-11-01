@@ -1,9 +1,9 @@
 package racingcar.view
 
+import UnvalidPositionException
 import racingcar.*
 import racingcar.dto.CarDto
 import racingcar.dto.WinnerDto
-import racingcar.exceptions.UnvalidPositionException
 
 class OutputView {
     fun raceStart() {
