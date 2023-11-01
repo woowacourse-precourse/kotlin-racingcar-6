@@ -11,6 +11,14 @@ class Input {
 
     fun inputMoveTimes() : Int {
         println("시도할 횟수는 몇 회인가요?")
-        return readLine().toInt()
+        val time = readLine().toInt()
+        checkMoveTimeValidate(time)
+        return time
+    }
+
+    fun checkMoveTimeValidate(time: Int) {
+        if (time < 1) {
+            throw IllegalArgumentException("1번 이상의 횟수가 필요합니다.")
+        }
     }
 }
