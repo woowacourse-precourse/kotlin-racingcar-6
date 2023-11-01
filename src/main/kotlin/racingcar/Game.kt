@@ -24,10 +24,17 @@ class Game {
         getTryNumber()
 
         ProgressMessage.DescribeNextResult.show()
+        startRace()
     }
 
-    private fun initCarList(inputCarList: List<Car>) { this.carList = inputCarList }
-    private fun initTryNumber(inputNumber: Int) { this.tryNumber = inputNumber }
+    private fun initCarList(inputCarList: List<Car>) {
+        this.carList = inputCarList
+    }
+
+    private fun initTryNumber(inputNumber: Int) {
+        this.tryNumber = inputNumber
+    }
+
     private fun getCarList() {
         val carList = Console.readLine().split(",")
         verifyCarList(carList)
@@ -38,5 +45,15 @@ class Game {
         val tryNumber = Console.readLine()
         verifyTryNumber(tryNumber)
         initTryNumber(tryNumber.toInt())
+    }
+
+    private fun startRace() {
+        repeat(tryNumber) {
+            carList.forEach {
+                it.tryToMoveForward()
+                it.showResult()
+            }
+            print("\n")
+        }
     }
 }
