@@ -12,7 +12,7 @@ class Cars(private val determineMove: DetermineMove) {
     fun createCar(carNames: List<String>): List<Car> {
         carNames.forEach { name ->
             _carList.add(Car(name))
-            carStateList.add(0)
+            carStateList.add(INITIALIZE_NUM)
         }
         return carList
     }
@@ -34,6 +34,10 @@ class Cars(private val determineMove: DetermineMove) {
             carStateList[index] = car.advanceState
         }
         return carStateList
+    }
+
+    companion object {
+        const val INITIALIZE_NUM = 0
     }
 
 }
