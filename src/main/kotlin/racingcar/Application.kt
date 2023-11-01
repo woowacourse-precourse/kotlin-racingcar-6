@@ -8,7 +8,7 @@ fun main() {
         roundNum = roundNum,
         OutputManager::printGameStatus
     )
-    println("실행 결과")
+    println(Resources.RESULT_OF_GAME)
     val winners = referee.getWinners()
     OutputManager.printWinners(winners)
 }

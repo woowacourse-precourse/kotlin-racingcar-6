@@ -14,5 +14,5 @@ object OutputManager {
     fun printWinners(winners: List<Car>) {
         println(buildWinnersString(winners))
     }
-    private fun buildWinnersString(winners:List<Car>): String = "최종 우승자 : " + winners.joinToString(", ") { it.name }
+    private fun buildWinnersString(winners:List<Car>): String = Resources.WINNER_IS + winners.joinToString(", ") { it.name }
 }

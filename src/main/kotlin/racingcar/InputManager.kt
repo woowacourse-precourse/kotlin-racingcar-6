@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 object InputManager {
     fun getCarNames() : List<String> {
-        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        println(Resources.PLEASE_ENTER_THE_NAMES_OF_CARS)
         val input = Console.readLine()
         return input.split(",").map {
             require(it.length <= 5) {"Wrong Car name! Car name must be 5 characters or less"}
@@ -12,7 +12,7 @@ object InputManager {
         }
     }
     fun getRoundNum(): Int{
-        println("시도할 횟수는 몇 회인가요?")
+        println(Resources.HOW_MANY_ATTEMPTS)
         return Console.readLine().toInt()
     }
 }
