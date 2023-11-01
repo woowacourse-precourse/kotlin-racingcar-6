@@ -1,5 +1,10 @@
 package racingcar
 
+import racingcar.game.GameSetting
+
 fun main() {
-    // TODO: 프로그램 구현
+
+    val game = GameSetting().setGame()
+
+    game.play()
 }
