@@ -4,23 +4,26 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    val game = RacingCarGame()
-    val carNames = game.inputCarNames()
-    val attemptsCount = game.inputAttemptsCount()
-
-    val cars = carNames.map { Car(it) }
-
-    println("\n실행 결과")
-    repeat(attemptsCount) {
-        for (car in cars) {
-            car.move()
-        }
-        game.printGameResult(cars)
-    }
-    game.printWinners(game.findWinners(cars))
+    RacingCarGame().start()
 }
 
 class RacingCarGame {
+
+    fun start() {
+        val carNames = inputCarNames()
+        val attemptsCount = inputAttemptsCount()
+
+        val cars = carNames.map { Car(it) }
+
+        println("\n실행 결과")
+        repeat(attemptsCount) {
+            for (car in cars) {
+                car.move()
+            }
+            printGameResult(cars)
+        }
+        printWinners(findWinners(cars))
+    }
 
     fun inputCarNames(): List<String> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
