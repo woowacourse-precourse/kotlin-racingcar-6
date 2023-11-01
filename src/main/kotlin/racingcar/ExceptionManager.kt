@@ -20,8 +20,9 @@ class ExceptionManager {
 
     }
     fun repeatException(num : String){
-        if (num.toIntOrNull() == null) {
-            throw IllegalArgumentException("숫자를 입력해주세요.")
+        val repeatNum = num.toIntOrNull() ?: throw IllegalArgumentException("숫자를 입력해주세요.")
+        if (repeatNum < 1){
+            throw IllegalArgumentException("1 이상의 숫자를 입력해주세요")
         }
     }
 }
