@@ -40,13 +40,13 @@
 - 게임 진행과 데이터를 관리하는 오브젝트 입니다.
 #### Variable
 #### Method
-- `getCarList()`
-- `getRacingCount()`
-- `separateCarList()`
-- `selectWinner()`
-- `setRacingCount()`
-- `registerCar()`
-- `getUserInput()`
+- `getCarList()` : 자동차 리스트를 반환합니다.
+- `getRacingCount()` : 레이싱 시도 횟수를 반환합니다.
+- `separateCarList()` : 자동차 리스트를 생성합니다.
+- `selectWinner()` : 우승자를 선별합니다.
+- `setRacingCount()` : 레이싱 시도 횟수를 사용자로부터 받습니다.
+- `registerCar()` :  새로운 자동차를 등록합니다.
+- `getUserInput()` : 사용자의 입력을 받습니다.
 
 ## Manager
 
@@ -54,19 +54,19 @@
 ### [RacingManager.kt](..%2Fsrc%2Fmain%2Fkotlin%2Fracingcar%2Fmanager%2FRacingManager.kt)
 - 레이싱을 진행하기 위한 클래스 입니다.
 #### Method
-- `racingCycle`
-- `remoteCarProgress`
-- `makeRandomNumber`
+- `racingCycle` : 모든 자동차의 한 번의 레이싱 레이싱 결과를 적용합니다.
+- `remoteCarProgress` : 하나의 자동차에 레이싱 결과를 적용합니다. 
+- `makeRandomNumber` :  랜덤값을 생성합니다.
 
 ### [MessageManager.kt](..%2Fsrc%2Fmain%2Fkotlin%2Fracingcar%2Fmanager%2FMessageManager.kt)
 - 메시지 출력을 위한 클래스입니다.
 #### Method
-- `printGameStart`
-- `printGameCount`
-- `printGameResult`
-- `printOneRacingResult`
-- `printCarProgress`
-- `printWinningCars`
+- `printGameStart` : 게임 시작 메시지를 출력합니다.
+- `printGameCount` : 레이싱 시도 횟수를 받는 메시지를 출력합니다.
+- `printGameResult` : 게임 결과를 출력합니다.
+- `printOneRacingResult` : 한 번의 레이싱 결과를 출력합니다.
+- `printCarProgress` : 하나의 자동차의 진행 상태를 출력합니다. 
+- `printWinningCars` : 구분자를 삽입하여 우승자를 출력합니다.
 
 ## Model
 
@@ -74,6 +74,8 @@
 ### [Car.kt](..%2Fsrc%2Fmain%2Fkotlin%2Fracingcar%2Fmodel%2FCar.kt)
 - 자동차 데이터를 보관하기 위한 클래스입니다.
 #### Property
+- `name` : 자동차의 이름입니다.
+- `progress` : 자동차의 진행 상태로, 0을 기본값으로 가집니다.
 
 ## Validation
 
@@ -81,3 +83,24 @@
 ### [CheckValidation.kt](..%2Fsrc%2Fmain%2Fkotlin%2Fracingcar%2Fvalidation%2FCheckValidation.kt)
 - 올바른 값이 입력되었는지 검증하기 위한 클래스입니다.
 #### Method
+#### Public
+- `checkCarLength` : 자동차 이름의 길이를 검사합니다.
+- `checkCarNameValidation` : 올바른 자동차 이름인지 검사합니다. 
+- `checkInputRacingCount` : 레이싱 시도 횟수가 올바른 정수인지 검사합니다.
+- `checkDuplicateCarName` : 자동차 이름의 중복값이 있는지 검사합니다.
+#### Private
+- `checkIsnumber` : 숫자인지 확인하는 함수입니다.
+- `checkIsPositive` : 양의 정수인지 확인하는 함수입니다.
+- `checkNameLength` : 문자열 길이가 5 이하인지 확인하는 함수입니다.
+- `checkNameIsBlank` : 문자열 길이가 0인지 확인하는 함수입니다.
+- `checkEnglishAndNumRegex` : 문자열이 영어나 숫자 정규식을 준수하는지 확인하는 함수입니다.
+- `checkKoreanRegex` : 문자열이 한국어 정규식을 준수하는지 확인하는 함수입니다.
+- `checkDuplication` : 자동차 이름 리스트에 중복값이 있는지 확인하는 함수입니다.
+
+## Test
+
+---
+### [CarValidationTest.kt](..%2Fsrc%2Ftest%2Fkotlin%2FvalidationTest%2FCarValidationTest.kt)
+- 사용자로부터 입력받은 자동차 리스트의 유효성을 테스트합니다.
+### [RacingCountValidationTest.kt](..%2Fsrc%2Ftest%2Fkotlin%2FvalidationTest%2FRacingCountValidationTest.kt)
+- 사용자로부터 입력받은 레이싱 시도 횟수의 유효성을 테스트합니다.
