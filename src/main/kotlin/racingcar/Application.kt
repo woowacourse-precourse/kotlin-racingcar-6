@@ -9,9 +9,8 @@ fun main() {
 
     val carlistSize = carList.size
     for( i in 0..carlistSize-1){
-        if(carList[i].length>5){
-            throw IllegalArgumentException("5자 이상 입력")
-            return
+        if(carList[i].length>5 || carList[i].isNullOrBlank()){
+            throw IllegalArgumentException("입력 오류")
         }
     }
 
@@ -19,10 +18,13 @@ fun main() {
     for(i in 0..carlistSize-1){
         carInfo[i] = Car(carList[i])
     }
-
+    var playTime = 0
     println("시도할 횟수는 몇 회인가요?")
-    val playTime = Console.readLine().toInt()
-
+    try {
+        playTime = readLine()?.toInt() ?: throw NumberFormatException("유효하지 않은 입력")
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException("수로 변환 할 수 없습니다.")
+    }
 
     println("\n실행 결과")
     for(i in 1..playTime){
@@ -30,7 +32,7 @@ fun main() {
     }
 
     val winners = findWinner(carInfo)
-    val dap = winners.joinToString(",")
+    val dap = winners.joinToString(", ")
     println("최종 우승자 : $dap")
 }
 
