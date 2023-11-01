@@ -17,6 +17,9 @@ fun main() {
         }
         game.printGameResult(cars)
     }
+
+    val winners = game.findWinners(cars)
+    game.printWinners(winners)
 }
 
 class RacingCarGame {
