@@ -37,6 +37,11 @@ fun getRandomNumArray(carNamesList: List<Car>): Array<Int> {
     }
 }
 
+fun addScore(carNamesList: List<Car>, randomNumArray: Array<Int>) {
+    for(i in randomNumArray.indices){
+        if (randomNumArray[i]>=4) carNamesList[i].score++
+    }
+}
 
 
 
