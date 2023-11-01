@@ -3,7 +3,7 @@ package racingcar.controller
 import racingcar.model.Judge
 import racingcar.model.RaceParticipants
 import racingcar.model.Round
-import racingcar.model.validateNumber
+import racingcar.model.validatePositiveNumber
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -27,7 +27,7 @@ class Controller {
 
     private fun getAttemptNumber(): Int {
         outputView.printInputNumberOfAttempts()
-        return inputView.getUserInput().validateNumber(containsDigit = false).getOrThrow().toInt()
+        return inputView.getUserInput().validatePositiveNumber().getOrThrow().toInt()
     }
 
     private fun displayRaceResult(judge: Judge, lastRound: Round) {
