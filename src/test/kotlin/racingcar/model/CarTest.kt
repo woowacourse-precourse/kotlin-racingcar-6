@@ -11,7 +11,7 @@ import racingcar.config.ExceptionMessage.TOO_LONG_NAME
 
 class CarTest {
 
-    lateinit var car: Car
+    private lateinit var car: Car
 
     @BeforeEach
     fun setUp() {

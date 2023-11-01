@@ -11,29 +11,29 @@ class GameController {
     private val inputView = InputView()
     private val outputView = OutputView()
 
+    // model
     private lateinit var cars: Cars
 
     fun startGame() {
         outputView.showStartGuide()
-        cars = Cars(inputView.inputCars().map { Car(it) })
+        cars = Cars(inputView.inputCars().map { Car(name = it) })
         cars.validate()
 
         outputView.showTryCountGuide()
         val tryCount = inputView.inputTryCount()
         startTurn(tryCount)
+
         val winners = cars.decideWinner()
         outputView.showResult(winners)
-
     }
 
     private fun startTurn(tryCount: Int) {
         outputView.showResultGuide()
         for (i in 1..tryCount) {
-            cars.cars.forEach {
+            cars.carList.forEach {
                 it.moveForward()
             }
             outputView.showRace(cars)
         }
     }
-
 }
