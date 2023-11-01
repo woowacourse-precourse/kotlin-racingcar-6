@@ -2,7 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class Car (name:String){
+class Car (val name:String){
     val carName = name
     private var randomNum = 0
     private var moveCnt = 0
@@ -11,9 +11,12 @@ class Car (name:String){
         randomNum = Randoms.pickNumberInRange(1,9)
     }
 
-    private fun isGo(){
+    fun isGo(){
         if(randomNum >=4){
             moveCnt++
         }
+    }
+    fun curLocation(){
+        println("name : "+"-".repeat(moveCnt))
     }
 }

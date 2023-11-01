@@ -22,3 +22,12 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val playTime = Console.readLine().toInt()
 }
+
+fun printCarLocation(car: Array<Car>){
+    for(i in 0..car.size){
+        car[i].getRandomNum()
+        car[i].isGo()
+        car[i].curLocation()
+    }
+}
+
