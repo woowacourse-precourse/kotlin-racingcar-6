@@ -9,7 +9,7 @@ fun main() {
 
 data class Car(
     val name: String,
-    val score: Int
+    var score: Int
 )
 
 fun getCarNames(): String {
@@ -36,6 +36,8 @@ fun getRandomNumArray(carNamesList: List<Car>): Array<Int> {
         Randoms.pickNumberInRange(0, 9)
     }
 }
+
+
 
 
 
