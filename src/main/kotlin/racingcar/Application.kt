@@ -18,7 +18,7 @@ fun main() {
         try_number--
     }
 
-
+    printWinner(cars_list, accumulated_distance)
 }
 
 
@@ -47,5 +47,23 @@ fun printDashes(cars_list: List<String>, accumulated_distance: MutableList<Int>)
     }
     println()
 }
+
+fun printWinner(cars_list: List<String>, accumulated_distance: MutableList<Int>){
+    var max_distance = accumulated_distance.max()
+    var winner_count = 0
+
+    print("최종 우승자 : ")
+    for(i: Int in 0..(cars_list.size-1)){
+        if(winner_count >= 1 && accumulated_distance[i] == max_distance){
+            print(", ")
+        }
+
+        if(accumulated_distance[i] == max_distance){
+            print(cars_list[i])
+            winner_count++
+        }
+    }
+}
+
 
 
