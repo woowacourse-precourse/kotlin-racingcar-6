@@ -1,9 +1,6 @@
 package racingcar.model
 
 class Car(val name: Name, val position: Position): Comparable<Car> {
-    init {
-        name.checkValidateName()
-    }
     fun doRace() {
         position.moveByRandom()
     }

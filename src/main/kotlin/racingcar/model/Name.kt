@@ -1,10 +1,9 @@
 package racingcar.model
 
-import BlankNameException
-import UnvalidNameLengthException
 import racingcar.MAX_NAME_LENGTH
 import racingcar.MIN_NAME_LENGTH
-
+import racingcar.exceptions.BlankNameException
+import racingcar.exceptions.UnvalidNameLengthException
 
 class Name(val name: String) {
 

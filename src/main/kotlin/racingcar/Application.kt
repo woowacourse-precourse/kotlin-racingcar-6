@@ -1,7 +1,5 @@
 package racingcar
 
 fun main() {
-    val carRace = CarRaceController()
-
-    carRace.doRace()
+    // TODO: 프로그램 구현
 }
