@@ -1,5 +1,4 @@
 package racingcar
-
 object Const {
 
     const val EXCEPTION_LENGTH_NAME = "이름의 길이가 0이거나 5를 초과했습니다."

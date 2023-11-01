@@ -40,7 +40,7 @@ fun processExceptionCar(carList: List<String>) {
             throw IllegalArgumentException(Const.EXCEPTION_WRONG_NAME)
         }
 
-        if (name.length > 5) {
+        if ((name.length in 1..5).not()) {
             throw  IllegalArgumentException(Const.EXCEPTION_LENGTH_NAME)
         }
     }
