@@ -10,6 +10,6 @@
 - [x] 전진 결과 전달 Racing#determineProgress
   - [x] 전진 또는 멈춤을 결정 할 랜덤 값 생성 - Racing#createRandomNumber 
   - [x] 전진 조건 만족하는지 확인 - Racing#validateMoveCondition
-- [ ] 전진 결과 출력 - Result#printProgress
-  - [ ] 전진 표시 출력("-") - Result#drawProgress
-- [ ] 우승자 출력 - Result#printWinner
+- [x] 전진 결과 출력 - Result#printProgress
+  - [x] 전진 표시 출력("-") - Result#drawProgress
+- [x] 우승자 출력 - Result#printWinner
