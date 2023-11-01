@@ -22,7 +22,7 @@ class Host {
         return playerPosition
     }
 
-    fun printWinner(playersFinalPosition: List<Int>, cars: List<Car>) {
+    fun determineWinners(playersFinalPosition: List<Int>, cars: List<Car>): String {
         val winners = mutableListOf<String>()
         val winnersPosition = playersFinalPosition.max()
 
@@ -31,7 +31,12 @@ class Host {
                 winners.add(cars[index].name)
             }
         }
-        println("최종 우승자 : ${winners.joinToString(", ")}")
+
+        return "최종 우승자 : ${winners.joinToString(", ")}"
+    }
+
+    fun printWinners(winners: String) {
+        println(winners)
     }
 
 }
