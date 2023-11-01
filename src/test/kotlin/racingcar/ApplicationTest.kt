@@ -25,6 +25,21 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
     }
+    @Test
+    fun `동명의 자동차 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi,woni", "1") }
+        }
+    }
+    @Test
+    fun `이동 횟수가 0 이상의 정수가 아닌 경우 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni,mlnv", "-5") }
+            assertThrows<IllegalArgumentException> { runException("pobi,woni,mlnv", "0.3") }
+            assertThrows<IllegalArgumentException> { runException("pobi,woni,mlnv", "A") }
+            assertThrows<IllegalArgumentException> { runException("pobi,woni,mlnv", "!!") }
+        }
+    }
 
     public override fun runMain() {
         main()
