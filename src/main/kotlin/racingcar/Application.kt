@@ -21,7 +21,7 @@ class RacingCarGame {
         println("\n실행 결과")
         repeat(attemptsCount) {
             cars.forEach { it.move() }
-            printGameResult(cars)
+            printRaceResult(cars)
         }
         printWinners(findWinners(cars))
     }
@@ -57,7 +57,7 @@ class RacingCarGame {
         require(count.matches(Regex("^-?\\d+\$")) && count.toInt() > 0) { "1 이상의 숫자를 입력해주세요." }
     }
 
-    private fun printGameResult(cars: List<Car>) {
+    private fun printRaceResult(cars: List<Car>) {
         cars.forEach { car ->
             println("${car.name} : ${"-".repeat(car.getPosition())}")
         }
