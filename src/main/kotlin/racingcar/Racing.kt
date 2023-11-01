@@ -9,7 +9,7 @@ class Racing {
         moveRacingCar()
         showRacingWinner()
     }
-    private fun registerCar(){
+    fun registerCar(){
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val registerCarNames = Console.readLine()
         val registerCarNamesList=registerCarNames.split(",")
@@ -19,13 +19,13 @@ class Racing {
             carCollection.putCar(car)
         }
     }
-    private fun setRacingNum():RacingNum{
+    fun setRacingNum():RacingNum{
         println("시도할 횟수는 몇 회인가요?")
         val getRacingNum=Console.readLine()
         val racingNum=RacingNum(getRacingNum.toInt())
         return racingNum
     }
-    private fun moveRacingCar(){
+    fun moveRacingCar(){
         val racingNum=setRacingNum()
         println()
         println("실행 결과")
@@ -37,7 +37,7 @@ class Racing {
     private fun showRacingResult(){
         carCollection.showResults()
     }
-    private fun showRacingWinner(){
+    fun showRacingWinner(){
         val winnerList=carCollection.getWinner()
         print("최종 우승자 : ")
         for (i:Int in 0..(winnerList.size-1)){

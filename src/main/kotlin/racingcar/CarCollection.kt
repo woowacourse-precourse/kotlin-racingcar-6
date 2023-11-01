@@ -1,7 +1,7 @@
 package racingcar
 
 class CarCollection {
-    private val carList:MutableList<Car> = mutableListOf()
+    val carList:MutableList<Car> = mutableListOf()
     private val winnerList:MutableList<Car> = mutableListOf()
     fun putCar(car:Car){
         carList.add(car)
