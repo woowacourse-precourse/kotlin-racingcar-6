@@ -11,5 +11,5 @@ fun main() {
 
     val racing = Racing()
     val moveCount = racing.enterMoveCount()
-
+    racing.validatePositiveInteger(moveCount)
 }
