@@ -9,7 +9,7 @@ fun f_input_car_name() :List<String> {
     var input_car_name = Console.readLine()
     var car_name_list = input_car_name.split(",")
     for(i in 0..car_name_list.size - 1) {
-        if(car_name_list[i].length > 6) throw IllegalArgumentException()
+        if(car_name_list[i].length >= 6) throw IllegalArgumentException()
     }
     return car_name_list
 }
@@ -20,7 +20,7 @@ fun f_try_number() : Int {
         var try_number = Console.readLine().toInt()
         return try_number
     }catch (e : IllegalArgumentException) {
-        return -1
+        return throw e
     }
 }
 
@@ -39,8 +39,8 @@ fun racing_garme(car_name_list : List<String>, try_number : Int) {
                 print("-")
             }
             println()
-            println()
         }
+        println()
     }
     var max_forward = 0
     for(i in 0 .. car_name_list.size - 1) {
@@ -54,7 +54,8 @@ fun racing_garme(car_name_list : List<String>, try_number : Int) {
             winner.add(car_name_list[i])
         }
     }
-    print(winner.joinToString { "," })
+    print("최종 우승자 : ")
+    print(winner.joinToString(", "))
 }
 
 fun main() {
