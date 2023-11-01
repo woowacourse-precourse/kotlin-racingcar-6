@@ -1,11 +1,10 @@
 package racingcar
 
+const val MIN_LENGTH_CAR_LIST = 2
+const val MIN_LENGTH_ATTEMPTS = 1
+const val MAX_LENGTH_CAR_NAMES = 5
+
 class InputValidate {
-    companion object {
-        const val MIN_LENGTH_CAR_LIST = 2
-        const val MIN_LENGTH_ATTEMPTS = 1
-        const val MAX_LENGTH_CAR_NAMES = 5
-    }
     fun validateCarNames(names: List<String>) {
         if (names.size < MIN_LENGTH_CAR_LIST) {
             throw IllegalArgumentException("적어도 두 대 이상의 자동차가 필요합니다.")

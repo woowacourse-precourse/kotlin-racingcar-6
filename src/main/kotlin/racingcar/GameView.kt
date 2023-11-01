@@ -2,11 +2,10 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import racingcar.model.CarModel
 
+const val INPUT_CAR_NAME_MESSAGE = "경주할 자동차의 이름들을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
+const val INPUT_ATTEMPT_NUMBER_MESSAGE = "시도할 횟수는 몇 회인가요?"
+
 class GameView(private val validate: InputValidate) {
-    companion object {
-        const val INPUT_CAR_NAME_MESSAGE = "경주할 자동차의 이름들을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-        const val INPUT_ATTEMPT_NUMBER_MESSAGE = "시도할 횟수는 몇 회인가요?"
-    }
     fun getCarNames(): List<String> {
         println(INPUT_CAR_NAME_MESSAGE)
         val cars = Console.readLine().split(",")
