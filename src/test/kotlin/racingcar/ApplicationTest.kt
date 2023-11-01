@@ -22,7 +22,7 @@ class ApplicationTest : NsTest() {
     @Test
     fun `이름에 대한 예외 처리`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+            assertThrows<IllegalArgumentException> { runException("pobi,boozea", "1") }
         }
     }
 
@@ -35,6 +35,20 @@ class ApplicationTest : NsTest() {
             },
             MOVING_FORWARD, STOP
         )
+    }
+
+    @Test
+    fun `1명의 사용자에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi") }
+        }
+    }
+
+    @Test
+    fun `올바르지 않은 시행 횟수에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,booze", "0") }
+        }
     }
 
     public override fun runMain() {
