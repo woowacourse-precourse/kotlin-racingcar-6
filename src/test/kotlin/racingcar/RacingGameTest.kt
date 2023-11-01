@@ -25,15 +25,15 @@ class RacingGameTest {
         val validator = RacingCarValidator.instance
         //빈 값 테스트
         assertThrows<IllegalArgumentException> {
-            validator.validateCarName("")
+            validator.checkTrying("")
         }
         //숫자가 아닌 값
         assertThrows<IllegalArgumentException> {
-            validator.validateCarName("s")
+            validator.checkTrying("s")
         }
         //정상 테스트
-        validator.checkTrying("6")
-
+        val result = validator.checkTrying("6")
+        assertThat(result).isEqualTo(6)
     }
     @Test
     fun `레이싱 이동 함수 Boolean으로 나오는지 체크`(){
