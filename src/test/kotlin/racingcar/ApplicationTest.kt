@@ -25,6 +25,12 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
     }
+    @Test
+    fun `inputString 을 쉼표 기준으로 nameList 변환`() {
+        val inputString = "pobi,woni,jun"
+        val nameList = inputString.split(",").map { it.trim()  }
+        assertThat(nameList).contains("pobi","woni","jun")
+    }
 
     public override fun runMain() {
         main()
