@@ -1,12 +1,18 @@
-package racingcar
+package racingcar.controller
 
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.model.Car
+import racingcar.view.OutputView
 
 class Racing(
     private val outputView: OutputView,
     private val count: Int,
     private val cars: MutableList<Car>
 ) {
+    companion object {
+        const val MOVE_NUM: Int = 4
+    }
+
     init {
         repeat(this.count) { startRacing() }
     }
@@ -16,7 +22,7 @@ class Racing(
 
     private fun isMove(): Boolean {
         val num = generateRandomNumber()
-        return num >= 4
+        return num >= MOVE_NUM
     }
 
     private fun startRacing() {
@@ -26,5 +32,4 @@ class Racing(
         }
         println()
     }
-
 }
