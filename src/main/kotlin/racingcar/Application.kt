@@ -1,7 +1,7 @@
 package racingcar
 fun main() {
     // TODO: 프로그램 구현
-    val car: Car = Car()
+    val car = Car()
     val racing = Racing()
     val result = Result()
     val carNames = car.createCar()
