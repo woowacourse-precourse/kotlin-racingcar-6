@@ -80,13 +80,14 @@ class RacingCarGame {
         setProgress()
         setMoveCount()
         notIntException()
-/*
+
         println("\n실행 결과")
-        for (i in 0..<numberOfTryStr.toInt()) {
+        val numberOfTryInt = numberOfTryStr.toInt()
+        for (i in 0..<numberOfTryInt) {
             goOrNot()
             printGameProgress()
             println()
-        }*/
+        }
         printWinner()
     }
 }
