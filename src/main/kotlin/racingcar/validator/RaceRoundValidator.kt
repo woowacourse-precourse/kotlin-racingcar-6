@@ -1,11 +1,9 @@
 package racingcar.validator
 
-import racingcar.utils.Converter
-
 class RaceRoundValidator {
     fun validate(raceRoundString: String) {
         requireNumericString(raceRoundString)
-        val raceRound = Converter.convertStringToInt(raceRoundString)
+        val raceRound = raceRoundString.toInt()
         requirePositiveNumber(raceRound)
     }
 

@@ -1,6 +1,6 @@
 package racingcar.domain
 
-import racingcar.utils.Converter
+import racingcar.utils.StringListSplitter
 import racingcar.utils.RandomGenerator
 
 class Circuit(carNames: String, private var raceRound: Int) {
@@ -22,7 +22,7 @@ class Circuit(carNames: String, private var raceRound: Int) {
     }
 
     private fun registerCars(carNames: String) {
-        val carNameList = Converter.splitByCommaToStringList(carNames)
+        val carNameList = StringListSplitter.splitByCommaToStringList(carNames)
         cars.addAll(carNameList.map { Car(it) })
     }
 

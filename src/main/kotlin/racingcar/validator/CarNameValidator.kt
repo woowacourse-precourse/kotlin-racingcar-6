@@ -1,10 +1,10 @@
 package racingcar.validator
 
-import racingcar.utils.Converter
+import racingcar.utils.StringListSplitter
 
 class CarNameValidator {
     fun validate(carNames: String) {
-        val nameList = Converter.splitByCommaToStringList(carNames)
+        val nameList = StringListSplitter.splitByCommaToStringList(carNames)
         requireNoBlankName(nameList)
         requireNameLengthInRange(nameList)
         requireNoDuplicatedName(nameList)
