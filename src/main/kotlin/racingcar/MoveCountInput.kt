@@ -13,7 +13,7 @@ object MoveCountInput {
         }.getOrElse { throwable ->
             when (throwable) {
                 is NumberFormatException -> throw IllegalArgumentException(NUMBER_FORMAT_ERROR)
-                else -> throw IllegalArgumentException(throwable)
+                else -> throw IllegalArgumentException(throwable.message)
             }
         }
     }
