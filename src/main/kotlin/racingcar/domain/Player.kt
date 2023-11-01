@@ -1,4 +1,5 @@
-package domain
+package racingcar.domain
+
 data class Player(
         val name: String,
         var winCount: Int = 0

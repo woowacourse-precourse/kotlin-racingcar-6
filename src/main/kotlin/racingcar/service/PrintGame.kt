@@ -1,4 +1,4 @@
-package service
+package racingcar.service
 
 interface PrintGame {
     //초기화 시 프린트 하는 메서드

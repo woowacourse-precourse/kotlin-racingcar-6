@@ -1,6 +1,4 @@
-package racingcar.servie
-
-import service.PrintGame
+package racingcar.service
 
 
 class CarPrintGame : PrintGame {

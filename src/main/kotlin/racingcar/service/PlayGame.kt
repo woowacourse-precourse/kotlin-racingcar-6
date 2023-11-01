@@ -1,4 +1,4 @@
-package service
+package racingcar.service
 
 interface PlayGame {
     // 게임 셋팅
