@@ -1,5 +1,6 @@
 package racingcar.controller
 
+import camp.nextstep.edu.missionutils.Console
 import racingcar.model.*
 import racingcar.view.InputView
 import racingcar.view.OutputView
@@ -7,9 +8,14 @@ import racingcar.view.OutputView
 class GameManager {
     fun start() {
         val carNamesSeparated = carNameinput()
+
         val tryNum = tryNumberInput()
+
         val carProgress = racing(carNamesSeparated,tryNum)
+
         winnerOutput(carNamesSeparated,carProgress)
+
+        Console.close()
     }
 
     fun carNameinput():List<String>{

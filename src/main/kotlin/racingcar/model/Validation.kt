@@ -15,13 +15,12 @@ class Validation {
     }
 
     fun tryNum(tryNum: String): Int {
-        val Num: Int
-        Num = try {
+        val num: Int = try {
             tryNum.toInt()
         } catch (e: NumberFormatException) {
             error(Constants.ERROR_NUMBER_VALIDITY)
         }
-        return Num
+        return num
     }
 
 }
