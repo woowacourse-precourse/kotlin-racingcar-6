@@ -6,7 +6,7 @@ const val ENTER_NUMBER_TIMES = "시도할 횟수는 몇 회인가요?"
 const val ENTER_RESULT = "실행 결과"
 const val WINNER = "최종 우승자 : "
 
-const val MIN_RANDOM_NUMBER = 1
+const val MIN_RANDOM_NUMBER = 0
 const val MAX_RANDOM_NUMBER = 9
 const val FORWARD_NUMBER = 4
 const val NAME_OVER_LENGTH = 6
