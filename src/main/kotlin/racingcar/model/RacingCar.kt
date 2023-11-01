@@ -17,6 +17,7 @@ data class RacingCar(val racingCarName: String, private var distance: Int) {
     companion object {
         private const val RANDOM_START_NUM = 0
         private const val RANDOM_FINISH_NUM = 9
+
         const val MIN_DISTANCE_NUM = 4
     }
 }

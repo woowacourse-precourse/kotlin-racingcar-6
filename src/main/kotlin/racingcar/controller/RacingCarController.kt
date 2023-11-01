@@ -1,6 +1,7 @@
 package racingcar.controller
 
 import racingcar.model.RacingCar
+import racingcar.model.RacingCars
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -46,8 +47,7 @@ class RacingCarController {
     }
 
     private fun findMaxDistanceRacingCar(racingCarList: List<RacingCar>): List<String> {
-        return racingCarList.filter { racingCar -> racingCar.getDistance() == racingCarList.maxOf { it.getDistance() } }
-            .map { it.racingCarName }
+        return RacingCars(racingCarList).getMaxDistanceCar().map { it.racingCarName }
     }
 
     companion object {
