@@ -3,6 +3,11 @@ package racingcar.model
 import racingcar.SEPARATOR
 import racingcar.command.CommandInvoker
 import racingcar.command.DoRaceCommand
+import racingcar.dto.CarDTO
+import java.util.stream.Collectors
+
+
+
 
 class CarCollection(carNameString: String) {
     private var cars : List<Car>
@@ -38,5 +43,11 @@ class CarCollection(carNameString: String) {
 
     operator fun get(index: Int): Car? {
         return cars.getOrNull(index)
+    }
+
+    fun getCarsDto(): MutableList<CarDTO> {
+        return cars.stream()
+            .map { car: Car -> CarDTO(car.name.getNameString(), car.position.getPositionNumber()) }
+            .toList()
     }
 }
