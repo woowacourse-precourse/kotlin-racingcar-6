@@ -27,6 +27,14 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `공백에 대한 예외 처리`(){
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,", "1") }
+            assertThrows<IllegalArgumentException> { runException("pobi,test", "") }
+        }
+    }
+
+    @Test
     fun `횟수에 대한 예외처리`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaj", "-1") }
