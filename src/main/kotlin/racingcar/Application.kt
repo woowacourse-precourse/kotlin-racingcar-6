@@ -24,7 +24,8 @@ fun inputNumber(): Int {
 
 fun validateNameLength(input: List<String>) {
     for (name in input) {
-        if (name.length > 4) throw IllegalArgumentException("${name}의 길이가 5이상 입니다.")
+        if (name.length > 5) throw IllegalArgumentException("${name}의 길이가 6이상 입니다.")
+        if (name.isEmpty()) throw IllegalArgumentException("${name}의 길이가 0 입니다.")
         validateNameIsNotInt(name)
     }
 }
