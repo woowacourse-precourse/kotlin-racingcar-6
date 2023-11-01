@@ -24,7 +24,7 @@ class RacingTest {
     }
 
     @Test
-    fun `레이싱 출발 검사`() {
+    fun `레이싱 라운드 결과 반환값 검사`() {
         assertThat("${racing.start(carList)}")
             .contains("유재석 : ")
             .contains("하하 : ")
@@ -36,7 +36,7 @@ class RacingTest {
     }
 
     @Test
-    fun `우승자 출력 검사`() {
+    fun `우승자 검색 후 반환값 검사`() {
         assertThat("${racing.findWinner(carList)}").isEqualTo("최종 우승자 : 유재석")
     }
 }
