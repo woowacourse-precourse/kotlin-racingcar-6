@@ -1,17 +1,22 @@
 package racingcar
 
-class Car(var name: String) {
+class Car() {
     var count = 0
+    lateinit var name:String
     fun move(number: Int) {
         if (number >= 4) {
             count += 1
         }
     }
 
-    fun print() {
-        println("$name : ${"-".repeat(count)}")
+    fun isValid(){
+        if (name.length > 5 || name.isEmpty()){
+            throw IllegalArgumentException()
+        }
     }
 
+    fun getOutput():String = "$name : ${"-".repeat(count)}\n"
 
-    override fun toString(): String = "$name"
+
+    override fun toString() = "$name"
 }
