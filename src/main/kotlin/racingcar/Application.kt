@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val game = RacingCarGame()
@@ -54,4 +55,8 @@ class RacingCarGame {
 
 class Car(val name: String) {
     var position = 0
+
+    fun move() {
+        val randomValue = Randoms.pickNumberInRange(0,9)
+    }
 }
