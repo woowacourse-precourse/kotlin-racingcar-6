@@ -17,13 +17,6 @@ class Cars(private val determineMove: DetermineMove) {
         return carList
     }
 
-    fun getAdvanceStateList(): List<Int> {
-        _carList.forEachIndexed { index, car ->
-            _carStateList[index] = car.advanceState
-        }
-        return _carStateList
-    }
-
     fun moveCars() {
         _carList.forEach { car ->
             if (determineMove.isMove())
@@ -34,6 +27,13 @@ class Cars(private val determineMove: DetermineMove) {
     fun getWinnerList(): List<String> {
         val maxState = getAdvanceStateList().max()
         return _carList.filter { it.advanceState == maxState }.map { it.name }
+    }
+
+    private fun getAdvanceStateList(): List<Int> {
+        _carList.forEachIndexed { index, car ->
+            _carStateList[index] = car.advanceState
+        }
+        return _carStateList
     }
 
 }
