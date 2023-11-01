@@ -36,9 +36,7 @@ fun main() {
         println()
     }
     var race = Race(cars)
-    var winner = race.getWinners()
     print(race.getOutput())
-
 }
 
 
