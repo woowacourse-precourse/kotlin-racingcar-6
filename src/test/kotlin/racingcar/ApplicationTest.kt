@@ -26,6 +26,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `시도 횟수 입력에서 문자를 입력할 경우 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni,gaeun", "횟수") }
+        }
+    }
+
     public override fun runMain() {
         main()
     }
