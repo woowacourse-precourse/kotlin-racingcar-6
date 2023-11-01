@@ -5,35 +5,35 @@ import kotlin.IllegalArgumentException
 class Validation {
 
     fun isValidNumberOfCars(carsNameList: List<Car>) {
-        if (carsNameList.size < 2) {
-            throw IllegalArgumentException("자동차 이름은 2대 이상 입력해 주세요.")
+        if (carsNameList.size < MIN_NUMBER_CAR_NAMES) {
+            throw IllegalArgumentException(ERROR_INPUT_CAR_NAMES_TWO_OR_MORE)
         }
     }
 
     fun checkContainsSpace(carsName: String) {
-        if (carsName.contains(" ")) {
-            throw IllegalArgumentException("자동차 이름은 쉼표(,)로 구분해 주세요.")
+        if (carsName.contains(SPACE)) {
+            throw IllegalArgumentException(ERROR_SEPARATE_CAR_NAMES_COMMA)
         }
     }
 
     fun checkCarNameDuplication(carsNameList: List<Car>) {
         val names = carsNameList.map { it.name }
         if (names.distinct().size != names.size) {
-            throw IllegalArgumentException("중복된 이름은 작성할 수 없습니다.")
+            throw IllegalArgumentException(ERROR_NAME_DUPLICATION)
         }
     }
 
     fun checkCarNameLength(carsNameList: List<Car>) {
         carsNameList.forEach {
-            if (it.name.length > 5) {
-                throw IllegalArgumentException("자동차 이름은 5자 이하만 입력 가능합니다.")
+            if (it.name.length > MAX_LENGTH_CAR_NAME) {
+                throw IllegalArgumentException(ERROR_CAR_NAME_ONLY_FIVE_CHAR)
             }
         }
     }
 
     fun checkCarNameBlank(carsNameList: List<Car>) {
-        if (carsNameList.any { it.name == "" }) {
-            throw IllegalArgumentException("자동차 이름은 공백일 수 없습니다.")
+        if (carsNameList.any { it.name == BLANK }) {
+            throw IllegalArgumentException(ERROR_CAR_NAME_CAN_NOT_BLANK)
         }
     }
 
@@ -46,8 +46,8 @@ class Validation {
     }
 
     fun checkNumberBlank(numberOfAttempt: String): String {
-        if (numberOfAttempt == "") {
-            throw IllegalArgumentException("값을 입력하세요")
+        if (numberOfAttempt == BLANK) {
+            throw IllegalArgumentException(ERROR_INPUT_VALUE)
         }
         return numberOfAttempt
     }
@@ -56,13 +56,13 @@ class Validation {
         return try {
             numberOfAttempt.toInt()
         } catch (e: Exception) {
-            throw IllegalArgumentException("숫자만 입력하세요")
+            throw IllegalArgumentException(ERROR_INPUT_NUMBER_ONLY)
         }
     }
 
     fun checkNumberOfAttemptOneAndMore(numberOfAttemptToInt: Int) {
-        if (numberOfAttemptToInt < 1) {
-            throw IllegalArgumentException("1 이상 입력 가능합니다")
+        if (numberOfAttemptToInt < MIN_NUMBER_OF_ATTEMPT) {
+            throw IllegalArgumentException(ERROR_INPUT_ONE_OR_MORE)
         }
     }
 

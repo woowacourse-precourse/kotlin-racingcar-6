@@ -20,7 +20,7 @@ class RacingGame {
     private fun getCarNames(): List<Car> {
         host.printRequestEnterCarName()
         val inputCarNames = player.inputCarsName()
-        val carNames = inputCarNames.split(",")
+        val carNames = inputCarNames.split(COMMA)
         val cars = mutableListOf<Car>()
         for (name in carNames) {
             cars.add(Car(name))
@@ -38,7 +38,7 @@ class RacingGame {
     }
 
     private fun showGameHeader() {
-        println("\n실행 결과")
+        println(EXECUTION_RESULT)
     }
 
     fun printRaceResult(
@@ -48,7 +48,7 @@ class RacingGame {
     ): List<Int> {
         var carsFinalPosition = listOf<Int>()
 
-        for (i in 0 until numberOfAttempt) {
+        for (i in FIRST_ATTEMPT until numberOfAttempt) {
             carsFinalPosition = race(cars)
             println()
         }
