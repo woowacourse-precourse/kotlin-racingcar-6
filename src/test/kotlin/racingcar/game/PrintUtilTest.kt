@@ -45,7 +45,12 @@ internal class PrintUtilTest {
 
     @Test
     fun `printRacingCars 메서드 출력 테스팅`() {
-
+        // given
+        PrintUtil.printRacingCars(mutableListOf(Car("bamin"), Car("pobi"), Car("woni")))
+        // when
+        val expectedRacingCars = "bamin : \npobi : \nwoni :"
+        // then
+        assertThat(output()).contains(expectedRacingCars)
     }
 
     @Test
