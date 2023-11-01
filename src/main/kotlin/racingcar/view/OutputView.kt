@@ -1,8 +1,8 @@
 package racingcar.view
 
-import racingcar.model.Attempt
 import racingcar.model.Board
 import racingcar.model.CarName
+import racingcar.model.Round
 import racingcar.model.Score
 
 class OutputView {
@@ -11,12 +11,12 @@ class OutputView {
 
     fun printInputNumberOfAttempts() = println(Message.NumberOfAttempts)
 
-    fun printCurrentRaceResult(board: Board, lastAttempt: Attempt) {
+    fun printCurrentRaceResult(board: Board, lastRound: Round) {
         val message = buildString {
             appendLine()
             appendLine(Message.RaceResult)
-            (1..lastAttempt).forEach { currentAttempt ->
-                val carNameAndScoreList = board.getResultByAttempt(currentAttempt)
+            (1..lastRound).forEach { currentAttempt ->
+                val carNameAndScoreList = board.getScoresByRound(currentAttempt)
                 appendLine(formatRaceResults(carNameAndScoreList))
                 appendLine()
             }

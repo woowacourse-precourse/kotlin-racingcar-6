@@ -4,24 +4,27 @@ import racingcar.RandomGenerator
 
 class Judge(
     private val raceParticipants: RaceParticipants,
-    private val attempt: Attempt
+    private val round: Round
 ) {
 
-    private val board = Board.of(raceParticipants.getNamesOfParticipants(), attempt)
+    private val board = Board.of(raceParticipants.getNamesOfParticipants(), round)
 
-    fun play(): Board {
-        (1..attempt).forEach { executeMove(it) }
+    /**
+     * 경기를 시작하고 경기의 모든 진행 결과를 담은 [Board] 객체를 반환함
+     * */
+    fun startRace(): Board {
+        (1..round).forEach { executeMove(it) }
         return board
     }
 
     fun getWinner(): List<CarName> = raceParticipants.getCarsWithLongestDistance().map { car -> car.name }
 
-    private fun executeMove(attempt: Attempt) {
+    private fun executeMove(round: Round) {
         raceParticipants.getNamesOfParticipants().forEach { carName ->
             if (isAvailableMove()) {
                 raceParticipants.moveCar(carName)
             }
-            board.writeResult(carName, attempt, raceParticipants.getDistance(carName))
+            board.recordRaceResult(carName, round, raceParticipants.getDistance(carName))
         }
     }
 

@@ -1,24 +1,27 @@
 package racingcar.model
 
-typealias Attempt = Int
+typealias Round = Int
 typealias Score = Int
 
+/**
+ * 경기의 모든 진행 결과를 담은 클래스, 참가한 차량 이름과 라운드별 점수가 기록됨
+ * */
 class Board private constructor(private val scoresByCarName: Map<CarName, Scores>) {
 
-    fun writeResult(carName: CarName, attempt: Attempt, score: Score) {
+    fun recordRaceResult(carName: CarName, round: Round, score: Score) {
         val scores = scoresByCarName[carName] ?: throw IllegalArgumentException(Error.InvalidName.message)
-        scores.addCurrentScore(attempt, score)
+        scores.addCurrentScore(round, score)
     }
 
-    fun getResultByAttempt(attempt: Attempt): List<Pair<CarName, Score>> =
+    fun getScoresByRound(round: Round): List<Pair<CarName, Score>> =
         scoresByCarName.flatMap { (carName, scores) ->
-            val score = scores.scoreByAttempt[attempt] ?: throw IllegalArgumentException(Error.InvalidAttempt.message)
+            val score = scores.scoreByRound[round] ?: throw IllegalArgumentException(Error.InvalidAttempt.message)
             listOf(carName to score)
         }
 
     companion object {
-        fun of(nameOfParticipants: List<CarName>, attempt: Attempt): Board {
-            val scoresByCarName = nameOfParticipants.associateWith { Scores.from(attempt) }
+        fun of(nameOfParticipants: List<CarName>, round: Round): Board {
+            val scoresByCarName = nameOfParticipants.associateWith { Scores.from(round) }
             return Board(scoresByCarName)
         }
     }
@@ -29,21 +32,21 @@ class Board private constructor(private val scoresByCarName: Map<CarName, Scores
     }
 }
 
-class Scores private constructor(private val _scoreByAttempt: MutableMap<Attempt, Score>) {
+class Scores private constructor(private val _scoreByRound: MutableMap<Round, Score>) {
 
-    val scoreByAttempt: Map<Attempt, Score> get() = _scoreByAttempt
+    val scoreByRound: Map<Round, Score> get() = _scoreByRound
 
-    fun addCurrentScore(attempt: Attempt, score: Score) {
-        require(_scoreByAttempt.contains(attempt)) { Error.OverflowAttempt.message }
-        _scoreByAttempt[attempt] = score
+    fun addCurrentScore(round: Round, score: Score) {
+        require(_scoreByRound.contains(round)) { Error.OverflowAttempt.message }
+        _scoreByRound[round] = score
     }
 
     companion object {
         private const val SCORE_INITIAL = 0
         private const val FIRST_ATTEMPT = 1
 
-        fun from(attempt: Attempt): Scores {
-            val scoreByAttempt = (FIRST_ATTEMPT..attempt).associateWith { SCORE_INITIAL }
+        fun from(round: Round): Scores {
+            val scoreByAttempt = (FIRST_ATTEMPT..round).associateWith { SCORE_INITIAL }
             return Scores(scoreByAttempt.toMutableMap())
         }
     }
