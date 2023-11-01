@@ -1,4 +1,7 @@
-package racingcar
+package racingcar.view
+
+import racingcar.model.Car
+import racingcar.util.GameMessage
 
 class OutputView {
     fun inputCarName() {
