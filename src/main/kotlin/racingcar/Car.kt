@@ -15,15 +15,18 @@ class Car(name: String) {
     var howGoForwardCount: Int = 0
         private set
 
-    private fun createRandomNumber() = Randoms.pickNumberInRange(RANDOM_START, RANDOM_END)
-
-    fun moveForward() {
-        val randomNumber = createRandomNumber()
+    fun createMoveForwardStandard(): Boolean {
+        val randomNumber = Randoms.pickNumberInRange(RANDOM_START, RANDOM_END)
         require(randomNumber in RANDOM_RANGE)
 
         if (randomNumber >= CAR_FORWARD_STANDARD) {
-            howGoForwardCount++
+            return true
         }
+        return false
+    }
+
+    fun moveForward() {
+        howGoForwardCount++
     }
 
     companion object {
