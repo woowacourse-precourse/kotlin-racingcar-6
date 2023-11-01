@@ -53,14 +53,14 @@ internal class CarTest {
         assertEquals(expectedName, carName)
     }
 
-//    @Test
-//    fun `startEngine 테스트`() {
-//        // given
-//        val car = Car("bamin")
-//        val expectedResult = true
-//        // when
-//        val isCarEngineLevelInRange = car.startEngine() in 1..9
-//        // then
-//        assertEquals(expectedResult, isCarEngineLevelInRange)
-//    }
+    @Test
+    fun `startEngine 테스트`() {
+        // given
+        val car = Car("bamin")
+        val expectedResult = true
+        // when
+        val isCarEngineLevelInRange = car.startEngine() in 0..9
+        // then
+        assertEquals(expectedResult, isCarEngineLevelInRange)
+    }
 }
