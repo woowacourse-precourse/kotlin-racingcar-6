@@ -1,9 +1,10 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import net.bytebuddy.asm.Advice.OffsetMapping.Factory.Illegal
 
 fun main() {
-
+    getValidCarNamesArray(getCarNames())
 }
 
 fun getCarNames(): String {
@@ -11,7 +12,11 @@ fun getCarNames(): String {
     return Console.readLine()
 }
 
-fun validateCarNames(carNames: String): Boolean{
-    val carNameArray = carNames.split(",")
-    return !carNameArray.any{it.length>5}
+fun getValidCarNamesArray(carNames: String): Collection<String> {
+    val carNamesArray = carNames.split(",")
+    if (carNamesArray.any { it.length > 5 }) {
+        throw IllegalArgumentException("자동차 이름은 5자 이하 이어야 함")
+    }
+    return carNamesArray
 }
+
