@@ -18,12 +18,12 @@ class GameManager(
     }
 
     fun raceStart() {
-        println("실행 결과")
+        println("\n실행 결과")
         for (round in 0 until tryCount) {
             oneRoundResult()
         }
         // 최종 우승 차량을 출력
-        // printWinners()
+        printWinners()
     }
 
     private fun oneRoundResult() {
@@ -43,7 +43,7 @@ class GameManager(
         var maxDistance: Int = findMaxDistance()
         var winnerList: MutableList<String> = mutableListOf()
         carsList.forEach { car ->
-            if (car.movingDistance.length == maxDistance){
+            if (car.movingDistance.length == maxDistance) {
                 winnerList.add(car.name)
             }
         }
