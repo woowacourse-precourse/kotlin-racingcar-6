@@ -1,5 +1,6 @@
 package racingcar
 
+import InputUser
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
@@ -25,6 +26,25 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
     }
+    @Test
+    fun `이름이 한 개만 들어오면`(){
+        assertRandomNumberInRangeTest({
+            run("woni","1")
+            assertThat(output()).contains("최종 우승자 : woni")
+        },
+        MOVING_FORWARD
+        )
+    }
+    @Test
+    fun `우승자 여려명 테스트`(){
+        assertRandomNumberInRangeTest({
+            run("woni,king","1")
+            assertThat(output()).contains("최종 우승자 : woni, king")
+        },
+            MOVING_FORWARD
+        )
+    }
+
 
     public override fun runMain() {
         main()
