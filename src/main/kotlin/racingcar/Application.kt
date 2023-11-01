@@ -6,29 +6,18 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     // TODO: 프로그램 구현
 
-//    val racingInfo = beforeRacing()  // racingInfo(rmation) : carList와 numberOfRounds로 이루어진 Pair
-//    print(racingInfo)
-//    print(goOrStop())
-    val pobi = Car("pobi")
-    pobi.moveCar()
-    pobi.moveCar()
-    pobi.moveCar()
-    pobi.moveCar()
-
-    println(pobi.location) // 0,1,2,3,4 모든 경우의 값이 출력되는 걸 확인했다.
-    pobi.printLocation()
 
 }
 
 fun beforeRacing(): Pair<List<String>, Int> {
 
-    val carList: List<String> = listOf(Console.readLine())
+    val carNameList: List<String> = listOf(Console.readLine())
     val numberOfRounds = Console.readLine().toInt()
 
-    return Pair(carList, numberOfRounds)
+    return Pair(carNameList, numberOfRounds)
 }
 
-fun goOrStop(): Boolean {
+fun goOrStop(): Boolean {   // Car class의 인스턴스 함수가 사용한다.
     val randomNumber = Randoms.pickNumberInRange(0, 9)
     var go = false
 
