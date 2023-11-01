@@ -10,12 +10,12 @@ class Validator {
     }
 
     fun checkTryNum(num: String) {
-        checkInputNull(num)
+        checkInputEmpty(num)
         checkTypeInt(num)
         checkTryNumSize(num)
     }
 
-    fun checkInputNull(input: String){
+    fun checkInputEmpty(input: String){
         if(input.isEmpty()) throw IllegalArgumentException(ErrorMessage.INPUT_NULL)
     }
 
