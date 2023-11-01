@@ -17,8 +17,10 @@ class Car {
         return false
     }
 
-    fun progressScore() {
-        this.score += 1
+    fun progressScore(progressBool: Boolean) {
+        if (progressBool) {
+            this.score += 1
+        }
     }
     
 }
