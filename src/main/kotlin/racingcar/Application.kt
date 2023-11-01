@@ -14,5 +14,5 @@ fun main() {
         carsClass.add(Car(car))
     }
 
-    racing.forwardOver4(carsClass)
+    racing.playRacing(machine.tryMove(),carsClass)
 }
