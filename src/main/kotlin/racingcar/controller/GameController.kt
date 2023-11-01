@@ -19,18 +19,21 @@ class GameController {
         val repetitionInput = inputRepetition()
         val repetition = Repetition(repetitionInput)
 
-        playRounds(repetition.count, cars.carList)
-        playResult(cars.carList)
+        playGame(cars, repetition)
     }
-
-    fun inputCarName(): List<String> {
+    private fun inputCarName(): List<String> {
         val carNameInput = inputView.promptCarNames()
         return inputView.splitCarNamesByComma(carNameInput)
     }
 
-    fun inputRepetition() = inputView.promptRepetition()
+    private fun inputRepetition() = inputView.promptRepetition()
 
-    fun playRounds(count: Int, carList: List<Car>) {
+    private fun playGame(cars: Cars, repetition: Repetition) {
+        playRounds(repetition.count, cars.carList)
+        playResult(cars.carList)
+    }
+
+    private fun playRounds(count: Int, carList: List<Car>) {
         outputView.printResultInfo()
 
         repeat(count) {

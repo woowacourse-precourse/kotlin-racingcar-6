@@ -9,6 +9,8 @@ data class Winner(
     init {
         val scoreList = carList.map { it.score }
         val bestScore = bestScoreCalculate(scoreList)
+
+        require(bestScore >= 1) { ZERO_SCORE_IS_NOT_WINNER }
         winnerNameListSet(carList, bestScore)
     }
 
@@ -18,5 +20,9 @@ data class Winner(
         _winnerNameList = carList.filter {
             it.score == bestScore
         }.map { it.name }
+    }
+
+    companion object {
+        internal const val ZERO_SCORE_IS_NOT_WINNER = "0점으로 우승할 수 없습니다."
     }
 }

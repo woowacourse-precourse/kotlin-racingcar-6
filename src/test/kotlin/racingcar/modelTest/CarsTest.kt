@@ -40,7 +40,7 @@ class CarsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = ["1234  ", "  1234", "Pobi12", "123456"])
+    @ValueSource(strings = ["", "1234  ", "  1234", "Pobi12", "123456"])
     @DisplayName("Car(init): checkNameLength()")
     fun `차 이름이 1~5 이내 인지 검증`(inputName: String) {
         val exception = assertThrows<IllegalArgumentException> { // JUnit5 lib : assertThrows

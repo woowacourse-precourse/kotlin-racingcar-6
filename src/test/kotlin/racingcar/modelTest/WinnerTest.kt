@@ -1,14 +1,28 @@
 package racingcar.modelTest
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import racingcar.model.Car
 import racingcar.model.Winner
 
 class WinnerTest {
+
+    @ParameterizedTest
+    @MethodSource("carListForZeroScore")
+    @DisplayName("Winner(init): Zero Score Winner Case")
+    fun `bestScore가 0일 때 오류 발생 검증`(carList: List<Car>) {
+        val exception = assertThrows<IllegalArgumentException> {
+            Winner(carList)
+        }
+
+        assertEquals(Winner.ZERO_SCORE_IS_NOT_WINNER, exception.message)
+    }
 
     @ParameterizedTest
     @MethodSource("carListForSingleWinner")
@@ -29,6 +43,17 @@ class WinnerTest {
     }
 
     companion object {
+        @JvmStatic
+        fun carListForZeroScore(): List<List<Car>> {
+            return listOf(
+                listOf(
+                    Car("Pobi", 0),
+                    Car("T", 0),
+                    Car("JS", 0),
+                )
+            )
+        }
+
         @JvmStatic
         fun carListForSingleWinner(): List<List<Car>> {
             return listOf(
