@@ -1,0 +1,3 @@
+import racingcar.EXCEPTION_MESSAGE_UNVALID_POSITION_NUMBER
+
+class UnvalidPositionException: IllegalArgumentException(EXCEPTION_MESSAGE_UNVALID_POSITION_NUMBER)

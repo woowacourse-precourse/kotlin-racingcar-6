@@ -1,5 +1,3 @@
-package racingcar.exceptions
-
 import racingcar.EXCEPTION_MESSAGE_BLANK_NAME
 
 class BlankNameException : IllegalArgumentException(EXCEPTION_MESSAGE_BLANK_NAME)
