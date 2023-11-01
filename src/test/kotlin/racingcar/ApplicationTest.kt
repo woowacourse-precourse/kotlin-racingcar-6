@@ -77,12 +77,7 @@ class ApplicationTest : NsTest() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi", "4")
-                assertThat(output()).contains(
-                    "pobi : -",
-                    "pobi : --",
-                    "pobi : ---",
-                    "pobi : ----"
-                )
+                assertThat(output()).contains("pobi : -", "pobi : --", "pobi : ---", "pobi : ----")
             },
             MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
         )
@@ -93,10 +88,7 @@ class ApplicationTest : NsTest() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi", "4")
-                assertThat(output()).contains(
-                    "pobi : -",
-                    "pobi : --"
-                )
+                assertThat(output()).contains("pobi : -", "pobi : --")
             },
             MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
         )
