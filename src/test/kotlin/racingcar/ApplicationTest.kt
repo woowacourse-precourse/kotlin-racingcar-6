@@ -56,6 +56,24 @@ class ApplicationTest : NsTest() {
         assertThat(cars.toStatusString()).isEqualTo("pobi : \nwoni : \njun : ")
     }
 
+    fun List<Car>.race(loopCount: Int): Unit {
+        for (i in 1..loopCount) {
+            this.forEach { it.randMove() }
+        }
+    }
+
+    @Test
+    fun `cars(List of Car) 로부터 모든 차량을 전진시키는 race() 테스트`() {
+        val inputString = "pobi,woni,jun"
+        val nameList = inputString.split(",").map { it.trim() }
+        val names = inputString.split(",").map { it.trim() }
+        val cars: List<Car> = names.map { Car(it) }
+        cars.race(10)
+        println(cars.toStatusString())
+        assertThat(cars.toStatusString()).contains("-")
+
+    }
+
     public override fun runMain() {
         main()
     }
