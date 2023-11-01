@@ -1,5 +1,8 @@
 package racingcar
 
+import racingcar.domain.GameHost
+
 fun main() {
-    // TODO: 프로그램 구현
+    val host = GameHost()
+    host.start()
 }
