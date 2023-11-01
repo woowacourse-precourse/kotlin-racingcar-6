@@ -13,7 +13,10 @@ class ValidatorTest {
                 throw throw IllegalArgumentException("이름은 5글자 이하로 입력해주세요.")
             }
         }
-        val carStringNameList: List<String> = listOf("pobi", "sheep1sik", "ju1n")
+    }
+    @Test
+    fun `자동차 이름에 숫자가 포함되어 있으면 예외처리`(){
+        val carStringNameList: List<String> = listOf("pobi", "sik", "ju1n")
         val regex = "\\d+".toRegex()
         assertThrows<IllegalArgumentException>("이름은 문자로만 입력하세요.") {
             for (numberCheck in carStringNameList){
@@ -22,7 +25,6 @@ class ValidatorTest {
                 }
             }
         }
-
     }
 
     @Test
