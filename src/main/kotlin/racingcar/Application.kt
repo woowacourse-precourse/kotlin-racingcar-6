@@ -29,17 +29,20 @@ fun main() {
     println()
     println("실행 결과")
     for (i in 0..<repeat) {
-        for (car in cars) {
-            car.move()
-            print(car.getOutput())
-        }
+        moveCar(cars)
         println()
     }
     var race = Race(cars)
     print(race.getOutput())
 }
 
-
+fun moveCar(cars:MutableList<Car>){
+    for (car in cars) {
+        car.move()
+        print(car.getOutput())
+    }
+    println()
+}
 
 
 
