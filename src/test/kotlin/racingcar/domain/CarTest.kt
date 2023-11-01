@@ -1,10 +1,10 @@
 package racingcar.domain
 
-import java.io.ByteArrayOutputStream
-import java.io.PrintStream
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import java.io.ByteArrayOutputStream
+import java.io.PrintStream
 
 class CarTest {
     private val originalOut = System.out

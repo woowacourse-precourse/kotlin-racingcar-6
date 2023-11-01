@@ -1,7 +1,7 @@
 package racingcar.domain
 
-import racingcar.utils.StringListSplitter
 import racingcar.utils.RandomGenerator
+import racingcar.utils.StringListSplitter
 
 class Circuit(carNames: String, private var raceRound: Int) {
     private val cars = mutableListOf<Car>()
