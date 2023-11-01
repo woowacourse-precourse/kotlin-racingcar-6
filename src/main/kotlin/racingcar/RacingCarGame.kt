@@ -83,10 +83,12 @@ class RacingCarGame {
 
         println("\n실행 결과")
         //for (i in 0..<numberOfTryStr.toInt()) {
-            //goOrNot()
-            //printGameProgress()
-            //println()
+
         //}
+        goOrNot()
+        printGameProgress()
+        println()
+        
         printWinner()
     }
 }
