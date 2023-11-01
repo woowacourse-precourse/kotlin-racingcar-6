@@ -33,6 +33,9 @@ class RacingManager {
             winner.add(carNameList[num])
         }
         val result = winner.joinToString(", ") // 리스트를 문자열로 변환하고 쉼표와 공백으로 구분
-        println("최종 우승자 : $result") // 출력: pobi, jun
+        if (bestScore == 0)
+            println("무승부 입니다.")
+        else
+            println("최종 우승자 : $result") // 출력: pobi, jun
     }
 }
