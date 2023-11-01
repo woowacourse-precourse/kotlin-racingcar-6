@@ -4,18 +4,14 @@ fun splitNames(names: String): List<String> {
     return names.split(',')
 }
 
-fun getInputString(view: View): String {
-    return view.enterNames()
-}
 
-fun validateNameList(nameList:List<String>){
-    nameList.forEach{ nameErrorCheck(it) }
+fun validateNameList(nameList: List<String>) {
+    nameList.forEach { nameErrorCheck(it) }
     redundancyErrorCheck(nameList)
 }
 
-
 fun inputNames(view: View): List<String> {
-    val inputString = getInputString(view)
+    val inputString = view.enterNames()
     val nameList = splitNames(inputString)
     validateNameList(nameList)
     return nameList
