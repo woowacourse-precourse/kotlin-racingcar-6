@@ -10,7 +10,7 @@ class IOHandler(private val validator: Validator) {
         val names = splitNameFromInput(input)
 
         for (name in names) {
-            require(validator.checkCarNameValid(name)) {
+            require(validator.checkCarName(name)) {
                 NAME_LENGTH_IS_NOT_MATCHED
             }
         }
@@ -22,7 +22,7 @@ class IOHandler(private val validator: Validator) {
         val input = getInput()
         val count = changeNumStringToInt(input)
 
-        require(validator.checkMoveCountValid(count)) {
+        require(validator.checkMoveCount(count)) {
             NOT_ALLOWED_COUNT
         }
 

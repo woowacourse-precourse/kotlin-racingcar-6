@@ -20,7 +20,7 @@ class ValidatorTest {
         val countOfMove = 0
 
         // when
-        val actual = validator.checkMoveCountValid(countOfMove)
+        val actual = validator.checkMoveCount(countOfMove)
 
         // then
         val expected = true
@@ -33,7 +33,7 @@ class ValidatorTest {
         val countOfMove = 100
 
         // when
-        val actual = validator.checkMoveCountValid(countOfMove)
+        val actual = validator.checkMoveCount(countOfMove)
 
         // then
         val expected = true
@@ -46,7 +46,7 @@ class ValidatorTest {
         val countOfMove = -1
 
         // when
-        val actual = validator.checkMoveCountValid(countOfMove)
+        val actual = validator.checkMoveCount(countOfMove)
 
         // then
         val expected = false
@@ -59,7 +59,7 @@ class ValidatorTest {
         val name = "pobi"
 
         // when
-        val actual = validator.checkCarNameValid(name)
+        val actual = validator.checkCarName(name)
 
         // then
         val expected = true
@@ -72,7 +72,7 @@ class ValidatorTest {
         val name = "123456"
 
         // when
-        val actual = validator.checkCarNameValid(name)
+        val actual = validator.checkCarName(name)
 
         // then
         val expected = false
@@ -85,7 +85,7 @@ class ValidatorTest {
         val name = "굿이모지👍"
 
         // when
-        val actual = validator.checkCarNameValid(name)
+        val actual = validator.checkCarName(name)
 
         // then
         val expected = true

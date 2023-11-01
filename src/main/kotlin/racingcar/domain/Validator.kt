@@ -7,9 +7,9 @@ class Validator {
     private val carNameRange = (ALLOWED_NAME_MIN_SIZE..ALLOWED_NAME_MAX_SIZE)
     private val breakIterator = BreakIterator.getCharacterInstance()
 
-    fun checkCarNameValid(input: String): Boolean = countLengthOfLetter(input) in carNameRange
+    fun checkCarName(input: String): Boolean = countLengthOfLetter(input) in carNameRange
 
-    fun checkMoveCountValid(count: Int): Boolean = count >= ALLOWED_MOVE_MIN_COUNT
+    fun checkMoveCount(count: Int): Boolean = count >= ALLOWED_MOVE_MIN_COUNT
 
     private fun countLengthOfLetter(input: String): Int {
         breakIterator.setText(input)
