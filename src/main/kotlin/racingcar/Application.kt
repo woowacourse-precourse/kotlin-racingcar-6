@@ -17,9 +17,7 @@ class RacingCarGame {
 
         println("\n실행 결과")
         repeat(attemptsCount) {
-            for (car in cars) {
-                car.move()
-            }
+            cars.forEach { it.move() }
             printGameResult(cars)
         }
         printWinners(findWinners(cars))
@@ -45,25 +43,15 @@ class RacingCarGame {
         val uniqueCarNames = HashSet<String>()
 
         carNameList.forEach { carName ->
-            if (carName.isBlank()) {
-                throw IllegalArgumentException("자동차 이름을 입력해주세요.")
-            }
-            if (carName.length > 5) {
-                throw IllegalArgumentException("자동차 이름은 5자 이하로 입력해주세요.")
-            }
-            if (!uniqueCarNames.add(carName)) {
-                throw IllegalArgumentException("중복된 자동차 이름 : $carName")
-            }
+            require(carName.isNotBlank()) { "자동차 이름을 입력해주세요." }
+            require(carName.length <= 5) { "자동차 이름은 5자 이하로 입력해주세요." }
+            require(uniqueCarNames.add(carName)) { "중복된 자동차 이름 : $carName" }
         }
     }
 
     private fun validateAttemptsCount(count: String) {
-        if (count.isBlank()) {
-            throw IllegalArgumentException("시도할 횟수를 입력해주세요.")
-        }
-        if (!count.matches(Regex("^-?\\d+\$")) || count.toInt() <= 0) {
-            throw IllegalArgumentException("1 이상의 숫자를 입력해주세요.")
-        }
+        require(count.isNotBlank()) { "시도할 횟수를 입력해주세요." }
+        require(count.matches(Regex("^-?\\d+\$")) && count.toInt() > 0) { "1 이상의 숫자를 입력해주세요." }
     }
 
     private fun printGameResult(cars: List<Car>) {
