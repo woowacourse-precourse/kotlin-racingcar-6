@@ -3,7 +3,7 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
-class InputHandler {
+class WoowaRacing {
     fun start() {
         val carNames = getCarNames()
         val roundCount = getRoundCount()
@@ -13,7 +13,7 @@ class InputHandler {
         repeat(roundCount) {
             cars.forEach { car ->
                 car.move()
-                println("${car.name}: ${car.getPosition()}")
+                car.getPosition()
             }
             println()
         }
@@ -51,8 +51,8 @@ class InputHandler {
             }
         }
 
-        fun getPosition(): String {
-            return "-".repeat(position)
+        fun getPosition() {
+            println("$name: ${"-".repeat(position)}")
         }
     }
 
@@ -69,6 +69,6 @@ class InputHandler {
 }
 
 fun main() {
-    val inputHandler = InputHandler()
-    inputHandler.start()
+    val woowaracing = WoowaRacing()
+    woowaracing.start()
 }
