@@ -42,7 +42,6 @@ class RacingGame {
 
     private fun startAwardCeremony() {
         val winnerList = rateAllRacers()
-        // TODO : PrintUtil.printWinner 메서드 구현
         printWinnerList(winnerList)
     }
 
