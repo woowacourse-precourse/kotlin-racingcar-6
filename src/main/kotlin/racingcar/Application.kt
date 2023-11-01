@@ -60,3 +60,9 @@ fun startRacing(numberOfRacing: Int, carNamesList: List<Car>) {
         printCarWithScore(carNamesList)
     }
 }
+
+fun printWinner(carNamesList: List<Car>) {
+    val maxScore = carNamesList.maxBy { it.score }.score
+    val winner = carNamesList.filter { it.score == maxScore }.joinToString(", "){it.name}
+    println("최종 우승자 : $winner")
+}
