@@ -1,7 +1,4 @@
 package racingcar
-
-import racingcar.Result
-
 fun main() {
     // TODO: 프로그램 구현
     val car: Car = Car()
@@ -12,9 +9,12 @@ fun main() {
     car.validateCarNameLength(carNames)
     car.validateDuplicateName(carNames)
     car.validateBlankName(carNames)
+    car.validateNameHaveBlank(carNames)
+
     var carProgressList = car.createCarProgressList(carNames)
 
     val moveCount = racing.enterMoveCount()
+    racing.validatePositiveInteger(moveCount)
 
     println("실행 결과")
     for (i in 0..<moveCount) {
