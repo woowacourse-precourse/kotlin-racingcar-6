@@ -6,7 +6,7 @@ import util.Validator
 class InputView {
     fun inputCarNames(): String {
         val input: String = Console.readLine()
-        Validator().checkInputNull(input)
+        Validator().checkInputEmpty(input)
         return input
     }
 
