@@ -45,7 +45,7 @@ class RacingCarGame {
         }
     }
 
-    private fun notIntException(){
+    private fun notIntException() {
         try {
             numberOfTryStr.toInt()
         } catch (ex: NumberFormatException) {
@@ -53,13 +53,13 @@ class RacingCarGame {
         }
     }
 
-    private fun printGameProgress(){
+    private fun printGameProgress() {
         for (carName in carList) {
             println(gameProgress[carName])
         }
     }
 
-    private fun printWinner(){
+    private fun printWinner() {
         val moveCountList = moveCount.toList()
         val sortedMoveCountList = moveCountList.sortedWith(compareByDescending { it.second })
         print("최종 우승자 : ")
@@ -74,19 +74,19 @@ class RacingCarGame {
             print(", ")
         }
     }
-/*
+
     fun gameStart() {
         isNameNotExceed5Letters()
         setProgress()
         setMoveCount()
         notIntException()
-
+/*
         println("\n실행 결과")
         for (i in 0..<numberOfTryStr.toInt()) {
             goOrNot()
             printGameProgress()
             println()
-        }
+        }*/
         printWinner()
-    }*/
+    }
 }
