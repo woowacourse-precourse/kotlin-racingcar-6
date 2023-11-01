@@ -26,6 +26,20 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `시도 횟수에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>("1 이상의 숫자만 유효합니다.") {
+                runException("pobi,woni", "0")
+            }
+        }
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>("문자는 유효하지 않습니다.") {
+                runException("pobi,woni", "a")
+            }
+        }
+    }
+
     public override fun runMain() {
         main()
     }
