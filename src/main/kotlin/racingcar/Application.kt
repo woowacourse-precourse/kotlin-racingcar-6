@@ -6,16 +6,16 @@ fun main() {
 
     val input = Input()
     val cars = Cars(DetermineMove())
-    val output = Output(cars)
+    val output = Output()
 
     cars.createCar(input.carName())
     val actionNum = input.attemptNum()
     println("\n실행 결과")
     for (i in 1..actionNum) {
         cars.moveCars()
-        output.printState()
+        output.printState(cars.carList)
         println()
     }
-    output.printResult()
+    output.printResult(cars.getWinnerList())
 
 }
