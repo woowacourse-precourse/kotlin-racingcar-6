@@ -9,8 +9,6 @@ class Referee(private val cars: List<Car>) {
         setWinnerCarNames()
     }
 
-    fun getWinningCarNames(): List<String> = winningCarNames
-
     private fun setMaxDistance() {
         maxPosition = cars.maxOf { it.getPosition() }
     }
@@ -26,4 +24,6 @@ class Referee(private val cars: List<Car>) {
             winningCarNames.add(car.getName())
         }
     }
+
+    fun getWinningCarNames(): List<String> = winningCarNames
 }

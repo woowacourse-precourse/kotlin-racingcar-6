@@ -2,8 +2,7 @@ package racingcar
 
 class OutputManager {
     fun printRaceStartMessage() {
-        println()
-        println(EXECUTION_RESULT_MESSAGE)
+        println("\n" + EXECUTION_RESULT_MESSAGE)
     }
 
     fun printWinners(winnerCarNames: List<String>) {

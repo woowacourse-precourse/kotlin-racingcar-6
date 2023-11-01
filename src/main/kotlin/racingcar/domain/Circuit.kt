@@ -7,7 +7,12 @@ class Circuit(carNames: String, private var raceRound: Int) {
     private val cars = mutableListOf<Car>()
 
     init {
-        registerCars(carNames)
+        val carNameList = StringListSplitter.splitByCommaToStringList(carNames)
+        registerCars(carNameList)
+    }
+
+    private fun registerCars(carNameList: List<String>) {
+        cars.addAll(carNameList.map { Car(it) })
     }
 
     fun startRace() {
@@ -17,15 +22,6 @@ class Circuit(carNames: String, private var raceRound: Int) {
         }
     }
 
-    fun getCarList(): List<Car> {
-        return cars.toList()
-    }
-
-    private fun registerCars(carNames: String) {
-        val carNameList = StringListSplitter.splitByCommaToStringList(carNames)
-        cars.addAll(carNameList.map { Car(it) })
-    }
-
     private fun playRound() {
         cars.forEach { it.moveOrStay(RandomGenerator.generateRandomNumber()) }
     }
@@ -33,5 +29,9 @@ class Circuit(carNames: String, private var raceRound: Int) {
     private fun printRacingStatus() {
         cars.forEach { println(it) }
         println()
+    }
+
+    fun getCarList(): List<Car> {
+        return cars.toList()
     }
 }
