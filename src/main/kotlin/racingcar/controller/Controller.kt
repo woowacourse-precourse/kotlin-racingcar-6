@@ -42,4 +42,8 @@ class Controller(
             OutputView.executionCarResult(cars)
         }
     }
+
+    private fun getGreatestPosition(): Int {
+        return cars.maxOf { car -> car.currentPosition.length }
+    }
 }
