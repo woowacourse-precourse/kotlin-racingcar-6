@@ -27,12 +27,6 @@ class Input {
     }
 
     private fun gameNumberCheck(gameNumber: Int) {
-        //if (gameNumber == null) {
-        //throw IllegalArgumentException("시도할 횟수를 입력해 주세요.")
-        //}
-        //if (gameNumber !is Int) {
-        //throw IllegalArgumentException("숫자를 입력해 주세요.")
-        //}
         if (gameNumber < 1) {
             throw IllegalArgumentException("1 이상의 숫자를 입력해 주세요")
         }
