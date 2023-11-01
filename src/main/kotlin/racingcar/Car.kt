@@ -6,6 +6,7 @@ class Car(name: String) {
     init {
         require(name.length <= NAME_MAX_LENGTH)
         require(name.matches(Regex(Message.NOT_ONLY_NUMBER_PATTERN)))
+        require(name.isNotBlank())
     }
 
     var name: String = name
@@ -14,7 +15,7 @@ class Car(name: String) {
     var howGoForwardCount: Int = 0
         private set
 
-    private fun createRandomNumber() = Randoms.pickNumberInRange(0, 9)
+    private fun createRandomNumber() = Randoms.pickNumberInRange(RANDOM_START, RANDOM_END)
 
     fun moveForward() {
         val randomNumber = createRandomNumber()
@@ -29,5 +30,7 @@ class Car(name: String) {
         const val NAME_MAX_LENGTH = 5
         const val CAR_FORWARD_STANDARD = 4
         val RANDOM_RANGE = 0..9
+        const val RANDOM_START = 0
+        const val RANDOM_END = 0
     }
 }
