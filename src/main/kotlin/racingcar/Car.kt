@@ -6,6 +6,12 @@ class Car(private var name: String) {
     private var position = 0
     private var result: Result = Result()
 
+    companion object {
+        const val MIN_RANDOM_NUMBER = 0
+        const val MAX_RANDOM_NUMBER = 9
+        const val MOVE_THRESHOLD = 4
+    }
+
     fun getName(): String {
         return name
     }
@@ -14,10 +20,9 @@ class Car(private var name: String) {
         return position
     }
 
-
     fun moveForward() {
-        val randomNumber = Randoms.pickNumberInRange(0, 9)
-        if (randomNumber >= 4) {
+        val randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)
+        if (randomNumber >= MOVE_THRESHOLD) {
             position += 1
             result.printResult()
         }
