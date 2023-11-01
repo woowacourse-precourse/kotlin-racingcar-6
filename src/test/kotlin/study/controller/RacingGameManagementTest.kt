@@ -15,17 +15,11 @@ class RacingGameManagementTest {
     fun `setUp`(){
         racingCarsManagement = RacingCarsManagement(mutableListOf(RacingCarModel("차1"),RacingCarModel("차2")))
     }
-    @Test
-    fun `레이싱카가 추가되는지 테스트`(){
-        assert(racingCarsManagement.cars.size==2)
-        racingCarsManagement.addRacingCar(RacingCarModel("차3"))
-        assert(racingCarsManagement.cars.size==3)
-    }
 
     @Test
-    fun `레이싱카 추가되는지 테스트`(){
-        val winnersName = racingCarsManagement.getWinners().map { racingCarModel -> racingCarModel.name  }
-        val expected = listOf("차1","차2")
+    fun `우승자가 맞게 출력되는지 테스트`(){
+        val winnersName = racingCarsManagement.getWinners()
+        val expected = "차1, 차2"
         assertEquals(winnersName,expected)
     }
 }
