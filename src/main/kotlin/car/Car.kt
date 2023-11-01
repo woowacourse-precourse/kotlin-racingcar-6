@@ -8,7 +8,7 @@ import caroption.Engine
 
 class Car(
     private val engine: Engine,
-    private val dashBoard: DashBoard,
+    private val dashBoard: DashBoard
 ) {
 
     fun start() {
