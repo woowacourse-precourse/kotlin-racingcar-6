@@ -20,6 +20,40 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `pobi 우승`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,booze", "2")
+                assertThat(output()).contains("pobi : --", "woni : -", "booze : ", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD, STOP, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP
+        )
+    }
+
+    @Test
+    fun `공동 우승(전진)`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,booze", "2")
+                assertThat(output()).contains("pobi : --", "woni : --", "booze : --", "최종 우승자 : pobi, woni, booze")
+            },
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        )
+
+    }
+    @Test
+    fun `공동 우승(정지)`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,booze", "2")
+                assertThat(output()).contains("pobi : ", "woni : ", "booze : ", "최종 우승자 : pobi, woni, booze")
+            },
+            STOP, STOP, STOP, STOP, STOP, STOP
+        )
+
+    }
+
+    @Test
     fun `이름에 대한 예외 처리`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,boozea", "1") }
@@ -51,6 +85,12 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `올바르지 않은 시행 횟수에 대한 예외 처리(음수)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,booze", "-1") }
+        }
+    }
     public override fun runMain() {
         main()
     }
