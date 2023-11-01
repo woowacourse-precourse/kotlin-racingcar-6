@@ -1,19 +1,26 @@
 # 자동차 경주 게임
 
 ## 기능 목록
-- [] 경주 할 자동차 이름을 입력한다. Player#inputCarName()
-  - [] 자동차 이름은 쉼표(,)를 기준으로 구분한다.
-  - [] 이름은 5자 이하만 가능하다.
-- [] 몇 번의 이동을 할 것인지 입력한다. Player#inputGameNumber()
+
+- [x] 경주 할 자동차 이름을 입력한다. Input#inputCarName()
+    - [x] 자동차 이름은 쉼표(,)를 기준으로 구분한다.
+    - [x] 잘못된 값을 입력한 경우 IllegalArgumentException을 발생시킨다. Input#nameCheck()
+        - [x] 이름은 5자 이하만 가능하다.
+        - [x] 값을 입력해야 한다.
+- [] 시도할 횟수를 입력한다. Input#inputGameNumber()
+    - [] 잘못된 값을 입력한 경우 IllegalArgumentException을 발생시킨다. Input#gameNumberCheck()
+        - [] 값을 입력해야 한다.
+        - [] 숫자를 입력해야 한다.
+        - [] 1이상을 입력해야 한다.
 - [] 0에서 9 사이에서 무작위 값을 생성한다. RandomNumber#createRandomNumber()
 - [] 무작위 값이 4 이상일 경우 전진한다. Move#moveCar()
 - [] 각각의 자동차의 전진한 횟수를 비교한다. Comparison#compareMoveNumber()
-  - [] 가장 많이 전진한 자동차가 우승한다.
-  - [] 우승자는 한명 이상일 수 있다.
-  - [] 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
+    - [] 가장 많이 전진한 자동차가 우승한다.
+    - [] 우승자는 한명 이상일 수 있다.
+    - [] 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
 
 ## 기능 요구 사항
-random
+
 초간단 자동차 경주 게임을 구현한다.
 
 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
