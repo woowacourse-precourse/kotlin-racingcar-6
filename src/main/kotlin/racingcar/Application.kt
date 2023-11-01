@@ -9,10 +9,11 @@ class InputHandler {
         val roundCount = getRoundCount()
 
         val carResults = mutableMapOf<String, MutableList<Int>>()
+        val randomGenerator = RandomGenerator()
 
         repeat(roundCount) {
             carNames.forEach { carName ->
-                val randomValue = Randoms.pickNumberInRange(0, 9)
+                val randomValue = randomGenerator.generate()
                 carResults.computeIfAbsent(carName) { mutableListOf() }.add(randomValue)
                 println("$carName: ${carResults[carName]!!.joinToString(", ")}")
             }
@@ -32,6 +33,12 @@ class InputHandler {
         println("시도할 횟수를 입력하세요:")
         val input = Console.readLine()
         return input.toIntOrNull() ?: 0
+    }
+
+    private class RandomGenerator {
+        fun generate(): Int {
+            return Randoms.pickNumberInRange(0, 9)
+        }
     }
 }
 
