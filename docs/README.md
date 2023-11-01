@@ -19,12 +19,12 @@
 - [X] 우승자를 판단할 수 있다. - RacingCars#findWinners()
   - [X] 위치가 가장 큰 자동차가 우승자이다.
   - [X] 우승자는 한 명 이상일 수 있다.
-- [ ] 우승자를 출력할 수 있다. - DisplayBoard#displayWinners()
-  - [ ] 단독 우승자를 출력할 수 있다. - DisplayBoard#displayWinners()
+- [X] 우승자를 출력할 수 있다. - DisplayBoard#display()
+  - [X] 단독 우승자를 출력할 수 있다.
     - ```최종 우승자 : pobi```
-  - [ ] 공동 우승자를 출력할 수 있다. - DisplayBoard#displayWinners()
+  - [X] 공동 우승자를 출력할 수 있다.
     - ```최종 우승자 : pobi, jun```
-- [X] 각 차수별 실행결과를 출력할 수 있다. - DisplayBoard#displayRacingCars()
+- [X] 각 차수별 실행결과를 출력할 수 있다. - DisplayBoard#display()
   - [X] 위치 한 칸은 -로 표시한다.
   - ```
     pobi : --
