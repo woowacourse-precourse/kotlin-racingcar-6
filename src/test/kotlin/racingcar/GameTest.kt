@@ -14,7 +14,7 @@ import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 
-class GameTest: NsTest() {
+class GameTest : NsTest() {
 
     private val originalSystemOut = System.out
     private val outputStream = ByteArrayOutputStream()
@@ -44,7 +44,7 @@ class GameTest: NsTest() {
     fun `우승자 출력 확인1`() {
         System.setOut(PrintStream(outputStream))
         val ui = UserInterface()
-        ui.printWinners(listOf("aaa","bbb","ccc"))
+        ui.printWinners(listOf("aaa", "bbb", "ccc"))
 
         val expectedOutput = "최종 우승자 : aaa, bbb, ccc"
         val consoleOutput = outputStream.toString().trim()

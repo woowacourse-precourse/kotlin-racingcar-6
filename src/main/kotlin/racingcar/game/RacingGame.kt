@@ -3,39 +3,15 @@ package racingcar.game
 import racingcar.io.UserInterface
 
 class RacingGame(
-    private val ui: UserInterface = UserInterface()
+    private val ui: UserInterface,
+    private val players: List<Player>,
+    private var rounds: Int,
+    private var maxProgress: Int
 ) {
-
-    private val players: List<Player>
-    private var rounds: Int
-    private var maxProgress: Int = 0
-
-    init {
-        val playerNames = askCarNames()
-        players = setPlayers(playerNames)
-        rounds = askTryNumbers()
-    }
-
-    private fun askCarNames(): List<String> {
-        return ui.enterCarNames()
-    }
-
-    private fun askTryNumbers(): Int {
-        return ui.enterTryNumbers()
-    }
-
-    private fun setPlayers(playerNames: List<String>): List<Player> {
-        val players = mutableListOf<Player>()
-        for (name in playerNames) {
-            players.add(Player(name, progress = 0))
-        }
-
-        return players
-    }
-
 
     fun play() {
         ui.printResultMessage()
+
         repeat(rounds) {
             playRound()
         }
@@ -44,21 +20,22 @@ class RacingGame(
 
     private fun playRound() {
         for (player in players) {
-            player.rollTheDice()
+            player.playGame()
         }
+
         printRoundResult()
     }
 
     private fun printRoundResult() {
         for (player in players) {
-            maintainMaxProgress(player.getProgress())
+            updateMaxProgress(player.getProgress())
             ui.printPlayerProgress(player.getPlayerName(), player.getProgress())
         }
         ui.printBlankLine()
 
     }
 
-    private fun maintainMaxProgress(currentProgress: Int) {
+    private fun updateMaxProgress(currentProgress: Int) {
         if (maxProgress < currentProgress) {
             maxProgress = currentProgress
         }

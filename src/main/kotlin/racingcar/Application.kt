@@ -1,10 +1,10 @@
 package racingcar
 
-import racingcar.game.RacingGame
+import racingcar.game.GameSetting
 
 fun main() {
 
-    val game = RacingGame()
+    val game = GameSetting().setGame()
 
     game.play()
 }

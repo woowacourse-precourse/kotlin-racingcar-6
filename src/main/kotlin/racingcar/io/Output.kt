@@ -16,7 +16,7 @@ class Output {
 
     fun printPlayerProgress(name: String, progress: Int) {
         print("$name : ")
-        for (i in 0 until progress) {
+        repeat(progress) {
             print("-")
         }
         println()

@@ -3,18 +3,20 @@ package racingcar.game
 class Player(
     private val name: String,
     private var progress: Int,
-    private val dice: Dice = Dice()) {
+    private val dice: Dice = Dice()
+) {
 
-    fun rollTheDice() {
-        if(dice.goStop()) {
+    fun playGame() {
+        if (dice.goStop()) {
             progress++
         }
     }
 
-    fun getPlayerName():String {
+    fun getPlayerName(): String {
         return name
     }
-    fun getProgress():Int {
+
+    fun getProgress(): Int {
         return progress
     }
 }
