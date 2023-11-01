@@ -12,6 +12,12 @@ class RacingGame {
 
         val cars = carNames.map { Car(it) }
 
+        repeat(numberOfTries) {
+            cars.forEach { car ->
+                car.move(Randoms.pickNumberInRange(0, 9))
+            }
+        }
+
 
     }
 
