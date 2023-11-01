@@ -43,7 +43,7 @@ fun main() {
     }
 
     for (item in CAR_LIST) {
-        checkisMaximum(item)
+        checkIsMaximum(item)
     }
 
     println("최종 우승자 : ${WINNER_LIST.joinToString()}")
@@ -58,7 +58,7 @@ fun initialize() {
 
 // 경주할 자동차 이름 글자 수 체크
 fun checkName(name: String) {
-    if (name.length > 5) {
+    if (name.length > 5 || name.isEmpty()) {
         throw IllegalArgumentException()
     } else {
         CAR_NAME_LIST.add(name)
@@ -99,7 +99,7 @@ fun checkMaxDistance(item: Car) {
 }
 
 // 최대값과 객체의 go가 일치함 확인
-fun checkisMaximum(item: Car) {
+fun checkIsMaximum(item: Car) {
     if (item.go == MAX_DISTANCE) {
         WINNER_LIST.add(item.name)
     }

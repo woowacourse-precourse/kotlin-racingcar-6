@@ -44,6 +44,20 @@ class ApplicationTest : NsTest() {
         )
     }
 
+    @Test
+    fun `이름 공백 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,,nao", "1") }
+        }
+    }
+
+    @Test
+    fun `아무것도 입력하지 않았을 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("", "") }
+        }
+    }
+
     public override fun runMain() {
         main()
     }
