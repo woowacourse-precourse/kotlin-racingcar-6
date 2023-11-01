@@ -10,7 +10,7 @@ class RacingGameManager {
     private val carController = CarController()
 
     private val gameRound: Int by lazy {
-        setGameRound()
+        inputGameRoundFromUser()
     }
 
     fun run() {
@@ -61,8 +61,6 @@ class RacingGameManager {
     private fun printWinners(winners: List<String>) {
         println("${Message.OUTPUT_GAME_WINNER_PREFIX.message}${winners.joinToString()}")
     }
-
-    private fun setGameRound(): Int = inputGameRoundFromUser()
 
     private fun inputGameRoundFromUser(): Int {
         val gameRound = Console.readLine()
