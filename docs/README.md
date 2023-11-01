@@ -1,7 +1,7 @@
 # 구현할 기능 목록
-- [ ] 사용자는 경주 할 자동차들의 이름을 입력할 수 있다. - Player#inputRacingCarNames()
-  - [ ] 사용자의 입력이 null일 경우 IllegalArgumentException을 발생시킨다.
-  - [ ] 자동차 이름은 쉼표를 기준으로 구분한다.
+- [X] 사용자는 경주 할 자동차들의 이름을 입력할 수 있다. - Player#inputRacingCarNames()
+  - [X] 사용자의 입력이 null일 경우 IllegalArgumentException을 발생시킨다.
+  - [X] 자동차 이름은 쉼표를 기준으로 구분한다.
   - [X] 이름 목록으로 자동차들을 생성할 수 있다. - RacingCars#RacingCars()
     - [X] 경주할 자동차의 수는 2대 이상이어야 한다.
     - [X] 이름과 함께 자동차를 생성할 수 있다. - RacingCar#RacingCar()
