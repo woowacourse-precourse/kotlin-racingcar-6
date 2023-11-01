@@ -26,6 +26,38 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `시도 횟수에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,nana", "a") }
+        }
+    }
+
+    @Test
+    fun `경주자가 한명일 시`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi", "1")
+                assertThat(output()).contains("pobi : -", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD
+        )
+    }
+
+    @Test
+    fun `이름 공백 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,,nao", "1") }
+        }
+    }
+
+    @Test
+    fun `아무것도 입력하지 않았을 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("", "") }
+        }
+    }
+
     public override fun runMain() {
         main()
     }
