@@ -40,6 +40,7 @@ fun main() {
 
     println("\n실행 결과")
 
+    //입력 유효성 검사 구현
     require(carNames != null && tryCount != null && tryCount > 0) { throw IllegalArgumentException("잘못된 입력입니다.") }
 
     val carNameList = carNames.split(",")
@@ -52,6 +53,7 @@ fun main() {
         println()
     }
 
+    //최종 우승자 결정 및 발표 로직
     val maxPosition = cars.maxOf { it.position }
     val winners = cars.filter { it.position == maxPosition }.map { it.name }
 
