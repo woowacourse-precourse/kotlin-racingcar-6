@@ -8,7 +8,7 @@ fun main() {
         player[name] = 0
     }
     println(player)
-    println( inputNumber())
+    println(inputNumber())
 }
 
 fun parsingInput(): List<String> {
@@ -40,6 +40,13 @@ fun validateNumber(input: String): Int {
     return input.toInt()
 }
 
-fun validateIsPositiveInteger(input: Int){
-    if(input<0) throw IllegalArgumentException("${input}은 0보다 작은 횟수로 입력이 불가능합니다.")
+fun validateIsPositiveInteger(input: Int) {
+    if (input < 0) throw IllegalArgumentException("${input}은 0보다 작은 횟수로 입력이 불가능합니다.")
+}
+
+
+fun gameRunText(playerList: MutableMap<String, Int>) {
+    for (player in playerList) {
+        println("${player.key} : " + "-".repeat(player.value))
+    }
 }
