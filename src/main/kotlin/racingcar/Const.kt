@@ -9,6 +9,6 @@ object Const {
     const val EXCEPTION_WRONG_NUMBER = "횟수 입력이 0입니다."
     const val EXCEPTION_NOT_NUMBER = "횟수 입력에 숫자가 아닌 입력이 포함되었습니다."
 
-    const val RESULT_MSG = "\n실행 결과"
+    const val RESULT_MSG = "실행 결과"
     const val FINAL_WINNER_MSG = "최종 우승자 : "
 }

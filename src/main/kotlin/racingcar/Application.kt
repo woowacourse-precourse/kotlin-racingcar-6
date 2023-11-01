@@ -16,6 +16,7 @@ fun main() {
     val resList = MutableList(carList.size) {0}
     var count = countInput.toInt()
 
+    println()
     println(Const.RESULT_MSG)
     while (count != 0) {
         val locationList = movingCar(resList)
@@ -28,7 +29,7 @@ fun main() {
 
     val winnerList = finalWinner(carList, resList)
     print(Const.FINAL_WINNER_MSG)
-    println(winnerList.joinToString(", "))
+    print(winnerList.joinToString(", "))
 }
 
 fun processExceptionCar(carList: List<String>) {
