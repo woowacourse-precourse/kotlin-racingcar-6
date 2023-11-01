@@ -92,9 +92,12 @@ class RacingCarGame {
 class Car(val name: String) {
     private var position = 0
 
-    fun move() {
-        val randomValue = Randoms.pickNumberInRange(0, 9)
+    private fun generateRandomValue(): Int {
+        return Randoms.pickNumberInRange(0, 9)
+    }
 
+    fun move() {
+        val randomValue = generateRandomValue()
         if (randomValue >= 4) {
             position++
         }
