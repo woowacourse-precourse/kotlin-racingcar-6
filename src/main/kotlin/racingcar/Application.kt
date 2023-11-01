@@ -11,7 +11,7 @@ fun main() {
     cars.createCar(input.carName())
     val actionNum = input.attemptNum()
     println("\n실행 결과")
-    for (i in 1..actionNum) {
+    for (i in 0..<actionNum) {
         cars.moveCars()
         output.printState(cars.carList)
         println()
