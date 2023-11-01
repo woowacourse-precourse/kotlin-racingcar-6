@@ -16,11 +16,11 @@ class GameController {
 
     fun startGame() {
         outputView.showStartGuide()
-        cars = Cars(inputView.inputCars().map { Car(name = it) })
+        cars = Cars(inputView.cars().map { Car(name = it) })
         cars.validate()
 
         outputView.showTryCountGuide()
-        val tryCount = inputView.inputTryCount()
+        val tryCount = inputView.tryCount()
         startTurn(tryCount)
 
         val winners = cars.decideWinner()

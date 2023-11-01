@@ -5,10 +5,10 @@ import racingcar.config.ExceptionMessage.INVALID_INTEGER
 
 class InputView {
 
-    fun inputCars(cars: String = Console.readLine()): List<String> =
+    fun cars(cars: String = Console.readLine()): List<String> =
         cars.split(DELIMITER).map { it.trim() }
 
-    fun inputTryCount(tryCount: String = Console.readLine()): Int {
+    fun tryCount(tryCount: String = Console.readLine()): Int {
         val count = tryCount.toIntOrNull()
         return when {
             count == null || count <= 0 -> {

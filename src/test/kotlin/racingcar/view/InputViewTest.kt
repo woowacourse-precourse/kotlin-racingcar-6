@@ -23,7 +23,7 @@ class InputViewTest {
         "pobi, woni , jun : pobi,woni,jun", delimiter = ':'
     )
     fun `입력 값은 쉼표(,)를 기준으로 앞 뒤 공백을 제거한 값의 리스트로 반환한다`(input: String, expected: String) {
-        val result = inputView.inputCars(input)
+        val result = inputView.cars(input)
         Assertions.assertThat(result).isEqualTo(expected.split(','))
     }
 
@@ -32,14 +32,14 @@ class InputViewTest {
     @ValueSource(strings = ["abc", "-1", "${Integer.MAX_VALUE + 1}"])
     fun `숫자 입력 예외 테스트`(input: String) {
         assertThrows<IllegalArgumentException>(INVALID_INTEGER) {
-            inputView.inputTryCount(input)
+            inputView.tryCount(input)
         }
     }
 
     @ParameterizedTest
     @ValueSource(strings = ["1", "4", "${Integer.MAX_VALUE}"])
     fun `Int 형 자연수를 문자열로 입력했을 시 해당 숫자를 Int 형으로 반환한다`(input: String) {
-        val result = inputView.inputTryCount(input)
+        val result = inputView.tryCount(input)
         val expected = Integer.parseInt(input)
         Assertions.assertThat(result).isEqualTo(expected)
     }
