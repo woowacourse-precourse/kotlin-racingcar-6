@@ -8,6 +8,17 @@ fun main() {
     val cars_list = createCarsList()
     var accumulated_distance = MutableList(cars_list.size) {0}
 
+    println("시도할 횟수는 몇 회인가요?")
+    var try_number = readLine()!!.toInt()
+    println()
+
+    println("실행 결과")
+    while(try_number > 0){
+        printDashes(cars_list, accumulated_distance)
+        try_number--
+    }
+
+
 }
 
 
@@ -24,4 +35,17 @@ fun createCarsList() : List<String>{
 
     return cars_list
 }
+
+fun printDashes(cars_list: List<String>, accumulated_distance: MutableList<Int>){
+    for(i: Int in 0..(cars_list.size-1)){
+        var random_number = Randoms.pickNumberInRange(0, 9)
+        if(random_number >= 4){
+            accumulated_distance[i]++
+        }
+        val dashes = "-".repeat(accumulated_distance[i])
+        println(cars_list[i] + " : " + dashes)
+    }
+    println()
+}
+
 
