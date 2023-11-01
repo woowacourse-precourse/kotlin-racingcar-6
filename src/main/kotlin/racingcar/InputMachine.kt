@@ -1,5 +1,7 @@
 package racingcar
 
+import java.lang.NumberFormatException
+
 class InputMachine {
 
     // 자동차 이름 입력↓
@@ -34,12 +36,19 @@ class InputMachine {
             throw IllegalArgumentException("숫자를 입력하세요")
         }
 
+        if (!checkOnlyNatural(tryCount)) {
+            throw IllegalArgumentException("양의 정수를 입력하세요")
+        }
+
+
         return tryCount
 
     }
 
-    fun checkOnlyNatural(move: Int) : Boolean {
-        return true
+    private fun checkOnlyNatural(move: Int) : Boolean {
+
+        return move > 0
+
     }
 
 
