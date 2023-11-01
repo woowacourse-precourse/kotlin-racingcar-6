@@ -17,9 +17,7 @@ fun main() {
         }
         game.printGameResult(cars)
     }
-
-    val winners = game.findWinners(cars)
-    game.printWinners(winners)
+    game.printWinners(game.findWinners(cars))
 }
 
 class RacingCarGame {
@@ -69,8 +67,7 @@ class RacingCarGame {
         cars.forEach { car ->
             println("${car.name} : ${"-".repeat(car.getPosition())}")
         }
-        println("")
-
+        println()
     }
 
     fun findWinners(cars: List<Car>): List<String> {
@@ -93,8 +90,7 @@ class RacingCarGame {
     }
 
     fun printWinners(winners: List<String>) {
-        val winnerMessage =
-            if (winners.size == 1) "최종 우승자 : ${winners.first()}" else "최종 우승자 : ${winners.joinToString(", ")}"
+        val winnerMessage = "최종 우승자 : ${winners.joinToString(", ")}"
         println(winnerMessage)
     }
 }
