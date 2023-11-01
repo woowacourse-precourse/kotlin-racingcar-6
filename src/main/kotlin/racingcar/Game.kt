@@ -7,7 +7,13 @@ class Game {
         val inputString = Console.readLine()
         val names = inputString.split(",").map{ it.trim() }
         val cars: List<Car> = names.map{ Car(it) }
+
     }
+}
+
+fun List<Car>.toStatusString(): String {
+    val progressCharacter = "-"
+    return this.map { "${it.name} : ${progressCharacter.repeat(it.location)}"}.joinToString("\n")
 }
 
 class Car(val name: String) {

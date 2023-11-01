@@ -25,7 +25,7 @@
 
     
     List<Car> (toStatusString(), winner(), race())
-    [ ] 모든 차량의 현재 위치 상황을 출력  - toStatusString()
+    [x] 모든 차량의 현재 위치 상황을 출력  - toStatusString()
     [ ] 모든 차량의 전진 기능을 발동 - race()
     [ ] 가장 앞서 나간 차량 get - winner()
 
