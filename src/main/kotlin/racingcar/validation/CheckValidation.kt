@@ -1,5 +1,6 @@
 package racingcar.validation
 
+import racingcar.model.Car
 import java.lang.NumberFormatException
 
 class CheckValidation {
@@ -35,6 +36,16 @@ class CheckValidation {
                     checkIsPositive(userInput.toInt())
         ) {
             "양의 정수를 입력해야 합니다."
+        }
+    }
+
+    fun checkDuplicateCarName(
+        carList: List<Car>
+    ) {
+        require(
+            checkDuplication(carList)
+        ) {
+            "자동차 이름은 중복을 허용하지 않습니다."
         }
     }
 
@@ -77,6 +88,13 @@ class CheckValidation {
         carName: String
     ): Boolean {
         return carName.matches(CHECK_KOREAN.toRegex())
+    }
+
+    private fun checkDuplication(
+        carList : List<Car>
+    ): Boolean {
+        val distinctCount = carList.distinct().count()
+        return carList.size == distinctCount
     }
 
     companion object {

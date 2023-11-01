@@ -21,6 +21,7 @@ object GameConsole {
             }
             registerCar((carName))
         }
+        discriminator.checkDuplicateCarName(carList)
     }
 
     fun selectWinner() : List<String>{
