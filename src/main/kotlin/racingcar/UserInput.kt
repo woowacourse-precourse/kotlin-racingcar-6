@@ -25,7 +25,7 @@ class UserInput {
         val userInput = inputWithNullOrBlankCheck()
         return when {
             userInput.toIntOrNull() == null -> throw IllegalArgumentException("숫자가 아닙니다.")
-            userInput.toInt() < 0 -> throw IllegalArgumentException("경기 횟수는 1회 이상 진행되어야 합니다.")
+            userInput.toInt() <= 0 -> throw IllegalArgumentException("경기 횟수는 1회 이상 진행되어야 합니다.")
             else -> userInput.toInt()
         }
     }
