@@ -1,5 +1,6 @@
 package test
 
+import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import racingcar.model.Car
@@ -11,7 +12,7 @@ class CarTest {
     fun `차 비교 테스트`() {
         val car1 = Car(name = Name("hello"), position = Position())
         val car2 = Car(name = Name("hello"), position = Position())
-        camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest(
+        assertRandomNumberInRangeTest(
             {
                 car1.doRace()
                 car2.doRace()

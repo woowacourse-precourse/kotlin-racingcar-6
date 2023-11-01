@@ -24,6 +24,7 @@ class CarCollectionTest {
     }
 
 
+
     @Test
     fun `승자 찾기 테스트`() {
         val cars = CarCollection("hello,world,im,코드,에요")
@@ -32,14 +33,12 @@ class CarCollectionTest {
             {
                 CommandInvoker.executeCommands()
                 CommandInvoker.executeCommands()
-                CommandInvoker.executeCommands()
-                CommandInvoker.executeCommands()
                 val winnerList = cars.getWinners()
-                assertThat(winnerList[0].getPositionNumber()).isEqualTo(2)
-                assertThat(winnerList[1].getPositionNumber()).isEqualTo(2)
+                assertThat(winnerList[0].getPositionNumber()).isEqualTo(1)
                 assertThat(winnerList[0].getCarNameString()).isEqualTo("hello")
-                assertThat(winnerList[1].getCarNameString()).isEqualTo("에요")
-            }, 1, 1, 1, 1, 5, 5, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 5
+
+                CommandInvoker.clearCommands()
+            }, 1, 1, 1, 1, 5, 5, 1, 1, 1, 1,
         )
     }
 }

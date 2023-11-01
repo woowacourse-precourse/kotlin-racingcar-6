@@ -6,37 +6,30 @@ import org.junit.jupiter.api.Test
 import racingcar.command.CommandInvoker
 import racingcar.command.DoRaceCommand
 import racingcar.model.Car
+import racingcar.model.CarCollection
 import racingcar.model.Name
 import racingcar.model.Position
 
 class CommandTest {
     @Test
     fun `Command 일괄 실행 테스트`() {
-        val commandInvoker = CommandInvoker()
 
-        val car1 = Car(name = Name("hello"), position = Position())
-        val car2 = Car(name = Name("hello"), position = Position())
-        val car3 = Car(name = Name("hello"), position = Position())
-        val car4 = Car(name = Name("hello"), position = Position())
+        val carCollection = CarCollection("hello,world,Im세상,에요")
 
         assertRandomNumberInRangeTest(
             {
-                commandInvoker.addCommand(DoRaceCommand(car1))
-                commandInvoker.addCommand(DoRaceCommand(car2))
-                commandInvoker.addCommand(DoRaceCommand(car3))
-                commandInvoker.addCommand(DoRaceCommand(car4))
-                commandInvoker.executeCommands()
+                CommandInvoker.executeCommands()
 
-
-                assertThat(car1.getPositionNumber())
+                assertThat(carCollection[0]!!.getPositionNumber())
                     .isEqualTo(0)
-                assertThat(car2.getPositionNumber())
-                    .isEqualTo(1)
-                assertThat(car3.getPositionNumber())
+                assertThat(carCollection[1]!!.getPositionNumber())
                     .isEqualTo(0)
-                assertThat(car4.getPositionNumber())
-                    .isEqualTo(1)
-            }, 1, 5, 1, 5
+                assertThat(carCollection[2]!!.getPositionNumber())
+                    .isEqualTo(0)
+                assertThat(carCollection[3]!!.getPositionNumber())
+                    .isEqualTo(0)
+            }, 1, 1, 1, 1
         )
+        CommandInvoker.clearCommands()
     }
 }

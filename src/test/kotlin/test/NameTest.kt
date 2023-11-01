@@ -27,7 +27,6 @@ class NameTest {
             name.checkValidateName()
         }
         assertEquals(EXCEPTION_MESSAGE_BLANK_NAME, exception.message)
-        //assertThat(result).containsExactly("1", "2")
     }
 
     @Test
