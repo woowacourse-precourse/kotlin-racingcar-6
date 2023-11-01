@@ -15,4 +15,21 @@ class RacingGame {
 
     }
 
+    private fun readCarNames(): List<String> {
+        val input = Console.readLine()
+        val carNames = input.split(",").map { it.trim() }
+        if (carNames.any { it.length > 5 }) {
+            throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.")
+        }
+        return carNames
+    }
+
+    private fun readNumberOfTries(): Int {
+        val input = Console.readLine()
+        return try {
+            input.toInt()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("올바른 숫자를 입력하세요.")
+        }
+    }
 }
