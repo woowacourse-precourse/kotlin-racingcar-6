@@ -1,6 +1,7 @@
 package view
 
 import constants.Strings
+import model.Car
 
 class OutputView {
     fun outputCarList() {
@@ -13,5 +14,10 @@ class OutputView {
 
     fun outputTryResult() {
         println("\n" + Strings.TURN_RESULT)
+    }
+
+    fun outputTurnResult(car: Car) {
+        val positionResult: String = "-".repeat(car.position)
+        println("${car.name} : $positionResult")
     }
 }

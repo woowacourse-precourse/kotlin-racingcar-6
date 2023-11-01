@@ -29,6 +29,7 @@ class RacingGame(private val outputView: OutputView, private val inputView: Inpu
         repeat(carList.carList.size) {
             val speed: Int = RandNumGenerator().getRandNum0to9()
             carList.move(it, speed)
+            outputView.outputTurnResult(carList.carList[it])
         }
     }
 }

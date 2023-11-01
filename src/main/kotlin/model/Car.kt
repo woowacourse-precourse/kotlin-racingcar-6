@@ -13,6 +13,4 @@ class Car(val name: String, position: Int = 0) {
     fun move(speed: Int) {
         if(speed >= 4) _position++
     }
-
-
 }
