@@ -40,6 +40,17 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `동일한 거리일 때 공동 우승 처리`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "5")
+                assertThat(output()).contains("pobi : -----", "woni : -----", "최종 우승자 : pobi, woni")
+            },
+            5
+        )
+    }
+
     public override fun runMain() {
         main()
     }
