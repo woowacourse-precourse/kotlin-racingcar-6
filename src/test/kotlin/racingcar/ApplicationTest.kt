@@ -42,4 +42,12 @@ class ApplicationTest : NsTest() {
             validationCarName(listOf("abc", "abcdef"))
         }
     }
+
+    @Test
+    fun `시도할 횟수가 숫자가 아닐 때 예외 발생`() {
+        assertThrows<IllegalArgumentException>("숫자만 입력 가능") {
+            validationNumberAttempts("12a")
+            validationNumberAttempts("abc")
+        }
+    }
 }
