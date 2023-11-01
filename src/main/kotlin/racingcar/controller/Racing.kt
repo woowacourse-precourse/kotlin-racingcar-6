@@ -20,12 +20,12 @@ class Racing(
     private fun generateRandomNumber() = Randoms.pickNumberInRange(0, 9)
     private fun resultOutput(name: String, score: Int) = outputView.resultOutput(name, score)
 
-    private fun isMove(): Boolean {
+    fun isMove(): Boolean {
         val num = generateRandomNumber()
         return num >= MOVE_NUM
     }
 
-    private fun startRacing() {
+    fun startRacing() {
         for(car in this.cars) {
             if(isMove()) { car.move() }
             resultOutput(car.name, car.score)
