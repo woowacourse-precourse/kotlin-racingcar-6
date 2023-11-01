@@ -63,9 +63,7 @@ fun move(moveCount: Int): String = FORWARD_NOTATION.repeat(moveCount)
 fun winnerJudge(cars: List<Car>) {
     var moveCountMap: MutableMap<String, Int> = mutableMapOf()
     cars.forEach { car -> moveCountMap[car.toString()] = car.moveCount }
-    println(moveCountMap)
     val map = moveCountMap.toList().sortedByDescending { it.second }.toMap() as MutableMap
-    println(map)
     val max = map.values.max()
     val maxKey: MutableList<String> = mutableListOf()
     for ((key, value) in map) {
@@ -77,6 +75,5 @@ fun winnerJudge(cars: List<Car>) {
 }
 
 fun outputWinner(max: String) {
-    println()
     println("${FINAL_WINNER}${max}")
 }
