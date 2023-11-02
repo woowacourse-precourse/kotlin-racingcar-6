@@ -23,11 +23,8 @@ class MainController(private val inputView: InputView, private val outputView: O
     }
 
     private fun gameInit() {
-        outputView.printInputCarNameMessage()
-        val carNames = inputView.getInputCarNames()
-        cars.addAllList(carNames)
-        outputView.printInputCountMessage()
-        gameCount = inputView.getInputCount()
+        inputCarNames()
+        inputGameCount()
     }
 
     private fun playOneCycle() {
@@ -42,5 +39,16 @@ class MainController(private val inputView: InputView, private val outputView: O
     private fun gameEnd() {
         val winners = cars.getWinners()
         outputView.printWinners(winners)
+    }
+
+    private fun inputCarNames() {
+        outputView.printInputCarNameMessage()
+        val carNames = inputView.getInputCarNames()
+        cars.addAllList(carNames)
+    }
+
+    private fun inputGameCount() {
+        outputView.printInputCountMessage()
+        gameCount = inputView.getInputCount()
     }
 }
