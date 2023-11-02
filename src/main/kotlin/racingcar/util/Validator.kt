@@ -19,4 +19,8 @@ object Validator {
             if (it.trim().isEmpty()) throw IllegalArgumentException("자동차 이름에 널값이 존재합니다.")
         }
     }
+
+    fun validateInteger(number: String) {
+        number.toIntOrNull() ?: throw IllegalArgumentException("사용자의 입력이 정수가 아닙니다.")
+    }
 }
