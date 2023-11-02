@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import model.Car
+import model.Cars
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -113,6 +114,20 @@ class ApplicationTest : NsTest() {
         val trueValidation = controller.isMovable(trueInput)
         val trueResult = true
         assertThat(trueValidation).isEqualTo(trueResult)
+    }
+
+    @Test
+    fun `최대 거리 반환 기능 검증`() {
+        val input = listOf("pobi", "lh99j", "anjji", "amin")
+        val cars = Cars()
+        cars.addAllList(input)
+        cars.carNames[1].isMove(true)
+        cars.carNames[1].isMove(true)
+        cars.carNames[1].isMove(true)
+        cars.carNames[1].isMove(true)
+        val validation = cars.getMaxDistance()
+        val result = 4
+        assertThat(validation).isEqualTo(result)
     }
 
     public override fun runMain() {
