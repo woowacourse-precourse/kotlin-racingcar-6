@@ -7,14 +7,21 @@ import model.Car
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.controller.MainController
 import racingcar.util.Util.separateNameByComma
 import racingcar.util.Validator.validateInteger
 import racingcar.util.Validator.validateLength
 import racingcar.util.Validator.validateNotNull
 import racingcar.util.Validator.validateRange
 import racingcar.util.Validator.validateUnique
+import racingcar.view.InputView
+import racingcar.view.OutputView
 
 class ApplicationTest : NsTest() {
+    private val inputView = InputView()
+    private val outputView = OutputView()
+    private val controller = MainController(inputView, outputView)
+
     @Test
     fun `전진 정지`() {
         assertRandomNumberInRangeTest(
@@ -93,6 +100,19 @@ class ApplicationTest : NsTest() {
         val validation = car.distance
         val result = 1
         assertThat(validation).isEqualTo(result)
+    }
+
+    @Test
+    fun `움직일 수 있는지 반환 기능 검증`() {
+        val falseInput = 5
+        val falseValidation = controller.isMovable(falseInput)
+        val falseResult = false
+        assertThat(falseValidation).isEqualTo(falseResult)
+
+        val trueInput = 4
+        val trueValidation = controller.isMovable(trueInput)
+        val trueResult = true
+        assertThat(trueValidation).isEqualTo(trueResult)
     }
 
     public override fun runMain() {
