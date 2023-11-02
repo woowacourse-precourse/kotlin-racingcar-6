@@ -1,5 +1,8 @@
 package racingcar
 
+import racingcar.view.OutputView
+
 fun main() {
-    // TODO: 프로그램 구현
+    val outputView = OutputView()
+    outputView.printInputCarNameMessage()
 }
