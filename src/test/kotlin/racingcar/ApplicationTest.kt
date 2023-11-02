@@ -130,6 +130,21 @@ class ApplicationTest : NsTest() {
         assertThat(validation).isEqualTo(result)
     }
 
+    @Test
+    fun `우승자 확인 기능 검증`() {
+        val input = listOf(Car("pobi"), Car("lh99j"), Car("abc"))
+        input[1].isMove(true)
+        input[1].isMove(true)
+
+        val falseValidation = input[0].isWinner(2)
+        val falseResult = false
+        assertThat(falseValidation).isEqualTo(falseResult)
+
+        val trueValidation = input[1].isWinner(2)
+        val trueResult = true
+        assertThat(trueValidation).isEqualTo(trueResult)
+    }
+
     public override fun runMain() {
         main()
     }
