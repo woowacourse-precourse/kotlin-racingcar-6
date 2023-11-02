@@ -104,7 +104,7 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `움직일 수 있는지 반환 기능 검증`() {
-        val falseInput = 5
+        val falseInput = 3
         val falseValidation = controller.isMovable(falseInput)
         val falseResult = false
         assertThat(falseValidation).isEqualTo(falseResult)
