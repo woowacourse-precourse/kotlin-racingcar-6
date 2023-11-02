@@ -3,6 +3,7 @@ package racingcar
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
+import model.Car
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -83,6 +84,15 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { validateRange("-1") }
             assertThrows<IllegalArgumentException> { validateRange("0") }
         }
+    }
+
+    @Test
+    fun `자동차가 움직였는지 검증`() {
+        val car = Car("lh99j")
+        car.isMove(true)
+        val validation = car.distance
+        val result = 1
+        assertThat(validation).isEqualTo(result)
     }
 
     public override fun runMain() {
