@@ -9,7 +9,7 @@ import racingcar.util.Validator.validateRange
 import racingcar.util.Validator.validateUnique
 
 class InputView {
-    fun getUserInput(): String = Console.readLine()
+    private fun getUserInput(): String = Console.readLine()
 
     fun getInputCarNames(): List<String> {
         val input = separateNameByComma(getUserInput())
