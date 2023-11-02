@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.util
 
 object Constants {
     const val CAR_NAME_MAX_LENGTH = 5

@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.util
 
 object Validator {
     private const val DUPLICATE_NAME_ERROR_MSG = "Duplicate car names are not allowed."

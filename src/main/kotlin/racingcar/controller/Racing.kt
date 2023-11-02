@@ -1,9 +1,10 @@
-package racingcar
+package racingcar.controller
 
 import camp.nextstep.edu.missionutils.Randoms
-import racingcar.Constants.BASE_NUMBER
-import racingcar.Constants.DISTANCE_MSG
-import racingcar.Constants.WINNER_MSG
+import racingcar.model.Car
+import racingcar.util.Constants.BASE_NUMBER
+import racingcar.util.Constants.DISTANCE_MSG
+import racingcar.util.Constants.WINNER_MSG
 
 class Racing() {
 

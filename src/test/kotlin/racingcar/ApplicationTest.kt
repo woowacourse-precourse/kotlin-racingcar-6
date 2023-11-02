@@ -6,12 +6,14 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import racingcar.Constants.NUMBER_ATTEMPTS_MSG
-import racingcar.Constants.RACE_START_MSG
-import racingcar.Validator.isCarNameLengthValid
-import racingcar.Validator.isCarNameNotEmpty
-import racingcar.Validator.isCarNameUnique
-import racingcar.Validator.isNumberAttemptsValid
+import racingcar.controller.Racing
+import racingcar.model.Car
+import racingcar.util.Constants.NUMBER_ATTEMPTS_MSG
+import racingcar.util.Constants.RACE_START_MSG
+import racingcar.util.Validator.isCarNameLengthValid
+import racingcar.util.Validator.isCarNameNotEmpty
+import racingcar.util.Validator.isCarNameUnique
+import racingcar.util.Validator.isNumberAttemptsValid
 
 class ApplicationTest : NsTest() {
     private val racing: Racing = Racing()
