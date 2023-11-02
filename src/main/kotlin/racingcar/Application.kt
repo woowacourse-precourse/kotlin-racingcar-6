@@ -9,5 +9,5 @@ fun main() {
     val outputView = OutputView()
     val inputView = InputView()
     val controller = MainController(inputView, outputView)
-    controller.gameStart()
+    controller.run()
 }
