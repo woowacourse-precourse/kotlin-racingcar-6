@@ -7,6 +7,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.util.Util.separateNameByComma
+import racingcar.util.Validator.validateInteger
 import racingcar.util.Validator.validateLength
 import racingcar.util.Validator.validateNotNull
 import racingcar.util.Validator.validateUnique
@@ -62,6 +63,15 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { validateNotNull(listOf("pobi", "javaji", " ")) }
             assertThrows<IllegalArgumentException> { validateNotNull(listOf("a", "b", "c", "")) }
             assertThrows<IllegalArgumentException> { validateNotNull(listOf("a", "b", "  ")) }
+        }
+    }
+
+    @Test
+    fun `사용자 입력 정수 검증`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { validateInteger("a") }
+            assertThrows<IllegalArgumentException> { validateInteger("1a") }
+            assertThrows<IllegalArgumentException> { validateInteger("4_@") }
         }
     }
 
