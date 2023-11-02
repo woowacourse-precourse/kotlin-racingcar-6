@@ -11,12 +11,15 @@ class MainController(private val inputView: InputView, private val outputView: O
         outputView.printInputCarNameMessage()
         val carNames = inputView.getInputCarNames()
         cars.addAllList(carNames)
+        outputView.printInputCountMessage()
         val gameCnt = inputView.getInputCount()
 
         repeat(gameCnt) {
             cars.carNames.forEach { car ->
                 val isMovable = isMovable(getRandomNumber())
                 car.isMove(isMovable)
+                outputView.printCarDistance(car)
+                println()
             }
         }
     }

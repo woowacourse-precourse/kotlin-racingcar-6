@@ -1,6 +1,10 @@
 package model
 
-class Car(private val name: String) {
+class Car(private val _name: String) {
+
+    val name: String
+        get() = _name
+
     private var _distance = 0
     val distance: Int
         get() = _distance
