@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.util.Util.separateNameByComma
 import racingcar.util.Validator.validateLength
+import racingcar.util.Validator.validateUnique
 
 class ApplicationTest : NsTest() {
     @Test
@@ -37,10 +38,19 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `자동차 이름 길이 검증`(){
+    fun `자동차 이름 길이 검증`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { validateLength(listOf("pobi", "javaji")) }
             assertThrows<IllegalArgumentException> { validateLength(listOf("abcdef, abcdefg")) }
+
+        }
+    }
+
+    @Test
+    fun `자동차 이름 중복 검증`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { validateUnique(listOf("pobi", "javaji", "pobi")) }
+            assertThrows<IllegalArgumentException> { validateUnique(listOf("a", "b", "c", "a")) }
 
         }
     }
