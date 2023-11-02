@@ -3,7 +3,7 @@ package racingcar.controller
 import racingcar.view.InputView
 import racingcar.view.OutputView
 import camp.nextstep.edu.missionutils.Randoms
-import model.Cars
+import racingcar.model.Cars
 
 class MainController(private val inputView: InputView, private val outputView: OutputView) {
     private val cars = Cars()

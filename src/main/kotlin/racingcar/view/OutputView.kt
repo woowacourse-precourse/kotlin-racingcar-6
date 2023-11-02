@@ -1,6 +1,6 @@
 package racingcar.view
 
-import model.Car
+import racingcar.model.Car
 
 class OutputView {
     fun printInputCarNameMessage() {

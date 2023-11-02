@@ -1,4 +1,4 @@
-package model
+package racingcar.model
 
 class Cars {
     private var _carNames = mutableListOf<Car>()
