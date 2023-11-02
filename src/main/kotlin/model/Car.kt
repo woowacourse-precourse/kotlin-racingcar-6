@@ -12,4 +12,6 @@ class Car(private val _name: String) {
     fun isMove(movable: Boolean) {
         if (movable) _distance++
     }
+
+    fun isWinner(maxValue: Int): Boolean = _distance == maxValue
 }
