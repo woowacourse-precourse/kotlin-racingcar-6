@@ -7,22 +7,38 @@ import model.Cars
 
 class MainController(private val inputView: InputView, private val outputView: OutputView) {
     private val cars = Cars()
+    private var gameCount = 0
+
+    fun run() {
+        gameInit()
+        gameStart()
+        gameEnd()
+    }
+
     fun gameStart() {
+        repeat(gameCount) {
+            playOneCycle()
+        }
+    }
+
+    fun gameInit() {
         outputView.printInputCarNameMessage()
         val carNames = inputView.getInputCarNames()
         cars.addAllList(carNames)
         outputView.printInputCountMessage()
-        val gameCnt = inputView.getInputCount()
+        gameCount = inputView.getInputCount()
+    }
 
-        repeat(gameCnt) {
-            cars.carNames.forEach { car ->
-                val isMovable = isMovable(getRandomNumber())
-                car.isMove(isMovable)
-                outputView.printCarDistance(car)
-            }
-            println()
+    fun playOneCycle() {
+        cars.carNames.forEach { car ->
+            val isMovable = isMovable(getRandomNumber())
+            car.isMove(isMovable)
+            outputView.printCarDistance(car)
         }
+        println()
+    }
 
+    fun gameEnd() {
         val winners = cars.getWinners()
         outputView.printWinners(winners)
     }
