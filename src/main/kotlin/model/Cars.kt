@@ -6,4 +6,6 @@ class Cars {
         get() = _carNames
 
     fun addAllList(carNames: List<String>) = _carNames.addAll(carNames.map { Car(it) })
+
+    fun getMaxDistance(): Int = _carNames.maxOf { it.distance }
 }
