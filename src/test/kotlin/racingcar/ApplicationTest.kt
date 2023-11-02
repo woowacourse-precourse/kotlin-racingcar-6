@@ -7,6 +7,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.util.Util.separateNameByComma
+import racingcar.util.Validator.validateLength
 
 class ApplicationTest : NsTest() {
     @Test
@@ -33,6 +34,15 @@ class ApplicationTest : NsTest() {
         val validation = separateNameByComma(input)
         val result = listOf("lh99j", "pobi")
         assertThat(validation).isEqualTo(result)
+    }
+
+    @Test
+    fun `자동차 이름 길이 검증`(){
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { validateLength(listOf("pobi", "javaji")) }
+            assertThrows<IllegalArgumentException> { validateLength(listOf("abcdef, abcdefg")) }
+
+        }
     }
 
     public override fun runMain() {
