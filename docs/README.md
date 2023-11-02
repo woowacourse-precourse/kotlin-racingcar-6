@@ -9,7 +9,7 @@
         ▫︎ 자동차 이름에 null값이 들어오면 에러를 발생시킨다. (3) - Validator#validateNotNull()
     ◦ 게임 횟수를 입력받는다. (2) - InputView#getUserInputCount()
         ▫︎ 입력이 숫자가 아닐 시 이러를 발생시킨다. (3) - Validator#validateInteger()
-        ▫︎ 횟수가 0일 시 에러를 발생시킨다. (3) - Validator#validateRange()
+        ▫︎ 입력의 범위를 벗어날 시 에러를 발생시킨다. (3) - Validator#validateRange()
 
 • 게임 중
     ◦ 0부터 9까지의 숫자를 랜덤하게 구한다. - MainController#getRandomNumber()
@@ -40,8 +40,8 @@
 - [x]  자동차 경주 이름을 입력받는다.
 - [x]  자동차 이름들을 구분한다. 
 - [x]  자동차 이름의 유효성을 검사한다.
-- [ ]  게임 횟수를 입력받는다.
-- [ ]  게임 횟수의 유효성을 검사한다.
+- [x]  게임 횟수를 입력받는다.
+- [x]  게임 횟수의 유효성을 검사한다.
 
 <br>
 
