@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.util.Util.separateNameByComma
 
 class ApplicationTest : NsTest() {
     @Test
@@ -24,6 +25,14 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
+    }
+
+    @Test
+    fun `컴마로 구분하여 리스트 반환 검증`() {
+        val input = "lh99j,pobi"
+        val validation = separateNameByComma(input)
+        val result = listOf("lh99j", "pobi")
+        assertThat(validation).isEqualTo(result)
     }
 
     public override fun runMain() {
