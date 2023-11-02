@@ -22,6 +22,9 @@ class MainController(private val inputView: InputView, private val outputView: O
             }
             println()
         }
+
+        val winners = cars.getWinners()
+        outputView.printWinners(winners)
     }
 
     fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)

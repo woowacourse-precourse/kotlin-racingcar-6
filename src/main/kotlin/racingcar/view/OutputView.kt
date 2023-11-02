@@ -14,4 +14,9 @@ class OutputView {
     fun printCarDistance(car: Car) {
         println("${car.name} : ${"-".repeat(car.distance)}")
     }
+
+    fun printWinners(winners: List<String>) {
+        val output = winners.joinToString(", ")
+        println(output)
+    }
 }
