@@ -2,11 +2,7 @@ package racingcar.controller
 
 import racingcar.view.InputView
 import racingcar.view.OutputView
-import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.Cars
-import racingcar.util.Constants.END_NUMBER
-import racingcar.util.Constants.MOVABLE_NUMBER
-import racingcar.util.Constants.START_NUMBER
 import racingcar.util.Util.getRandomNumber
 import racingcar.util.Util.isMovable
 
