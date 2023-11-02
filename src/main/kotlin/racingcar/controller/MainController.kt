@@ -19,8 +19,8 @@ class MainController(private val inputView: InputView, private val outputView: O
                 val isMovable = isMovable(getRandomNumber())
                 car.isMove(isMovable)
                 outputView.printCarDistance(car)
-                println()
             }
+            println()
         }
     }
 
