@@ -2,6 +2,8 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.Constants.BASE_NUMBER
+import racingcar.Constants.DISTANCE_MSG
+import racingcar.Constants.WINNER_MSG
 
 class Racing() {
 
@@ -28,11 +30,11 @@ class Racing() {
     }
 
     fun printMatchProgress(cars: List<Car>) {
-        cars.forEach { car -> println("${car.name} : ${"-".repeat(car.distance)}") }
+        cars.forEach { car -> println("${car.name} : ${DISTANCE_MSG.repeat(car.distance)}") }
         println()
     }
 
     fun printWinner(winnerNames:String){
-        println("최종 우승자 : $winnerNames")
+        println("$WINNER_MSG$winnerNames")
     }
 }
