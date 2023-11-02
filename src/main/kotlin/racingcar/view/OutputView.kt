@@ -17,6 +17,6 @@ class OutputView {
 
     fun printWinners(winners: List<String>) {
         val output = winners.joinToString(", ")
-        println(output)
+        println("최종 우승자 : $output")
     }
 }
