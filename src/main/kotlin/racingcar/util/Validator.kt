@@ -1,11 +1,13 @@
 package racingcar.util
 
+import racingcar.util.Constants.MAX_NAME_LENGTH
+import racingcar.util.Constants.MIN_COUNT_NUMBER
 import java.lang.IllegalArgumentException
 
 object Validator {
     fun validateLength(numberList: List<String>) {
         numberList.forEach {
-            if (it.length > 5) throw IllegalArgumentException(ExceptionMessage.INVALID_LENGTH.getMessage())
+            if (it.length > MAX_NAME_LENGTH) throw IllegalArgumentException(ExceptionMessage.INVALID_LENGTH.getMessage())
         }
     }
 
@@ -26,6 +28,6 @@ object Validator {
 
     fun validateRange(number: String) {
         val validation = number.toInt()
-        if (validation !in 1..Int.MAX_VALUE) throw IllegalArgumentException(ExceptionMessage.INVALID_RANGE.getMessage())
+        if (validation !in MIN_COUNT_NUMBER..Int.MAX_VALUE) throw IllegalArgumentException(ExceptionMessage.INVALID_RANGE.getMessage())
     }
 }

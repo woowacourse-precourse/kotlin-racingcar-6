@@ -4,6 +4,9 @@ import racingcar.view.InputView
 import racingcar.view.OutputView
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.Cars
+import racingcar.util.Constants.END_NUMBER
+import racingcar.util.Constants.MOVABLE_NUMBER
+import racingcar.util.Constants.START_NUMBER
 
 class MainController(private val inputView: InputView, private val outputView: OutputView) {
     private val cars = Cars()
@@ -43,7 +46,7 @@ class MainController(private val inputView: InputView, private val outputView: O
         outputView.printWinners(winners)
     }
 
-    fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
+    fun getRandomNumber(): Int = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER)
 
-    fun isMovable(number: Int): Boolean = number >= 4
+    fun isMovable(number: Int): Boolean = number >= MOVABLE_NUMBER
 }
