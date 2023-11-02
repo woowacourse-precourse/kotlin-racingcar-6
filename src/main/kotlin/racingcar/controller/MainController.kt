@@ -14,4 +14,6 @@ class MainController(private val inputView: InputView, private val outputView: O
     }
 
     fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
+
+    fun isMovable(number: Int): Boolean = number >= 4
 }
