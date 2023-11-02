@@ -9,6 +9,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.controller.MainController
+import racingcar.util.Util.isMovable
 import racingcar.util.Util.separateNameByComma
 import racingcar.util.Validator.validateInteger
 import racingcar.util.Validator.validateLength
@@ -106,12 +107,12 @@ class ApplicationTest : NsTest() {
     @Test
     fun `움직일 수 있는지 반환 기능 검증`() {
         val falseInput = 3
-        val falseValidation = controller.isMovable(falseInput)
+        val falseValidation = isMovable(falseInput)
         val falseResult = false
         assertThat(falseValidation).isEqualTo(falseResult)
 
         val trueInput = 4
-        val trueValidation = controller.isMovable(trueInput)
+        val trueValidation = isMovable(trueInput)
         val trueResult = true
         assertThat(trueValidation).isEqualTo(trueResult)
     }

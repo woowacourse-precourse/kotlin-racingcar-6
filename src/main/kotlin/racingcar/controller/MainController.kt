@@ -7,6 +7,8 @@ import racingcar.model.Cars
 import racingcar.util.Constants.END_NUMBER
 import racingcar.util.Constants.MOVABLE_NUMBER
 import racingcar.util.Constants.START_NUMBER
+import racingcar.util.Util.getRandomNumber
+import racingcar.util.Util.isMovable
 
 class MainController(private val inputView: InputView, private val outputView: OutputView) {
     private val cars = Cars()
@@ -18,13 +20,13 @@ class MainController(private val inputView: InputView, private val outputView: O
         gameEnd()
     }
 
-    fun gameStart() {
+    private fun gameStart() {
         repeat(gameCount) {
             playOneCycle()
         }
     }
 
-    fun gameInit() {
+    private fun gameInit() {
         outputView.printInputCarNameMessage()
         val carNames = inputView.getInputCarNames()
         cars.addAllList(carNames)
@@ -32,7 +34,7 @@ class MainController(private val inputView: InputView, private val outputView: O
         gameCount = inputView.getInputCount()
     }
 
-    fun playOneCycle() {
+    private fun playOneCycle() {
         cars.carNames.forEach { car ->
             val isMovable = isMovable(getRandomNumber())
             car.isMove(isMovable)
@@ -41,12 +43,8 @@ class MainController(private val inputView: InputView, private val outputView: O
         println()
     }
 
-    fun gameEnd() {
+    private fun gameEnd() {
         val winners = cars.getWinners()
         outputView.printWinners(winners)
     }
-
-    fun getRandomNumber(): Int = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER)
-
-    fun isMovable(number: Int): Boolean = number >= MOVABLE_NUMBER
 }
