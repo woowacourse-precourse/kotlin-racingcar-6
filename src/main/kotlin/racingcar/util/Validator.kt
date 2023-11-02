@@ -23,4 +23,9 @@ object Validator {
     fun validateInteger(number: String) {
         number.toIntOrNull() ?: throw IllegalArgumentException("사용자의 입력이 정수가 아닙니다.")
     }
+
+    fun validateRange(number: String) {
+        val validation = number.toInt()
+        if (validation !in 1..Int.MAX_VALUE) throw IllegalArgumentException("사용자의 입력이 유효한 범위가 아닙니다.")
+    }
 }
