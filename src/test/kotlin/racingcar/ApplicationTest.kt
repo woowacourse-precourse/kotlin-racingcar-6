@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import racingcar.controller.Racing
+import racingcar.controller.RacingController
 import racingcar.model.Car
 import racingcar.util.Constants.NUMBER_ATTEMPTS_MSG
 import racingcar.util.Constants.RACE_START_MSG
@@ -16,7 +16,7 @@ import racingcar.util.Validator.isCarNameUnique
 import racingcar.util.Validator.isNumberAttemptsValid
 
 class ApplicationTest : NsTest() {
-    private val racing: Racing = Racing()
+    private val racingController: RacingController = RacingController()
 
     @Test
     fun `전진 정지`() {
@@ -79,7 +79,7 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             val randomNumbers = listOf(1, 5, 4, 2, 6)
             val results: MutableList<Boolean> = MutableList<Boolean>(5) { false }
-            randomNumbers.forEachIndexed { idx, i -> results[idx] = racing.determineMoveOrStop(i) }
+            randomNumbers.forEachIndexed { idx, i -> results[idx] = racingController.determineMoveOrStop(i) }
             assertThat(results).isEqualTo(listOf(false, true, true, false, true))
         }
     }
@@ -88,7 +88,7 @@ class ApplicationTest : NsTest() {
     fun `단일 우승자 판별`() {
         assertSimpleTest {
             val cars: List<Car> = listOf(Car("T1", 10), Car("KT", 2), Car("Gen.G", 7))
-            val results = racing.getWinner(cars)
+            val results = racingController.getWinner(cars)
             assertThat(results).isEqualTo("T1")
         }
     }
@@ -97,7 +97,7 @@ class ApplicationTest : NsTest() {
     fun `다중 우승자 판별`() {
         assertSimpleTest {
             val cars: List<Car> = listOf(Car("Bear", 3), Car("Dog", 6), Car("Cat", 7), Car("Tiger", 7))
-            val results = racing.getWinner(cars)
+            val results = racingController.getWinner(cars)
             assertThat(results).isEqualTo("Cat, Tiger")
         }
     }
@@ -107,7 +107,7 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             val attempts = 5
             val cars: List<Car> = listOf(Car("Bear", 0), Car("Dog", 0), Car("Cat", 0), Car("Tiger", 0))
-            racing.doRacing(attempts, cars)
+            racingController.doRacing(attempts, cars)
         }
     }
 
@@ -116,7 +116,7 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             run {
                 val cars: List<Car> = listOf(Car("Bear", 3), Car("Dog", 6), Car("Cat", 7), Car("Tiger", 7))
-                racing.printWinner(racing.getWinner(cars))
+                racingController.printWinner(racingController.getWinner(cars))
             }
             assertThat(output()).isEqualTo("최종 우승자 : Cat, Tiger")
         }
@@ -127,7 +127,7 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             run {
                 val cars: List<Car> = listOf(Car("Cat", 1),  Car("Dog", 3))
-                racing.printMatchProgress(cars)
+                racingController.printMatchProgress(cars)
             }
             assertThat(output()).isEqualTo("Cat : -\n" + "Dog : ---" )
         }
