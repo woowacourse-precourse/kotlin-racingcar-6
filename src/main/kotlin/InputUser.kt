@@ -16,17 +16,17 @@ class InputUser {
     }
     fun printlnGameCountMent(){
         println(GameMessage.gameCountMent)
-
     }
     fun tryGameCount():Int{
             val input = Console.readLine()
-            return input.toInt()
+            if(input.toIntOrNull()==null){
+                throw IllegalArgumentException("[Error]게임 횟수는 숫자로만 입력해야합니다.")
+            }
+        return input.toInt()
     }
     fun validName(carName:List<String>):Boolean{
-        for(name in carName.indices){
-            if(carName[name].length>=5) {
-                throw IllegalArgumentException("5글자를 초과하는 이름은 입력불가합니다.")
-            }
+        if(carName.filter{it.length>=5}.isNotEmpty()){
+            throw IllegalArgumentException("[Error]5글자를 초과하는 이름이 입력되었습니다.")
         }
         return true
     }

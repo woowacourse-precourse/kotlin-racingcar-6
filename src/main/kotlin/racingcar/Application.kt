@@ -16,7 +16,6 @@ fun main() {
          gamePlaying.printPerExecutionResult(gameInfo)
       }
    }
-
    val scoreList = gamePlaying.calculateScore(gameInfo)
    val topScore = gamePlaying.findTopScoreList(scoreList)
    gamePlaying.printlnTopScore(topScore)
