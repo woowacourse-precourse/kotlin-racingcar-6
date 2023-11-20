@@ -1,22 +1,27 @@
 package racingcar
 
-import InputUser
+import racingcar.Racing.GameConstants
+import viewModel.ValidInput
 
 fun main() {
-   val inputUser = InputUser()
-   val gamePlaying = Racing()
-   val carNames = inputUser.inputCarName()
-   var gameInfo = emptyMap<String, Int>()
-   if (inputUser.validName(carNames)) {
-      inputUser.printlnGameCountMent()
-      val gameCount = inputUser.tryGameCount()
-      gamePlaying.outputStartMent()
-      for (round in 1..gameCount) {
-         gameInfo = gamePlaying.generateNumber(carNames)
-         gamePlaying.printPerExecutionResult(gameInfo)
-      }
-   }
-   val scoreList = gamePlaying.calculateScore(gameInfo)
-   val topScore = gamePlaying.findTopScoreList(scoreList)
-   gamePlaying.printlnTopScore(topScore)
+    val inputUser = InputUser()
+    val gamePlaying = Racing()
+    val carNames = inputUser.inputCarName()
+
+    if (ValidInput().validName(carNames)) {
+        GameConstants.scoreList.clear()
+        inputUser.printlnGameCountMent()
+        val gameCount = ValidInput().validInputGameCount()
+        gamePlaying.outputStartMent()
+
+        for (round in 1..gameCount) {
+            var gameInfo = gamePlaying.generateNumber(carNames)
+            gamePlaying.printPerExecutionResult(gameInfo)
+            Racing().calculateScore(gameInfo)
+        }
+    }
+    Racing().printlnResult()
 }
+
+
+

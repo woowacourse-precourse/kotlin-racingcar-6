@@ -1,6 +1,5 @@
 package racingcar
 
-import InputUser
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
@@ -36,14 +35,24 @@ class ApplicationTest : NsTest() {
         )
     }
     @Test
-    fun `우승자 여려명 테스트`(){
-        assertRandomNumberInRangeTest({
-            run("woni,king","1")
-            assertThat(output()).contains("최종 우승자 : woni, king")
-        },
+    fun `우승자 여려명 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("woni,king", "1")
+                assertThat(output()).contains("최종 우승자 : woni, king")
+            },
             MOVING_FORWARD
         )
     }
+        @Test
+        fun `누적 확인 테스트`(){
+            assertRandomNumberInRangeTest({
+                run("woni,james","3")
+                assertThat(output()).contains("최종 우승자 : james")
+            },
+                2, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+            )
+        }
 
 
     public override fun runMain() {
