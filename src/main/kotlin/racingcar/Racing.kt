@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 import racingcar.Racing.GameConstants.EXECUTION_RESULT
 import racingcar.Racing.GameConstants.FORWARD_STEP
 import racingcar.Racing.GameConstants.RESULT_PLAYER
-import racingcar.Racing.GameConstants.SCORE_LIST
+import racingcar.Racing.GameConstants.WINNERS
 import viewModel.ValidInput
 
 class Racing {
@@ -32,14 +32,14 @@ class Racing {
     fun calculateScore(gameInfo: Map<String, Int>): List<String> {
         for ((name, number) in gameInfo) {
             if (number >= FORWARD_STEP) {
-                SCORE_LIST.add(name)
+                WINNERS.add(name)
             }
         }
-        return SCORE_LIST
+        return WINNERS
     }
 
     private fun findTopScoreList(): String {
-        val elementCounts = SCORE_LIST.groupingBy { it }.eachCount()
+        val elementCounts = WINNERS.groupingBy { it }.eachCount()
         val maxCount = elementCounts.maxByOrNull { it.value }?.value
         val topScore = elementCounts.filter { it.value == maxCount }.keys.toList()
         return topScore.joinToString(", ")
@@ -76,7 +76,7 @@ class Racing {
 
     private fun startGame(carNames: List<String>, gameCount: Int) {
         outputStartMent()
-        SCORE_LIST.clear()
+        WINNERS.clear()
         repeat(gameCount) {
             val gameInfo = generateNumber(carNames)
             printPerExecutionResult(gameInfo)
@@ -94,7 +94,7 @@ class Racing {
         const val RESULT_PLAYER: String = "최종 우승자 : "
         const val BAR: String = "-"
         const val LIMIT_LENGTH: Int = 5
-        var SCORE_LIST = mutableListOf<String>()
+        var WINNERS = mutableListOf<String>()
         const val ENTER: String = "\n"
     }
 }
