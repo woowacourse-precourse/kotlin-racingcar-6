@@ -1,10 +1,11 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.InputUser.GameMessage.DEFAULT_INPUT_MENT
 
 class InputUser {
     fun printlnDefaultMent() {
-        println(GameMessage.DEFAULT_INPUT_MENT)
+        println(DEFAULT_INPUT_MENT)
     }
 
     fun inputCarName(): List<String> {
