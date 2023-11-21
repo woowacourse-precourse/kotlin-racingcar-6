@@ -91,8 +91,8 @@ class Racing {
     }
 
     object GameConstants {
-        const val RANDOM_NUMBER_RANGE_START=0
-        const val RANDOM_NUMBER_RANGE_END=9
+        const val RANDOM_NUMBER_RANGE_START = 0
+        const val RANDOM_NUMBER_RANGE_END = 9
         const val EXECUTION_RESULT: String = "실행 결과"
         const val FORWARD_STEP: Int = 4
         const val RESULT_PLAYER: String = "최종 우승자 : "
