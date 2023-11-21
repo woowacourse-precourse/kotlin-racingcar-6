@@ -7,7 +7,7 @@ import racingcar.Racing.GameConstants
 class ValidInput {
     fun validInputGameCount(): Int {
         val gameCount = Console.readLine()
-        require(gameCount.toIntOrNull() != null && gameCount.toInt() > 0) { NOT_DIGIT.message }
+        require(gameCount.toIntOrNull() != null || gameCount.toInt() < 0) { NOT_DIGIT.message }
         return gameCount.toInt()
     }
 

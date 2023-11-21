@@ -18,7 +18,8 @@ class Racing {
     fun generateNumber(carName: List<String>): Map<String, Int> {
         val gameInfo = mutableMapOf<String, Int>()
         for (name in carName) {
-            val number = Randoms.pickNumberInRange(RANDOM_NUMBER_RANGE_START, RANDOM_NUMBER_RANGE_END)
+            val number =
+                Randoms.pickNumberInRange(RANDOM_NUMBER_RANGE_START, RANDOM_NUMBER_RANGE_END)
             gameInfo[name] = number
         }
         return gameInfo
@@ -54,20 +55,16 @@ class Racing {
     fun run() {
         inputUser.printlnDefaultMent()
         val carNames = getUserInput()
-        if (isValidInput(carNames)) {
-            val gameCount = getGameCountFromUser()
-            startGame(carNames, gameCount)
-        }
+        ValidInput().validName(carNames)
+        val gameCount = getGameCountFromUser()
+        startGame(carNames, gameCount)
+
         printFinalResult()
     }
 
     private fun getUserInput(): List<String> {
         val inputUser = InputUser()
         return inputUser.inputCarName()
-    }
-
-    private fun isValidInput(carNames: List<String>): Boolean {
-        return ValidInput().validName(carNames)
     }
 
     private fun getGameCountFromUser(): Int {
