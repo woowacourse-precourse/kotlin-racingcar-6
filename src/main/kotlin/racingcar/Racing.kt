@@ -8,6 +8,7 @@ import racingcar.Racing.GameConstants.SCORE_LIST
 import viewModel.ValidInput
 
 class Racing {
+    val inputUser = InputUser()
     fun outputStartMent() {
         println(EXECUTION_RESULT)
     }
@@ -44,28 +45,48 @@ class Racing {
         return topScore.joinToString(", ")
     }
 
-    fun printlnResult() {
+    private fun printlnResult() {
         println(RESULT_PLAYER + findTopScoreList())
     }
 
     fun run() {
-        val inputUser = InputUser()
-        val carNames = inputUser.inputCarName()
-
-        if (ValidInput().validName(carNames)) {
-            inputUser.printlnGameCountMent()
-            val gameCount = ValidInput().validInputGameCount()
-            outputStartMent()
-            SCORE_LIST.clear()
-            for (round in 1..gameCount) {
-                var gameInfo = generateNumber(carNames)
-                printPerExecutionResult(gameInfo)
-                Racing().calculateScore(gameInfo)
-            }
+        inputUser.printlnDefaultMent()
+        val carNames = getUserInput()
+        if (isValidInput(carNames)) {
+            val gameCount = getGameCountFromUser()
+            startGame(carNames, gameCount)
         }
-        Racing().printlnResult()
+        printFinalResult()
     }
 
+    private fun getUserInput(): List<String> {
+        val inputUser = InputUser()
+        return inputUser.inputCarName()
+    }
+
+    private fun isValidInput(carNames: List<String>): Boolean {
+        return ValidInput().validName(carNames)
+    }
+
+    private fun getGameCountFromUser(): Int {
+        val inputUser = InputUser()
+        inputUser.printlnGameCountMent()
+        return ValidInput().validInputGameCount()
+    }
+
+    private fun startGame(carNames: List<String>, gameCount: Int) {
+        outputStartMent()
+        SCORE_LIST.clear()
+        repeat(gameCount) {
+            val gameInfo = generateNumber(carNames)
+            printPerExecutionResult(gameInfo)
+            Racing().calculateScore(gameInfo)
+        }
+    }
+
+    private fun printFinalResult() {
+        printlnResult()
+    }
 
     object GameConstants {
         const val EXECUTION_RESULT: String = "실행 결과"
@@ -76,5 +97,4 @@ class Racing {
         var SCORE_LIST = mutableListOf<String>()
         const val ENTER: String = "\n"
     }
-
 }
