@@ -3,6 +3,8 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.Racing.GameConstants.EXECUTION_RESULT
 import racingcar.Racing.GameConstants.FORWARD_STEP
+import racingcar.Racing.GameConstants.RANDOM_NUMBER_RANGE_END
+import racingcar.Racing.GameConstants.RANDOM_NUMBER_RANGE_START
 import racingcar.Racing.GameConstants.RESULT_PLAYER
 import racingcar.Racing.GameConstants.WINNERS
 import viewModel.ValidInput
@@ -16,7 +18,7 @@ class Racing {
     fun generateNumber(carName: List<String>): Map<String, Int> {
         val gameInfo = mutableMapOf<String, Int>()
         for (name in carName) {
-            val number = Randoms.pickNumberInRange(0, 9)
+            val number = Randoms.pickNumberInRange(RANDOM_NUMBER_RANGE_START, RANDOM_NUMBER_RANGE_END)
             gameInfo[name] = number
         }
         return gameInfo
@@ -89,6 +91,8 @@ class Racing {
     }
 
     object GameConstants {
+        const val RANDOM_NUMBER_RANGE_START=0
+        const val RANDOM_NUMBER_RANGE_END=9
         const val EXECUTION_RESULT: String = "실행 결과"
         const val FORWARD_STEP: Int = 4
         const val RESULT_PLAYER: String = "최종 우승자 : "
