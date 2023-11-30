@@ -25,13 +25,13 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(strings = ["a", " a ", "pobi", "woni", "jun", "simji"])
     fun `정상적인 자동차의 이름은 통과한다`(carName: String) {
-        assertDoesNotThrow { Car(carName, 0) }
+        assertDoesNotThrow { Car(carName) }
     }
 
 
     private fun assertThrowsWithMessage(carName: String, message: String) {
         val exception = assertThrows<IllegalArgumentException> {
-            Car(carName, 0)
+            Car(carName)
         }
         assertThat(exception.message).isEqualTo(message)
     }

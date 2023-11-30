@@ -2,7 +2,7 @@ package racingcar.model
 
 data class Car(
     val name: String,
-    val position: Int
+    val position: Int = 0
 ) {
     init {
         require(name.isNotBlank()) { BLANK_NAME }
