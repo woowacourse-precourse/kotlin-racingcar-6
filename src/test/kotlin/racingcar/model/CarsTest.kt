@@ -24,4 +24,18 @@ class CarsTest {
         }
     }
 
+    @Test
+    fun `자동차들 중 우승자를 알아낸다`() {
+        val cars = Cars(
+            listOf(
+                Car("pobi", 0),
+                Car("woni", 1),
+                Car("jun", 3),
+            )
+        )
+
+        val winners = cars.getWinners()
+        assertThat(winners).isEqualTo(listOf(Car("jun", 3)))
+    }
+
 }
