@@ -10,7 +10,10 @@ class InputView {
 
     fun readTryCount(): Int {
         println(INPUT_TRY_COUNT_GUIDE)
-        return readLine().toIntOrNull() ?: -1
+        val tryCount = readLine().toIntOrNull() ?: -1
+        require(tryCount >= 0)
+
+        return tryCount
     }
 
     companion object {
