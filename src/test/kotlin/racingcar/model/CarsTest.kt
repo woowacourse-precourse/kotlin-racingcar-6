@@ -11,7 +11,7 @@ class CarsTest {
     @Test
     fun `자동차들에 중복된 이름이 있다면 에외를 던진다`() {
         val exception = assertThrows<IllegalArgumentException> {
-            Cars(listOf(Car("pobi", 0), Car("pobi", 0)))
+            Cars.withNames("pobi", "pobi")
         }
 
         assertThat(exception.message).isEqualTo(DUPLICATED_CARS)
@@ -20,7 +20,7 @@ class CarsTest {
     @Test
     fun `정상적인 자동차들은 통과한다`() {
         assertDoesNotThrow {
-            Cars(listOf(Car("pobi", 0), Car("woni", 0), Car("jun", 0)))
+            Cars.withNames("pobi", "woni", "jun")
         }
     }
 
