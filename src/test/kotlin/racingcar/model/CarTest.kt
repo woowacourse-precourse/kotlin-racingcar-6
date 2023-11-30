@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
 import org.junit.jupiter.params.provider.ValueSource
 import racingcar.model.Car.Companion.BLANK_NAME
 import racingcar.model.Car.Companion.TOO_LONG_NAME
@@ -26,6 +27,15 @@ class CarTest {
     @ValueSource(strings = ["a", " a ", "pobi", "woni", "jun", "simji"])
     fun `정상적인 자동차의 이름은 통과한다`(carName: String) {
         assertDoesNotThrow { Car(carName) }
+    }
+
+    @ParameterizedTest
+    @CsvSource("0, 1", "1, 2", "10, 11", "100, 101")
+    fun `자동차가 전진한다`(firstPosition: Int, expectedPosition: Int) {
+        val car = Car("pobi", firstPosition)
+        car.moveForward()
+
+        assertThat(car.position == expectedPosition)
     }
 
 
