@@ -1,5 +1,10 @@
 package racingcar
 
+import racingcar.controller.GameController
+import racingcar.model.RandomNumberMoveStrategy
+
 fun main() {
-    // TODO: 프로그램 구현
+    val gameController = GameController(RandomNumberMoveStrategy())
+    gameController.start()
+
 }
