@@ -2,15 +2,18 @@ package racingcar.model
 
 data class Car(
     val name: String,
-    var position: Int = 0
+    private var _position: Int = 0
 ) {
     init {
         require(name.isNotBlank()) { BLANK_NAME }
         require(name.length <= NAME_MAX_LENGTH) { TOO_LONG_NAME }
     }
 
+    val position: Int
+        get() = _position
+
     fun moveForward() {
-        position++
+        _position++
     }
 
     companion object {
