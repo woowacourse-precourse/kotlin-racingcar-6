@@ -19,13 +19,13 @@ class OutputView {
     }
 
     companion object {
-        const val LINE_BREAK = "\n"
-        const val RESULT_TITLE = "실행 결과"
+        private const val LINE_BREAK = "\n"
+        private const val RESULT_TITLE = "실행 결과"
 
-        const val RESULT_FORMAT = "%s : %s"
-        const val SCORE_MARK = "-"
+        private const val RESULT_FORMAT = "%s : %s"
+        private const val SCORE_MARK = "-"
 
-        const val WINNER_TITLE = "최종 우승자 : "
-        const val WINNER_FORMAT = ", "
+        private const val WINNER_TITLE = "최종 우승자 : "
+        private const val WINNER_FORMAT = ", "
     }
 }
