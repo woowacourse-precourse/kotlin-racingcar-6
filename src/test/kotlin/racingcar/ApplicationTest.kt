@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.application.main
 
 class ApplicationTest : NsTest() {
     @Test
@@ -22,7 +23,8 @@ class ApplicationTest : NsTest() {
     @Test
     fun `이름에 대한 예외 처리`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+            runException("pobi,javaji", "1")
+            assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
 
@@ -33,5 +35,6 @@ class ApplicationTest : NsTest() {
     companion object {
         private const val MOVING_FORWARD = 4
         private const val STOP = 3
+        private const val ERROR_MESSAGE = "[ERROR]"
     }
 }
