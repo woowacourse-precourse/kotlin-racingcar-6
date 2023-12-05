@@ -18,6 +18,9 @@ class OutputView {
         print(winner.joinToString(WINNER_FORMAT))
     }
 
+    fun printError(e: IllegalArgumentException) =
+        println(e.message + LINE_BREAK)
+
     companion object {
         private const val LINE_BREAK = "\n"
         private const val RESULT_TITLE = "실행 결과"
@@ -27,5 +30,7 @@ class OutputView {
 
         private const val WINNER_TITLE = "최종 우승자 : "
         private const val WINNER_FORMAT = ", "
+
+//        private const val ERROR = "[ERROR] "
     }
 }

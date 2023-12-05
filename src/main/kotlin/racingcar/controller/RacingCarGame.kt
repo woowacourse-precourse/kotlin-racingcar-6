@@ -33,7 +33,7 @@ class RacingCarGame(
             require(cars.doesNotHaveDuplicates()) { "[ERROR] 중복된 차 이름이 있습니다." }
             cars
         } catch (e: IllegalArgumentException) {
-            println(e.message)
+            outputView.printError(e)
             createCars()
         }
 
@@ -45,7 +45,7 @@ class RacingCarGame(
             require(roundNumbers.isValid()) { "[ERROR] 시도할 횟수 값이 잘못 됐습니다. 유효하지 않은 값입니다." }
             roundNumbers
         } catch (e: IllegalArgumentException) {
-            println(e.message)
+            outputView.printError(e)
             getRoundNumbers()
         }
 
